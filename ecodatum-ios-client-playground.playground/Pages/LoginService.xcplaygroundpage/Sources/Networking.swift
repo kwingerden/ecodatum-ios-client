@@ -4,7 +4,7 @@ class Networking {
   
   static let shared = Networking()
   
-  private let defaultSession: URLSession
+  let defaultSession: URLSession
   
   private init() {
     
@@ -20,11 +20,7 @@ class Networking {
     defaultConfiguration.waitsForConnectivity = true
     
     defaultSession = URLSession(configuration: defaultConfiguration)
-  
-  }
-  
-  func login(email: String, password: String) {
-    print(defaultSession.configuration.allowsCellularAccess)
+    
   }
   
 }
