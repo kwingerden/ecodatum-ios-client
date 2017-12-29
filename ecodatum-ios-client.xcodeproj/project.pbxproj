@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010AB1781FF6D81000EFF0D5 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1771FF6D81000EFF0D5 /* HTTPStatusCode.swift */; };
+		010AB17A1FF6D9ED00EFF0D5 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1791FF6D9ED00EFF0D5 /* HTTPHeaderField.swift */; };
+		010AB17C1FF6DA7600EFF0D5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB17B1FF6DA7600EFF0D5 /* HTTPMethod.swift */; };
+		010AB17F1FF6DFBF00EFF0D5 /* LoginServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB17E1FF6DFBF00EFF0D5 /* LoginServiceTest.swift */; };
+		010AB1811FF6EA9800EFF0D5 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */; };
 		011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */; };
 		011F7D6A1FF5955700DCD7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D691FF5955700DCD7CA /* Networking.swift */; };
@@ -30,6 +35,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010AB1771FF6D81000EFF0D5 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
+		010AB1791FF6D9ED00EFF0D5 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
+		010AB17B1FF6DA7600EFF0D5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		010AB17E1FF6DFBF00EFF0D5 /* LoginServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTest.swift; sourceTree = "<group>"; };
+		010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToMyAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToMyAccountController.swift; sourceTree = "<group>"; };
 		011F7D691FF5955700DCD7CA /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -64,10 +74,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010AB17D1FF6DFA900EFF0D5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				010AB17E1FF6DFBF00EFF0D5 /* LoginServiceTest.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		011F7D681FF5951200DCD7CA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				011F7D691FF5955700DCD7CA /* Networking.swift */,
+				010AB1771FF6D81000EFF0D5 /* HTTPStatusCode.swift */,
+				010AB1791FF6D9ED00EFF0D5 /* HTTPHeaderField.swift */,
+				010AB17B1FF6DA7600EFF0D5 /* HTTPMethod.swift */,
+				010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -107,6 +129,7 @@
 		01AD11791FF4B5DC000DCE81 /* ecodatum-ios-clientTests */ = {
 			isa = PBXGroup;
 			children = (
+				010AB17D1FF6DFA900EFF0D5 /* Services */,
 				01AD117A1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift */,
 				01AD117C1FF4B5DC000DCE81 /* Info.plist */,
 			);
@@ -244,10 +267,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010AB17A1FF6D9ED00EFF0D5 /* HTTPHeaderField.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
 				011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */,
+				010AB1811FF6EA9800EFF0D5 /* URLHelper.swift in Sources */,
 				01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */,
+				010AB17C1FF6DA7600EFF0D5 /* HTTPMethod.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
+				010AB1781FF6D81000EFF0D5 /* HTTPStatusCode.swift in Sources */,
 				011F7D6A1FF5955700DCD7CA /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01AD117B1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift in Sources */,
+				010AB17F1FF6DFBF00EFF0D5 /* LoginServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

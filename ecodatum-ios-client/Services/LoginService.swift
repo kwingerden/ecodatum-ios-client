@@ -31,7 +31,7 @@ class LoginService {
   }
   
   func login(request: LoginRequest,
-             callback: @escaping (LoginResponse) -> Void) throws {
+             responseHandler: @escaping (LoginResponse) -> Void) throws {
     
     guard !request.email.isEmpty,
       !request.password.isEmpty,
@@ -43,23 +43,26 @@ class LoginService {
     
     let url = baseURL.appendingPathComponent("login")
     var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.addValue("Basic \(authorization)", forHTTPHeaderField: "Authorization")
+    request.httpMethod = HTTPMethod.POST.rawValue
+    request.addValue(
+      "Basic \(authorization)",
+      forHTTPHeaderField: HTTPHeaderField.Authorization.rawValue)
+    
     let task = Networking.shared.defaultSession.dataTask(with: request) {
       data, response, error in
       
       guard let data = data,
         let response = response as? HTTPURLResponse,
-        response.statusCode == 200 else {
-          callback(.failure(.authenticationError))
+        response.statusCode == HTTPStatusCode.OK.rawValue else {
+          responseHandler(.failure(.authenticationError))
           return
       }
       
       do {
         let userToken = try JSONDecoder().decode(UserToken.self, from: data)
-        callback(.success(userToken))
+        responseHandler(.success(userToken))
       } catch let error {
-        callback(.failure(.reponseDecodingError(error.localizedDescription)))
+        responseHandler(.failure(.reponseDecodingError(error.localizedDescription)))
         return
       }
       

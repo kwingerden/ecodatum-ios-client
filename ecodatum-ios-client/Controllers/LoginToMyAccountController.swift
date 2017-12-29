@@ -24,7 +24,7 @@ class LoginToMyAccountController: UIViewController {
     let password = passwordTextField.text!
     let loginService = LoginService(baseURL: URL(string: "http://0.0.0.0:8080/api/v1")!)
     let loginRequest = LoginService.LoginRequest(email: email, password: password)
-    let callback = {
+    let responseHandler = {
       (response: LoginService.LoginResponse) in
       switch response {
       case let .success(userToken):
@@ -34,7 +34,7 @@ class LoginToMyAccountController: UIViewController {
       }
     }
     do {
-      try loginService.login(request: loginRequest, callback: callback)
+      try loginService.login(request: loginRequest, responseHandler: responseHandler)
     } catch let error {
       print(error.localizedDescription)
     }
