@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */; };
+		011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */; };
+		011F7D6A1FF5955700DCD7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D691FF5955700DCD7CA /* Networking.swift */; };
 		01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */; };
-		01AD11681FF4B5DB000DCE81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11671FF4B5DB000DCE81 /* ViewController.swift */; };
+		01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11671FF4B5DB000DCE81 /* MainViewController.swift */; };
 		01AD116B1FF4B5DB000DCE81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AD11691FF4B5DB000DCE81 /* Main.storyboard */; };
 		01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01AD116C1FF4B5DB000DCE81 /* Assets.xcassets */; };
 		01AD11701FF4B5DB000DCE81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AD116E1FF4B5DB000DCE81 /* LaunchScreen.storyboard */; };
@@ -26,9 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToMyAccount.storyboard; sourceTree = "<group>"; };
+		011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToMyAccountController.swift; sourceTree = "<group>"; };
+		011F7D691FF5955700DCD7CA /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		01AD11621FF4B5DB000DCE81 /* ecodatum-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ecodatum-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01AD11671FF4B5DB000DCE81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01AD11671FF4B5DB000DCE81 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01AD116A1FF4B5DB000DCE81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01AD116C1FF4B5DB000DCE81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01AD116F1FF4B5DB000DCE81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011F7D681FF5951200DCD7CA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				011F7D691FF5955700DCD7CA /* Networking.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		01AD11591FF4B5DB000DCE81 = {
 			isa = PBXGroup;
 			children = (
@@ -77,11 +91,11 @@
 		01AD11641FF4B5DB000DCE81 /* ecodatum-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				011F7D681FF5951200DCD7CA /* Utilities */,
+				01AD11861FF4B7AE000DCE81 /* Storyboards */,
+				01AD11851FF4B78F000DCE81 /* Controllers */,
 				01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */,
-				01AD11671FF4B5DB000DCE81 /* ViewController.swift */,
-				01AD11691FF4B5DB000DCE81 /* Main.storyboard */,
 				01AD116C1FF4B5DB000DCE81 /* Assets.xcassets */,
-				01AD116E1FF4B5DB000DCE81 /* LaunchScreen.storyboard */,
 				01AD11711FF4B5DB000DCE81 /* Info.plist */,
 			);
 			path = "ecodatum-ios-client";
@@ -94,6 +108,25 @@
 				01AD117C1FF4B5DC000DCE81 /* Info.plist */,
 			);
 			path = "ecodatum-ios-clientTests";
+			sourceTree = "<group>";
+		};
+		01AD11851FF4B78F000DCE81 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01AD11671FF4B5DB000DCE81 /* MainViewController.swift */,
+				011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		01AD11861FF4B7AE000DCE81 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				01AD116E1FF4B5DB000DCE81 /* LaunchScreen.storyboard */,
+				01AD11691FF4B5DB000DCE81 /* Main.storyboard */,
+				011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01AD11701FF4B5DB000DCE81 /* LaunchScreen.storyboard in Resources */,
+				011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */,
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
 				01AD116B1FF4B5DB000DCE81 /* Main.storyboard in Resources */,
 			);
@@ -199,8 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01AD11681FF4B5DB000DCE81 /* ViewController.swift in Sources */,
+				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
+				011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
+				011F7D6A1FF5955700DCD7CA /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,11 +392,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2T69Q77ERZ;
 				INFOPLIST_FILE = "ecodatum-ios-client/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.ecodatum.ecodatum-ios-client";
+				PRODUCT_BUNDLE_IDENTIFIER = org.ecodatum.EcoDatum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -371,11 +408,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2T69Q77ERZ;
 				INFOPLIST_FILE = "ecodatum-ios-client/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.ecodatum.ecodatum-ios-client";
+				PRODUCT_BUNDLE_IDENTIFIER = org.ecodatum.EcoDatum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
