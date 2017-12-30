@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgrounImage" translatesAutoresizingMaskIntoConstraints="NO" id="cle-Dn-zLH">
+                                <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="GU6-AJ-NbN">
                                 <rect key="frame" x="217" y="220" width="400" height="320"/>
                                 <subviews>
@@ -26,12 +29,12 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxo-g8-rUn">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EcoDatum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZT-lI-2Rr">
                                                 <rect key="frame" x="0.0" y="52" width="300" height="48"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -81,7 +84,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cle-Dn-zLH" secondAttribute="bottom" id="2ja-EO-Iy7"/>
                             <constraint firstItem="GU6-AJ-NbN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7cM-aA-rNl"/>
+                            <constraint firstItem="cle-Dn-zLH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HPH-zU-tUF"/>
+                            <constraint firstItem="cle-Dn-zLH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="Sis-f5-wgy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cle-Dn-zLH" secondAttribute="trailing" id="hLX-ec-MWh"/>
                             <constraint firstItem="GU6-AJ-NbN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="ty9-PR-4Ji"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -93,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.39130434782609" y="118.20652173913044"/>
+            <point key="canvasLocation" x="-94.24460431654677" y="112.76978417266187"/>
         </scene>
         <!--LoginToMyAccount-->
         <scene sceneID="iax-WX-Nhc">
@@ -104,4 +111,7 @@
             <point key="canvasLocation" x="627" y="-13"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackgrounImage" width="1024" height="1024"/>
+    </resources>
 </document>

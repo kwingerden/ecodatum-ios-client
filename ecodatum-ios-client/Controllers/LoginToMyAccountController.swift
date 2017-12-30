@@ -1,11 +1,15 @@
 import UIKit
 import SwiftValidator
 
-class LoginToMyAccountController: UIViewController, ValidationDelegate {
+class LoginToMyAccountController: UIViewController {
 
   @IBOutlet weak var emailAddressTextField: UITextField!
   
+  @IBOutlet weak var emailAddressErrorLabel: UILabel!
+  
   @IBOutlet weak var passwordTextField: UITextField!
+  
+  @IBOutlet weak var passwordErrorLabel: UILabel!
   
   @IBOutlet weak var loginButton: UIButton!
   
@@ -19,14 +23,52 @@ class LoginToMyAccountController: UIViewController, ValidationDelegate {
     
     loginButton.roundedButton()
     
-    validator.registerField(emailAddressTextField, rules: [RequiredRule(), EmailRule()])
-    validator.registerField(passwordTextField, rules: [RequiredRule(), PasswordRule()])
+    func successStyleTransformer(rule: ValidationRule) {
+      
+      let textField = rule.field as! UITextField
+      textField.layer.borderColor = UIColor.green.cgColor
+      textField.layer.borderWidth = 0.5
+      rule.errorLabel?.text = nil
+      rule.errorLabel?.isHidden = true
+      
+    }
     
+    func errorStyleTransformer(error: ValidationError) {
+      
+      let textField = error.field as! UITextField
+      textField.layer.borderColor = UIColor.red.cgColor
+      textField.layer.borderWidth = 1.0
+      error.errorLabel?.text = error.errorMessage
+      error.errorLabel?.isHidden = false
+      
+    }
+    
+    validator.styleTransformers(
+      success: successStyleTransformer,
+      error: errorStyleTransformer)
+    
+    validator.registerField(
+      emailAddressTextField,
+      errorLabel: emailAddressErrorLabel,
+      rules: [RequiredRule(), EmailRule()])
+    validator.registerField(
+      passwordTextField,
+      errorLabel: passwordErrorLabel,
+      rules: [RequiredRule()])
+    
+  }
+  
+  @IBAction func backButtonTouchUpInside() {
+    dismiss(animated: true, completion: nil)
   }
   
   @IBAction func loginButtonTouchUpInside() {
     validator.validate(self)
   }
+  
+}
+
+extension LoginToMyAccountController: ValidationDelegate {
   
   func validationSuccessful() {
     
@@ -50,7 +92,7 @@ class LoginToMyAccountController: UIViewController, ValidationDelegate {
         
         let alert = UIAlertController(
           title: "Login Failure",
-          message: "Invalid email address and/or password.",
+          message: "Unrecognized email address and/or password.",
           preferredStyle: .alert)
         alert.addAction(UIAlertAction(
           title: "OK",
@@ -70,7 +112,7 @@ class LoginToMyAccountController: UIViewController, ValidationDelegate {
     let loginRequest = LoginService.LoginRequest(email: email, password: password)
     
     func responseHandler(response: LoginService.LoginResponse) {
-  
+      
       switch response {
         
       case let .success(userToken):
@@ -79,9 +121,9 @@ class LoginToMyAccountController: UIViewController, ValidationDelegate {
         
       case let .failure(error):
         updateUI(error: error)
-      
+        
       }
-    
+      
     }
     
     do {
@@ -89,35 +131,11 @@ class LoginToMyAccountController: UIViewController, ValidationDelegate {
     } catch let error {
       updateUI(error: error)
     }
-
+    
   }
   
   func validationFailed(_ errors: [(Validatable, ValidationError)]) {
-    
-    var errorMessages: [String] = []
-    for (field, error) in errors {
-      
-      switch field {
-      case let field as UITextField where field == emailAddressTextField:
-        errorMessages.append("Email Address: \(error.errorMessage)")
-      case let field as UITextField where field == passwordTextField:
-        errorMessages.append("Password: \(error.errorMessage)")
-      default:
-        // TODO: log error
-        print("unexpected field")
-      }
-      
-    }
-    
-    let alert = UIAlertController(
-      title: "Input Error",
-      message: errorMessages.joined(separator: "\n"),
-      preferredStyle: .alert)
-    alert.addAction(UIAlertAction(
-      title: "OK",
-      style: .`default`))
-    present(alert, animated: true, completion: nil)
-    
+    // validation failures are handled with validator styleTransformers above
   }
   
 }
