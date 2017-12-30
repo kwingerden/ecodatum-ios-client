@@ -10,6 +10,8 @@ class MainViewController: UIViewController {
   
     super.viewDidLoad()
   
+    log.debug("MainViewController.viewDidLoad")
+    
     loginButton.roundedButton()
     newAccountButton.roundedButton()
   

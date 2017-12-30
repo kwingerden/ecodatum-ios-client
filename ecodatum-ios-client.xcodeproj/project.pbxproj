@@ -14,6 +14,10 @@
 		010AB1811FF6EA9800EFF0D5 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */; };
 		010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */; };
 		010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */; };
+		010AB18F1FF77F3800EFF0D5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */; };
+		010AB1901FF77F3800EFF0D5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */; };
+		010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */; };
+		010AB1951FF7888800EFF0D5 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1941FF7888800EFF0D5 /* Secrets.swift */; };
 		011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */; };
 		011F7D6A1FF5955700DCD7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D691FF5955700DCD7CA /* Networking.swift */; };
@@ -44,6 +48,10 @@
 		010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
 		010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rounded.swift"; sourceTree = "<group>"; };
+		010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		010AB1941FF7888800EFF0D5 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToMyAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToMyAccountController.swift; sourceTree = "<group>"; };
 		011F7D691FF5955700DCD7CA /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -65,6 +73,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010AB18F1FF77F3800EFF0D5 /* SVProgressHUD.framework in Frameworks */,
+				010AB1901FF77F3800EFF0D5 /* Kingfisher.framework in Frameworks */,
+				010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */,
 				010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +101,9 @@
 		010AB1821FF71A8300EFF0D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */,
+				010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */,
+				010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */,
 				010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */,
 			);
 			name = Frameworks;
@@ -130,6 +144,7 @@
 		01AD11641FF4B5DB000DCE81 /* ecodatum-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				010AB1941FF7888800EFF0D5 /* Secrets.swift */,
 				01D3B8041FF6226C00EDE896 /* Services */,
 				011F7D681FF5951200DCD7CA /* Utilities */,
 				01AD11861FF4B7AE000DCE81 /* Storyboards */,
@@ -188,7 +203,7 @@
 				01AD115E1FF4B5DB000DCE81 /* Sources */,
 				01AD115F1FF4B5DB000DCE81 /* Frameworks */,
 				01AD11601FF4B5DB000DCE81 /* Resources */,
-				010AB1851FF71AAD00EFF0D5 /* Carthage */,
+				010AB1851FF71AAD00EFF0D5 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,17 +294,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		010AB1851FF71AAD00EFF0D5 /* Carthage */ = {
+		010AB1851FF71AAD00EFF0D5 /* Carthage Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftValidator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 			);
-			name = Carthage;
+			name = "Carthage Copy Frameworks";
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SVProgressHUD.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftValidator.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -312,6 +333,7 @@
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				010AB1781FF6D81000EFF0D5 /* HTTPStatusCode.swift in Sources */,
 				011F7D6A1FF5955700DCD7CA /* Networking.swift in Sources */,
+				010AB1951FF7888800EFF0D5 /* Secrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,14 +11,8 @@ class LoginService {
   }
   
   struct LoginRequest: Encodable {
-    
     let email: String
     let password: String
-  
-    func isValid() -> Bool {
-      return !email.isEmpty && !password.isEmpty
-    }
-    
   }
   
   struct UserToken: Decodable {
