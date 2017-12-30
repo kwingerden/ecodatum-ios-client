@@ -12,6 +12,8 @@
 		010AB17C1FF6DA7600EFF0D5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB17B1FF6DA7600EFF0D5 /* HTTPMethod.swift */; };
 		010AB17F1FF6DFBF00EFF0D5 /* LoginServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB17E1FF6DFBF00EFF0D5 /* LoginServiceTest.swift */; };
 		010AB1811FF6EA9800EFF0D5 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */; };
+		010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */; };
+		010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */; };
 		011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */; };
 		011F7D6A1FF5955700DCD7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D691FF5955700DCD7CA /* Networking.swift */; };
@@ -40,6 +42,8 @@
 		010AB17B1FF6DA7600EFF0D5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		010AB17E1FF6DFBF00EFF0D5 /* LoginServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTest.swift; sourceTree = "<group>"; };
 		010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
+		010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rounded.swift"; sourceTree = "<group>"; };
 		011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToMyAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToMyAccountController.swift; sourceTree = "<group>"; };
 		011F7D691FF5955700DCD7CA /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		010AB1821FF71A8300EFF0D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		011F7D681FF5951200DCD7CA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +103,7 @@
 				010AB1791FF6D9ED00EFF0D5 /* HTTPHeaderField.swift */,
 				010AB17B1FF6DA7600EFF0D5 /* HTTPMethod.swift */,
 				010AB1801FF6EA9800EFF0D5 /* URLHelper.swift */,
+				010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -100,6 +114,7 @@
 				01AD11641FF4B5DB000DCE81 /* ecodatum-ios-client */,
 				01AD11791FF4B5DC000DCE81 /* ecodatum-ios-clientTests */,
 				01AD11631FF4B5DB000DCE81 /* Products */,
+				010AB1821FF71A8300EFF0D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +188,7 @@
 				01AD115E1FF4B5DB000DCE81 /* Sources */,
 				01AD115F1FF4B5DB000DCE81 /* Frameworks */,
 				01AD11601FF4B5DB000DCE81 /* Resources */,
+				010AB1851FF71AAD00EFF0D5 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -262,12 +278,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		010AB1851FF71AAD00EFF0D5 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftValidator.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftValidator.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		01AD115E1FF4B5DB000DCE81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				010AB17A1FF6D9ED00EFF0D5 /* HTTPHeaderField.swift in Sources */,
+				010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
 				011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */,
 				010AB1811FF6EA9800EFF0D5 /* URLHelper.swift in Sources */,
@@ -431,6 +467,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2T69Q77ERZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ecodatum-ios-client/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -447,6 +487,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2T69Q77ERZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ecodatum-ios-client/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

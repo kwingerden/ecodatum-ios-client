@@ -11,8 +11,14 @@ class LoginService {
   }
   
   struct LoginRequest: Encodable {
+    
     let email: String
     let password: String
+  
+    func isValid() -> Bool {
+      return !email.isEmpty && !password.isEmpty
+    }
+    
   }
   
   struct UserToken: Decodable {
@@ -33,9 +39,7 @@ class LoginService {
   func login(request: LoginRequest,
              responseHandler: @escaping (LoginResponse) -> Void) throws {
     
-    guard !request.email.isEmpty,
-      !request.password.isEmpty,
-      let authorization = "\(request.email):\(request.password)"
+    guard let authorization = "\(request.email):\(request.password)"
         .data(using: .utf8)?
         .base64EncodedString() else {
           throw Errors.base64EncodingError
@@ -54,15 +58,21 @@ class LoginService {
       guard let data = data,
         let response = response as? HTTPURLResponse,
         response.statusCode == HTTPStatusCode.OK.rawValue else {
-          responseHandler(.failure(.authenticationError))
+          DispatchQueue.main.async {
+            responseHandler(.failure(.authenticationError))
+          }
           return
       }
       
       do {
         let userToken = try JSONDecoder().decode(UserToken.self, from: data)
-        responseHandler(.success(userToken))
+        DispatchQueue.main.async {
+          responseHandler(.success(userToken))
+        }
       } catch let error {
-        responseHandler(.failure(.reponseDecodingError(error.localizedDescription)))
+        DispatchQueue.main.async {
+          responseHandler(.failure(.reponseDecodingError(error.localizedDescription)))
+        }
         return
       }
       

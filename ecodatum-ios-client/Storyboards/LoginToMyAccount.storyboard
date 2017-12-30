@@ -37,7 +37,7 @@
                                                         <rect key="frame" x="0.0" y="35" width="400" height="34"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -58,7 +58,7 @@
                                                         <rect key="frame" x="0.0" y="35" width="400" height="34"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -74,14 +74,14 @@
                                             <constraint firstAttribute="trailing" secondItem="p5U-to-A9Q" secondAttribute="trailing" id="c2a-Nd-VHV"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qW7-eU-R0o" userLabel="I Have An Account">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qW7-eU-R0o" userLabel="Login Button">
                                         <rect key="frame" x="0.0" y="198" width="400" height="60"/>
                                         <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="6DB-ny-8o7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Login to My Account">
+                                        <state key="normal" title="Login">
                                             <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -93,7 +93,7 @@
                                     <constraint firstAttribute="width" constant="400" id="q1w-zp-Nmb"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="obl-yb-7ee">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="obl-yb-7ee">
                                 <rect key="frame" x="399" y="538" width="37" height="37"/>
                                 <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
@@ -110,6 +110,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="obl-yb-7ee" id="Bw2-Rt-7uE"/>
                         <outlet property="emailAddressTextField" destination="188-WB-EhB" id="CJF-l4-oYX"/>
+                        <outlet property="loginButton" destination="qW7-eU-R0o" id="gEz-sr-jdt"/>
                         <outlet property="passwordTextField" destination="6I2-lj-ZIh" id="2An-zI-MRk"/>
                     </connections>
                 </viewController>

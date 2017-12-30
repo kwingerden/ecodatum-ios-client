@@ -17,7 +17,8 @@ final class Networking {
     defaultConfiguration.allowsCellularAccess = true
     defaultConfiguration.multipathServiceType = .handover
     defaultConfiguration.urlCache = cache
-    defaultConfiguration.waitsForConnectivity = true
+    defaultConfiguration.timeoutIntervalForRequest = 10
+    defaultConfiguration.waitsForConnectivity = false
     
     defaultSession = URLSession(configuration: defaultConfiguration)
     

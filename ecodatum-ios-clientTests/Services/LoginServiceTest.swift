@@ -13,7 +13,7 @@ class LoginServiceTest: XCTestCase {
     
     let baseURL = try URLHelper.makeURL(fromString: baseURLString)
     let loginService = LoginService(baseURL: baseURL)
-    let loginRequest = LoginService.LoginRequest(email: email,password: password)
+    let loginRequest = LoginService.LoginRequest(email: email, password: password)
     
     func responseHandler(loginResponse: LoginService.LoginResponse) {
       
