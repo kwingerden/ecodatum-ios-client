@@ -85,19 +85,19 @@ extension LoginToMyAccountController: ValidationDelegate {
         activityIndicator.stopAnimating()
       }
       
-      if let error = error {
-        
-        // TODO: log error message
-        print(error.localizedDescription)
-        
+      if error != nil {
+      
         let alert = UIAlertController(
           title: "Login Failure",
           message: "Unrecognized email address and/or password.",
           preferredStyle: .alert)
-        alert.addAction(UIAlertAction(
-          title: "OK",
-          style: .`default`))
-        present(alert, animated: true, completion: nil)
+        alert.addAction(
+          UIAlertAction(
+            title: "OK",
+            style: .default))
+        present(alert,
+                animated: true,
+                completion: nil)
         
       }
       
@@ -107,9 +107,10 @@ extension LoginToMyAccountController: ValidationDelegate {
     
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
-    // TODO: URL needs to come from configuration
-    let loginService = LoginService(baseURL: URL(string: "http://0.0.0.0:8080/api/v1")!)
-    let loginRequest = LoginService.LoginRequest(email: email, password: password)
+    let loginService = LoginService(baseURL: ECODATUM_BASE_URL)
+    let loginRequest = LoginService.LoginRequest(
+      email: email,
+      password: password)
     
     func responseHandler(response: LoginService.LoginResponse) {
       
@@ -129,6 +130,7 @@ extension LoginToMyAccountController: ValidationDelegate {
     do {
       try loginService.login(request: loginRequest, responseHandler: responseHandler)
     } catch let error {
+      log.error("Login failure: \(error.localizedDescription)")
       updateUI(error: error)
     }
     
