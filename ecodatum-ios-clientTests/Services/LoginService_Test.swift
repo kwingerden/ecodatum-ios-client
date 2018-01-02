@@ -1,18 +1,16 @@
 import XCTest
 @testable import ecodatum_ios_client
 
-class LoginServiceTest: XCTestCase {
+class LoginService_Test: XCTestCase {
   
   func test() throws {
   
     let loginResponseExpectation = XCTestExpectation(description: "Login Response")
     
-    let baseURLString = "https://www.ecodatum.org/api/v1"
     let email = "admin@ecodatum.org"
     let password = "password"
     
-    let baseURL = try URLHelper.makeURL(fromString: baseURLString)
-    let loginService = LoginService(baseURL: baseURL)
+    let loginService = LoginService(baseURL: ECODATUM_BASE_URL)
     let loginRequest = LoginService.LoginRequest(email: email, password: password)
     
     func responseHandler(loginResponse: LoginService.LoginResponse) {

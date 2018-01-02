@@ -130,7 +130,7 @@ extension LoginToMyAccountController: ValidationDelegate {
     do {
       try loginService.login(request: loginRequest, responseHandler: responseHandler)
     } catch let error {
-      log.error("Login failure: \(error.localizedDescription)")
+      LOG.error("Login failure: \(error.localizedDescription)")
       updateUI(error: error)
     }
     

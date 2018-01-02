@@ -1,4 +1,5 @@
 import Foundation
+import RealmSwift
 
 class LoginService {
   
@@ -39,6 +40,7 @@ class LoginService {
           throw Errors.base64EncodingError
     }
     
+    /*
     let url = baseURL.appendingPathComponent("login")
     var request = URLRequest(url: url)
     request.httpMethod = HTTPMethod.POST.rawValue
@@ -59,10 +61,16 @@ class LoginService {
       }
       
       do {
+        
         let userToken = try JSONDecoder().decode(UserToken.self, from: data)
+        try mainRealm.write {
+          let value: [Any] = [userToken.userId, userToken.token]
+          mainRealm.create(UserToken.self, value: value, update: <#T##Bool#>)
+        }
         DispatchQueue.main.async {
           responseHandler(.success(userToken))
         }
+ 
       } catch let error {
         DispatchQueue.main.async {
           responseHandler(.failure(.reponseDecodingError(error.localizedDescription)))
@@ -73,6 +81,7 @@ class LoginService {
     }
     
     task.resume()
+ */
     
   }
   
