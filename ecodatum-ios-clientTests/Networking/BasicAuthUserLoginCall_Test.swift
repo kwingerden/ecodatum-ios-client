@@ -4,12 +4,6 @@ import XCTest
 
 class BasicAuthUserLoginCall_Test: XCTestCase {
   
-  struct UserToken: Decodable {
-    let id: Int
-    let token: String
-    let userId: Int
-  }
-  
   func test() throws {
     
     let expectation = XCTestExpectation(description: "Login Response")
@@ -18,14 +12,13 @@ class BasicAuthUserLoginCall_Test: XCTestCase {
       email: "admin@ecodatum.org",
       password: "password") {
         
-        userToken, error in
+        response in
         
-        if let error = error {
+        switch response {
+        case let .error(error):
           XCTFail(error.localizedDescription)
-        } else if let userToken = userToken {
+        case let .success(userToken):
           print(userToken)
-        } else {
-          XCTFail("Unexpected response.")
         }
         
         expectation.fulfill()

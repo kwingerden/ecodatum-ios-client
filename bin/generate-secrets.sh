@@ -1,8 +1,10 @@
 #!/bin/bash
 
-. .env
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
-cat << EOF > ecodatum-ios-client/Secrets.swift
+. $ROOT_DIR/.env
+
+cat << EOF > $ROOT_DIR/ecodatum-ios-client/Secrets.swift
 // Generated `date`
 
 import Foundation

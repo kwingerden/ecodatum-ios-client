@@ -22,8 +22,6 @@
 		018F77691FFB126F004421F0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
 		018F776A1FFB126F004421F0 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
 		018F776B1FFB126F004421F0 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */; };
-		018F776C1FFB126F004421F0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F51FF9FE6700E38B2C /* Realm.framework */; };
-		018F776D1FFB126F004421F0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F41FF9FE6700E38B2C /* RealmSwift.framework */; };
 		018F776E1FFB126F004421F0 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */; };
 		018F776F1FFB126F004421F0 /* SwiftLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */; };
 		018F77701FFB126F004421F0 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */; };
@@ -35,8 +33,6 @@
 		019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
 		019FA2F11FF9F24C00E38B2C /* SwiftLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */; };
 		019FA2F31FF9FE5400E38B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
-		019FA2F61FF9FE6700E38B2C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F41FF9FE6700E38B2C /* RealmSwift.framework */; };
-		019FA2F71FF9FE6700E38B2C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F51FF9FE6700E38B2C /* Realm.framework */; };
 		019FA2F91FF9FF6200E38B2C /* UserLoginOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FA2F81FF9FF6200E38B2C /* UserLoginOperation.swift */; };
 		019FA2FD1FFA009A00E38B2C /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FA2FC1FFA009A00E38B2C /* UserToken.swift */; };
 		019FA3011FFA0EB200E38B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */; };
@@ -47,6 +43,12 @@
 		01AD11701FF4B5DB000DCE81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AD116E1FF4B5DB000DCE81 /* LaunchScreen.storyboard */; };
 		01AD117B1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD117A1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift */; };
 		01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3B8051FF6228700EDE896 /* LoginService.swift */; };
+		01D8B2E91FFC590A00450470 /* GRDBCipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E61FFC590A00450470 /* GRDBCipher.framework */; };
+		01D8B2EA1FFC590A00450470 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */; };
+		01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
+		01D8B2EC1FFC592E00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
+		01D8B2ED1FFC592E00450470 /* GRDBCipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E61FFC590A00450470 /* GRDBCipher.framework */; };
+		01D8B2EE1FFC592E00450470 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */; };
 		01EBEA4D1FFB4E25008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
 		01EBEA4E1FFB4E25008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */; };
 		01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
@@ -84,8 +86,6 @@
 		019FA2EE1FF9D73F00E38B2C /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftLocation.framework; path = Carthage/Build/iOS/SwiftLocation.framework; sourceTree = "<group>"; };
 		019FA2F21FF9FE5400E38B2C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		019FA2F41FF9FE6700E38B2C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		019FA2F51FF9FE6700E38B2C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		019FA2F81FF9FF6200E38B2C /* UserLoginOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginOperation.swift; sourceTree = "<group>"; };
 		019FA2FC1FFA009A00E38B2C /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -100,6 +100,9 @@
 		01AD117A1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ecodatum_ios_clientTests.swift; sourceTree = "<group>"; };
 		01AD117C1FF4B5DC000DCE81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D3B8051FF6228700EDE896 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		01D8B2E61FFC590A00450470 /* GRDBCipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCipher.framework; path = Carthage/Build/iOS/GRDBCipher.framework; sourceTree = "<group>"; };
+		01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCustomSQLite.framework; path = Carthage/Build/iOS/GRDBCustomSQLite.framework; sourceTree = "<group>"; };
+		01D8B2E81FFC590A00450470 /* GRDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDB.framework; path = Carthage/Build/iOS/GRDB.framework; sourceTree = "<group>"; };
 		01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework; sourceTree = "<group>"; };
 		01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
@@ -114,10 +117,11 @@
 				01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */,
 				01EBEA501FFB4E56008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
 				01EBEA521FFB5699008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */,
+				01D8B2E91FFC590A00450470 /* GRDBCipher.framework in Frameworks */,
+				01D8B2EA1FFC590A00450470 /* GRDBCustomSQLite.framework in Frameworks */,
+				01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */,
 				019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */,
 				010AB1901FF77F3800EFF0D5 /* Kingfisher.framework in Frameworks */,
-				019FA2F61FF9FE6700E38B2C /* RealmSwift.framework in Frameworks */,
-				019FA2F71FF9FE6700E38B2C /* Realm.framework in Frameworks */,
 				010AB18F1FF77F3800EFF0D5 /* SVProgressHUD.framework in Frameworks */,
 				019FA2F11FF9F24C00E38B2C /* SwiftLocation.framework in Frameworks */,
 				010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */,
@@ -134,10 +138,11 @@
 				01EBEA4D1FFB4E25008E4E41 /* AlamofireImage.framework in Frameworks */,
 				01EBEA4E1FFB4E25008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
 				01EBEA531FFB56A2008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */,
+				01D8B2EC1FFC592E00450470 /* GRDB.framework in Frameworks */,
+				01D8B2ED1FFC592E00450470 /* GRDBCipher.framework in Frameworks */,
+				01D8B2EE1FFC592E00450470 /* GRDBCustomSQLite.framework in Frameworks */,
 				018F776A1FFB126F004421F0 /* Hydra.framework in Frameworks */,
 				018F776B1FFB126F004421F0 /* Kingfisher.framework in Frameworks */,
-				018F776C1FFB126F004421F0 /* Realm.framework in Frameworks */,
-				018F776D1FFB126F004421F0 /* RealmSwift.framework in Frameworks */,
 				018F776E1FFB126F004421F0 /* SVProgressHUD.framework in Frameworks */,
 				018F776F1FFB126F004421F0 /* SwiftLocation.framework in Frameworks */,
 				018F77701FFB126F004421F0 /* SwiftValidator.framework in Frameworks */,
@@ -160,12 +165,13 @@
 		010AB1821FF71A8300EFF0D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01D8B2E81FFC590A00450470 /* GRDB.framework */,
+				01D8B2E61FFC590A00450470 /* GRDBCipher.framework */,
+				01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */,
 				01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */,
 				01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */,
 				01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */,
 				019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */,
-				019FA2F51FF9FE6700E38B2C /* Realm.framework */,
-				019FA2F41FF9FE6700E38B2C /* RealmSwift.framework */,
 				019FA2F21FF9FE5400E38B2C /* Alamofire.framework */,
 				019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */,
 				019FA2EE1FF9D73F00E38B2C /* Hydra.framework */,
@@ -415,10 +421,11 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireSwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GRDB.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GRDBCipher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GRDBCustomSQLite.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftLocation.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftValidator.framework",
@@ -431,10 +438,11 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireNetworkActivityIndicator.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireSwiftyJSON.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/GRDB.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/GRDBCipher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/GRDBCustomSQLite.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SVProgressHUD.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftLocation.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftValidator.framework",

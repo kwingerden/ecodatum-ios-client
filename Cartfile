@@ -7,6 +7,9 @@ github "Alamofire/AlamofireImage" == 3.3.0
 # Controls the visibility of the network activity indicator on iOS using Alamofire.
 github "Alamofire/AlamofireNetworkActivityIndicator" == 2.2.0
 
+# Swift SQLite interface
+github "groue/GRDB.swift" == 2.4.1
+
 # A lightweight, pure-Swift library for downloading and caching images from the web.
 github "onevcat/Kingfisher" == 4.6.1
 
@@ -15,9 +18,6 @@ github "malcommac/SwiftLocation" == 3.1.0
 
 # Asynchonous library
 github "malcommac/Hydra" == 1.2.1
-
-# Realm database
-github "realm/realm-cocoa" == 3.0.2
 
 # HUD meant to display the progress of an ongoing task on iOS 
 github "SVProgressHUD/SVProgressHUD" == 2.2.2

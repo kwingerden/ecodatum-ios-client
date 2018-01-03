@@ -1,10 +1,12 @@
 import Foundation
-import RealmSwift
+import GRDB
 import SwiftyBeaver
 import SwiftyJSON
 
-enum OperationError: Error {
-  case authorizationHeader
+enum NetworkingError: Error {
+  case authorizationHeaderEncodingError
+  case invalidCredentialStorage
+  case invalidURL
 }
 
 // LOG
@@ -25,31 +27,33 @@ let LOG: SwiftyBeaver.Type = {
   
 }()
 
-// REALM
+// GRDB
 
-let DB: Realm = {
+let DB: DatabaseQueue = {
   
-  () -> Realm? in
+  () -> DatabaseQueue? in
   
   do {
     
-    let documentDirectoryURL = try FileManager.default.url(
+    let applicationSupportDirectory = try FileManager.default.url(
       for: .documentDirectory,
       in: .userDomainMask,
       appropriateFor: nil,
       create: false)
+    let sqliteFile = applicationSupportDirectory.appendingPathComponent("ecodatum.sqlite")
     
-    let realmConfiguration = Realm.Configuration(
-      fileURL: documentDirectoryURL.appendingPathComponent("eocdatum.realm"),
-      readOnly: false,
-      schemaVersion: 1,
-      deleteRealmIfMigrationNeeded: true)
+    var configuration = Configuration()
+    configuration.trace = {
+      LOG.debug($0)
+    }
     
-    return try Realm(configuration: realmConfiguration)
+    return try DatabaseQueue(
+      path: sqliteFile.absoluteString,
+      configuration: configuration)
     
   } catch let error {
     
-    LOG.error("Failed to initialize ecodatum Realm Database")
+    LOG.error("Failed to initialize ecodatum database: \(error)")
     return nil
     
   }

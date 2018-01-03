@@ -1,25 +1,32 @@
 import Foundation
-import RealmSwift
+import GRDB
 
-class UserToken: Object {
+struct UserToken {
   
-  @objc dynamic var userId: Int = 0
-  
-  @objc dynamic var token: String = ""
-  
-  override static func primaryKey() -> String? {
-    return "userId"
-  }
+  var id: Int64
+  var userId: Int
+  var token: String
   
 }
 
-extension UserToken {
+extension UserToken: MutablePersistable {
+  
+  static let databaseTableName = "UserToken"
+  
+  enum Columns {
+    static let id = Column("id")
+    static let userId = Column("user_id")
+    static let token = Column("token")
+  }
+  
+  func encode(to container: inout PersistenceContainer) {
+    container[Columns.id] = id
+    container[Columns.userId] = userId
+    container[Columns.token] = token
+  }
 
-  static func make(userId: Int, token: String) -> UserToken {
-    let userToken = UserToken()
-    userToken.userId = userId
-    userToken.token = token
-    return userToken
+  mutating func didInsert(with rowID: Int64, for column: String?) {
+    id = rowID
   }
   
 }

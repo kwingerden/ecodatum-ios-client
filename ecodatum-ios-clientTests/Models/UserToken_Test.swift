@@ -6,9 +6,22 @@ class UserToken_Test: XCTestCase {
   override func setUp() {
     
     do {
-      try DB.write {
-        DB.deleteAll()
+      
+      try DB.inDatabase {
+        db in
+        try db.drop(table: UserToken.databaseTableName)
       }
+      
+      try DB.inDatabase {
+        db in
+        try db.create(table: UserToken.databaseTableName) {
+          table in
+          table.column(UserToken.Columns.id.name, .integer).primaryKey()
+          table.column(UserToken.Columns.userId.name, .integer).notNull()
+          table.column(UserToken.Columns.token.name, .text).notNull()
+        }
+      }
+      
     } catch let e {
       XCTFail(e.localizedDescription)
     }
@@ -17,8 +30,10 @@ class UserToken_Test: XCTestCase {
   
   func test() throws {
   
-    try DB.write {
-      DB.add(UserToken.make(userId: 1, token: "token"))
+    try DB.inDatabase {
+      db in
+      var userToken = UserToken(id: 1, userId: 1, token: "token")
+      try userToken.insert(db)
     }
 
   }
