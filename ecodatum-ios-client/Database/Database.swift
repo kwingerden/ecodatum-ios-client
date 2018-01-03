@@ -3,7 +3,7 @@ import GRDB
 
 class Database {
   
-  private var dbQ: DatabaseQueue
+  private var dbPool: DatabasePool
   
   init(dropDatabase: Bool = false) throws {
     
@@ -25,39 +25,36 @@ class Database {
       LOG.debug($0)
     }
     
-    dbQ = try DatabaseQueue(path: dbFilePath.path,
-                            configuration: configuration)
-  
-    // Create Tables
-    try dbQ.inDatabase {
-      
+    dbPool = try DatabasePool(path: dbFilePath.path,
+                          configuration: configuration)
+    
+    try dbPool.writeInTransaction {
       db in
-      
-      // UserToken
-      try db.create(table: UserTokenDB.databaseTableName,
-                    temporary: false,
-                    ifNotExists: true) {
-        table in
-        table.column(UserTokenDB.Columns.id.name, .integer).primaryKey()
-        table.column(UserTokenDB.Columns.userId.name, .integer).notNull()
-        table.column(UserTokenDB.Columns.token.name, .text).notNull()
-      }
-      
+      try UserTokenRecord.createTable(db)
+      return .commit
     }
     
   }
   
-  func insert<P: Persistable>(_ p: P) throws {
-    try dbQ.inDatabase {
+  func insert<R: Record>(_ r: R) throws {
+    try dbPool.writeInTransaction {
       db in
-      try p.insert(db)
+      try r.insert(db)
+      return .commit 
     }
   }
   
-  func exists<P: Persistable>(_ p: P) throws -> Bool {
-    return try dbQ.inDatabase {
+  func exists<R: Record>(_ r: R) throws -> Bool {
+    return try dbPool.read {
       db in
-      return try p.exists(db)
+      return try r.exists(db)
+    }
+  }
+  
+  func fetch<R: Record>(_ r: R.Type, key: Int64) throws -> R? {
+    return try dbPool.read {
+      db in
+      return try r.fetchOne(db, key: key)
     }
   }
   

@@ -32,7 +32,7 @@
 		019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
 		019FA2F11FF9F24C00E38B2C /* SwiftLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */; };
 		019FA2F31FF9FE5400E38B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
-		019FA2FD1FFA009A00E38B2C /* UserTokenDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FA2FC1FFA009A00E38B2C /* UserTokenDB.swift */; };
+		019FA2FD1FFA009A00E38B2C /* UserTokenRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FA2FC1FFA009A00E38B2C /* UserTokenRecord.swift */; };
 		019FA3011FFA0EB200E38B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */; };
 		01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */; };
 		01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11671FF4B5DB000DCE81 /* MainViewController.swift */; };
@@ -87,7 +87,7 @@
 		019FA2EE1FF9D73F00E38B2C /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftLocation.framework; path = Carthage/Build/iOS/SwiftLocation.framework; sourceTree = "<group>"; };
 		019FA2F21FF9FE5400E38B2C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		019FA2FC1FFA009A00E38B2C /* UserTokenDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenDB.swift; sourceTree = "<group>"; };
+		019FA2FC1FFA009A00E38B2C /* UserTokenRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenRecord.swift; sourceTree = "<group>"; };
 		019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		01AD11621FF4B5DB000DCE81 /* ecodatum-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ecodatum-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 		019FA2FB1FFA008800E38B2C /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				019FA2FC1FFA009A00E38B2C /* UserTokenDB.swift */,
+				019FA2FC1FFA009A00E38B2C /* UserTokenRecord.swift */,
 				01D8B2FB1FFC849F00450470 /* Database.swift */,
 			);
 			path = Database;
@@ -458,7 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				019FA2FD1FFA009A00E38B2C /* UserTokenDB.swift in Sources */,
+				019FA2FD1FFA009A00E38B2C /* UserTokenRecord.swift in Sources */,
 				010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
 				01D8B2F61FFC6A0700450470 /* UserTokenJSON.swift in Sources */,
