@@ -1,15 +1,21 @@
 import Foundation
 import GRDB
 
-struct UserToken {
+class UserTokenDB {
   
   var id: Int64
   var userId: Int
   var token: String
+    
+  init(id: Int64, userId: Int, token: String) {
+    self.id = id
+    self.userId = userId
+    self.token = token
+  }
   
 }
 
-extension UserToken: MutablePersistable {
+extension UserTokenDB: Persistable {
   
   static let databaseTableName = "UserToken"
   
@@ -25,7 +31,7 @@ extension UserToken: MutablePersistable {
     container[Columns.token] = token
   }
 
-  mutating func didInsert(with rowID: Int64, for column: String?) {
+  func didInsert(with rowID: Int64, for column: String?) {
     id = rowID
   }
   

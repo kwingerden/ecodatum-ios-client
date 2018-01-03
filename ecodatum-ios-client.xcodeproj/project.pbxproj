@@ -16,7 +16,6 @@
 		011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */; };
 		0172B56D1FFB46E70068307E /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172B56C1FFB46E70068307E /* Secrets.swift */; };
-		018F77621FFA16E5004421F0 /* SaveUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77611FFA16E5004421F0 /* SaveUserTokenOperation.swift */; };
 		018F77641FFB0EAC004421F0 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77631FFB0EAC004421F0 /* Globals.swift */; };
 		018F77681FFB0F18004421F0 /* UserToken_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77671FFB0F18004421F0 /* UserToken_Test.swift */; };
 		018F77691FFB126F004421F0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
@@ -33,8 +32,7 @@
 		019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
 		019FA2F11FF9F24C00E38B2C /* SwiftLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */; };
 		019FA2F31FF9FE5400E38B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
-		019FA2F91FF9FF6200E38B2C /* UserLoginOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FA2F81FF9FF6200E38B2C /* UserLoginOperation.swift */; };
-		019FA2FD1FFA009A00E38B2C /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FA2FC1FFA009A00E38B2C /* UserToken.swift */; };
+		019FA2FD1FFA009A00E38B2C /* UserTokenDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FA2FC1FFA009A00E38B2C /* UserTokenDB.swift */; };
 		019FA3011FFA0EB200E38B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */; };
 		01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */; };
 		01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11671FF4B5DB000DCE81 /* MainViewController.swift */; };
@@ -49,6 +47,10 @@
 		01D8B2EC1FFC592E00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
 		01D8B2ED1FFC592E00450470 /* GRDBCipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E61FFC590A00450470 /* GRDBCipher.framework */; };
 		01D8B2EE1FFC592E00450470 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */; };
+		01D8B2F61FFC6A0700450470 /* UserTokenJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2F51FFC6A0700450470 /* UserTokenJSON.swift */; };
+		01D8B2F81FFC6A9500450470 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2F71FFC6A9500450470 /* HTTPResponse.swift */; };
+		01D8B2FA1FFC6C5100450470 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2F91FFC6C5100450470 /* NetworkingError.swift */; };
+		01D8B2FC1FFC849F00450470 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2FB1FFC849F00450470 /* Database.swift */; };
 		01EBEA4D1FFB4E25008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
 		01EBEA4E1FFB4E25008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */; };
 		01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
@@ -77,7 +79,6 @@
 		011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToMyAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToMyAccountController.swift; sourceTree = "<group>"; };
 		0172B56C1FFB46E70068307E /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		018F77611FFA16E5004421F0 /* SaveUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserTokenOperation.swift; sourceTree = "<group>"; };
 		018F77631FFB0EAC004421F0 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		018F77671FFB0F18004421F0 /* UserToken_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken_Test.swift; sourceTree = "<group>"; };
 		018F77741FFB41C4004421F0 /* BasicAuthUserLoginCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthUserLoginCall.swift; sourceTree = "<group>"; };
@@ -86,8 +87,7 @@
 		019FA2EE1FF9D73F00E38B2C /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftLocation.framework; path = Carthage/Build/iOS/SwiftLocation.framework; sourceTree = "<group>"; };
 		019FA2F21FF9FE5400E38B2C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		019FA2F81FF9FF6200E38B2C /* UserLoginOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginOperation.swift; sourceTree = "<group>"; };
-		019FA2FC1FFA009A00E38B2C /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
+		019FA2FC1FFA009A00E38B2C /* UserTokenDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenDB.swift; sourceTree = "<group>"; };
 		019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		01AD11621FF4B5DB000DCE81 /* ecodatum-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ecodatum-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +103,10 @@
 		01D8B2E61FFC590A00450470 /* GRDBCipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCipher.framework; path = Carthage/Build/iOS/GRDBCipher.framework; sourceTree = "<group>"; };
 		01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCustomSQLite.framework; path = Carthage/Build/iOS/GRDBCustomSQLite.framework; sourceTree = "<group>"; };
 		01D8B2E81FFC590A00450470 /* GRDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDB.framework; path = Carthage/Build/iOS/GRDB.framework; sourceTree = "<group>"; };
+		01D8B2F51FFC6A0700450470 /* UserTokenJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenJSON.swift; sourceTree = "<group>"; };
+		01D8B2F71FFC6A9500450470 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
+		01D8B2F91FFC6C5100450470 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		01D8B2FB1FFC849F00450470 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework; sourceTree = "<group>"; };
 		01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
@@ -192,12 +196,12 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		018F77651FFB0EEC004421F0 /* Models */ = {
+		018F77651FFB0EEC004421F0 /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				018F77671FFB0F18004421F0 /* UserToken_Test.swift */,
 			);
-			path = Models;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		018F77661FFB0EFD004421F0 /* Networking */ = {
@@ -208,29 +212,24 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		018F77731FFB4186004421F0 /* Tasks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tasks;
-			sourceTree = "<group>";
-		};
 		019FA2FA1FF9FFAB00E38B2C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				018F77741FFB41C4004421F0 /* BasicAuthUserLoginCall.swift */,
-				019FA2F81FF9FF6200E38B2C /* UserLoginOperation.swift */,
-				018F77611FFA16E5004421F0 /* SaveUserTokenOperation.swift */,
+				01D8B2F51FFC6A0700450470 /* UserTokenJSON.swift */,
+				01D8B2F71FFC6A9500450470 /* HTTPResponse.swift */,
+				01D8B2F91FFC6C5100450470 /* NetworkingError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		019FA2FB1FFA008800E38B2C /* Models */ = {
+		019FA2FB1FFA008800E38B2C /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				019FA2FC1FFA009A00E38B2C /* UserToken.swift */,
+				019FA2FC1FFA009A00E38B2C /* UserTokenDB.swift */,
+				01D8B2FB1FFC849F00450470 /* Database.swift */,
 			);
-			path = Models;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		01AD11591FF4B5DB000DCE81 = {
@@ -256,8 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				0172B56C1FFB46E70068307E /* Secrets.swift */,
-				018F77731FFB4186004421F0 /* Tasks */,
-				019FA2FB1FFA008800E38B2C /* Models */,
+				019FA2FB1FFA008800E38B2C /* Database */,
 				019FA2FA1FF9FFAB00E38B2C /* Networking */,
 				01D3B8041FF6226C00EDE896 /* Services */,
 				011F7D681FF5951200DCD7CA /* Utilities */,
@@ -275,7 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				018F77661FFB0EFD004421F0 /* Networking */,
-				018F77651FFB0EEC004421F0 /* Models */,
+				018F77651FFB0EEC004421F0 /* Database */,
 				010AB17D1FF6DFA900EFF0D5 /* Services */,
 				01AD117A1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift */,
 				01AD117C1FF4B5DC000DCE81 /* Info.plist */,
@@ -460,17 +458,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				019FA2FD1FFA009A00E38B2C /* UserToken.swift in Sources */,
+				019FA2FD1FFA009A00E38B2C /* UserTokenDB.swift in Sources */,
 				010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
+				01D8B2F61FFC6A0700450470 /* UserTokenJSON.swift in Sources */,
 				011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */,
+				01D8B2FA1FFC6C5100450470 /* NetworkingError.swift in Sources */,
 				01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */,
-				019FA2F91FF9FF6200E38B2C /* UserLoginOperation.swift in Sources */,
+				01D8B2F81FFC6A9500450470 /* HTTPResponse.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				0190E7771FFB69E1006F9B81 /* Request+HTTPHeaders.swift in Sources */,
 				0172B56D1FFB46E70068307E /* Secrets.swift in Sources */,
-				018F77621FFA16E5004421F0 /* SaveUserTokenOperation.swift in Sources */,
 				018F77751FFB41C4004421F0 /* BasicAuthUserLoginCall.swift in Sources */,
+				01D8B2FC1FFC849F00450470 /* Database.swift in Sources */,
 				018F77641FFB0EAC004421F0 /* Globals.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@ class BasicAuthUserLoginCall_Test: XCTestCase {
         case let .error(error):
           XCTFail(error.localizedDescription)
         case let .success(userToken):
-          print(userToken)
+          print(userToken.token)
         }
         
         expectation.fulfill()

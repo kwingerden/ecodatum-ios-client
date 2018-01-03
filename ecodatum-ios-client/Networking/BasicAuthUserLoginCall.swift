@@ -10,39 +10,28 @@ class BasicAuthUserLoginCall {
   
   let url: URL
   
-  let responseHandler: (Response) -> Void
-  
-  struct UserToken: Decodable {
-    let id: Int
-    let token: String
-    let userId: Int
-  }
-  
-  enum Response {
-    case success(UserToken)
-    case error(Error)
-  }
+  let responseHandler: HTTPResponseHandler<UserTokenJSON>
   
   init(email: String,
        password: String,
-       responseHandler: @escaping (Response) -> Void) {
+       responseHandler: @escaping HTTPResponseHandler<UserTokenJSON>) {
     self.email = email
     self.password = password
     self.url = ECODATUM_BASE_V1_API_URL.appendingPathComponent("login")
     self.responseHandler = responseHandler
   }
   
-  func run() {
+  func run()  {
     
     guard let headers = Request.ecodatumHeaders(email: email, password: password) else {
-      responseHandler(.error(NetworkingError.authorizationHeaderEncodingError))
+      responseHandler(.error(NetworkingError.authorizationHeaderEncoding))
       return
     }
     
     guard let scheme = url.scheme,
       let host = url.host,
       let port = url.port else {
-      responseHandler(.error(NetworkingError.invalidURL))
+        responseHandler(.error(NetworkingError.invalidURL(url: url)))
       return
     }
     
@@ -76,7 +65,7 @@ class BasicAuthUserLoginCall {
           self.responseHandler(.error(error))
         } else if let data = response.data {
           do {
-            let userToken = try JSONDecoder().decode(UserToken.self, from: data)
+            let userToken = try JSONDecoder().decode(UserTokenJSON.self, from: data)
             self.responseHandler(.success(userToken))
           } catch let error {
             self.responseHandler(.error(error))
