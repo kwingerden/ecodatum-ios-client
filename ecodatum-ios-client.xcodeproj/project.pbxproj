@@ -16,7 +16,9 @@
 		011280F2200552B300CF0E6B /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F1200552B300CF0E6B /* NetworkCall.swift */; };
 		011280F4200556D400CF0E6B /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F3200556D400CF0E6B /* NetworkData.swift */; };
 		011280F62005591A00CF0E6B /* DatabaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F52005591A00CF0E6B /* DatabaseOperation.swift */; };
-		011280FC20055A6C00CF0E6B /* InsertUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FB20055A6C00CF0E6B /* InsertUserTokenOperation.swift */; };
+		011280FC20055A6C00CF0E6B /* NewUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */; };
+		011280FE200584DD00CF0E6B /* UserTokenExistsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FD200584DD00CF0E6B /* UserTokenExistsOperation.swift */; };
+		011281002005870100CF0E6B /* FindUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */; };
 		011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */; };
 		0172B56D1FFB46E70068307E /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172B56C1FFB46E70068307E /* Secrets.swift */; };
@@ -82,7 +84,9 @@
 		011280F1200552B300CF0E6B /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
 		011280F3200556D400CF0E6B /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
 		011280F52005591A00CF0E6B /* DatabaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOperation.swift; sourceTree = "<group>"; };
-		011280FB20055A6C00CF0E6B /* InsertUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertUserTokenOperation.swift; sourceTree = "<group>"; };
+		011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserTokenOperation.swift; sourceTree = "<group>"; };
+		011280FD200584DD00CF0E6B /* UserTokenExistsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenExistsOperation.swift; sourceTree = "<group>"; };
+		011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserTokenOperation.swift; sourceTree = "<group>"; };
 		011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToMyAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToMyAccountController.swift; sourceTree = "<group>"; };
 		0172B56C1FFB46E70068307E /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -236,7 +240,9 @@
 				019FA2FC1FFA009A00E38B2C /* UserTokenRecord.swift */,
 				01D8B2FB1FFC849F00450470 /* DatabaseManager.swift */,
 				011280F52005591A00CF0E6B /* DatabaseOperation.swift */,
-				011280FB20055A6C00CF0E6B /* InsertUserTokenOperation.swift */,
+				011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */,
+				011280FD200584DD00CF0E6B /* UserTokenExistsOperation.swift */,
+				011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -479,11 +485,13 @@
 				01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				0190E7771FFB69E1006F9B81 /* Request+HTTPHeaders.swift in Sources */,
+				011281002005870100CF0E6B /* FindUserTokenOperation.swift in Sources */,
 				0172B56D1FFB46E70068307E /* Secrets.swift in Sources */,
 				018F77751FFB41C4004421F0 /* BasicAuthUserCall.swift in Sources */,
 				01D8B2FC1FFC849F00450470 /* DatabaseManager.swift in Sources */,
 				018F77641FFB0EAC004421F0 /* Globals.swift in Sources */,
-				011280FC20055A6C00CF0E6B /* InsertUserTokenOperation.swift in Sources */,
+				011280FE200584DD00CF0E6B /* UserTokenExistsOperation.swift in Sources */,
+				011280FC20055A6C00CF0E6B /* NewUserTokenOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

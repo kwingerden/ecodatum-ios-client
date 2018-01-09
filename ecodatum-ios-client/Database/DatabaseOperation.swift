@@ -3,7 +3,7 @@ import Hydra
 
 protocol DatabaseOperation {
   
-  associatedtype DatabaseData
-  func run(db: DatabaseManager) -> Promise<DatabaseData>
+  associatedtype DatabaseResult
+  func run(_ databaseManager: DatabaseManager) -> Promise<DatabaseResult>
   
 }

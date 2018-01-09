@@ -3,11 +3,13 @@ import GRDB
 
 class DatabaseManager {
   
+  typealias DB_ID_TYPE = Int64
+  
   typealias DatabaseWrite = (Database) throws -> Database.TransactionCompletion
   
   typealias DatabaseRead<R> = (Database) throws -> R
   
-  private var dbPool: DatabasePool
+  private var databasePool: DatabasePool
   
   init(dropDatabase: Bool = false) throws {
     
@@ -29,10 +31,10 @@ class DatabaseManager {
       LOG.debug($0)
     }
     
-    dbPool = try DatabasePool(path: dbFilePath.path,
-                              configuration: configuration)
+    databasePool = try DatabasePool(path: dbFilePath.path,
+                                    configuration: configuration)
     
-    try dbPool.writeInTransaction {
+    try databasePool.writeInTransaction {
       db in
       try UserTokenRecord.createTable(db)
       return .commit
@@ -41,14 +43,14 @@ class DatabaseManager {
   }
   
   func write(_ write: DatabaseWrite) throws {
-    try dbPool.writeInTransaction {
+    try databasePool.writeInTransaction {
       db in
       return try write(db)
     }
   }
   
   func read<R>(_ read: DatabaseRead<R>) throws -> R {
-    return try dbPool.read {
+    return try databasePool.read {
       db in
       return try read(db)
     }
