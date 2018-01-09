@@ -1,6 +1,6 @@
 import Foundation
 
-struct UserTokenJSON: Decodable, Encodable {
+struct UserTokenData: NetworkData {
   
   let id: Int
   let token: String

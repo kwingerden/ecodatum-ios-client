@@ -1,7 +1,11 @@
 import Foundation
 import GRDB
 
-class Database {
+class DatabaseManager {
+  
+  typealias DatabaseWrite = (Database) throws -> Database.TransactionCompletion
+  
+  typealias DatabaseRead<R> = (Database) throws -> R
   
   private var dbPool: DatabasePool
   
@@ -26,7 +30,7 @@ class Database {
     }
     
     dbPool = try DatabasePool(path: dbFilePath.path,
-                          configuration: configuration)
+                              configuration: configuration)
     
     try dbPool.writeInTransaction {
       db in
@@ -36,25 +40,17 @@ class Database {
     
   }
   
-  func insert<R: Record>(_ r: R) throws {
+  func write(_ write: DatabaseWrite) throws {
     try dbPool.writeInTransaction {
       db in
-      try r.insert(db)
-      return .commit 
+      return try write(db)
     }
   }
   
-  func exists<R: Record>(_ r: R) throws -> Bool {
+  func read<R>(_ read: DatabaseRead<R>) throws -> R {
     return try dbPool.read {
       db in
-      return try r.exists(db)
-    }
-  }
-  
-  func fetch<R: Record>(_ r: R.Type, key: Int64) throws -> R? {
-    return try dbPool.read {
-      db in
-      return try r.fetchOne(db, key: key)
+      return try read(db)
     }
   }
   
