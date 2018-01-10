@@ -8,16 +8,16 @@ class BasicAuthUserCall_Test: XCTestCase {
     
     let expectation = XCTestExpectation(description: "Login Response")
     
-    let userLoginCall = BasicAuthUserCall(email: "admin@ecodatum.org",
-                                               password: "password")
-    userLoginCall.run()
+    BasicAuthUserCall(email: "admin@ecodatum.org",
+                      password: "password",
+                      url: ECODATUM_BASE_V1_API_URL.appendingPathComponent("login"))
+      .run()
       .then(in: .main) {
         userToken in
-        print(userToken)
+        LOG.debug("UserToken: \(userToken)")
       }.catch(in: .main) {
         error in
-        print(error)
-        XCTFail()
+        XCTFail(error.localizedDescription)
       }.always(in: .main) {
         expectation.fulfill()
     }

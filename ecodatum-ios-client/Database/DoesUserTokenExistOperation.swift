@@ -1,17 +1,17 @@
 import Foundation
 import Hydra
 
-class UserTokenExistsOperation {
+class DoesUserTokenExistOperation {
   
-  let userToken: UserTokenRecord
+  let id: Int
   
-  init(userToken: UserTokenRecord) {
-    self.userToken = userToken
+  init(byId: Int) {
+    self.id = byId
   }
   
 }
 
-extension UserTokenExistsOperation: DatabaseOperation {
+extension DoesUserTokenExistOperation: DatabaseOperation {
   
   func run(_ databaseManager: DatabaseManager) -> Promise<Bool> {
     
@@ -20,14 +20,15 @@ extension UserTokenExistsOperation: DatabaseOperation {
       
       let result = try databaseManager.read {
         db in
-        return try self.userToken.exists(db)
+        return try UserTokenRecord.fetchOne(db, key: self.id)
       }
       
-      resolve(result)
+      resolve(result != nil)
       
     }
     
   }
   
 }
+
 

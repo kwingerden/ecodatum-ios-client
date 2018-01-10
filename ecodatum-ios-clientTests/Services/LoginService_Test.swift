@@ -4,33 +4,25 @@ import XCTest
 class LoginService_Test: XCTestCase {
   
   func test() throws {
-  
-    let loginResponseExpectation = XCTestExpectation(description: "Login Response")
     
+    let expectation = XCTestExpectation()
+    
+    let serviceManager = try ServiceHelper.defaultServiceManager()
     let email = "admin@ecodatum.org"
     let password = "password"
     
-    let loginService = LoginService(baseURL: ECODATUM_BASE_URL)
-    let loginRequest = LoginService.LoginRequest(email: email, password: password)
-    
-    func responseHandler(loginResponse: LoginService.LoginResponse) {
-      
-      switch loginResponse {
-      case let .failure(error):
+    serviceManager.login(email: email, password: password)
+      .then {
+        loginResponse in
+        XCTAssert(!loginResponse.token.isEmpty)
+      }.catch {
+        error in
         XCTFail(error.localizedDescription)
-      case let .success(userToken):
-        XCTAssert(userToken.id > 0)
-        XCTAssert(!userToken.token.isEmpty)
-        XCTAssert(userToken.userId == 1)
-      }
-      
-      loginResponseExpectation.fulfill()
-    
+      }.always {
+        expectation.fulfill()
     }
     
-    try loginService.login(request: loginRequest, responseHandler: responseHandler)
-  
-    wait(for: [loginResponseExpectation], timeout: 10)
+    wait(for: [expectation], timeout: 10)
     
   }
   

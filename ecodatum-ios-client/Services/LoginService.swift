@@ -41,7 +41,7 @@ extension LoginService: Service {
         
         let newUserToken = try await(
           in: .userInitiated,
-          self.databaseManager.newUserTokenOperation(
+          self.databaseManager.newUserToken(
             userId: userToken.userId,
             token: userToken.token))
         

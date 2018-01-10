@@ -17,7 +17,6 @@
 		011280F4200556D400CF0E6B /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F3200556D400CF0E6B /* NetworkData.swift */; };
 		011280F62005591A00CF0E6B /* DatabaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F52005591A00CF0E6B /* DatabaseOperation.swift */; };
 		011280FC20055A6C00CF0E6B /* NewUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */; };
-		011280FE200584DD00CF0E6B /* UserTokenExistsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FD200584DD00CF0E6B /* UserTokenExistsOperation.swift */; };
 		011281002005870100CF0E6B /* FindUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */; };
 		011F7D651FF589FC00DCD7CA /* LoginToMyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToMyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */; };
@@ -33,8 +32,12 @@
 		0131642D2005ECF80022B788 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131642C2005ECF80022B788 /* ServiceManager.swift */; };
 		0131642F2005ED270022B788 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131642E2005ED270022B788 /* NetworkManager.swift */; };
 		013164312005F1CB0022B788 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013164302005F1CB0022B788 /* Configuration.swift */; };
+		015E34A52006A8B0006A74C7 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A42006A8B0006A74C7 /* DatabaseHelper.swift */; };
+		015E34A72006BCEF006A74C7 /* DoesUserTokenExistOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */; };
+		015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A82006CFD7006A74C7 /* NetworkHelper.swift */; };
+		015E34AB2006D0A9006A74C7 /* ServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34AA2006D0A9006A74C7 /* ServiceHelper.swift */; };
 		018F77641FFB0EAC004421F0 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77631FFB0EAC004421F0 /* Globals.swift */; };
-		018F77681FFB0F18004421F0 /* UserToken_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77671FFB0F18004421F0 /* UserToken_Test.swift */; };
+		018F77681FFB0F18004421F0 /* UserTokenRecord_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77671FFB0F18004421F0 /* UserTokenRecord_Test.swift */; };
 		018F77691FFB126F004421F0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
 		018F776A1FFB126F004421F0 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
 		018F776B1FFB126F004421F0 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */; };
@@ -96,7 +99,6 @@
 		011280F3200556D400CF0E6B /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
 		011280F52005591A00CF0E6B /* DatabaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOperation.swift; sourceTree = "<group>"; };
 		011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserTokenOperation.swift; sourceTree = "<group>"; };
-		011280FD200584DD00CF0E6B /* UserTokenExistsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenExistsOperation.swift; sourceTree = "<group>"; };
 		011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserTokenOperation.swift; sourceTree = "<group>"; };
 		011F7D641FF589FC00DCD7CA /* LoginToMyAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToMyAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToMyAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToMyAccountController.swift; sourceTree = "<group>"; };
@@ -112,8 +114,12 @@
 		0131642C2005ECF80022B788 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		0131642E2005ED270022B788 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		013164302005F1CB0022B788 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		015E34A42006A8B0006A74C7 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoesUserTokenExistOperation.swift; sourceTree = "<group>"; };
+		015E34A82006CFD7006A74C7 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		015E34AA2006D0A9006A74C7 /* ServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHelper.swift; sourceTree = "<group>"; };
 		018F77631FFB0EAC004421F0 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		018F77671FFB0F18004421F0 /* UserToken_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken_Test.swift; sourceTree = "<group>"; };
+		018F77671FFB0F18004421F0 /* UserTokenRecord_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenRecord_Test.swift; sourceTree = "<group>"; };
 		018F77741FFB41C4004421F0 /* BasicAuthUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthUserCall.swift; sourceTree = "<group>"; };
 		0190E7741FFB66BB006F9B81 /* BasicAuthUserCall_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAuthUserCall_Test.swift; sourceTree = "<group>"; };
 		0190E7761FFB69E1006F9B81 /* Request+HTTPHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+HTTPHeaders.swift"; sourceTree = "<group>"; };
@@ -232,7 +238,7 @@
 		018F77651FFB0EEC004421F0 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				018F77671FFB0F18004421F0 /* UserToken_Test.swift */,
+				018F77671FFB0F18004421F0 /* UserTokenRecord_Test.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 				011280F1200552B300CF0E6B /* NetworkCall.swift */,
 				011280F3200556D400CF0E6B /* NetworkData.swift */,
 				0131642E2005ED270022B788 /* NetworkManager.swift */,
+				015E34A82006CFD7006A74C7 /* NetworkHelper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -265,8 +272,9 @@
 				01D8B2FB1FFC849F00450470 /* DatabaseManager.swift */,
 				011280F52005591A00CF0E6B /* DatabaseOperation.swift */,
 				011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */,
-				011280FD200584DD00CF0E6B /* UserTokenExistsOperation.swift */,
 				011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */,
+				015E34A42006A8B0006A74C7 /* DatabaseHelper.swift */,
+				015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -352,6 +360,7 @@
 				013164242005AA2A0022B788 /* ServiceResponse.swift */,
 				013164262005AB1F0022B788 /* Service.swift */,
 				0131642C2005ECF80022B788 /* ServiceManager.swift */,
+				015E34AA2006D0A9006A74C7 /* ServiceHelper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -506,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				015E34A52006A8B0006A74C7 /* DatabaseHelper.swift in Sources */,
 				0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */,
 				013164272005AB1F0022B788 /* Service.swift in Sources */,
 				011280F4200556D400CF0E6B /* NetworkData.swift in Sources */,
@@ -526,16 +536,18 @@
 				01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				0190E7771FFB69E1006F9B81 /* Request+HTTPHeaders.swift in Sources */,
+				015E34A72006BCEF006A74C7 /* DoesUserTokenExistOperation.swift in Sources */,
 				011281002005870100CF0E6B /* FindUserTokenOperation.swift in Sources */,
 				013164232005A9FE0022B788 /* ServiceRequest.swift in Sources */,
+				015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */,
 				018F77751FFB41C4004421F0 /* BasicAuthUserCall.swift in Sources */,
 				0131642B2005EC8B0022B788 /* ControllerManager.swift in Sources */,
 				01D8B2FC1FFC849F00450470 /* DatabaseManager.swift in Sources */,
 				018F77641FFB0EAC004421F0 /* Globals.swift in Sources */,
-				011280FE200584DD00CF0E6B /* UserTokenExistsOperation.swift in Sources */,
 				011280FC20055A6C00CF0E6B /* NewUserTokenOperation.swift in Sources */,
 				013164252005AA2A0022B788 /* ServiceResponse.swift in Sources */,
 				0131641F2005A9910022B788 /* LoginRequest.swift in Sources */,
+				015E34AB2006D0A9006A74C7 /* ServiceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018F77681FFB0F18004421F0 /* UserToken_Test.swift in Sources */,
+				018F77681FFB0F18004421F0 /* UserTokenRecord_Test.swift in Sources */,
 				0190E7751FFB66BB006F9B81 /* BasicAuthUserCall_Test.swift in Sources */,
 				01AD117B1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift in Sources */,
 				010AB17F1FF6DFBF00EFF0D5 /* LoginService_Test.swift in Sources */,

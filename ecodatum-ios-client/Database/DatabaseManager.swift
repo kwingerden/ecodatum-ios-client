@@ -24,9 +24,17 @@ class DatabaseManager {
     
   }
   
-  func newUserTokenOperation(userId: Int,
-                             token: String) -> Promise<UserTokenRecord> {
+  func newUserToken(userId: Int,
+                    token: String) -> Promise<UserTokenRecord> {
     return NewUserTokenOperation(userId: userId, token: token).run(self)
+  }
+  
+  func findUserToken(byId: Int) -> Promise<UserTokenRecord?> {
+    return FindUserTokenOperation(byId: byId).run(self)
+  }
+  
+  func doesUserTokenExist(byId: Int) -> Promise<Bool> {
+    return DoesUserTokenExistOperation(byId: byId).run(self)
   }
   
   func write(_ write: DatabaseWrite) throws {

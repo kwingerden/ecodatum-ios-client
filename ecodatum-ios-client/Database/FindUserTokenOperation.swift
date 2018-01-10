@@ -5,8 +5,8 @@ class FindUserTokenOperation {
   
   let id: Int
   
-  init(id: Int) {
-    self.id = id
+  init(byId: Int) {
+    self.id = byId
   }
   
 }
