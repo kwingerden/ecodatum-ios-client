@@ -3,9 +3,9 @@ import Hydra
 
 class FindUserTokenOperation {
   
-  let id: DatabaseManager.DB_ID_TYPE
+  let id: Int
   
-  init(id: DatabaseManager.DB_ID_TYPE) {
+  init(id: Int) {
     self.id = id
   }
   

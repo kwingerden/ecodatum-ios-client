@@ -7,7 +7,8 @@ class NewUserTokenOperation {
   
   let token: String
   
-  init(userId: Int, token: String) {
+  init(userId: Int,
+       token: String) {
     self.userId = userId
     self.token = token
   }

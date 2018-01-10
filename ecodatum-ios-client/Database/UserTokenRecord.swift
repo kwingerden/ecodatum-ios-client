@@ -13,11 +13,11 @@ class UserTokenRecord: Record {
     static let token = Column("token")
   }
   
-  var id: DatabaseManager.DB_ID_TYPE?
+  var id: Int?
   var userId: Int
   var token: String
   
-  init(id: DatabaseManager.DB_ID_TYPE? = nil, userId: Int, token: String) {
+  init(id: Int? = nil, userId: Int, token: String) {
     self.id = id
     self.userId = userId
     self.token = token
@@ -37,9 +37,9 @@ class UserTokenRecord: Record {
     container[Columns.token] = token
   }
   
-  override func didInsert(with rowID: DatabaseManager.DB_ID_TYPE,
+  override func didInsert(with rowID: Int64,
                           for column: String?) {
-    id = rowID
+    id = Int(rowID)
   }
   
   static func createTable(_ db: GRDB.Database) throws {

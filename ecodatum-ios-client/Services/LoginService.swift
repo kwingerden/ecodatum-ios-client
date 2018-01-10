@@ -1,87 +1,61 @@
 import Foundation
+import Hydra
 
 class LoginService {
   
-  let baseURL: URL
+  let networkManager: NetworkManager
   
-  enum Errors: Error {
-    case authenticationError
-    case base64EncodingError
-    case reponseDecodingError(String)
+  let databaseManager: DatabaseManager
+  
+  let invalidationToken: InvalidationToken?
+  
+  init(networkManager: NetworkManager,
+       databaseManager: DatabaseManager,
+       invalidationToken: InvalidationToken? = nil) {
+    self.networkManager = networkManager
+    self.databaseManager = databaseManager
+    self.invalidationToken = invalidationToken
   }
   
-  struct LoginRequest: Encodable {
-    let email: String
-    let password: String
-  }
+}
+
+extension LoginService: Service {
   
-  struct UserToken: Decodable {
-    let id: Int
-    let token: String
-    let userId: Int
-  }
-  
-  enum LoginResponse {
-    case success(UserToken)
-    case failure(Errors)
-  }
-  
-  init(baseURL: URL) {
-    self.baseURL = baseURL
-  }
-  
-  func login(request: LoginRequest,
-             responseHandler: @escaping (LoginResponse) -> Void) throws {
+  func run(_ loginRequest: LoginRequest) -> Promise<LoginResponse> {
     
-    guard let authorization = "\(request.email):\(request.password)"
-        .data(using: .utf8)?
-        .base64EncodedString() else {
-          throw Errors.base64EncodingError
-    }
-    
-    /*
-    let url = baseURL.appendingPathComponent("login")
-    var request = URLRequest(url: url)
-    request.httpMethod = HTTPMethod.POST.rawValue
-    request.addValue(
-      "Basic \(authorization)",
-      forHTTPHeaderField: HTTPHeaderField.Authorization.rawValue)
-    
-    let task = Networking.shared.defaultSession.dataTask(with: request) {
-      data, response, error in
-      
-      guard let data = data,
-        let response = response as? HTTPURLResponse,
-        response.statusCode == HTTPStatusCode.OK.rawValue else {
-          DispatchQueue.main.async {
-            responseHandler(.failure(.authenticationError))
-          }
-          return
-      }
-      
-      do {
+    return async(
+      in: .userInitiated,
+      token: invalidationToken) {
         
-        let userToken = try JSONDecoder().decode(UserToken.self, from: data)
-        try mainRealm.write {
-          let value: [Any] = [userToken.userId, userToken.token]
-          mainRealm.create(UserToken.self, value: value, update: <#T##Bool#>)
-        }
-        DispatchQueue.main.async {
-          responseHandler(.success(userToken))
-        }
- 
-      } catch let error {
-        DispatchQueue.main.async {
-          responseHandler(.failure(.reponseDecodingError(error.localizedDescription)))
-        }
-        return
-      }
-      
+        status in
+        
+        try status.checkCancelled(ServiceError.serviceCancelled)
+        
+        let userToken = try await(
+          in: .userInitiated,
+          self.networkManager.basicAuthUserCall(
+            email: loginRequest.email,
+            password: loginRequest.password))
+        
+        try status.checkCancelled(ServiceError.serviceCancelled)
+        
+        let newUserToken = try await(
+          in: .userInitiated,
+          self.databaseManager.newUserTokenOperation(
+            userId: userToken.userId,
+            token: userToken.token))
+        
+        try status.checkCancelled(ServiceError.serviceCancelled)
+        
+        let loginResponse = LoginResponse(
+          userId: newUserToken.userId,
+          token: newUserToken.token)
+        
+        return loginResponse
+        
     }
-    
-    task.resume()
- */
     
   }
   
 }
+

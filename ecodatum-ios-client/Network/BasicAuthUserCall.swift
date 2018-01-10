@@ -8,17 +8,18 @@ class BasicAuthUserCall {
   
   let password: String
   
-  let invalidationToken: InvalidationToken?
-  
   let url: URL
+  
+  let invalidationToken: InvalidationToken?
   
   init(email: String,
        password: String,
+       url: URL,
        invalidationToken: InvalidationToken? = nil) {
     self.email = email
     self.password = password
+    self.url = url
     self.invalidationToken = invalidationToken
-    self.url = ECODATUM_BASE_V1_API_URL.appendingPathComponent("login")
   }
   
 }

@@ -4,7 +4,7 @@ ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
 . $ROOT_DIR/.env
 
-cat << EOF > $ROOT_DIR/ecodatum-ios-client/Secrets.swift
+cat << EOF > $ROOT_DIR/ecodatum-ios-client/Configuration.swift
 // Generated `date`
 
 import Foundation
@@ -19,5 +19,9 @@ let ECODATUM_BASE_V1_API_URL = ECODATUM_BASE_API_URL.appendingPathComponent("v1"
 let SWIFTY_BEAVER_APP_ID = "$SWIFTY_BEAVER_APP_ID"
 let SWIFTY_BEAVER_APP_SECRET = "$SWIFTY_BEAVER_APP_SECRET"
 let SWIFTY_BEAVER_ENCRYPTION_KEY = "$SWIFTY_BEAVER_ENCRYPTION_KEY"
+
+let ECODATUM_DATABASE_FILE_NAME = "$ECODATUM_DATABASE_FILE_NAME"
+
+let RESET_ECODATUM_DATABASE_ON_INITIALIZAION = $RESET_ECODATUM_DATABASE_ON_INITIALIZAION
 
 EOF

@@ -1,38 +1,20 @@
 import Foundation
 import GRDB
+import Hydra
 
 class DatabaseManager {
-  
-  typealias DB_ID_TYPE = Int64
-  
+    
   typealias DatabaseWrite = (Database) throws -> Database.TransactionCompletion
   
   typealias DatabaseRead<R> = (Database) throws -> R
   
   private var databasePool: DatabasePool
   
-  init(dropDatabase: Bool = false) throws {
+  private static var _shared: DatabaseManager? = nil
+  
+  init(_ databasePool: DatabasePool) throws {
     
-    let fm = FileManager.default
-    
-    let documentDirectory = try fm.url(
-      for: .documentDirectory,
-      in: .userDomainMask,
-      appropriateFor: nil,
-      create: false)
-    let dbFilePath = documentDirectory.appendingPathComponent("ecodatum.sqlite")
-    
-    if dropDatabase && fm.fileExists(atPath: dbFilePath.path) {
-      try fm.removeItem(at: dbFilePath)
-    }
-    
-    var configuration = Configuration()
-    configuration.trace = {
-      LOG.debug($0)
-    }
-    
-    databasePool = try DatabasePool(path: dbFilePath.path,
-                                    configuration: configuration)
+    self.databasePool = databasePool
     
     try databasePool.writeInTransaction {
       db in
@@ -40,6 +22,11 @@ class DatabaseManager {
       return .commit
     }
     
+  }
+  
+  func newUserTokenOperation(userId: Int,
+                             token: String) -> Promise<UserTokenRecord> {
+    return NewUserTokenOperation(userId: userId, token: token).run(self)
   }
   
   func write(_ write: DatabaseWrite) throws {

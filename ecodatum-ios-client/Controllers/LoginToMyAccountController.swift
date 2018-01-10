@@ -2,7 +2,7 @@ import UIKit
 import SwiftValidator
 
 class LoginToMyAccountController: UIViewController {
-
+  
   @IBOutlet weak var emailAddressTextField: UITextField!
   
   @IBOutlet weak var emailAddressErrorLabel: UILabel!
@@ -86,7 +86,7 @@ extension LoginToMyAccountController: ValidationDelegate {
       }
       
       if error != nil {
-      
+        
         let alert = UIAlertController(
           title: "Login Failure",
           message: "Unrecognized email address and/or password.",
@@ -107,31 +107,15 @@ extension LoginToMyAccountController: ValidationDelegate {
     
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
-    let loginService = LoginService(baseURL: ECODATUM_BASE_URL)
-    let loginRequest = LoginService.LoginRequest(
-      email: email,
-      password: password)
-    
-    func responseHandler(response: LoginService.LoginResponse) {
-      
-      switch response {
-        
-      case let .success(userToken):
+    ControllerManager.shared.login(email: email, password: password)
+      .then(in: .main) {
+        loginResponse in
+        LOG.debug(loginResponse)
         // TODO: segue to the next page
-        print(userToken)
-        
-      case let .failure(error):
+      }.catch(in: .main) {
+        error in
+        LOG.error(error)
         updateUI(error: error)
-        
-      }
-      
-    }
-    
-    do {
-      try loginService.login(request: loginRequest, responseHandler: responseHandler)
-    } catch let error {
-      LOG.error("Login failure: \(error.localizedDescription)")
-      updateUI(error: error)
     }
     
   }
