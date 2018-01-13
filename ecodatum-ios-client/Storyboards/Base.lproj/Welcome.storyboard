@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +58,7 @@
                                             <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="JyG-bk-VTf" kind="show" id="mom-Iy-9hV"/>
+                                            <action selector="touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uth-va-eSW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKr-Xx-4qV">
@@ -71,6 +71,9 @@
                                         <state key="normal" title="Create a New Account">
                                             <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4VM-hD-r1K"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -96,19 +99,20 @@
                     <connections>
                         <outlet property="loginButton" destination="tL2-l2-siI" id="Qi3-lL-rUG"/>
                         <outlet property="newAccountButton" destination="WKr-Xx-4qV" id="qwK-jX-v7e"/>
+                        <segue destination="A6P-6b-JjN" kind="show" identifier="login" id="v0m-Yq-f5u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-94.24460431654677" y="112.76978417266187"/>
         </scene>
-        <!--LoginToMyAccount-->
-        <scene sceneID="iax-WX-Nhc">
+        <!--Login-->
+        <scene sceneID="gjr-L1-Vja">
             <objects>
-                <viewControllerPlaceholder storyboardName="LoginToMyAccount" id="JyG-bk-VTf" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9n-PQ-heW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Login" id="A6P-6b-JjN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ebd-3I-upv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="627" y="-13"/>
+            <point key="canvasLocation" x="476" y="-54"/>
         </scene>
     </scenes>
     <resources>

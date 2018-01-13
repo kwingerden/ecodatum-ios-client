@@ -13,7 +13,7 @@
         <!--Login To My Account-->
         <scene sceneID="0Or-9X-ZGi">
             <objects>
-                <viewController title="Login To My Account" id="8f7-cI-y3O" customClass="LoginToMyAccountController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login To My Account" id="8f7-cI-y3O" customClass="LoginToMyAccountViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qpB-uX-MqD">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +134,7 @@
                                 </constraints>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="obl-yb-7ee">
-                                <rect key="frame" x="399" y="608" width="37" height="37"/>
+                                <rect key="frame" x="398.5" y="608" width="37" height="37"/>
                                 <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbJ-gR-cwK">

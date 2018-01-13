@@ -1,7 +1,7 @@
 import UIKit
 import SwiftValidator
 
-class LoginToMyAccountController: UIViewController {
+class LoginToMyAccountViewController: BaseViewController {
   
   @IBOutlet weak var emailAddressTextField: UITextField!
   
@@ -68,7 +68,7 @@ class LoginToMyAccountController: UIViewController {
   
 }
 
-extension LoginToMyAccountController: ValidationDelegate {
+extension LoginToMyAccountViewController: ValidationDelegate {
   
   func validationSuccessful() {
     
@@ -107,7 +107,7 @@ extension LoginToMyAccountController: ValidationDelegate {
     
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
-    ControllerManager.shared.login(email: email, password: password)
+    vcm?.login(email: email, password: password)
       .then(in: .main) {
         loginResponse in
         LOG.debug(loginResponse)

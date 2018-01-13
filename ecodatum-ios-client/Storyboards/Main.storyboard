@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JQc-Os-bcQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="lD1-E0-bDh">
+            <objects>
+                <viewController id="JQc-Os-bcQ" customClass="MainViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Yh-m5-bY5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgrounImage" translatesAutoresizingMaskIntoConstraints="NO" id="QH9-uJ-0sd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cAP-mx-Tef">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cAP-mx-Tef" firstAttribute="centerY" secondItem="1Yh-m5-bY5" secondAttribute="centerY" id="NN4-2C-Z3L"/>
+                            <constraint firstItem="QH9-uJ-0sd" firstAttribute="trailing" secondItem="msO-KG-Rez" secondAttribute="trailing" id="Nhd-SR-uGR"/>
+                            <constraint firstItem="QH9-uJ-0sd" firstAttribute="leading" secondItem="msO-KG-Rez" secondAttribute="leading" id="Phf-QQ-Vg9"/>
+                            <constraint firstItem="QH9-uJ-0sd" firstAttribute="bottom" secondItem="msO-KG-Rez" secondAttribute="bottom" id="YTb-39-Bpe"/>
+                            <constraint firstItem="QH9-uJ-0sd" firstAttribute="top" secondItem="1Yh-m5-bY5" secondAttribute="top" id="guc-0n-VEg"/>
+                            <constraint firstItem="cAP-mx-Tef" firstAttribute="centerX" secondItem="1Yh-m5-bY5" secondAttribute="centerX" id="zND-Kv-59E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="msO-KG-Rez"/>
+                    </view>
+                    <connections>
+                        <segue destination="hUd-Tn-FMp" kind="show" identifier="welcome" id="M6z-4M-aFA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fpm-AQ-KeI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+        <!--Welcome-->
+        <scene sceneID="yXN-yU-6mW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Welcome" id="hUd-Tn-FMp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T14-lL-Ban" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="307"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackgrounImage" width="1024" height="1024"/>
+    </resources>
+</document>
