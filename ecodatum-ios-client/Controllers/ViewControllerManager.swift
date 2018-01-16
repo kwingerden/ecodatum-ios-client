@@ -56,8 +56,22 @@ class ViewControllerManager {
   
   func login(email: String, password: String) -> Promise<LoginResponse> {
     return serviceManager.login(
-      email: email,
-      password: password)
+      LoginRequest(
+        email: email,
+        password: password))
+  }
+  
+  func createNewAccount(
+    organizationCode: String,
+    fullName: String,
+    email: String,
+    password: String) -> Promise<CreateNewAccountResponse> {
+    return serviceManager.createNewAccount(
+      CreateNewAccountRequest(
+        organizationCode: organizationCode,
+        fullName: fullName,
+        email: email,
+        password: password))
   }
   
 }

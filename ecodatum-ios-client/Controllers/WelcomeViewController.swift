@@ -22,10 +22,10 @@ class WelcomeViewController: BaseViewController {
     switch sender {
       
     case loginButton:
-      vcm?.performSegue(self, from: .welcome, to: .login)
+      vcm?.performSegue(self, from: .welcome, to: .loginToAccount)
       
     case newAccountButton:
-      break
+      vcm?.performSegue(self, from: .welcome, to: .createNewAccount)
       
     default:
       LOG.warning("Unrecognized button: \(sender)")

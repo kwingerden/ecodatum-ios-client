@@ -1,7 +1,7 @@
 import UIKit
 import SwiftValidator
 
-class LoginToMyAccountViewController: BaseViewController {
+class LoginToAccountViewController: BaseViewController {
   
   @IBOutlet weak var emailAddressTextField: UITextField!
   
@@ -68,7 +68,7 @@ class LoginToMyAccountViewController: BaseViewController {
   
 }
 
-extension LoginToMyAccountViewController: ValidationDelegate {
+extension LoginToAccountViewController: ValidationDelegate {
   
   func validationSuccessful() {
     

@@ -2,8 +2,16 @@ import Alamofire
 import Foundation
 
 extension Request {
-
-  static func ecodatumHeaders(email: String, password: String) -> HTTPHeaders? {
+  
+  static func defaultHeaders() -> HTTPHeaders? {
+    return [
+      "Accept":  "application/json; charset=utf-8"
+    ]
+  }
+  
+  static func basicAuthHeaders(
+    email: String,
+    password: String) -> HTTPHeaders? {
     
     guard let authorizationHeader = Request.authorizationHeader(
       user: email,
@@ -16,6 +24,13 @@ extension Request {
       "Accept":  "application/json; charset=utf-8"
     ]
     
+  }
+  
+  static func bearerTokenAuthHeaders(bearerToken: String) -> HTTPHeaders? {
+    return [
+      "Authorization": "Bearer \(bearerToken)",
+      "Accept":  "application/json; charset=utf-8"
+    ]
   }
   
 }

@@ -13,13 +13,20 @@ class ServiceManager {
     self.networkManager = networkManager
   }
   
-  func login(email: String, password: String) -> Promise<LoginResponse> {
-    let loginRequest = LoginRequest(email: email, password: password)
+  func login(_ request: LoginRequest) -> Promise<LoginResponse> {
     return LoginService(
       networkManager: networkManager,
       databaseManager: databaseManager,
       invalidationToken: InvalidationToken())
-      .run(loginRequest)
+      .run(request)
+  }
+  
+  func createNewAccount(_ request: CreateNewAccountRequest) -> Promise<CreateNewAccountResponse> {
+    return CreateNewAccountService(
+      networkManager: networkManager,
+      databaseManager: databaseManager,
+      invalidationToken: InvalidationToken())
+      .run(request)
   }
   
 }

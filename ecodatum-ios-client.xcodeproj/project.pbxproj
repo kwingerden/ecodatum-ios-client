@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01024E5D200A923B0030859B /* CreateNewAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01024E5C200A923B0030859B /* CreateNewAccount.storyboard */; };
+		01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E5E200A92C00030859B /* CreateNewAccountViewController.swift */; };
+		01024E61200AC9790030859B /* CreateNewUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E60200AC9790030859B /* CreateNewUserCall.swift */; };
+		01024E63200AC9D90030859B /* BaseNetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E62200AC9D90030859B /* BaseNetworkCall.swift */; };
+		01024E65200ACB220030859B /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E64200ACB220030859B /* BaseService.swift */; };
+		01024E67200ACBBA0030859B /* CreateNewAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E66200ACBBA0030859B /* CreateNewAccountService.swift */; };
+		01024E69200ACBE90030859B /* CreateNewAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E68200ACBE90030859B /* CreateNewAccountRequest.swift */; };
+		01024E6B200ACBF60030859B /* CreateNewAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E6A200ACBF60030859B /* CreateNewAccountResponse.swift */; };
 		010AB17F1FF6DFBF00EFF0D5 /* LoginService_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB17E1FF6DFBF00EFF0D5 /* LoginService_Test.swift */; };
 		010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */; };
 		010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */; };
@@ -14,12 +22,11 @@
 		010AB1901FF77F3800EFF0D5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */; };
 		010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */; };
 		011280F2200552B300CF0E6B /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F1200552B300CF0E6B /* NetworkCall.swift */; };
-		011280F4200556D400CF0E6B /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F3200556D400CF0E6B /* NetworkData.swift */; };
 		011280F62005591A00CF0E6B /* DatabaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F52005591A00CF0E6B /* DatabaseOperation.swift */; };
 		011280FC20055A6C00CF0E6B /* NewUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */; };
 		011281002005870100CF0E6B /* FindUserTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */; };
-		011F7D651FF589FC00DCD7CA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* Login.storyboard */; };
-		011F7D671FF58A1E00DCD7CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginViewController.swift */; };
+		011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */; };
+		011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */; };
 		0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641A2005A8DD0022B788 /* ServiceError.swift */; };
 		0131641D2005A9410022B788 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641C2005A9410022B788 /* UserToken.swift */; };
 		0131641F2005A9910022B788 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641E2005A9910022B788 /* LoginRequest.swift */; };
@@ -36,6 +43,14 @@
 		013F67502009AD93001B8586 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F674F2009AD93001B8586 /* WelcomeViewController.swift */; };
 		013F67522009AF56001B8586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67512009AF56001B8586 /* ViewController.swift */; };
 		013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67552009B1A1001B8586 /* BaseViewController.swift */; };
+		01563DD3200D72D4009A478A /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD2200D72D4009A478A /* UserRecord.swift */; };
+		01563DD5200D74E3009A478A /* NewUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD4200D74E3009A478A /* NewUserOperation.swift */; };
+		01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD8200D7D6C009A478A /* DatabaseError.swift */; };
+		01563DDB200D8D52009A478A /* CreateNewUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DDA200D8D52009A478A /* CreateNewUserRequest.swift */; };
+		01563DDD200D8E05009A478A /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DDC200D8E05009A478A /* NetworkResponse.swift */; };
+		01563DDF200D8E43009A478A /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DDE200D8E43009A478A /* NetworkRequest.swift */; };
+		01563DE1200D8F8D009A478A /* BasicAuthUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DE0200D8F8D009A478A /* BasicAuthUserRequest.swift */; };
+		01563DE3200D91F0009A478A /* CreateNewUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DE2200D91F0009A478A /* CreateNewUserResponse.swift */; };
 		015E34A52006A8B0006A74C7 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A42006A8B0006A74C7 /* DatabaseHelper.swift */; };
 		015E34A72006BCEF006A74C7 /* DoesUserTokenExistOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */; };
 		015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A82006CFD7006A74C7 /* NetworkHelper.swift */; };
@@ -71,7 +86,7 @@
 		01D8B2EC1FFC592E00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
 		01D8B2ED1FFC592E00450470 /* GRDBCipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E61FFC590A00450470 /* GRDBCipher.framework */; };
 		01D8B2EE1FFC592E00450470 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */; };
-		01D8B2F61FFC6A0700450470 /* UserTokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2F51FFC6A0700450470 /* UserTokenData.swift */; };
+		01D8B2F61FFC6A0700450470 /* BasicAuthUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2F51FFC6A0700450470 /* BasicAuthUserResponse.swift */; };
 		01D8B2FA1FFC6C5100450470 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2F91FFC6C5100450470 /* NetworkError.swift */; };
 		01D8B2FC1FFC849F00450470 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8B2FB1FFC849F00450470 /* DatabaseManager.swift */; };
 		01EBEA4D1FFB4E25008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
@@ -93,6 +108,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01024E5C200A923B0030859B /* CreateNewAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateNewAccount.storyboard; sourceTree = "<group>"; };
+		01024E5E200A92C00030859B /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
+		01024E60200AC9790030859B /* CreateNewUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewUserCall.swift; sourceTree = "<group>"; };
+		01024E62200AC9D90030859B /* BaseNetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkCall.swift; sourceTree = "<group>"; };
+		01024E64200ACB220030859B /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		01024E66200ACBBA0030859B /* CreateNewAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountService.swift; sourceTree = "<group>"; };
+		01024E68200ACBE90030859B /* CreateNewAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountRequest.swift; sourceTree = "<group>"; };
+		01024E6A200ACBF60030859B /* CreateNewAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountResponse.swift; sourceTree = "<group>"; };
 		010AB17E1FF6DFBF00EFF0D5 /* LoginService_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService_Test.swift; sourceTree = "<group>"; };
 		010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
 		010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rounded.swift"; sourceTree = "<group>"; };
@@ -100,12 +123,11 @@
 		010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		011280F1200552B300CF0E6B /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
-		011280F3200556D400CF0E6B /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
 		011280F52005591A00CF0E6B /* DatabaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOperation.swift; sourceTree = "<group>"; };
 		011280FB20055A6C00CF0E6B /* NewUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserTokenOperation.swift; sourceTree = "<group>"; };
 		011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserTokenOperation.swift; sourceTree = "<group>"; };
-		011F7D641FF589FC00DCD7CA /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		011F7D661FF58A1E00DCD7CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToAccount.storyboard; sourceTree = "<group>"; };
+		011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToAccountViewController.swift; sourceTree = "<group>"; };
 		0131641A2005A8DD0022B788 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		0131641C2005A9410022B788 /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		0131641E2005A9910022B788 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -122,6 +144,14 @@
 		013F674F2009AD93001B8586 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		013F67512009AF56001B8586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		013F67552009B1A1001B8586 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		01563DD2200D72D4009A478A /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
+		01563DD4200D74E3009A478A /* NewUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserOperation.swift; sourceTree = "<group>"; };
+		01563DD8200D7D6C009A478A /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
+		01563DDA200D8D52009A478A /* CreateNewUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewUserRequest.swift; sourceTree = "<group>"; };
+		01563DDC200D8E05009A478A /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		01563DDE200D8E43009A478A /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		01563DE0200D8F8D009A478A /* BasicAuthUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthUserRequest.swift; sourceTree = "<group>"; };
+		01563DE2200D91F0009A478A /* CreateNewUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewUserResponse.swift; sourceTree = "<group>"; };
 		015E34A42006A8B0006A74C7 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoesUserTokenExistOperation.swift; sourceTree = "<group>"; };
 		015E34A82006CFD7006A74C7 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -150,7 +180,7 @@
 		01D8B2E61FFC590A00450470 /* GRDBCipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCipher.framework; path = Carthage/Build/iOS/GRDBCipher.framework; sourceTree = "<group>"; };
 		01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCustomSQLite.framework; path = Carthage/Build/iOS/GRDBCustomSQLite.framework; sourceTree = "<group>"; };
 		01D8B2E81FFC590A00450470 /* GRDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDB.framework; path = Carthage/Build/iOS/GRDB.framework; sourceTree = "<group>"; };
-		01D8B2F51FFC6A0700450470 /* UserTokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenData.swift; sourceTree = "<group>"; };
+		01D8B2F51FFC6A0700450470 /* BasicAuthUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthUserResponse.swift; sourceTree = "<group>"; };
 		01D8B2F91FFC6C5100450470 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		01D8B2FB1FFC849F00450470 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
@@ -263,12 +293,18 @@
 			isa = PBXGroup;
 			children = (
 				018F77741FFB41C4004421F0 /* BasicAuthUserCall.swift */,
-				01D8B2F51FFC6A0700450470 /* UserTokenData.swift */,
+				01D8B2F51FFC6A0700450470 /* BasicAuthUserResponse.swift */,
 				01D8B2F91FFC6C5100450470 /* NetworkError.swift */,
 				011280F1200552B300CF0E6B /* NetworkCall.swift */,
-				011280F3200556D400CF0E6B /* NetworkData.swift */,
 				0131642E2005ED270022B788 /* NetworkManager.swift */,
 				015E34A82006CFD7006A74C7 /* NetworkHelper.swift */,
+				01024E60200AC9790030859B /* CreateNewUserCall.swift */,
+				01024E62200AC9D90030859B /* BaseNetworkCall.swift */,
+				01563DDA200D8D52009A478A /* CreateNewUserRequest.swift */,
+				01563DDC200D8E05009A478A /* NetworkResponse.swift */,
+				01563DDE200D8E43009A478A /* NetworkRequest.swift */,
+				01563DE0200D8F8D009A478A /* BasicAuthUserRequest.swift */,
+				01563DE2200D91F0009A478A /* CreateNewUserResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -283,6 +319,9 @@
 				011280FF2005870100CF0E6B /* FindUserTokenOperation.swift */,
 				015E34A42006A8B0006A74C7 /* DatabaseHelper.swift */,
 				015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */,
+				01563DD2200D72D4009A478A /* UserRecord.swift */,
+				01563DD4200D74E3009A478A /* NewUserOperation.swift */,
+				01563DD8200D7D6C009A478A /* DatabaseError.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -340,11 +379,12 @@
 			isa = PBXGroup;
 			children = (
 				01AD11671FF4B5DB000DCE81 /* MainViewController.swift */,
-				011F7D661FF58A1E00DCD7CA /* LoginViewController.swift */,
+				011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */,
 				0131642A2005EC8B0022B788 /* ViewControllerManager.swift */,
 				013F674F2009AD93001B8586 /* WelcomeViewController.swift */,
 				013F67512009AF56001B8586 /* ViewController.swift */,
 				013F67552009B1A1001B8586 /* BaseViewController.swift */,
+				01024E5E200A92C00030859B /* CreateNewAccountViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -354,8 +394,9 @@
 			children = (
 				01AD116E1FF4B5DB000DCE81 /* LaunchScreen.storyboard */,
 				01AD11691FF4B5DB000DCE81 /* Welcome.storyboard */,
-				011F7D641FF589FC00DCD7CA /* Login.storyboard */,
+				011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */,
 				013F674D2009AC95001B8586 /* Main.storyboard */,
+				01024E5C200A923B0030859B /* CreateNewAccount.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -373,6 +414,10 @@
 				013164262005AB1F0022B788 /* Service.swift */,
 				0131642C2005ECF80022B788 /* ServiceManager.swift */,
 				015E34AA2006D0A9006A74C7 /* ServiceHelper.swift */,
+				01024E64200ACB220030859B /* BaseService.swift */,
+				01024E66200ACBBA0030859B /* CreateNewAccountService.swift */,
+				01024E68200ACBE90030859B /* CreateNewAccountRequest.swift */,
+				01024E6A200ACBF60030859B /* CreateNewAccountResponse.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -463,7 +508,8 @@
 			files = (
 				01AD11701FF4B5DB000DCE81 /* LaunchScreen.storyboard in Resources */,
 				013F674E2009AC95001B8586 /* Main.storyboard in Resources */,
-				011F7D651FF589FC00DCD7CA /* Login.storyboard in Resources */,
+				01024E5D200A923B0030859B /* CreateNewAccount.storyboard in Resources */,
+				011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */,
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
 				01AD116B1FF4B5DB000DCE81 /* Welcome.storyboard in Resources */,
 			);
@@ -530,33 +576,47 @@
 			files = (
 				015E34A52006A8B0006A74C7 /* DatabaseHelper.swift in Sources */,
 				0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */,
+				01563DDB200D8D52009A478A /* CreateNewUserRequest.swift in Sources */,
 				013164272005AB1F0022B788 /* Service.swift in Sources */,
-				011280F4200556D400CF0E6B /* NetworkData.swift in Sources */,
+				01563DE1200D8F8D009A478A /* BasicAuthUserRequest.swift in Sources */,
 				013164212005A9CD0022B788 /* LoginResponse.swift in Sources */,
 				019FA2FD1FFA009A00E38B2C /* UserTokenRecord.swift in Sources */,
+				01024E67200ACBBA0030859B /* CreateNewAccountService.swift in Sources */,
+				01563DD5200D74E3009A478A /* NewUserOperation.swift in Sources */,
+				01024E63200AC9D90030859B /* BaseNetworkCall.swift in Sources */,
 				010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */,
+				01024E65200ACB220030859B /* BaseService.swift in Sources */,
 				013164312005F1CB0022B788 /* Configuration.swift in Sources */,
 				0131641D2005A9410022B788 /* UserToken.swift in Sources */,
 				011280F62005591A00CF0E6B /* DatabaseOperation.swift in Sources */,
+				01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */,
+				01563DDF200D8E43009A478A /* NetworkRequest.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
-				01D8B2F61FFC6A0700450470 /* UserTokenData.swift in Sources */,
+				01D8B2F61FFC6A0700450470 /* BasicAuthUserResponse.swift in Sources */,
 				011280F2200552B300CF0E6B /* NetworkCall.swift in Sources */,
 				013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */,
-				011F7D671FF58A1E00DCD7CA /* LoginViewController.swift in Sources */,
+				011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */,
 				0131642F2005ED270022B788 /* NetworkManager.swift in Sources */,
+				01563DE3200D91F0009A478A /* CreateNewUserResponse.swift in Sources */,
 				01D8B2FA1FFC6C5100450470 /* NetworkError.swift in Sources */,
 				0131642D2005ECF80022B788 /* ServiceManager.swift in Sources */,
 				013164292005C8120022B788 /* PromiseStatus+CheckCancelled.swift in Sources */,
 				01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
+				01024E61200AC9790030859B /* CreateNewUserCall.swift in Sources */,
 				013F67522009AF56001B8586 /* ViewController.swift in Sources */,
+				01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */,
 				013F67502009AD93001B8586 /* WelcomeViewController.swift in Sources */,
 				0190E7771FFB69E1006F9B81 /* Request+HTTPHeaders.swift in Sources */,
 				015E34A72006BCEF006A74C7 /* DoesUserTokenExistOperation.swift in Sources */,
+				01024E69200ACBE90030859B /* CreateNewAccountRequest.swift in Sources */,
+				01024E6B200ACBF60030859B /* CreateNewAccountResponse.swift in Sources */,
 				011281002005870100CF0E6B /* FindUserTokenOperation.swift in Sources */,
 				013164232005A9FE0022B788 /* ServiceRequest.swift in Sources */,
+				01563DD3200D72D4009A478A /* UserRecord.swift in Sources */,
 				015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */,
 				018F77751FFB41C4004421F0 /* BasicAuthUserCall.swift in Sources */,
+				01563DDD200D8E05009A478A /* NetworkResponse.swift in Sources */,
 				0131642B2005EC8B0022B788 /* ViewControllerManager.swift in Sources */,
 				01D8B2FC1FFC849F00450470 /* DatabaseManager.swift in Sources */,
 				018F77641FFB0EAC004421F0 /* Globals.swift in Sources */,

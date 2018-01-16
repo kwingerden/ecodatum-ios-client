@@ -2,45 +2,27 @@ import Alamofire
 import Foundation
 import Hydra
 
-class BasicAuthUserCall {
-  
-  let email: String
-  
-  let password: String
-  
-  let url: URL
-  
-  let invalidationToken: InvalidationToken?
-  
-  init(email: String,
-       password: String,
-       url: URL,
-       invalidationToken: InvalidationToken? = nil) {
-    self.email = email
-    self.password = password
-    self.url = url
-    self.invalidationToken = invalidationToken
-  }
-  
+class BasicAuthUserCall: BaseNetworkCall {
+
 }
 
 extension BasicAuthUserCall: NetworkCall {
   
-  func run() -> Promise<UserTokenData> {
+  func run(_ request: BasicAuthUserRequest) throws -> Promise<BasicAuthUserResponse> {
     
-    guard let headers = Request.ecodatumHeaders(email: email, password: password) else {
-      return Promise(rejected: NetworkError.authorizationHeaderEncoding)
+    guard let headers = Request.basicAuthHeaders(
+      email: request.email,
+      password: request.password) else {
+      throw NetworkError.authorizationHeaderEncoding
     }
     
-    guard let scheme = url.scheme,
-      let host = url.host,
-      let port = url.port else {
-        return Promise(rejected: NetworkError.invalidURL(url: self.url))
+    guard let (scheme, host, port) = try? validate(url: url) else {
+      throw NetworkError.invalidURL(url: self.url.absoluteString)
     }
     
     let credential = URLCredential(
-      user: email,
-      password: password,
+      user: request.email,
+      password: request.password,
       persistence: .forSession)
     let protectionSpace = URLProtectionSpace(
       host: host,
@@ -59,7 +41,7 @@ extension BasicAuthUserCall: NetworkCall {
     let debugDescription = request.debugDescription
     LOG.debug(debugDescription)
     
-    return Promise<UserTokenData>(
+    return Promise<BasicAuthUserResponse>(
       in: .userInitiated,
       token: invalidationToken) {
         
@@ -78,8 +60,8 @@ extension BasicAuthUserCall: NetworkCall {
             reject(error)
           } else if let data = response.data {
             do {
-              let userToken = try JSONDecoder().decode(UserTokenData.self, from: data)
-              resolve(userToken)
+              let response = try JSONDecoder().decode(BasicAuthUserResponse.self, from: data)
+              resolve(response)
             } catch let error {
               reject(error)
             }

@@ -18,15 +18,30 @@ class DatabaseManager {
     
     try databasePool.writeInTransaction {
       db in
+      try UserRecord.createTable(db)
       try UserTokenRecord.createTable(db)
       return .commit
     }
     
   }
   
+  func newUser(userId: Int,
+               fullName: String,
+               email: String) -> Promise<UserRecord> {
+    return NewUserOperation(
+      userId: userId,
+      fullName: fullName,
+      email: email)
+      .run(self)
+  }
+  
+  
   func newUserToken(userId: Int,
                     token: String) -> Promise<UserTokenRecord> {
-    return NewUserTokenOperation(userId: userId, token: token).run(self)
+    return NewUserTokenOperation(
+      userId: userId,
+      token: token)
+      .run(self)
   }
   
   func findUserToken(byId: Int) -> Promise<UserTokenRecord?> {

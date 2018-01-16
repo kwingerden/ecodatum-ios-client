@@ -1,27 +1,13 @@
 import Foundation
 import Hydra
 
-class LoginService {
-  
-  let networkManager: NetworkManager
-  
-  let databaseManager: DatabaseManager
-  
-  let invalidationToken: InvalidationToken?
-  
-  init(networkManager: NetworkManager,
-       databaseManager: DatabaseManager,
-       invalidationToken: InvalidationToken? = nil) {
-    self.networkManager = networkManager
-    self.databaseManager = databaseManager
-    self.invalidationToken = invalidationToken
-  }
+class LoginService: BaseService {
   
 }
 
 extension LoginService: Service {
   
-  func run(_ loginRequest: LoginRequest) -> Promise<LoginResponse> {
+  func run(_ request: LoginRequest) -> Promise<LoginResponse> {
     
     return async(
       in: .userInitiated,
@@ -31,27 +17,24 @@ extension LoginService: Service {
         
         try status.checkCancelled(ServiceError.serviceCancelled)
         
-        let userToken = try await(
+        let basicAuthUserRequest = BasicAuthUserRequest(
+          email: request.email.lowercased(),
+          password: request.password)
+        let basicAuthUserResponse = try await(
           in: .userInitiated,
-          self.networkManager.basicAuthUserCall(
-            email: loginRequest.email,
-            password: loginRequest.password))
+          self.networkManager.basicAuthUserCall(basicAuthUserRequest))
         
         try status.checkCancelled(ServiceError.serviceCancelled)
         
-        let newUserToken = try await(
+        let _ = try await(
           in: .userInitiated,
           self.databaseManager.newUserToken(
-            userId: userToken.userId,
-            token: userToken.token))
+            userId: basicAuthUserResponse.userId,
+            token: basicAuthUserResponse.token))
         
         try status.checkCancelled(ServiceError.serviceCancelled)
         
-        let loginResponse = LoginResponse(
-          userId: newUserToken.userId,
-          token: newUserToken.token)
-        
-        return loginResponse
+        return LoginResponse(token: basicAuthUserResponse.token)
         
     }
     

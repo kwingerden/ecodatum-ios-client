@@ -3,7 +3,8 @@ import Hydra
 
 protocol NetworkCall {
   
-  associatedtype NetworkData
-  func run() -> Promise<NetworkData>
+  associatedtype NetworkRequest
+  associatedtype NetworkResponse
+  func run(_ request: NetworkRequest) throws -> Promise<NetworkResponse>
   
 }

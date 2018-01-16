@@ -29,7 +29,11 @@ extension NewUserTokenOperation: DatabaseOperation {
         return .commit
       }
       
-      resolve(userToken)
+      if userToken.id == nil {
+        reject(DatabaseError.primaryKeyIdNotAssigned)
+      } else {
+        resolve(userToken)
+      }
       
     }
     

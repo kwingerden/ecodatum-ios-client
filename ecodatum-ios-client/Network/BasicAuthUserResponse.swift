@@ -1,6 +1,6 @@
 import Foundation
 
-struct UserTokenData: NetworkData {
+struct BasicAuthUserResponse: NetworkResponse {
   
   let id: Int
   let token: String

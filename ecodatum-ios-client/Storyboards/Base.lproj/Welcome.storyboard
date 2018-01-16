@@ -99,20 +99,29 @@
                     <connections>
                         <outlet property="loginButton" destination="tL2-l2-siI" id="Qi3-lL-rUG"/>
                         <outlet property="newAccountButton" destination="WKr-Xx-4qV" id="qwK-jX-v7e"/>
-                        <segue destination="A6P-6b-JjN" kind="show" identifier="login" id="v0m-Yq-f5u"/>
+                        <segue destination="A6P-6b-JjN" kind="show" identifier="loginToAccount" id="v0m-Yq-f5u"/>
+                        <segue destination="Wt2-cs-uL3" kind="show" identifier="createNewAccount" id="TWN-F0-mpG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-94.24460431654677" y="112.76978417266187"/>
         </scene>
-        <!--Login-->
+        <!--LoginToAccount-->
         <scene sceneID="gjr-L1-Vja">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="A6P-6b-JjN" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="LoginToAccount" id="A6P-6b-JjN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ebd-3I-upv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="476" y="-54"/>
+        </scene>
+        <!--CreateNewAccount-->
+        <scene sceneID="RBU-nR-zfL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateNewAccount" id="Wt2-cs-uL3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7xw-Po-Vt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="-120"/>
         </scene>
     </scenes>
     <resources>
