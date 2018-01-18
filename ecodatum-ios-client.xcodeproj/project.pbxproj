@@ -55,6 +55,14 @@
 		015E34A72006BCEF006A74C7 /* DoesUserTokenExistOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */; };
 		015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34A82006CFD7006A74C7 /* NetworkHelper.swift */; };
 		015E34AB2006D0A9006A74C7 /* ServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E34AA2006D0A9006A74C7 /* ServiceHelper.swift */; };
+		017A159020104871008553E2 /* TopNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A158F20104871008553E2 /* TopNavigation.storyboard */; };
+		017A1592201049F0008553E2 /* TopNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A1591201049F0008553E2 /* TopNavigationViewController.swift */; };
+		017A159620106C6E008553E2 /* TopNavigationChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159520106C6E008553E2 /* TopNavigationChoice.storyboard */; };
+		017A159820106C82008553E2 /* TopNavigationChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A159720106C82008553E2 /* TopNavigationChoiceViewController.swift */; };
+		017A159A20107023008553E2 /* CreateNewSite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159920107023008553E2 /* CreateNewSite.storyboard */; };
+		017A159C20107031008553E2 /* AddNewMeasurement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159B20107031008553E2 /* AddNewMeasurement.storyboard */; };
+		017A159E2010704B008553E2 /* CreateNewSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A159D2010704B008553E2 /* CreateNewSiteViewController.swift */; };
+		017A15A020107066008553E2 /* AddNewMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A159F20107066008553E2 /* AddNewMeasurementViewController.swift */; };
 		018F77641FFB0EAC004421F0 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77631FFB0EAC004421F0 /* Globals.swift */; };
 		018F77681FFB0F18004421F0 /* UserTokenRecord_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F77671FFB0F18004421F0 /* UserTokenRecord_Test.swift */; };
 		018F77691FFB126F004421F0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
@@ -156,6 +164,14 @@
 		015E34A62006BCEF006A74C7 /* DoesUserTokenExistOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoesUserTokenExistOperation.swift; sourceTree = "<group>"; };
 		015E34A82006CFD7006A74C7 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		015E34AA2006D0A9006A74C7 /* ServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHelper.swift; sourceTree = "<group>"; };
+		017A158F20104871008553E2 /* TopNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopNavigation.storyboard; sourceTree = "<group>"; };
+		017A1591201049F0008553E2 /* TopNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationViewController.swift; sourceTree = "<group>"; };
+		017A159520106C6E008553E2 /* TopNavigationChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopNavigationChoice.storyboard; sourceTree = "<group>"; };
+		017A159720106C82008553E2 /* TopNavigationChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationChoiceViewController.swift; sourceTree = "<group>"; };
+		017A159920107023008553E2 /* CreateNewSite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateNewSite.storyboard; sourceTree = "<group>"; };
+		017A159B20107031008553E2 /* AddNewMeasurement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewMeasurement.storyboard; sourceTree = "<group>"; };
+		017A159D2010704B008553E2 /* CreateNewSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewSiteViewController.swift; sourceTree = "<group>"; };
+		017A159F20107066008553E2 /* AddNewMeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMeasurementViewController.swift; sourceTree = "<group>"; };
 		018F77631FFB0EAC004421F0 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		018F77671FFB0F18004421F0 /* UserTokenRecord_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenRecord_Test.swift; sourceTree = "<group>"; };
 		018F77741FFB41C4004421F0 /* BasicAuthUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthUserCall.swift; sourceTree = "<group>"; };
@@ -385,6 +401,10 @@
 				013F67512009AF56001B8586 /* ViewController.swift */,
 				013F67552009B1A1001B8586 /* BaseViewController.swift */,
 				01024E5E200A92C00030859B /* CreateNewAccountViewController.swift */,
+				017A1591201049F0008553E2 /* TopNavigationViewController.swift */,
+				017A159720106C82008553E2 /* TopNavigationChoiceViewController.swift */,
+				017A159D2010704B008553E2 /* CreateNewSiteViewController.swift */,
+				017A159F20107066008553E2 /* AddNewMeasurementViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -397,6 +417,10 @@
 				011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */,
 				013F674D2009AC95001B8586 /* Main.storyboard */,
 				01024E5C200A923B0030859B /* CreateNewAccount.storyboard */,
+				017A158F20104871008553E2 /* TopNavigation.storyboard */,
+				017A159520106C6E008553E2 /* TopNavigationChoice.storyboard */,
+				017A159920107023008553E2 /* CreateNewSite.storyboard */,
+				017A159B20107031008553E2 /* AddNewMeasurement.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -507,8 +531,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				01AD11701FF4B5DB000DCE81 /* LaunchScreen.storyboard in Resources */,
+				017A159A20107023008553E2 /* CreateNewSite.storyboard in Resources */,
 				013F674E2009AC95001B8586 /* Main.storyboard in Resources */,
 				01024E5D200A923B0030859B /* CreateNewAccount.storyboard in Resources */,
+				017A159C20107031008553E2 /* AddNewMeasurement.storyboard in Resources */,
+				017A159620106C6E008553E2 /* TopNavigationChoice.storyboard in Resources */,
+				017A159020104871008553E2 /* TopNavigation.storyboard in Resources */,
 				011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */,
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
 				01AD116B1FF4B5DB000DCE81 /* Welcome.storyboard in Resources */,
@@ -602,6 +630,7 @@
 				0131642D2005ECF80022B788 /* ServiceManager.swift in Sources */,
 				013164292005C8120022B788 /* PromiseStatus+CheckCancelled.swift in Sources */,
 				01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */,
+				017A15A020107066008553E2 /* AddNewMeasurementViewController.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				01024E61200AC9790030859B /* CreateNewUserCall.swift in Sources */,
 				013F67522009AF56001B8586 /* ViewController.swift in Sources */,
@@ -621,8 +650,11 @@
 				01D8B2FC1FFC849F00450470 /* DatabaseManager.swift in Sources */,
 				018F77641FFB0EAC004421F0 /* Globals.swift in Sources */,
 				011280FC20055A6C00CF0E6B /* NewUserTokenOperation.swift in Sources */,
+				017A159820106C82008553E2 /* TopNavigationChoiceViewController.swift in Sources */,
+				017A159E2010704B008553E2 /* CreateNewSiteViewController.swift in Sources */,
 				013164252005AA2A0022B788 /* ServiceResponse.swift in Sources */,
 				0131641F2005A9910022B788 /* LoginRequest.swift in Sources */,
+				017A1592201049F0008553E2 /* TopNavigationViewController.swift in Sources */,
 				015E34AB2006D0A9006A74C7 /* ServiceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

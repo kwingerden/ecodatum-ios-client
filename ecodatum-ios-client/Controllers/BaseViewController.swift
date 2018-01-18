@@ -3,24 +3,26 @@ import UIKit
 
 class BaseViewController: UIViewController {
   
-  private var _vcm: ViewControllerManager? = nil
+  private static var _vcm: ViewControllerManager? = nil
   var vcm: ViewControllerManager? {
     get {
-      if _vcm == nil {
+      if BaseViewController._vcm == nil {
         LOG.error("View Controller Manager not set")
       }
-      return _vcm
+      return BaseViewController._vcm
     }
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    do {
-      _vcm = try ViewControllerManager()
-    } catch let error {
-      LOG.error(error.localizedDescription)
-      // TODO: add some UI warning to user
+    if BaseViewController._vcm == nil {
+      do {
+        BaseViewController._vcm = try ViewControllerManager()
+      } catch let error {
+        LOG.error(error.localizedDescription)
+        // TODO: add some UI warning to user
+      }
     }
     
   }

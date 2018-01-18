@@ -111,7 +111,10 @@ extension LoginToAccountViewController: ValidationDelegate {
       .then(in: .main) {
         loginResponse in
         LOG.debug(loginResponse)
-        // TODO: segue to the next page
+        self.vcm?.performSegue(
+          self,
+          from: .loginToAccount,
+          to: .topNavigation)
       }.catch(in: .main) {
         error in
         LOG.error(error)

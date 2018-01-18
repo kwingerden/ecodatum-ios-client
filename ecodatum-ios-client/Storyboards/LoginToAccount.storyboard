@@ -189,11 +189,20 @@
                         <outlet property="loginButton" destination="qW7-eU-R0o" id="gEz-sr-jdt"/>
                         <outlet property="passwordErrorLabel" destination="nxE-mE-Ock" id="UGk-J2-wIw"/>
                         <outlet property="passwordTextField" destination="6I2-lj-ZIh" id="2An-zI-MRk"/>
+                        <segue destination="TbO-n8-nBB" kind="show" identifier="topNavigation" id="FwB-hA-zfk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTc-IE-Esf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="829.49640287769785" y="-287.0503597122302"/>
+        </scene>
+        <!--TopNavigation-->
+        <scene sceneID="6mb-sf-zzO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TopNavigation" id="TbO-n8-nBB" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vqS-sA-c7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1254" y="-560"/>
         </scene>
     </scenes>
     <resources>
