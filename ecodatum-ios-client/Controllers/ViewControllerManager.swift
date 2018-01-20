@@ -5,16 +5,6 @@ import UIKit
 
 class ViewControllerManager {
   
-  private struct SegueContext {
-    let viewController: UIViewController
-    let from: ViewController
-    let to: ViewController
-    let context: Any?
-    let sender: Any?
-  }
-  
-  private var currentContext: SegueContext? = nil
-  
   private let serviceManager: ServiceManager
   
   init() throws {
@@ -27,30 +17,23 @@ class ViewControllerManager {
     
   }
   
-  func performSegue(_ viewController: UIViewController,
-                    from: ViewController,
-                    to: ViewController,
-                    context: Any? = nil,
-                    sender: Any? = nil) {
+  func performSegue<T: BaseViewController>(from: T,
+                                           to: ViewController,
+                                           sender: Any? = nil) {
     
     LOG.debug("ViewControllerManager.performSegue: \(from) => \(to)")
-    
-    currentContext = SegueContext(viewController: viewController,
-                                  from: from,
-                                  to: to,
-                                  context: context,
-                                  sender: sender)
-    
-    viewController.performSegue(withIdentifier: to.rawValue,
-                                sender: sender)
+    from.performSegue(withIdentifier: to.rawValue, sender: sender)
     
   }
   
   func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let context = currentContext {
-      LOG.debug("ViewControllerManager.prepare: \(context.from) => \(context.to)")
-    } else {
-      LOG.debug("ViewControllerManager.prepare: No Context")
+    switch segue.destination {
+    case is AccountViewController:
+      let source = segue.source as! BaseViewController
+      let destination = segue.destination as! AccountViewController
+      destination.performSegueFrom = source
+    default:
+      break // do nothing
     }
   }
   
@@ -61,17 +44,23 @@ class ViewControllerManager {
         password: password))
   }
   
+  func logout() {
+    // TODO: need to clear out logged in state
+  }
+  
   func createNewAccount(
     organizationCode: String,
     fullName: String,
     email: String,
     password: String) -> Promise<CreateNewAccountResponse> {
+    
     return serviceManager.createNewAccount(
       CreateNewAccountRequest(
         organizationCode: organizationCode,
         fullName: fullName,
         email: email,
         password: password))
+  
   }
   
 }

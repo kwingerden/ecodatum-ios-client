@@ -23,16 +23,10 @@ class TopNavigationChoiceViewController: BaseViewController {
     switch sender {
       
     case createNewSiteButton:
-      vcm?.performSegue(
-        self,
-        from: .topNavigationChoice,
-        to: .createNewSite)
+      vcm?.performSegue(from: self, to: .createNewSite)
       
     case addNewMeasurementButton:
-      vcm?.performSegue(
-        self,
-        from: .topNavigationChoice,
-        to: .addNewMeasurement)
+      vcm?.performSegue(from: self, to: .addNewMeasurement)
       
     default:
       LOG.error("Unexpected button")

@@ -41,6 +41,11 @@
                                         </constraints>
                                         <color key="tintColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="UserGlyph"/>
+                                        <connections>
+                                            <segue destination="AYm-RT-3m0" kind="popoverPresentation" identifier="account" popoverAnchorView="zJu-Lb-dWt" id="Y6L-cF-z51">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AP Biology 6th Period" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a10-QM-88a">
                                         <rect key="frame" x="236" y="8" width="297" height="44"/>
@@ -83,6 +88,9 @@
                                         </constraints>
                                         <color key="tintColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="HomeGlyph"/>
+                                        <connections>
+                                            <action selector="touchUpInside:" destination="LRo-W8-dSe" eventType="touchUpInside" id="k8F-Sf-Qh5"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6o0-jL-uh9">
                                         <rect key="frame" x="716" y="8" width="44" height="44"/>
@@ -127,14 +135,33 @@
                     </view>
                     <connections>
                         <outlet property="accountButton" destination="zJu-Lb-dWt" id="0P4-Zi-owu"/>
+                        <outlet property="bodyView" destination="j0z-1v-v2D" id="R7E-Fk-AOJ"/>
                         <outlet property="emailAddressLabel" destination="4aQ-If-vCn" id="xRe-vo-Ek5"/>
+                        <outlet property="helpButton" destination="6o0-jL-uh9" id="BLG-o5-m9f"/>
                         <outlet property="homeButton" destination="8W6-aY-zWC" id="Lre-Qa-ied"/>
                         <outlet property="organizationNameLabel" destination="a10-QM-88a" id="I3P-TR-f74"/>
+                        <segue destination="9fp-FD-k9i" kind="presentation" identifier="main" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="6D1-Xr-GJV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZdC-CQ-Mx3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="828.90625" y="-287.109375"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="0AJ-UY-87c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="9fp-FD-k9i" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTD-0f-TMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1304" y="-633"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="PUy-Di-TUC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="AYm-RT-3m0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7l-N4-Vmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1400" y="-547"/>
         </scene>
         <!--TopNavigationChoice-->
         <scene sceneID="5nM-fX-2hv">

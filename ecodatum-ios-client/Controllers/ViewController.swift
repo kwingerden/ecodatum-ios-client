@@ -1,6 +1,9 @@
 import Foundation
+import UIKit
 
 enum ViewController: String {
+
+  case account
   
   case addNewMeasurement
   

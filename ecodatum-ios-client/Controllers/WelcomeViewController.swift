@@ -8,8 +8,9 @@ class WelcomeViewController: BaseViewController {
   @IBOutlet weak var newAccountButton: UIButton!
 
   override func viewDidLoad() {
-    super.viewDidLoad()
     
+    super.viewDidLoad()
+        
     LOG.debug("WelcomeViewController.viewDidLoad")
     
     loginButton.roundedButton()
@@ -22,10 +23,10 @@ class WelcomeViewController: BaseViewController {
     switch sender {
       
     case loginButton:
-      vcm?.performSegue(self, from: .welcome, to: .loginToAccount)
+      vcm?.performSegue(from: self, to: .loginToAccount)
       
     case newAccountButton:
-      vcm?.performSegue(self, from: .welcome, to: .createNewAccount)
+      vcm?.performSegue(from: self, to: .createNewAccount)
       
     default:
       LOG.warning("Unrecognized button: \(sender)")

@@ -20,7 +20,7 @@ class LoginToAccountViewController: BaseViewController {
   override func viewDidLoad() {
     
     super.viewDidLoad()
-    
+        
     loginButton.roundedButton()
     
     func successStyleTransformer(rule: ValidationRule) {
@@ -111,10 +111,7 @@ extension LoginToAccountViewController: ValidationDelegate {
       .then(in: .main) {
         loginResponse in
         LOG.debug(loginResponse)
-        self.vcm?.performSegue(
-          self,
-          from: .loginToAccount,
-          to: .topNavigation)
+        self.vcm?.performSegue(from: self, to: .topNavigation)
       }.catch(in: .main) {
         error in
         LOG.error(error)

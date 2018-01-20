@@ -14,8 +14,9 @@ class BaseViewController: UIViewController {
   }
   
   override func viewDidLoad() {
-    super.viewDidLoad()
     
+    super.viewDidLoad()
+  
     if BaseViewController._vcm == nil {
       do {
         BaseViewController._vcm = try ViewControllerManager()
@@ -27,13 +28,11 @@ class BaseViewController: UIViewController {
     
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-  }
-  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  
     super.prepare(for: segue, sender: sender)
     vcm?.prepare(for: segue, sender: sender)
+  
   }
   
 }
