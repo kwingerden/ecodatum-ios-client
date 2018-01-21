@@ -74,6 +74,28 @@ class ServiceManager {
     
   }
   
+  func call(_ request: GetOrganizationsByUserIdRequest) -> Promise<[GetOrganizationsByUserIdResponse]> {
+    
+    return async(
+      in: .userInitiated,
+      token: InvalidationToken()) {
+        
+        status in
+        
+        try status.checkCancelled(ServiceError.serviceCancelled)
+        
+        let response = try await(
+          in: .userInitiated,
+          self.networkManager.call(request))
+        
+        try status.checkCancelled(ServiceError.serviceCancelled)
+        
+        return response
+        
+    }
+    
+  }
+  
   func call(_ request: GetUserByIdRequest) -> Promise<GetUserByIdResponse> {
     
     return async(

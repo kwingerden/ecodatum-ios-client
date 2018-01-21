@@ -133,9 +133,12 @@ extension CreateNewAccountViewController: ValidationDelegate {
       email: email.lowercased(),
       password: password)
       .then(in: .main) {
-        createNewAccountReponse in
-        LOG.debug(createNewAccountReponse)
-        // TODO: segue to the next page
+        createNewAccountResponse in
+        LOG.debug(createNewAccountResponse)
+        self.vcm?.performSegue(
+          from: self,
+          to: .topNavigation,
+          context: createNewAccountResponse)
       }.catch(in: .main) {
         error in
         LOG.error(error)

@@ -1,5 +1,4 @@
 import Foundation
-import GRDB
 import Hydra
 import UIKit
 
@@ -34,26 +33,61 @@ class ViewControllerManager {
     switch segue.destination {
       
     case is AccountViewController:
+      
       let source = segue.source as! BaseViewController
       let destination = segue.destination as! AccountViewController
       destination.performSegueFrom = source
-
+      
     case is TopNavigationViewController:
+      
       let loginResponse = self.context as! LoginResponse
       let destination = segue.destination as! TopNavigationViewController
       destination.loginResponse = loginResponse
       
     default:
       break // do nothing
-    
+      
     }
   }
   
-  func login(email: String, password: String) -> Promise<BasicAuthUserResponse> {
-    return serviceManager.call(
-      BasicAuthUserRequest(
-        email: email,
-        password: password))
+  struct LoginResponse {
+    let basicAuthUserResponse: BasicAuthUserResponse
+    let getUserByIdResponse: GetUserByIdResponse
+    let getOrganizationsByUserIdResponse: [GetOrganizationsByUserIdResponse]
+  }
+  
+  func login(email: String, password: String) -> Promise<LoginResponse> {
+    
+    return async(
+      in: .userInitiated) {
+      
+      status in
+      
+      let basicAuthUserResponse = try await(
+        self.serviceManager.call(
+          BasicAuthUserRequest(
+            email: email,
+            password: password)))
+      
+      let getUserByIdResponse = try await(
+        self.serviceManager.call(
+          GetUserByIdRequest(
+            token: basicAuthUserResponse.token,
+            userId: basicAuthUserResponse.userId)))
+        
+      let getOrganizationsByUserIdResponse = try await(
+        self.serviceManager.call(
+          GetOrganizationsByUserIdRequest(
+              token: basicAuthUserResponse.token,
+              userId: basicAuthUserResponse.userId)))
+      
+      return LoginResponse(
+        basicAuthUserResponse: basicAuthUserResponse,
+        getUserByIdResponse: getUserByIdResponse,
+        getOrganizationsByUserIdResponse: getOrganizationsByUserIdResponse)
+      
+    }
+    
   }
   
   func logout() {
@@ -64,15 +98,47 @@ class ViewControllerManager {
     organizationCode: String,
     fullName: String,
     email: String,
-    password: String) -> Promise<CreateNewOrganizationUserResponse> {
+    password: String) -> Promise<LoginResponse> {
     
-    return serviceManager.call(
-      CreateNewOrganizationUserRequest(
-        organizationCode: organizationCode,
-        fullName: fullName,
-        email: email,
-        password: password))
-  
+    
+    return async(
+    in: .userInitiated) {
+      
+      status in
+      
+      let _ = try await(
+        self.serviceManager.call(
+          CreateNewOrganizationUserRequest(
+            organizationCode: organizationCode,
+            fullName: fullName,
+            email: email,
+            password: password)))
+      
+      let basicAuthUserResponse = try await(
+        self.serviceManager.call(
+          BasicAuthUserRequest(
+            email: email,
+            password: password)))
+      
+      let getUserByIdResponse = try await(
+        self.serviceManager.call(
+          GetUserByIdRequest(
+            token: basicAuthUserResponse.token,
+            userId: basicAuthUserResponse.userId)))
+      
+      let getOrganizationsByUserIdResponse = try await(
+        self.serviceManager.call(
+          GetOrganizationsByUserIdRequest(
+            token: basicAuthUserResponse.token,
+            userId: basicAuthUserResponse.userId)))
+      
+      return LoginResponse(
+        basicAuthUserResponse: basicAuthUserResponse,
+        getUserByIdResponse: getUserByIdResponse,
+        getOrganizationsByUserIdResponse: getOrganizationsByUserIdResponse)
+      
+    }
+    
   }
   
 }

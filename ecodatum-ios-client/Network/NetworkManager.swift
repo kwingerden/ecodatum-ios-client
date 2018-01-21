@@ -35,4 +35,13 @@ class NetworkManager {
       .run(request)
   }
   
+  func call(_ request: GetOrganizationsByUserIdRequest) throws -> Promise<[GetOrganizationsByUserIdResponse]> {
+    return try GetOrganizationsByUserIdCall(
+      url: baseURL
+        .appendingPathComponent("protected")
+        .appendingPathComponent("organizations"),
+      invalidationToken: InvalidationToken())
+      .run(request)
+  }
+  
 }

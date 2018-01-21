@@ -13,9 +13,12 @@ class TopNavigationChoiceViewController: BaseViewController {
     
     createNewSiteButton.roundedButton()
     addNewMeasurementButton.roundedButton()
-    
+
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = true
-    
   }
   
   @IBAction func touchUpInsider(_ sender: UIButton) {

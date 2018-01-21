@@ -3,9 +3,9 @@ import UIKit
 
 class TopNavigationViewController: BaseViewController {
   
-  var loginResponse: LoginResponse!
+  var loginResponse: ViewControllerManager.LoginResponse!
   
-  @IBOutlet weak var emailAddressLabel: UILabel!
+  @IBOutlet weak var fullNameAndEmailLabel: UILabel!
   
   @IBOutlet weak var organizationNameLabel: UILabel!
   
@@ -21,7 +21,12 @@ class TopNavigationViewController: BaseViewController {
     
     super.viewDidLoad()
     
-    //emailAddressLabel.text = loginResponse.
+    let fullName = loginResponse.getUserByIdResponse.fullName
+    let email = loginResponse.getUserByIdResponse.email
+    fullNameAndEmailLabel.text = "\(fullName) (\(email))"
+    if !loginResponse.getOrganizationsByUserIdResponse.isEmpty {
+      organizationNameLabel.text = loginResponse.getOrganizationsByUserIdResponse[0].name
+    }
     
   }
   

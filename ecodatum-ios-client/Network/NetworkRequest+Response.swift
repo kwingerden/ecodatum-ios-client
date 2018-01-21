@@ -60,4 +60,20 @@ struct GetUserByIdResponse: NetworkResponse {
   
 }
 
+struct GetOrganizationsByUserIdRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let userId: Int
+  
+}
+
+struct GetOrganizationsByUserIdResponse: NetworkResponse {
+ 
+  let id : Int // organization id
+  let code: String
+  let name: String
+  let description: String?
+  
+}
+
 

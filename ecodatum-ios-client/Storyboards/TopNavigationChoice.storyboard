@@ -31,7 +31,7 @@
                                             <constraint firstAttribute="height" constant="60" id="0ro-Lv-nam"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Create New Site">
+                                        <state key="normal" title="Create a New Site">
                                             <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -45,9 +45,12 @@
                                             <constraint firstAttribute="height" constant="60" id="sqt-pN-Z77"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Add New Measurement">
+                                        <state key="normal" title="Choose an Existing Site">
                                             <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="touchUpInsider:" destination="ytT-Gr-3qz" eventType="touchUpInside" id="9mS-Kt-8gs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -67,6 +70,7 @@
                         <viewLayoutGuide key="safeArea" id="J7h-zA-f2R"/>
                     </view>
                     <navigationItem key="navigationItem" id="hgF-xe-Bjx"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addNewMeasurementButton" destination="Lns-BI-46e" id="m9p-ag-cgf"/>
                         <outlet property="createNewSiteButton" destination="Ygp-8f-2Cb" id="ccG-gd-WfY"/>
@@ -102,6 +106,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ai9-yr-1Vp">
                         <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

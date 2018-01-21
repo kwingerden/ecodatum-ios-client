@@ -107,11 +107,16 @@ extension LoginToAccountViewController: ValidationDelegate {
     
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
-    vcm?.login(email: email, password: password)
+    vcm?.login(
+      email: email,
+      password: password)
       .then(in: .main) {
         loginResponse in
         LOG.debug(loginResponse)
-        self.vcm?.performSegue(from: self, to: .topNavigation)
+        self.vcm?.performSegue(
+          from: self,
+          to: .topNavigation,
+          context: loginResponse)
       }.catch(in: .main) {
         error in
         LOG.error(error)

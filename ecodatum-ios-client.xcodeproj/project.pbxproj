@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		01024E5D200A923B0030859B /* CreateNewAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01024E5C200A923B0030859B /* CreateNewAccount.storyboard */; };
 		01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E5E200A92C00030859B /* CreateNewAccountViewController.swift */; };
-		01024E65200ACB220030859B /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E64200ACB220030859B /* BaseService.swift */; };
-		01024E67200ACBBA0030859B /* CreateNewAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E66200ACBBA0030859B /* CreateNewAccountService.swift */; };
-		01024E69200ACBE90030859B /* CreateNewAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E68200ACBE90030859B /* CreateNewAccountRequest.swift */; };
-		01024E6B200ACBF60030859B /* CreateNewAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01024E6A200ACBF60030859B /* CreateNewAccountResponse.swift */; };
 		010AB17F1FF6DFBF00EFF0D5 /* Service_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB17E1FF6DFBF00EFF0D5 /* Service_Test.swift */; };
 		010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */; };
 		010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */; };
@@ -26,12 +22,6 @@
 		011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */; };
 		0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641A2005A8DD0022B788 /* ServiceError.swift */; };
-		0131641D2005A9410022B788 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641C2005A9410022B788 /* UserToken.swift */; };
-		0131641F2005A9910022B788 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641E2005A9910022B788 /* LoginRequest.swift */; };
-		013164212005A9CD0022B788 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013164202005A9CD0022B788 /* LoginResponse.swift */; };
-		013164232005A9FE0022B788 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013164222005A9FE0022B788 /* ServiceRequest.swift */; };
-		013164252005AA2A0022B788 /* ServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013164242005AA2A0022B788 /* ServiceResponse.swift */; };
-		013164272005AB1F0022B788 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013164262005AB1F0022B788 /* Service.swift */; };
 		013164292005C8120022B788 /* PromiseStatus+CheckCancelled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013164282005C8120022B788 /* PromiseStatus+CheckCancelled.swift */; };
 		0131642B2005EC8B0022B788 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131642A2005EC8B0022B788 /* ViewControllerManager.swift */; };
 		0131642D2005ECF80022B788 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131642C2005ECF80022B788 /* ServiceManager.swift */; };
@@ -41,9 +31,8 @@
 		013F67502009AD93001B8586 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F674F2009AD93001B8586 /* WelcomeViewController.swift */; };
 		013F67522009AF56001B8586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67512009AF56001B8586 /* ViewController.swift */; };
 		013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67552009B1A1001B8586 /* BaseViewController.swift */; };
-		014B315B20141B0400B81D2C /* GetUserInformationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B315A20141B0400B81D2C /* GetUserInformationRequest.swift */; };
-		014B315D20141B1200B81D2C /* GetUserInformationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B315C20141B1200B81D2C /* GetUserInformationResponse.swift */; };
-		014B315F20141BF700B81D2C /* GetUserInformationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B315E20141BF700B81D2C /* GetUserInformationService.swift */; };
+		014B316120145C8B00B81D2C /* SiteMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014B316020145C8B00B81D2C /* SiteMap.storyboard */; };
+		014B316320145CF300B81D2C /* SiteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B316220145CF300B81D2C /* SiteMapViewController.swift */; };
 		01563DD3200D72D4009A478A /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD2200D72D4009A478A /* UserRecord.swift */; };
 		01563DD5200D74E3009A478A /* NewUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD4200D74E3009A478A /* NewUserOperation.swift */; };
 		01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD8200D7D6C009A478A /* DatabaseError.swift */; };
@@ -85,7 +74,6 @@
 		01AD117B1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD117A1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift */; };
 		01D2BD7B201194E500260F18 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D2BD7A201194E500260F18 /* Account.storyboard */; };
 		01D2BD7D201194F600260F18 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2BD7C201194F600260F18 /* AccountViewController.swift */; };
-		01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3B8051FF6228700EDE896 /* LoginService.swift */; };
 		01D8B2E91FFC590A00450470 /* GRDBCipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E61FFC590A00450470 /* GRDBCipher.framework */; };
 		01D8B2EA1FFC590A00450470 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */; };
 		01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
@@ -115,10 +103,6 @@
 /* Begin PBXFileReference section */
 		01024E5C200A923B0030859B /* CreateNewAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateNewAccount.storyboard; sourceTree = "<group>"; };
 		01024E5E200A92C00030859B /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
-		01024E64200ACB220030859B /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		01024E66200ACBBA0030859B /* CreateNewAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountService.swift; sourceTree = "<group>"; };
-		01024E68200ACBE90030859B /* CreateNewAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountRequest.swift; sourceTree = "<group>"; };
-		01024E6A200ACBF60030859B /* CreateNewAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountResponse.swift; sourceTree = "<group>"; };
 		010AB17E1FF6DFBF00EFF0D5 /* Service_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service_Test.swift; sourceTree = "<group>"; };
 		010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
 		010AB1861FF72C4600EFF0D5 /* UIButton+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rounded.swift"; sourceTree = "<group>"; };
@@ -132,12 +116,6 @@
 		011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToAccountViewController.swift; sourceTree = "<group>"; };
 		0131641A2005A8DD0022B788 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
-		0131641C2005A9410022B788 /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
-		0131641E2005A9910022B788 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		013164202005A9CD0022B788 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
-		013164222005A9FE0022B788 /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
-		013164242005AA2A0022B788 /* ServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceResponse.swift; sourceTree = "<group>"; };
-		013164262005AB1F0022B788 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		013164282005C8120022B788 /* PromiseStatus+CheckCancelled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseStatus+CheckCancelled.swift"; sourceTree = "<group>"; };
 		0131642A2005EC8B0022B788 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
 		0131642C2005ECF80022B788 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
@@ -147,9 +125,8 @@
 		013F674F2009AD93001B8586 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		013F67512009AF56001B8586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		013F67552009B1A1001B8586 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		014B315A20141B0400B81D2C /* GetUserInformationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInformationRequest.swift; sourceTree = "<group>"; };
-		014B315C20141B1200B81D2C /* GetUserInformationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInformationResponse.swift; sourceTree = "<group>"; };
-		014B315E20141BF700B81D2C /* GetUserInformationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInformationService.swift; sourceTree = "<group>"; };
+		014B316020145C8B00B81D2C /* SiteMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SiteMap.storyboard; sourceTree = "<group>"; };
+		014B316220145CF300B81D2C /* SiteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteMapViewController.swift; sourceTree = "<group>"; };
 		01563DD2200D72D4009A478A /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		01563DD4200D74E3009A478A /* NewUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserOperation.swift; sourceTree = "<group>"; };
 		01563DD8200D7D6C009A478A /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
@@ -187,7 +164,6 @@
 		01AD117C1FF4B5DC000DCE81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D2BD7A201194E500260F18 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		01D2BD7C201194F600260F18 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		01D3B8051FF6228700EDE896 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		01D8B2E61FFC590A00450470 /* GRDBCipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCipher.framework; path = Carthage/Build/iOS/GRDBCipher.framework; sourceTree = "<group>"; };
 		01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCustomSQLite.framework; path = Carthage/Build/iOS/GRDBCustomSQLite.framework; sourceTree = "<group>"; };
 		01D8B2E81FFC590A00450470 /* GRDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDB.framework; path = Carthage/Build/iOS/GRDB.framework; sourceTree = "<group>"; };
@@ -392,6 +368,7 @@
 				017A159D2010704B008553E2 /* CreateNewSiteViewController.swift */,
 				017A159F20107066008553E2 /* AddNewMeasurementViewController.swift */,
 				01D2BD7C201194F600260F18 /* AccountViewController.swift */,
+				014B316220145CF300B81D2C /* SiteMapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -409,6 +386,7 @@
 				017A159920107023008553E2 /* CreateNewSite.storyboard */,
 				017A159B20107031008553E2 /* AddNewMeasurement.storyboard */,
 				01D2BD7A201194E500260F18 /* Account.storyboard */,
+				014B316020145C8B00B81D2C /* SiteMap.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -416,23 +394,9 @@
 		01D3B8041FF6226C00EDE896 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				01D3B8051FF6228700EDE896 /* LoginService.swift */,
 				0131641A2005A8DD0022B788 /* ServiceError.swift */,
-				0131641C2005A9410022B788 /* UserToken.swift */,
-				0131641E2005A9910022B788 /* LoginRequest.swift */,
-				013164202005A9CD0022B788 /* LoginResponse.swift */,
-				013164222005A9FE0022B788 /* ServiceRequest.swift */,
-				013164242005AA2A0022B788 /* ServiceResponse.swift */,
-				013164262005AB1F0022B788 /* Service.swift */,
 				0131642C2005ECF80022B788 /* ServiceManager.swift */,
 				015E34AA2006D0A9006A74C7 /* ServiceHelper.swift */,
-				01024E64200ACB220030859B /* BaseService.swift */,
-				01024E66200ACBBA0030859B /* CreateNewAccountService.swift */,
-				01024E68200ACBE90030859B /* CreateNewAccountRequest.swift */,
-				01024E6A200ACBF60030859B /* CreateNewAccountResponse.swift */,
-				014B315A20141B0400B81D2C /* GetUserInformationRequest.swift */,
-				014B315C20141B1200B81D2C /* GetUserInformationResponse.swift */,
-				014B315E20141BF700B81D2C /* GetUserInformationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -529,6 +493,7 @@
 				017A159620106C6E008553E2 /* TopNavigationChoice.storyboard in Resources */,
 				01D2BD7B201194E500260F18 /* Account.storyboard in Resources */,
 				017A159020104871008553E2 /* TopNavigation.storyboard in Resources */,
+				014B316120145C8B00B81D2C /* SiteMap.storyboard in Resources */,
 				011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */,
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
 				01AD116B1FF4B5DB000DCE81 /* Welcome.storyboard in Resources */,
@@ -596,16 +561,10 @@
 			files = (
 				015E34A52006A8B0006A74C7 /* DatabaseHelper.swift in Sources */,
 				0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */,
-				013164272005AB1F0022B788 /* Service.swift in Sources */,
-				013164212005A9CD0022B788 /* LoginResponse.swift in Sources */,
 				019FA2FD1FFA009A00E38B2C /* UserTokenRecord.swift in Sources */,
-				01024E67200ACBBA0030859B /* CreateNewAccountService.swift in Sources */,
 				01563DD5200D74E3009A478A /* NewUserOperation.swift in Sources */,
 				010AB1871FF72C4600EFF0D5 /* UIButton+Rounded.swift in Sources */,
-				01024E65200ACB220030859B /* BaseService.swift in Sources */,
 				013164312005F1CB0022B788 /* Configuration.swift in Sources */,
-				014B315B20141B0400B81D2C /* GetUserInformationRequest.swift in Sources */,
-				0131641D2005A9410022B788 /* UserToken.swift in Sources */,
 				011280F62005591A00CF0E6B /* DatabaseOperation.swift in Sources */,
 				01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */,
 				01563DDF200D8E43009A478A /* NetworkRequest+Response.swift in Sources */,
@@ -618,20 +577,15 @@
 				01D8B2FA1FFC6C5100450470 /* NetworkError.swift in Sources */,
 				0131642D2005ECF80022B788 /* ServiceManager.swift in Sources */,
 				013164292005C8120022B788 /* PromiseStatus+CheckCancelled.swift in Sources */,
-				01D3B8061FF6228700EDE896 /* LoginService.swift in Sources */,
 				017A15A020107066008553E2 /* AddNewMeasurementViewController.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				013F67522009AF56001B8586 /* ViewController.swift in Sources */,
 				01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */,
+				014B316320145CF300B81D2C /* SiteMapViewController.swift in Sources */,
 				013F67502009AD93001B8586 /* WelcomeViewController.swift in Sources */,
 				0190E7771FFB69E1006F9B81 /* Request+HTTPHeaders.swift in Sources */,
 				015E34A72006BCEF006A74C7 /* DoesUserTokenExistOperation.swift in Sources */,
-				01024E69200ACBE90030859B /* CreateNewAccountRequest.swift in Sources */,
-				014B315D20141B1200B81D2C /* GetUserInformationResponse.swift in Sources */,
-				014B315F20141BF700B81D2C /* GetUserInformationService.swift in Sources */,
-				01024E6B200ACBF60030859B /* CreateNewAccountResponse.swift in Sources */,
 				011281002005870100CF0E6B /* FindUserTokenOperation.swift in Sources */,
-				013164232005A9FE0022B788 /* ServiceRequest.swift in Sources */,
 				01563DD3200D72D4009A478A /* UserRecord.swift in Sources */,
 				015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */,
 				0131642B2005EC8B0022B788 /* ViewControllerManager.swift in Sources */,
@@ -640,8 +594,6 @@
 				011280FC20055A6C00CF0E6B /* NewUserTokenOperation.swift in Sources */,
 				017A159820106C82008553E2 /* TopNavigationChoiceViewController.swift in Sources */,
 				017A159E2010704B008553E2 /* CreateNewSiteViewController.swift in Sources */,
-				013164252005AA2A0022B788 /* ServiceResponse.swift in Sources */,
-				0131641F2005A9910022B788 /* LoginRequest.swift in Sources */,
 				017A1592201049F0008553E2 /* TopNavigationViewController.swift in Sources */,
 				015E34AB2006D0A9006A74C7 /* ServiceHelper.swift in Sources */,
 			);
