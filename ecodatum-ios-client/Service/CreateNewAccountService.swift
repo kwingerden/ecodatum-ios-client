@@ -17,14 +17,14 @@ extension CreateNewAccountService: Service {
         
         try status.checkCancelled(ServiceError.serviceCancelled)
         
-        let createNewUserRequest = CreateNewUserRequest(
+        let createNewUserRequest = CreateNewOrganizationUserRequest(
           organizationCode: request.organizationCode,
           fullName: request.fullName,
           email: request.email,
           password: request.password)
         let createNewUserResponse = try await(
           in: .userInitiated,
-          self.networkManager.createNewUserCall(createNewUserRequest))
+          self.networkManager.call(createNewUserRequest))
         
         try status.checkCancelled(ServiceError.serviceCancelled)
         

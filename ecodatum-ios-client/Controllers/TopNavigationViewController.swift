@@ -3,6 +3,8 @@ import UIKit
 
 class TopNavigationViewController: BaseViewController {
   
+  var loginResponse: LoginResponse!
+  
   @IBOutlet weak var emailAddressLabel: UILabel!
   
   @IBOutlet weak var organizationNameLabel: UILabel!
@@ -16,7 +18,11 @@ class TopNavigationViewController: BaseViewController {
   @IBOutlet weak var bodyView: UIView!
   
   override func viewDidLoad() {
+    
     super.viewDidLoad()
+    
+    //emailAddressLabel.text = loginResponse.
+    
   }
   
   @IBAction func touchUpInside(_ sender: UIButton) {

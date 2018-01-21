@@ -26,7 +26,7 @@ extension Request {
     
   }
   
-  static func bearerTokenAuthHeaders(bearerToken: String) -> HTTPHeaders? {
+  static func bearerTokenAuthHeaders(_ bearerToken: String) -> HTTPHeaders? {
     return [
       "Authorization": "Bearer \(bearerToken)",
       "Accept":  "application/json; charset=utf-8"

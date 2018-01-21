@@ -1,10 +1,10 @@
 import Foundation
 
-struct CreateNewUserResponse: NetworkResponse {
+struct GetUserInformationResponse: ServiceResponse {
   
-  let id: Int
   let fullName: String
   let email: String
   
 }
+
 

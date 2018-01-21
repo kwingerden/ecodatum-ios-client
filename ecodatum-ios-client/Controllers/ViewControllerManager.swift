@@ -5,6 +5,8 @@ import UIKit
 
 class ViewControllerManager {
   
+  private var context: Any?
+  
   private let serviceManager: ServiceManager
   
   init() throws {
@@ -19,27 +21,37 @@ class ViewControllerManager {
   
   func performSegue<T: BaseViewController>(from: T,
                                            to: ViewController,
-                                           sender: Any? = nil) {
+                                           sender: Any? = nil,
+                                           context: Any? = nil) {
     
     LOG.debug("ViewControllerManager.performSegue: \(from) => \(to)")
+    self.context = context
     from.performSegue(withIdentifier: to.rawValue, sender: sender)
     
   }
   
   func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     switch segue.destination {
+      
     case is AccountViewController:
       let source = segue.source as! BaseViewController
       let destination = segue.destination as! AccountViewController
       destination.performSegueFrom = source
+
+    case is TopNavigationViewController:
+      let loginResponse = self.context as! LoginResponse
+      let destination = segue.destination as! TopNavigationViewController
+      destination.loginResponse = loginResponse
+      
     default:
       break // do nothing
+    
     }
   }
   
-  func login(email: String, password: String) -> Promise<LoginResponse> {
-    return serviceManager.login(
-      LoginRequest(
+  func login(email: String, password: String) -> Promise<BasicAuthUserResponse> {
+    return serviceManager.call(
+      BasicAuthUserRequest(
         email: email,
         password: password))
   }
@@ -52,10 +64,10 @@ class ViewControllerManager {
     organizationCode: String,
     fullName: String,
     email: String,
-    password: String) -> Promise<CreateNewAccountResponse> {
+    password: String) -> Promise<CreateNewOrganizationUserResponse> {
     
-    return serviceManager.createNewAccount(
-      CreateNewAccountRequest(
+    return serviceManager.call(
+      CreateNewOrganizationUserRequest(
         organizationCode: organizationCode,
         fullName: fullName,
         email: email,

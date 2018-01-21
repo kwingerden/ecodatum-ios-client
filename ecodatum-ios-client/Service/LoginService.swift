@@ -22,7 +22,7 @@ extension LoginService: Service {
           password: request.password)
         let basicAuthUserResponse = try await(
           in: .userInitiated,
-          self.networkManager.basicAuthUserCall(basicAuthUserRequest))
+          self.networkManager.call(basicAuthUserRequest))
         
         try status.checkCancelled(ServiceError.serviceCancelled)
         
@@ -34,7 +34,8 @@ extension LoginService: Service {
         
         try status.checkCancelled(ServiceError.serviceCancelled)
         
-        return LoginResponse(token: basicAuthUserResponse.token)
+        return LoginResponse(userId: basicAuthUserResponse.userId,
+                             token: basicAuthUserResponse.token)
         
     }
     
