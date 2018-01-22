@@ -1,21 +1,53 @@
 import Foundation
+import SVProgressHUD
+import SwiftValidator
 import UIKit
 
 class CreateNewSiteViewController: BaseViewController {
   
+  @IBOutlet weak var nameTextField: UITextField!
+  
+  @IBOutlet weak var nameErrorLabel: UILabel!
+  
   @IBOutlet weak var descriptionTextView: UITextView!
   
+  @IBOutlet weak var descriptionErrorLabel: UILabel!
+  
+  @IBOutlet weak var latitudeTextField: UITextField!
+  
+  @IBOutlet weak var latitudeErrorLabel: UILabel!
+  
+  @IBOutlet weak var longitudeTextField: UITextField!
+  
+  @IBOutlet weak var longitudeErrorLabel: UILabel!
+  
   @IBOutlet weak var createNewSiteButton: UIButton!
+  
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   override func viewDidLoad() {
     
     super.viewDidLoad()
     
-    descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
-    descriptionTextView.layer.borderWidth = 0.5
-    descriptionTextView.layer.cornerRadius = 8
-  
+    descriptionTextView.roundedTextView()
     createNewSiteButton.roundedButton()
+    
+    validator.registerField(
+      nameTextField,
+      errorLabel: nameErrorLabel,
+      rules: [RequiredRule()])
+    validator.registerField(
+      descriptionTextView,
+      errorLabel: descriptionErrorLabel,
+      rules: [RequiredRule()])
+    validator.registerField(
+      latitudeTextField,
+      errorLabel: latitudeErrorLabel,
+      rules: [RequiredRule(), DoubleRule("Invalid Latitude")])
+    validator.registerField(
+      longitudeTextField,
+      errorLabel: longitudeErrorLabel,
+      rules: [RequiredRule(), DoubleRule("Invalid Longitude")])
     
   }
   
@@ -25,8 +57,36 @@ class CreateNewSiteViewController: BaseViewController {
   }
   
   @IBAction func touchUpInside(_ sender: UIButton) {
+    validator.defaultValidate(validationSuccessful)
+  }
   
-    vcm?.performSegue(from: self, to: .siteMap)
+  private func validationSuccessful() {
+    
+    view.isUserInteractionEnabled = false
+    activityIndicator.startAnimating()
+    
+    let name = nameTextField.text!
+    let description = descriptionTextView.text!
+    let latitude = latitudeTextField.text!
+    let longitude = longitudeTextField.text!
+    
+    vcm?.createNewSite(
+      name: name,
+      description: description,
+      latitude: latitude.toDouble()!,
+      longitude: longitude.toDouble()!)
+      .then(in: .main) {
+        response in
+        LOG.debug(response)
+      }.catch(in: .main) {
+        error in
+        LOG.error(error)
+        SVProgressHUD.defaultShowError(
+          "Unrecognized email address and/or password.")
+      }.always(in: .main) {
+        self.view.isUserInteractionEnabled = true
+        self.activityIndicator.stopAnimating()
+    }
     
   }
   

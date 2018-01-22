@@ -1,4 +1,5 @@
 import Foundation
+import SwiftValidator
 import UIKit
 
 class BaseViewController: UIViewController {
@@ -13,6 +14,8 @@ class BaseViewController: UIViewController {
     }
   }
   
+  let validator = Validator()
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -25,6 +28,8 @@ class BaseViewController: UIViewController {
         // TODO: add some UI warning to user
       }
     }
+    
+    validator.defaultStyleTransformers()
     
   }
   

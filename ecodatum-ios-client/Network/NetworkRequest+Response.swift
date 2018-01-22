@@ -76,4 +76,32 @@ struct GetOrganizationsByUserIdResponse: NetworkResponse {
   
 }
 
+struct CreateNewSiteRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let name: String
+  let description: String?
+  let latitude: Double
+  let longitude: Double
+  let altitude: Double?
+  let horizontalAccuracy: Double?
+  let verticalAccuracy: Double?
+  let organizationId: Int
+  
+}
+
+struct CreateNewSiteResponse: NetworkResponse {
+  
+  let id: Int // site id
+  let name: String
+  let description: String?
+  let latitude: Double
+  let longitude: Double
+  let altitude: Double?
+  let horizontalAccuracy: Double?
+  let verticalAccuracy: Double?
+  let organizationId: Int
+  
+}
+
 

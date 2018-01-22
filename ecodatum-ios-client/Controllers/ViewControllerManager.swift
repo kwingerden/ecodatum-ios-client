@@ -4,6 +4,10 @@ import UIKit
 
 class ViewControllerManager {
   
+  var currentToken: String?
+  
+  var currentOrganizationId: Int?
+  
   private var context: Any?
   
   private let serviceManager: ServiceManager
@@ -43,6 +47,10 @@ class ViewControllerManager {
       let loginResponse = self.context as! LoginResponse
       let destination = segue.destination as! TopNavigationViewController
       destination.loginResponse = loginResponse
+      currentToken = loginResponse.basicAuthUserResponse.token
+      if let organizationId = loginResponse.firstOrganization?.id {
+        currentOrganizationId = organizationId
+      }
       
     default:
       break // do nothing
@@ -54,12 +62,21 @@ class ViewControllerManager {
     let basicAuthUserResponse: BasicAuthUserResponse
     let getUserByIdResponse: GetUserByIdResponse
     let getOrganizationsByUserIdResponse: [GetOrganizationsByUserIdResponse]
+    
+    var firstOrganization: GetOrganizationsByUserIdResponse? {
+      if getOrganizationsByUserIdResponse.isEmpty {
+        return nil
+      } else {
+        return getOrganizationsByUserIdResponse[0]
+      }
+    }
+    
   }
   
   func login(email: String, password: String) -> Promise<LoginResponse> {
     
     return async(
-      in: .userInitiated) {
+    in: .userInitiated) {
       
       status in
       
@@ -74,12 +91,12 @@ class ViewControllerManager {
           GetUserByIdRequest(
             token: basicAuthUserResponse.token,
             userId: basicAuthUserResponse.userId)))
-        
+      
       let getOrganizationsByUserIdResponse = try await(
         self.serviceManager.call(
           GetOrganizationsByUserIdRequest(
-              token: basicAuthUserResponse.token,
-              userId: basicAuthUserResponse.userId)))
+            token: basicAuthUserResponse.token,
+            userId: basicAuthUserResponse.userId)))
       
       return LoginResponse(
         basicAuthUserResponse: basicAuthUserResponse,
@@ -99,7 +116,6 @@ class ViewControllerManager {
     fullName: String,
     email: String,
     password: String) -> Promise<LoginResponse> {
-    
     
     return async(
     in: .userInitiated) {
@@ -138,6 +154,28 @@ class ViewControllerManager {
         getOrganizationsByUserIdResponse: getOrganizationsByUserIdResponse)
       
     }
+    
+  }
+  
+  func createNewSite(
+    name: String,
+    description: String? = nil,
+    latitude: Double,
+    longitude: Double,
+    altitude: Double? = nil,
+    horizontalAccuracy: Double? = nil,
+    verticalAccuracy: Double? = nil) -> Promise<CreateNewSiteResponse> {
+    
+    return serviceManager.call(CreateNewSiteRequest(
+      token: currentToken!,
+      name: name,
+      description: description,
+      latitude: latitude,
+      longitude: longitude,
+      altitude: altitude,
+      horizontalAccuracy: horizontalAccuracy,
+      verticalAccuracy: verticalAccuracy,
+      organizationId: currentOrganizationId!))
     
   }
   

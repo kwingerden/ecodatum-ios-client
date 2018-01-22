@@ -44,4 +44,13 @@ class NetworkManager {
       .run(request)
   }
   
+  func call(_ request: CreateNewSiteRequest) throws -> Promise<CreateNewSiteResponse> {
+    return try CreateNewSiteCall(
+      url: baseURL
+        .appendingPathComponent("protected")
+        .appendingPathComponent("sites"),
+      invalidationToken: InvalidationToken())
+      .run(request)
+  }
+  
 }

@@ -24,8 +24,8 @@ class TopNavigationViewController: BaseViewController {
     let fullName = loginResponse.getUserByIdResponse.fullName
     let email = loginResponse.getUserByIdResponse.email
     fullNameAndEmailLabel.text = "\(fullName) (\(email))"
-    if !loginResponse.getOrganizationsByUserIdResponse.isEmpty {
-      organizationNameLabel.text = loginResponse.getOrganizationsByUserIdResponse[0].name
+    if let organizationName = loginResponse.firstOrganization?.name {
+      organizationNameLabel.text = organizationName
     }
     
   }

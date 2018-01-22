@@ -14,7 +14,7 @@ class ServiceManager {
   }
   
   func call(_ request: BasicAuthUserRequest) -> Promise<BasicAuthUserResponse> {
-  
+    
     return async(
       in: .userInitiated,
       token: InvalidationToken()) {
@@ -41,7 +41,7 @@ class ServiceManager {
         
     }
     
- }
+  }
   
   func call(_ request: CreateNewOrganizationUserRequest) -> Promise<CreateNewOrganizationUserResponse> {
     
@@ -97,6 +97,28 @@ class ServiceManager {
   }
   
   func call(_ request: GetUserByIdRequest) -> Promise<GetUserByIdResponse> {
+    
+    return async(
+      in: .userInitiated,
+      token: InvalidationToken()) {
+        
+        status in
+        
+        try status.checkCancelled(ServiceError.serviceCancelled)
+        
+        let response = try await(
+          in: .userInitiated,
+          self.networkManager.call(request))
+        
+        try status.checkCancelled(ServiceError.serviceCancelled)
+        
+        return response
+        
+    }
+    
+  }
+  
+  func call(_ request: CreateNewSiteRequest) -> Promise<CreateNewSiteResponse> {
     
     return async(
       in: .userInitiated,

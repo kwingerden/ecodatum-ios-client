@@ -1,6 +1,7 @@
 import Foundation
 import SwiftyBeaver
 import SwiftyJSON
+import UIKit
 
 // LOG
 
@@ -20,4 +21,16 @@ let LOG: SwiftyBeaver.Type = {
   
 }()
 
+
+let OLIVE_GREEN = UIColor.init(
+  red: 210/255,
+  green: 227/255,
+  blue: 155/255,
+  alpha: 1)
+
+let DARK_GREEN = UIColor.init(
+  red: 0,
+  green: 143/255,
+  blue: 0,
+  alpha: 1)
 
