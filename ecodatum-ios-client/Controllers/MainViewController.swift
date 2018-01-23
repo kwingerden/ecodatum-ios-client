@@ -10,7 +10,11 @@ class MainViewController: BaseViewController {
     // Dramatic pause
     Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {
       _ in
-      self.vcm?.performSegue(from: self,to: .welcome)
+      if let _ = self.vcm?.authenticatedUser {
+        self.vcm?.performSegue(from: self, to: .topNavigation)
+      } else {
+        self.vcm?.performSegue(from: self, to: .welcome)
+      }
     }
   
   }

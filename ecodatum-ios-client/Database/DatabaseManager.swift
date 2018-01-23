@@ -18,38 +18,10 @@ class DatabaseManager {
     
     try databasePool.writeInTransaction {
       db in
-      try UserRecord.createTable(db)
-      try UserTokenRecord.createTable(db)
+      try AuthenticatedUserRecord.createTable(db)
       return .commit
     }
     
-  }
-  
-  func newUser(userId: Int,
-               fullName: String,
-               email: String) -> Promise<UserRecord> {
-    return NewUserOperation(
-      userId: userId,
-      fullName: fullName,
-      email: email)
-      .run(self)
-  }
-  
-  
-  func newUserToken(userId: Int,
-                    token: String) -> Promise<UserTokenRecord> {
-    return NewUserTokenOperation(
-      userId: userId,
-      token: token)
-      .run(self)
-  }
-  
-  func findUserToken(byId: Int) -> Promise<UserTokenRecord?> {
-    return FindUserTokenOperation(byId: byId).run(self)
-  }
-  
-  func doesUserTokenExist(byId: Int) -> Promise<Bool> {
-    return DoesUserTokenExistOperation(byId: byId).run(self)
   }
   
   func write(_ write: DatabaseWrite) throws {

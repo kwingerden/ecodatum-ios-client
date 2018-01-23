@@ -240,11 +240,20 @@
                         <outlet property="nameErrorLabel" destination="EPj-CI-jRr" id="uEt-r8-lK5"/>
                         <outlet property="nameTextField" destination="F0l-2D-crC" id="RhB-hl-qKB"/>
                         <segue destination="YL0-Fw-WBJ" kind="show" identifier="siteMap" id="5jn-uO-5JY"/>
+                        <segue destination="UL1-Jf-90e" kind="show" identifier="addNewMeasurement" id="Jjr-CB-naZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q05-dY-3NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-480" y="64"/>
+        </scene>
+        <!--AddNewMeasurement-->
+        <scene sceneID="yPH-kj-jvO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddNewMeasurement" id="UL1-Jf-90e" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jnG-ct-qbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13" y="-50"/>
         </scene>
         <!--SiteMap-->
         <scene sceneID="IXs-UR-hQh">
@@ -252,7 +261,7 @@
                 <viewControllerPlaceholder storyboardName="SiteMap" id="YL0-Fw-WBJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aam-gE-NfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="117"/>
+            <point key="canvasLocation" x="229" y="165"/>
         </scene>
     </scenes>
     <resources>

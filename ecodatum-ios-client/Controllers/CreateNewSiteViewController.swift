@@ -1,4 +1,5 @@
 import Foundation
+import Hydra
 import SVProgressHUD
 import SwiftValidator
 import UIKit
@@ -70,22 +71,56 @@ class CreateNewSiteViewController: BaseViewController {
     let latitude = latitudeTextField.text!
     let longitude = longitudeTextField.text!
     
-    vcm?.createNewSite(
-      name: name,
-      description: description,
-      latitude: latitude.toDouble()!,
-      longitude: longitude.toDouble()!)
-      .then(in: .main) {
-        response in
-        LOG.debug(response)
-      }.catch(in: .main) {
-        error in
-        LOG.error(error)
-        SVProgressHUD.defaultShowError(
-          "Unrecognized email address and/or password.")
-      }.always(in: .main) {
-        self.view.isUserInteractionEnabled = true
-        self.activityIndicator.stopAnimating()
+    do {
+      
+      if let vcm = vcm,
+        let authenticatedUser = vcm.authenticatedUser {
+        
+        func createNewSite(
+          _ organizations: [ViewControllerManager.Organization])
+          throws -> Promise<CreateNewSiteResponse> {
+          
+          // Just return the first organization since users are assumed to
+          // belong to one organization at the moment.
+          guard organizations.count == 1 else {
+            throw ViewControllerError.unexpectedNumberOfUserOrganizations
+          }
+          let organization = organizations[0]
+          return try vcm.createNewSite(
+            token: authenticatedUser.token,
+            organizationId: organization.id,
+            name: name,
+            description: description,
+            latitude: latitude.toDouble()!,
+            longitude: longitude.toDouble()!)
+          
+        }
+        
+        try vcm.getUserOrganizations(
+          token: authenticatedUser.token,
+          userId: authenticatedUser.userId)
+          .then(in: .main, createNewSite)
+          .then(in: .main) {
+            response in
+            LOG.debug(response)
+            self.vcm?.performSegue(
+              from: self,
+              to: .addNewMeasurement,
+              context: response)
+          }.catch(in: .main) {
+            error in
+            LOG.error(error)
+            SVProgressHUD.defaultShowError(
+              "Unrecognized email address and/or password.")
+          }.always(in: .main) {
+            self.view.isUserInteractionEnabled = true
+            self.activityIndicator.stopAnimating()
+        }
+      
+      }
+      
+    } catch let error {
+      LOG.error(error.localizedDescription)
     }
     
   }

@@ -3,8 +3,6 @@ import UIKit
 
 class TopNavigationViewController: BaseViewController {
   
-  var loginResponse: ViewControllerManager.LoginResponse!
-  
   @IBOutlet weak var fullNameAndEmailLabel: UILabel!
   
   @IBOutlet weak var organizationNameLabel: UILabel!
@@ -21,13 +19,15 @@ class TopNavigationViewController: BaseViewController {
     
     super.viewDidLoad()
     
-    let fullName = loginResponse.getUserByIdResponse.fullName
-    let email = loginResponse.getUserByIdResponse.email
-    fullNameAndEmailLabel.text = "\(fullName) (\(email))"
-    if let organizationName = loginResponse.firstOrganization?.name {
-      organizationNameLabel.text = organizationName
+    if let authenticatedUser = vcm?.authenticatedUser {
+      let fullName = authenticatedUser.fullName
+      let email = authenticatedUser.email
+      fullNameAndEmailLabel.text = "\(fullName) (\(email))"
+      if let organizationName = loginResponse.firstOrganization?.name {
+        organizationNameLabel.text = organizationName
+      }
     }
-    
+  
   }
   
   @IBAction func touchUpInside(_ sender: UIButton) {

@@ -13,131 +13,58 @@ class ServiceManager {
     self.networkManager = networkManager
   }
   
-  func call(_ request: BasicAuthUserRequest) -> Promise<BasicAuthUserResponse> {
+  func setAuthenticatedUser(_ user: AuthenticatedUserRecord) throws {
     
-    return async(
-      in: .userInitiated,
-      token: InvalidationToken()) {
-        
-        status in
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        let response = try await(
-          in: .userInitiated,
-          self.networkManager.call(request))
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        let _ = try await(
-          in: .userInitiated,
-          self.databaseManager.newUserToken(
-            userId: response.userId,
-            token: response.token))
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        return response
-        
+    return try databaseManager.write {
+      db in
+      let count = try AuthenticatedUserRecord.fetchCount(db)
+      if count == 0 {
+        try user.save(db)
+      } else {
+        throw DatabaseError.authenticatedUserAlreadyExists
+      }
+      return .commit
     }
     
   }
   
-  func call(_ request: CreateNewOrganizationUserRequest) -> Promise<CreateNewOrganizationUserResponse> {
+  func getAuthenticatedUser() throws -> AuthenticatedUserRecord? {
     
-    return async(
-      in: .userInitiated,
-      token: InvalidationToken()) {
-        
-        status in
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        let response = try await(
-          in: .userInitiated,
-          self.networkManager.call(request))
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        let _ = try await(
-          in: .userInitiated,
-          self.databaseManager.newUser(
-            userId: response.id,
-            fullName: response.fullName,
-            email: response.email))
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        return response
-        
+    return try databaseManager.read {
+      db in
+      try AuthenticatedUserRecord.fetchOne(db)
     }
     
   }
   
-  func call(_ request: GetOrganizationsByUserIdRequest) -> Promise<[GetOrganizationsByUserIdResponse]> {
+  func deleteAuthenticatedUser() throws {
     
-    return async(
-      in: .userInitiated,
-      token: InvalidationToken()) {
-        
-        status in
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        let response = try await(
-          in: .userInitiated,
-          self.networkManager.call(request))
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        return response
-        
+    return try databaseManager.write {
+      db in
+      try AuthenticatedUserRecord.deleteAll(db)
+      return .commit
     }
     
   }
   
-  func call(_ request: GetUserByIdRequest) -> Promise<GetUserByIdResponse> {
-    
-    return async(
-      in: .userInitiated,
-      token: InvalidationToken()) {
-        
-        status in
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        let response = try await(
-          in: .userInitiated,
-          self.networkManager.call(request))
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        return response
-        
-    }
-    
+  func call(_ request: BasicAuthUserRequest) throws -> Promise<BasicAuthUserResponse> {
+    return try networkManager.call(request)
   }
   
-  func call(_ request: CreateNewSiteRequest) -> Promise<CreateNewSiteResponse> {
-    
-    return async(
-      in: .userInitiated,
-      token: InvalidationToken()) {
-        
-        status in
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        let response = try await(
-          in: .userInitiated,
-          self.networkManager.call(request))
-        
-        try status.checkCancelled(ServiceError.serviceCancelled)
-        
-        return response
-        
-    }
-    
+  func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<CreateNewOrganizationUserResponse> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: GetOrganizationsByUserIdRequest) throws -> Promise<[GetOrganizationsByUserIdResponse]> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: GetUserByIdRequest) throws -> Promise<GetUserByIdResponse> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: CreateNewSiteRequest) throws -> Promise<CreateNewSiteResponse> {
+    return try networkManager.call(request)
   }
   
 }
