@@ -103,9 +103,9 @@ class BasicAuthUserCall: BaseNetworkCall, NetworkCall {
   
 }
 
-class CreateNewUserCall: BaseNetworkCall, NetworkCall {
+class CreateNewOrganizationUserCall: BaseNetworkCall, NetworkCall {
   
-  func run(_ request: CreateNewOrganizationUserRequest) throws -> Promise<CreateNewOrganizationUserResponse> {
+  func run(_ request: CreateNewOrganizationUserRequest) throws -> Promise<UserResponse> {
     
     let parameters = try JSONSerialization.jsonObject(
       with: try JSONEncoder().encode(request),
@@ -122,7 +122,7 @@ class CreateNewUserCall: BaseNetworkCall, NetworkCall {
     let debugDescription = request.debugDescription
     LOG.debug(debugDescription)
     
-    return Promise<CreateNewOrganizationUserResponse>(
+    return Promise<UserResponse>(
       in: .userInitiated,
       token: invalidationToken) {
         
@@ -141,7 +141,7 @@ class CreateNewUserCall: BaseNetworkCall, NetworkCall {
             reject(error)
           } else if let data = response.data {
             do {
-              let response = try JSONDecoder().decode(CreateNewOrganizationUserResponse.self, from: data)
+              let response = try JSONDecoder().decode(UserResponse.self, from: data)
               resolve(response)
             } catch let error {
               reject(error)
@@ -157,10 +157,10 @@ class CreateNewUserCall: BaseNetworkCall, NetworkCall {
   
 }
 
-class GetOrganizationsByUserIdCall: BaseNetworkCall, NetworkCall {
+class GetOrganizationsByUserCall: BaseNetworkCall, NetworkCall {
   
-  func run(_ request: GetOrganizationsByUserIdRequest)
-    throws -> Promise<[GetOrganizationsByUserIdResponse]> {
+  func run(_ request: GetOrganizationsByUserRequest)
+    throws -> Promise<[OrganizationResponse]> {
     
     let request = Alamofire.request(
       url,
@@ -171,7 +171,7 @@ class GetOrganizationsByUserIdCall: BaseNetworkCall, NetworkCall {
     let debugDescription = request.debugDescription
     LOG.debug(debugDescription)
     
-    return Promise<[GetOrganizationsByUserIdResponse]>(
+    return Promise<[OrganizationResponse]>(
       in: .userInitiated,
       token: invalidationToken) {
         
@@ -191,7 +191,7 @@ class GetOrganizationsByUserIdCall: BaseNetworkCall, NetworkCall {
           } else if let data = response.data {
             do {
               let response = try JSONDecoder().decode(
-                [GetOrganizationsByUserIdResponse].self,
+                [OrganizationResponse].self,
                 from: data)
               resolve(response)
             } catch let error {
@@ -208,9 +208,9 @@ class GetOrganizationsByUserIdCall: BaseNetworkCall, NetworkCall {
   
 }
 
-class GetUserByIdCall: BaseNetworkCall, NetworkCall {
+class GetUserCall: BaseNetworkCall, NetworkCall {
   
-  func run(_ request: GetUserByIdRequest) throws -> Promise<GetUserByIdResponse> {
+  func run(_ request: GetUserRequest) throws -> Promise<UserResponse> {
     
     let request = Alamofire.request(
       url,
@@ -221,7 +221,7 @@ class GetUserByIdCall: BaseNetworkCall, NetworkCall {
     let debugDescription = request.debugDescription
     LOG.debug(debugDescription)
     
-    return Promise<GetUserByIdResponse>(
+    return Promise<UserResponse>(
       in: .userInitiated,
       token: invalidationToken) {
         
@@ -240,7 +240,7 @@ class GetUserByIdCall: BaseNetworkCall, NetworkCall {
             reject(error)
           } else if let data = response.data {
             do {
-              let response = try JSONDecoder().decode(GetUserByIdResponse.self, from: data)
+              let response = try JSONDecoder().decode(UserResponse.self, from: data)
               resolve(response)
             } catch let error {
               reject(error)
@@ -258,7 +258,7 @@ class GetUserByIdCall: BaseNetworkCall, NetworkCall {
 
 class CreateNewSiteCall: BaseNetworkCall, NetworkCall {
   
-  func run(_ request: CreateNewSiteRequest) throws -> Promise<CreateNewSiteResponse> {
+  func run(_ request: CreateNewSiteRequest) throws -> Promise<SiteResponse> {
     
     let parameters = try JSONSerialization.jsonObject(
       with: try JSONEncoder().encode(request),
@@ -275,7 +275,7 @@ class CreateNewSiteCall: BaseNetworkCall, NetworkCall {
     let debugDescription = request.debugDescription
     LOG.debug(debugDescription)
     
-    return Promise<CreateNewSiteResponse>(
+    return Promise<SiteResponse>(
       in: .userInitiated,
       token: invalidationToken) {
         
@@ -284,6 +284,8 @@ class CreateNewSiteCall: BaseNetworkCall, NetworkCall {
         request.validate(statusCode: [200]).responseData {
           
           response in
+          
+          LOG.debug(response.debugDescription)
           
           if status.isCancelled {
             status.cancel()
@@ -294,7 +296,7 @@ class CreateNewSiteCall: BaseNetworkCall, NetworkCall {
             reject(error)
           } else if let data = response.data {
             do {
-              let response = try JSONDecoder().decode(CreateNewSiteResponse.self, from: data)
+              let response = try JSONDecoder().decode(SiteResponse.self, from: data)
               resolve(response)
             } catch let error {
               reject(error)

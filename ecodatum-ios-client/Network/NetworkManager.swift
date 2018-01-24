@@ -16,8 +16,8 @@ class NetworkManager {
       .run(request)
   }
   
-  func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<CreateNewOrganizationUserResponse> {
-    return try CreateNewUserCall(
+  func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<UserResponse> {
+    return try CreateNewOrganizationUserCall(
       url: baseURL
         .appendingPathComponent("public")
         .appendingPathComponent("users"),
@@ -25,8 +25,8 @@ class NetworkManager {
       .run(request)
   }
   
-  func call(_ request: GetUserByIdRequest) throws -> Promise<GetUserByIdResponse> {
-    return try GetUserByIdCall(
+  func call(_ request: GetUserRequest) throws -> Promise<UserResponse> {
+    return try GetUserCall(
       url: baseURL
         .appendingPathComponent("protected")
         .appendingPathComponent("users")
@@ -35,8 +35,8 @@ class NetworkManager {
       .run(request)
   }
   
-  func call(_ request: GetOrganizationsByUserIdRequest) throws -> Promise<[GetOrganizationsByUserIdResponse]> {
-    return try GetOrganizationsByUserIdCall(
+  func call(_ request: GetOrganizationsByUserRequest) throws -> Promise<[OrganizationResponse]> {
+    return try GetOrganizationsByUserCall(
       url: baseURL
         .appendingPathComponent("protected")
         .appendingPathComponent("organizations"),
@@ -44,7 +44,7 @@ class NetworkManager {
       .run(request)
   }
   
-  func call(_ request: CreateNewSiteRequest) throws -> Promise<CreateNewSiteResponse> {
+  func call(_ request: CreateNewSiteRequest) throws -> Promise<SiteResponse> {
     return try CreateNewSiteCall(
       url: baseURL
         .appendingPathComponent("protected")

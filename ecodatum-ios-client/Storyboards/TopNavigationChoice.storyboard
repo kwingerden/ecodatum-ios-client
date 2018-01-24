@@ -98,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="524.21875" y="155.859375"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Top Navigation Choice Navigation Controller-->
         <scene sceneID="C1f-4I-CE3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8iQ-Zf-drQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8iQ-Zf-drQ" customClass="TopNavigationChoiceNavigationController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ai9-yr-1Vp">
                         <rect key="frame" x="0.0" y="20" width="768" height="44"/>

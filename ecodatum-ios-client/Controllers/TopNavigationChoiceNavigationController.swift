@@ -1,9 +1,14 @@
-//
-//  TopNavigationChoiceNavigationController.swift
-//  ecodatum-ios-client
-//
-//  Created by Kenneth Wingerden on 1/23/18.
-//  Copyright © 2018 Ken Wingerden. All rights reserved.
-//
-
 import Foundation
+import UIKit
+
+class TopNavigationChoiceNavigationController: UINavigationController, OrganizationHolder {
+  
+  var organization: Organization!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    let viewController = viewControllers[0] as! TopNavigationChoiceViewController
+    viewController.organization = organization
+  }
+  
+}

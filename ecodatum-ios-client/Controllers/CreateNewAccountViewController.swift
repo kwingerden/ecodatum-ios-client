@@ -21,9 +21,7 @@ class CreateNewAccountViewController: BaseViewController {
   @IBOutlet weak var passwordErrorLabel: UILabel!
   
   @IBOutlet weak var createNewAccountButton: UIButton!
-  
-  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  
+    
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -59,35 +57,22 @@ class CreateNewAccountViewController: BaseViewController {
   
   private func validationSuccessful() {
     
-    view.isUserInteractionEnabled = false
-    activityIndicator.startAnimating()
+    preAsyncUIOperation()
     
     let organizationCode = organizationCodeTextField.text!
     let fullName = fullNameTextField.text!
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
     
-    vcm?.createNewAccount(
+    createNewAccount(
       organizationCode: organizationCode.uppercased(),
       fullName: fullName,
       email: email.lowercased(),
       password: password)
-      .then(in: .main) {
-        createNewAccountResponse in
-        LOG.debug(createNewAccountResponse)
-        self.vcm?.performSegue(
-          from: self,
-          to: .topNavigation,
-          context: createNewAccountResponse)
-      }.catch(in: .main) {
-        error in
-        LOG.error(error)
-        SVProgressHUD.defaultShowError(
-          "Unrecognized email address and/or password.")
-      }.always(in: .main) {
-        self.view.isUserInteractionEnabled = true
-        self.activityIndicator.stopAnimating()
-    }
+      .then(in: .userInteractive, getUserOrganizations)
+      .then(in: .main, handleOrganizationChoice)
+      .catch(in: .main, handleError)
+      .always(in: .main, body: postAsyncUIOperation)
     
   }
   

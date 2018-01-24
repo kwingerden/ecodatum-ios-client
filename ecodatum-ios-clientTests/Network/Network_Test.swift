@@ -63,7 +63,7 @@ class Network_Test: XCTestCase {
     
     let expectation = XCTestExpectation()
     
-    let request = GetUserByIdRequest(
+    let request = GetUserRequest(
       token: "AhbT31D3eWXM0tooAfLNfg==",
       userId: 5)
     try networkManager.call(request)

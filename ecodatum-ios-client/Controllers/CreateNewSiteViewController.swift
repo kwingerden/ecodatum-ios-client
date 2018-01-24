@@ -4,7 +4,9 @@ import SVProgressHUD
 import SwiftValidator
 import UIKit
 
-class CreateNewSiteViewController: BaseViewController {
+class CreateNewSiteViewController: BaseViewController, OrganizationHolder {
+  
+  var organization: Organization!
   
   @IBOutlet weak var nameTextField: UITextField!
   
@@ -23,9 +25,7 @@ class CreateNewSiteViewController: BaseViewController {
   @IBOutlet weak var longitudeErrorLabel: UILabel!
   
   @IBOutlet weak var createNewSiteButton: UIButton!
-  
-  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  
+    
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -63,65 +63,30 @@ class CreateNewSiteViewController: BaseViewController {
   
   private func validationSuccessful() {
     
-    view.isUserInteractionEnabled = false
-    activityIndicator.startAnimating()
+    preAsyncUIOperation()
     
     let name = nameTextField.text!
     let description = descriptionTextView.text!
     let latitude = latitudeTextField.text!
     let longitude = longitudeTextField.text!
     
-    do {
-      
-      if let vcm = vcm,
-        let authenticatedUser = vcm.authenticatedUser {
-        
-        func createNewSite(
-          _ organizations: [ViewControllerManager.Organization])
-          throws -> Promise<CreateNewSiteResponse> {
-          
-          // Just return the first organization since users are assumed to
-          // belong to one organization at the moment.
-          guard organizations.count == 1 else {
-            throw ViewControllerError.unexpectedNumberOfUserOrganizations
-          }
-          let organization = organizations[0]
-          return try vcm.createNewSite(
-            token: authenticatedUser.token,
-            organizationId: organization.id,
-            name: name,
-            description: description,
-            latitude: latitude.toDouble()!,
-            longitude: longitude.toDouble()!)
-          
+    createNewSite(
+      token: authenticatedUser!.token,
+      organizationId: organization.id,
+      name: name,
+      description: description,
+      latitude: latitude.toDouble()!,
+      longitude: longitude.toDouble()!)
+      //.then(in: .main, )
+      .catch(in: .main) {
+        error in
+        if self.isConflictError(error) {
+          SVProgressHUD.defaultShowError("Site \(name) already exists.")
+        } else {
+          self.handleError(error)
         }
-        
-        try vcm.getUserOrganizations(
-          token: authenticatedUser.token,
-          userId: authenticatedUser.userId)
-          .then(in: .main, createNewSite)
-          .then(in: .main) {
-            response in
-            LOG.debug(response)
-            self.vcm?.performSegue(
-              from: self,
-              to: .addNewMeasurement,
-              context: response)
-          }.catch(in: .main) {
-            error in
-            LOG.error(error)
-            SVProgressHUD.defaultShowError(
-              "Unrecognized email address and/or password.")
-          }.always(in: .main) {
-            self.view.isUserInteractionEnabled = true
-            self.activityIndicator.stopAnimating()
-        }
-      
       }
-      
-    } catch let error {
-      LOG.error(error.localizedDescription)
-    }
+      .always(in: .main, body: postAsyncUIOperation)
     
   }
   

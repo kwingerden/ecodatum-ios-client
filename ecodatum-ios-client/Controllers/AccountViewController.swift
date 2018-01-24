@@ -3,7 +3,7 @@ import UIKit
 
 class AccountViewController: BaseViewController {
   
-  var performSegueFrom: BaseViewController?
+  var performSegueFrom: BaseViewController!
   
   @IBOutlet weak var logoutButton: UIButton!
   
@@ -23,12 +23,8 @@ class AccountViewController: BaseViewController {
     switch sender {
       
     case logoutButton:
-      vcm?.logout()
-      guard let performSegueFrom = performSegueFrom else {
-        LOG.error("performSegueFrom not set")
-        return
-      }
-      vcm?.performSegue(from: performSegueFrom, to: .main)
+      logout()
+      performSegue(from: performSegueFrom, to: .main)
       
     default:
       LOG.error("Unrecognized button \(sender)")

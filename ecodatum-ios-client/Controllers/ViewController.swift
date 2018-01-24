@@ -14,6 +14,8 @@ enum ViewController: String {
   
   case main
   
+  case organizationChoice
+  
   case siteMap
   
   case topNavigation

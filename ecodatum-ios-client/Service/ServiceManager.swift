@@ -51,19 +51,19 @@ class ServiceManager {
     return try networkManager.call(request)
   }
   
-  func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<CreateNewOrganizationUserResponse> {
+  func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<UserResponse> {
     return try networkManager.call(request)
   }
   
-  func call(_ request: GetOrganizationsByUserIdRequest) throws -> Promise<[GetOrganizationsByUserIdResponse]> {
+  func call(_ request: GetOrganizationsByUserRequest) throws -> Promise<[OrganizationResponse]> {
     return try networkManager.call(request)
   }
   
-  func call(_ request: GetUserByIdRequest) throws -> Promise<GetUserByIdResponse> {
+  func call(_ request: GetUserRequest) throws -> Promise<UserResponse> {
     return try networkManager.call(request)
   }
   
-  func call(_ request: CreateNewSiteRequest) throws -> Promise<CreateNewSiteResponse> {
+  func call(_ request: CreateNewSiteRequest) throws -> Promise<SiteResponse> {
     return try networkManager.call(request)
   }
   

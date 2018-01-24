@@ -1,3 +1,4 @@
+import Hydra
 import SVProgressHUD
 import SwiftValidator
 import UIKit
@@ -14,12 +15,10 @@ class LoginToAccountViewController: BaseViewController {
   
   @IBOutlet weak var loginButton: UIButton!
   
-  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  
   override func viewDidLoad() {
     
     super.viewDidLoad()
-        
+    
     loginButton.roundedButton()
     
     validator.registerField(
@@ -43,31 +42,23 @@ class LoginToAccountViewController: BaseViewController {
   
   private func validationSuccessful() {
     
-    view.isUserInteractionEnabled = false
-    activityIndicator.startAnimating()
+    preAsyncUIOperation()
     
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
     
-    vcm?.login(
-      email: email,
-      password: password)
-      .then(in: .main) {
-        loginResponse in
-        LOG.debug(loginResponse)
-        self.vcm?.performSegue(
-          from: self,
-          to: .topNavigation,
-          context: loginResponse)
-      }.catch(in: .main) {
+    login(email: email, password: password)
+      .then(in: .userInteractive, getUserOrganizations)
+      .then(in: .main, handleOrganizationChoice)
+      .catch(in: .main) {
         error in
-        LOG.error(error)
-        SVProgressHUD.defaultShowError(
-          "Unrecognized email address and/or password.")
-      }.always(in: .main) {
-        self.view.isUserInteractionEnabled = true
-        self.activityIndicator.stopAnimating()
-    }
+        if self.isUnauthorizedError(error) {
+          SVProgressHUD.defaultShowError("Invalid username and/or password")
+        } else {
+          self.handleError(error)
+        }
+      }
+      .always(in: .main, body: postAsyncUIOperation)
     
   }
   

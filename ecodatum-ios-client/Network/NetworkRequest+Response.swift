@@ -38,7 +38,14 @@ struct CreateNewOrganizationUserRequest: NetworkRequest {
   
 }
 
-struct CreateNewOrganizationUserResponse: NetworkResponse {
+struct GetUserRequest: ProtectedNetworkRequest {
+  
+  let userId: Int
+  let token: String
+  
+}
+
+struct UserResponse: NetworkResponse {
   
   let id: Int // userId
   let fullName: String
@@ -46,28 +53,13 @@ struct CreateNewOrganizationUserResponse: NetworkResponse {
   
 }
 
-struct GetUserByIdRequest: ProtectedNetworkRequest {
+struct GetOrganizationsByUserRequest: ProtectedNetworkRequest {
   
   let token: String
-  let userId: Int
   
 }
 
-struct GetUserByIdResponse: NetworkResponse {
-  
-  let fullName: String
-  let email: String
-  
-}
-
-struct GetOrganizationsByUserIdRequest: ProtectedNetworkRequest {
-  
-  let token: String
-  let userId: Int
-  
-}
-
-struct GetOrganizationsByUserIdResponse: NetworkResponse {
+struct OrganizationResponse: NetworkResponse {
  
   let id : Int // organization id
   let code: String
@@ -90,7 +82,7 @@ struct CreateNewSiteRequest: ProtectedNetworkRequest {
   
 }
 
-struct CreateNewSiteResponse: NetworkResponse {
+struct SiteResponse: NetworkResponse {
   
   let id: Int // site id
   let name: String

@@ -1,7 +1,9 @@
 import Foundation
 import UIKit
 
-class TopNavigationChoiceViewController: BaseViewController {
+class TopNavigationChoiceViewController: BaseViewController, OrganizationHolder {
+  
+  var organization: Organization!
   
   @IBOutlet weak var createNewSiteButton: UIButton!
   
@@ -26,10 +28,14 @@ class TopNavigationChoiceViewController: BaseViewController {
     switch sender {
       
     case createNewSiteButton:
-      vcm?.performSegue(from: self, to: .createNewSite)
+      performSegue(from: self,
+                   to: .createNewSite,
+                   viewContext: organization)
       
     case addNewMeasurementButton:
-      vcm?.performSegue(from: self, to: .addNewMeasurement)
+      performSegue(from: self,
+                   to: .addNewMeasurement,
+                   viewContext: organization)
       
     default:
       LOG.error("Unexpected button")

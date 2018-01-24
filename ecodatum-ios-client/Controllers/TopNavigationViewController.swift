@@ -1,7 +1,9 @@
 import Foundation
 import UIKit
 
-class TopNavigationViewController: BaseViewController {
+class TopNavigationViewController: BaseViewController, OrganizationHolder {
+  
+  var organization: Organization!
   
   @IBOutlet weak var fullNameAndEmailLabel: UILabel!
   
@@ -19,14 +21,10 @@ class TopNavigationViewController: BaseViewController {
     
     super.viewDidLoad()
     
-    if let authenticatedUser = vcm?.authenticatedUser {
-      let fullName = authenticatedUser.fullName
-      let email = authenticatedUser.email
-      fullNameAndEmailLabel.text = "\(fullName) (\(email))"
-      if let organizationName = loginResponse.firstOrganization?.name {
-        organizationNameLabel.text = organizationName
-      }
-    }
+    let fullName = authenticatedUser!.fullName
+    let email = authenticatedUser!.email
+    fullNameAndEmailLabel.text = "\(fullName) (\(email))"
+    organizationNameLabel.text = organization.name
   
   }
   
@@ -35,7 +33,7 @@ class TopNavigationViewController: BaseViewController {
     switch sender {
     
     case accountButton:
-      vcm?.performSegue(from: self, to: .account)
+      performSegue(from: self, to: .account)
       
     case helpButton:
       break
