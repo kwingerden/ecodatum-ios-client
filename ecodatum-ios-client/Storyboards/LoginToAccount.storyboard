@@ -190,11 +190,20 @@
                         <outlet property="passwordErrorLabel" destination="nxE-mE-Ock" id="UGk-J2-wIw"/>
                         <outlet property="passwordTextField" destination="6I2-lj-ZIh" id="2An-zI-MRk"/>
                         <segue destination="TbO-n8-nBB" kind="show" identifier="topNavigation" id="FwB-hA-zfk"/>
+                        <segue destination="dW4-j9-sLG" kind="show" identifier="organizationChoice" id="Q1h-16-Rwq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTc-IE-Esf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="829.49640287769785" y="-287.0503597122302"/>
+        </scene>
+        <!--OrganizationChoice-->
+        <scene sceneID="vJn-V5-kpT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OrganizationChoice" id="dW4-j9-sLG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZMj-ce-OnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1353" y="-494"/>
         </scene>
         <!--TopNavigation-->
         <scene sceneID="6mb-sf-zzO">
@@ -202,7 +211,7 @@
                 <viewControllerPlaceholder storyboardName="TopNavigation" id="TbO-n8-nBB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqS-sA-c7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="-560"/>
+            <point key="canvasLocation" x="1422" y="-342"/>
         </scene>
     </scenes>
     <resources>

@@ -38,25 +38,18 @@ class BaseViewController: UIViewController {
     
     super.prepare(for: segue, sender: sender)
     
-    switch segue.destination {
-      
-    case is AccountViewController:
-      
-      let source = segue.source as! BaseViewController
-      let destination = segue.destination as! AccountViewController
-      destination.performSegueFrom = source
-      
-    case is TopNavigationViewController,
-         is TopNavigationChoiceNavigationController,
-         is TopNavigationChoiceViewController,
-         is CreateNewSiteViewController:
-      
-      var destination = segue.destination as! OrganizationHolder
-      destination.organization = BaseViewController.viewContext as! Organization
-      
-    default:
-      break // do nothing
-      
+    if var organizationHolder = segue.destination as? OrganizationHolder,
+      let organization = BaseViewController.viewContext as? Organization {
+      organizationHolder.organization = organization
+    }
+    
+    if var organizationsHolder = segue.destination as? OrganizationsHolder,
+      let organizations = BaseViewController.viewContext as? [Organization] {
+      organizationsHolder.organizations = organizations
+    }
+    
+    if var segueViewControllerHolder = segue.destination as? SegueViewControllerHolder {
+      segueViewControllerHolder.segueViewController = self
     }
     
   }
@@ -165,7 +158,9 @@ class BaseViewController: UIViewController {
       
     } else {
       
-      LOG.error("User does not belong to any organizations.")
+      let errorMessage = "User does not belong to any organizations."
+      LOG.error(errorMessage)
+      SVProgressHUD.defaultShowError(errorMessage)
       
     }
     

@@ -40,11 +40,20 @@
                     <connections>
                         <segue destination="hUd-Tn-FMp" kind="show" identifier="welcome" id="M6z-4M-aFA"/>
                         <segue destination="JKh-Px-4jl" kind="show" identifier="topNavigation" id="Ofq-qG-8A6"/>
+                        <segue destination="yMV-Qd-yDR" kind="show" identifier="organizationChoice" id="nLU-DR-7e1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpm-AQ-KeI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+        <!--OrganizationChoice-->
+        <scene sceneID="Q6d-PE-hXy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OrganizationChoice" id="yMV-Qd-yDR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJE-Rl-ZAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="643" y="107"/>
         </scene>
         <!--TopNavigation-->
         <scene sceneID="S6H-DE-3Je">
@@ -52,7 +61,7 @@
                 <viewControllerPlaceholder storyboardName="TopNavigation" id="JKh-Px-4jl" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVf-4Z-Imc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="179"/>
+            <point key="canvasLocation" x="654" y="218"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="yXN-yU-6mW">
