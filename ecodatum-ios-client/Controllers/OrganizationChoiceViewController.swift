@@ -1,12 +1,11 @@
 import Foundation
 import UIKit
 
-class OrganizationChoiceViewController:
-  BaseViewController, OrganizationsHolder  {
-  
-  var organizations: [Organization]!
+class OrganizationChoiceViewController: BaseViewController  {
   
   @IBOutlet weak var tableView: UITableView!
+  
+  lazy private var organizations = viewControllerManager.organizations
   
   override func viewDidLoad() {
     
@@ -31,11 +30,7 @@ extension OrganizationChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
- 
-    performSegue(from: self,
-                 to: .topNavigation,
-                 viewContext: organizations[indexPath.row])
-  
+    viewControllerManager.showOrganization(organizations[indexPath.row])
   }
   
 }

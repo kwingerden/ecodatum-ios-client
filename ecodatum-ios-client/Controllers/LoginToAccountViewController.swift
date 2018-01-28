@@ -42,23 +42,14 @@ class LoginToAccountViewController: BaseViewController {
   
   private func validationSuccessful() {
     
-    preAsyncUIOperation()
-    
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
     
-    login(email: email, password: password)
-      .then(in: .userInteractive, getUserOrganizations)
-      .then(in: .main, handleOrganizationChoice)
-      .catch(in: .main) {
-        error in
-        if self.isUnauthorizedError(error) {
-          SVProgressHUD.defaultShowError("Invalid username and/or password")
-        } else {
-          self.handleError(error)
-        }
-      }
-      .always(in: .main, body: postAsyncUIOperation)
+    viewControllerManager.login(
+      email: email,
+      password: password,
+      preAsyncBlock: preAsyncUIOperation,
+      postAsyncBlock: postAsyncUIOperation)
     
   }
   

@@ -1,14 +1,14 @@
 import Foundation
 import UIKit
 
-class TopNavigationChoiceNavigationController: UINavigationController, OrganizationHolder {
+class TopNavigationChoiceNavigationController: UINavigationController, ViewControllerManagerHolder {
   
-  var organization: Organization!
+  var viewControllerManager: ViewControllerManager!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     let viewController = viewControllers[0] as! TopNavigationChoiceViewController
-    viewController.organization = organization
+    viewController.viewControllerManager = viewControllerManager
   }
   
 }

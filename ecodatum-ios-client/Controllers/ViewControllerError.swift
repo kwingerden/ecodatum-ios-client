@@ -2,7 +2,7 @@ import Foundation
 
 enum ViewControllerError: Error {
   
-  case unexpectedNumberOfUserOrganizations
+  case noUserOrganizations
   
 }
 

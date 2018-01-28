@@ -4,9 +4,7 @@ import SVProgressHUD
 import SwiftValidator
 import UIKit
 
-class CreateNewSiteViewController: BaseViewController, OrganizationHolder {
-  
-  var organization: Organization!
+class CreateNewSiteViewController: BaseViewController {
   
   @IBOutlet weak var nameTextField: UITextField!
   
@@ -63,30 +61,35 @@ class CreateNewSiteViewController: BaseViewController, OrganizationHolder {
   
   private func validationSuccessful() {
     
-    preAsyncUIOperation()
-    
     let name = nameTextField.text!
     let description = descriptionTextView.text!
     let latitude = latitudeTextField.text!
     let longitude = longitudeTextField.text!
     
-    createNewSite(
-      token: authenticatedUser!.token,
-      organizationId: organization.id,
+    /*
+    viewControllerManager.createNewSite(
+      token: viewControllerManager.authenticatedUser!.token,
+      organizationId: viewControllerManager.organization!.id,
       name: name,
       description: description,
       latitude: latitude.toDouble()!,
       longitude: longitude.toDouble()!)
-      //.then(in: .main, )
-      .catch(in: .main) {
+      .then(in: .main) {
+        site in
+        //let organizationSite = OrganizationSite(
+        //  organization: self.organization,
+        //  site: site)
+        self.viewControllerManager.performSegue(to: .addNewMeasurement)
+      }.catch(in: .main) {
         error in
-        if self.isConflictError(error) {
+        if self.viewControllerManager.isConflictError(error) {
           SVProgressHUD.defaultShowError("Site \(name) already exists.")
         } else {
-          self.handleError(error)
+          self.viewControllerManager.handleError(error)
         }
       }
       .always(in: .main, body: postAsyncUIOperation)
+ */
     
   }
   

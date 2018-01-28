@@ -1,10 +1,7 @@
 import Foundation
 import UIKit
 
-class AccountViewController:
-  BaseViewController, SegueViewControllerHolder {
-  
-  var segueViewController: BaseViewController!
+class AccountViewController: BaseViewController {
   
   @IBOutlet weak var logoutButton: UIButton!
   
@@ -24,9 +21,8 @@ class AccountViewController:
     switch sender {
       
     case logoutButton:
-      logout()
-      performSegue(from: segueViewController, to: .main)
-      
+      viewControllerManager.logout()
+    
     default:
       LOG.error("Unrecognized button \(sender)")
       

@@ -57,22 +57,24 @@ class CreateNewAccountViewController: BaseViewController {
   
   private func validationSuccessful() {
     
-    preAsyncUIOperation()
+    //preAsyncUIOperation()
     
     let organizationCode = organizationCodeTextField.text!
     let fullName = fullNameTextField.text!
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
     
-    createNewAccount(
+    /*
+    viewControllerManager.createNewAccount(
       organizationCode: organizationCode.uppercased(),
       fullName: fullName,
       email: email.lowercased(),
       password: password)
-      .then(in: .userInteractive, getUserOrganizations)
-      .then(in: .main, handleOrganizationChoice)
-      .catch(in: .main, handleError)
+      .then(in: .userInteractive, viewControllerManager.getUserOrganizations)
+      .then(in: .main, viewControllerManager.handleOrganizationChoice)
+      .catch(in: .main, viewControllerManager.handleError)
       .always(in: .main, body: postAsyncUIOperation)
+ */
     
   }
   

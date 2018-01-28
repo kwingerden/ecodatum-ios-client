@@ -1,9 +1,7 @@
 import Foundation
 import UIKit
 
-class TopNavigationViewController: BaseViewController, OrganizationHolder {
-  
-  var organization: Organization!
+class TopNavigationViewController: BaseViewController {
   
   @IBOutlet weak var fullNameAndEmailLabel: UILabel!
   
@@ -21,8 +19,11 @@ class TopNavigationViewController: BaseViewController, OrganizationHolder {
     
     super.viewDidLoad()
     
-    let fullName = authenticatedUser!.fullName
-    let email = authenticatedUser!.email
+    let authenticatedUser = viewControllerManager.authenticatedUser!
+    let organization = viewControllerManager.organization!
+    
+    let fullName = authenticatedUser.fullName
+    let email = authenticatedUser.email
     fullNameAndEmailLabel.text = "\(fullName) (\(email))"
     organizationNameLabel.text = organization.name
   
@@ -33,7 +34,7 @@ class TopNavigationViewController: BaseViewController, OrganizationHolder {
     switch sender {
     
     case accountButton:
-      performSegue(from: self, to: .account)
+      viewControllerManager.performSegue(to: .account)
       
     case helpButton:
       break

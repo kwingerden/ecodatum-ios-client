@@ -253,7 +253,7 @@
                 <viewControllerPlaceholder storyboardName="AddNewMeasurement" id="UL1-Jf-90e" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnG-ct-qbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-13" y="-50"/>
+            <point key="canvasLocation" x="162" y="-57"/>
         </scene>
         <!--SiteMap-->
         <scene sceneID="IXs-UR-hQh">
