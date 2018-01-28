@@ -30,7 +30,7 @@ extension OrganizationChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
-    viewControllerManager.showOrganization(organizations[indexPath.row])
+    //viewControllerManager.showOrganization(organizations[indexPath.row])
   }
   
 }

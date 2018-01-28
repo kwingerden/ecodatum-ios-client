@@ -72,10 +72,10 @@
                     <navigationItem key="navigationItem" id="hgF-xe-Bjx"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="addNewMeasurementButton" destination="Lns-BI-46e" id="m9p-ag-cgf"/>
+                        <outlet property="chooseExistingSiteButton" destination="Lns-BI-46e" id="d19-SL-lsw"/>
                         <outlet property="createNewSiteButton" destination="Ygp-8f-2Cb" id="ccG-gd-WfY"/>
                         <segue destination="mPp-eP-tTw" kind="show" identifier="createNewSite" id="MXL-Om-66I"/>
-                        <segue destination="9s3-SX-6dF" kind="show" identifier="addNewMeasurement" id="hck-wo-Mvt"/>
+                        <segue destination="5jE-jq-HL1" kind="show" identifier="chooseExistingSite" id="R6r-Cv-vkJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9c-S3-Ldf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,13 +90,13 @@
             </objects>
             <point key="canvasLocation" x="524.609375" y="-40.4296875"/>
         </scene>
-        <!--AddNewMeasurement-->
-        <scene sceneID="NWT-0K-jmI">
+        <!--ChooseExistingSite-->
+        <scene sceneID="L15-VV-8Zm">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddNewMeasurement" id="9s3-SX-6dF" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M1D-Xi-NNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ChooseExistingSite" id="5jE-jq-HL1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVF-wC-fZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524.21875" y="155.859375"/>
+            <point key="canvasLocation" x="514" y="174"/>
         </scene>
         <!--Top Navigation Choice Navigation Controller-->
         <scene sceneID="C1f-4I-CE3">

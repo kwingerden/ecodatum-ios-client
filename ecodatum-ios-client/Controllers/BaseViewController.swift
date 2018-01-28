@@ -1,7 +1,4 @@
-import Alamofire
 import Foundation
-import Hydra
-import SVProgressHUD
 import SwiftValidator
 import UIKit
 
@@ -41,10 +38,14 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
     
     super.prepare(for: segue, sender: sender)
     
-    if var holder = segue.destination as? ViewControllerManagerHolder {
-      holder.viewControllerManager = ViewControllerManager(
+    if var viewControllerManagerHolder = segue.destination as? ViewControllerManagerHolder {
+      viewControllerManagerHolder.viewControllerManager = ViewControllerManager(
         newViewController: segue.destination,
         viewControllerManager: viewControllerManager)
+    }
+    
+    if var segueSourceViewControllerHolder = segue.destination as? SegueSourceViewControllerHolder {
+      segueSourceViewControllerHolder.segueSourceViewController = segue.source
     }
     
   }

@@ -1,4 +1,4 @@
-import SVProgressHUD
+import Foundation
 import SwiftValidator
 import UIKit
 
@@ -57,24 +57,18 @@ class CreateNewAccountViewController: BaseViewController {
   
   private func validationSuccessful() {
     
-    //preAsyncUIOperation()
-    
     let organizationCode = organizationCodeTextField.text!
     let fullName = fullNameTextField.text!
     let email = emailAddressTextField.text!
     let password = passwordTextField.text!
     
-    /*
     viewControllerManager.createNewAccount(
       organizationCode: organizationCode.uppercased(),
       fullName: fullName,
       email: email.lowercased(),
-      password: password)
-      .then(in: .userInteractive, viewControllerManager.getUserOrganizations)
-      .then(in: .main, viewControllerManager.handleOrganizationChoice)
-      .catch(in: .main, viewControllerManager.handleError)
-      .always(in: .main, body: postAsyncUIOperation)
- */
+      password: password,
+      preAsyncBlock: preAsyncUIOperation,
+      postAsyncBlock: postAsyncUIOperation)
     
   }
   

@@ -5,14 +5,14 @@ class TopNavigationChoiceViewController: BaseViewController {
   
   @IBOutlet weak var createNewSiteButton: UIButton!
   
-  @IBOutlet weak var addNewMeasurementButton: UIButton!
+  @IBOutlet weak var chooseExistingSiteButton: UIButton!
   
   override func viewDidLoad() {
   
     super.viewDidLoad()
     
     createNewSiteButton.roundedButton()
-    addNewMeasurementButton.roundedButton()
+    chooseExistingSiteButton.roundedButton()
 
   }
   
@@ -26,10 +26,14 @@ class TopNavigationChoiceViewController: BaseViewController {
     switch sender {
       
     case createNewSiteButton:
-      viewControllerManager.performSegue(to: .createNewSite)
+      viewControllerManager.performSegue(
+        from: self,
+        to: .createNewSite)
       
-    case addNewMeasurementButton:
-      viewControllerManager.performSegue(to: .addNewMeasurement)
+    case chooseExistingSiteButton:
+      viewControllerManager.performSegue(
+        from: self,
+        to: .chooseExistingSite)
       
     default:
       LOG.error("Unexpected button")

@@ -1,7 +1,6 @@
 import Alamofire
 import Foundation
 import Hydra
-import SVProgressHUD
 import SwiftValidator
 import UIKit
 
@@ -11,12 +10,6 @@ typealias Site = SiteResponse
 
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
-
-protocol ViewControllerManagerHolder {
-  
-  var viewControllerManager: ViewControllerManager! { get set }
-  
-}
 
 class ViewControllerManager {
   
@@ -68,10 +61,14 @@ class ViewControllerManager {
               serviceManager: viewControllerManager.serviceManager)
   }
   
-  func performSegue(to: ViewController, sender: Any? = nil) {
+  func performSegue(from: UIViewController? = nil,
+                    to: ViewController,
+                    sender: Any? = nil) {
     
     LOG.debug("ViewControllerManager.performSegue: \(viewController) => \(to)")
-    viewController.performSegue(withIdentifier: to.rawValue, sender: sender)
+    (from ?? viewController).performSegue(
+      withIdentifier: to.rawValue,
+      sender: sender)
     
   }
   
@@ -112,7 +109,9 @@ class ViewControllerManager {
         .catch(in: .main) {
           error in
           if self.isUnauthorizedError(error) {
-            SVProgressHUD.defaultShowError("Invalid username and/or password")
+            self.showErrorMessage(
+              "Login Failure",
+              "Invalid username and/or password.")
           } else {
             self.handleError(error)
           }
@@ -141,10 +140,78 @@ class ViewControllerManager {
     
   }
   
-  func showOrganization(_ organization: Organization) {
+  func createNewAccount(
+    organizationCode: String,
+    fullName: String,
+    email: String,
+    password: String,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
     
-    viewContext.state[.organization] = ViewContext.Value.organization(organization)
-    performSegue(to: .topNavigation)
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        CreateNewOrganizationUserRequest(
+          organizationCode: organizationCode,
+          fullName: fullName,
+          email: email,
+          password: password))
+        .then(in: .userInitiated) {
+          _ in
+          try self.handleCreateNewAccount(
+            email: email,
+            password: password)
+        }.then(in: .userInitiated, handleBasicAuthUser)
+        .then(in: .userInitiated, getUserOrganizations)
+        .then(in: .main, handleOrganizations)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func createNewSite(
+    token: String,
+    organizationId: Int,
+    name: String,
+    description: String? = nil,
+    latitude: Double,
+    longitude: Double,
+    altitude: Double? = nil,
+    horizontalAccuracy: Double? = nil,
+    verticalAccuracy: Double? = nil) -> Promise<Site> {
+    
+    return async(in: .userInitiated) {
+      
+      status in
+      
+      return try await(
+        self.serviceManager.call(
+          CreateNewSiteRequest(
+            token: token,
+            name: name,
+            description: description,
+            latitude: latitude,
+            longitude: longitude,
+            altitude: altitude,
+            horizontalAccuracy: horizontalAccuracy,
+            verticalAccuracy: verticalAccuracy,
+            organizationId: organizationId)))
+      
+    }
     
   }
   
@@ -184,97 +251,44 @@ class ViewControllerManager {
           performSegue(to: .main)
           
         default:
-          SVProgressHUD.defaultShowError(error.localizedDescription)
+          showErrorMessage("Unexpected Error", error.localizedDescription)
           
         }
         
       default:
-        SVProgressHUD.defaultShowError(error.localizedDescription)
+        showErrorMessage("Unexpected Error", error.localizedDescription)
         
       }
       
     case ViewControllerError.noUserOrganizations:
       logout()
-      SVProgressHUD.defaultShowError("User does not belong to any organizations.")
+      showErrorMessage("No Organizations", "User does not belong to any organizations.")
       
     default:
-      SVProgressHUD.defaultShowError(error.localizedDescription)
+      showErrorMessage("Unexpected Error", error.localizedDescription)
       
     }
     
   }
   
-  func createNewAccount(
-    organizationCode: String,
-    fullName: String,
-    email: String,
-    password: String) {
+  private func showErrorMessage(_ title: String, _ message: String) {
     
-    async(in: .userInitiated) {
-      
-      status in
-      
-      let _ = try await(
-        self.serviceManager.call(
-          CreateNewOrganizationUserRequest(
-            organizationCode: organizationCode,
-            fullName: fullName,
-            email: email,
-            password: password)))
-      
-      self.login(email: email, password: password)
-      
-    }
+    let alertController = UIAlertController(
+      title: title,
+      message: message,
+      preferredStyle: .alert)
+    alertController.addAction(
+      UIAlertAction(
+        title: "OK",
+        style: UIAlertActionStyle.default,
+        handler: nil))
     
-  }
+    viewController.present(
+      alertController,
+      animated: true,
+      completion: nil)
   
-  func createNewSite(
-    token: String,
-    organizationId: Int,
-    name: String,
-    description: String? = nil,
-    latitude: Double,
-    longitude: Double,
-    altitude: Double? = nil,
-    horizontalAccuracy: Double? = nil,
-    verticalAccuracy: Double? = nil) -> Promise<Site> {
-    
-    return async(in: .userInitiated) {
-      
-      status in
-      
-      return try await(
-        self.serviceManager.call(
-          CreateNewSiteRequest(
-            token: token,
-            name: name,
-            description: description,
-            latitude: latitude,
-            longitude: longitude,
-            altitude: altitude,
-            horizontalAccuracy: horizontalAccuracy,
-            verticalAccuracy: verticalAccuracy,
-            organizationId: organizationId)))
-      
-    }
-    
   }
-  
-  /*
-   func getUserSites(_ authenticatedUser: AuthenticatedUser) -> Promise<[Site]> {
-   
-   return async(in: .userInitiated) {
-   
-   status in
-   
-   return try await(
-   try BaseViewController.serviceManager.call(
-   GetOrganizationsByUserRequest(token: authenticatedUser.token)))
-   
-   }
-   
-   }
-   */
   
   private func getUserOrganizations(_ authenticatedUser: AuthenticatedUser) -> Promise<[Organization]> {
     
@@ -295,10 +309,13 @@ class ViewControllerManager {
     
     if organizations.count == 1 {
       
+      viewContext.state[.organizations] = ViewContext.Value.organizations(organizations)
+      viewContext.state[.organization] = ViewContext.Value.organization(organizations[0])
       performSegue(to: .topNavigation)
       
     } else if organizations.count > 1 {
       
+      viewContext.state[.organizations] = ViewContext.Value.organizations(organizations)
       performSegue(to: .organizationChoice)
       
     } else {
@@ -333,6 +350,18 @@ class ViewControllerManager {
       
     }
     
+  }
+  
+  private func handleCreateNewAccount(
+    email: String,
+    password: String)
+    throws -> Promise<BasicAuthUserResponse> {
+      
+      return try serviceManager.call(
+        BasicAuthUserRequest(
+          email: email,
+          password: password))
+      
   }
   
 }

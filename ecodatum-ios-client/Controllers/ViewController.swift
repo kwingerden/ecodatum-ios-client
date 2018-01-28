@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 enum ViewController: String {
 
@@ -8,7 +7,9 @@ enum ViewController: String {
   case addNewMeasurement
   
   case createNewAccount
+  
   case createNewSite
+  case chooseExistingSite
   
   case loginToAccount
   
