@@ -61,34 +61,17 @@ class CreateNewSiteViewController: BaseViewController {
     
     let name = nameTextField.text!
     let description = descriptionTextView.text!
-    let latitude = latitudeTextField.text!
-    let longitude = longitudeTextField.text!
+    let latitude = Double(latitudeTextField.text!)!
+    let longitude = Double(longitudeTextField.text!)!
     
-    /*
     viewControllerManager.createNewSite(
-      token: viewControllerManager.authenticatedUser!.token,
-      organizationId: viewControllerManager.organization!.id,
       name: name,
       description: description,
-      latitude: latitude.toDouble()!,
-      longitude: longitude.toDouble()!)
-      .then(in: .main) {
-        site in
-        //let organizationSite = OrganizationSite(
-        //  organization: self.organization,
-        //  site: site)
-        self.viewControllerManager.performSegue(to: .addNewMeasurement)
-      }.catch(in: .main) {
-        error in
-        if self.viewControllerManager.isConflictError(error) {
-          SVProgressHUD.defaultShowError("Site \(name) already exists.")
-        } else {
-          self.viewControllerManager.handleError(error)
-        }
-      }
-      .always(in: .main, body: postAsyncUIOperation)
- */
-    
+      latitude: latitude,
+      longitude: longitude,
+      preAsyncBlock: preAsyncUIOperation,
+      postAsyncBlock: postAsyncUIOperation)
+  
   }
   
 }

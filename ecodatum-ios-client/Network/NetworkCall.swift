@@ -312,6 +312,57 @@ class CreateNewSiteCall: BaseNetworkCall, NetworkCall {
   
 }
 
+class GetSitesByOrganizationAndUserCall: BaseNetworkCall, NetworkCall {
+  
+  func run(_ request: GetSitesByOrganizationAndUserRequest)
+    throws -> Promise<[SiteResponse]> {
+    
+    let request = Alamofire.request(
+      url,
+      method: .get,
+      encoding: JSONEncoding.default,
+      headers: Request.bearerTokenAuthHeaders(request.token))
+    
+    let debugDescription = request.debugDescription
+    LOG.debug(debugDescription)
+    
+    return Promise<[SiteResponse]>(
+      in: .userInitiated,
+      token: invalidationToken) {
+        
+        resolve, reject, status in
+        
+        request.validate(statusCode: [200]).responseData {
+          
+          response in
+          
+          LOG.debug(response.debugDescription)
+          
+          if status.isCancelled {
+            status.cancel()
+            return
+          }
+          
+          if let error = response.error {
+            reject(error)
+          } else if let data = response.data {
+            do {
+              let response = try JSONDecoder().decode([SiteResponse].self, from: data)
+              resolve(response)
+            } catch let error {
+              reject(error)
+            }
+          } else {
+            reject(NetworkError.unexpectedResponse)
+          }
+          
+        }
+    }
+    
+  }
+  
+}
+
 
 
 

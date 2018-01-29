@@ -15,6 +15,8 @@ class TopNavigationViewController: BaseViewController {
   
   @IBOutlet weak var bodyView: UIView!
   
+  private var topNavigationController: UINavigationController!
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -29,6 +31,16 @@ class TopNavigationViewController: BaseViewController {
   
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    super.prepare(for: segue, sender: sender)
+    
+    if let topNavigationController = segue.destination as? TopNavigationChoiceNavigationController {
+      self.topNavigationController = topNavigationController
+    }
+    
+  }
+  
   @IBAction func touchUpInside(_ sender: UIButton) {
     
     switch sender {
@@ -40,7 +52,7 @@ class TopNavigationViewController: BaseViewController {
       break
     
     case homeButton:
-      break
+      topNavigationController.popToRootViewController(animated: true)
     
     default:
       LOG.error("Unrecognized button: \(sender)")

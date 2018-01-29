@@ -82,6 +82,13 @@ struct CreateNewSiteRequest: ProtectedNetworkRequest {
   
 }
 
+struct GetSitesByOrganizationAndUserRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let organizationId: Int
+  
+}
+
 struct SiteResponse: NetworkResponse {
   
   let id: Int // site id

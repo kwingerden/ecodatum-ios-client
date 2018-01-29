@@ -22,10 +22,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="ZQa-LH-mcD">
-                                <rect key="frame" x="184" y="427" width="400" height="170"/>
+                                <rect key="frame" x="184" y="338" width="400" height="348"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organization Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAT-Hf-4Uz">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygp-8f-2Cb">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="60"/>
+                                        <rect key="frame" x="0.0" y="91" width="400" height="60"/>
                                         <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="0ro-Lv-nam"/>
@@ -39,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lns-BI-46e">
-                                        <rect key="frame" x="0.0" y="110" width="400" height="60"/>
+                                        <rect key="frame" x="0.0" y="201" width="400" height="60"/>
                                         <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="sqt-pN-Z77"/>
@@ -52,6 +57,10 @@
                                             <action selector="touchUpInsider:" destination="ytT-Gr-3qz" eventType="touchUpInside" id="9mS-Kt-8gs"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="801-wi-WUH">
+                                        <rect key="frame" x="0.0" y="311" width="400" height="37"/>
+                                        <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="1Hr-E4-Khp"/>
@@ -72,10 +81,12 @@
                     <navigationItem key="navigationItem" id="hgF-xe-Bjx"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="801-wi-WUH" id="DHK-GT-YDq"/>
                         <outlet property="chooseExistingSiteButton" destination="Lns-BI-46e" id="d19-SL-lsw"/>
                         <outlet property="createNewSiteButton" destination="Ygp-8f-2Cb" id="ccG-gd-WfY"/>
+                        <outlet property="organizationNameLabel" destination="kAT-Hf-4Uz" id="gzc-ih-Klj"/>
                         <segue destination="mPp-eP-tTw" kind="show" identifier="createNewSite" id="MXL-Om-66I"/>
-                        <segue destination="5jE-jq-HL1" kind="show" identifier="chooseExistingSite" id="R6r-Cv-vkJ"/>
+                        <segue destination="5jE-jq-HL1" kind="show" identifier="siteChoice" id="R6r-Cv-vkJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9c-S3-Ldf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="524.609375" y="-40.4296875"/>
         </scene>
-        <!--ChooseExistingSite-->
+        <!--SiteChoice-->
         <scene sceneID="L15-VV-8Zm">
             <objects>
-                <viewControllerPlaceholder storyboardName="ChooseExistingSite" id="5jE-jq-HL1" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SiteChoice" id="5jE-jq-HL1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVF-wC-fZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="514" y="174"/>

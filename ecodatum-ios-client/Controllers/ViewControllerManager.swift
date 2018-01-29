@@ -46,6 +46,24 @@ class ViewControllerManager {
     }
   }
   
+  var site: Site? {
+    guard let value = viewContext.state[.site] else { return nil }
+    if case let ViewContext.Value.site(site) = value {
+      return site
+    } else {
+      return nil
+    }
+  }
+  
+  var sites: [Site] {
+    guard let value = viewContext.state[.sites] else { return [] }
+    if case let ViewContext.Value.sites(sites) = value {
+      return sites
+    } else {
+      return []
+    }
+  }
+  
   init(viewController: UIViewController,
        viewContext: ViewContext,
        serviceManager: ServiceManager) {
@@ -77,7 +95,7 @@ class ViewControllerManager {
     if let authenticatedUser = authenticatedUser {
       
       getUserOrganizations(authenticatedUser)
-        .then(in: .userInitiated, handleOrganizations)
+        .then(in: .main, handleOrganizations)
         .catch(in: .main, handleError)
       
     } else {
@@ -183,35 +201,132 @@ class ViewControllerManager {
     
   }
   
+  func showOrganization(_ organization: Organization) {
+    
+    viewContext.state[.organization] = ViewContext.Value.organization(organization)
+    performSegue(to: .topNavigation)
+    
+  }
+  
   func createNewSite(
-    token: String,
-    organizationId: Int,
     name: String,
     description: String? = nil,
     latitude: Double,
     longitude: Double,
     altitude: Double? = nil,
     horizontalAccuracy: Double? = nil,
-    verticalAccuracy: Double? = nil) -> Promise<Site> {
+    verticalAccuracy: Double? = nil,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
     
-    return async(in: .userInitiated) {
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    guard let organizationId = organization?.id else {
+      handleError(ViewControllerError.noOrganizationIdentifier)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
       
-      status in
+      try serviceManager.call(
+        CreateNewSiteRequest(
+          token: token,
+          name: name,
+          description: description,
+          latitude: latitude,
+          longitude: longitude,
+          altitude: altitude,
+          horizontalAccuracy: horizontalAccuracy,
+          verticalAccuracy: verticalAccuracy,
+          organizationId: organizationId))
+        .then(in: .main, handNewSite)
+        .catch(in: .main) {
+          error in
+          if self.isConflictError(error) {
+            self.handleError(
+              ViewControllerError.siteNameConflict(name: name))
+          } else {
+            self.handleError(error)
+          }
+        }.always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
       
-      return try await(
-        self.serviceManager.call(
-          CreateNewSiteRequest(
-            token: token,
-            name: name,
-            description: description,
-            latitude: latitude,
-            longitude: longitude,
-            altitude: altitude,
-            horizontalAccuracy: horizontalAccuracy,
-            verticalAccuracy: verticalAccuracy,
-            organizationId: organizationId)))
+    } catch let error {
+      
+      handleError(error)
       
     }
+    
+  }
+  
+  func chooseExistingSite(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    guard let organizationId = organization?.id else {
+      handleError(ViewControllerError.noOrganizationIdentifier)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetSitesByOrganizationAndUserRequest(
+          token: token,
+          organizationId: organizationId))
+        .then(in: .main, handleSites)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+     
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func showSite(_ site: Site) {
+    
+    viewContext.state[.site] = ViewContext.Value.site(site)
+    performSegue(to: .siteNavigationChoice)
+    
+  }
+  
+  private func handNewSite(_ site: Site) {
+    
+    viewContext.state[.site] = ViewContext.Value.site(site)
+    performSegue(to: .siteNavigationChoice)
+    
+  }
+  
+  private func handleSites(_ sites: [Site]) {
+    
+    viewContext.state[.sites] = ViewContext.Value.sites(sites)
+    performSegue(to: .siteChoice)
     
   }
   
@@ -262,7 +377,10 @@ class ViewControllerManager {
       
     case ViewControllerError.noUserOrganizations:
       logout()
-      showErrorMessage("No Organizations", "User does not belong to any organizations.")
+      showErrorMessage("No Organizations", error.localizedDescription)
+      
+    case ViewControllerError.siteNameConflict:
+      showErrorMessage("Site Already Exists", error.localizedDescription)
       
     default:
       showErrorMessage("Unexpected Error", error.localizedDescription)
@@ -287,10 +405,12 @@ class ViewControllerManager {
       alertController,
       animated: true,
       completion: nil)
-  
+    
   }
   
-  private func getUserOrganizations(_ authenticatedUser: AuthenticatedUser) -> Promise<[Organization]> {
+  private func getUserOrganizations(
+    _ authenticatedUser: AuthenticatedUser)
+    -> Promise<[Organization]> {
     
     return async(in: .userInitiated) {
       
@@ -305,7 +425,8 @@ class ViewControllerManager {
     
   }
   
-  private func handleOrganizations(_ organizations: [Organization]) throws {
+  private func handleOrganizations(
+    _ organizations: [Organization]) throws {
     
     if organizations.count == 1 {
       
@@ -327,7 +448,8 @@ class ViewControllerManager {
   }
   
   private func handleBasicAuthUser(
-    _ basicAuthUserResponse: BasicAuthUserResponse) -> Promise<AuthenticatedUser> {
+    _ basicAuthUserResponse: BasicAuthUserResponse)
+    -> Promise<AuthenticatedUser> {
     
     return async(in: .userInitiated) {
       

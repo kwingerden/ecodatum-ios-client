@@ -3,6 +3,8 @@ import UIKit
 
 class TopNavigationChoiceViewController: BaseViewController {
   
+  @IBOutlet weak var organizationNameLabel: UILabel!
+  
   @IBOutlet weak var createNewSiteButton: UIButton!
   
   @IBOutlet weak var chooseExistingSiteButton: UIButton!
@@ -11,6 +13,10 @@ class TopNavigationChoiceViewController: BaseViewController {
   
     super.viewDidLoad()
     
+    title = viewControllerManager.organization!.name
+    
+    organizationNameLabel.text = viewControllerManager.organization!.name
+   
     createNewSiteButton.roundedButton()
     chooseExistingSiteButton.roundedButton()
 
@@ -31,9 +37,9 @@ class TopNavigationChoiceViewController: BaseViewController {
         to: .createNewSite)
       
     case chooseExistingSiteButton:
-      viewControllerManager.performSegue(
-        from: self,
-        to: .chooseExistingSite)
+      viewControllerManager.chooseExistingSite(
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation)
       
     default:
       LOG.error("Unexpected button")

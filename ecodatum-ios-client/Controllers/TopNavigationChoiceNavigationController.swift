@@ -8,7 +8,9 @@ class TopNavigationChoiceNavigationController: UINavigationController, ViewContr
   override func viewDidLoad() {
     super.viewDidLoad()
     let viewController = viewControllers[0] as! TopNavigationChoiceViewController
-    viewController.viewControllerManager = viewControllerManager
+    viewController.viewControllerManager = ViewControllerManager(
+      newViewController: viewController,
+      viewControllerManager: viewControllerManager)
   }
   
 }

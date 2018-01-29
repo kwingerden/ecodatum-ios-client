@@ -67,4 +67,8 @@ class ServiceManager {
     return try networkManager.call(request)
   }
   
+  func call(_ request: GetSitesByOrganizationAndUserRequest) throws -> Promise<[SiteResponse]> {
+    return try networkManager.call(request)
+  }
+  
 }

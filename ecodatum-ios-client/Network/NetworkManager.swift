@@ -35,7 +35,8 @@ class NetworkManager {
       .run(request)
   }
   
-  func call(_ request: GetOrganizationsByUserRequest) throws -> Promise<[OrganizationResponse]> {
+  func call(_ request: GetOrganizationsByUserRequest)
+    throws -> Promise<[OrganizationResponse]> {
     return try GetOrganizationsByUserCall(
       url: baseURL
         .appendingPathComponent("protected")
@@ -48,6 +49,18 @@ class NetworkManager {
     return try CreateNewSiteCall(
       url: baseURL
         .appendingPathComponent("protected")
+        .appendingPathComponent("sites"),
+      invalidationToken: InvalidationToken())
+      .run(request)
+  }
+  
+  func call(_ request: GetSitesByOrganizationAndUserRequest)
+    throws -> Promise<[SiteResponse]> {
+    return try GetSitesByOrganizationAndUserCall(
+      url: baseURL
+        .appendingPathComponent("protected")
+        .appendingPathComponent("organizations")
+        .appendingPathComponent("\(request.organizationId)")
         .appendingPathComponent("sites"),
       invalidationToken: InvalidationToken())
       .run(request)

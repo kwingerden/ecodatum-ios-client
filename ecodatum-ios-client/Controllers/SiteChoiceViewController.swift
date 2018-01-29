@@ -1,27 +1,35 @@
-import Foundation
+import SwiftValidator
 import UIKit
 
-class OrganizationChoiceViewController: BaseViewController  {
+class SiteChoiceViewController: BaseViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  lazy private var organizations = viewControllerManager.organizations
+  lazy private var sites = viewControllerManager.sites
   
   override func viewDidLoad() {
     
     super.viewDidLoad()
-  
+    
     tableView.delegate = self
     tableView.dataSource = self
-  
+    
     tableView.layer.borderColor = UIColor.black.cgColor
     tableView.layer.borderWidth = 0.25
     
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    
+    super.viewWillAppear(animated)
+    
+    navigationController?.navigationBar.isHidden = false
+  
+  }
+  
 }
 
-extension OrganizationChoiceViewController: UITableViewDelegate {
+extension SiteChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -30,31 +38,33 @@ extension OrganizationChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
-    viewControllerManager.showOrganization(organizations[indexPath.row])
+    viewControllerManager.showSite(sites[indexPath.row])
   }
   
 }
 
-extension OrganizationChoiceViewController: UITableViewDataSource {
+extension SiteChoiceViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let organization = organizations[indexPath.row]
+    let site = sites[indexPath.row]
     
-    cell.textLabel?.text = organization.name
-    cell.detailTextLabel?.text = organization.description
+    cell.textLabel?.text = site.name
+    cell.detailTextLabel?.text = site.description
     
     return cell
-  
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return organizations.count
+    return sites.count
   }
   
 }
+
+
 
 
 

@@ -9,7 +9,8 @@ enum ViewController: String {
   case createNewAccount
   
   case createNewSite
-  case chooseExistingSite
+  case siteChoice
+  case siteNavigationChoice
   
   case loginToAccount
   
