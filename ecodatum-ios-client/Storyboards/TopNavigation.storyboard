@@ -140,7 +140,7 @@
                         <outlet property="helpButton" destination="6o0-jL-uh9" id="BLG-o5-m9f"/>
                         <outlet property="homeButton" destination="8W6-aY-zWC" id="Lre-Qa-ied"/>
                         <outlet property="organizationNameLabel" destination="a10-QM-88a" id="I3P-TR-f74"/>
-                        <segue destination="9fp-FD-k9i" kind="presentation" identifier="main" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="6D1-Xr-GJV"/>
+                        <segue destination="bfN-ru-67t" kind="presentation" identifier="main" modalTransitionStyle="flipHorizontal" id="ZMF-qD-7cR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZdC-CQ-Mx3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,12 +148,12 @@
             <point key="canvasLocation" x="828.90625" y="-287.109375"/>
         </scene>
         <!--Main-->
-        <scene sceneID="0AJ-UY-87c">
+        <scene sceneID="WP8-BZ-ufZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="9fp-FD-k9i" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iTD-0f-TMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Main" id="bfN-ru-67t" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tgt-We-wOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304" y="-633"/>
+            <point key="canvasLocation" x="1327" y="-655"/>
         </scene>
         <!--Account-->
         <scene sceneID="PUy-Di-TUC">

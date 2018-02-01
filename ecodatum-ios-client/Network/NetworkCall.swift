@@ -363,6 +363,107 @@ class GetSitesByOrganizationAndUserCall: BaseNetworkCall, NetworkCall {
   
 }
 
+class GetAbioticFactorsCall: BaseNetworkCall, NetworkCall {
+  
+  func run(_ request: GetAbioticFactorsRequest)
+    throws -> Promise<[AbioticFactorResponse]> {
+      
+      let request = Alamofire.request(
+        url,
+        method: .get,
+        encoding: JSONEncoding.default)
+      
+      let debugDescription = request.debugDescription
+      LOG.debug(debugDescription)
+      
+      return Promise<[AbioticFactorResponse]>(
+        in: .userInitiated,
+        token: invalidationToken) {
+          
+          resolve, reject, status in
+          
+          request.validate(statusCode: [200]).responseData {
+            
+            response in
+            
+            LOG.debug(response.debugDescription)
+            
+            if status.isCancelled {
+              status.cancel()
+              return
+            }
+            
+            if let error = response.error {
+              reject(error)
+            } else if let data = response.data {
+              do {
+                let response = try JSONDecoder().decode([AbioticFactorResponse].self, from: data)
+                resolve(response)
+              } catch let error {
+                reject(error)
+              }
+            } else {
+              reject(NetworkError.unexpectedResponse)
+            }
+            
+          }
+      }
+  }
+      
+}
+
+class GetMeasurementUnitsByAbioticFactorIdCall: BaseNetworkCall, NetworkCall {
+  
+  func run(_ request: GetMeasurementUnitsByAbioticFactorIdRequest)
+    throws -> Promise<[MeasurementUnitResponse]> {
+      
+      let request = Alamofire.request(
+        url,
+        method: .get,
+        encoding: JSONEncoding.default)
+      
+      let debugDescription = request.debugDescription
+      LOG.debug(debugDescription)
+      
+      return Promise<[MeasurementUnitResponse]>(
+        in: .userInitiated,
+        token: invalidationToken) {
+          
+          resolve, reject, status in
+          
+          request.validate(statusCode: [200]).responseData {
+            
+            response in
+            
+            LOG.debug(response.debugDescription)
+            
+            if status.isCancelled {
+              status.cancel()
+              return
+            }
+            
+            if let error = response.error {
+              reject(error)
+            } else if let data = response.data {
+              do {
+                let response = try JSONDecoder().decode([MeasurementUnitResponse].self, from: data)
+                resolve(response)
+              } catch let error {
+                reject(error)
+              }
+            } else {
+              reject(NetworkError.unexpectedResponse)
+            }
+            
+          }
+      }
+  }
+  
+}
+
+
+
+
 
 
 

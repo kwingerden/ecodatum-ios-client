@@ -103,4 +103,28 @@ struct SiteResponse: NetworkResponse {
   
 }
 
+struct GetAbioticFactorsRequest: NetworkRequest {
+  
+}
+
+struct AbioticFactorResponse: NetworkResponse {
+
+  let id: Int
+  let name: String
+  
+}
+
+struct GetMeasurementUnitsByAbioticFactorIdRequest: NetworkRequest {
+  
+  let id: Int
+  
+}
+
+struct MeasurementUnitResponse: NetworkResponse {
+  
+  let id: Int
+  let name: String
+  
+}
+
 

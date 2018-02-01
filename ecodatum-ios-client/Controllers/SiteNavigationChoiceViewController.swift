@@ -27,7 +27,9 @@ class SiteNavigationChoiceViewController: BaseViewController {
     switch sender {
       
     case addNewMeasurementButton:
-      viewControllerManager.performSegue(to: .addNewMeasurement)
+      viewControllerManager.getAbioticFactors(
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation)
       
     default:
       LOG.error("Unrecognized button: \(sender)")

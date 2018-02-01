@@ -66,4 +66,26 @@ class NetworkManager {
       .run(request)
   }
   
+  func call(_ request: GetAbioticFactorsRequest)
+    throws -> Promise<[AbioticFactorResponse]> {
+      return try GetAbioticFactorsCall(
+        url: baseURL
+          .appendingPathComponent("public")
+          .appendingPathComponent("abioticFactors"),
+        invalidationToken: InvalidationToken())
+        .run(request)
+  }
+  
+  func call(_ request: GetMeasurementUnitsByAbioticFactorIdRequest)
+    throws -> Promise<[MeasurementUnitResponse]> {
+      return try GetMeasurementUnitsByAbioticFactorIdCall(
+        url: baseURL
+          .appendingPathComponent("public")
+          .appendingPathComponent("abioticFactors")
+          .appendingPathComponent("\(request.id)")
+          .appendingPathComponent("measurementUnits"),
+        invalidationToken: InvalidationToken())
+        .run(request)
+  }
+  
 }

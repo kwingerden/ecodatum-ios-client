@@ -14,8 +14,8 @@ class SiteChoiceViewController: BaseViewController {
     tableView.delegate = self
     tableView.dataSource = self
     
-    tableView.layer.borderColor = UIColor.black.cgColor
-    tableView.layer.borderWidth = 0.25
+    tableView.layer.borderColor = UIColor.lightGray.cgColor
+    tableView.layer.borderWidth = 1.0
     
   }
   
@@ -38,7 +38,9 @@ extension SiteChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
-    viewControllerManager.showSite(sites[indexPath.row])
+    DispatchQueue.main.async {
+      self.viewControllerManager.showSite(self.sites[indexPath.row])
+    }
   }
   
 }
@@ -53,6 +55,10 @@ extension SiteChoiceViewController: UITableViewDataSource {
     
     cell.textLabel?.text = site.name
     cell.detailTextLabel?.text = site.description
+    
+    let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))
+    nextIndicator.tintColor = UIColor.black
+    cell.accessoryView = nextIndicator
     
     return cell
     

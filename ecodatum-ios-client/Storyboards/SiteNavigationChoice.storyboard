@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="cMX-pe-KuS">
-                                <rect key="frame" x="184" y="382" width="400" height="261"/>
+                                <rect key="frame" x="184" y="338.5" width="400" height="348"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-QQ-psf">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
@@ -54,6 +54,10 @@
                                             <action selector="touchUpInsider:" destination="j9v-Zd-bTK" eventType="touchUpInside" id="nKU-ri-vPj"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7Hf-YA-xuA">
+                                        <rect key="frame" x="0.0" y="311" width="400" height="37"/>
+                                        <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="ITv-tQ-eMp"/>
@@ -69,23 +73,24 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="7Hf-YA-xuA" id="QRI-JM-VhD"/>
                         <outlet property="addNewMeasurementButton" destination="Oqq-ZJ-Wri" id="8Qw-KT-6Gm"/>
                         <outlet property="siteNameLabel" destination="Ojd-QQ-psf" id="LUo-yN-9sZ"/>
                         <outlet property="viewMeasurementsButton" destination="2C8-qL-Y6g" id="0F1-YT-PGo"/>
-                        <segue destination="dUo-1b-Scg" kind="show" identifier="addNewMeasurement" id="TBH-Nr-e25"/>
+                        <segue destination="nSe-Br-syk" kind="show" identifier="abioticFactorChoice" id="nth-us-gyd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czA-CW-qwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="19" y="60"/>
         </scene>
-        <!--AddNewMeasurement-->
-        <scene sceneID="7xA-3W-XVz">
+        <!--AbioticFactorChoice-->
+        <scene sceneID="bCs-3g-y7E">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddNewMeasurement" id="dUo-1b-Scg" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6fl-xc-egY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="AbioticFactorChoice" id="nSe-Br-syk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PW7-mi-mva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="495" y="-34"/>
+            <point key="canvasLocation" x="566" y="19"/>
         </scene>
     </scenes>
 </document>

@@ -14,8 +14,8 @@ class OrganizationChoiceViewController: BaseViewController  {
     tableView.delegate = self
     tableView.dataSource = self
   
-    tableView.layer.borderColor = UIColor.black.cgColor
-    tableView.layer.borderWidth = 0.25
+    tableView.layer.borderColor = UIColor.lightGray.cgColor
+    tableView.layer.borderWidth = 1.0
     
   }
   
@@ -30,7 +30,10 @@ extension OrganizationChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
-    viewControllerManager.showOrganization(organizations[indexPath.row])
+    DispatchQueue.main.async {
+      self.viewControllerManager.showOrganization(
+        self.organizations[indexPath.row])
+    }
   }
   
 }
@@ -45,6 +48,10 @@ extension OrganizationChoiceViewController: UITableViewDataSource {
     
     cell.textLabel?.text = organization.name
     cell.detailTextLabel?.text = organization.description
+    
+    let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))
+    nextIndicator.tintColor = UIColor.black
+    cell.accessoryView = nextIndicator
     
     return cell
   

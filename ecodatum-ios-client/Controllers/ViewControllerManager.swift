@@ -4,7 +4,9 @@ import Hydra
 import SwiftValidator
 import UIKit
 
+typealias AbioticFactor = AbioticFactorResponse
 typealias AuthenticatedUser = AuthenticatedUserRecord
+typealias MeasurementUnit = MeasurementUnitResponse
 typealias Organization = OrganizationResponse
 typealias Site = SiteResponse
 
@@ -28,12 +30,48 @@ class ViewControllerManager {
     }
   }()
   
+  var abioticFactor: AbioticFactor? {
+    guard let value = viewContext.state[.abioticFactor] else { return nil }
+    if case let ViewContext.Value.abioticFactor(abioticFactor) = value {
+      return abioticFactor
+    } else {
+      return nil
+    }
+  }
+  
+  var abioticFactors: [AbioticFactor] {
+    guard let value = viewContext.state[.abioticFactors] else { return [] }
+    if case let ViewContext.Value.abioticFactors(abioticFactors) = value {
+      return abioticFactors
+    } else {
+      return []
+    }
+  }
+  
   var organization: Organization? {
     guard let value = viewContext.state[.organization] else { return nil }
     if case let ViewContext.Value.organization(organization) = value {
       return organization
     } else {
       return nil
+    }
+  }
+  
+  var measurementUnit: MeasurementUnit? {
+    guard let value = viewContext.state[.measurementUnit] else { return nil }
+    if case let ViewContext.Value.measurementUnit(measurementUnit) = value {
+      return measurementUnit
+    } else {
+      return nil
+    }
+  }
+  
+  var measurementUnits: [MeasurementUnit] {
+    guard let value = viewContext.state[.measurementUnits] else { return [] }
+    if case let ViewContext.Value.measurementUnits(measurementUnits) = value {
+      return measurementUnits
+    } else {
+      return []
     }
   }
   
@@ -316,6 +354,78 @@ class ViewControllerManager {
     
   }
   
+  func getAbioticFactors(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetAbioticFactorsRequest())
+        .then(in: .main, handleAbioticFactors)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func showAbioticFactor(
+    _ abioticFactor: AbioticFactor,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetMeasurementUnitsByAbioticFactorIdRequest(
+          id: abioticFactor.id))
+        .then(in: .main, handleMeasurementUnits)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  private func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
+    
+    viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(measurementUnits)
+    performSegue(to: .abioticFactorChoice)
+    
+  }
+  
+  private func handleAbioticFactors(_ abioticFactors: [AbioticFactor]) {
+    
+    viewContext.state[.abioticFactors] = ViewContext.Value.abioticFactors(abioticFactors)
+    performSegue(to: .abioticFactorChoice)
+    
+  }
+  
   private func handNewSite(_ site: Site) {
     
     viewContext.state[.site] = ViewContext.Value.site(site)
@@ -363,7 +473,7 @@ class ViewControllerManager {
           
         case 401: // Unauthorized
           logout()
-          performSegue(to: .main)
+          showErrorMessage("Unauthorized Access", error.localizedDescription)
           
         default:
           showErrorMessage("Unexpected Error", error.localizedDescription)
