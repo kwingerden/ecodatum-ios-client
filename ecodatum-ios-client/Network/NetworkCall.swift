@@ -103,6 +103,54 @@ class BasicAuthUserCall: BaseNetworkCall, NetworkCall {
   
 }
 
+class LogoutCall: BaseNetworkCall, NetworkCall {
+  
+  func run(_ request: LogoutRequest)
+    throws -> Promise<LogoutResponse> {
+      
+      let request = Alamofire.request(
+        url,
+        method: .get,
+        encoding: JSONEncoding.default,
+        headers: Request.bearerTokenAuthHeaders(request.token))
+      
+      let debugDescription = request.debugDescription
+      LOG.debug(debugDescription)
+      
+      return Promise<LogoutResponse>(
+        in: .userInitiated,
+        token: invalidationToken) {
+          
+          resolve, reject, status in
+          
+          request.validate(statusCode: [200]).responseData {
+            
+            response in
+            
+            if status.isCancelled {
+              status.cancel()
+              return
+            }
+            
+            if let error = response.error {
+              reject(error)
+            } else if let data = response.data {
+              do {
+                resolve(LogoutResponse())
+              } catch let error {
+                reject(error)
+              }
+            } else {
+              reject(NetworkError.unexpectedResponse)
+            }
+            
+          }
+      }
+      
+  }
+  
+}
+
 class CreateNewOrganizationUserCall: BaseNetworkCall, NetworkCall {
   
   func run(_ request: CreateNewOrganizationUserRequest) throws -> Promise<UserResponse> {

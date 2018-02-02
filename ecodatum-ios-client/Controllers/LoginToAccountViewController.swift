@@ -18,7 +18,7 @@ class LoginToAccountViewController: BaseViewController {
     
     super.viewDidLoad()
     
-    loginButton.roundedButton()
+    loginButton.rounded()
     
     validator.registerField(
       emailAddressTextField,

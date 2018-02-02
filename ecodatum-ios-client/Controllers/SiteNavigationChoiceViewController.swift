@@ -17,8 +17,8 @@ class SiteNavigationChoiceViewController: BaseViewController {
     
     siteNameLabel.text = viewControllerManager.site!.name
     
-    addNewMeasurementButton.roundedButton()
-    viewMeasurementsButton.roundedButton()
+    addNewMeasurementButton.rounded()
+    viewMeasurementsButton.rounded()
     
   }
   

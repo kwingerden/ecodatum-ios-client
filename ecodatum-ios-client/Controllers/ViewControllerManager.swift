@@ -186,12 +186,23 @@ class ViewControllerManager {
     
   }
   
-  func logout() {
+  func logout(_ segueSourceViewController: UIViewController? = nil) {
     
     do {
-      try serviceManager.deleteAuthenticatedUser()
+      
+      try serviceManager.call(
+        LogoutRequest(
+          userId: authenticatedUser!.id!,
+          token: authenticatedUser!.token))
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          self.doLogout(segueSourceViewController)
+      }
+      
     } catch let error {
-      LOG.error(error.localizedDescription)
+      
+      handleError(error)
+    
     }
     
   }
@@ -338,7 +349,7 @@ class ViewControllerManager {
             postAsyncBlock()
           }
       }
-     
+      
     } catch let error {
       
       handleError(error)
@@ -391,6 +402,8 @@ class ViewControllerManager {
       preAsyncBlock()
     }
     
+    viewContext.state[.abioticFactor] = ViewContext.Value.abioticFactor(abioticFactor)
+    
     do {
       
       try serviceManager.call(
@@ -412,10 +425,29 @@ class ViewControllerManager {
     
   }
   
+  func showMeasurementUnit(_ measurementUnit: MeasurementUnit) {
+    
+    viewContext.state[.measurementUnit] = ViewContext.Value.measurementUnit(measurementUnit)
+    performSegue(to: .addNewMeasurement)
+    
+  }
+  
+  private func doLogout(_ segueSourceViewController: UIViewController? = nil) {
+    
+    do {
+      try serviceManager.deleteAuthenticatedUser()
+    } catch let error {
+      LOG.error(error)
+    }
+    
+    segueToMainViewController(segueSourceViewController)
+    
+  }
+  
   private func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
     
     viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(measurementUnits)
-    performSegue(to: .abioticFactorChoice)
+    performSegue(to: .measurementChoice)
     
   }
   
@@ -472,8 +504,8 @@ class ViewControllerManager {
         switch code {
           
         case 401: // Unauthorized
-          logout()
           showErrorMessage("Unauthorized Access", error.localizedDescription)
+          doLogout()
           
         default:
           showErrorMessage("Unexpected Error", error.localizedDescription)
@@ -486,8 +518,8 @@ class ViewControllerManager {
       }
       
     case ViewControllerError.noUserOrganizations:
-      logout()
       showErrorMessage("No Organizations", error.localizedDescription)
+      doLogout()
       
     case ViewControllerError.siteNameConflict:
       showErrorMessage("Site Already Exists", error.localizedDescription)
@@ -521,18 +553,18 @@ class ViewControllerManager {
   private func getUserOrganizations(
     _ authenticatedUser: AuthenticatedUser)
     -> Promise<[Organization]> {
-    
-    return async(in: .userInitiated) {
       
-      status in
+      return async(in: .userInitiated) {
+        
+        status in
+        
+        return try await(
+          self.serviceManager.call(
+            GetOrganizationsByUserRequest(
+              token: authenticatedUser.token)))
+        
+      }
       
-      return try await(
-        self.serviceManager.call(
-          GetOrganizationsByUserRequest(
-            token: authenticatedUser.token)))
-      
-    }
-    
   }
   
   private func handleOrganizations(
@@ -560,28 +592,28 @@ class ViewControllerManager {
   private func handleBasicAuthUser(
     _ basicAuthUserResponse: BasicAuthUserResponse)
     -> Promise<AuthenticatedUser> {
-    
-    return async(in: .userInitiated) {
       
-      status in
+      return async(in: .userInitiated) {
+        
+        status in
+        
+        let userResponse = try await(
+          try self.serviceManager.call(
+            GetUserRequest(
+              userId: basicAuthUserResponse.userId,
+              token: basicAuthUserResponse.token)))
+        
+        let authenticatedUser = AuthenticatedUserRecord(
+          userId: userResponse.id,
+          token: basicAuthUserResponse.token,
+          fullName: userResponse.fullName,
+          email: userResponse.email)
+        try self.serviceManager.setAuthenticatedUser(authenticatedUser)
+        
+        return authenticatedUser
+        
+      }
       
-      let userResponse = try await(
-        try self.serviceManager.call(
-          GetUserRequest(
-            userId: basicAuthUserResponse.userId,
-            token: basicAuthUserResponse.token)))
-      
-      let authenticatedUser = AuthenticatedUserRecord(
-        userId: userResponse.id,
-        token: basicAuthUserResponse.token,
-        fullName: userResponse.fullName,
-        email: userResponse.email)
-      try self.serviceManager.setAuthenticatedUser(authenticatedUser)
-      
-      return authenticatedUser
-      
-    }
-    
   }
   
   private func handleCreateNewAccount(
@@ -594,6 +626,29 @@ class ViewControllerManager {
           email: email,
           password: password))
       
+  }
+  
+  private func segueToMainViewController(
+    _ segueSourceViewController: UIViewController? = nil) {
+
+    if let segueSourceViewController = segueSourceViewController {
+      
+      performSegue(from: segueSourceViewController, to: .main)
+    
+    } else if let _ = viewController as? MainViewController {
+    
+      performSegue(to: .welcome)
+      
+    } else {
+      
+      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let mainViewController = mainStoryboard.instantiateViewController(
+        withIdentifier: "MainViewController")
+      mainViewController.modalTransitionStyle = .flipHorizontal
+      viewController.present(mainViewController, animated: true, completion: nil)
+    
+    }
+   
   }
   
 }

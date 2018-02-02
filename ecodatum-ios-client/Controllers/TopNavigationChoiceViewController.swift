@@ -17,8 +17,8 @@ class TopNavigationChoiceViewController: BaseViewController {
     
     organizationNameLabel.text = viewControllerManager.organization!.name
    
-    createNewSiteButton.roundedButton()
-    chooseExistingSiteButton.roundedButton()
+    createNewSiteButton.rounded()
+    chooseExistingSiteButton.rounded()
 
   }
   

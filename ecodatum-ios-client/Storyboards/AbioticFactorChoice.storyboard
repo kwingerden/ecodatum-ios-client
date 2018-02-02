@@ -91,17 +91,17 @@
                         <outlet property="airButton" destination="N3p-VF-T6u" id="Lb3-gO-eKu"/>
                         <outlet property="soilButton" destination="7DA-sF-mE4" id="yil-9L-wu9"/>
                         <outlet property="waterButton" destination="a0t-bZ-sb4" id="blK-PO-FmX"/>
-                        <segue destination="hou-60-Mc3" kind="show" identifier="addNewMeasurement" id="vjD-p4-OQd"/>
+                        <segue destination="hou-60-Mc3" kind="show" identifier="measurementChoice" id="vjD-p4-OQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2z-aE-fZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="142" y="225"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--MeasurementChoice-->
         <scene sceneID="7yQ-Xo-9XT">
             <objects>
-                <viewControllerPlaceholder id="hou-60-Mc3" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MeasurementChoice" id="hou-60-Mc3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNz-Km-gHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="635" y="225"/>

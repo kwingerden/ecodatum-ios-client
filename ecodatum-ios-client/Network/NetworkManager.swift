@@ -16,6 +16,15 @@ class NetworkManager {
       .run(request)
   }
   
+  func call(_ request: LogoutRequest) throws -> Promise<LogoutResponse> {
+    return try LogoutCall(
+      url: baseURL
+        .appendingPathComponent("protected")
+        .appendingPathComponent("logout"),
+      invalidationToken: InvalidationToken())
+      .run(request)
+  }
+  
   func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<UserResponse> {
     return try CreateNewOrganizationUserCall(
       url: baseURL

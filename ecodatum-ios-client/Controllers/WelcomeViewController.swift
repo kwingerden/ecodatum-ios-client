@@ -13,8 +13,8 @@ class WelcomeViewController: BaseViewController {
         
     LOG.debug("WelcomeViewController.viewDidLoad")
     
-    loginButton.roundedButton()
-    newAccountButton.roundedButton()
+    loginButton.rounded()
+    newAccountButton.rounded()
     
   }
   

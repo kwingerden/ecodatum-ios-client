@@ -26,8 +26,10 @@ class CreateNewSiteViewController: BaseViewController {
     
     super.viewDidLoad()
     
-    descriptionTextView.roundedTextView()
-    createNewSiteButton.roundedButton()
+    descriptionTextView.rounded()
+    descriptionTextView.lightBordered()
+    
+    createNewSiteButton.rounded()
     
     validator.registerField(
       nameTextField,

@@ -1,73 +1,72 @@
 import Foundation
+import SwiftValidator
 import UIKit
 
 class AddNewMeasurementViewController: BaseViewController {
   
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var valueLabel: UILabel!
   
-  lazy private var sites = viewControllerManager.sites
+  @IBOutlet weak var clearButton: UIButton!
+  
+  @IBOutlet weak var signButton: UIButton!
+  
+  @IBOutlet weak var unitButton: UIButton!
+  
+  @IBOutlet weak var zeroButton: UIButton!
+  
+  @IBOutlet weak var oneButton: UIButton!
+  
+  @IBOutlet weak var twoButton: UIButton!
+  
+  @IBOutlet weak var threeButton: UIButton!
+  
+  @IBOutlet weak var fourButton: UIButton!
+  
+  @IBOutlet weak var fiveButton: UIButton!
+  
+  @IBOutlet weak var sixButton: UIButton!
+  
+  @IBOutlet weak var sevenButton: UIButton!
+  
+  @IBOutlet weak var eightButton: UIButton!
+  
+  @IBOutlet weak var nineButton: UIButton!
+  
+  @IBOutlet weak var decimalButton: UIButton!
+  
+  @IBOutlet weak var deleteButton: UIButton!
+  
+  @IBOutlet weak var saveButton: UIButton!
   
   override func viewDidLoad() {
-    
+  
     super.viewDidLoad()
+      
+    valueLabel.roundedAndDarkBordered()
     
-    tableView.delegate = self
-    tableView.dataSource = self
+    clearButton.roundedAndDarkBordered()
+    signButton.roundedAndDarkBordered()
+    unitButton.roundedAndDarkBordered()
+    decimalButton.roundedAndDarkBordered()
+    deleteButton.roundedAndDarkBordered()
     
-    tableView.layer.borderColor = UIColor.lightGray.cgColor
-    tableView.layer.borderWidth = 1.0
+    zeroButton.roundedAndDarkBordered()
+    oneButton.roundedAndDarkBordered()
+    twoButton.roundedAndDarkBordered()
+    threeButton.roundedAndDarkBordered()
+    fourButton.roundedAndDarkBordered()
+    fiveButton.roundedAndDarkBordered()
+    sixButton.roundedAndDarkBordered()
+    sevenButton.roundedAndDarkBordered()
+    eightButton.roundedAndDarkBordered()
+    nineButton.roundedAndDarkBordered()
+    
+    saveButton.rounded()
     
   }
-  
-  override func viewWillAppear(_ animated: Bool) {
     
-    super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = false
-  
-  }
-  
 }
 
-extension AddNewMeasurementViewController: UITableViewDelegate {
-  
-  func tableView(_ tableView: UITableView,
-                 heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100
-  }
-  
-  func tableView(_ tableView: UITableView,
-                 didSelectRowAt indexPath: IndexPath) {
-    DispatchQueue.main.async {
-      self.viewControllerManager.showSite(self.sites[indexPath.row])
-    }
-  }
-  
-}
-
-extension AddNewMeasurementViewController: UITableViewDataSource {
-  
-  func tableView(_ tableView: UITableView,
-                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let site = sites[indexPath.row]
-    
-    cell.textLabel?.text = site.name
-    cell.detailTextLabel?.text = site.description
-    
-    let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))
-    nextIndicator.tintColor = UIColor.black
-    cell.accessoryView = nextIndicator
-    
-    return cell
-    
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sites.count
-  }
-  
-}
 
 
 

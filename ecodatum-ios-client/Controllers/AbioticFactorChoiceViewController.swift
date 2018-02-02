@@ -13,9 +13,9 @@ class AbioticFactorChoiceViewController: BaseViewController {
     
     super.viewDidLoad()
 
-    airButton.roundedButton()
-    soilButton.roundedButton()
-    waterButton.roundedButton()
+    airButton.rounded()
+    soilButton.rounded()
+    waterButton.rounded()
     
   }
   

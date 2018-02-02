@@ -7,6 +7,7 @@ enum ViewController: String {
   case account
   
   case addNewMeasurement
+  case measurementChoice
   
   case createNewAccount
   

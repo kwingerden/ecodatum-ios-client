@@ -13,7 +13,7 @@
         <!--Main View Controller-->
         <scene sceneID="lD1-E0-bDh">
             <objects>
-                <viewController id="JQc-Os-bcQ" customClass="MainViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="JQc-Os-bcQ" customClass="MainViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Yh-m5-bY5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -51,6 +51,10 @@ class ServiceManager {
     return try networkManager.call(request)
   }
   
+  func call(_ request: LogoutRequest) throws -> Promise<LogoutResponse> {
+    return try networkManager.call(request)
+  }
+  
   func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<UserResponse> {
     return try networkManager.call(request)
   }

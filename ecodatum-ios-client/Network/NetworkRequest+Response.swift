@@ -29,6 +29,17 @@ struct BasicAuthUserResponse: NetworkResponse {
   
 }
 
+struct LogoutRequest: ProtectedNetworkRequest {
+  
+  let userId: Int
+  let token: String
+  
+}
+
+struct LogoutResponse: NetworkResponse {
+  
+}
+
 struct CreateNewOrganizationUserRequest: NetworkRequest {
   
   let organizationCode: String

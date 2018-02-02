@@ -26,7 +26,7 @@ class CreateNewAccountViewController: BaseViewController {
     
     super.viewDidLoad()
     
-    createNewAccountButton.roundedButton()
+    createNewAccountButton.rounded()
     
     validator.registerField(
       organizationCodeTextField,

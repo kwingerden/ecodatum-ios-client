@@ -11,7 +11,7 @@ class AccountViewController: BaseViewController, SegueSourceViewControllerHolder
     
     super.viewDidLoad()
     
-    logoutButton.roundedButton()
+    logoutButton.rounded()
     
   }
   
@@ -23,10 +23,7 @@ class AccountViewController: BaseViewController, SegueSourceViewControllerHolder
     switch sender {
       
     case logoutButton:
-      viewControllerManager.logout()
-      viewControllerManager.performSegue(
-        from: segueSourceViewController,
-        to: .main)
+      viewControllerManager.logout(segueSourceViewController)
       
     default:
       LOG.error("Unrecognized button \(sender)")
