@@ -467,8 +467,19 @@ class ViewControllerManager {
   
   private func handleSites(_ sites: [Site]) {
     
-    viewContext.state[.sites] = ViewContext.Value.sites(sites)
-    performSegue(to: .siteChoice)
+    if sites.isEmpty {
+
+      showErrorMessage(
+        "No Existing Sites",
+        ViewControllerError.noOrganizationSites(
+          name: organization!.name).localizedDescription)
+      
+    } else {
+      
+      viewContext.state[.sites] = ViewContext.Value.sites(sites)
+      performSegue(to: .siteChoice)
+      
+    }
     
   }
   

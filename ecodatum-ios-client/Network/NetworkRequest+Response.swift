@@ -138,4 +138,10 @@ struct MeasurementUnitResponse: NetworkResponse {
   
 }
 
+struct AddNewSiteMeasurementRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let siteId: Int
+  let organizationId: Int
 
+}

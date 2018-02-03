@@ -38,10 +38,19 @@ class AddNewMeasurementViewController: BaseViewController {
   
   @IBOutlet weak var saveButton: UIButton!
   
+  private var value: String = "0"
+  
+  enum Unit: String  {
+    case degreesCelcius = "°C"
+    case degreesFahrenheit = "°F"
+  }
+  
+  private var unit: Unit = .degreesFahrenheit
+  
   override func viewDidLoad() {
   
     super.viewDidLoad()
-      
+    
     valueLabel.roundedAndDarkBordered()
     
     clearButton.roundedAndDarkBordered()
@@ -63,8 +72,135 @@ class AddNewMeasurementViewController: BaseViewController {
     
     saveButton.rounded()
     
-  }
+    updateValue()
     
+  }
+  
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    
+    switch sender {
+      
+    case clearButton:
+      value = "0"
+      
+    case signButton:
+      let doubleValue = Double(value)!
+      if doubleValue != 0.0 {
+        value = "\(-Double(value)!)"
+      }
+      
+    case unitButton:
+      if unit == .degreesCelcius {
+        unit = .degreesFahrenheit
+      } else {
+        unit = .degreesCelcius
+      }
+      
+    case decimalButton:
+      if !value.contains(".") {
+        value = value + "."
+      }
+      
+    case deleteButton:
+      if value.count > 0 {
+        let beforEndIndex = value.index(before: value.endIndex)
+        value = String(value[..<beforEndIndex])
+        if value.isEmpty {
+          value = "0"
+        }
+      }
+      
+    case zeroButton:
+      if value == "0" {
+        return
+      } else {
+        value = value + "0"
+      }
+      
+    case oneButton:
+      if value == "0" {
+        value = "1"
+      } else {
+        value = value + "1"
+      }
+      
+    case twoButton:
+      if value == "0" {
+        value = "2"
+      } else {
+        value = value + "2"
+      }
+    
+    case threeButton:
+      if value == "0" {
+        value = "3"
+      } else {
+        value = value + "3"
+      }
+    
+    case fourButton:
+      if value == "0" {
+        value = "4"
+      } else {
+        value = value + "4"
+      }
+    
+    case fiveButton:
+      if value == "0" {
+        value = "5"
+      } else {
+        value = value + "5"
+      }
+    
+    case sixButton:
+      if value == "0" {
+        value = "6"
+      } else {
+        value = value + "6"
+      }
+    
+    case sevenButton:
+      if value == "0" {
+        value = "7"
+      } else {
+        value = value + "7"
+      }
+    
+    case eightButton:
+      if value == "0" {
+        value = "8"
+      } else {
+        value = value + "8"
+      }
+      
+    case nineButton:
+      if value == "0" {
+        value = "9"
+      } else {
+        value = value + "9"
+      }
+      
+    case saveButton:
+      print("\(Double(value)!)")
+      
+    default:
+      LOG.error("Unexpected button \(sender)")
+      
+    }
+    
+    updateValue()
+    
+  }
+  
+  private func updateValue() {
+    if unit == .degreesCelcius {
+      unitButton.setTitle(Unit.degreesFahrenheit.rawValue, for: .normal)
+    } else {
+      unitButton.setTitle(Unit.degreesCelcius.rawValue, for: .normal)
+    }
+    valueLabel.text = "\(value) \(unit.rawValue)"
+  }
+  
 }
 
 
