@@ -22,6 +22,14 @@ class SiteNavigationChoiceViewController: BaseViewController {
     
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    
+    super.viewWillAppear(animated)
+    
+    navigationController?.navigationBar.isHidden = false
+    
+  }
+  
   @IBAction func touchUpInsider(_ sender: UIButton) {
    
     switch sender {

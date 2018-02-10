@@ -15,7 +15,6 @@
 		010AB18F1FF77F3800EFF0D5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */; };
 		010AB1901FF77F3800EFF0D5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */; };
 		010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */; };
-		011280F2200552B300CF0E6B /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011280F1200552B300CF0E6B /* NetworkCall.swift */; };
 		011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */; };
 		0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641A2005A8DD0022B788 /* ServiceError.swift */; };
@@ -122,7 +121,6 @@
 		010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
-		011280F1200552B300CF0E6B /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
 		011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToAccountViewController.swift; sourceTree = "<group>"; };
 		0131641A2005A8DD0022B788 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -310,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				01D8B2F91FFC6C5100450470 /* NetworkError.swift */,
-				011280F1200552B300CF0E6B /* NetworkCall.swift */,
 				0131642E2005ED270022B788 /* NetworkManager.swift */,
 				015E34A82006CFD7006A74C7 /* NetworkHelper.swift */,
 				01563DDE200D8E43009A478A /* NetworkRequest+Response.swift */,
@@ -615,7 +612,6 @@
 				01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */,
 				01563DDF200D8E43009A478A /* NetworkRequest+Response.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
-				011280F2200552B300CF0E6B /* NetworkCall.swift in Sources */,
 				013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */,
 				01D2BD7D201194F600260F18 /* AccountViewController.swift in Sources */,
 				011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */,
