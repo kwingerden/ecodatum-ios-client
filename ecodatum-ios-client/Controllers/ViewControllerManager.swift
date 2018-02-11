@@ -192,7 +192,7 @@ class ViewControllerManager {
       
       try serviceManager.call(
         LogoutRequest(
-          userId: authenticatedUser!.id!,
+          userId: authenticatedUser!.userId,
           token: authenticatedUser!.token))
         .catch(in: .main, handleError)
         .always(in: .main) {

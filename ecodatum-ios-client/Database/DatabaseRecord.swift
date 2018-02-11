@@ -51,13 +51,13 @@ class AuthenticatedUserRecord: BaseDatabaseRecord {
     static let email = Column("email")
   }
 
-  var userId: Int
+  var userId: String
   var token: String
   var fullName: String
   var email: String
   
   init(id: Int? = nil,
-       userId: Int,
+       userId: String,
        token: String,
        fullName: String,
        email: String) {
@@ -92,7 +92,7 @@ class AuthenticatedUserRecord: BaseDatabaseRecord {
         table in
         definePrimaryKey(table)
         table.column(
-          AuthenticatedUserRecord.Columns.userId.name, .integer)
+          AuthenticatedUserRecord.Columns.userId.name, .text)
           .notNull()
         table.column(
           AuthenticatedUserRecord.Columns.token.name, .text)

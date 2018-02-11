@@ -23,15 +23,15 @@ struct BasicAuthUserRequest: NetworkRequest {
 
 struct BasicAuthUserResponse: NetworkResponse {
   
-  let id: Int // tokenId
+  let id: String // tokenId
   let token: String
-  let userId: Int
+  let userId: String
   
 }
 
 struct LogoutRequest: ProtectedNetworkRequest {
   
-  let userId: Int
+  let userId: String
   let token: String
   
 }
@@ -51,14 +51,14 @@ struct CreateNewOrganizationUserRequest: NetworkRequest {
 
 struct GetUserRequest: ProtectedNetworkRequest {
   
-  let userId: Int
+  let userId: String
   let token: String
   
 }
 
 struct UserResponse: NetworkResponse {
   
-  let id: Int // userId
+  let id: String // userId
   let fullName: String
   let email: String
   
@@ -72,7 +72,7 @@ struct GetOrganizationsByUserRequest: ProtectedNetworkRequest {
 
 struct OrganizationResponse: NetworkResponse {
  
-  let id : Int // organization id
+  let id : String // organization id
   let code: String
   let name: String
   let description: String?
@@ -89,20 +89,20 @@ struct CreateNewSiteRequest: ProtectedNetworkRequest {
   let altitude: Double?
   let horizontalAccuracy: Double?
   let verticalAccuracy: Double?
-  let organizationId: Int
+  let organizationId: String
   
 }
 
 struct GetSitesByOrganizationAndUserRequest: ProtectedNetworkRequest {
   
   let token: String
-  let organizationId: Int
+  let organizationId: String
   
 }
 
 struct SiteResponse: NetworkResponse {
   
-  let id: Int // site id
+  let id: String // site id
   let name: String
   let description: String?
   let latitude: Double
@@ -110,7 +110,7 @@ struct SiteResponse: NetworkResponse {
   let altitude: Double?
   let horizontalAccuracy: Double?
   let verticalAccuracy: Double?
-  let organizationId: Int
+  let organizationId: String
   
 }
 
@@ -120,20 +120,20 @@ struct GetAbioticFactorsRequest: NetworkRequest {
 
 struct AbioticFactorResponse: NetworkResponse {
 
-  let id: Int
+  let id: String
   let name: String
   
 }
 
 struct GetMeasurementUnitsByAbioticFactorIdRequest: NetworkRequest {
   
-  let id: Int
+  let id: String
   
 }
 
 struct MeasurementUnitResponse: NetworkResponse {
   
-  let id: Int
+  let id: String
   let name: String
   
 }
@@ -141,7 +141,7 @@ struct MeasurementUnitResponse: NetworkResponse {
 struct AddNewSiteMeasurementRequest: ProtectedNetworkRequest {
   
   let token: String
-  let siteId: Int
-  let organizationId: Int
+  let siteId: String
+  let organizationId: String
 
 }

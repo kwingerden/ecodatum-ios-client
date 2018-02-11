@@ -12,8 +12,6 @@
 		010AB17F1FF6DFBF00EFF0D5 /* Service_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB17E1FF6DFBF00EFF0D5 /* Service_Test.swift */; };
 		010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */; };
 		010AB1871FF72C4600EFF0D5 /* UIView+Rounded+Bordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1861FF72C4600EFF0D5 /* UIView+Rounded+Bordered.swift */; };
-		010AB18F1FF77F3800EFF0D5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */; };
-		010AB1901FF77F3800EFF0D5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */; };
 		010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */; };
 		011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */; };
@@ -66,9 +64,7 @@
 		01986002201700E2005067F8 /* DatabaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01986001201700E2005067F8 /* DatabaseRecord.swift */; };
 		0198600420171CAB005067F8 /* ViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198600320171CAB005067F8 /* ViewControllerError.swift */; };
 		019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
-		019FA2F11FF9F24C00E38B2C /* SwiftLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F01FF9F24C00E38B2C /* SwiftLocation.framework */; };
 		019FA2F31FF9FE5400E38B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2F21FF9FE5400E38B2C /* Alamofire.framework */; };
-		019FA3011FFA0EB200E38B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA3001FFA0EB200E38B2C /* SwiftyJSON.framework */; };
 		01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11651FF4B5DB000DCE81 /* AppDelegate.swift */; };
 		01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD11671FF4B5DB000DCE81 /* MainViewController.swift */; };
 		01AD116B1FF4B5DB000DCE81 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AD11691FF4B5DB000DCE81 /* Welcome.storyboard */; };
@@ -79,13 +75,10 @@
 		01C945C32023AEC800F73CA5 /* AddNewMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C945C22023AEC800F73CA5 /* AddNewMeasurementViewController.swift */; };
 		01CCEC8C2015498700D64CE8 /* Validator+Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */; };
 		01CCEC9020154DFD00D64CE8 /* UITextView+Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */; };
-		01CCEC94201583C800D64CE8 /* SVProgressHUD+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC93201583C800D64CE8 /* SVProgressHUD+Defaults.swift */; };
 		01CCEC962015A27400D64CE8 /* ValidatorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC952015A27400D64CE8 /* ValidatorRule.swift */; };
 		01CCEC982015A3A300D64CE8 /* String+ToNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC972015A3A300D64CE8 /* String+ToNumber.swift */; };
 		01D2BD7B201194E500260F18 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D2BD7A201194E500260F18 /* Account.storyboard */; };
 		01D2BD7D201194F600260F18 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2BD7C201194F600260F18 /* AccountViewController.swift */; };
-		01D8B2E91FFC590A00450470 /* GRDBCipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E61FFC590A00450470 /* GRDBCipher.framework */; };
-		01D8B2EA1FFC590A00450470 /* GRDBCustomSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E71FFC590A00450470 /* GRDBCustomSQLite.framework */; };
 		01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
 		01D8B2EC1FFC592E00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
 		01D8B2ED1FFC592E00450470 /* GRDBCipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E61FFC590A00450470 /* GRDBCipher.framework */; };
@@ -95,8 +88,6 @@
 		01EBEA4D1FFB4E25008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
 		01EBEA4E1FFB4E25008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */; };
 		01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
-		01EBEA501FFB4E56008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */; };
-		01EBEA521FFB5699008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */; };
 		01EBEA531FFB56A2008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */; };
 		01FA40652022BC96004C9A24 /* AbioticFactorChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FA40642022BC96004C9A24 /* AbioticFactorChoice.storyboard */; };
 		01FA40672022BD24004C9A24 /* AbioticFactorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA40662022BD24004C9A24 /* AbioticFactorChoiceViewController.swift */; };
@@ -181,7 +172,6 @@
 		01C945C22023AEC800F73CA5 /* AddNewMeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMeasurementViewController.swift; sourceTree = "<group>"; };
 		01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+Transformer.swift"; sourceTree = "<group>"; };
 		01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Validatable.swift"; sourceTree = "<group>"; };
-		01CCEC93201583C800D64CE8 /* SVProgressHUD+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Defaults.swift"; sourceTree = "<group>"; };
 		01CCEC952015A27400D64CE8 /* ValidatorRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorRule.swift; sourceTree = "<group>"; };
 		01CCEC972015A3A300D64CE8 /* String+ToNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToNumber.swift"; sourceTree = "<group>"; };
 		01D2BD7A201194E500260F18 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
@@ -205,18 +195,10 @@
 			files = (
 				019FA2F31FF9FE5400E38B2C /* Alamofire.framework in Frameworks */,
 				01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */,
-				01EBEA501FFB4E56008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
-				01EBEA521FFB5699008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */,
-				01D8B2E91FFC590A00450470 /* GRDBCipher.framework in Frameworks */,
-				01D8B2EA1FFC590A00450470 /* GRDBCustomSQLite.framework in Frameworks */,
 				01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */,
 				019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */,
-				010AB1901FF77F3800EFF0D5 /* Kingfisher.framework in Frameworks */,
-				010AB18F1FF77F3800EFF0D5 /* SVProgressHUD.framework in Frameworks */,
-				019FA2F11FF9F24C00E38B2C /* SwiftLocation.framework in Frameworks */,
 				010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */,
 				010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */,
-				019FA3011FFA0EB200E38B2C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +263,6 @@
 				0190E7761FFB69E1006F9B81 /* Request+HTTPHeaders.swift */,
 				01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */,
 				01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */,
-				01CCEC93201583C800D64CE8 /* SVProgressHUD+Defaults.swift */,
 				01CCEC952015A27400D64CE8 /* ValidatorRule.swift */,
 				01CCEC972015A3A300D64CE8 /* String+ToNumber.swift */,
 			);
@@ -559,35 +540,19 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireSwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GRDB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/GRDBCipher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/GRDBCustomSQLite.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftLocation.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftValidator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireNetworkActivityIndicator.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireSwiftyJSON.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/GRDB.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/GRDBCipher.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/GRDBCustomSQLite.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SVProgressHUD.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftLocation.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftValidator.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -605,7 +570,6 @@
 				01833384201825360071C380 /* TopNavigationChoiceNavigationController.swift in Sources */,
 				0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */,
 				013FEB30201AD601009B7DBC /* ViewContext.swift in Sources */,
-				01CCEC94201583C800D64CE8 /* SVProgressHUD+Defaults.swift in Sources */,
 				01CCEC9020154DFD00D64CE8 /* UITextView+Validatable.swift in Sources */,
 				010AB1871FF72C4600EFF0D5 /* UIView+Rounded+Bordered.swift in Sources */,
 				013164312005F1CB0022B788 /* Configuration.swift in Sources */,

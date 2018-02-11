@@ -17,8 +17,7 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   
   func initialize() throws {
     
-    let databasePool = try DatabaseHelper.defaultDatabasePool(
-      DROP_AND_RECREATE_ECODATUM_DATABASE_FILE)
+    let databasePool = try DatabaseHelper.defaultDatabasePool(false)
     let databaseManager = try DatabaseManager(databasePool)
     let networkManager = NetworkManager(baseURL: ECODATUM_BASE_V1_API_URL)
     let serviceManager = ServiceManager(
@@ -30,7 +29,7 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
       viewController: self,
       viewContext: viewContext,
       serviceManager: serviceManager)
-    
+        
   }
   
   override func prepare(for segue: UIStoryboardSegue,

@@ -1,4 +1,4 @@
-// Generated Mon Jan 15 14:56:05 PST 2018
+// Generated Sat Feb 10 20:53:47 PST 2018
 
 import Foundation
 
@@ -14,6 +14,4 @@ let SWIFTY_BEAVER_APP_SECRET = "u0ex2m3fhdmSdwzAwsxahqzZq91x2orE"
 let SWIFTY_BEAVER_ENCRYPTION_KEY = "nruP7Yf0zgFhyzjv63wygYreZUsXln27"
 
 let ECODATUM_DATABASE_FILE_NAME = "ecodatum.sqlite"
-
-let DROP_AND_RECREATE_ECODATUM_DATABASE_FILE = true
 

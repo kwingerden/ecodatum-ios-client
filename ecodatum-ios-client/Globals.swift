@@ -1,6 +1,5 @@
 import Foundation
 import SwiftyBeaver
-import SwiftyJSON
 import UIKit
 
 // LOG
