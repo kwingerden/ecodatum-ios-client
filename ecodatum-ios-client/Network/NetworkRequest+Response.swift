@@ -1,6 +1,36 @@
+import Alamofire
 import Foundation
 
 protocol NetworkRequest: Encodable {
+  
+}
+
+extension NetworkRequest {
+  
+  var parameters: Parameters? {
+    
+    guard let data = try? JSONEncoder().encode(self) else {
+      return nil
+    }
+    guard let jsonObject = try? JSONSerialization.jsonObject(
+      with: data,
+      options: .allowFragments),
+      var parameters = jsonObject as? Parameters else {
+      return nil
+    }
+    
+    if let _ = self as? ProtectedNetworkRequest {
+      // Token is supplied in the HTTP header, not the body.
+      parameters.removeValue(forKey: "token")
+    }
+    
+    if parameters.isEmpty {
+      return nil
+    } else {
+      return parameters
+    }
+    
+  }
   
 }
 

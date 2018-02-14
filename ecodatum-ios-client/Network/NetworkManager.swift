@@ -15,6 +15,9 @@ class NetworkManager {
       makeDataRequest(
         baseURL.appendingPathComponent("login"),
         method: .post,
+        headers: Request.basicAuthHeaders(
+          email: request.email,
+          password: request.password),
         request: request))
   }
   
@@ -24,6 +27,7 @@ class NetworkManager {
         baseURL
           .appendingPathComponent("protected")
           .appendingPathComponent("logout"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
   
@@ -34,6 +38,7 @@ class NetworkManager {
           .appendingPathComponent("public")
           .appendingPathComponent("users"),
         method: .post,
+        parameters: request.parameters,
         request: request))
   }
   
@@ -44,6 +49,7 @@ class NetworkManager {
           .appendingPathComponent("protected")
           .appendingPathComponent("users")
           .appendingPathComponent("\(request.userId)"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
   
@@ -53,6 +59,7 @@ class NetworkManager {
         baseURL
           .appendingPathComponent("protected")
           .appendingPathComponent("organizations"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
   
@@ -63,6 +70,8 @@ class NetworkManager {
           .appendingPathComponent("protected")
           .appendingPathComponent("sites"),
         method: .post,
+        parameters: request.parameters,
+        headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
   
@@ -74,6 +83,7 @@ class NetworkManager {
           .appendingPathComponent("organizations")
           .appendingPathComponent("\(request.organizationId)")
           .appendingPathComponent("sites"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
   
@@ -101,22 +111,16 @@ class NetworkManager {
   private func makeDataRequest(
     _ url: URL,
     method: HTTPMethod = .get,
+    parameters: Parameters? = nil,
     encoding: ParameterEncoding = JSONEncoding.default,
+    headers: HTTPHeaders? = Request.defaultHeaders(),
     request: NetworkRequest)
     -> DataRequest {
-      
-      var headers = Request.defaultHeaders()
-      if let protected = request as? ProtectedNetworkRequest {
-        headers = Request.bearerTokenAuthHeaders(protected.token)
-      } else if let basicAuth = request as? BasicAuthUserRequest {
-        headers = Request.basicAuthHeaders(
-          email: basicAuth.email,
-          password: basicAuth.password)
-      }
       
       return Alamofire.request(
         url,
         method: method,
+        parameters: parameters,
         encoding: encoding,
         headers: headers)
       
@@ -126,6 +130,8 @@ class NetworkManager {
     _ dataRequest: DataRequest)
     throws -> Promise<T> {
       
+      LOG.debug(dataRequest.debugDescription)
+      
       return Promise<T>(in: .userInitiated) {
         
         resolve, reject, status in
@@ -133,11 +139,6 @@ class NetworkManager {
         dataRequest.validate(statusCode: [200]).responseData {
           
           response in
-          
-          if status.isCancelled {
-            status.cancel()
-            return
-          }
           
           if let error = response.error {
             reject(error)
