@@ -13,6 +13,7 @@
 		010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */; };
 		010AB1871FF72C4600EFF0D5 /* UIView+Rounded+Bordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AB1861FF72C4600EFF0D5 /* UIView+Rounded+Bordered.swift */; };
 		010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */; };
+		0117AA2F203699C300FFE8D6 /* JSON+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117AA2E203699C300FFE8D6 /* JSON+DateFormatter.swift */; };
 		011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */; };
 		011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */; };
 		0131641B2005A8DD0022B788 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131641A2005A8DD0022B788 /* ServiceError.swift */; };
@@ -112,6 +113,7 @@
 		010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		010AB18D1FF77F3800EFF0D5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		0117AA2E203699C300FFE8D6 /* JSON+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+DateFormatter.swift"; sourceTree = "<group>"; };
 		011F7D641FF589FC00DCD7CA /* LoginToAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginToAccount.storyboard; sourceTree = "<group>"; };
 		011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginToAccountViewController.swift; sourceTree = "<group>"; };
 		0131641A2005A8DD0022B788 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */,
 				01CCEC952015A27400D64CE8 /* ValidatorRule.swift */,
 				01CCEC972015A3A300D64CE8 /* String+ToNumber.swift */,
+				0117AA2E203699C300FFE8D6 /* JSON+DateFormatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */,
 				0131642F2005ED270022B788 /* NetworkManager.swift in Sources */,
 				01D8B2FA1FFC6C5100450470 /* NetworkError.swift in Sources */,
+				0117AA2F203699C300FFE8D6 /* JSON+DateFormatter.swift in Sources */,
 				0131642D2005ECF80022B788 /* ServiceManager.swift in Sources */,
 				013164292005C8120022B788 /* PromiseStatus+CheckCancelled.swift in Sources */,
 				017A15A020107066008553E2 /* MeasurementChoiceViewController.swift in Sources */,

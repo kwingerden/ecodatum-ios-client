@@ -15,6 +15,9 @@ class ViewContext {
     
     case site
     case sites
+    
+    case survey
+    case surveys
   
   }
 
@@ -31,6 +34,9 @@ class ViewContext {
     
     case site(Site)
     case sites([Site])
+    
+    case survey(Survey)
+    case surveys([Survey])
     
   }
   

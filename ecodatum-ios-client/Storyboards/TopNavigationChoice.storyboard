@@ -22,7 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="ZQa-LH-mcD">
-                                <rect key="frame" x="184" y="338" width="400" height="348"/>
+                                <rect key="frame" x="184" y="326.5" width="400" height="371"/>
+                                <userGuides>
+                                    <userLayoutGuide location="199" affinity="minX"/>
+                                </userGuides>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organization Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAT-Hf-4Uz">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
@@ -57,10 +60,20 @@
                                             <action selector="touchUpInsider:" destination="ytT-Gr-3qz" eventType="touchUpInside" id="9mS-Kt-8gs"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="801-wi-WUH">
-                                        <rect key="frame" x="0.0" y="311" width="400" height="37"/>
-                                        <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMD-0N-VdG">
+                                        <rect key="frame" x="0.0" y="311" width="400" height="60"/>
+                                        <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="801-wi-WUH">
+                                                <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
+                                                <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="801-wi-WUH" firstAttribute="centerY" secondItem="KMD-0N-VdG" secondAttribute="centerY" id="7Ix-Dv-B4t"/>
+                                            <constraint firstItem="801-wi-WUH" firstAttribute="centerX" secondItem="KMD-0N-VdG" secondAttribute="centerX" id="HM4-C4-5dt"/>
+                                            <constraint firstAttribute="height" constant="60" id="TUF-4l-4zD"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="1Hr-E4-Khp"/>

@@ -37,7 +37,7 @@ class AddNewMeasurementViewController: BaseViewController {
   @IBOutlet weak var deleteButton: UIButton!
   
   @IBOutlet weak var saveButton: UIButton!
-  
+    
   private var value: String = "0"
   
   enum Unit: String  {
@@ -181,7 +181,10 @@ class AddNewMeasurementViewController: BaseViewController {
       }
       
     case saveButton:
-      print("\(Double(value)!)")
+      viewControllerManager.addNewMeasurement(
+        value: Double(value)!,
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation)
       
     default:
       LOG.error("Unexpected button \(sender)")

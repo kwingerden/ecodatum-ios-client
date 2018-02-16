@@ -5,9 +5,9 @@ class SiteNavigationChoiceViewController: BaseViewController {
   
   @IBOutlet weak var siteNameLabel: UILabel!
   
-  @IBOutlet weak var addNewMeasurementButton: UIButton!
+  @IBOutlet weak var startNewSurveyButton: UIButton!
 
-  @IBOutlet weak var viewMeasurementsButton: UIButton!
+  @IBOutlet weak var viewExistingSurveysButton: UIButton!
 
   override func viewDidLoad() {
   
@@ -17,8 +17,8 @@ class SiteNavigationChoiceViewController: BaseViewController {
     
     siteNameLabel.text = viewControllerManager.site!.name
     
-    addNewMeasurementButton.rounded()
-    viewMeasurementsButton.rounded()
+    startNewSurveyButton.rounded()
+    viewExistingSurveysButton.rounded()
     
   }
   
@@ -34,8 +34,8 @@ class SiteNavigationChoiceViewController: BaseViewController {
    
     switch sender {
       
-    case addNewMeasurementButton:
-      viewControllerManager.getAbioticFactors(
+    case startNewSurveyButton:
+      viewControllerManager.startNewSurvey(
         preAsyncBlock: preAsyncUIOperation,
         postAsyncBlock: postAsyncUIOperation)
       

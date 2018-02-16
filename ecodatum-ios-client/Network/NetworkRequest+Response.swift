@@ -141,6 +141,23 @@ struct SiteResponse: NetworkResponse {
   let horizontalAccuracy: Double?
   let verticalAccuracy: Double?
   let organizationId: String
+  let userId: String
+  
+}
+
+struct StartNewSurveyRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let siteId: String
+  
+}
+
+struct SurveyResponse: NetworkResponse {
+  
+  let id: String // survey id
+  let date: Date
+  let siteId: String
+  let userId: String
   
 }
 
@@ -150,7 +167,7 @@ struct GetAbioticFactorsRequest: NetworkRequest {
 
 struct AbioticFactorResponse: NetworkResponse {
 
-  let id: String
+  let id: String // abiotic factor id
   let name: String
   
 }
@@ -163,15 +180,27 @@ struct GetMeasurementUnitsByAbioticFactorIdRequest: NetworkRequest {
 
 struct MeasurementUnitResponse: NetworkResponse {
   
-  let id: String
+  let id: String // measurement unit id
   let name: String
   
 }
 
-struct AddNewSiteMeasurementRequest: ProtectedNetworkRequest {
+struct AddNewMeasurementRequest: ProtectedNetworkRequest {
   
   let token: String
-  let siteId: String
-  let organizationId: String
+  let surveyId: String
+  let abioticFactorId: String
+  let measurementUnitId: String
+  let value: Double
 
+}
+
+struct MeasurementResponse: NetworkResponse {
+  
+  let id: String // measurement id
+  let surveyId: String
+  let abioticFactorId: String
+  let measurementUnitId: String
+  let value: Double
+  
 }

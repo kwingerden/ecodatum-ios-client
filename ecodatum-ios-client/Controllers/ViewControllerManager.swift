@@ -6,9 +6,11 @@ import UIKit
 
 typealias AbioticFactor = AbioticFactorResponse
 typealias AuthenticatedUser = AuthenticatedUserRecord
+typealias Measurement = MeasurementResponse
 typealias MeasurementUnit = MeasurementUnitResponse
 typealias Organization = OrganizationResponse
 typealias Site = SiteResponse
+typealias Survey = SurveyResponse
 
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
@@ -97,6 +99,24 @@ class ViewControllerManager {
     guard let value = viewContext.state[.sites] else { return [] }
     if case let ViewContext.Value.sites(sites) = value {
       return sites
+    } else {
+      return []
+    }
+  }
+  
+  var survey: Survey? {
+    guard let value = viewContext.state[.survey] else { return nil }
+    if case let ViewContext.Value.survey(survey) = value {
+      return survey
+    } else {
+      return nil
+    }
+  }
+  
+  var surveys: [Survey] {
+    guard let value = viewContext.state[.surveys] else { return [] }
+    if case let ViewContext.Value.surveys(surveys) = value {
+      return surveys
     } else {
       return []
     }
@@ -295,7 +315,7 @@ class ViewControllerManager {
           horizontalAccuracy: horizontalAccuracy,
           verticalAccuracy: verticalAccuracy,
           organizationId: organizationId))
-        .then(in: .main, handNewSite)
+        .then(in: .main, handleNewSite)
         .catch(in: .main) {
           error in
           if self.isConflictError(error) {
@@ -362,6 +382,46 @@ class ViewControllerManager {
     
     viewContext.state[.site] = ViewContext.Value.site(site)
     performSegue(to: .siteNavigationChoice)
+    
+  }
+  
+  func startNewSurvey(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    guard let siteId = site?.id else {
+      handleError(ViewControllerError.noSiteIdentifier)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        StartNewSurveyRequest(
+          token: token,
+          siteId: siteId))
+        .then(in: .main, handleNewSurvey)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
     
   }
   
@@ -432,6 +492,60 @@ class ViewControllerManager {
     
   }
   
+  func addNewMeasurement(
+    value: Double,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    guard let surveyId = survey?.id else {
+      handleError(ViewControllerError.noSurveyIdentifier)
+      return
+    }
+    
+    guard let abioticFactorId = abioticFactor?.id else {
+      handleError(ViewControllerError.noAbioticFactorIdentifier)
+      return
+    }
+    
+    guard let measurementUnitId = measurementUnit?.id else {
+      handleError(ViewControllerError.noMeasurementUnitIdentifier)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        AddNewMeasurementRequest(
+          token: token,
+          surveyId: surveyId,
+          abioticFactorId: abioticFactorId,
+          measurementUnitId: measurementUnitId,
+          value: value))
+        .then(in: .main, handleNewMeasurement)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
   private func doLogout(_ segueSourceViewController: UIViewController? = nil) {
     
     do {
@@ -458,7 +572,7 @@ class ViewControllerManager {
     
   }
   
-  private func handNewSite(_ site: Site) {
+  private func handleNewSite(_ site: Site) {
     
     viewContext.state[.site] = ViewContext.Value.site(site)
     performSegue(to: .siteNavigationChoice)
@@ -480,6 +594,19 @@ class ViewControllerManager {
       performSegue(to: .siteChoice)
       
     }
+    
+  }
+  
+  private func handleNewSurvey(_ survey: Survey) {
+    
+    viewContext.state[.survey] = ViewContext.Value.survey(survey)
+    getAbioticFactors()
+    
+  }
+  
+  private func handleNewMeasurement(_ measurement: Measurement) {
+    
+    performSegue(to: .abioticFactorChoice)
     
   }
   

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="cMX-pe-KuS">
-                                <rect key="frame" x="184" y="338.5" width="400" height="348"/>
+                                <rect key="frame" x="184" y="326.5" width="400" height="371"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-QQ-psf">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
@@ -33,7 +33,7 @@
                                             <constraint firstAttribute="height" constant="60" id="6oZ-bv-Qge"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Add New Measurement">
+                                        <state key="normal" title="Start New Survey">
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -47,14 +47,24 @@
                                             <constraint firstAttribute="height" constant="60" id="n5B-ZX-Igl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="View Measurements">
+                                        <state key="normal" title="View Existing Surveys">
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7Hf-YA-xuA">
-                                        <rect key="frame" x="0.0" y="311" width="400" height="37"/>
-                                        <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVK-qq-ahk">
+                                        <rect key="frame" x="0.0" y="311" width="400" height="60"/>
+                                        <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7Hf-YA-xuA">
+                                                <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
+                                                <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="5vW-5S-drr"/>
+                                            <constraint firstItem="7Hf-YA-xuA" firstAttribute="centerX" secondItem="GVK-qq-ahk" secondAttribute="centerX" id="Um9-0Y-3zJ"/>
+                                            <constraint firstItem="7Hf-YA-xuA" firstAttribute="centerY" secondItem="GVK-qq-ahk" secondAttribute="centerY" id="g78-sO-RHU"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="ITv-tQ-eMp"/>
@@ -71,9 +81,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="7Hf-YA-xuA" id="QRI-JM-VhD"/>
-                        <outlet property="addNewMeasurementButton" destination="Oqq-ZJ-Wri" id="8Qw-KT-6Gm"/>
                         <outlet property="siteNameLabel" destination="Ojd-QQ-psf" id="LUo-yN-9sZ"/>
-                        <outlet property="viewMeasurementsButton" destination="2C8-qL-Y6g" id="FlZ-xr-ET7"/>
+                        <outlet property="startNewSurveyButton" destination="Oqq-ZJ-Wri" id="8Qw-KT-6Gm"/>
+                        <outlet property="viewExistingSurveysButton" destination="2C8-qL-Y6g" id="FlZ-xr-ET7"/>
                         <segue destination="nSe-Br-syk" kind="show" identifier="abioticFactorChoice" id="nth-us-gyd"/>
                     </connections>
                 </viewController>

@@ -29,7 +29,7 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
       viewController: self,
       viewContext: viewContext,
       serviceManager: serviceManager)
-        
+    
   }
   
   override func prepare(for segue: UIStoryboardSegue,

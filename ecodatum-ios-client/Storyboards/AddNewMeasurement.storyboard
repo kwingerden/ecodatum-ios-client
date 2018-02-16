@@ -304,24 +304,41 @@
                                             <constraint firstAttribute="trailing" secondItem="SxQ-Pi-dAR" secondAttribute="trailing" constant="20" id="vHN-q1-bAz"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cai-41-rcJ" userLabel="Login Button">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ovh-eD-Hmg">
                                         <rect key="frame" x="0.0" y="640" width="380" height="60"/>
-                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cai-41-rcJ" userLabel="Save Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="380" height="60"/>
+                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="NPJ-QP-cPv" eventType="touchUpInside" id="tKF-JI-1Tf"/>
+                                                </connections>
+                                            </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-IC-kB4">
+                                                <rect key="frame" x="171.5" y="11" width="37" height="37"/>
+                                                <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="oOt-eq-HhI"/>
+                                            <constraint firstAttribute="bottom" secondItem="Cai-41-rcJ" secondAttribute="bottom" id="3q0-Ma-04k"/>
+                                            <constraint firstItem="Cai-41-rcJ" firstAttribute="top" secondItem="Ovh-eD-Hmg" secondAttribute="top" id="ITY-vE-dRQ"/>
+                                            <constraint firstItem="Cai-41-rcJ" firstAttribute="leading" secondItem="Ovh-eD-Hmg" secondAttribute="leading" id="RXW-Ww-5Ku"/>
+                                            <constraint firstAttribute="trailing" secondItem="Cai-41-rcJ" secondAttribute="trailing" id="d95-Bb-dtu"/>
+                                            <constraint firstItem="cLX-IC-kB4" firstAttribute="centerY" secondItem="Ovh-eD-Hmg" secondAttribute="centerY" id="ecM-ox-ubv"/>
+                                            <constraint firstAttribute="height" constant="60" id="rLQ-KB-1f8"/>
+                                            <constraint firstItem="cLX-IC-kB4" firstAttribute="centerX" secondItem="Ovh-eD-Hmg" secondAttribute="centerX" id="rre-ay-II3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchUpInside:" destination="NPJ-QP-cPv" eventType="touchUpInside" id="tKF-JI-1Tf"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Cai-41-rcJ" secondAttribute="trailing" id="DMz-1q-Geh"/>
-                                    <constraint firstItem="Cai-41-rcJ" firstAttribute="leading" secondItem="ZxF-Yl-y2h" secondAttribute="leading" id="FSX-eT-kdi"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ovh-eD-Hmg" secondAttribute="bottom" id="TVh-lR-RLP"/>
+                                    <constraint firstItem="Ovh-eD-Hmg" firstAttribute="leading" secondItem="ZxF-Yl-y2h" secondAttribute="leading" id="sag-28-1pB"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ovh-eD-Hmg" secondAttribute="trailing" id="wIj-bT-uWG"/>
+                                    <constraint firstAttribute="width" constant="380" id="yX9-3D-gS4"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -334,6 +351,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="cLX-IC-kB4" id="ikb-0P-yHm"/>
                         <outlet property="clearButton" destination="OaC-qP-NdM" id="fLI-ne-LiQ"/>
                         <outlet property="decimalButton" destination="HdG-PZ-Xle" id="YUS-FU-ahk"/>
                         <outlet property="deleteButton" destination="l9k-T7-Jy9" id="nwm-7U-Dvh"/>
@@ -351,11 +369,20 @@
                         <outlet property="unitButton" destination="cRz-36-HIO" id="fpx-jB-C0Z"/>
                         <outlet property="valueLabel" destination="ZnE-4d-wal" id="TQQ-bw-8PG"/>
                         <outlet property="zeroButton" destination="eYY-XW-3bI" id="q4l-ys-eW3"/>
+                        <segue destination="JUf-1B-7GX" kind="show" identifier="abioticFactorChoice" id="kMm-JZ-UYr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWK-Cq-z4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="77"/>
+            <point key="canvasLocation" x="-1232.03125" y="-633.3984375"/>
+        </scene>
+        <!--AbioticFactorChoice-->
+        <scene sceneID="uTA-i4-2uv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AbioticFactorChoice" id="JUf-1B-7GX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOH-n4-Q6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-686" y="-725"/>
         </scene>
     </scenes>
 </document>

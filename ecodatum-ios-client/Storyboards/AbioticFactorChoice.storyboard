@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="quc-2r-Hgt">
-                                <rect key="frame" x="184" y="283" width="400" height="458"/>
+                                <rect key="frame" x="184" y="271.5" width="400" height="481"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Abiotic Factor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRU-Gf-57Q">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
@@ -68,10 +68,20 @@
                                             <action selector="touchUpInsider:" destination="Puv-un-S5f" eventType="touchUpInside" id="uyq-wD-Nxc"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4j2-tl-WW3">
-                                        <rect key="frame" x="0.0" y="421" width="400" height="37"/>
-                                        <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Aw-Ow-Ycw">
+                                        <rect key="frame" x="0.0" y="421" width="400" height="60"/>
+                                        <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4j2-tl-WW3">
+                                                <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
+                                                <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="2DJ-51-FhP"/>
+                                            <constraint firstItem="4j2-tl-WW3" firstAttribute="centerY" secondItem="1Aw-Ow-Ycw" secondAttribute="centerY" id="OZV-NU-52p"/>
+                                            <constraint firstItem="4j2-tl-WW3" firstAttribute="centerX" secondItem="1Aw-Ow-Ycw" secondAttribute="centerX" id="h5M-2r-pQ7"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="sR6-kd-3Yf"/>

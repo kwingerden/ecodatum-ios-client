@@ -4,10 +4,13 @@ import Hydra
 
 class NetworkManager {
   
-  let baseURL: URL
+  private let baseURL: URL
+  
+  private let jsonDecoder = JSONDecoder()
   
   init(baseURL: URL) {
     self.baseURL = baseURL
+    jsonDecoder.dateDecodingStrategy = .customISO8601
   }
   
   func call(_ request: BasicAuthUserRequest) throws -> Promise<BasicAuthUserResponse> {
@@ -87,6 +90,18 @@ class NetworkManager {
         request: request))
   }
   
+  func call(_ request: StartNewSurveyRequest) throws -> Promise<SurveyResponse> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("surveys"),
+        method: .post,
+        parameters: request.parameters,
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
+  
   func call(_ request: GetAbioticFactorsRequest) throws -> Promise<[AbioticFactorResponse]> {
     return try executeDataRequest(
       makeDataRequest(
@@ -105,6 +120,19 @@ class NetworkManager {
             .appendingPathComponent("abioticFactors")
             .appendingPathComponent("\(request.id)")
             .appendingPathComponent("measurementUnits"),
+          request: request))
+  }
+  
+  func call(_ request: AddNewMeasurementRequest)
+    throws -> Promise<MeasurementResponse> {
+      return try executeDataRequest(
+        makeDataRequest(
+          baseURL
+            .appendingPathComponent("protected")
+            .appendingPathComponent("measurements"),
+          method: .post,
+          parameters: request.parameters,
+          headers: Request.bearerTokenAuthHeaders(request.token),
           request: request))
   }
   
@@ -144,7 +172,7 @@ class NetworkManager {
             reject(error)
           } else if let data = response.data {
             do {
-              let response = try JSONDecoder().decode(
+              let response = try self.jsonDecoder.decode(
                 T.self,
                 from: data)
               resolve(response)
