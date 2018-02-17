@@ -24,7 +24,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="AdC-3R-BrI">
                                 <rect key="frame" x="184" y="170.5" width="400" height="683.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abiotic Factor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOp-od-T0k">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Measurements" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOp-od-T0k">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                         <nil key="highlightedColor"/>
@@ -88,9 +88,9 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="abioticFactorLabel" destination="TOp-od-T0k" id="Y1m-te-mhX"/>
                         <outlet property="tableView" destination="3UT-Fw-uc8" id="Kb9-Wo-pr8"/>
                         <segue destination="T0M-KY-k6i" kind="show" identifier="addNewMeasurement" id="WkE-M3-GSr"/>
+                        <segue destination="Jyz-YK-voK" kind="show" identifier="measurement" id="g5p-c2-S3q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjR-nP-EKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,6 +104,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8v-rC-QLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-29" y="49"/>
+        </scene>
+        <!--Measurement-->
+        <scene sceneID="vAV-oZ-crg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Measurement" id="Jyz-YK-voK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iz9-t6-l5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-59" y="222"/>
         </scene>
     </scenes>
     <resources>

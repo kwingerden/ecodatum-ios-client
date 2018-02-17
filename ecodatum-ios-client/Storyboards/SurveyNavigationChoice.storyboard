@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="939-01-Vsg">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Survey Navigation-->
+        <scene sceneID="aFI-Q7-Nc7">
+            <objects>
+                <viewController title="Survey Navigation" id="939-01-Vsg" customClass="SurveyNavigationChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Aq-Xs-kHT">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="mlh-Qz-ZtG">
+                                <rect key="frame" x="184" y="326.5" width="400" height="371"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey Date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8g-20-WJ4">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZs-WS-xyS">
+                                        <rect key="frame" x="0.0" y="91" width="400" height="60"/>
+                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Aza-L2-brm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Add New Measurement">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="vEG-VS-L3x"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMo-zf-SAh">
+                                        <rect key="frame" x="0.0" y="201" width="400" height="60"/>
+                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="XFt-Q7-cFP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="View Existing Measurements">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="0hc-jV-YXm"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWd-LJ-gx5">
+                                        <rect key="frame" x="0.0" y="311" width="400" height="60"/>
+                                        <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dhI-ZG-s0K">
+                                                <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
+                                                <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="dhI-ZG-s0K" firstAttribute="centerY" secondItem="fWd-LJ-gx5" secondAttribute="centerY" id="5Ur-j8-QT1"/>
+                                            <constraint firstAttribute="height" constant="60" id="MZF-Hu-IQe"/>
+                                            <constraint firstItem="dhI-ZG-s0K" firstAttribute="centerX" secondItem="fWd-LJ-gx5" secondAttribute="centerX" id="Rh6-ZS-kpd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="06H-k9-53r"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mlh-Qz-ZtG" firstAttribute="centerX" secondItem="9Aq-Xs-kHT" secondAttribute="centerX" id="8xx-UX-5q6"/>
+                            <constraint firstItem="mlh-Qz-ZtG" firstAttribute="centerY" secondItem="9Aq-Xs-kHT" secondAttribute="centerY" id="H5Y-iP-Cxj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kTd-X9-xcA"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="dhI-ZG-s0K" id="fTZ-3g-ETI"/>
+                        <outlet property="addNewMeasurementButton" destination="NZs-WS-xyS" id="5T7-aE-lGh"/>
+                        <outlet property="surveyDateLabel" destination="i8g-20-WJ4" id="hHS-bH-Das"/>
+                        <outlet property="viewExistingMeasurementsButton" destination="kMo-zf-SAh" id="hki-59-z14"/>
+                        <segue destination="GUq-1c-sgT" kind="show" identifier="abioticFactorChoice" id="Ayv-Gz-nTc"/>
+                        <segue destination="xjT-0m-Oal" kind="show" identifier="measurementChoice" id="gWL-gs-HI4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o62-3J-rh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="60"/>
+        </scene>
+        <!--AbioticFactorChoice-->
+        <scene sceneID="ZdO-XI-Kyh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AbioticFactorChoice" id="GUq-1c-sgT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nfh-O1-QbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="-25"/>
+        </scene>
+        <!--MeasurementChoice-->
+        <scene sceneID="EFi-oC-Cf2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MeasurementChoice" id="xjT-0m-Oal" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-Os-KTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="540" y="100"/>
+        </scene>
+    </scenes>
+</document>

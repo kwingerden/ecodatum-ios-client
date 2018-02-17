@@ -8,7 +8,9 @@ enum ViewControllerError: Error {
   case noOrganizationIdentifier
   case noOrganizationSites(name: String)
   case noSiteIdentifier
+  case noSiteSurveys(name: String)
   case noSurveyIdentifier
+  case noSurveyMeasurements(name: String)
   case noUserOrganizations
   case siteNameConflict(name: String)
   
@@ -38,9 +40,15 @@ extension ViewControllerError: LocalizedError {
     case .noSiteIdentifier:
       return "Failed to obtain site identifier."
       
+    case let .noSiteSurveys(name):
+      return "Site \"\(name)\" does not have any surveys. A new survey needs to be created."
+      
     case .noSurveyIdentifier:
       return "Failed to obtain survey identifier."
-      
+
+    case let .noSurveyMeasurements(name):
+      return "Survey \"\(name)\" does not have any measurements."
+
     case .noUserOrganizations:
       return "User does not belong to any Organizations."
       

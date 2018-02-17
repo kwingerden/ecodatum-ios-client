@@ -1,11 +1,11 @@
 import Foundation
 import UIKit
 
-class MeasurementChoiceViewController: BaseViewController {
+class MeasurementUnitChoiceViewController: BaseViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  lazy private var measurements = viewControllerManager.measurements
+  lazy private var measurementUnits = viewControllerManager.measurementUnits
   
   override func viewDidLoad() {
     
@@ -23,12 +23,12 @@ class MeasurementChoiceViewController: BaseViewController {
     
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = false
-  
+    
   }
   
 }
 
-extension MeasurementChoiceViewController: UITableViewDelegate {
+extension MeasurementUnitChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -38,23 +38,23 @@ extension MeasurementChoiceViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
     DispatchQueue.main.async {
-      self.viewControllerManager.showMeasurement(
-        self.measurements[indexPath.row])
+      self.viewControllerManager.showMeasurementUnit(
+        self.measurementUnits[indexPath.row])
     }
   }
   
 }
 
-extension MeasurementChoiceViewController: UITableViewDataSource {
+extension MeasurementUnitChoiceViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let measurement = measurements[indexPath.row]
+    let measurementUnit = measurementUnits[indexPath.row]
     
-    cell.textLabel?.text = String(measurement.value)
-    cell.detailTextLabel?.text = "measurement description"
+    cell.textLabel?.text = measurementUnit.name
+    cell.detailTextLabel?.text = "measurement unit description"
     
     let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))
     nextIndicator.tintColor = UIColor.black
@@ -65,10 +65,11 @@ extension MeasurementChoiceViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return measurements.count
+    return measurementUnits.count
   }
   
 }
+
 
 
 

@@ -39,6 +39,11 @@ class SiteNavigationChoiceViewController: BaseViewController {
         preAsyncBlock: preAsyncUIOperation,
         postAsyncBlock: postAsyncUIOperation)
       
+    case viewExistingSurveysButton:
+      viewControllerManager.chooseExistingSurvey(
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation)
+      
     default:
       LOG.error("Unrecognized button: \(sender)")
       

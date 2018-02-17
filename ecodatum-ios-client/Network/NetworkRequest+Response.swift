@@ -152,6 +152,13 @@ struct StartNewSurveyRequest: ProtectedNetworkRequest {
   
 }
 
+struct GetSurveysBySiteAndUserRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let siteId: String
+  
+}
+
 struct SurveyResponse: NetworkResponse {
   
   let id: String // survey id
@@ -172,9 +179,9 @@ struct AbioticFactorResponse: NetworkResponse {
   
 }
 
-struct GetMeasurementUnitsByAbioticFactorIdRequest: NetworkRequest {
+struct GetMeasurementUnitsByAbioticFactorRequest: NetworkRequest {
   
-  let id: String
+  let abioticFactorId: String
   
 }
 
@@ -193,6 +200,13 @@ struct AddNewMeasurementRequest: ProtectedNetworkRequest {
   let measurementUnitId: String
   let value: Double
 
+}
+
+struct GetMeasurementsBySurveyRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let surveyId: String
+  
 }
 
 struct MeasurementResponse: NetworkResponse {

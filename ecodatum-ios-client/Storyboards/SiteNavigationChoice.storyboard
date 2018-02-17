@@ -50,6 +50,9 @@
                                         <state key="normal" title="View Existing Surveys">
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="touchUpInsider:" destination="j9v-Zd-bTK" eventType="touchUpInside" id="tDr-cf-mus"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVK-qq-ahk">
                                         <rect key="frame" x="0.0" y="311" width="400" height="60"/>
@@ -85,6 +88,7 @@
                         <outlet property="startNewSurveyButton" destination="Oqq-ZJ-Wri" id="8Qw-KT-6Gm"/>
                         <outlet property="viewExistingSurveysButton" destination="2C8-qL-Y6g" id="FlZ-xr-ET7"/>
                         <segue destination="nSe-Br-syk" kind="show" identifier="abioticFactorChoice" id="nth-us-gyd"/>
+                        <segue destination="Ubq-GD-0rb" kind="show" identifier="surveyChoice" id="f8L-Nn-QpJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czA-CW-qwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -98,6 +102,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PW7-mi-mva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="566" y="19"/>
+        </scene>
+        <!--SurveyChoice-->
+        <scene sceneID="4HC-st-VJW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SurveyChoice" id="Ubq-GD-0rb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQQ-Uy-F5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="566" y="115"/>
         </scene>
     </scenes>
 </document>

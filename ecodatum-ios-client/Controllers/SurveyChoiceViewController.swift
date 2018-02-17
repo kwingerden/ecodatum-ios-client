@@ -1,11 +1,11 @@
-import Foundation
+import SwiftValidator
 import UIKit
 
-class MeasurementChoiceViewController: BaseViewController {
+class SurveyChoiceViewController: BaseViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  lazy private var measurements = viewControllerManager.measurements
+  lazy private var surveys = viewControllerManager.surveys
   
   override func viewDidLoad() {
     
@@ -22,13 +22,14 @@ class MeasurementChoiceViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     
     super.viewWillAppear(animated)
+    
     navigationController?.navigationBar.isHidden = false
-  
+    
   }
   
 }
 
-extension MeasurementChoiceViewController: UITableViewDelegate {
+extension SurveyChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -38,23 +39,22 @@ extension MeasurementChoiceViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
     DispatchQueue.main.async {
-      self.viewControllerManager.showMeasurement(
-        self.measurements[indexPath.row])
+      self.viewControllerManager.showSurvey(
+        self.surveys[indexPath.row])
     }
   }
   
 }
 
-extension MeasurementChoiceViewController: UITableViewDataSource {
+extension SurveyChoiceViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let measurement = measurements[indexPath.row]
+    let survey = surveys[indexPath.row]
     
-    cell.textLabel?.text = String(measurement.value)
-    cell.detailTextLabel?.text = "measurement description"
+    cell.textLabel?.text = Formatter.basic.string(for: survey.date)
     
     let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))
     nextIndicator.tintColor = UIColor.black
@@ -64,11 +64,15 @@ extension MeasurementChoiceViewController: UITableViewDataSource {
     
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return measurements.count
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
+    return surveys.count
   }
   
 }
+
+
+
 
 
 

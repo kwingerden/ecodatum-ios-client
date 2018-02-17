@@ -122,6 +122,24 @@ class ViewControllerManager {
     }
   }
   
+  var measurement: Measurement? {
+    guard let value = viewContext.state[.measurement] else { return nil }
+    if case let ViewContext.Value.measurement(measurement) = value {
+      return measurement
+    } else {
+      return nil
+    }
+  }
+  
+  var measurements: [Measurement] {
+    guard let value = viewContext.state[.measurements] else { return [] }
+    if case let ViewContext.Value.measurements(measurements) = value {
+      return measurements
+    } else {
+      return []
+    }
+  }
+  
   init(viewController: UIViewController,
        viewContext: ViewContext,
        serviceManager: ServiceManager) {
@@ -425,6 +443,53 @@ class ViewControllerManager {
     
   }
   
+  func chooseExistingSurvey(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    guard let siteId = site?.id else {
+      handleError(ViewControllerError.noSiteIdentifier)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetSurveysBySiteAndUserRequest(
+          token: token,
+          siteId: siteId))
+        .then(in: .main, handleSurveys)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func showSurvey(_ survey: Survey) {
+    
+    viewContext.state[.survey] = ViewContext.Value.survey(survey)
+    performSegue(to: .surveyNavigationChoice)
+    
+  }
+  
   func getAbioticFactors(
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil) {
@@ -467,8 +532,8 @@ class ViewControllerManager {
     do {
       
       try serviceManager.call(
-        GetMeasurementUnitsByAbioticFactorIdRequest(
-          id: abioticFactor.id))
+        GetMeasurementUnitsByAbioticFactorRequest(
+          abioticFactorId: abioticFactor.id))
         .then(in: .main, handleMeasurementUnits)
         .catch(in: .main, handleError)
         .always(in: .main) {
@@ -546,6 +611,53 @@ class ViewControllerManager {
     
   }
   
+  func getMeasurements(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    guard let surveyId = survey?.id else {
+      handleError(ViewControllerError.noSurveyIdentifier)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetMeasurementsBySurveyRequest(
+          token: token,
+          surveyId: surveyId))
+        .then(in: .main, handleMeasurements)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func showMeasurement(_ measurement: Measurement) {
+    
+    viewContext.state[.measurement] = ViewContext.Value.measurement(measurement)
+    performSegue(to: .measurement)
+    
+  }
+  
   private func doLogout(_ segueSourceViewController: UIViewController? = nil) {
     
     do {
@@ -561,7 +673,7 @@ class ViewControllerManager {
   private func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
     
     viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(measurementUnits)
-    performSegue(to: .measurementChoice)
+    performSegue(to: .measurementUnitChoice)
     
   }
   
@@ -597,6 +709,24 @@ class ViewControllerManager {
     
   }
   
+  private func handleSurveys(_ surveys: [Survey]) {
+    
+    if surveys.isEmpty {
+      
+      showErrorMessage(
+        "No Existing Surveys",
+        ViewControllerError.noSiteSurveys(
+          name: site!.name).localizedDescription)
+      
+    } else {
+      
+      viewContext.state[.surveys] = ViewContext.Value.surveys(surveys)
+      performSegue(to: .surveyChoice)
+      
+    }
+    
+  }
+  
   private func handleNewSurvey(_ survey: Survey) {
     
     viewContext.state[.survey] = ViewContext.Value.survey(survey)
@@ -607,6 +737,25 @@ class ViewControllerManager {
   private func handleNewMeasurement(_ measurement: Measurement) {
     
     performSegue(to: .abioticFactorChoice)
+    
+  }
+  
+  private func handleMeasurements(_ measurements: [Measurement]) {
+    
+    if measurements.isEmpty {
+      
+      let name = Formatter.basic.string(from: survey!.date)
+      showErrorMessage(
+        "No Existing Measurements",
+        ViewControllerError.noSurveyMeasurements(
+          name: name).localizedDescription)
+      
+    } else {
+      
+      viewContext.state[.measurements] = ViewContext.Value.measurements(measurements)
+      performSegue(to: .measurementChoice)
+      
+    }
     
   }
   

@@ -102,6 +102,18 @@ class NetworkManager {
         request: request))
   }
   
+  func call(_ request: GetSurveysBySiteAndUserRequest) throws -> Promise<[SurveyResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("sites")
+          .appendingPathComponent("\(request.siteId)")
+          .appendingPathComponent("surveys"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
+  
   func call(_ request: GetAbioticFactorsRequest) throws -> Promise<[AbioticFactorResponse]> {
     return try executeDataRequest(
       makeDataRequest(
@@ -111,14 +123,14 @@ class NetworkManager {
         request: request))
   }
   
-  func call(_ request: GetMeasurementUnitsByAbioticFactorIdRequest)
+  func call(_ request: GetMeasurementUnitsByAbioticFactorRequest)
     throws -> Promise<[MeasurementUnitResponse]> {
       return try executeDataRequest(
         makeDataRequest(
           baseURL
             .appendingPathComponent("public")
             .appendingPathComponent("abioticFactors")
-            .appendingPathComponent("\(request.id)")
+            .appendingPathComponent("\(request.abioticFactorId)")
             .appendingPathComponent("measurementUnits"),
           request: request))
   }
@@ -134,6 +146,18 @@ class NetworkManager {
           parameters: request.parameters,
           headers: Request.bearerTokenAuthHeaders(request.token),
           request: request))
+  }
+  
+  func call(_ request: GetMeasurementsBySurveyRequest) throws -> Promise<[MeasurementResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("surveys")
+          .appendingPathComponent("\(request.surveyId)")
+          .appendingPathComponent("measurements"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
   }
   
   private func makeDataRequest(
