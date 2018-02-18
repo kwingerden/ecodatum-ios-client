@@ -11,8 +11,15 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   override func viewDidLoad() {
+    
     super.viewDidLoad()
+    
     validator.defaultStyleTransformers()
+    
+    if let cancelButtonHolder = self as? FormSheetCancelButtonHolder {
+      cancelButtonHolder.cancelButton.initialize(self)
+    }
+    
   }
   
   func initialize() throws {
@@ -40,6 +47,7 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
     if var viewControllerManagerHolder = segue.destination as? ViewControllerManagerHolder {
       viewControllerManagerHolder.viewControllerManager = ViewControllerManager(
         newViewController: segue.destination,
+        storyboardSegue: segue,
         viewControllerManager: viewControllerManager)
     }
     

@@ -5,7 +5,7 @@ class SiteChoiceViewController: BaseViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  lazy private var sites = viewControllerManager.sites
+  @IBOutlet weak var addButtonItem: UIBarButtonItem!
   
   override func viewDidLoad() {
     
@@ -17,6 +17,8 @@ class SiteChoiceViewController: BaseViewController {
     tableView.layer.borderColor = UIColor.lightGray.cgColor
     tableView.layer.borderWidth = 1.0
     
+    tableView.tableFooterView = UIView(frame: CGRect.zero)
+  
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +29,27 @@ class SiteChoiceViewController: BaseViewController {
   
   }
   
+  @IBAction func buttonItemPress(_ sender: UIBarButtonItem) {
+    
+    switch sender {
+    
+    case editButtonItem:
+      tableView.setEditing(true, animated: true)
+      
+    case addButtonItem:
+      viewControllerManager.performSegue(to: .createNewSite)
+      
+    default:
+      LOG.error("Unexpected button \(sender)")
+    
+    }
+    
+  }
+  
+  func handleNewSite(_ site: Site) {
+    print("new site \(site)")
+  }
+
 }
 
 extension SiteChoiceViewController: UITableViewDelegate {
@@ -38,8 +61,11 @@ extension SiteChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
-    DispatchQueue.main.async {
-      self.viewControllerManager.showSite(self.sites[indexPath.row])
+    if !tableView.isEditing {
+      DispatchQueue.main.async {
+        let sites = self.viewControllerManager.sites
+        self.viewControllerManager.showSite(sites[indexPath.row])
+      }
     }
   }
   
@@ -51,7 +77,7 @@ extension SiteChoiceViewController: UITableViewDataSource {
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let site = sites[indexPath.row]
+    let site = viewControllerManager.sites[indexPath.row]
     
     cell.textLabel?.text = site.name
     cell.detailTextLabel?.text = site.description
@@ -65,9 +91,15 @@ extension SiteChoiceViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sites.count
+    return viewControllerManager.sites.count
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      print("delete")
+    }
+  }
+
 }
 
 

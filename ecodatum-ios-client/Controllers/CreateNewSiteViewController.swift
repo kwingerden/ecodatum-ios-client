@@ -2,7 +2,12 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class CreateNewSiteViewController: BaseViewController {
+class CreateNewSiteViewController:
+BaseViewController,
+FormSheetCancelButtonHolder,
+SegueSourceViewControllerHolder {
+  
+  @IBOutlet weak var cancelButton: FormSheetCancelButton!
   
   @IBOutlet weak var nameTextField: UITextField!
   
@@ -21,7 +26,9 @@ class CreateNewSiteViewController: BaseViewController {
   @IBOutlet weak var longitudeErrorLabel: UILabel!
   
   @IBOutlet weak var createNewSiteButton: UIButton!
-    
+  
+  var segueSourceViewController: UIViewController!
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -66,13 +73,23 @@ class CreateNewSiteViewController: BaseViewController {
     let latitude = Double(latitudeTextField.text!)!
     let longitude = Double(longitudeTextField.text!)!
     
+    var newSiteHandler: (Site) -> Void = viewControllerManager.handleNewSite
+    if let siteChoiceViewController = segueSourceViewController as? SiteChoiceViewController {
+      newSiteHandler = {
+        site in
+        self.dismiss(animated: true, completion: nil)
+        siteChoiceViewController.handleNewSite(site)
+      }
+    }
+    
     viewControllerManager.createNewSite(
       name: name,
       description: description,
       latitude: latitude,
       longitude: longitude,
       preAsyncBlock: preAsyncUIOperation,
-      postAsyncBlock: postAsyncUIOperation)
+      postAsyncBlock: postAsyncUIOperation,
+      newSiteHandler: newSiteHandler)
   
   }
   

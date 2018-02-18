@@ -19,6 +19,8 @@ class ViewControllerManager {
   
   private let viewController: UIViewController
   
+  private let storyboardSegue: UIStoryboardSegue?
+  
   private let viewContext: ViewContext
   
   private let serviceManager: ServiceManager
@@ -141,16 +143,20 @@ class ViewControllerManager {
   }
   
   init(viewController: UIViewController,
+       storyboardSegue: UIStoryboardSegue? = nil,
        viewContext: ViewContext,
        serviceManager: ServiceManager) {
     self.viewController = viewController
+    self.storyboardSegue = storyboardSegue
     self.viewContext = viewContext
     self.serviceManager = serviceManager
   }
   
   convenience init(newViewController: UIViewController,
+                   storyboardSegue: UIStoryboardSegue? = nil,
                    viewControllerManager: ViewControllerManager) {
     self.init(viewController: newViewController,
+              storyboardSegue: storyboardSegue,
               viewContext: viewControllerManager.viewContext,
               serviceManager: viewControllerManager.serviceManager)
   }
@@ -160,6 +166,7 @@ class ViewControllerManager {
                     sender: Any? = nil) {
     
     LOG.debug("ViewControllerManager.performSegue: \(viewController) => \(to)")
+    
     (from ?? viewController).performSegue(
       withIdentifier: to.rawValue,
       sender: sender)
@@ -304,7 +311,8 @@ class ViewControllerManager {
     horizontalAccuracy: Double? = nil,
     verticalAccuracy: Double? = nil,
     preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil) {
+    postAsyncBlock: PostAsyncBlock? = nil,
+    newSiteHandler: @escaping (Site) -> Void) {
     
     guard let token = authenticatedUser?.token else {
       handleError(ViewControllerError.noAuthenticationToken)
@@ -333,7 +341,7 @@ class ViewControllerManager {
           horizontalAccuracy: horizontalAccuracy,
           verticalAccuracy: verticalAccuracy,
           organizationId: organizationId))
-        .then(in: .main, handleNewSite)
+        .then(in: .main, newSiteHandler)
         .catch(in: .main) {
           error in
           if self.isConflictError(error) {
@@ -670,25 +678,25 @@ class ViewControllerManager {
     
   }
   
-  private func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
+  func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
     
     viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(measurementUnits)
     performSegue(to: .measurementUnitChoice)
     
   }
   
-  private func handleAbioticFactors(_ abioticFactors: [AbioticFactor]) {
+  func handleAbioticFactors(_ abioticFactors: [AbioticFactor]) {
     
     viewContext.state[.abioticFactors] = ViewContext.Value.abioticFactors(abioticFactors)
     performSegue(to: .abioticFactorChoice)
     
   }
   
-  private func handleNewSite(_ site: Site) {
+  func handleNewSite(_ site: Site) {
     
-    viewContext.state[.site] = ViewContext.Value.site(site)
-    performSegue(to: .siteNavigationChoice)
-    
+      viewContext.state[.site] = ViewContext.Value.site(site)
+      performSegue(to: .siteNavigationChoice)
+  
   }
   
   private func handleSites(_ sites: [Site]) {
@@ -709,7 +717,7 @@ class ViewControllerManager {
     
   }
   
-  private func handleSurveys(_ surveys: [Survey]) {
+  func handleSurveys(_ surveys: [Survey]) {
     
     if surveys.isEmpty {
       
@@ -727,20 +735,20 @@ class ViewControllerManager {
     
   }
   
-  private func handleNewSurvey(_ survey: Survey) {
+  func handleNewSurvey(_ survey: Survey) {
     
     viewContext.state[.survey] = ViewContext.Value.survey(survey)
     getAbioticFactors()
     
   }
   
-  private func handleNewMeasurement(_ measurement: Measurement) {
+  func handleNewMeasurement(_ measurement: Measurement) {
     
     performSegue(to: .abioticFactorChoice)
     
   }
   
-  private func handleMeasurements(_ measurements: [Measurement]) {
+  func handleMeasurements(_ measurements: [Measurement]) {
     
     if measurements.isEmpty {
       
@@ -791,8 +799,12 @@ class ViewControllerManager {
         switch code {
           
         case 401: // Unauthorized
-          showErrorMessage("Unauthorized Access", error.localizedDescription)
-          doLogout()
+          showErrorMessage(
+            "Unauthorized Access",
+            error.localizedDescription) {
+              _ in
+              self.doLogout()
+          }
           
         default:
           showErrorMessage("Unexpected Error", error.localizedDescription)
@@ -818,7 +830,9 @@ class ViewControllerManager {
     
   }
   
-  private func showErrorMessage(_ title: String, _ message: String) {
+  private func showErrorMessage(_ title: String,
+                                _ message: String,
+                                handler: ((UIAlertAction) -> Void)? = nil) {
     
     let alertController = UIAlertController(
       title: title,
@@ -828,7 +842,7 @@ class ViewControllerManager {
       UIAlertAction(
         title: "OK",
         style: UIAlertActionStyle.default,
-        handler: nil))
+        handler: handler))
     
     viewController.present(
       alertController,

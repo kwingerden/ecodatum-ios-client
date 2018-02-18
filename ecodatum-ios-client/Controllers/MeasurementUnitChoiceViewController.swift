@@ -17,6 +17,8 @@ class MeasurementUnitChoiceViewController: BaseViewController {
     tableView.layer.borderColor = UIColor.lightGray.cgColor
     tableView.layer.borderWidth = 1.0
     
+    tableView.tableFooterView = UIView(frame: CGRect.zero)
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {

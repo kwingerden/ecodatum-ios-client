@@ -71,6 +71,9 @@
 		0197EA3F2037EDF400E0D04A /* MeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA3E2037EDF400E0D04A /* MeasurementViewController.swift */; };
 		0197EA412037F1C900E0D04A /* MeasurementUnitChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0197EA402037F1C900E0D04A /* MeasurementUnitChoice.storyboard */; };
 		0197EA432037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA422037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift */; };
+		0197EA47203909BC00E0D04A /* FormSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA46203909BC00E0D04A /* FormSheetSegue.swift */; };
+		0197EA4B2039164000E0D04A /* FormSheetCancelButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */; };
+		0197EA4D20391D6F00E0D04A /* FormSheetCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */; };
 		01986002201700E2005067F8 /* DatabaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01986001201700E2005067F8 /* DatabaseRecord.swift */; };
 		0198600420171CAB005067F8 /* ViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198600320171CAB005067F8 /* ViewControllerError.swift */; };
 		019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
@@ -172,6 +175,9 @@
 		0197EA3E2037EDF400E0D04A /* MeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewController.swift; sourceTree = "<group>"; };
 		0197EA402037F1C900E0D04A /* MeasurementUnitChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeasurementUnitChoice.storyboard; sourceTree = "<group>"; };
 		0197EA422037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementUnitChoiceViewController.swift; sourceTree = "<group>"; };
+		0197EA46203909BC00E0D04A /* FormSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetSegue.swift; sourceTree = "<group>"; };
+		0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetCancelButtonHolder.swift; sourceTree = "<group>"; };
+		0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetCancelButton.swift; sourceTree = "<group>"; };
 		01986001201700E2005067F8 /* DatabaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRecord.swift; sourceTree = "<group>"; };
 		0198600320171CAB005067F8 /* ViewControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerError.swift; sourceTree = "<group>"; };
 		019FA2EE1FF9D73F00E38B2C /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
@@ -407,6 +413,9 @@
 				0197EA3A2037DC2300E0D04A /* SurveyNavigationChoiceViewController.swift */,
 				0197EA3E2037EDF400E0D04A /* MeasurementViewController.swift */,
 				0197EA422037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift */,
+				0197EA46203909BC00E0D04A /* FormSheetSegue.swift */,
+				0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */,
+				0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -612,8 +621,10 @@
 				01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */,
 				01563DDF200D8E43009A478A /* NetworkRequest+Response.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
+				0197EA4D20391D6F00E0D04A /* FormSheetCancelButton.swift in Sources */,
 				013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */,
 				01D2BD7D201194F600260F18 /* AccountViewController.swift in Sources */,
+				0197EA47203909BC00E0D04A /* FormSheetSegue.swift in Sources */,
 				011F7D671FF58A1E00DCD7CA /* LoginToAccountViewController.swift in Sources */,
 				0131642F2005ED270022B788 /* NetworkManager.swift in Sources */,
 				01D8B2FA1FFC6C5100450470 /* NetworkError.swift in Sources */,
@@ -625,6 +636,7 @@
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				01C945C32023AEC800F73CA5 /* AddNewMeasurementViewController.swift in Sources */,
 				013F67522009AF56001B8586 /* ViewController.swift in Sources */,
+				0197EA4B2039164000E0D04A /* FormSheetCancelButtonHolder.swift in Sources */,
 				01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */,
 				014B316320145CF300B81D2C /* SiteMapViewController.swift in Sources */,
 				0185F719201D60F000B176C6 /* ViewControllerManager.swift in Sources */,
