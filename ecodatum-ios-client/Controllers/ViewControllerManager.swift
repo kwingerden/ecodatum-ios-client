@@ -15,15 +15,15 @@ typealias Survey = SurveyResponse
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
 
-class ViewControllerManager {
+class ViewControllerManager: SiteHandler {
   
-  private let viewController: UIViewController
+  let viewController: UIViewController
   
-  private let storyboardSegue: UIStoryboardSegue?
+  let storyboardSegue: UIStoryboardSegue?
   
-  private let viewContext: ViewContext
+  let viewContext: ViewContext
   
-  private let serviceManager: ServiceManager
+  let serviceManager: ServiceManager
   
   lazy var authenticatedUser: AuthenticatedUser? = {
     do {
@@ -142,6 +142,15 @@ class ViewControllerManager {
     }
   }
   
+  var viewControllerSegue: ViewControllerSegue? {
+    if let identifier = storyboardSegue?.identifier,
+      let viewControllerSegue = ViewControllerSegue(rawValue: identifier) {
+      return viewControllerSegue
+    } else {
+      return nil
+    }
+  }
+  
   init(viewController: UIViewController,
        storyboardSegue: UIStoryboardSegue? = nil,
        viewContext: ViewContext,
@@ -162,7 +171,7 @@ class ViewControllerManager {
   }
   
   func performSegue(from: UIViewController? = nil,
-                    to: ViewController,
+                    to: ViewControllerSegue,
                     sender: Any? = nil) {
     
     LOG.debug("ViewControllerManager.performSegue: \(viewController) => \(to)")
@@ -302,7 +311,8 @@ class ViewControllerManager {
     
   }
   
-  func createNewSite(
+  func newOrUpdateSite(
+    id: String? = nil,
     name: String,
     description: String? = nil,
     latitude: Double,
@@ -312,7 +322,8 @@ class ViewControllerManager {
     verticalAccuracy: Double? = nil,
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil,
-    newSiteHandler: @escaping (Site) -> Void) {
+    siteHandler: SiteHandler,
+    completion: @escaping (() -> Void) = {}) {
     
     guard let token = authenticatedUser?.token else {
       handleError(ViewControllerError.noAuthenticationToken)
@@ -328,11 +339,19 @@ class ViewControllerManager {
       preAsyncBlock()
     }
     
+    var siteHandlerFunc: (Site) -> Void
+    if id == nil {
+      siteHandlerFunc = siteHandler.handleNewSite
+    } else {
+      siteHandlerFunc = siteHandler.handleSiteUpdate
+    }
+    
     do {
       
       try serviceManager.call(
-        CreateNewSiteRequest(
+        NewOrUpdateSiteRequest(
           token: token,
+          id: id,
           name: name,
           description: description,
           latitude: latitude,
@@ -341,8 +360,11 @@ class ViewControllerManager {
           horizontalAccuracy: horizontalAccuracy,
           verticalAccuracy: verticalAccuracy,
           organizationId: organizationId))
-        .then(in: .main, newSiteHandler)
-        .catch(in: .main) {
+        .then(in: .main) {
+          site in
+          siteHandlerFunc(site)
+          completion()
+        }.catch(in: .main) {
           error in
           if self.isConflictError(error) {
             self.handleError(
@@ -408,6 +430,41 @@ class ViewControllerManager {
     
     viewContext.state[.site] = ViewContext.Value.site(site)
     performSegue(to: .siteNavigationChoice)
+    
+  }
+  
+  func deleteSite(
+    site: Site,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        DeleteSiteByIdRequest(
+          token: token,
+          siteId: site.id))
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
     
   }
   
@@ -666,18 +723,6 @@ class ViewControllerManager {
     
   }
   
-  private func doLogout(_ segueSourceViewController: UIViewController? = nil) {
-    
-    do {
-      try serviceManager.deleteAuthenticatedUser()
-    } catch let error {
-      LOG.error(error)
-    }
-    
-    segueToMainViewController(segueSourceViewController)
-    
-  }
-  
   func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
     
     viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(measurementUnits)
@@ -692,11 +737,17 @@ class ViewControllerManager {
     
   }
   
-  func handleNewSite(_ site: Site) {
+  func handleNewSite(site: Site) {
     
       viewContext.state[.site] = ViewContext.Value.site(site)
       performSegue(to: .siteNavigationChoice)
   
+  }
+  
+  func handleSiteUpdate(site: Site) {
+    
+    viewContext.state[.site] = ViewContext.Value.site(site)
+    
   }
   
   private func handleSites(_ sites: [Site]) {
@@ -738,7 +789,7 @@ class ViewControllerManager {
   func handleNewSurvey(_ survey: Survey) {
     
     viewContext.state[.survey] = ViewContext.Value.survey(survey)
-    getAbioticFactors()
+    performSegue(to: .surveyNavigationChoice)
     
   }
   
@@ -951,6 +1002,19 @@ class ViewControllerManager {
     }
    
   }
+  
+  private func doLogout(_ segueSourceViewController: UIViewController? = nil) {
+    
+    do {
+      try serviceManager.deleteAuthenticatedUser()
+    } catch let error {
+      LOG.error(error)
+    }
+    
+    segueToMainViewController(segueSourceViewController)
+    
+  }
+  
   
 }
 

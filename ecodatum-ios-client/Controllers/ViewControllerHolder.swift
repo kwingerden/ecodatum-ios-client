@@ -7,8 +7,4 @@ protocol ViewControllerManagerHolder {
   
 }
 
-protocol SegueSourceViewControllerHolder {
-  
-  var segueSourceViewController: UIViewController! { get set }
-  
-}
+

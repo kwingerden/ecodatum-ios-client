@@ -44,6 +44,10 @@ protocol NetworkResponse: Decodable {
   
 }
 
+struct HttpOKResponse: Decodable {
+  
+}
+
 struct BasicAuthUserRequest: NetworkRequest {
   
   let email: String
@@ -109,9 +113,10 @@ struct OrganizationResponse: NetworkResponse {
   
 }
 
-struct CreateNewSiteRequest: ProtectedNetworkRequest {
+struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
   
   let token: String
+  let id: String? // site id
   let name: String
   let description: String?
   let latitude: Double
@@ -142,6 +147,13 @@ struct SiteResponse: NetworkResponse {
   let verticalAccuracy: Double?
   let organizationId: String
   let userId: String
+  
+}
+
+struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let siteId: String
   
 }
 

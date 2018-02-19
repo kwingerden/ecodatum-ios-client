@@ -25,7 +25,6 @@ class SiteNavigationChoiceViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     
     super.viewWillAppear(animated)
-    
     navigationController?.navigationBar.isHidden = false
     
   }
@@ -35,11 +34,13 @@ class SiteNavigationChoiceViewController: BaseViewController {
     switch sender {
       
     case startNewSurveyButton:
+      
       viewControllerManager.startNewSurvey(
         preAsyncBlock: preAsyncUIOperation,
         postAsyncBlock: postAsyncUIOperation)
       
     case viewExistingSurveysButton:
+      
       viewControllerManager.chooseExistingSurvey(
         preAsyncBlock: preAsyncUIOperation,
         postAsyncBlock: postAsyncUIOperation)

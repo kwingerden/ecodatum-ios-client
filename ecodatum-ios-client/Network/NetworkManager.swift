@@ -8,6 +8,8 @@ class NetworkManager {
   
   private let jsonDecoder = JSONDecoder()
   
+  private let emptyJsonData = "{}".data(using: String.Encoding.utf8)!
+  
   init(baseURL: URL) {
     self.baseURL = baseURL
     jsonDecoder.dateDecodingStrategy = .customISO8601
@@ -66,14 +68,27 @@ class NetworkManager {
         request: request))
   }
   
-  func call(_ request: CreateNewSiteRequest) throws -> Promise<SiteResponse> {
+  func call(_ request: NewOrUpdateSiteRequest) throws -> Promise<SiteResponse> {
+    let method: HTTPMethod = request.id == nil ? .post : .put
     return try executeDataRequest(
       makeDataRequest(
         baseURL
           .appendingPathComponent("protected")
           .appendingPathComponent("sites"),
-        method: .post,
+        method: method,
         parameters: request.parameters,
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
+  
+  func call(_ request: DeleteSiteByIdRequest) throws -> Promise<HttpOKResponse> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("sites")
+          .appendingPathComponent("\(request.siteId)"),
+        method: .delete,
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
@@ -194,17 +209,31 @@ class NetworkManager {
           
           if let error = response.error {
             reject(error)
+            
           } else if let data = response.data {
+            
+            var _data = data
+            if data.count == 0 {
+              _data = self.emptyJsonData
+            }
+            
             do {
+            
               let response = try self.jsonDecoder.decode(
                 T.self,
-                from: data)
+                from: _data)
               resolve(response)
+            
             } catch let error {
+          
               reject(error)
+            
             }
+          
           } else {
+            
             reject(NetworkError.unexpectedResponse)
+          
           }
           
         }

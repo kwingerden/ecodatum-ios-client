@@ -34,7 +34,7 @@ class TopNavigationChoiceViewController: BaseViewController {
     case createNewSiteButton:
       viewControllerManager.performSegue(
         from: self,
-        to: .createNewSite)
+        to: .newSite)
       
     case chooseExistingSiteButton:
       viewControllerManager.chooseExistingSite(

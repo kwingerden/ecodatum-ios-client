@@ -1,6 +1,6 @@
 import Foundation
 
-enum ViewController: String {
+enum ViewControllerSegue: String {
 
   case abioticFactorChoice
   
@@ -13,7 +13,8 @@ enum ViewController: String {
   
   case createNewAccount
   
-  case createNewSite
+  case newSite
+  case updateSite
   case siteChoice
   case siteNavigationChoice
   

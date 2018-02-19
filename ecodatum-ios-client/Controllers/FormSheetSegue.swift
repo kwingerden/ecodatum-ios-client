@@ -14,6 +14,10 @@ class FormSheetSegue: UIStoryboardSegue {
     
     super.perform()
     
+    if let cancelButtonHolder = destination as? FormSheetCancelButtonHolder {
+      cancelButtonHolder.cancelButton.initialize(destination)
+    }
+    
   }
   
 }

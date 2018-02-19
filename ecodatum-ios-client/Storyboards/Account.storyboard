@@ -15,36 +15,58 @@
             <objects>
                 <viewController id="U3e-fO-sTK" customClass="AccountViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8qy-c6-DsY">
-                        <rect key="frame" x="0.0" y="0.0" width="416" height="250"/>
+                        <rect key="frame" x="0.0" y="0.0" width="416" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr2-tl-d4C">
-                                <rect key="frame" x="8" y="20" width="400" height="60"/>
-                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rjz-G6-9dh">
+                                <rect key="frame" x="8" y="10" width="400" height="130"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr2-tl-d4C">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="60"/>
+                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="XNQ-SZ-P8H"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Change Organizations">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchUpInside:" destination="U3e-fO-sTK" eventType="touchUpInside" id="6fH-Lp-IJw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXy-nB-1JZ">
+                                        <rect key="frame" x="0.0" y="70" width="400" height="60"/>
+                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Aft-Pl-Nuh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchUpInside:" destination="U3e-fO-sTK" eventType="touchUpInside" id="ALB-lK-h6K"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="XNQ-SZ-P8H"/>
+                                    <constraint firstAttribute="width" constant="400" id="OtG-5e-cZy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="touchUpInside:" destination="U3e-fO-sTK" eventType="touchUpInside" id="6fH-Lp-IJw"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Fr2-tl-d4C" firstAttribute="leading" secondItem="0CD-pr-16W" secondAttribute="leading" constant="8" id="Yob-Mj-Pg1"/>
-                            <constraint firstItem="Fr2-tl-d4C" firstAttribute="top" secondItem="0CD-pr-16W" secondAttribute="top" constant="20" id="akD-7d-xHW"/>
-                            <constraint firstItem="0CD-pr-16W" firstAttribute="trailing" secondItem="Fr2-tl-d4C" secondAttribute="trailing" constant="8" id="f5h-Ew-cjm"/>
+                            <constraint firstItem="Rjz-G6-9dh" firstAttribute="centerY" secondItem="8qy-c6-DsY" secondAttribute="centerY" id="Vfw-pD-hNd"/>
+                            <constraint firstItem="Rjz-G6-9dh" firstAttribute="centerX" secondItem="8qy-c6-DsY" secondAttribute="centerX" id="fZX-OG-tuW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0CD-pr-16W"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="416" height="250"/>
-                    <size key="freeformSize" width="416" height="250"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="416" height="150"/>
+                    <size key="freeformSize" width="416" height="150"/>
                     <connections>
-                        <outlet property="logoutButton" destination="Fr2-tl-d4C" id="fA1-l8-ktq"/>
+                        <outlet property="changeOrganizationsButton" destination="Fr2-tl-d4C" id="BiM-ol-CHX"/>
+                        <outlet property="logoutButton" destination="sXy-nB-1JZ" id="k9C-ah-tUi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaA-SD-B3y" userLabel="First Responder" sceneMemberID="firstResponder"/>

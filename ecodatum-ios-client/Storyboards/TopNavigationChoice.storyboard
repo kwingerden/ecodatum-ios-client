@@ -98,7 +98,7 @@
                         <outlet property="chooseExistingSiteButton" destination="Lns-BI-46e" id="d19-SL-lsw"/>
                         <outlet property="createNewSiteButton" destination="Ygp-8f-2Cb" id="ccG-gd-WfY"/>
                         <outlet property="organizationNameLabel" destination="kAT-Hf-4Uz" id="gzc-ih-Klj"/>
-                        <segue destination="mPp-eP-tTw" kind="show" identifier="createNewSite" id="MXL-Om-66I"/>
+                        <segue destination="mPp-eP-tTw" kind="show" identifier="newSite" id="MXL-Om-66I"/>
                         <segue destination="5jE-jq-HL1" kind="show" identifier="siteChoice" id="R6r-Cv-vkJ"/>
                     </connections>
                 </viewController>
@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="42.96875" y="90.8203125"/>
         </scene>
-        <!--CreateNewSite-->
+        <!--NewOrUpdateSite-->
         <scene sceneID="V8i-LD-x2u">
             <objects>
-                <viewControllerPlaceholder storyboardName="CreateNewSite" id="mPp-eP-tTw" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateSite" id="mPp-eP-tTw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCg-OA-MuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="524.609375" y="-40.4296875"/>

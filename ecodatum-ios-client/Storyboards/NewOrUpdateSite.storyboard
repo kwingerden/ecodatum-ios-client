@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Create a New Site-->
+        <!--New Or Update Site View Controller-->
         <scene sceneID="ljA-7x-Bxw">
             <objects>
-                <viewController title="Create a New Site" id="fjq-5o-6oO" customClass="CreateNewSiteViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fjq-5o-6oO" customClass="NewOrUpdateSiteViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l0E-y0-3NQ">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,7 +212,7 @@
                                             <constraint firstAttribute="height" constant="60" id="7np-rv-oBK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Create a New Site">
+                                        <state key="normal" title="Save">
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -254,7 +254,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="7fO-12-t0W" id="jsr-6u-QcH"/>
                         <outlet property="cancelButton" destination="45o-Bb-sQ4" id="wxK-6g-JC8"/>
-                        <outlet property="createNewSiteButton" destination="yNF-Kn-mym" id="1TX-JH-bG3"/>
                         <outlet property="descriptionErrorLabel" destination="zNP-zG-TKb" id="ghT-rX-vMB"/>
                         <outlet property="descriptionTextView" destination="jot-ed-yey" id="lbZ-aU-0V2"/>
                         <outlet property="latitudeErrorLabel" destination="VBf-Ie-Bfg" id="dYp-GQ-fjM"/>
@@ -263,12 +262,13 @@
                         <outlet property="longitudeTextField" destination="t8D-2u-HSf" id="rcM-m8-5H4"/>
                         <outlet property="nameErrorLabel" destination="EPj-CI-jRr" id="uEt-r8-lK5"/>
                         <outlet property="nameTextField" destination="F0l-2D-crC" id="RhB-hl-qKB"/>
+                        <outlet property="saveSiteButton" destination="yNF-Kn-mym" id="1TX-JH-bG3"/>
                         <segue destination="nvd-RQ-fYO" kind="show" identifier="siteNavigationChoice" id="hea-Rx-LUk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q05-dY-3NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-727.34375" y="32.8125"/>
+            <point key="canvasLocation" x="-877" y="-110"/>
         </scene>
         <!--SiteNavigationChoice-->
         <scene sceneID="jo4-Ta-ppw">

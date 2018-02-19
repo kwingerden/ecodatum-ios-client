@@ -2,10 +2,9 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class CreateNewSiteViewController:
+class NewOrUpdateSiteViewController:
 BaseViewController,
-FormSheetCancelButtonHolder,
-SegueSourceViewControllerHolder {
+FormSheetCancelButtonHolder {
   
   @IBOutlet weak var cancelButton: FormSheetCancelButton!
   
@@ -25,9 +24,7 @@ SegueSourceViewControllerHolder {
   
   @IBOutlet weak var longitudeErrorLabel: UILabel!
   
-  @IBOutlet weak var createNewSiteButton: UIButton!
-  
-  var segueSourceViewController: UIViewController!
+  @IBOutlet weak var saveSiteButton: UIButton!
   
   override func viewDidLoad() {
     
@@ -36,7 +33,7 @@ SegueSourceViewControllerHolder {
     descriptionTextView.rounded()
     descriptionTextView.lightBordered()
     
-    createNewSiteButton.rounded()
+    saveSiteButton.rounded()
     
     validator.registerField(
       nameTextField,
@@ -54,6 +51,16 @@ SegueSourceViewControllerHolder {
       longitudeTextField,
       errorLabel: longitudeErrorLabel,
       rules: [RequiredRule(), DoubleRule("Invalid Longitude")])
+    
+    if let site = viewControllerManager.site,
+      ViewControllerSegue.updateSite == viewControllerManager.viewControllerSegue {
+
+      nameTextField.text = site.name
+      descriptionTextView.text = site.description
+      latitudeTextField.text = String(site.latitude)
+      longitudeTextField.text = String(site.longitude)
+    
+    }
     
   }
   
@@ -73,23 +80,24 @@ SegueSourceViewControllerHolder {
     let latitude = Double(latitudeTextField.text!)!
     let longitude = Double(longitudeTextField.text!)!
     
-    var newSiteHandler: (Site) -> Void = viewControllerManager.handleNewSite
-    if let siteChoiceViewController = segueSourceViewController as? SiteChoiceViewController {
-      newSiteHandler = {
-        site in
-        self.dismiss(animated: true, completion: nil)
-        siteChoiceViewController.handleNewSite(site)
-      }
+    var newSiteHandler: SiteHandler = viewControllerManager
+    if let siteHandler = viewControllerManager.storyboardSegue?.source as? SiteHandler {
+      newSiteHandler = siteHandler
     }
-    
-    viewControllerManager.createNewSite(
+  
+    let id = ViewControllerSegue.newSite == viewControllerManager.viewControllerSegue ?
+      nil : viewControllerManager.site?.id
+    viewControllerManager.newOrUpdateSite(
+      id: id,
       name: name,
       description: description,
       latitude: latitude,
       longitude: longitude,
       preAsyncBlock: preAsyncUIOperation,
       postAsyncBlock: postAsyncUIOperation,
-      newSiteHandler: newSiteHandler)
+      siteHandler: newSiteHandler) {
+        self.dismiss(animated: true, completion: nil)
+    }
   
   }
   

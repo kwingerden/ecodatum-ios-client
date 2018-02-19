@@ -13,13 +13,8 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   override func viewDidLoad() {
     
     super.viewDidLoad()
-    
     validator.defaultStyleTransformers()
-    
-    if let cancelButtonHolder = self as? FormSheetCancelButtonHolder {
-      cancelButtonHolder.cancelButton.initialize(self)
-    }
-    
+  
   }
   
   func initialize() throws {
@@ -51,9 +46,11 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
         viewControllerManager: viewControllerManager)
     }
     
+    /*
     if var segueSourceViewControllerHolder = segue.destination as? SegueSourceViewControllerHolder {
       segueSourceViewControllerHolder.segueSourceViewController = segue.source
     }
+ */
     
   }
   

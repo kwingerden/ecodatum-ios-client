@@ -35,12 +35,7 @@
                                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IsW-CF-Xhj">
                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
                                                         <items>
-                                                            <barButtonItem systemItem="edit" id="rmQ-d4-WsU">
-                                                                <connections>
-                                                                    <action selector="buttonItemPress:" destination="jT3-7k-beH" id="GJn-Ou-ohi"/>
-                                                                </connections>
-                                                            </barButtonItem>
-                                                            <barButtonItem width="320" style="plain" systemItem="fixedSpace" id="FY8-zT-rHk"/>
+                                                            <barButtonItem width="374" style="plain" systemItem="fixedSpace" id="FY8-zT-rHk"/>
                                                             <barButtonItem systemItem="add" id="9Kf-CR-sBq">
                                                                 <connections>
                                                                     <action selector="buttonItemPress:" destination="jT3-7k-beH" id="Gvf-AC-KYj"/>
@@ -117,23 +112,23 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addButtonItem" destination="9Kf-CR-sBq" id="dFi-VZ-GE2"/>
-                        <outlet property="editButtonItem" destination="rmQ-d4-WsU" id="AHH-Df-J1y"/>
                         <outlet property="tableView" destination="xyA-cq-5VN" id="4Kn-GY-n4k"/>
                         <segue destination="IcL-wO-QJf" kind="show" identifier="siteNavigationChoice" id="W85-8M-Ldq"/>
-                        <segue destination="ed2-Ii-xqg" kind="presentation" identifier="createNewSite" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="VVg-fa-cV7"/>
+                        <segue destination="ed2-Ii-xqg" kind="presentation" identifier="newSite" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="VVg-fa-cV7"/>
+                        <segue destination="VNQ-py-Upx" kind="presentation" identifier="updateSite" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="bMo-mK-boO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppb-Dl-eBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-728" y="-271"/>
+            <point key="canvasLocation" x="-1011" y="-291"/>
         </scene>
-        <!--CreateNewSite-->
+        <!--NewOrUpdateSite-->
         <scene sceneID="G9X-ct-Qdw">
             <objects>
-                <viewControllerPlaceholder storyboardName="CreateNewSite" id="ed2-Ii-xqg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateSite" id="ed2-Ii-xqg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrO-A3-abV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-274" y="-415"/>
+            <point key="canvasLocation" x="-545" y="-449"/>
         </scene>
         <!--SiteNavigationChoice-->
         <scene sceneID="HSf-dT-YyS">
@@ -141,7 +136,15 @@
                 <viewControllerPlaceholder storyboardName="SiteNavigationChoice" id="IcL-wO-QJf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yh-Yv-90e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="-271"/>
+            <point key="canvasLocation" x="-384" y="-280"/>
+        </scene>
+        <!--NewOrUpdateSite-->
+        <scene sceneID="lz8-Ae-fMH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateSite" id="VNQ-py-Upx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhZ-HD-KPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-518" y="-396"/>
         </scene>
     </scenes>
 </document>

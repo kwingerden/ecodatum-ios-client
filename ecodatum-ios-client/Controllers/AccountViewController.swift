@@ -1,9 +1,9 @@
 import Foundation
 import UIKit
 
-class AccountViewController: BaseViewController, SegueSourceViewControllerHolder {
+class AccountViewController: BaseViewController {
   
-  var segueSourceViewController: UIViewController!
+  @IBOutlet weak var changeOrganizationsButton: UIButton!
   
   @IBOutlet weak var logoutButton: UIButton!
   
@@ -11,6 +11,7 @@ class AccountViewController: BaseViewController, SegueSourceViewControllerHolder
     
     super.viewDidLoad()
     
+    changeOrganizationsButton.rounded()
     logoutButton.rounded()
     
   }
@@ -20,10 +21,18 @@ class AccountViewController: BaseViewController, SegueSourceViewControllerHolder
     
     dismiss(animated: false, completion: nil)
     
+    guard let sourceViewController = viewControllerManager.storyboardSegue?.source else {
+      LOG.error("Failed to obtain segue source view controller.")
+      return
+    }
+    
     switch sender {
       
+    case changeOrganizationsButton:
+      sourceViewController.dismiss(animated: true, completion: nil)
+      
     case logoutButton:
-      viewControllerManager.logout(segueSourceViewController)
+      viewControllerManager.logout(sourceViewController)
       
     default:
       LOG.error("Unrecognized button \(sender)")

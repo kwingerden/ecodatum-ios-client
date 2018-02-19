@@ -25,7 +25,7 @@
 		0138682120198C0900828DE8 /* OrganizationChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0138682020198C0900828DE8 /* OrganizationChoiceViewController.swift */; };
 		013F674E2009AC95001B8586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013F674D2009AC95001B8586 /* Main.storyboard */; };
 		013F67502009AD93001B8586 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F674F2009AD93001B8586 /* WelcomeViewController.swift */; };
-		013F67522009AF56001B8586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67512009AF56001B8586 /* ViewController.swift */; };
+		013F67522009AF56001B8586 /* ViewControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67512009AF56001B8586 /* ViewControllerSegue.swift */; };
 		013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67552009B1A1001B8586 /* BaseViewController.swift */; };
 		013FEB30201AD601009B7DBC /* ViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013FEB2F201AD601009B7DBC /* ViewContext.swift */; };
 		014B316120145C8B00B81D2C /* SiteMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014B316020145C8B00B81D2C /* SiteMap.storyboard */; };
@@ -39,9 +39,9 @@
 		017A1592201049F0008553E2 /* TopNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A1591201049F0008553E2 /* TopNavigationViewController.swift */; };
 		017A159620106C6E008553E2 /* TopNavigationChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159520106C6E008553E2 /* TopNavigationChoice.storyboard */; };
 		017A159820106C82008553E2 /* TopNavigationChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A159720106C82008553E2 /* TopNavigationChoiceViewController.swift */; };
-		017A159A20107023008553E2 /* CreateNewSite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159920107023008553E2 /* CreateNewSite.storyboard */; };
+		017A159A20107023008553E2 /* NewOrUpdateSite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159920107023008553E2 /* NewOrUpdateSite.storyboard */; };
 		017A159C20107031008553E2 /* MeasurementChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159B20107031008553E2 /* MeasurementChoice.storyboard */; };
-		017A159E2010704B008553E2 /* CreateNewSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A159D2010704B008553E2 /* CreateNewSiteViewController.swift */; };
+		017A159E2010704B008553E2 /* NewOrUpdateSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A159D2010704B008553E2 /* NewOrUpdateSiteViewController.swift */; };
 		017A15A020107066008553E2 /* MeasurementChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A159F20107066008553E2 /* MeasurementChoiceViewController.swift */; };
 		01833384201825360071C380 /* TopNavigationChoiceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01833383201825360071C380 /* TopNavigationChoiceNavigationController.swift */; };
 		0185F719201D60F000B176C6 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185F718201D60F000B176C6 /* ViewControllerManager.swift */; };
@@ -74,6 +74,7 @@
 		0197EA47203909BC00E0D04A /* FormSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA46203909BC00E0D04A /* FormSheetSegue.swift */; };
 		0197EA4B2039164000E0D04A /* FormSheetCancelButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */; };
 		0197EA4D20391D6F00E0D04A /* FormSheetCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */; };
+		0197EA4F203A865E00E0D04A /* ViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4E203A865E00E0D04A /* ViewControllerHandler.swift */; };
 		01986002201700E2005067F8 /* DatabaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01986001201700E2005067F8 /* DatabaseRecord.swift */; };
 		0198600420171CAB005067F8 /* ViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198600320171CAB005067F8 /* ViewControllerError.swift */; };
 		019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019FA2EE1FF9D73F00E38B2C /* Hydra.framework */; };
@@ -137,7 +138,7 @@
 		0138682020198C0900828DE8 /* OrganizationChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationChoiceViewController.swift; sourceTree = "<group>"; };
 		013F674D2009AC95001B8586 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		013F674F2009AD93001B8586 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		013F67512009AF56001B8586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		013F67512009AF56001B8586 /* ViewControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSegue.swift; sourceTree = "<group>"; };
 		013F67552009B1A1001B8586 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		013FEB2F201AD601009B7DBC /* ViewContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContext.swift; sourceTree = "<group>"; };
 		014B316020145C8B00B81D2C /* SiteMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SiteMap.storyboard; sourceTree = "<group>"; };
@@ -151,9 +152,9 @@
 		017A1591201049F0008553E2 /* TopNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationViewController.swift; sourceTree = "<group>"; };
 		017A159520106C6E008553E2 /* TopNavigationChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopNavigationChoice.storyboard; sourceTree = "<group>"; };
 		017A159720106C82008553E2 /* TopNavigationChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationChoiceViewController.swift; sourceTree = "<group>"; };
-		017A159920107023008553E2 /* CreateNewSite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateNewSite.storyboard; sourceTree = "<group>"; };
+		017A159920107023008553E2 /* NewOrUpdateSite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewOrUpdateSite.storyboard; sourceTree = "<group>"; };
 		017A159B20107031008553E2 /* MeasurementChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeasurementChoice.storyboard; sourceTree = "<group>"; };
-		017A159D2010704B008553E2 /* CreateNewSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewSiteViewController.swift; sourceTree = "<group>"; };
+		017A159D2010704B008553E2 /* NewOrUpdateSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdateSiteViewController.swift; sourceTree = "<group>"; };
 		017A159F20107066008553E2 /* MeasurementChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementChoiceViewController.swift; sourceTree = "<group>"; };
 		01833383201825360071C380 /* TopNavigationChoiceNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationChoiceNavigationController.swift; sourceTree = "<group>"; };
 		0185F718201D60F000B176C6 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		0197EA46203909BC00E0D04A /* FormSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetSegue.swift; sourceTree = "<group>"; };
 		0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetCancelButtonHolder.swift; sourceTree = "<group>"; };
 		0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetCancelButton.swift; sourceTree = "<group>"; };
+		0197EA4E203A865E00E0D04A /* ViewControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerHandler.swift; sourceTree = "<group>"; };
 		01986001201700E2005067F8 /* DatabaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRecord.swift; sourceTree = "<group>"; };
 		0198600320171CAB005067F8 /* ViewControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerError.swift; sourceTree = "<group>"; };
 		019FA2EE1FF9D73F00E38B2C /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
@@ -390,12 +392,12 @@
 				01AD11671FF4B5DB000DCE81 /* MainViewController.swift */,
 				011F7D661FF58A1E00DCD7CA /* LoginToAccountViewController.swift */,
 				013F674F2009AD93001B8586 /* WelcomeViewController.swift */,
-				013F67512009AF56001B8586 /* ViewController.swift */,
+				013F67512009AF56001B8586 /* ViewControllerSegue.swift */,
 				013F67552009B1A1001B8586 /* BaseViewController.swift */,
 				01024E5E200A92C00030859B /* CreateNewAccountViewController.swift */,
 				017A1591201049F0008553E2 /* TopNavigationViewController.swift */,
 				017A159720106C82008553E2 /* TopNavigationChoiceViewController.swift */,
-				017A159D2010704B008553E2 /* CreateNewSiteViewController.swift */,
+				017A159D2010704B008553E2 /* NewOrUpdateSiteViewController.swift */,
 				017A159F20107066008553E2 /* MeasurementChoiceViewController.swift */,
 				01D2BD7C201194F600260F18 /* AccountViewController.swift */,
 				014B316220145CF300B81D2C /* SiteMapViewController.swift */,
@@ -416,6 +418,7 @@
 				0197EA46203909BC00E0D04A /* FormSheetSegue.swift */,
 				0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */,
 				0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */,
+				0197EA4E203A865E00E0D04A /* ViewControllerHandler.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -430,7 +433,7 @@
 				01024E5C200A923B0030859B /* CreateNewAccount.storyboard */,
 				017A158F20104871008553E2 /* TopNavigation.storyboard */,
 				017A159520106C6E008553E2 /* TopNavigationChoice.storyboard */,
-				017A159920107023008553E2 /* CreateNewSite.storyboard */,
+				017A159920107023008553E2 /* NewOrUpdateSite.storyboard */,
 				017A159B20107031008553E2 /* MeasurementChoice.storyboard */,
 				01D2BD7A201194E500260F18 /* Account.storyboard */,
 				014B316020145C8B00B81D2C /* SiteMap.storyboard */,
@@ -542,7 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01AD11701FF4B5DB000DCE81 /* LaunchScreen.storyboard in Resources */,
-				017A159A20107023008553E2 /* CreateNewSite.storyboard in Resources */,
+				017A159A20107023008553E2 /* NewOrUpdateSite.storyboard in Resources */,
 				013F674E2009AC95001B8586 /* Main.storyboard in Resources */,
 				0185F721201EB3DA00B176C6 /* SiteNavigationChoice.storyboard in Resources */,
 				0185F71D201E8DEE00B176C6 /* SiteChoice.storyboard in Resources */,
@@ -635,7 +638,7 @@
 				017A15A020107066008553E2 /* MeasurementChoiceViewController.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				01C945C32023AEC800F73CA5 /* AddNewMeasurementViewController.swift in Sources */,
-				013F67522009AF56001B8586 /* ViewController.swift in Sources */,
+				013F67522009AF56001B8586 /* ViewControllerSegue.swift in Sources */,
 				0197EA4B2039164000E0D04A /* FormSheetCancelButtonHolder.swift in Sources */,
 				01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */,
 				014B316320145CF300B81D2C /* SiteMapViewController.swift in Sources */,
@@ -649,13 +652,14 @@
 				015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */,
 				01D8B2FC1FFC849F00450470 /* DatabaseManager.swift in Sources */,
 				0185F71B201E82B100B176C6 /* ViewControllerHolder.swift in Sources */,
+				0197EA4F203A865E00E0D04A /* ViewControllerHandler.swift in Sources */,
 				01CCEC962015A27400D64CE8 /* ValidatorRule.swift in Sources */,
 				0185F723201EB40700B176C6 /* SiteNavigationChoiceViewController.swift in Sources */,
 				01CCEC982015A3A300D64CE8 /* String+ToNumber.swift in Sources */,
 				0138682120198C0900828DE8 /* OrganizationChoiceViewController.swift in Sources */,
 				018F77641FFB0EAC004421F0 /* Globals.swift in Sources */,
 				017A159820106C82008553E2 /* TopNavigationChoiceViewController.swift in Sources */,
-				017A159E2010704B008553E2 /* CreateNewSiteViewController.swift in Sources */,
+				017A159E2010704B008553E2 /* NewOrUpdateSiteViewController.swift in Sources */,
 				017A1592201049F0008553E2 /* TopNavigationViewController.swift in Sources */,
 				015E34AB2006D0A9006A74C7 /* ServiceHelper.swift in Sources */,
 				0185F71F201E8E0C00B176C6 /* SiteChoiceViewController.swift in Sources */,

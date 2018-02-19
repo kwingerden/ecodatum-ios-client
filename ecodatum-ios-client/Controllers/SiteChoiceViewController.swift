@@ -7,6 +7,8 @@ class SiteChoiceViewController: BaseViewController {
   
   @IBOutlet weak var addButtonItem: UIBarButtonItem!
   
+  private var sites: [Site] = []
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -18,38 +20,49 @@ class SiteChoiceViewController: BaseViewController {
     tableView.layer.borderWidth = 1.0
     
     tableView.tableFooterView = UIView(frame: CGRect.zero)
-  
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {
     
     super.viewWillAppear(animated)
-    
     navigationController?.navigationBar.isHidden = false
-  
+    sites = viewControllerManager.sites
+    
   }
   
   @IBAction func buttonItemPress(_ sender: UIBarButtonItem) {
     
     switch sender {
-    
-    case editButtonItem:
-      tableView.setEditing(true, animated: true)
       
     case addButtonItem:
-      viewControllerManager.performSegue(to: .createNewSite)
+      viewControllerManager.performSegue(to: .newSite)
       
     default:
       LOG.error("Unexpected button \(sender)")
-    
+      
     }
     
   }
   
-  func handleNewSite(_ site: Site) {
-    print("new site \(site)")
-  }
+}
 
+extension SiteChoiceViewController: SiteHandler {
+  
+  func handleNewSite(site: Site) {
+    
+    sites.append(site)
+    tableView.reloadData()
+    
+  }
+  
+  func handleSiteUpdate(site: Site) {
+    
+    tableView.reloadData()
+    
+  }
+  
+  
 }
 
 extension SiteChoiceViewController: UITableViewDelegate {
@@ -61,12 +74,11 @@ extension SiteChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
-    if !tableView.isEditing {
-      DispatchQueue.main.async {
-        let sites = self.viewControllerManager.sites
-        self.viewControllerManager.showSite(sites[indexPath.row])
-      }
+    
+    DispatchQueue.main.async {
+      self.viewControllerManager.showSite(self.sites[indexPath.row])
     }
+    
   }
   
 }
@@ -77,7 +89,7 @@ extension SiteChoiceViewController: UITableViewDataSource {
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let site = viewControllerManager.sites[indexPath.row]
+    let site = sites[indexPath.row]
     
     cell.textLabel?.text = site.name
     cell.detailTextLabel?.text = site.description
@@ -90,16 +102,92 @@ extension SiteChoiceViewController: UITableViewDataSource {
     
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewControllerManager.sites.count
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
+    return sites.count
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      print("delete")
+  func tableView(_ tableView: UITableView,
+                 editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    
+    let delete = UITableViewRowAction(
+      style: .destructive,
+      title: "Delete") {
+        
+        (action, indexPath) in
+        
+        let site = self.sites[indexPath.row]
+        self.startDeleteSite(site)
+        
     }
+    
+    let edit = UITableViewRowAction(
+      style: .normal,
+      title: "Edit") {
+        
+        (action, indexPath) in
+        
+        let site = self.sites[indexPath.row]
+        print(site)
+        //self.startDeleteSite(site)
+        
+    }
+    
+    return [delete, edit]
+    
   }
-
+  
+  private func reloadSites(_ deletedSite: Site) {
+    
+    postAsyncUIOperation()
+    sites = sites.filter {
+      $0.id != deletedSite.id
+    }
+    self.tableView.reloadData()
+    
+  }
+  
+  private func okToDeleteSite(_ site: Site) {
+    
+    viewControllerManager.deleteSite(
+      site: site,
+      preAsyncBlock: preAsyncUIOperation) {
+        self.reloadSites(site)
+    }
+    
+  }
+  
+  private func startDeleteSite(_ site: Site) {
+    
+    let okAction = UIAlertAction(
+      title: "Ok",
+      style: UIAlertActionStyle.destructive) {
+        _ in
+        self.okToDeleteSite(site)
+    }
+    
+    let cancelAction = UIAlertAction(
+      title: "Cancel",
+      style: UIAlertActionStyle.default) {
+        _ in
+        // do nothing
+    }
+    
+    let alertController = UIAlertController(
+      title: "Delete Site?",
+      message: "Are you sure you want to delete site \(site.name)?",
+      preferredStyle: .alert)
+    
+    alertController.addAction(okAction)
+    alertController.addAction(cancelAction)
+    
+    present(
+      alertController,
+      animated: true,
+      completion: nil)
+    
+  }
+  
 }
 
 

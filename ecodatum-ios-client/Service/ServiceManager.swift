@@ -67,11 +67,15 @@ class ServiceManager {
     return try networkManager.call(request)
   }
   
-  func call(_ request: CreateNewSiteRequest) throws -> Promise<SiteResponse> {
+  func call(_ request: NewOrUpdateSiteRequest) throws -> Promise<SiteResponse> {
     return try networkManager.call(request)
   }
   
   func call(_ request: GetSitesByOrganizationAndUserRequest) throws -> Promise<[SiteResponse]> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: DeleteSiteByIdRequest) throws -> Promise<HttpOKResponse> {
     return try networkManager.call(request)
   }
   
