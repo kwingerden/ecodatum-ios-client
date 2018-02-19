@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-qJ-ULj">
-                                <rect key="frame" x="184" y="146.5" width="400" height="731"/>
+                                <rect key="frame" x="184" y="144.5" width="400" height="735"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Sites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r09-Oc-HWf">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
@@ -27,34 +27,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TMg-g3-zRm">
-                                        <rect key="frame" x="0.0" y="91" width="400" height="640"/>
+                                        <rect key="frame" x="0.0" y="91" width="400" height="644"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Oa-qyp">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="40"/>
-                                                <subviews>
-                                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IsW-CF-Xhj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
-                                                        <items>
-                                                            <barButtonItem width="374" style="plain" systemItem="fixedSpace" id="FY8-zT-rHk"/>
-                                                            <barButtonItem systemItem="add" id="9Kf-CR-sBq">
-                                                                <connections>
-                                                                    <action selector="buttonItemPress:" destination="jT3-7k-beH" id="Gvf-AC-KYj"/>
-                                                                </connections>
-                                                            </barButtonItem>
-                                                        </items>
-                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </toolbar>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Ygt-Uk-ccB"/>
-                                                    <constraint firstItem="IsW-CF-Xhj" firstAttribute="top" secondItem="Lqw-Oa-qyp" secondAttribute="top" id="f50-cM-0ta"/>
-                                                    <constraint firstAttribute="trailing" secondItem="IsW-CF-Xhj" secondAttribute="trailing" id="f9T-BA-9jS"/>
-                                                    <constraint firstItem="IsW-CF-Xhj" firstAttribute="leading" secondItem="Lqw-Oa-qyp" secondAttribute="leading" id="xOH-Pg-oQK"/>
-                                                </constraints>
-                                            </view>
+                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsW-CF-Xhj">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                                                <items>
+                                                    <barButtonItem width="374" style="plain" systemItem="fixedSpace" id="FY8-zT-rHk"/>
+                                                    <barButtonItem systemItem="add" id="9Kf-CR-sBq">
+                                                        <connections>
+                                                            <action selector="buttonItemPress:" destination="jT3-7k-beH" id="Gvf-AC-KYj"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                </items>
+                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </toolbar>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xyA-cq-5VN">
-                                                <rect key="frame" x="0.0" y="40" width="400" height="600"/>
+                                                <rect key="frame" x="0.0" y="44" width="400" height="600"/>
                                                 <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="400" id="7UX-XL-kiU"/>

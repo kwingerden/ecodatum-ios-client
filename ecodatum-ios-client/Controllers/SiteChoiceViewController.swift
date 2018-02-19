@@ -58,6 +58,12 @@ extension SiteChoiceViewController: SiteHandler {
   
   func handleSiteUpdate(site: Site) {
     
+    if let indexOf = sites.index(where: { site.id == $0.id }) {
+      sites.insert(site, at: indexOf)
+    } else {
+      LOG.warning("Failed to update sites collection with site: \(site)")
+    }
+    
     tableView.reloadData()
     
   }
@@ -76,7 +82,9 @@ extension SiteChoiceViewController: UITableViewDelegate {
                  didSelectRowAt indexPath: IndexPath) {
     
     DispatchQueue.main.async {
-      self.viewControllerManager.showSite(self.sites[indexPath.row])
+      self.viewControllerManager.showSite(
+        self.sites[indexPath.row],
+        segue: .siteNavigationChoice)
     }
     
   }
@@ -128,8 +136,7 @@ extension SiteChoiceViewController: UITableViewDataSource {
         (action, indexPath) in
         
         let site = self.sites[indexPath.row]
-        print(site)
-        //self.startDeleteSite(site)
+        self.viewControllerManager.showSite(site, segue: .updateSite)
         
     }
     

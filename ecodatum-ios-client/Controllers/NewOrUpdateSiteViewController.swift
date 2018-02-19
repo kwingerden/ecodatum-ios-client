@@ -80,23 +80,16 @@ FormSheetCancelButtonHolder {
     let latitude = Double(latitudeTextField.text!)!
     let longitude = Double(longitudeTextField.text!)!
     
-    var newSiteHandler: SiteHandler = viewControllerManager
-    if let siteHandler = viewControllerManager.storyboardSegue?.source as? SiteHandler {
-      newSiteHandler = siteHandler
-    }
-  
-    let id = ViewControllerSegue.newSite == viewControllerManager.viewControllerSegue ?
-      nil : viewControllerManager.site?.id
     viewControllerManager.newOrUpdateSite(
-      id: id,
       name: name,
       description: description,
       latitude: latitude,
       longitude: longitude,
       preAsyncBlock: preAsyncUIOperation,
-      postAsyncBlock: postAsyncUIOperation,
-      siteHandler: newSiteHandler) {
-        self.dismiss(animated: true, completion: nil)
+      postAsyncBlock: postAsyncUIOperation) {
+        if self.viewControllerManager.isFormSheetSegue {
+          self.dismiss(animated: true, completion: nil)
+        }
     }
   
   }

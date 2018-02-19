@@ -69,16 +69,24 @@ class NetworkManager {
   }
   
   func call(_ request: NewOrUpdateSiteRequest) throws -> Promise<SiteResponse> {
+    
     let method: HTTPMethod = request.id == nil ? .post : .put
+    var url = baseURL
+      .appendingPathComponent("protected")
+      .appendingPathComponent("sites")
+    if method == .put,
+      let id = request.id {
+      url = url.appendingPathComponent("\(id)")
+    }
+    
     return try executeDataRequest(
       makeDataRequest(
-        baseURL
-          .appendingPathComponent("protected")
-          .appendingPathComponent("sites"),
+        url,
         method: method,
         parameters: request.parameters,
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
+  
   }
   
   func call(_ request: DeleteSiteByIdRequest) throws -> Promise<HttpOKResponse> {

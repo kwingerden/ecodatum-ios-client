@@ -106,6 +106,22 @@ class ViewControllerManager: SiteHandler {
     }
   }
   
+  var siteHandler: SiteHandler {
+    var newSiteHandler: SiteHandler = self
+    if let siteHandler = storyboardSegue?.source as? SiteHandler {
+      newSiteHandler = siteHandler
+    }
+    return newSiteHandler
+  }
+  
+  var siteHandlerFunction: (Site) -> Void {
+    return siteId == nil ? siteHandler.handleNewSite : siteHandler.handleSiteUpdate
+  }
+  
+  var siteId: String? {
+    return ViewControllerSegue.newSite == viewControllerSegue ? nil : site?.id
+  }
+  
   var survey: Survey? {
     guard let value = viewContext.state[.survey] else { return nil }
     if case let ViewContext.Value.survey(survey) = value {
@@ -149,6 +165,13 @@ class ViewControllerManager: SiteHandler {
     } else {
       return nil
     }
+  }
+  
+  var isFormSheetSegue: Bool {
+    guard let isFormSheetSegue = storyboardSegue?.isFormSheetSegue else {
+      return false
+    }
+    return isFormSheetSegue
   }
   
   init(viewController: UIViewController,
@@ -312,7 +335,6 @@ class ViewControllerManager: SiteHandler {
   }
   
   func newOrUpdateSite(
-    id: String? = nil,
     name: String,
     description: String? = nil,
     latitude: Double,
@@ -322,7 +344,6 @@ class ViewControllerManager: SiteHandler {
     verticalAccuracy: Double? = nil,
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil,
-    siteHandler: SiteHandler,
     completion: @escaping (() -> Void) = {}) {
     
     guard let token = authenticatedUser?.token else {
@@ -339,19 +360,12 @@ class ViewControllerManager: SiteHandler {
       preAsyncBlock()
     }
     
-    var siteHandlerFunc: (Site) -> Void
-    if id == nil {
-      siteHandlerFunc = siteHandler.handleNewSite
-    } else {
-      siteHandlerFunc = siteHandler.handleSiteUpdate
-    }
-    
     do {
       
       try serviceManager.call(
         NewOrUpdateSiteRequest(
           token: token,
-          id: id,
+          id: siteId,
           name: name,
           description: description,
           latitude: latitude,
@@ -362,7 +376,7 @@ class ViewControllerManager: SiteHandler {
           organizationId: organizationId))
         .then(in: .main) {
           site in
-          siteHandlerFunc(site)
+          self.siteHandlerFunction(site)
           completion()
         }.catch(in: .main) {
           error in
@@ -426,10 +440,10 @@ class ViewControllerManager: SiteHandler {
     
   }
   
-  func showSite(_ site: Site) {
+  func showSite(_ site: Site, segue: ViewControllerSegue) {
     
     viewContext.state[.site] = ViewContext.Value.site(site)
-    performSegue(to: .siteNavigationChoice)
+    performSegue(to: segue)
     
   }
   
@@ -795,7 +809,7 @@ class ViewControllerManager: SiteHandler {
   
   func handleNewMeasurement(_ measurement: Measurement) {
     
-    performSegue(to: .abioticFactorChoice)
+    performSegue(to: .surveyNavigationChoice)
     
   }
   

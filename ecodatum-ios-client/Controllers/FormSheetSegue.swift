@@ -22,4 +22,10 @@ class FormSheetSegue: UIStoryboardSegue {
   
 }
 
-
+extension UIStoryboardSegue {
+  
+  var isFormSheetSegue: Bool {
+    return self is FormSheetSegue
+  }
+  
+}

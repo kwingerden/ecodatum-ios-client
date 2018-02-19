@@ -369,17 +369,17 @@
                         <outlet property="unitButton" destination="cRz-36-HIO" id="fpx-jB-C0Z"/>
                         <outlet property="valueLabel" destination="ZnE-4d-wal" id="TQQ-bw-8PG"/>
                         <outlet property="zeroButton" destination="eYY-XW-3bI" id="q4l-ys-eW3"/>
-                        <segue destination="JUf-1B-7GX" kind="show" identifier="abioticFactorChoice" id="kMm-JZ-UYr"/>
+                        <segue destination="JUf-1B-7GX" kind="show" identifier="surveyNavigationChoice" id="kMm-JZ-UYr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWK-Cq-z4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1232.03125" y="-633.3984375"/>
         </scene>
-        <!--AbioticFactorChoice-->
+        <!--SurveyNavigationChoice-->
         <scene sceneID="uTA-i4-2uv">
             <objects>
-                <viewControllerPlaceholder storyboardName="AbioticFactorChoice" id="JUf-1B-7GX" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SurveyNavigationChoice" id="JUf-1B-7GX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOH-n4-Q6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-686" y="-725"/>
