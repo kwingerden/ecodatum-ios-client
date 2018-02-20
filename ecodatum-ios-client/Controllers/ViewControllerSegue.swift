@@ -18,6 +18,8 @@ enum ViewControllerSegue: String {
   case siteChoice
   case siteNavigationChoice
   
+  case newSurvey
+  case updateSurvey
   case surveyChoice
   case surveyNavigationChoice
   

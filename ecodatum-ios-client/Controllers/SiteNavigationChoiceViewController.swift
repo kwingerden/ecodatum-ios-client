@@ -35,9 +35,9 @@ class SiteNavigationChoiceViewController: BaseViewController {
       
     case startNewSurveyButton:
       
-      viewControllerManager.startNewSurvey(
-        preAsyncBlock: preAsyncUIOperation,
-        postAsyncBlock: postAsyncUIOperation)
+      viewControllerManager.performSegue(
+        from: self,
+        to: .newSurvey)
       
     case viewExistingSurveysButton:
       

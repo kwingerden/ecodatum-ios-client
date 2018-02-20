@@ -5,14 +5,23 @@ import Hydra
 class NetworkManager {
   
   private let baseURL: URL
+
+  private let jsonEncoder: JSONEncoder = {
+    let jsonEncoder = JSONEncoder()
+    jsonEncoder.dateEncodingStrategy = .customISO8601
+    return jsonEncoder
+  }()
   
-  private let jsonDecoder = JSONDecoder()
+  private var jsonDecoder: JSONDecoder = {
+    let jsonDecoder = JSONDecoder()
+    jsonDecoder.dateDecodingStrategy = .customISO8601
+    return jsonDecoder
+  }()
   
   private let emptyJsonData = "{}".data(using: String.Encoding.utf8)!
-  
+
   init(baseURL: URL) {
     self.baseURL = baseURL
-    jsonDecoder.dateDecodingStrategy = .customISO8601
   }
   
   func call(_ request: BasicAuthUserRequest) throws -> Promise<BasicAuthUserResponse> {
@@ -43,7 +52,7 @@ class NetworkManager {
           .appendingPathComponent("public")
           .appendingPathComponent("users"),
         method: .post,
-        parameters: request.parameters,
+        parameters: request.toParameters(jsonEncoder),
         request: request))
   }
   
@@ -83,7 +92,7 @@ class NetworkManager {
       makeDataRequest(
         url,
         method: method,
-        parameters: request.parameters,
+        parameters: request.toParameters(jsonEncoder),
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   
@@ -113,18 +122,39 @@ class NetworkManager {
         request: request))
   }
   
-  func call(_ request: StartNewSurveyRequest) throws -> Promise<SurveyResponse> {
+  func call(_ request: NewOrUpdateSurveyRequest) throws -> Promise<SurveyResponse> {
+
+    let method: HTTPMethod = request.id == nil ? .post : .put
+    var url = baseURL
+      .appendingPathComponent("protected")
+      .appendingPathComponent("surveys")
+    if method == .put,
+       let id = request.id {
+      url = url.appendingPathComponent("\(id)")
+    }
+
+    return try executeDataRequest(
+      makeDataRequest(
+        url,
+        method: method,
+        parameters: request.toParameters(jsonEncoder),
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+
+  }
+
+  func call(_ request: DeleteSurveyByIdRequest) throws -> Promise<HttpOKResponse> {
     return try executeDataRequest(
       makeDataRequest(
         baseURL
           .appendingPathComponent("protected")
-          .appendingPathComponent("surveys"),
-        method: .post,
-        parameters: request.parameters,
+          .appendingPathComponent("surveys")
+          .appendingPathComponent("\(request.surveyId)"),
+        method: .delete,
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
-  
+
   func call(_ request: GetSurveysBySiteAndUserRequest) throws -> Promise<[SurveyResponse]> {
     return try executeDataRequest(
       makeDataRequest(
@@ -166,7 +196,7 @@ class NetworkManager {
             .appendingPathComponent("protected")
             .appendingPathComponent("measurements"),
           method: .post,
-          parameters: request.parameters,
+          parameters: request.toParameters(jsonEncoder),
           headers: Request.bearerTokenAuthHeaders(request.token),
           request: request))
   }
@@ -187,7 +217,6 @@ class NetworkManager {
     _ url: URL,
     method: HTTPMethod = .get,
     parameters: Parameters? = nil,
-    encoding: ParameterEncoding = JSONEncoding.default,
     headers: HTTPHeaders? = Request.defaultHeaders(),
     request: NetworkRequest)
     -> DataRequest {
@@ -196,7 +225,7 @@ class NetworkManager {
         url,
         method: method,
         parameters: parameters,
-        encoding: encoding,
+        encoding: JSONEncoding.default,
         headers: headers)
       
   }

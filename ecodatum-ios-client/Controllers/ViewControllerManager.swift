@@ -15,7 +15,9 @@ typealias Survey = SurveyResponse
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
 
-class ViewControllerManager: SiteHandler {
+class ViewControllerManager:
+  SiteHandler,
+  SurveyHandler {
   
   let viewController: UIViewController
   
@@ -139,7 +141,23 @@ class ViewControllerManager: SiteHandler {
       return []
     }
   }
-  
+
+  var surveyHandler: SurveyHandler {
+    var newSurveyHandler: SurveyHandler = self
+    if let surveyHandler = storyboardSegue?.source as? SurveyHandler {
+      newSurveyHandler = surveyHandler
+    }
+    return newSurveyHandler
+  }
+
+  var surveyHandlerFunction: (Survey) -> Void {
+    return surveyId == nil ? surveyHandler.handleNewSurvey : surveyHandler.handleSurveyUpdate
+  }
+
+  var surveyId: String? {
+    return ViewControllerSegue.newSurvey == viewControllerSegue ? nil : survey?.id
+  }
+
   var measurement: Measurement? {
     guard let value = viewContext.state[.measurement] else { return nil }
     if case let ViewContext.Value.measurement(measurement) = value {
@@ -481,45 +499,54 @@ class ViewControllerManager: SiteHandler {
     }
     
   }
-  
-  func startNewSurvey(
+
+  func newOrUpdateSurvey(
+    date: Date,
+    description: String? = nil,
     preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil) {
-    
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completion: @escaping (() -> Void) = {}) {
+
     guard let token = authenticatedUser?.token else {
       handleError(ViewControllerError.noAuthenticationToken)
       return
     }
-    
+
     guard let siteId = site?.id else {
       handleError(ViewControllerError.noSiteIdentifier)
       return
     }
-    
+
     if let preAsyncBlock = preAsyncBlock {
       preAsyncBlock()
     }
-    
+
     do {
-      
+
       try serviceManager.call(
-        StartNewSurveyRequest(
-          token: token,
-          siteId: siteId))
-        .then(in: .main, handleNewSurvey)
-        .catch(in: .main, handleError)
+          NewOrUpdateSurveyRequest(
+            token: token,
+            id: surveyId,
+            date: date,
+            description: description,
+            siteId: siteId))
+        .then(in: .main) {
+          survey in
+          self.surveyHandlerFunction(survey)
+          completion()
+        }.catch(in: .main, handleError)
         .always(in: .main) {
           if let postAsyncBlock = postAsyncBlock {
             postAsyncBlock()
           }
-      }
-      
+        }
+
     } catch let error {
-      
+
       handleError(error)
-      
+
     }
-    
+
   }
   
   func chooseExistingSurvey(
@@ -562,13 +589,48 @@ class ViewControllerManager: SiteHandler {
     
   }
   
-  func showSurvey(_ survey: Survey) {
+  func showSurvey(_ survey: Survey, segue: ViewControllerSegue) {
     
     viewContext.state[.survey] = ViewContext.Value.survey(survey)
-    performSegue(to: .surveyNavigationChoice)
+    performSegue(to: segue)
     
   }
-  
+
+  func deleteSurvey(
+    survey: Survey,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          DeleteSurveyByIdRequest(
+            token: token,
+            surveyId: survey.id))
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
+  }
+
   func getAbioticFactors(
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil) {
@@ -799,12 +861,18 @@ class ViewControllerManager: SiteHandler {
     }
     
   }
-  
-  func handleNewSurvey(_ survey: Survey) {
-    
+
+  func handleNewSurvey(survey: Survey) {
+
     viewContext.state[.survey] = ViewContext.Value.survey(survey)
     performSegue(to: .surveyNavigationChoice)
-    
+
+  }
+
+  func handleSurveyUpdate(survey: Survey) {
+
+    viewContext.state[.survey] = ViewContext.Value.survey(survey)
+
   }
   
   func handleNewMeasurement(_ measurement: Measurement) {

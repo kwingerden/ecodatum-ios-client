@@ -9,5 +9,13 @@ protocol SiteHandler {
   
 }
 
+protocol SurveyHandler {
+
+  func handleNewSurvey(survey: Survey)
+
+  func handleSurveyUpdate(survey: Survey)
+
+}
+
 
 

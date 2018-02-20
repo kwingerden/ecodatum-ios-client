@@ -7,9 +7,9 @@ protocol NetworkRequest: Encodable {
 
 extension NetworkRequest {
   
-  var parameters: Parameters? {
+  func toParameters(_ jsonEncoder: JSONEncoder) -> Parameters? {
     
-    guard let data = try? JSONEncoder().encode(self) else {
+    guard let data = try? jsonEncoder.encode(self) else {
       return nil
     }
     guard let jsonObject = try? JSONSerialization.jsonObject(
@@ -157,9 +157,12 @@ struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
   
 }
 
-struct StartNewSurveyRequest: ProtectedNetworkRequest {
+struct NewOrUpdateSurveyRequest: ProtectedNetworkRequest {
   
   let token: String
+  let id: String? // survey id
+  let date: Date
+  let description: String?
   let siteId: String
   
 }
@@ -175,9 +178,17 @@ struct SurveyResponse: NetworkResponse {
   
   let id: String // survey id
   let date: Date
+  let description: String?
   let siteId: String
   let userId: String
   
+}
+
+struct DeleteSurveyByIdRequest: ProtectedNetworkRequest {
+
+  let token: String
+  let surveyId: String
+
 }
 
 struct GetAbioticFactorsRequest: NetworkRequest {

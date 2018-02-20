@@ -58,8 +58,10 @@ extension SiteChoiceViewController: SiteHandler {
   
   func handleSiteUpdate(site: Site) {
     
-    if let indexOf = sites.index(where: { site.id == $0.id }) {
-      sites.insert(site, at: indexOf)
+    if sites.count == 1 {
+      sites = [site]
+    } else if let indexOf = sites.index(where: { site.id == $0.id }) {
+      sites.replaceSubrange(indexOf...indexOf, with: [site])
     } else {
       LOG.warning("Failed to update sites collection with site: \(site)")
     }
@@ -67,7 +69,6 @@ extension SiteChoiceViewController: SiteHandler {
     tableView.reloadData()
     
   }
-  
   
 }
 

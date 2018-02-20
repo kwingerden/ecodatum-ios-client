@@ -87,7 +87,7 @@
                         <outlet property="siteNameLabel" destination="Ojd-QQ-psf" id="LUo-yN-9sZ"/>
                         <outlet property="startNewSurveyButton" destination="Oqq-ZJ-Wri" id="8Qw-KT-6Gm"/>
                         <outlet property="viewExistingSurveysButton" destination="2C8-qL-Y6g" id="FlZ-xr-ET7"/>
-                        <segue destination="nSe-Br-syk" kind="show" identifier="surveyNavigationChoice" id="nth-us-gyd"/>
+                        <segue destination="nSe-Br-syk" kind="show" identifier="newSurvey" id="nth-us-gyd"/>
                         <segue destination="Ubq-GD-0rb" kind="show" identifier="surveyChoice" id="f8L-Nn-QpJ"/>
                     </connections>
                 </viewController>
@@ -95,13 +95,13 @@
             </objects>
             <point key="canvasLocation" x="19" y="60"/>
         </scene>
-        <!--SurveyNavigationChoice-->
+        <!--NewOrUpdateSurvey-->
         <scene sceneID="bCs-3g-y7E">
             <objects>
-                <viewControllerPlaceholder storyboardName="SurveyNavigationChoice" id="nSe-Br-syk" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateSurvey" id="nSe-Br-syk" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PW7-mi-mva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="566" y="19"/>
+            <point key="canvasLocation" x="582" y="-52"/>
         </scene>
         <!--SurveyChoice-->
         <scene sceneID="4HC-st-VJW">

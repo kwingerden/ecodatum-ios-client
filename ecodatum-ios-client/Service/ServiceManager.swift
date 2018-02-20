@@ -79,14 +79,18 @@ class ServiceManager {
     return try networkManager.call(request)
   }
   
-  func call(_ request: StartNewSurveyRequest) throws -> Promise<SurveyResponse> {
+  func call(_ request: NewOrUpdateSurveyRequest) throws -> Promise<SurveyResponse> {
     return try networkManager.call(request)
   }
   
   func call(_ request: GetSurveysBySiteAndUserRequest) throws -> Promise<[SurveyResponse]> {
     return try networkManager.call(request)
   }
-  
+
+  func call(_ request: DeleteSurveyByIdRequest) throws -> Promise<HttpOKResponse> {
+    return try networkManager.call(request)
+  }
+
   func call(_ request: GetAbioticFactorsRequest) throws -> Promise<[AbioticFactorResponse]> {
     return try networkManager.call(request)
   }
