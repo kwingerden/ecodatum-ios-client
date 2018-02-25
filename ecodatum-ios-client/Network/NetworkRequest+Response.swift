@@ -60,6 +60,7 @@ struct BasicAuthUserResponse: NetworkResponse {
   let id: String // tokenId
   let token: String
   let userId: String
+  let isRootUser: Bool
   
 }
 
@@ -111,6 +112,27 @@ struct OrganizationResponse: NetworkResponse {
   let name: String
   let description: String?
   
+}
+
+struct GetMembersByOrganizationAndUserRequest: ProtectedNetworkRequest {
+
+  let token: String
+  let organizationId: String
+
+}
+
+struct RoleResponse: NetworkResponse {
+
+  let id : String // role id
+  let name: String
+
+}
+
+struct OrganizationMemberResponse: NetworkResponse {
+
+  let user: UserResponse
+  let role: RoleResponse
+
 }
 
 struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
@@ -239,5 +261,6 @@ struct MeasurementResponse: NetworkResponse {
   let abioticFactorId: String
   let measurementUnitId: String
   let value: Double
+  let userId: String
   
 }

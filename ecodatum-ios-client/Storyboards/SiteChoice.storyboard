@@ -104,6 +104,7 @@
                         <segue destination="IcL-wO-QJf" kind="show" identifier="siteNavigationChoice" id="W85-8M-Ldq"/>
                         <segue destination="ed2-Ii-xqg" kind="presentation" identifier="newSite" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="VVg-fa-cV7"/>
                         <segue destination="VNQ-py-Upx" kind="presentation" identifier="updateSite" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="bMo-mK-boO"/>
+                        <segue destination="bY8-mw-reH" kind="presentation" identifier="viewSite" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="2Ly-77-vwT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppb-Dl-eBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -116,7 +117,7 @@
                 <viewControllerPlaceholder storyboardName="NewOrUpdateSite" id="ed2-Ii-xqg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrO-A3-abV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-545" y="-449"/>
+            <point key="canvasLocation" x="-500" y="-503"/>
         </scene>
         <!--SiteNavigationChoice-->
         <scene sceneID="HSf-dT-YyS">
@@ -132,7 +133,15 @@
                 <viewControllerPlaceholder storyboardName="NewOrUpdateSite" id="VNQ-py-Upx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhZ-HD-KPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-518" y="-396"/>
+            <point key="canvasLocation" x="-481" y="-446"/>
+        </scene>
+        <!--NewOrUpdateSite-->
+        <scene sceneID="MXf-gw-XMk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateSite" id="bY8-mw-reH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mR0-oC-w6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-482" y="-389"/>
         </scene>
     </scenes>
 </document>

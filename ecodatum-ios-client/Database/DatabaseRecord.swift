@@ -49,22 +49,26 @@ class AuthenticatedUserRecord: BaseDatabaseRecord {
     static let token = Column("token")
     static let fullName = Column("full_name")
     static let email = Column("email")
+    static let isRootUser = Column("is_root_user")
   }
 
   var userId: String
   var token: String
   var fullName: String
   var email: String
+  var isRootUser: Bool
   
   init(id: Int? = nil,
        userId: String,
        token: String,
        fullName: String,
-       email: String) {
+       email: String,
+       isRootUser: Bool) {
     self.userId = userId
     self.token = token
     self.fullName = fullName
     self.email = email
+    self.isRootUser = isRootUser
     super.init(id: id)
   }
   
@@ -73,6 +77,7 @@ class AuthenticatedUserRecord: BaseDatabaseRecord {
     token = row[Columns.token]
     fullName = row[Columns.fullName]
     email = row[Columns.email]
+    isRootUser = row[Columns.isRootUser]
     super.init(row: row)
   }
   
@@ -82,6 +87,7 @@ class AuthenticatedUserRecord: BaseDatabaseRecord {
     container[Columns.token] = token
     container[Columns.fullName] = fullName
     container[Columns.email] = email
+    container[Columns.isRootUser] = isRootUser
   }
   
   static func createTable(_ db: GRDB.Database) throws {
@@ -102,6 +108,9 @@ class AuthenticatedUserRecord: BaseDatabaseRecord {
           .notNull()
         table.column(
           AuthenticatedUserRecord.Columns.email.name, .text)
+          .notNull()
+        table.column(
+          AuthenticatedUserRecord.Columns.isRootUser.name, .boolean)
           .notNull()
     }
   }

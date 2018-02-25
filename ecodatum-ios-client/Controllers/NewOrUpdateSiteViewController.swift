@@ -35,6 +35,45 @@ FormSheetCancelButtonHolder {
     
     saveSiteButton.rounded()
     
+    switch viewControllerManager.viewControllerSegue {
+      
+    case .newSite?:
+      
+      registerFieldValidation()
+      enableFields()
+      
+    case .updateSite?:
+      
+      registerFieldValidation()
+      updateFieldValues()
+      enableFields()
+      
+    case .viewSite?:
+      
+      updateFieldValues()
+      enableFields(false)
+      saveSiteButton.isHidden = true
+      
+    default:
+      
+      let viewControllerSegue = viewControllerManager.viewControllerSegue?.rawValue ?? "Uknown"
+      LOG.error("Unexpected view controller segue \(viewControllerSegue)")
+      
+    }
+    
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.isHidden = false
+  }
+  
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    validator.defaultValidate(validationSuccessful)
+  }
+  
+  private func registerFieldValidation() {
+    
     validator.registerField(
       nameTextField,
       errorLabel: nameErrorLabel,
@@ -51,26 +90,29 @@ FormSheetCancelButtonHolder {
       longitudeTextField,
       errorLabel: longitudeErrorLabel,
       rules: [RequiredRule(), DoubleRule("Invalid Longitude")])
+  
+  }
+  
+  private func updateFieldValues() {
     
-    if let site = viewControllerManager.site,
-      ViewControllerSegue.updateSite == viewControllerManager.viewControllerSegue {
-
+    if let site = viewControllerManager.site {
+      
       nameTextField.text = site.name
       descriptionTextView.text = site.description
       latitudeTextField.text = String(site.latitude)
       longitudeTextField.text = String(site.longitude)
-    
+      
     }
     
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = false
-  }
-  
-  @IBAction func touchUpInside(_ sender: UIButton) {
-    validator.defaultValidate(validationSuccessful)
+  private func enableFields(_ isEnabled: Bool = true) {
+    
+    nameTextField.isEnabled = isEnabled
+    descriptionTextView.isEditable = isEnabled
+    latitudeTextField.isEnabled = isEnabled
+    longitudeTextField.isEnabled = isEnabled
+    
   }
   
   private func validationSuccessful() {

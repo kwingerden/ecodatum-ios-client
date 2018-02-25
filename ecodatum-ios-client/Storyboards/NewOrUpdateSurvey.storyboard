@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fk5-Rm-R4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-877" y="-110"/>
+            <point key="canvasLocation" x="-962" y="-213"/>
         </scene>
         <!--SurveyNavigationChoice-->
         <scene sceneID="9S5-XZ-56L">

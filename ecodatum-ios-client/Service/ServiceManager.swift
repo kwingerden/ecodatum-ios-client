@@ -62,6 +62,10 @@ class ServiceManager {
   func call(_ request: GetOrganizationsByUserRequest) throws -> Promise<[OrganizationResponse]> {
     return try networkManager.call(request)
   }
+
+  func call(_ request: GetMembersByOrganizationAndUserRequest) throws -> Promise<[OrganizationMemberResponse]> {
+    return try networkManager.call(request)
+  }
   
   func call(_ request: GetUserRequest) throws -> Promise<UserResponse> {
     return try networkManager.call(request)

@@ -89,6 +89,7 @@
 		01AD117B1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD117A1FF4B5DC000DCE81 /* ecodatum_ios_clientTests.swift */; };
 		01C945C12023AE6000F73CA5 /* AddNewMeasurement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01C945C02023AE6000F73CA5 /* AddNewMeasurement.storyboard */; };
 		01C945C32023AEC800F73CA5 /* AddNewMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C945C22023AEC800F73CA5 /* AddNewMeasurementViewController.swift */; };
+		01CCC52E2042705000936835 /* OrganizationMemberRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCC52D2042705000936835 /* OrganizationMemberRole.swift */; };
 		01CCEC8C2015498700D64CE8 /* Validator+Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */; };
 		01CCEC9020154DFD00D64CE8 /* UITextView+Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */; };
 		01CCEC962015A27400D64CE8 /* ValidatorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC952015A27400D64CE8 /* ValidatorRule.swift */; };
@@ -202,6 +203,7 @@
 		01AD117C1FF4B5DC000DCE81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01C945C02023AE6000F73CA5 /* AddNewMeasurement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewMeasurement.storyboard; sourceTree = "<group>"; };
 		01C945C22023AEC800F73CA5 /* AddNewMeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMeasurementViewController.swift; sourceTree = "<group>"; };
+		01CCC52D2042705000936835 /* OrganizationMemberRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationMemberRole.swift; sourceTree = "<group>"; };
 		01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+Transformer.swift"; sourceTree = "<group>"; };
 		01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Validatable.swift"; sourceTree = "<group>"; };
 		01CCEC952015A27400D64CE8 /* ValidatorRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorRule.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */,
 				0197EA4E203A865E00E0D04A /* ViewControllerHandler.swift */,
 				01865CF3203B946400A90657 /* NewOrUpdateSurveyViewController.swift */,
+				01CCC52D2042705000936835 /* OrganizationMemberRole.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				0131642D2005ECF80022B788 /* ServiceManager.swift in Sources */,
 				013164292005C8120022B788 /* PromiseStatus+CheckCancelled.swift in Sources */,
 				0197EA3B2037DC2300E0D04A /* SurveyNavigationChoiceViewController.swift in Sources */,
+				01CCC52E2042705000936835 /* OrganizationMemberRole.swift in Sources */,
 				017A15A020107066008553E2 /* MeasurementChoiceViewController.swift in Sources */,
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				01C945C32023AEC800F73CA5 /* AddNewMeasurementViewController.swift in Sources */,

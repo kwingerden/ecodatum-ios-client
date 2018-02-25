@@ -76,6 +76,18 @@ class NetworkManager {
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
+
+  func call(_ request: GetMembersByOrganizationAndUserRequest) throws -> Promise<[OrganizationMemberResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("organizations")
+          .appendingPathComponent("\(request.organizationId)")
+          .appendingPathComponent("members"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
   
   func call(_ request: NewOrUpdateSiteRequest) throws -> Promise<SiteResponse> {
     
@@ -109,7 +121,7 @@ class NetworkManager {
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
-  
+
   func call(_ request: GetSitesByOrganizationAndUserRequest) throws -> Promise<[SiteResponse]> {
     return try executeDataRequest(
       makeDataRequest(

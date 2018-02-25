@@ -9,6 +9,7 @@ typealias AuthenticatedUser = AuthenticatedUserRecord
 typealias Measurement = MeasurementResponse
 typealias MeasurementUnit = MeasurementUnitResponse
 typealias Organization = OrganizationResponse
+typealias OrganizationMember = OrganizationMemberResponse
 typealias Site = SiteResponse
 typealias Survey = SurveyResponse
 
@@ -60,6 +61,15 @@ class ViewControllerManager:
       return organization
     } else {
       return nil
+    }
+  }
+
+  var organizationMembers: [OrganizationMember] {
+    guard let value = viewContext.state[.organizationMembers] else { return [] }
+    if case let ViewContext.Value.organizationMembers(organizationMembers) = value {
+      return organizationMembers
+    } else {
+      return []
     }
   }
   
@@ -348,7 +358,9 @@ class ViewControllerManager:
   func showOrganization(_ organization: Organization) {
     
     viewContext.state[.organization] = ViewContext.Value.organization(organization)
-    performSegue(to: .topNavigation)
+    getOrganizationMembers {
+      self.performSegue(to: .topNavigation)
+    }
     
   }
   
@@ -826,7 +838,7 @@ class ViewControllerManager:
     
   }
   
-  private func handleSites(_ sites: [Site]) {
+  func handleSites(_ sites: [Site]) {
     
     if sites.isEmpty {
 
@@ -1022,7 +1034,53 @@ class ViewControllerManager:
     }
     
   }
-  
+
+  func getOrganizationMembers(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completion: @escaping (() -> Void) = {}) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    guard let organizationId = organization?.id else {
+      handleError(ViewControllerError.noOrganizationIdentifier)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          GetMembersByOrganizationAndUserRequest(
+            token: token,
+            organizationId: organizationId))
+        .then(in: .main) {
+          organizationMembers in
+          self.viewContext.state[.organizationMembers] = ViewContext.Value
+            .organizationMembers(organizationMembers)
+          completion()
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
+  }
+
+
   private func handleBasicAuthUser(
     _ basicAuthUserResponse: BasicAuthUserResponse)
     -> Promise<AuthenticatedUser> {
@@ -1041,7 +1099,8 @@ class ViewControllerManager:
           userId: userResponse.id,
           token: basicAuthUserResponse.token,
           fullName: userResponse.fullName,
-          email: userResponse.email)
+          email: userResponse.email,
+          isRootUser: basicAuthUserResponse.isRootUser)
         try self.serviceManager.setAuthenticatedUser(authenticatedUser)
         
         return authenticatedUser

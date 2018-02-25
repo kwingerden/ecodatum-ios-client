@@ -9,6 +9,7 @@ class ViewContext {
     
     case organization
     case organizations
+    case organizationMembers
     
     case measurement
     case measurements
@@ -31,6 +32,7 @@ class ViewContext {
     
     case organization(Organization)
     case organizations([Organization])
+    case organizationMembers([OrganizationMember])
     
     case measurement(Measurement)
     case measurements([Measurement])

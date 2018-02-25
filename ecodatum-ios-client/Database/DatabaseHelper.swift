@@ -14,16 +14,9 @@ class DatabaseHelper {
     
   }
   
-  static func deleteDatabaseDirectory(_ directory: URL) throws {
-    if FileManager.default.fileExists(atPath: directory.absoluteString,
-                                      isDirectory: nil) {
-      try FileManager.default.removeItem(at: directory)
-    }
-  }
-  
   static func recreateDatabaseDirectory(_ directory: URL) throws {
     
-    try DatabaseHelper.deleteDatabaseDirectory(directory)
+    try FileManager.default.removeItem(at: directory)
     try FileManager.default.createDirectory(
       at: directory,
       withIntermediateDirectories: true)

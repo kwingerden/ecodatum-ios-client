@@ -119,14 +119,14 @@ extension SiteChoiceViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView,
                  editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     
-    let delete = UITableViewRowAction(
-      style: .destructive,
-      title: "Delete") {
+    let site = sites[indexPath.row]
+    
+    let view = UITableViewRowAction(
+      style: .normal,
+      title: "View") {
         
-        (action, indexPath) in
-        
-        let site = self.sites[indexPath.row]
-        self.startDeleteSite(site)
+        (_, _) in
+        self.viewControllerManager.showSite(site, segue: .viewSite)
         
     }
     
@@ -134,14 +134,48 @@ extension SiteChoiceViewController: UITableViewDataSource {
       style: .normal,
       title: "Edit") {
         
-        (action, indexPath) in
-        
-        let site = self.sites[indexPath.row]
+        (_, _) in
         self.viewControllerManager.showSite(site, segue: .updateSite)
         
     }
+    edit.backgroundColor = DARK_GREEN
     
-    return [delete, edit]
+    let delete = UITableViewRowAction(
+      style: .destructive,
+      title: "Delete") {
+        
+        (_, _) in
+        self.startDeleteSite(site)
+        
+    }
+    
+    guard let user = viewControllerManager.authenticatedUser else {
+      return []
+    }
+    
+    if user.isRootUser {
+      return [delete, edit, view]
+    }
+    
+    guard let organizationMember = viewControllerManager.organizationMembers.first(
+        where: { $0.user.id == user.userId }),
+      let organizationMemberRole = OrganizationMemberRole(
+        rawValue: organizationMember.role.name) else {
+      
+      return []
+    
+    }
+    
+    if organizationMemberRole == .ADMINISTRATOR ||
+      site.userId == user.userId {
+      
+      return [delete, edit, view]
+    
+    } else {
+    
+      return [view]
+    
+    }
     
   }
   

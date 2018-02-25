@@ -19,7 +19,7 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   
   func initialize() throws {
     
-    let databasePool = try DatabaseHelper.defaultDatabasePool(false)
+    let databasePool = try DatabaseHelper.defaultDatabasePool(true)
     let databaseManager = try DatabaseManager(databasePool)
     let networkManager = NetworkManager(baseURL: ECODATUM_BASE_V1_API_URL)
     let serviceManager = ServiceManager(
