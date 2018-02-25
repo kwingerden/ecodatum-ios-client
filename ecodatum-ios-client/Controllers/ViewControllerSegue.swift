@@ -21,6 +21,7 @@ enum ViewControllerSegue: String {
   
   case newSurvey
   case updateSurvey
+  case viewSurvey
   case surveyChoice
   case surveyNavigationChoice
   

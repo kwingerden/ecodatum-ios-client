@@ -31,13 +31,29 @@ FormSheetCancelButtonHolder {
     descriptionTextView.lightBordered()
     
     saveButton.rounded()
-    
-    if let survey = viewControllerManager.survey,
-      ViewControllerSegue.updateSurvey == viewControllerManager.viewControllerSegue {
-      
-      datePicker.date = survey.date
-      descriptionTextView.text = survey.description
-      
+
+    switch viewControllerManager.viewControllerSegue {
+
+    case .newSurvey?:
+
+      enableFields()
+
+    case .updateSurvey?:
+
+      updateFieldValues()
+      enableFields()
+
+    case .viewSurvey?:
+
+      updateFieldValues()
+      enableFields(false)
+      saveButton.isHidden = true
+
+    default:
+
+      let viewControllerSegue = viewControllerManager.viewControllerSegue?.rawValue ?? "Unknown"
+      LOG.error("Unexpected view controller segue \(viewControllerSegue)")
+
     }
     
     datePickerChange()
@@ -68,6 +84,24 @@ FormSheetCancelButtonHolder {
         }
     }
     
+  }
+
+  private func updateFieldValues() {
+
+    if let survey = viewControllerManager.survey {
+
+      datePicker.date = survey.date
+      descriptionTextView.text = survey.description
+
+    }
+
+  }
+
+  private func enableFields(_ isEnabled: Bool = true) {
+
+    datePicker.isEnabled = isEnabled
+    descriptionTextView.isEditable = isEnabled
+
   }
   
 }

@@ -108,6 +108,7 @@
                         <segue destination="sJV-Vb-O35" kind="show" identifier="surveyNavigationChoice" id="C0w-My-hBB"/>
                         <segue destination="N1y-ha-jY0" kind="presentation" identifier="newSurvey" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="K37-g2-Fdq"/>
                         <segue destination="eHW-9a-H1Z" kind="presentation" identifier="updateSurvey" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="Gbk-OG-t3r"/>
+                        <segue destination="uCn-sI-naa" kind="presentation" identifier="viewSurvey" customClass="FormSheetSegue" customModule="ecodatum_ios_client" customModuleProvider="target" modalPresentationStyle="formSheet" id="Jwa-iv-KCe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ru-Pi-fLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,7 +137,15 @@
                 <viewControllerPlaceholder storyboardName="NewOrUpdateSurvey" id="eHW-9a-H1Z" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJz-k5-RG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="-310"/>
+            <point key="canvasLocation" x="339" y="-352"/>
+        </scene>
+        <!--NewOrUpdateSurvey-->
+        <scene sceneID="Alv-6p-qMA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateSurvey" id="uCn-sI-naa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zN0-AU-heB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="339" y="-282"/>
         </scene>
     </scenes>
 </document>

@@ -38,83 +38,162 @@ class ViewControllerManager:
   }()
   
   var abioticFactor: AbioticFactor? {
-    guard let value = viewContext.state[.abioticFactor] else { return nil }
-    if case let ViewContext.Value.abioticFactor(abioticFactor) = value {
-      return abioticFactor
-    } else {
-      return nil
+    get {
+      guard let value = viewContext.state[.abioticFactor] else {
+        return nil
+      }
+      if case let ViewContext.Value.abioticFactor(abioticFactor) = value {
+        return abioticFactor
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.abioticFactor] = ViewContext.Value.abioticFactor(newValue)
+      } else {
+        viewContext.state[.abioticFactor] = nil
+      }
     }
   }
   
   var abioticFactors: [AbioticFactor] {
-    guard let value = viewContext.state[.abioticFactors] else { return [] }
-    if case let ViewContext.Value.abioticFactors(abioticFactors) = value {
-      return abioticFactors
-    } else {
-      return []
+    get {
+      guard let value = viewContext.state[.abioticFactors] else {
+        return []
+      }
+      if case let ViewContext.Value.abioticFactors(abioticFactors) = value {
+        return abioticFactors
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.abioticFactors] = ViewContext.Value.abioticFactors(newValue)
     }
   }
   
   var organization: Organization? {
-    guard let value = viewContext.state[.organization] else { return nil }
-    if case let ViewContext.Value.organization(organization) = value {
-      return organization
-    } else {
-      return nil
+    get {
+      guard let value = viewContext.state[.organization] else {
+        return nil
+      }
+      if case let ViewContext.Value.organization(organization) = value {
+        return organization
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.organization] = ViewContext.Value.organization(newValue)
+      } else {
+        viewContext.state[.organization] = nil
+      }
     }
   }
 
   var organizationMembers: [OrganizationMember] {
-    guard let value = viewContext.state[.organizationMembers] else { return [] }
-    if case let ViewContext.Value.organizationMembers(organizationMembers) = value {
-      return organizationMembers
-    } else {
-      return []
+    get {
+      guard let value = viewContext.state[.organizationMembers] else {
+        return []
+      }
+      if case let ViewContext.Value.organizationMembers(organizationMembers) = value {
+        return organizationMembers
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.organizationMembers] = ViewContext.Value.organizationMembers(newValue)
     }
   }
   
   var measurementUnit: MeasurementUnit? {
-    guard let value = viewContext.state[.measurementUnit] else { return nil }
-    if case let ViewContext.Value.measurementUnit(measurementUnit) = value {
-      return measurementUnit
-    } else {
-      return nil
+    get {
+      guard let value = viewContext.state[.measurementUnit] else {
+        return nil
+      }
+      if case let ViewContext.Value.measurementUnit(measurementUnit) = value {
+        return measurementUnit
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.measurementUnit] = ViewContext.Value.measurementUnit(newValue)
+      } else {
+        viewContext.state[.measurementUnit] = nil
+      }
     }
   }
   
   var measurementUnits: [MeasurementUnit] {
-    guard let value = viewContext.state[.measurementUnits] else { return [] }
-    if case let ViewContext.Value.measurementUnits(measurementUnits) = value {
-      return measurementUnits
-    } else {
-      return []
+    get {
+      guard let value = viewContext.state[.measurementUnits] else {
+        return []
+      }
+      if case let ViewContext.Value.measurementUnits(measurementUnits) = value {
+        return measurementUnits
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(newValue)
     }
   }
   
   var organizations: [Organization] {
-    guard let value = viewContext.state[.organizations] else { return [] }
-    if case let ViewContext.Value.organizations(organizations) = value {
-      return organizations
-    } else {
-      return []
+    get {
+      guard let value = viewContext.state[.organizations] else {
+        return []
+      }
+      if case let ViewContext.Value.organizations(organizations) = value {
+        return organizations
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.organizations] = ViewContext.Value.organizations(newValue)
     }
   }
   
   var site: Site? {
-    guard let value = viewContext.state[.site] else { return nil }
-    if case let ViewContext.Value.site(site) = value {
-      return site
-    } else {
-      return nil
+    get {
+      guard let value = viewContext.state[.site] else {
+        return nil
+      }
+      if case let ViewContext.Value.site(site) = value {
+        return site
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.site] = ViewContext.Value.site(newValue)
+      } else {
+        viewContext.state[.site] = nil
+      }
     }
   }
   
   var sites: [Site] {
-    guard let value = viewContext.state[.sites] else { return [] }
-    if case let ViewContext.Value.sites(sites) = value {
-      return sites
-    } else {
-      return []
+    get {
+      guard let value = viewContext.state[.sites] else {
+        return []
+      }
+      if case let ViewContext.Value.sites(sites) = value {
+        return sites
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.sites] = ViewContext.Value.sites(newValue)
     }
   }
   
@@ -125,30 +204,44 @@ class ViewControllerManager:
     }
     return newSiteHandler
   }
-  
-  var siteHandlerFunction: (Site) -> Void {
-    return siteId == nil ? siteHandler.handleNewSite : siteHandler.handleSiteUpdate
-  }
-  
+
   var siteId: String? {
     return ViewControllerSegue.newSite == viewControllerSegue ? nil : site?.id
   }
   
   var survey: Survey? {
-    guard let value = viewContext.state[.survey] else { return nil }
-    if case let ViewContext.Value.survey(survey) = value {
-      return survey
-    } else {
-      return nil
+    get {
+      guard let value = viewContext.state[.survey] else {
+        return nil
+      }
+      if case let ViewContext.Value.survey(survey) = value {
+        return survey
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.survey] = ViewContext.Value.survey(newValue)
+      } else {
+        viewContext.state[.survey] = nil
+      }
     }
   }
   
   var surveys: [Survey] {
-    guard let value = viewContext.state[.surveys] else { return [] }
-    if case let ViewContext.Value.surveys(surveys) = value {
-      return surveys
-    } else {
-      return []
+    get {
+      guard let value = viewContext.state[.surveys] else {
+        return []
+      }
+      if case let ViewContext.Value.surveys(surveys) = value {
+        return surveys
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.surveys] = ViewContext.Value.surveys(newValue)
     }
   }
 
@@ -160,29 +253,43 @@ class ViewControllerManager:
     return newSurveyHandler
   }
 
-  var surveyHandlerFunction: (Survey) -> Void {
-    return surveyId == nil ? surveyHandler.handleNewSurvey : surveyHandler.handleSurveyUpdate
-  }
-
   var surveyId: String? {
     return ViewControllerSegue.newSurvey == viewControllerSegue ? nil : survey?.id
   }
 
   var measurement: Measurement? {
-    guard let value = viewContext.state[.measurement] else { return nil }
-    if case let ViewContext.Value.measurement(measurement) = value {
-      return measurement
-    } else {
-      return nil
+    get {
+      guard let value = viewContext.state[.measurement] else {
+        return nil
+      }
+      if case let ViewContext.Value.measurement(measurement) = value {
+        return measurement
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.measurement] = ViewContext.Value.measurement(newValue)
+      } else {
+        viewContext.state[.measurement] = nil
+      }
     }
   }
   
   var measurements: [Measurement] {
-    guard let value = viewContext.state[.measurements] else { return [] }
-    if case let ViewContext.Value.measurements(measurements) = value {
-      return measurements
-    } else {
-      return []
+    get {
+      guard let value = viewContext.state[.measurements] else {
+        return []
+      }
+      if case let ViewContext.Value.measurements(measurements) = value {
+        return measurements
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.measurements] = ViewContext.Value.measurements(newValue)
     }
   }
   
@@ -356,8 +463,8 @@ class ViewControllerManager:
   }
   
   func showOrganization(_ organization: Organization) {
-    
-    viewContext.state[.organization] = ViewContext.Value.organization(organization)
+
+    self.organization = organization
     getOrganizationMembers {
       self.performSegue(to: .topNavigation)
     }
@@ -406,7 +513,11 @@ class ViewControllerManager:
           organizationId: organizationId))
         .then(in: .main) {
           site in
-          self.siteHandlerFunction(site)
+          if self.siteId == nil {
+            self.siteHandler.handleNewSite(site: site)
+          } else {
+            self.siteHandler.handleUpdatedSite(site: site)
+          }
           completion()
         }.catch(in: .main) {
           error in
@@ -472,7 +583,7 @@ class ViewControllerManager:
   
   func showSite(_ site: Site, segue: ViewControllerSegue) {
     
-    viewContext.state[.site] = ViewContext.Value.site(site)
+    self.site = site
     performSegue(to: segue)
     
   }
@@ -497,7 +608,10 @@ class ViewControllerManager:
         DeleteSiteByIdRequest(
           token: token,
           siteId: site.id))
-        .catch(in: .main, handleError)
+        .then(in: .main) {
+          _ in
+          self.siteHandler.handleDeletedSite(site: site)
+        }.catch(in: .main, handleError)
         .always(in: .main) {
           if let postAsyncBlock = postAsyncBlock {
             postAsyncBlock()
@@ -544,7 +658,11 @@ class ViewControllerManager:
             siteId: siteId))
         .then(in: .main) {
           survey in
-          self.surveyHandlerFunction(survey)
+          if self.surveyId == nil {
+            self.surveyHandler.handleNewSurvey(survey: survey)
+          } else {
+            self.surveyHandler.handleUpdatedSurvey(survey: survey)
+          }
           completion()
         }.catch(in: .main, handleError)
         .always(in: .main) {
@@ -603,7 +721,7 @@ class ViewControllerManager:
   
   func showSurvey(_ survey: Survey, segue: ViewControllerSegue) {
     
-    viewContext.state[.survey] = ViewContext.Value.survey(survey)
+    self.survey = survey
     performSegue(to: segue)
     
   }
@@ -628,7 +746,10 @@ class ViewControllerManager:
           DeleteSurveyByIdRequest(
             token: token,
             surveyId: survey.id))
-        .catch(in: .main, handleError)
+        .then(in: .main) {
+          _ in
+          self.surveyHandler.handleDeletedSurvey(survey: survey)
+        }.catch(in: .main, handleError)
         .always(in: .main) {
           if let postAsyncBlock = postAsyncBlock {
             postAsyncBlock()
@@ -679,9 +800,9 @@ class ViewControllerManager:
     if let preAsyncBlock = preAsyncBlock {
       preAsyncBlock()
     }
-    
-    viewContext.state[.abioticFactor] = ViewContext.Value.abioticFactor(abioticFactor)
-    
+
+    self.abioticFactor = abioticFactor
+
     do {
       
       try serviceManager.call(
@@ -705,7 +826,7 @@ class ViewControllerManager:
   
   func showMeasurementUnit(_ measurementUnit: MeasurementUnit) {
     
-    viewContext.state[.measurementUnit] = ViewContext.Value.measurementUnit(measurementUnit)
+    self.measurementUnit = measurementUnit
     performSegue(to: .addNewMeasurement)
     
   }
@@ -806,40 +927,53 @@ class ViewControllerManager:
   
   func showMeasurement(_ measurement: Measurement) {
     
-    viewContext.state[.measurement] = ViewContext.Value.measurement(measurement)
+    self.measurement = measurement
     performSegue(to: .measurement)
     
   }
   
   func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
-    
-    viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(measurementUnits)
-    performSegue(to: .measurementUnitChoice)
-    
+
+    self.measurementUnits = measurementUnits
+
   }
   
   func handleAbioticFactors(_ abioticFactors: [AbioticFactor]) {
     
-    viewContext.state[.abioticFactors] = ViewContext.Value.abioticFactors(abioticFactors)
+    self.abioticFactors = abioticFactors
     performSegue(to: .abioticFactorChoice)
     
   }
-  
+
   func handleNewSite(site: Site) {
-    
-      viewContext.state[.site] = ViewContext.Value.site(site)
-      performSegue(to: .siteNavigationChoice)
+
+    self.site = site
+    sites.append(site)
+    performSegue(to: .siteNavigationChoice)
   
   }
   
-  func handleSiteUpdate(site: Site) {
-    
-    viewContext.state[.site] = ViewContext.Value.site(site)
+  func handleUpdatedSite(site: Site) {
+
+    self.site = site
+    if let index = sites.index(where: { $0.id == site.id }) {
+      sites.replaceSubrange(index...index, with: [site])
+    }
     
   }
-  
+
+  func handleDeletedSite(site: Site) {
+
+    if let index = sites.index(where: { $0.id == site.id }) {
+      sites.remove(at: index)
+    }
+
+  }
+
   func handleSites(_ sites: [Site]) {
-    
+
+    self.sites = sites
+
     if sites.isEmpty {
 
       showErrorMessage(
@@ -848,8 +982,7 @@ class ViewControllerManager:
           name: organization!.name).localizedDescription)
       
     } else {
-      
-      viewContext.state[.sites] = ViewContext.Value.sites(sites)
+
       performSegue(to: .siteChoice)
       
     }
@@ -857,7 +990,9 @@ class ViewControllerManager:
   }
   
   func handleSurveys(_ surveys: [Survey]) {
-    
+
+    self.surveys = surveys
+
     if surveys.isEmpty {
       
       showErrorMessage(
@@ -867,7 +1002,6 @@ class ViewControllerManager:
       
     } else {
       
-      viewContext.state[.surveys] = ViewContext.Value.surveys(surveys)
       performSegue(to: .surveyChoice)
       
     }
@@ -876,14 +1010,26 @@ class ViewControllerManager:
 
   func handleNewSurvey(survey: Survey) {
 
-    viewContext.state[.survey] = ViewContext.Value.survey(survey)
+    self.survey = survey
+    surveys.append(survey)
     performSegue(to: .surveyNavigationChoice)
 
   }
 
-  func handleSurveyUpdate(survey: Survey) {
+  func handleUpdatedSurvey(survey: Survey) {
 
-    viewContext.state[.survey] = ViewContext.Value.survey(survey)
+    self.survey = survey
+    if let index = surveys.index(where: { $0.id == survey.id }) {
+      surveys.replaceSubrange(index...index, with: [survey])
+    }
+
+  }
+
+  func handleDeletedSurvey(survey: Survey) {
+
+    if let index = surveys.index(where: { $0.id == survey.id }) {
+      surveys.remove(at: index)
+    }
 
   }
   
@@ -894,7 +1040,9 @@ class ViewControllerManager:
   }
   
   func handleMeasurements(_ measurements: [Measurement]) {
-    
+
+    self.measurements = measurements
+
     if measurements.isEmpty {
       
       let name = Formatter.basic.string(from: survey!.date)
@@ -904,8 +1052,7 @@ class ViewControllerManager:
           name: name).localizedDescription)
       
     } else {
-      
-      viewContext.state[.measurements] = ViewContext.Value.measurements(measurements)
+
       performSegue(to: .measurementChoice)
       
     }
@@ -1017,14 +1164,14 @@ class ViewControllerManager:
     _ organizations: [Organization]) throws {
     
     if organizations.count == 1 {
-      
-      viewContext.state[.organizations] = ViewContext.Value.organizations(organizations)
-      viewContext.state[.organization] = ViewContext.Value.organization(organizations[0])
+
+      self.organization = organizations[0]
+      self.organizations = organizations
       performSegue(to: .topNavigation)
       
     } else if organizations.count > 1 {
-      
-      viewContext.state[.organizations] = ViewContext.Value.organizations(organizations)
+
+      self.organizations = organizations
       performSegue(to: .organizationChoice)
       
     } else {
@@ -1062,8 +1209,7 @@ class ViewControllerManager:
             organizationId: organizationId))
         .then(in: .main) {
           organizationMembers in
-          self.viewContext.state[.organizationMembers] = ViewContext.Value
-            .organizationMembers(organizationMembers)
+          self.organizationMembers = organizationMembers
           completion()
         }.catch(in: .main, handleError)
         .always(in: .main) {

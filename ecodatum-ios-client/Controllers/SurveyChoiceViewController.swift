@@ -2,129 +2,129 @@ import SwiftValidator
 import UIKit
 
 class SurveyChoiceViewController: BaseViewController {
-  
+
   @IBOutlet weak var tableView: UITableView!
-  
+
   @IBOutlet weak var addButtonItem: UIBarButtonItem!
-  
-  private var surveys: [Survey] = []
-  
+
   override func viewDidLoad() {
-    
+
     super.viewDidLoad()
-    
+
     tableView.delegate = self
     tableView.dataSource = self
-    
+
     tableView.layer.borderColor = UIColor.lightGray.cgColor
     tableView.layer.borderWidth = 1.0
-    
+
     tableView.tableFooterView = UIView(frame: CGRect.zero)
-    
+
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
-    
+
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = false
-    surveys = viewControllerManager.surveys
-    
+
   }
-  
+
   @IBAction func buttonItemPress(_ sender: UIBarButtonItem) {
-    
+
     switch sender {
-      
+
     case addButtonItem:
       viewControllerManager.performSegue(to: .newSurvey)
-      
+
     default:
       LOG.error("Unexpected button \(sender)")
-      
+
     }
-    
+
   }
-  
+
 }
 
 extension SurveyChoiceViewController: SurveyHandler {
-  
+
   func handleNewSurvey(survey: Survey) {
-    
-    surveys.append(survey)
+
+    viewControllerManager.survey = survey
+    viewControllerManager.surveys.append(survey)
     tableView.reloadData()
-    
+
   }
-  
-  func handleSurveyUpdate(survey: Survey) {
-    
-    if surveys.count == 1 {
-      surveys = [survey]
-    } else if let indexOf = surveys.index(where: { survey.id == $0.id }) {
-      surveys.replaceSubrange(indexOf...indexOf, with: [survey])
-    } else {
-      LOG.warning("Failed to update surveys collection with site: \(survey)")
-    }
-    
+
+  func handleUpdatedSurvey(survey: Survey) {
+
+    viewControllerManager.handleUpdatedSurvey(survey: survey)
     tableView.reloadData()
-    
+
   }
-  
+
+  func handleDeletedSurvey(survey: Survey) {
+
+    viewControllerManager.handleDeletedSurvey(survey: survey)
+    tableView.reloadData()
+
+  }
+
 }
 
 extension SurveyChoiceViewController: UITableViewDelegate {
-  
+
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100
   }
-  
+
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
     DispatchQueue.main.async {
       self.viewControllerManager.showSurvey(
-        self.surveys[indexPath.row],
+        self.viewControllerManager.surveys[indexPath.row],
         segue: .surveyNavigationChoice)
     }
   }
-  
+
 }
 
 extension SurveyChoiceViewController: UITableViewDataSource {
-  
+
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let survey = surveys[indexPath.row]
-    
+    let survey = self.viewControllerManager.surveys[indexPath.row]
+
     cell.textLabel?.text = Formatter.basic.string(for: survey.date)
     cell.detailTextLabel?.text = survey.description
 
-    let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))
+    let nextIndicator = UIImageView(image: #imageLiteral(resourceName:"NextGlyph"))
     nextIndicator.tintColor = UIColor.black
     cell.accessoryView = nextIndicator
-    
+
     return cell
-    
+
   }
-  
+
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    return surveys.count
+    return self.viewControllerManager.surveys.count
   }
 
   func tableView(_ tableView: UITableView,
                  editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
-    let delete = UITableViewRowAction(
-      style: .destructive,
-      title: "Delete") {
+    let survey = self.viewControllerManager.surveys[indexPath.row]
 
-      (action, indexPath) in
+    let view = UITableViewRowAction(
+      style: .normal,
+      title: "View") {
 
-      let survey = self.surveys[indexPath.row]
-      self.startDeleteSurvey(survey)
+      (_, _) in
+      self.viewControllerManager.showSurvey(
+        survey,
+        segue: .viewSurvey)
 
     }
 
@@ -132,25 +132,57 @@ extension SurveyChoiceViewController: UITableViewDataSource {
       style: .normal,
       title: "Edit") {
 
-      (action, indexPath) in
-
-      let survey = self.surveys[indexPath.row]
+      (_, _) in
+      let survey = self.viewControllerManager.surveys[indexPath.row]
       self.viewControllerManager.showSurvey(
         survey,
         segue: .updateSurvey)
 
     }
+    edit.backgroundColor = DARK_GREEN
 
-    return [delete, edit]
+    let delete = UITableViewRowAction(
+      style: .destructive,
+      title: "Delete") {
+
+      (_, _) in
+      self.startDeleteSurvey(survey)
+
+    }
+
+    guard let user = viewControllerManager.authenticatedUser else {
+      return []
+    }
+
+    if user.isRootUser {
+      return [delete, edit, view]
+    }
+
+    guard let organizationMember = viewControllerManager.organizationMembers.first(
+      where: { $0.user.id == user.userId }),
+          let organizationMemberRole = OrganizationMemberRole(
+            rawValue: organizationMember.role.name) else {
+
+      return []
+
+    }
+
+    if organizationMemberRole == .ADMINISTRATOR ||
+         survey.userId == user.userId {
+
+      return [delete, edit, view]
+
+    } else {
+
+      return [view]
+
+    }
 
   }
 
   private func reloadSurveys(_ deletedSurvey: Survey) {
 
     postAsyncUIOperation()
-    surveys = surveys.filter {
-      $0.id != deletedSurvey.id
-    }
     self.tableView.reloadData()
 
   }
