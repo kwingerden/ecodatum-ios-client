@@ -87,7 +87,7 @@
                         <outlet property="addNewMeasurementButton" destination="NZs-WS-xyS" id="5T7-aE-lGh"/>
                         <outlet property="surveyDateLabel" destination="i8g-20-WJ4" id="hHS-bH-Das"/>
                         <outlet property="viewExistingMeasurementsButton" destination="kMo-zf-SAh" id="hki-59-z14"/>
-                        <segue destination="GUq-1c-sgT" kind="show" identifier="abioticFactorChoice" id="Ayv-Gz-nTc"/>
+                        <segue destination="GUq-1c-sgT" kind="show" identifier="primaryAbioticFactorChoice" id="Ayv-Gz-nTc"/>
                         <segue destination="xjT-0m-Oal" kind="show" identifier="measurementChoice" id="gWL-gs-HI4"/>
                     </connections>
                 </viewController>
@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="19" y="60"/>
         </scene>
-        <!--AbioticFactorChoice-->
+        <!--PrimaryAbioticFactorChoice-->
         <scene sceneID="ZdO-XI-Kyh">
             <objects>
-                <viewControllerPlaceholder storyboardName="AbioticFactorChoice" id="GUq-1c-sgT" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="PrimaryAbioticFactorChoice" id="GUq-1c-sgT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfh-O1-QbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="559" y="-25"/>

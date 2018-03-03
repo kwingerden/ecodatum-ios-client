@@ -178,28 +178,16 @@ class NetworkManager {
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
-  
-  func call(_ request: GetAbioticFactorsRequest) throws -> Promise<[AbioticFactorResponse]> {
+
+  func call(_ request: GetMeasurementUnitsRequest) throws -> Promise<[MeasurementUnitResponse]> {
     return try executeDataRequest(
       makeDataRequest(
         baseURL
           .appendingPathComponent("public")
-          .appendingPathComponent("abioticFactors"),
+          .appendingPathComponent("measurementUnits"),
         request: request))
   }
-  
-  func call(_ request: GetMeasurementUnitsByAbioticFactorRequest)
-    throws -> Promise<[MeasurementUnitResponse]> {
-      return try executeDataRequest(
-        makeDataRequest(
-          baseURL
-            .appendingPathComponent("public")
-            .appendingPathComponent("abioticFactors")
-            .appendingPathComponent("\(request.abioticFactorId)")
-            .appendingPathComponent("measurementUnits"),
-          request: request))
-  }
-  
+
   func call(_ request: AddNewMeasurementRequest)
     throws -> Promise<MeasurementResponse> {
       return try executeDataRequest(

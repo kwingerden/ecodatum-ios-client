@@ -34,9 +34,7 @@ class SurveyNavigationChoiceViewController: BaseViewController {
     switch sender {
       
     case addNewMeasurementButton:
-      viewControllerManager.getAbioticFactors(
-        preAsyncBlock: preAsyncUIOperation,
-        postAsyncBlock: postAsyncUIOperation)
+      viewControllerManager.showPrimaryAbioticFactors()
   
     case viewExistingMeasurementsButton:
       viewControllerManager.getMeasurements(

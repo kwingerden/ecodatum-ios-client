@@ -213,28 +213,42 @@ struct DeleteSurveyByIdRequest: ProtectedNetworkRequest {
 
 }
 
-struct GetAbioticFactorsRequest: NetworkRequest {
-  
-}
+struct GetMeasurementUnitsRequest: NetworkRequest {
 
-struct AbioticFactorResponse: NetworkResponse {
-
-  let id: String // abiotic factor id
-  let name: String
-  
-}
-
-struct GetMeasurementUnitsByAbioticFactorRequest: NetworkRequest {
-  
-  let abioticFactorId: String
-  
 }
 
 struct MeasurementUnitResponse: NetworkResponse {
-  
-  let id: String // measurement unit id
-  let name: String
-  
+
+  struct PrimaryAbioticFactor: Decodable {
+
+    let id: String
+    let name: String
+    let description: String
+
+  }
+
+  struct SecondaryAbioticFactor: Decodable {
+
+    let id: String
+    let name: String
+    let label: String
+    let description: String
+
+  }
+
+  struct MeasurementUnit: Decodable {
+
+    let id: String
+    let dimension: String
+    let unit: String
+    let description: String
+
+  }
+
+  let primaryAbioticFactor: PrimaryAbioticFactor
+  let secondaryAbioticFactor: SecondaryAbioticFactor
+  let measurementUnit: MeasurementUnit
+
 }
 
 struct AddNewMeasurementRequest: ProtectedNetworkRequest {

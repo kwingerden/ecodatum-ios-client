@@ -16,7 +16,10 @@ class ViewContext {
     
     case measurementUnit
     case measurementUnits
-    
+
+    case primaryAbioticFactor
+    case secondaryAbioticFactor
+
     case site
     case sites
     
@@ -26,10 +29,7 @@ class ViewContext {
   }
 
   enum Value {
-    
-    case abioticFactor(AbioticFactor)
-    case abioticFactors([AbioticFactor])
-    
+        
     case organization(Organization)
     case organizations([Organization])
     case organizationMembers([OrganizationMember])
@@ -39,7 +39,10 @@ class ViewContext {
     
     case measurementUnit(MeasurementUnit)
     case measurementUnits([MeasurementUnit])
-    
+
+    case primaryAbioticFactor(MeasurementUnit.PrimaryAbioticFactor)
+    case secondaryAbioticFactor(MeasurementUnit.SecondaryAbioticFactor)
+
     case site(Site)
     case sites([Site])
     

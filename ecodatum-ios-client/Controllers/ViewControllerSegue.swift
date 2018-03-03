@@ -2,7 +2,8 @@ import Foundation
 
 enum ViewControllerSegue: String {
 
-  case abioticFactorChoice
+  case primaryAbioticFactorChoice
+  case secondaryAbioticFactorChoice
   
   case account
   

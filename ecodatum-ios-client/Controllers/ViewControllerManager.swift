@@ -4,7 +4,6 @@ import Hydra
 import SwiftValidator
 import UIKit
 
-typealias AbioticFactor = AbioticFactorResponse
 typealias AuthenticatedUser = AuthenticatedUserRecord
 typealias Measurement = MeasurementResponse
 typealias MeasurementUnit = MeasurementUnitResponse
@@ -13,6 +12,7 @@ typealias OrganizationMember = OrganizationMemberResponse
 typealias Site = SiteResponse
 typealias Survey = SurveyResponse
 
+typealias CompletionBlock = () -> Void
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
 
@@ -36,42 +36,6 @@ class ViewControllerManager:
       return nil
     }
   }()
-  
-  var abioticFactor: AbioticFactor? {
-    get {
-      guard let value = viewContext.state[.abioticFactor] else {
-        return nil
-      }
-      if case let ViewContext.Value.abioticFactor(abioticFactor) = value {
-        return abioticFactor
-      } else {
-        return nil
-      }
-    }
-    set {
-      if let newValue = newValue {
-        viewContext.state[.abioticFactor] = ViewContext.Value.abioticFactor(newValue)
-      } else {
-        viewContext.state[.abioticFactor] = nil
-      }
-    }
-  }
-  
-  var abioticFactors: [AbioticFactor] {
-    get {
-      guard let value = viewContext.state[.abioticFactors] else {
-        return []
-      }
-      if case let ViewContext.Value.abioticFactors(abioticFactors) = value {
-        return abioticFactors
-      } else {
-        return []
-      }
-    }
-    set {
-      viewContext.state[.abioticFactors] = ViewContext.Value.abioticFactors(newValue)
-    }
-  }
   
   var organization: Organization? {
     get {
@@ -108,7 +72,64 @@ class ViewControllerManager:
       viewContext.state[.organizationMembers] = ViewContext.Value.organizationMembers(newValue)
     }
   }
-  
+
+  var primaryAbioticFactor: MeasurementUnit.PrimaryAbioticFactor? {
+    get {
+      guard let value = viewContext.state[.primaryAbioticFactor] else {
+        return nil
+      }
+      if case let ViewContext.Value.primaryAbioticFactor(primaryAbioticFactor) = value {
+        return primaryAbioticFactor
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.primaryAbioticFactor] = ViewContext.Value.primaryAbioticFactor(newValue)
+      } else {
+        viewContext.state[.primaryAbioticFactor] = nil
+      }
+    }
+  }
+
+  var primaryAbioticFactors: [MeasurementUnit.PrimaryAbioticFactor] {
+    return measurementUnits.map {
+      $0.primaryAbioticFactor
+    }
+  }
+
+  var secondaryAbioticFactor: MeasurementUnit.SecondaryAbioticFactor? {
+    get {
+      guard let value = viewContext.state[.secondaryAbioticFactor] else {
+        return nil
+      }
+      if case let ViewContext.Value.secondaryAbioticFactor(secondaryAbioticFactor) = value {
+        return secondaryAbioticFactor
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.secondaryAbioticFactor] = ViewContext.Value.secondaryAbioticFactor(newValue)
+      } else {
+        viewContext.state[.secondaryAbioticFactor] = nil
+      }
+    }
+  }
+
+  var secondaryAbioticFactors: [MeasurementUnit.SecondaryAbioticFactor] {
+    guard let primaryAbioticFactor = primaryAbioticFactor else {
+      return []
+    }
+    return measurementUnits.filter {
+      $0.primaryAbioticFactor.id == primaryAbioticFactor.id
+    }.map {
+      $0.secondaryAbioticFactor
+    }
+  }
+
   var measurementUnit: MeasurementUnit? {
     get {
       guard let value = viewContext.state[.measurementUnit] else {
@@ -128,14 +149,22 @@ class ViewControllerManager:
       }
     }
   }
-  
+
   var measurementUnits: [MeasurementUnit] {
     get {
       guard let value = viewContext.state[.measurementUnits] else {
         return []
       }
       if case let ViewContext.Value.measurementUnits(measurementUnits) = value {
-        return measurementUnits
+        if let primaryAbioticFactor = primaryAbioticFactor,
+           let secondaryAbioticFactor = secondaryAbioticFactor {
+          return measurementUnits.filter {
+            $0.primaryAbioticFactor.id == primaryAbioticFactor.id &&
+              $0.secondaryAbioticFactor.id == secondaryAbioticFactor.id
+          }
+        } else {
+          return measurementUnits
+        }
       } else {
         return []
       }
@@ -144,7 +173,7 @@ class ViewControllerManager:
       viewContext.state[.measurementUnits] = ViewContext.Value.measurementUnits(newValue)
     }
   }
-  
+
   var organizations: [Organization] {
     get {
       guard let value = viewContext.state[.organizations] else {
@@ -481,7 +510,7 @@ class ViewControllerManager:
     verticalAccuracy: Double? = nil,
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil,
-    completion: @escaping (() -> Void) = {}) {
+    completionBlock: CompletionBlock? = nil) {
     
     guard let token = authenticatedUser?.token else {
       handleError(ViewControllerError.noAuthenticationToken)
@@ -518,7 +547,9 @@ class ViewControllerManager:
           } else {
             self.siteHandler.handleUpdatedSite(site: site)
           }
-          completion()
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
         }.catch(in: .main) {
           error in
           if self.isConflictError(error) {
@@ -764,73 +795,89 @@ class ViewControllerManager:
 
   }
 
-  func getAbioticFactors(
+  func getMeasurementUnits(
     preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil) {
-    
-    if let preAsyncBlock = preAsyncBlock {
-      preAsyncBlock()
-    }
-    
-    do {
-      
-      try serviceManager.call(
-        GetAbioticFactorsRequest())
-        .then(in: .main, handleAbioticFactors)
-        .catch(in: .main, handleError)
-        .always(in: .main) {
-          if let postAsyncBlock = postAsyncBlock {
-            postAsyncBlock()
-          }
-      }
-      
-    } catch let error {
-      
-      handleError(error)
-      
-    }
-    
-  }
-  
-  func showAbioticFactor(
-    _ abioticFactor: AbioticFactor,
-    preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil) {
-    
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completionBlock: CompletionBlock? = nil ) {
+
     if let preAsyncBlock = preAsyncBlock {
       preAsyncBlock()
     }
 
-    self.abioticFactor = abioticFactor
-
     do {
-      
+
       try serviceManager.call(
-        GetMeasurementUnitsByAbioticFactorRequest(
-          abioticFactorId: abioticFactor.id))
-        .then(in: .main, handleMeasurementUnits)
-        .catch(in: .main, handleError)
+        GetMeasurementUnitsRequest())
+        .then(in: .main) {
+          measurementUnits in
+          self.handleMeasurementUnits(measurementUnits)
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
+        }.catch(in: .main, handleError)
         .always(in: .main) {
           if let postAsyncBlock = postAsyncBlock {
             postAsyncBlock()
           }
-      }
-      
+        }
+
     } catch let error {
-      
+
       handleError(error)
-      
+
     }
-    
+
   }
-  
-  func showMeasurementUnit(_ measurementUnit: MeasurementUnit) {
-    
+
+  func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
+
+    self.measurementUnits = measurementUnits
+
+    if measurementUnits.isEmpty {
+
+      showErrorMessage(
+        "No Existing Measurement Units",
+        ViewControllerError.noMeasurementUnits.localizedDescription)
+
+    }
+
+  }
+
+  func showPrimaryAbioticFactors() {
+
+    performSegue(to: .primaryAbioticFactorChoice)
+
+  }
+
+  func findPrimaryAbioticFactor(_ name: String) -> MeasurementUnit.PrimaryAbioticFactor? {
+
+    return measurementUnits.filter {
+      $0.primaryAbioticFactor.name.lowercased() == name.lowercased()
+    }.first?.primaryAbioticFactor
+
+  }
+
+  func showSecondaryAbioticFactors(_ primaryAbioticFactor: MeasurementUnit.PrimaryAbioticFactor) {
+
+    self.primaryAbioticFactor = primaryAbioticFactor
+    performSegue(to: .secondaryAbioticFactorChoice)
+
+  }
+
+  func showMeasurementUnits(_ secondaryAbioticFactor: MeasurementUnit.SecondaryAbioticFactor) {
+
+    self.secondaryAbioticFactor = secondaryAbioticFactor
+    performSegue(to: .measurementUnitChoice)
+
+  }
+
+  func showMeasurement(_ measurementUnit: MeasurementUnit) {
+
     self.measurementUnit = measurementUnit
     performSegue(to: .addNewMeasurement)
-    
+
   }
-  
+
   func addNewMeasurement(
     value: Double,
     preAsyncBlock: PreAsyncBlock? = nil,
@@ -845,7 +892,7 @@ class ViewControllerManager:
       handleError(ViewControllerError.noSurveyIdentifier)
       return
     }
-    
+    /*
     guard let abioticFactorId = abioticFactor?.id else {
       handleError(ViewControllerError.noAbioticFactorIdentifier)
       return
@@ -882,7 +929,7 @@ class ViewControllerManager:
       handleError(error)
       
     }
-    
+    */
   }
   
   func getMeasurements(
@@ -929,19 +976,6 @@ class ViewControllerManager:
     
     self.measurement = measurement
     performSegue(to: .measurement)
-    
-  }
-  
-  func handleMeasurementUnits(_ measurementUnits: [MeasurementUnit]) {
-
-    self.measurementUnits = measurementUnits
-
-  }
-  
-  func handleAbioticFactors(_ abioticFactors: [AbioticFactor]) {
-    
-    self.abioticFactors = abioticFactors
-    performSegue(to: .abioticFactorChoice)
     
   }
 
@@ -1185,7 +1219,7 @@ class ViewControllerManager:
   func getOrganizationMembers(
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil,
-    completion: @escaping (() -> Void) = {}) {
+    completionBlock: CompletionBlock? = nil) {
 
     guard let token = authenticatedUser?.token else {
       handleError(ViewControllerError.noAuthenticationToken)
@@ -1210,7 +1244,9 @@ class ViewControllerManager:
         .then(in: .main) {
           organizationMembers in
           self.organizationMembers = organizationMembers
-          completion()
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
         }.catch(in: .main, handleError)
         .always(in: .main) {
           if let postAsyncBlock = postAsyncBlock {

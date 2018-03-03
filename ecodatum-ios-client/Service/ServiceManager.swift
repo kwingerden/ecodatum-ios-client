@@ -95,11 +95,7 @@ class ServiceManager {
     return try networkManager.call(request)
   }
 
-  func call(_ request: GetAbioticFactorsRequest) throws -> Promise<[AbioticFactorResponse]> {
-    return try networkManager.call(request)
-  }
-  
-  func call(_ request: GetMeasurementUnitsByAbioticFactorRequest) throws -> Promise<[MeasurementUnitResponse]> {
+  func call(_ request: GetMeasurementUnitsRequest) throws -> Promise<[MeasurementUnitResponse]> {
     return try networkManager.call(request)
   }
   

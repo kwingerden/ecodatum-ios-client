@@ -5,6 +5,7 @@ enum ViewControllerError: Error {
   case noAbioticFactorIdentifier
   case noAuthenticationToken
   case noMeasurementUnitIdentifier
+  case noMeasurementUnits
   case noOrganizationIdentifier
   case noOrganizationSites(name: String)
   case noSiteIdentifier
@@ -30,7 +31,10 @@ extension ViewControllerError: LocalizedError {
     
     case .noMeasurementUnitIdentifier:
       return "Failed to obtain measurement unit identifier."
-      
+
+    case .noMeasurementUnits:
+      return "There are no available measurement units."
+
     case .noOrganizationIdentifier:
       return "Failed to obtain organization identifier."
 

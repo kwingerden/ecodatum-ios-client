@@ -10,24 +10,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Choose Abiotic Factor-->
+        <!--Choose Primary Abiotic Factor-->
         <scene sceneID="WHo-ih-5i6">
             <objects>
-                <viewController title="Choose Abiotic Factor" id="Puv-un-S5f" customClass="AbioticFactorChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Choose Primary Abiotic Factor" id="Puv-un-S5f" customClass="PrimaryAbioticFactorChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qok-CQ-LAk">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="quc-2r-Hgt">
-                                <rect key="frame" x="184" y="271.5" width="400" height="481"/>
+                                <rect key="frame" x="184" y="306.5" width="400" height="411.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Abiotic Factor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRU-Gf-57Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Primary Abiotic Factor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRU-Gf-57Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="81.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3p-VF-T6u">
-                                        <rect key="frame" x="0.0" y="91" width="400" height="60"/>
+                                        <rect key="frame" x="0.0" y="131.5" width="400" height="60"/>
                                         <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="oaN-3K-YOP"/>
@@ -41,7 +41,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DA-sF-mE4">
-                                        <rect key="frame" x="0.0" y="201" width="400" height="60"/>
+                                        <rect key="frame" x="0.0" y="241.5" width="400" height="60"/>
                                         <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="mhS-wd-eUr"/>
@@ -55,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0t-bZ-sb4">
-                                        <rect key="frame" x="0.0" y="311" width="400" height="60"/>
+                                        <rect key="frame" x="0.0" y="351.5" width="400" height="60"/>
                                         <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="wCH-bS-DbX"/>
@@ -68,20 +68,6 @@
                                             <action selector="touchUpInsider:" destination="Puv-un-S5f" eventType="touchUpInside" id="uyq-wD-Nxc"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Aw-Ow-Ycw">
-                                        <rect key="frame" x="0.0" y="421" width="400" height="60"/>
-                                        <subviews>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4j2-tl-WW3">
-                                                <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
-                                                <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="2DJ-51-FhP"/>
-                                            <constraint firstItem="4j2-tl-WW3" firstAttribute="centerY" secondItem="1Aw-Ow-Ycw" secondAttribute="centerY" id="OZV-NU-52p"/>
-                                            <constraint firstItem="4j2-tl-WW3" firstAttribute="centerX" secondItem="1Aw-Ow-Ycw" secondAttribute="centerX" id="h5M-2r-pQ7"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="sR6-kd-3Yf"/>
@@ -97,21 +83,20 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="4j2-tl-WW3" id="Goc-pl-FvS"/>
                         <outlet property="airButton" destination="N3p-VF-T6u" id="Lb3-gO-eKu"/>
                         <outlet property="soilButton" destination="7DA-sF-mE4" id="yil-9L-wu9"/>
                         <outlet property="waterButton" destination="a0t-bZ-sb4" id="blK-PO-FmX"/>
-                        <segue destination="hou-60-Mc3" kind="show" identifier="measurementUnitChoice" id="vjD-p4-OQd"/>
+                        <segue destination="hou-60-Mc3" kind="show" identifier="secondaryAbioticFactorChoice" id="vjD-p4-OQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2z-aE-fZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="142" y="225"/>
         </scene>
-        <!--MeasurementUnitChoice-->
+        <!--SecondaryAbioticFactorChoice-->
         <scene sceneID="7yQ-Xo-9XT">
             <objects>
-                <viewControllerPlaceholder storyboardName="MeasurementUnitChoice" id="hou-60-Mc3" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SecondaryAbioticFactorChoice" id="hou-60-Mc3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNz-Km-gHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="635" y="225"/>

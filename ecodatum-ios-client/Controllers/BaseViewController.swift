@@ -46,12 +46,6 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
         viewControllerManager: viewControllerManager)
     }
     
-    /*
-    if var segueSourceViewControllerHolder = segue.destination as? SegueSourceViewControllerHolder {
-      segueSourceViewControllerHolder.segueSourceViewController = segue.source
-    }
- */
-    
   }
   
   func preAsyncUIOperation() {
