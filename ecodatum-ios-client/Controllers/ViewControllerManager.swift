@@ -94,9 +94,13 @@ class ViewControllerManager:
   }
 
   var primaryAbioticFactors: [MeasurementUnit.PrimaryAbioticFactor] {
+
     return measurementUnits.map {
       $0.primaryAbioticFactor
+    }.sorted {
+      $0.name < $1.name
     }
+
   }
 
   var secondaryAbioticFactor: MeasurementUnit.SecondaryAbioticFactor? {
@@ -132,6 +136,8 @@ class ViewControllerManager:
       if !result.contains(where: { $0.id == value.id }) {
         result.append(value)
       }
+    }.sorted {
+      $0.name < $1.name
     }
   }
 
@@ -166,9 +172,13 @@ class ViewControllerManager:
           return measurementUnits.filter {
             $0.primaryAbioticFactor.id == primaryAbioticFactor.id &&
               $0.secondaryAbioticFactor.id == secondaryAbioticFactor.id
+          }.sorted {
+            $0.measurementUnit.label < $1.measurementUnit.label
           }
         } else {
-          return measurementUnits
+          return measurementUnits.sorted {
+            $0.measurementUnit.label < $1.measurementUnit.label
+          }
         }
       } else {
         return []
@@ -185,7 +195,9 @@ class ViewControllerManager:
         return []
       }
       if case let ViewContext.Value.organizations(organizations) = value {
-        return organizations
+        return organizations.sorted {
+          $0.createdAt < $1.createdAt
+        }
       } else {
         return []
       }
@@ -221,7 +233,9 @@ class ViewControllerManager:
         return []
       }
       if case let ViewContext.Value.sites(sites) = value {
-        return sites
+        return sites.sorted {
+          $0.name < $1.name
+        }
       } else {
         return []
       }
@@ -269,7 +283,9 @@ class ViewControllerManager:
         return []
       }
       if case let ViewContext.Value.surveys(surveys) = value {
-        return surveys
+        return surveys.sorted {
+          $0.date > $1.date
+        }
       } else {
         return []
       }

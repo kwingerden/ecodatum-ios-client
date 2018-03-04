@@ -10,4 +10,8 @@ extension String {
     }
   }
   
+  func replaceNewlines() -> String {
+    return self.replacingOccurrences(of: "\n", with: " ")
+  }
+  
 }

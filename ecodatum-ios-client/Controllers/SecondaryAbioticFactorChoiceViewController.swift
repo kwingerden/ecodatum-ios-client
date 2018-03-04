@@ -35,7 +35,7 @@ extension SecondaryAbioticFactorChoiceViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 200
+    return 125
   }
 
   func tableView(_ tableView: UITableView,
@@ -57,7 +57,7 @@ extension SecondaryAbioticFactorChoiceViewController: UITableViewDataSource {
     let secondaryAbioticFactor = viewControllerManager.secondaryAbioticFactors[indexPath.row]
 
     cell.textLabel?.text = secondaryAbioticFactor.label
-    cell.detailTextLabel?.text = secondaryAbioticFactor.description
+    cell.detailTextLabel?.text = secondaryAbioticFactor.description.replaceNewlines()
 
     let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))
     nextIndicator.tintColor = UIColor.black

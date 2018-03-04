@@ -33,7 +33,7 @@ extension MeasurementUnitChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 200
+    return 125
   }
   
   func tableView(_ tableView: UITableView,
@@ -56,7 +56,7 @@ extension MeasurementUnitChoiceViewController: UITableViewDataSource {
     
     cell.textLabel?.text = measurementUnit.measurementUnit.unit
     let label = measurementUnit.measurementUnit.label
-    let description = measurementUnit.measurementUnit.description
+    let description = measurementUnit.measurementUnit.description.replaceNewlines()
     cell.detailTextLabel?.text = "\(label): \(description)"
     
     let nextIndicator = UIImageView(image: #imageLiteral(resourceName: "NextGlyph"))

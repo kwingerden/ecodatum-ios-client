@@ -111,6 +111,8 @@ struct OrganizationResponse: NetworkResponse {
   let code: String
   let name: String
   let description: String?
+  let createdAt: Date
+  let updatedAt: Date
   
 }
 
@@ -169,6 +171,8 @@ struct SiteResponse: NetworkResponse {
   let verticalAccuracy: Double?
   let organizationId: String
   let userId: String
+  let createdAt: Date
+  let updatedAt: Date
   
 }
 
@@ -203,6 +207,8 @@ struct SurveyResponse: NetworkResponse {
   let description: String?
   let siteId: String
   let userId: String
+  let createdAt: Date
+  let updatedAt: Date
   
 }
 
@@ -277,5 +283,7 @@ struct MeasurementResponse: NetworkResponse {
   let measurementUnitId: String
   let value: Double
   let userId: String
+  let createdAt: Date
+  let updatedAt: Date
   
 }

@@ -95,7 +95,7 @@
 		01CCEC8C2015498700D64CE8 /* Validator+Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */; };
 		01CCEC9020154DFD00D64CE8 /* UITextView+Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */; };
 		01CCEC962015A27400D64CE8 /* ValidatorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC952015A27400D64CE8 /* ValidatorRule.swift */; };
-		01CCEC982015A3A300D64CE8 /* String+ToNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC972015A3A300D64CE8 /* String+ToNumber.swift */; };
+		01CCEC982015A3A300D64CE8 /* String+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEC972015A3A300D64CE8 /* String+Utilities.swift */; };
 		01D2BD7B201194E500260F18 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D2BD7A201194E500260F18 /* Account.storyboard */; };
 		01D2BD7D201194F600260F18 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2BD7C201194F600260F18 /* AccountViewController.swift */; };
 		01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D8B2E81FFC590A00450470 /* GRDB.framework */; };
@@ -211,7 +211,7 @@
 		01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+Transformer.swift"; sourceTree = "<group>"; };
 		01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Validatable.swift"; sourceTree = "<group>"; };
 		01CCEC952015A27400D64CE8 /* ValidatorRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorRule.swift; sourceTree = "<group>"; };
-		01CCEC972015A3A300D64CE8 /* String+ToNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToNumber.swift"; sourceTree = "<group>"; };
+		01CCEC972015A3A300D64CE8 /* String+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utilities.swift"; sourceTree = "<group>"; };
 		01D2BD7A201194E500260F18 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		01D2BD7C201194F600260F18 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		01D8B2E61FFC590A00450470 /* GRDBCipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDBCipher.framework; path = Carthage/Build/iOS/GRDBCipher.framework; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 				01CCEC8B2015498700D64CE8 /* Validator+Transformer.swift */,
 				01CCEC8F20154DFD00D64CE8 /* UITextView+Validatable.swift */,
 				01CCEC952015A27400D64CE8 /* ValidatorRule.swift */,
-				01CCEC972015A3A300D64CE8 /* String+ToNumber.swift */,
+				01CCEC972015A3A300D64CE8 /* String+Utilities.swift */,
 				0117AA2E203699C300FFE8D6 /* JSONEncoderDecoder.swift */,
 				0197EA362037D71900E0D04A /* DateFormatter.swift */,
 			);
@@ -675,7 +675,7 @@
 				0197EA4F203A865E00E0D04A /* ViewControllerHandler.swift in Sources */,
 				01CCEC962015A27400D64CE8 /* ValidatorRule.swift in Sources */,
 				0185F723201EB40700B176C6 /* SiteNavigationChoiceViewController.swift in Sources */,
-				01CCEC982015A3A300D64CE8 /* String+ToNumber.swift in Sources */,
+				01CCEC982015A3A300D64CE8 /* String+Utilities.swift in Sources */,
 				0138682120198C0900828DE8 /* OrganizationChoiceViewController.swift in Sources */,
 				018F77641FFB0EAC004421F0 /* Globals.swift in Sources */,
 				017A159820106C82008553E2 /* TopNavigationChoiceViewController.swift in Sources */,

@@ -5,8 +5,6 @@ class OrganizationChoiceViewController: BaseViewController  {
   
   @IBOutlet weak var tableView: UITableView!
   
-  lazy private var organizations = viewControllerManager.organizations
-  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -34,7 +32,7 @@ extension OrganizationChoiceViewController: UITableViewDelegate {
                  didSelectRowAt indexPath: IndexPath) {
     DispatchQueue.main.async {
       self.viewControllerManager.showOrganization(
-        self.organizations[indexPath.row])
+        self.viewControllerManager.organizations[indexPath.row])
     }
   }
   
@@ -46,7 +44,7 @@ extension OrganizationChoiceViewController: UITableViewDataSource {
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let organization = organizations[indexPath.row]
+    let organization = viewControllerManager.organizations[indexPath.row]
     
     cell.textLabel?.text = organization.name
     cell.detailTextLabel?.text = organization.description
@@ -60,7 +58,7 @@ extension OrganizationChoiceViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return organizations.count
+    return viewControllerManager.organizations.count
   }
   
 }
