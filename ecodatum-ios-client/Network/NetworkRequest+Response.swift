@@ -241,6 +241,7 @@ struct MeasurementUnitResponse: NetworkResponse {
     let id: String
     let dimension: String
     let unit: String
+    let label: String
     let description: String
 
   }

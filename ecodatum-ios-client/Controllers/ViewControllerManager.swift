@@ -127,6 +127,11 @@ class ViewControllerManager:
       $0.primaryAbioticFactor.id == primaryAbioticFactor.id
     }.map {
       $0.secondaryAbioticFactor
+    }.reduce(into: []) {
+      (result, value) in
+      if !result.contains(where: { $0.id == value.id }) {
+        result.append(value)
+      }
     }
   }
 
