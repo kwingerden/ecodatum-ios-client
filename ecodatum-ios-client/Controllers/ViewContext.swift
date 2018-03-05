@@ -17,6 +17,9 @@ class ViewContext {
     case measurementUnit
     case measurementUnits
 
+    case photo
+    case photos
+    
     case primaryAbioticFactor
     case secondaryAbioticFactor
 
@@ -36,6 +39,9 @@ class ViewContext {
     
     case measurement(Measurement)
     case measurements([Measurement])
+
+    case site(Site)
+    case sites([Site])
     
     case measurementUnit(MeasurementUnit)
     case measurementUnits([MeasurementUnit])
@@ -43,8 +49,8 @@ class ViewContext {
     case primaryAbioticFactor(MeasurementUnit.PrimaryAbioticFactor)
     case secondaryAbioticFactor(MeasurementUnit.SecondaryAbioticFactor)
 
-    case site(Site)
-    case sites([Site])
+    case photo(Photo)
+    case photos([Photo])
     
     case survey(Survey)
     case surveys([Survey])

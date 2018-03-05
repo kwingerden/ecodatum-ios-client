@@ -2,7 +2,11 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class AddNewMeasurementViewController: BaseViewController {
+class NewOrUpdateMeasurementViewController:
+BaseViewController,
+FormSheetCancelButtonHolder {
+  
+  @IBOutlet weak var cancelButton: FormSheetCancelButton!
   
   @IBOutlet weak var valueLabel: UILabel!
   
@@ -38,14 +42,9 @@ class AddNewMeasurementViewController: BaseViewController {
   
   @IBOutlet weak var saveButton: UIButton!
     
+  @IBOutlet weak var calculatorView: UIView!
+  
   private var value: String = "0"
-  
-  enum Unit: String  {
-    case degreesCelcius = "°C"
-    case degreesFahrenheit = "°F"
-  }
-  
-  private var unit: Unit = .degreesFahrenheit
   
   override func viewDidLoad() {
   
@@ -70,9 +69,11 @@ class AddNewMeasurementViewController: BaseViewController {
     eightButton.roundedAndDarkBordered()
     nineButton.roundedAndDarkBordered()
     
+    calculatorView.rounded()
+    
     saveButton.rounded()
     
-    updateValue()
+    updateUI()
     
   }
   
@@ -90,11 +91,8 @@ class AddNewMeasurementViewController: BaseViewController {
       }
       
     case unitButton:
-      if unit == .degreesCelcius {
-        unit = .degreesFahrenheit
-      } else {
-        unit = .degreesCelcius
-      }
+      break
+      // Do nothing
       
     case decimalButton:
       if !value.contains(".") {
@@ -191,17 +189,21 @@ class AddNewMeasurementViewController: BaseViewController {
       
     }
     
-    updateValue()
+    updateUI()
     
   }
   
-  private func updateValue() {
-    if unit == .degreesCelcius {
-      unitButton.setTitle(Unit.degreesFahrenheit.rawValue, for: .normal)
-    } else {
-      unitButton.setTitle(Unit.degreesCelcius.rawValue, for: .normal)
+  private func updateUI() {
+    
+    guard let measurementUnit = viewControllerManager.measurementUnit else {
+      LOG.error("Measurement Unit not set!")
+      return
     }
-    valueLabel.text = "\(value) \(unit.rawValue)"
+    
+    let unit = measurementUnit.measurementUnit.unit
+    unitButton.setTitle(unit, for: .normal)
+    valueLabel.text = "\(value)"
+  
   }
   
 }

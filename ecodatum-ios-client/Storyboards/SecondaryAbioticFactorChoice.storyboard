@@ -90,17 +90,17 @@
                     <connections>
                         <outlet property="tableView" destination="vlP-fi-aS2" id="pwM-GE-Yh1"/>
                         <segue destination="5kU-om-N9m" kind="show" identifier="measurementUnitChoice" id="1DW-dM-L0O"/>
-                        <segue destination="5HC-mi-5Zx" kind="show" identifier="addNewMeasurement" id="8AK-Kl-YdN"/>
+                        <segue destination="5HC-mi-5Zx" kind="show" identifier="newMeasurement" id="8AK-Kl-YdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="107-XJ-L8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-401" y="143"/>
         </scene>
-        <!--AddNewMeasurement-->
+        <!--NewOrUpdateMeasurement-->
         <scene sceneID="MIc-ff-xc9">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddNewMeasurement" id="5HC-mi-5Zx" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateMeasurement" id="5HC-mi-5Zx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="obN-Wd-bc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="225" y="-38"/>

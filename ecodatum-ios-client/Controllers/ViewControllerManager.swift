@@ -9,6 +9,7 @@ typealias Measurement = MeasurementResponse
 typealias MeasurementUnit = MeasurementUnitResponse
 typealias Organization = OrganizationResponse
 typealias OrganizationMember = OrganizationMemberResponse
+typealias Photo = PhotoResponse
 typealias Site = SiteResponse
 typealias Survey = SurveyResponse
 
@@ -340,6 +341,44 @@ class ViewControllerManager:
     }
     set {
       viewContext.state[.measurements] = ViewContext.Value.measurements(newValue)
+    }
+  }
+  
+  var photo: Photo? {
+    get {
+      guard let value = viewContext.state[.photo] else {
+        return nil
+      }
+      if case let ViewContext.Value.photo(photo) = value {
+        return photo
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.photo] = ViewContext.Value.photo(newValue)
+      } else {
+        viewContext.state[.photo] = nil
+      }
+    }
+  }
+  
+  var photos: [Photo] {
+    get {
+      guard let value = viewContext.state[.photos] else {
+        return []
+      }
+      if case let ViewContext.Value.photos(photos) = value {
+        return photos.sorted {
+          $0.createdAt < $1.createdAt
+        }
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.photos] = ViewContext.Value.photos(newValue)
     }
   }
   
@@ -895,7 +934,7 @@ class ViewControllerManager:
   func showMeasurement(_ measurementUnit: MeasurementUnit) {
 
     self.measurementUnit = measurementUnit
-    performSegue(to: .addNewMeasurement)
+    performSegue(to: .newMeasurement)
 
   }
 
@@ -990,13 +1029,6 @@ class ViewControllerManager:
       handleError(error)
       
     }
-    
-  }
-  
-  func showMeasurement(_ measurement: Measurement) {
-    
-    self.measurement = measurement
-    performSegue(to: .measurement)
     
   }
 

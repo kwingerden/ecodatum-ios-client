@@ -89,17 +89,17 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="6pg-rw-ihG" id="ZxJ-NS-EBq"/>
-                        <segue destination="P9a-5J-15p" kind="show" identifier="addNewMeasurement" id="BjO-GU-fHD"/>
+                        <segue destination="P9a-5J-15p" kind="show" identifier="newMeasurement" id="BjO-GU-fHD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0y6-6a-hws" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-401" y="143"/>
         </scene>
-        <!--AddNewMeasurement-->
+        <!--NewOrUpdateMeasurement-->
         <scene sceneID="gK9-VV-cmQ">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddNewMeasurement" id="P9a-5J-15p" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateMeasurement" id="P9a-5J-15p" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9E-4J-N0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131" y="21"/>

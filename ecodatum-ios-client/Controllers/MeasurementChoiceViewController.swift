@@ -39,10 +39,12 @@ extension MeasurementChoiceViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
+    /*
     DispatchQueue.main.async {
       self.viewControllerManager.showMeasurement(
         self.measurements[indexPath.row])
     }
+ */
   }
   
 }

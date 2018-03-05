@@ -6,11 +6,17 @@ enum ViewControllerSegue: String {
   case secondaryAbioticFactorChoice
   
   case account
-  
-  case addNewMeasurement
-  case measurement
+
+  case newMeasurement
+  case updateMeasurement
+  case viewMeasurement
   case measurementChoice
   case measurementUnitChoice
+  
+  case newPhoto
+  case updatePhoto
+  case viewPhoto
+  case photoChoice
   
   case createNewAccount
   

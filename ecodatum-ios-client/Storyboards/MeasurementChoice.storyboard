@@ -89,29 +89,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="3UT-Fw-uc8" id="Kb9-Wo-pr8"/>
-                        <segue destination="T0M-KY-k6i" kind="show" identifier="addNewMeasurement" id="WkE-M3-GSr"/>
-                        <segue destination="Jyz-YK-voK" kind="show" identifier="measurement" id="g5p-c2-S3q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjR-nP-EKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-519" y="143"/>
-        </scene>
-        <!--AddNewMeasurement-->
-        <scene sceneID="VDP-j7-yPi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddNewMeasurement" id="T0M-KY-k6i" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8v-rC-QLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-29" y="49"/>
-        </scene>
-        <!--Measurement-->
-        <scene sceneID="vAV-oZ-crg">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Measurement" id="Jyz-YK-voK" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iz9-t6-l5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-59" y="222"/>
         </scene>
     </scenes>
     <resources>

@@ -43,5 +43,13 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>EcoDatum needs access to the camera in order to take photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>EcoDatum needs access to the photo library so that a photo can be chosen.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>EcoDatum needs access to the microphone in order to record audio.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Ecodatum would like to determine your location when a photo is taken.</string>
 </dict>
 </plist>

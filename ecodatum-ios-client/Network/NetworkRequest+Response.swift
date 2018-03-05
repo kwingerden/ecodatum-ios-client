@@ -287,3 +287,31 @@ struct MeasurementResponse: NetworkResponse {
   let updatedAt: Date
   
 }
+
+struct GetPhotosBySurveyRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let surveyId: String
+  
+}
+
+struct NewOrUpdatePhotoRequest: ProtectedNetworkRequest {
+  
+  let token: String
+  let id: String? // photo id
+  let description: String
+  let surveyId: String
+  
+}
+
+struct PhotoResponse: NetworkResponse {
+  
+  let id: String // photo id
+  let surveyId: String
+  let description: String
+  let userId: String
+  let createdAt: Date
+  let updatedAt: Date
+  
+}
+
