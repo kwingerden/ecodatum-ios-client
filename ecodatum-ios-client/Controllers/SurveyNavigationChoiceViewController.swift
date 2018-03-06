@@ -72,8 +72,9 @@ class SurveyNavigationChoiceViewController: BaseViewController {
       break
       
     case addNewAudioClipButton:
-      break
-      
+
+      viewControllerManager.performSegue(to: .newAudioClip)
+
     case viewExistingAudioClipsButton:
       break
       

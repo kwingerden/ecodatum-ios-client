@@ -23,6 +23,9 @@
 		013164312005F1CB0022B788 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013164302005F1CB0022B788 /* Configuration.swift */; };
 		0138681F201979D300828DE8 /* OrganizationChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0138681E201979D300828DE8 /* OrganizationChoice.storyboard */; };
 		0138682120198C0900828DE8 /* OrganizationChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0138682020198C0900828DE8 /* OrganizationChoiceViewController.swift */; };
+		0139801C204E41B300D85848 /* NewOrUpdateAudioClip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0139801B204E41B300D85848 /* NewOrUpdateAudioClip.storyboard */; };
+		0139801E204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139801D204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift */; };
+		01398020204E45A800D85848 /* AVFoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139801F204E45A800D85848 /* AVFoundationUtilities.swift */; };
 		013F674E2009AC95001B8586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013F674D2009AC95001B8586 /* Main.storyboard */; };
 		013F67502009AD93001B8586 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F674F2009AD93001B8586 /* WelcomeViewController.swift */; };
 		013F67522009AF56001B8586 /* ViewControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67512009AF56001B8586 /* ViewControllerSegue.swift */; };
@@ -144,6 +147,9 @@
 		013164302005F1CB0022B788 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		0138681E201979D300828DE8 /* OrganizationChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizationChoice.storyboard; sourceTree = "<group>"; };
 		0138682020198C0900828DE8 /* OrganizationChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationChoiceViewController.swift; sourceTree = "<group>"; };
+		0139801B204E41B300D85848 /* NewOrUpdateAudioClip.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewOrUpdateAudioClip.storyboard; sourceTree = "<group>"; };
+		0139801D204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdateAudioClipViewController.swift; sourceTree = "<group>"; };
+		0139801F204E45A800D85848 /* AVFoundationUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVFoundationUtilities.swift; sourceTree = "<group>"; };
 		013F674D2009AC95001B8586 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		013F674F2009AD93001B8586 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		013F67512009AF56001B8586 /* ViewControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSegue.swift; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 				0117AA2E203699C300FFE8D6 /* JSONEncoderDecoder.swift */,
 				0197EA362037D71900E0D04A /* DateFormatter.swift */,
 				01677112204CAB4C00A04E32 /* UIPaddingLabel.swift */,
+				0139801F204E45A800D85848 /* AVFoundationUtilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -444,6 +451,7 @@
 				01CCC52D2042705000936835 /* OrganizationMemberRole.swift */,
 				01677110204B4B9000A04E32 /* SecondaryAbioticFactorChoiceViewController.swift */,
 				01677118204CF32200A04E32 /* NewOrUpdatePhotoViewController.swift */,
+				0139801D204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -473,6 +481,7 @@
 				01865CF1203B940C00A90657 /* NewOrUpdateSurvey.storyboard */,
 				0167710E204B4AF900A04E32 /* SecondaryAbioticFactorChoice.storyboard */,
 				01677116204CF30000A04E32 /* NewOrUpdatePhoto.storyboard */,
+				0139801B204E41B300D85848 /* NewOrUpdateAudioClip.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -593,6 +602,7 @@
 				0197EA412037F1C900E0D04A /* MeasurementUnitChoice.storyboard in Resources */,
 				0197EA332037D33A00E0D04A /* SurveyChoice.storyboard in Resources */,
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
+				0139801C204E41B300D85848 /* NewOrUpdateAudioClip.storyboard in Resources */,
 				01AD116B1FF4B5DB000DCE81 /* Welcome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +660,7 @@
 				013FEB30201AD601009B7DBC /* ViewContext.swift in Sources */,
 				01CCEC9020154DFD00D64CE8 /* UITextView+Validatable.swift in Sources */,
 				010AB1871FF72C4600EFF0D5 /* UIView+Rounded+Bordered.swift in Sources */,
+				01398020204E45A800D85848 /* AVFoundationUtilities.swift in Sources */,
 				0197EA432037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift in Sources */,
 				013164312005F1CB0022B788 /* Configuration.swift in Sources */,
 				01677113204CAB4C00A04E32 /* UIPaddingLabel.swift in Sources */,
@@ -690,6 +701,7 @@
 				0197EA4F203A865E00E0D04A /* ViewControllerHandler.swift in Sources */,
 				01CCEC962015A27400D64CE8 /* ValidatorRule.swift in Sources */,
 				0185F723201EB40700B176C6 /* SiteNavigationChoiceViewController.swift in Sources */,
+				0139801E204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift in Sources */,
 				01CCEC982015A3A300D64CE8 /* String+Utilities.swift in Sources */,
 				0138682120198C0900828DE8 /* OrganizationChoiceViewController.swift in Sources */,
 				01677119204CF32200A04E32 /* NewOrUpdatePhotoViewController.swift in Sources */,

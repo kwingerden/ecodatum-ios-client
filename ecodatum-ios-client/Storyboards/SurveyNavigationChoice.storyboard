@@ -200,11 +200,20 @@
                         <segue destination="GUq-1c-sgT" kind="show" identifier="primaryAbioticFactorChoice" id="Ayv-Gz-nTc"/>
                         <segue destination="xjT-0m-Oal" kind="show" identifier="measurementChoice" id="gWL-gs-HI4"/>
                         <segue destination="Bsh-PJ-PYO" kind="show" identifier="newPhoto" id="UiJ-Sr-OTH"/>
+                        <segue destination="5Ew-MS-ILl" kind="show" identifier="newAudioClip" id="oJ1-CJ-3pE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o62-3J-rh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="19" y="60"/>
+        </scene>
+        <!--NewOrUpdateAudioClip-->
+        <scene sceneID="iuj-zJ-Vcu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateAudioClip" id="5Ew-MS-ILl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I35-tI-LNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="462" y="-131"/>
         </scene>
         <!--NewOrUpdatePhoto-->
         <scene sceneID="AyZ-d8-ewE">

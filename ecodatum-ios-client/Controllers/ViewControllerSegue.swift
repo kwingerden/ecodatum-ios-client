@@ -18,6 +18,11 @@ enum ViewControllerSegue: String {
   case viewPhoto
   case photoChoice
   
+  case newAudioClip
+  case updateAudioClip
+  case viewAudioClip
+  case audioClipChoice
+  
   case createNewAccount
   
   case newSite

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R9s-Wv-0Jt">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add New Audio Clip-->
+        <scene sceneID="QWX-sK-xRD">
+            <objects>
+                <viewController title="Add New Audio Clip" id="R9s-Wv-0Jt" customClass="NewOrUpdateAudioClipViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U6l-0Q-esH">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRU-qz-KQE" customClass="FormSheetCancelButton" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                <rect key="frame" x="728" y="28" width="32" height="32"/>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="CrossGlyph">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtJ-Sj-Zqt">
+                                <rect key="frame" x="304" y="269" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="o0Y-uX-X8m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSA-IX-L0d">
+                                <rect key="frame" x="304" y="401" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="GjN-XH-BOJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys1-CS-fPy">
+                                <rect key="frame" x="304" y="337" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="lLX-4Y-xNj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sPb-sn-yqx" firstAttribute="trailing" secondItem="IRU-qz-KQE" secondAttribute="trailing" constant="8" id="3Ad-HP-qqG"/>
+                            <constraint firstItem="IRU-qz-KQE" firstAttribute="top" secondItem="sPb-sn-yqx" secondAttribute="top" constant="8" id="vh8-Qa-AHh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sPb-sn-yqx"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="IRU-qz-KQE" id="43R-cL-9xD"/>
+                        <outlet property="playRecordingButton" destination="xSA-IX-L0d" id="7qr-tR-MhK"/>
+                        <outlet property="startRecordingButton" destination="EtJ-Sj-Zqt" id="lnY-jQ-0kp"/>
+                        <outlet property="stopRecordingButton" destination="Ys1-CS-fPy" id="nQE-OZ-KJs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tkl-3f-cQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-284" y="94"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CrossGlyph" width="32" height="32"/>
+    </resources>
+</document>
