@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 extension String {
   
@@ -12,6 +13,10 @@ extension String {
   
   func replaceNewlines() -> String {
     return self.replacingOccurrences(of: "\n", with: " ")
+  }
+
+  func base64Decode() -> Data? {
+    return Data(base64Encoded: self, options: .ignoreUnknownCharacters)
   }
   
 }

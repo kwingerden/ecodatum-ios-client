@@ -1,6 +1,10 @@
 import Alamofire
 import Foundation
 
+typealias Identifier = String
+typealias AuthenticationToken = String
+typealias Base64Encoded = String
+
 protocol NetworkRequest: Encodable {
   
 }
@@ -36,7 +40,7 @@ extension NetworkRequest {
 
 protocol ProtectedNetworkRequest: NetworkRequest {
  
-  var token: String { get }
+  var token: AuthenticationToken { get }
   
 }
 
@@ -57,8 +61,8 @@ struct BasicAuthUserRequest: NetworkRequest {
 
 struct BasicAuthUserResponse: NetworkResponse {
   
-  let id: String // tokenId
-  let token: String
+  let id: Identifier // tokenId
+  let token: AuthenticationToken
   let userId: String
   let isRootUser: Bool
   
@@ -67,7 +71,7 @@ struct BasicAuthUserResponse: NetworkResponse {
 struct LogoutRequest: ProtectedNetworkRequest {
   
   let userId: String
-  let token: String
+  let token: AuthenticationToken
   
 }
 
@@ -86,14 +90,14 @@ struct CreateNewOrganizationUserRequest: NetworkRequest {
 
 struct GetUserRequest: ProtectedNetworkRequest {
   
-  let userId: String
-  let token: String
+  let userId: Identifier
+  let token: AuthenticationToken
   
 }
 
 struct UserResponse: NetworkResponse {
   
-  let id: String // userId
+  let id: Identifier // userId
   let fullName: String
   let email: String
   
@@ -101,13 +105,13 @@ struct UserResponse: NetworkResponse {
 
 struct GetOrganizationsByUserRequest: ProtectedNetworkRequest {
   
-  let token: String
+  let token: AuthenticationToken
   
 }
 
 struct OrganizationResponse: NetworkResponse {
  
-  let id : String // organization id
+  let id : Identifier // organization id
   let code: String
   let name: String
   let description: String?
@@ -118,14 +122,14 @@ struct OrganizationResponse: NetworkResponse {
 
 struct GetMembersByOrganizationAndUserRequest: ProtectedNetworkRequest {
 
-  let token: String
+  let token: AuthenticationToken
   let organizationId: String
 
 }
 
 struct RoleResponse: NetworkResponse {
 
-  let id : String // role id
+  let id : Identifier // role id
   let name: String
 
 }
@@ -139,7 +143,7 @@ struct OrganizationMemberResponse: NetworkResponse {
 
 struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
   
-  let token: String
+  let token: AuthenticationToken
   let id: String? // site id
   let name: String
   let description: String?
@@ -154,14 +158,14 @@ struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
 
 struct GetSitesByOrganizationAndUserRequest: ProtectedNetworkRequest {
   
-  let token: String
+  let token: AuthenticationToken
   let organizationId: String
   
 }
 
 struct SiteResponse: NetworkResponse {
   
-  let id: String // site id
+  let id: Identifier // site id
   let name: String
   let description: String?
   let latitude: Double
@@ -170,7 +174,7 @@ struct SiteResponse: NetworkResponse {
   let horizontalAccuracy: Double?
   let verticalAccuracy: Double?
   let organizationId: String
-  let userId: String
+  let userId: Identifier
   let createdAt: Date
   let updatedAt: Date
   
@@ -178,35 +182,35 @@ struct SiteResponse: NetworkResponse {
 
 struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
   
-  let token: String
+  let token: AuthenticationToken
   let siteId: String
   
 }
 
 struct NewOrUpdateSurveyRequest: ProtectedNetworkRequest {
   
-  let token: String
-  let id: String? // survey id
+  let token: AuthenticationToken
+  let id: Identifier? // survey id
   let date: Date
   let description: String?
-  let siteId: String
+  let siteId: Identifier
   
 }
 
 struct GetSurveysBySiteAndUserRequest: ProtectedNetworkRequest {
   
-  let token: String
-  let siteId: String
+  let token: AuthenticationToken
+  let siteId: Identifier
   
 }
 
 struct SurveyResponse: NetworkResponse {
   
-  let id: String // survey id
+  let id: Identifier // survey id
   let date: Date
   let description: String?
-  let siteId: String
-  let userId: String
+  let siteId: Identifier
+  let userId: Identifier
   let createdAt: Date
   let updatedAt: Date
   
@@ -214,8 +218,8 @@ struct SurveyResponse: NetworkResponse {
 
 struct DeleteSurveyByIdRequest: ProtectedNetworkRequest {
 
-  let token: String
-  let surveyId: String
+  let token: AuthenticationToken
+  let surveyId: Identifier
 
 }
 
@@ -227,7 +231,7 @@ struct MeasurementUnitResponse: NetworkResponse {
 
   struct PrimaryAbioticFactor: Decodable {
 
-    let id: String
+    let id: Identifier
     let name: String
     let description: String
 
@@ -235,7 +239,7 @@ struct MeasurementUnitResponse: NetworkResponse {
 
   struct SecondaryAbioticFactor: Decodable {
 
-    let id: String
+    let id: Identifier
     let name: String
     let label: String
     let description: String
@@ -244,7 +248,7 @@ struct MeasurementUnitResponse: NetworkResponse {
 
   struct MeasurementUnit: Decodable {
 
-    let id: String
+    let id: Identifier
     let dimension: String
     let unit: String
     let label: String
@@ -260,29 +264,29 @@ struct MeasurementUnitResponse: NetworkResponse {
 
 struct AddNewMeasurementRequest: ProtectedNetworkRequest {
   
-  let token: String
-  let surveyId: String
-  let abioticFactorId: String
-  let measurementUnitId: String
+  let token: AuthenticationToken
+  let surveyId: Identifier
+  let abioticFactorId: Identifier
+  let measurementUnitId: Identifier
   let value: Double
 
 }
 
 struct GetMeasurementsBySurveyRequest: ProtectedNetworkRequest {
   
-  let token: String
-  let surveyId: String
+  let token: AuthenticationToken
+  let surveyId: Identifier
   
 }
 
 struct MeasurementResponse: NetworkResponse {
   
-  let id: String // measurement id
-  let surveyId: String
-  let abioticFactorId: String
-  let measurementUnitId: String
+  let id: Identifier // measurement id
+  let surveyId: Identifier
+  let abioticFactorId: Identifier
+  let measurementUnitId: Identifier
   let value: Double
-  let userId: String
+  let userId: Identifier
   let createdAt: Date
   let updatedAt: Date
   
@@ -290,26 +294,28 @@ struct MeasurementResponse: NetworkResponse {
 
 struct GetPhotosBySurveyRequest: ProtectedNetworkRequest {
   
-  let token: String
-  let surveyId: String
+  let token: AuthenticationToken
+  let surveyId: Identifier
   
 }
 
 struct NewOrUpdatePhotoRequest: ProtectedNetworkRequest {
   
-  let token: String
-  let id: String? // photo id
+  let token: AuthenticationToken
+  let id: Identifier? // photo id
+  let base64Encoded: Base64Encoded
   let description: String
-  let surveyId: String
+  let surveyId: Identifier
   
 }
 
 struct PhotoResponse: NetworkResponse {
   
-  let id: String // photo id
-  let surveyId: String
+  let id: Identifier // photo id
+  let surveyId: Identifier
+  let base64Encoded: Base64Encoded
   let description: String
-  let userId: String
+  let userId: Identifier
   let createdAt: Date
   let updatedAt: Date
   

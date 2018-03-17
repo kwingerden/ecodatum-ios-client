@@ -18,6 +18,7 @@ typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
 
 class ViewControllerManager:
+  PhotoHandler,
   SiteHandler,
   SurveyHandler {
   
@@ -254,7 +255,7 @@ class ViewControllerManager:
     return newSiteHandler
   }
 
-  var siteId: String? {
+  var siteId: Identifier? {
     return ViewControllerSegue.newSite == viewControllerSegue ? nil : site?.id
   }
   
@@ -304,7 +305,7 @@ class ViewControllerManager:
     return newSurveyHandler
   }
 
-  var surveyId: String? {
+  var surveyId: Identifier? {
     return ViewControllerSegue.newSurvey == viewControllerSegue ? nil : survey?.id
   }
 
@@ -381,7 +382,19 @@ class ViewControllerManager:
       viewContext.state[.photos] = ViewContext.Value.photos(newValue)
     }
   }
-  
+
+  var photoId: Identifier? {
+    return ViewControllerSegue.newPhoto == viewControllerSegue ? nil : photo?.id
+  }
+
+  var photoHandler: PhotoHandler {
+    var newPhotoHandler: PhotoHandler = self
+    if let photoHandler = storyboardSegue?.source as? PhotoHandler {
+      newPhotoHandler = photoHandler
+    }
+    return newPhotoHandler
+  }
+
   var viewControllerSegue: ViewControllerSegue? {
     if let identifier = storyboardSegue?.identifier,
       let viewControllerSegue = ViewControllerSegue(rawValue: identifier) {
@@ -1032,6 +1045,57 @@ class ViewControllerManager:
     
   }
 
+  func newOrUpdatePhoto(
+    base64Encoded: Base64Encoded,
+    description: String,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    guard let surveyId = survey?.id else {
+      handleError(ViewControllerError.noSurveyIdentifier)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          NewOrUpdatePhotoRequest(
+            token: token,
+            id: photoId,
+            base64Encoded: base64Encoded,
+            description: description,
+            surveyId: surveyId))
+        .then(in: .main) {
+          photo in
+          if self.photoId == nil {
+            self.photoHandler.handleNewPhoto(photo: photo)
+          } else {
+            self.photoHandler.handleUpdatedPhoto(photo: photo)
+          }
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
+  }
+
   func handleNewSite(site: Site) {
 
     self.site = site
@@ -1144,6 +1208,31 @@ class ViewControllerManager:
       
     }
     
+  }
+
+  func handleNewPhoto(photo: Photo) {
+
+    self.photo = photo
+    photos.append(photo)
+    performSegue(to: .surveyNavigationChoice)
+
+  }
+
+  func handleUpdatedPhoto(photo: Photo) {
+
+    self.photo = photo
+    if let index = photos.index(where: { $0.id == photo.id }) {
+      photos.replaceSubrange(index...index, with: [photo])
+    }
+
+  }
+
+  func handleDeletedPhoto(photo: Photo) {
+
+    if let index = photos.index(where: { $0.id == photo.id }) {
+      photos.remove(at: index)
+    }
+
   }
   
   private func isResponseStatus(_ error: Error, status: Int) -> Bool {

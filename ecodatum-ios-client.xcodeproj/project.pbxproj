@@ -115,6 +115,8 @@
 		01EBEA531FFB56A2008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */; };
 		01FA40652022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */; };
 		01FA40672022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */; };
+		AF33D05C04729B7F2D130591 /* PhotoChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */; };
+		AF33D6B4B10C2EF8BA5A49FA /* UIImage+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +238,8 @@
 		01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
 		01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrimaryAbioticFactorChoice.storyboard; sourceTree = "<group>"; };
 		01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryAbioticFactorChoiceViewController.swift; sourceTree = "<group>"; };
+		AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoChoiceViewController.swift; sourceTree = "<group>"; };
+		AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +325,7 @@
 				0197EA362037D71900E0D04A /* DateFormatter.swift */,
 				01677112204CAB4C00A04E32 /* UIPaddingLabel.swift */,
 				0139801F204E45A800D85848 /* AVFoundationUtilities.swift */,
+				AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				01677110204B4B9000A04E32 /* SecondaryAbioticFactorChoiceViewController.swift */,
 				01677118204CF32200A04E32 /* NewOrUpdatePhotoViewController.swift */,
 				0139801D204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift */,
+				AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -708,6 +714,8 @@
 				015E34AB2006D0A9006A74C7 /* ServiceHelper.swift in Sources */,
 				0185F71F201E8E0C00B176C6 /* SiteChoiceViewController.swift in Sources */,
 				0197EA3F2037EDF400E0D04A /* MeasurementViewController.swift in Sources */,
+				AF33D6B4B10C2EF8BA5A49FA /* UIImage+Utilities.swift in Sources */,
+				AF33D05C04729B7F2D130591 /* PhotoChoiceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

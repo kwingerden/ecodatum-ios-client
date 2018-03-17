@@ -21,6 +21,8 @@ FormSheetCancelButtonHolder {
   
   @IBOutlet weak var savePhotoButton: UIButton!
 
+  private var hasPhotoBeenPicked: Bool = false
+
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -80,6 +82,9 @@ FormSheetCancelButtonHolder {
     case openPhotoLibraryButton:
       showImagePickerController(.photoLibrary)
 
+    case savePhotoButton:
+      validateInput()
+
     default:
       LOG.error("Unrecognized button: \(sender)")
       
@@ -94,7 +99,7 @@ FormSheetCancelButtonHolder {
       let imagePicker = UIImagePickerController()
       imagePicker.delegate = self
       imagePicker.sourceType = sourceType
-      imagePicker.allowsEditing = false
+      imagePicker.allowsEditing = true
       present(imagePicker, animated: true, completion: nil)
 
     } else {
@@ -104,7 +109,18 @@ FormSheetCancelButtonHolder {
     }
 
   }
-  
+
+  private func validateInput() {
+
+    if hasPhotoBeenPicked {
+      imageView.darkBordered()
+    } else {
+      imageView.errorBordered()
+    }
+    validator.defaultValidate(validationSuccessful)
+
+  }
+
   private func registerFieldValidation() {
     
     validator.registerField(
@@ -117,35 +133,38 @@ FormSheetCancelButtonHolder {
   private func updateFieldValues() {
     
     if let photo = viewControllerManager.photo {
+      imageView.image = UIImage.base64Decode(photo.base64Encoded)
       descriptionTextView.text = photo.description
     }
     
   }
   
   private func enableFields(_ isEnabled: Bool = true) {
-    
-    imageView.isUserInteractionEnabled = isEnabled
+
+    openCameraButton.isEnabled = isEnabled
+    openPhotoLibraryButton.isEnabled = isEnabled
     descriptionTextView.isEditable = isEnabled
     
   }
   
   private func validationSuccessful() {
-    
-    let description = descriptionTextView.text!
-    
-    /*
-    viewControllerManager.newOrUpdatePhoto(
-      name: name,
-      description: description,
-      latitude: latitude,
-      longitude: longitude,
-      preAsyncBlock: preAsyncUIOperation,
-      postAsyncBlock: postAsyncUIOperation) {
-        if self.viewControllerManager.isFormSheetSegue {
-          self.dismiss(animated: true, completion: nil)
-        }
+
+    guard let image = imageView.image else {
+      LOG.error("Failed to obtain image from image view")
+      return
     }
-    */
+
+    guard let base64Encoded = image.base64Encode(),
+          let description = descriptionTextView.text else {
+      LOG.error("Failed to obtain base64 encoded image and description")
+      return
+    }
+
+    viewControllerManager.newOrUpdatePhoto(
+      base64Encoded: base64Encoded,
+      description: description,
+      preAsyncBlock: preAsyncUIOperation,
+      postAsyncBlock: postAsyncUIOperation)
     
   }
   
@@ -160,14 +179,18 @@ extension NewOrUpdatePhotoViewController: UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController,
                              didFinishPickingMediaWithInfo info: [String : Any]){
 
+    hasPhotoBeenPicked = true
+    var image: UIImage = imageView.image!
     if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-      imageView.image = editedImage
+      image = editedImage
     } else if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-      imageView.image = pickedImage
+      image = pickedImage
     }
+    imageView.image = image.crop(to: image.centeredSquareRect)
     picker.dismiss(animated: true, completion: nil)
 
   }
+
 
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)

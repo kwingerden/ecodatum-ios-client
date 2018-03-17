@@ -16,6 +16,11 @@ extension UIView {
     layer.borderWidth = 0.5
     layer.borderColor = UIColor.lightGray.cgColor
   }
+
+  func errorBordered() {
+    layer.borderWidth = 1.0
+    layer.borderColor = UIColor.red.cgColor
+  }
   
   func roundedAndLightBordered() {
     rounded()
@@ -25,6 +30,11 @@ extension UIView {
   func roundedAndDarkBordered() {
     rounded()
     darkBordered()
+  }
+
+  func roundedAndErrorBordered() {
+    rounded()
+    errorBordered()
   }
   
 }

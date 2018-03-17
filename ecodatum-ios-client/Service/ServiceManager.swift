@@ -106,5 +106,9 @@ class ServiceManager {
   func call(_ request: GetMeasurementsBySurveyRequest) throws -> Promise<[MeasurementResponse]> {
     return try networkManager.call(request)
   }
+
+  func call(_ request: NewOrUpdatePhotoRequest) throws -> Promise<PhotoResponse> {
+    return try networkManager.call(request)
+  }
   
 }
