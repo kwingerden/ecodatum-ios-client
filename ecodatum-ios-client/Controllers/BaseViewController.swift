@@ -66,5 +66,5 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
     
   }
   
-  
 }
+

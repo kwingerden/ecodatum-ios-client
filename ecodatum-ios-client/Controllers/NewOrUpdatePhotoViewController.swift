@@ -1,5 +1,5 @@
+import AVFoundation
 import Foundation
-import ImagePicker
 import SwiftValidator
 import UIKit
 
@@ -9,6 +9,10 @@ FormSheetCancelButtonHolder {
   
   @IBOutlet weak var imageView: UIImageView!
   
+  @IBOutlet weak var openCameraButton: UIButton!
+  
+  @IBOutlet weak var openPhotoLibraryButton: UIButton!
+  
   @IBOutlet weak var descriptionTextView: UITextView!
   
   @IBOutlet weak var descriptionErrorLabel: UILabel!
@@ -16,17 +20,15 @@ FormSheetCancelButtonHolder {
   @IBOutlet weak var cancelButton: FormSheetCancelButton!
   
   @IBOutlet weak var savePhotoButton: UIButton!
-  
-  private var imagePickerController: ImagePickerController!
-  
+
   override func viewDidLoad() {
     
     super.viewDidLoad()
-    
-    let tapGestureRecognizer = UITapGestureRecognizer(
-      target: self,
-      action: #selector(imageTapped(tapGestureRecognizer:)))
-    imageView.addGestureRecognizer(tapGestureRecognizer)
+
+    imageView.darkBordered()
+
+    openCameraButton.rounded()
+    openPhotoLibraryButton.rounded()
     
     descriptionTextView.rounded()
     descriptionTextView.lightBordered()
@@ -68,13 +70,39 @@ FormSheetCancelButtonHolder {
   
   }
   
-  @objc private func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+  @IBAction func touchUpInside(_ sender: UIButton) {
+  
+    switch sender {
+      
+    case openCameraButton:
+      showImagePickerController(.camera)
+      
+    case openPhotoLibraryButton:
+      showImagePickerController(.photoLibrary)
+
+    default:
+      LOG.error("Unrecognized button: \(sender)")
+      
+    }
     
-    imagePickerController = ImagePickerController()
-    imagePickerController.delegate = self
-    imagePickerController.imageLimit = 1
-    present(imagePickerController, animated: true, completion: nil)
-    
+  }
+
+  private func showImagePickerController(_ sourceType: UIImagePickerControllerSourceType) {
+
+    if UIImagePickerController.isCameraDeviceAvailable(.rear) {
+
+      let imagePicker = UIImagePickerController()
+      imagePicker.delegate = self
+      imagePicker.sourceType = sourceType
+      imagePicker.allowsEditing = false
+      present(imagePicker, animated: true, completion: nil)
+
+    } else {
+
+      LOG.error("No rear camera available")
+
+    }
+
   }
   
   private func registerFieldValidation() {
@@ -89,9 +117,7 @@ FormSheetCancelButtonHolder {
   private func updateFieldValues() {
     
     if let photo = viewControllerManager.photo {
-      
       descriptionTextView.text = photo.description
-      
     }
     
   }
@@ -125,28 +151,28 @@ FormSheetCancelButtonHolder {
   
 }
 
-extension NewOrUpdatePhotoViewController: ImagePickerDelegate {
-  
-  func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-    imagePickerController.dismiss(animated: true, completion: nil)
-  }
-  
-  func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-    
-    if images.count > 0 {
-      imageView.image = images[0]
-    }
-    imagePickerController.dismiss(animated: true, completion: nil)
-  
-  }
-  
-  func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-    imagePickerController.dismiss(animated: true, completion: nil)
-  }
-  
+extension NewOrUpdatePhotoViewController: UINavigationControllerDelegate {
+
 }
 
+extension NewOrUpdatePhotoViewController: UIImagePickerControllerDelegate {
 
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info: [String : Any]){
 
+    if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+      imageView.image = editedImage
+    } else if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+      imageView.image = pickedImage
+    }
+    picker.dismiss(animated: true, completion: nil)
+
+  }
+
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+
+}
 
 

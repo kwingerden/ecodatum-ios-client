@@ -1209,9 +1209,9 @@ class ViewControllerManager:
     
   }
   
-  private func showErrorMessage(_ title: String,
-                                _ message: String,
-                                handler: ((UIAlertAction) -> Void)? = nil) {
+  func showErrorMessage(_ title: String,
+                        _ message: String,
+                        handler: ((UIAlertAction) -> Void)? = nil) {
     
     let alertController = UIAlertController(
       title: title,

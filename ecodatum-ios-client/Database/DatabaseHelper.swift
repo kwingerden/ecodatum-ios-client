@@ -15,8 +15,12 @@ class DatabaseHelper {
   }
   
   static func recreateDatabaseDirectory(_ directory: URL) throws {
-    
-    try FileManager.default.removeItem(at: directory)
+
+    do {
+      try FileManager.default.removeItem(at: directory)
+    } catch let error {
+      LOG.warning("Failed to remove directory: \(error), \(directory.absoluteString)")
+    }
     try FileManager.default.createDirectory(
       at: directory,
       withIntermediateDirectories: true)

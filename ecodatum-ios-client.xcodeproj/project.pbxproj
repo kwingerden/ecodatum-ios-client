@@ -43,7 +43,6 @@
 		01677113204CAB4C00A04E32 /* UIPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677112204CAB4C00A04E32 /* UIPaddingLabel.swift */; };
 		01677117204CF30000A04E32 /* NewOrUpdatePhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01677116204CF30000A04E32 /* NewOrUpdatePhoto.storyboard */; };
 		01677119204CF32200A04E32 /* NewOrUpdatePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677118204CF32200A04E32 /* NewOrUpdatePhotoViewController.swift */; };
-		0167711B204D069E00A04E32 /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0167711A204D069E00A04E32 /* ImagePicker.framework */; };
 		017A159020104871008553E2 /* TopNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A158F20104871008553E2 /* TopNavigation.storyboard */; };
 		017A1592201049F0008553E2 /* TopNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A1591201049F0008553E2 /* TopNavigationViewController.swift */; };
 		017A159620106C6E008553E2 /* TopNavigationChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A159520106C6E008553E2 /* TopNavigationChoice.storyboard */; };
@@ -248,7 +247,6 @@
 				01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */,
 				01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */,
 				019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */,
-				0167711B204D069E00A04E32 /* ImagePicker.framework in Frameworks */,
 				010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */,
 				010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */,
 			);
@@ -627,7 +625,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GRDB.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ImagePicker.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftValidator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 			);
@@ -637,7 +634,6 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/GRDB.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Hydra.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ImagePicker.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftValidator.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
 			);

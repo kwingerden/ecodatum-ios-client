@@ -7,9 +7,6 @@ github "Alamofire/AlamofireImage" == 3.3.0
 # Swift SQLite interface
 github "groue/GRDB.swift" == 2.4.1
 
-# Photo Capture in Swift
-github "hyperoslo/ImagePicker" == 3.0.0
-
 # Asynchonous library
 github "malcommac/Hydra" == 1.2.1
 
