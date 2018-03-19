@@ -14,6 +14,12 @@ class LoginToAccountViewController: BaseViewController {
   
   @IBOutlet weak var loginButton: UIButton!
   
+  @IBOutlet weak var scrollView: UIScrollView!
+  
+  @IBOutlet weak var topBarHeightConstraint: NSLayoutConstraint!
+  
+  @IBOutlet weak var contentStackView: UIStackView!
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -28,6 +34,19 @@ class LoginToAccountViewController: BaseViewController {
       passwordTextField,
       errorLabel: passwordErrorLabel,
       rules: [RequiredRule()])
+    
+  }
+  
+  override func viewDidLayoutSubviews() {
+  
+    let scrollViewWidth = view.bounds.width
+    let scrollViewHeight = view.bounds.height - topBarHeightConstraint.constant
+    scrollView.contentSize = CGSize(
+      width: scrollViewWidth,
+      height: scrollViewHeight)
+    scrollView.isScrollEnabled =
+      contentStackView.bounds.width >= scrollViewWidth ||
+      contentStackView.bounds.height >= scrollViewHeight
     
   }
   
