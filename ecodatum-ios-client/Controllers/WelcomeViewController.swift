@@ -6,7 +6,7 @@ class WelcomeViewController: BaseViewController {
   @IBOutlet weak var loginButton: UIButton!
   
   @IBOutlet weak var newAccountButton: UIButton!
-
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()

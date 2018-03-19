@@ -21,7 +21,9 @@ class CreateNewAccountViewController: BaseViewController {
   @IBOutlet weak var passwordErrorLabel: UILabel!
   
   @IBOutlet weak var createNewAccountButton: UIButton!
-    
+  
+  @IBOutlet weak var topBarHeightConstraint: NSLayoutConstraint!
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -53,6 +55,14 @@ class CreateNewAccountViewController: BaseViewController {
   
   @IBAction func createNewAccountButtonTouchUpInside() {
     validator.defaultValidate(validationSuccessful)
+  }
+  
+  override func viewDidLayoutSubviews() {
+    
+    adjustScrollView(
+      width: view.bounds.width,
+      height: view.bounds.height - topBarHeightConstraint.constant)
+    
   }
   
   private func validationSuccessful() {

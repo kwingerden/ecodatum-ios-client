@@ -10,11 +10,15 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
+  @IBOutlet weak var scrollView: UIScrollView!
+  
+  @IBOutlet weak var contentView: UIView!
+    
   override func viewDidLoad() {
     
     super.viewDidLoad()
     validator.defaultStyleTransformers()
-  
+    
   }
   
   func initialize() throws {
@@ -44,6 +48,44 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
         newViewController: segue.destination,
         storyboardSegue: segue,
         viewControllerManager: viewControllerManager)
+    }
+    
+  }
+  
+  override func viewDidLayoutSubviews() {
+    
+    adjustScrollView(
+      width: view.bounds.width,
+      height: view.bounds.height)
+  
+  }
+  
+  func adjustScrollView(width: CGFloat, height: CGFloat) {
+    
+    scrollView.isScrollEnabled =
+      contentView.frame.width >= view.frame.width ||
+      contentView.frame.height >= view.frame.height
+    if scrollView.isScrollEnabled &&
+      UIDevice.current.orientation.isLandscape {
+    
+      let offset: CGFloat = 150
+      scrollView.contentInset = UIEdgeInsets(
+        top: offset,
+        left: 0,
+        bottom: 0,
+        right: 0)
+      scrollView.contentSize = CGSize(
+        width: contentView.frame.width,
+        height: contentView.frame.height)
+    
+    } else {
+      
+      scrollView.contentInset = UIEdgeInsets(
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0)
+    
     }
     
   }

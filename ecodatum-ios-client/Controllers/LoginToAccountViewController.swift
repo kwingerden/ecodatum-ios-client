@@ -14,11 +14,7 @@ class LoginToAccountViewController: BaseViewController {
   
   @IBOutlet weak var loginButton: UIButton!
   
-  @IBOutlet weak var scrollView: UIScrollView!
-  
   @IBOutlet weak var topBarHeightConstraint: NSLayoutConstraint!
-  
-  @IBOutlet weak var contentStackView: UIStackView!
   
   override func viewDidLoad() {
     
@@ -37,25 +33,20 @@ class LoginToAccountViewController: BaseViewController {
     
   }
   
-  override func viewDidLayoutSubviews() {
-  
-    let scrollViewWidth = view.bounds.width
-    let scrollViewHeight = view.bounds.height - topBarHeightConstraint.constant
-    scrollView.contentSize = CGSize(
-      width: scrollViewWidth,
-      height: scrollViewHeight)
-    scrollView.isScrollEnabled =
-      contentStackView.bounds.width >= scrollViewWidth ||
-      contentStackView.bounds.height >= scrollViewHeight
-    
-  }
-  
   @IBAction func backButtonTouchUpInside() {
     dismiss(animated: true, completion: nil)
   }
   
   @IBAction func loginButtonTouchUpInside() {
     validator.defaultValidate(validationSuccessful)
+  }
+  
+  override func viewDidLayoutSubviews() {
+    
+    adjustScrollView(
+      width: view.bounds.width,
+      height: view.bounds.height - topBarHeightConstraint.constant)
+  
   }
   
   private func validationSuccessful() {
