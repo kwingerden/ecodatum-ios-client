@@ -31,6 +31,15 @@
 		013F67522009AF56001B8586 /* ViewControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67512009AF56001B8586 /* ViewControllerSegue.swift */; };
 		013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F67552009B1A1001B8586 /* BaseViewController.swift */; };
 		013FEB30201AD601009B7DBC /* ViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013FEB2F201AD601009B7DBC /* ViewContext.swift */; };
+		0143D3B3205F16E500BF8013 /* NewOrUpdateNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3B2205F16E500BF8013 /* NewOrUpdateNote.storyboard */; };
+		0143D3B5205F177100BF8013 /* NewOrUpdateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0143D3B4205F177100BF8013 /* NewOrUpdateNoteViewController.swift */; };
+		0143D3B8205F1FD100BF8013 /* quill.html in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3B7205F1FD100BF8013 /* quill.html */; };
+		0143D3BA205F27D100BF8013 /* quill.snow.css in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3B9205F27D100BF8013 /* quill.snow.css */; };
+		0143D3BC205F280F00BF8013 /* quill.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3BB205F280F00BF8013 /* quill.min.js */; };
+		0143D3BE205F423D00BF8013 /* monokai-sublime.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3BD205F423D00BF8013 /* monokai-sublime.min.css */; };
+		0143D3C0205F427B00BF8013 /* katex.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3BF205F427B00BF8013 /* katex.min.css */; };
+		0143D3C2205F436700BF8013 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3C1205F436700BF8013 /* katex.min.js */; };
+		0143D3C4205F43A500BF8013 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3C3205F43A500BF8013 /* highlight.min.js */; };
 		014B316120145C8B00B81D2C /* SiteMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014B316020145C8B00B81D2C /* SiteMap.storyboard */; };
 		014B316320145CF300B81D2C /* SiteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B316220145CF300B81D2C /* SiteMapViewController.swift */; };
 		01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD8200D7D6C009A478A /* DatabaseError.swift */; };
@@ -156,6 +165,16 @@
 		013F67512009AF56001B8586 /* ViewControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSegue.swift; sourceTree = "<group>"; };
 		013F67552009B1A1001B8586 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		013FEB2F201AD601009B7DBC /* ViewContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContext.swift; sourceTree = "<group>"; };
+		0143D3B2205F16E500BF8013 /* NewOrUpdateNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewOrUpdateNote.storyboard; sourceTree = "<group>"; };
+		0143D3B4205F177100BF8013 /* NewOrUpdateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdateNoteViewController.swift; sourceTree = "<group>"; };
+		0143D3B7205F1FD100BF8013 /* quill.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = quill.html; sourceTree = "<group>"; };
+		0143D3B9205F27D100BF8013 /* quill.snow.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = quill.snow.css; sourceTree = "<group>"; };
+		0143D3BB205F280F00BF8013 /* quill.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = quill.min.js; sourceTree = "<group>"; };
+		0143D3BD205F423D00BF8013 /* monokai-sublime.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "monokai-sublime.min.css"; sourceTree = "<group>"; };
+		0143D3BF205F427B00BF8013 /* katex.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = katex.min.css; sourceTree = "<group>"; };
+		0143D3C1205F436700BF8013 /* katex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = katex.min.js; sourceTree = "<group>"; };
+		0143D3C3205F43A500BF8013 /* highlight.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
+		0143D3C5205F4D7E00BF8013 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
 		014B316020145C8B00B81D2C /* SiteMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SiteMap.storyboard; sourceTree = "<group>"; };
 		014B316220145CF300B81D2C /* SiteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteMapViewController.swift; sourceTree = "<group>"; };
 		01563DD8200D7D6C009A478A /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
@@ -291,6 +310,7 @@
 		010AB1821FF71A8300EFF0D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0143D3C5205F4D7E00BF8013 /* IQKeyboardManagerSwift.framework */,
 				0167711A204D069E00A04E32 /* ImagePicker.framework */,
 				01677114204CF0E300A04E32 /* NextLevel.framework */,
 				01D8B2E81FFC590A00450470 /* GRDB.framework */,
@@ -328,6 +348,20 @@
 				AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0143D3B6205F1FA000BF8013 /* QuillJS */ = {
+			isa = PBXGroup;
+			children = (
+				0143D3BB205F280F00BF8013 /* quill.min.js */,
+				0143D3B9205F27D100BF8013 /* quill.snow.css */,
+				0143D3B7205F1FD100BF8013 /* quill.html */,
+				0143D3BD205F423D00BF8013 /* monokai-sublime.min.css */,
+				0143D3BF205F427B00BF8013 /* katex.min.css */,
+				0143D3C1205F436700BF8013 /* katex.min.js */,
+				0143D3C3205F43A500BF8013 /* highlight.min.js */,
+			);
+			path = QuillJS;
 			sourceTree = "<group>";
 		};
 		018F77651FFB0EEC004421F0 /* Database */ = {
@@ -390,6 +424,7 @@
 		01AD11641FF4B5DB000DCE81 /* ecodatum-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				0143D3B6205F1FA000BF8013 /* QuillJS */,
 				013164302005F1CB0022B788 /* Configuration.swift */,
 				019FA2FB1FFA008800E38B2C /* Database */,
 				019FA2FA1FF9FFAB00E38B2C /* Network */,
@@ -456,6 +491,7 @@
 				01677118204CF32200A04E32 /* NewOrUpdatePhotoViewController.swift */,
 				0139801D204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift */,
 				AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */,
+				0143D3B4205F177100BF8013 /* NewOrUpdateNoteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -486,6 +522,7 @@
 				0167710E204B4AF900A04E32 /* SecondaryAbioticFactorChoice.storyboard */,
 				01677116204CF30000A04E32 /* NewOrUpdatePhoto.storyboard */,
 				0139801B204E41B300D85848 /* NewOrUpdateAudioClip.storyboard */,
+				0143D3B2205F16E500BF8013 /* NewOrUpdateNote.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -587,8 +624,12 @@
 				01AD11701FF4B5DB000DCE81 /* LaunchScreen.storyboard in Resources */,
 				017A159A20107023008553E2 /* NewOrUpdateSite.storyboard in Resources */,
 				013F674E2009AC95001B8586 /* Main.storyboard in Resources */,
+				0143D3B8205F1FD100BF8013 /* quill.html in Resources */,
 				0185F721201EB3DA00B176C6 /* SiteNavigationChoice.storyboard in Resources */,
+				0143D3C4205F43A500BF8013 /* highlight.min.js in Resources */,
 				0185F71D201E8DEE00B176C6 /* SiteChoice.storyboard in Resources */,
+				0143D3BC205F280F00BF8013 /* quill.min.js in Resources */,
+				0143D3BA205F27D100BF8013 /* quill.snow.css in Resources */,
 				01024E5D200A923B0030859B /* CreateNewAccount.storyboard in Resources */,
 				017A159C20107031008553E2 /* MeasurementChoice.storyboard in Resources */,
 				0138681F201979D300828DE8 /* OrganizationChoice.storyboard in Resources */,
@@ -598,6 +639,9 @@
 				01C945C12023AE6000F73CA5 /* NewOrUpdateMeasurement.storyboard in Resources */,
 				017A159020104871008553E2 /* TopNavigation.storyboard in Resources */,
 				014B316120145C8B00B81D2C /* SiteMap.storyboard in Resources */,
+				0143D3C0205F427B00BF8013 /* katex.min.css in Resources */,
+				0143D3BE205F423D00BF8013 /* monokai-sublime.min.css in Resources */,
+				0143D3B3205F16E500BF8013 /* NewOrUpdateNote.storyboard in Resources */,
 				01865CF2203B940C00A90657 /* NewOrUpdateSurvey.storyboard in Resources */,
 				011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */,
 				01677117204CF30000A04E32 /* NewOrUpdatePhoto.storyboard in Resources */,
@@ -608,6 +652,7 @@
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
 				0139801C204E41B300D85848 /* NewOrUpdateAudioClip.storyboard in Resources */,
 				01AD116B1FF4B5DB000DCE81 /* Welcome.storyboard in Resources */,
+				0143D3C2205F436700BF8013 /* katex.min.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +711,7 @@
 				0197EA432037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift in Sources */,
 				013164312005F1CB0022B788 /* Configuration.swift in Sources */,
 				01677113204CAB4C00A04E32 /* UIPaddingLabel.swift in Sources */,
+				0143D3B5205F177100BF8013 /* NewOrUpdateNoteViewController.swift in Sources */,
 				01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */,
 				01563DDF200D8E43009A478A /* NetworkRequest+Response.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,

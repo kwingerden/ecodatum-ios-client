@@ -79,7 +79,7 @@ class SurveyNavigationChoiceViewController: BaseViewController {
       break
       
     case addNewNoteButton:
-      break
+      performSegue(withIdentifier: "newNote", sender: nil)
       
     case viewExistingNotesButton:
       break

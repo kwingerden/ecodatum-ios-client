@@ -16,3 +16,6 @@ github "SwiftValidatorCommunity/SwiftValidator" == 4.0.1
 # Local and cloud-hosted logging
 github "SwiftyBeaver/SwiftyBeaver" == 1.5.0
 
+# Codeless drop-in universal library allows to prevent issues 
+# of keyboard sliding up and cover UITextField/UITextView.
+github "hackiftekhar/IQKeyboardManager" == 5.0.8

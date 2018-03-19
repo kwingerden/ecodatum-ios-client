@@ -217,6 +217,7 @@
                         <segue destination="xjT-0m-Oal" kind="show" identifier="measurementChoice" id="gWL-gs-HI4"/>
                         <segue destination="Bsh-PJ-PYO" kind="show" identifier="newPhoto" id="UiJ-Sr-OTH"/>
                         <segue destination="5Ew-MS-ILl" kind="show" identifier="newAudioClip" id="oJ1-CJ-3pE"/>
+                        <segue destination="SZ1-xD-Uyg" kind="show" identifier="newNote" id="3dQ-Ue-eeA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o62-3J-rh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,6 +255,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-Os-KTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="540" y="100"/>
+        </scene>
+        <!--NewOrUpdateNote-->
+        <scene sceneID="NXw-OF-LrG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateNote" id="SZ1-xD-Uyg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ex0-id-DOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="602" y="216"/>
         </scene>
     </scenes>
     <resources>

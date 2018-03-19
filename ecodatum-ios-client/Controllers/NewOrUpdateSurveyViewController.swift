@@ -29,6 +29,8 @@ FormSheetCancelButtonHolder {
     
     descriptionTextView.rounded()
     descriptionTextView.lightBordered()
+    descriptionTextView.allowsEditingTextAttributes = true
+    descriptionTextView.font = UIFont.preferredFont(forTextStyle: .body)
     
     saveButton.rounded()
 
