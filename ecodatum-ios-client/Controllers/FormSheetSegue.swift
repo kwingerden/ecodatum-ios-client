@@ -6,7 +6,9 @@ class FormSheetSegue: UIStoryboardSegue {
   override func perform() {
 
     let screenSize = UIScreen.main.bounds
-    let screenWidth = screenSize.width * 0.75
+    //let screenWidth = screenSize.width * 0.75
+    //let screenHeight = screenSize.height * 0.75
+    let screenWidth = CGFloat(420.0)
     let screenHeight = screenSize.height * 0.75
     destination.preferredContentSize = CGSize(
       width: screenWidth,

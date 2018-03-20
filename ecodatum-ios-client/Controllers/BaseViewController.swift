@@ -13,7 +13,19 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   @IBOutlet weak var scrollView: UIScrollView!
   
   @IBOutlet weak var contentView: UIView!
-    
+  
+  private static let zeroInsets = UIEdgeInsets(
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0)
+  
+  private static let topInset = UIEdgeInsets(
+    top: 100,
+    left: 0,
+    bottom: 0,
+    right: 0)
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -53,7 +65,7 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   }
   
   override func viewDidLayoutSubviews() {
-    
+
     adjustScrollView(
       width: view.bounds.width,
       height: view.bounds.height)
@@ -61,30 +73,28 @@ class BaseViewController: UIViewController, ViewControllerManagerHolder {
   }
   
   func adjustScrollView(width: CGFloat, height: CGFloat) {
-    
+
+    // Only certain views have a scroll view. If not, then ignore.
+    if self is TopNavigationViewController ||
+      self is AccountViewController {
+      return
+    }
+
     scrollView.isScrollEnabled =
-      contentView.frame.width >= view.frame.width ||
-      contentView.frame.height >= view.frame.height
+      contentView.frame.width >= width ||
+      contentView.frame.height >= height
+
     if scrollView.isScrollEnabled &&
       UIDevice.current.orientation.isLandscape {
     
-      let offset: CGFloat = 150
-      scrollView.contentInset = UIEdgeInsets(
-        top: offset,
-        left: 0,
-        bottom: 0,
-        right: 0)
+      scrollView.contentInset = BaseViewController.topInset
       scrollView.contentSize = CGSize(
         width: contentView.frame.width,
         height: contentView.frame.height)
     
     } else {
       
-      scrollView.contentInset = UIEdgeInsets(
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0)
+      scrollView.contentInset = BaseViewController.zeroInsets
     
     }
     

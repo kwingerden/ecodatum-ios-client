@@ -5,6 +5,8 @@ class OrganizationChoiceViewController: BaseViewController  {
   
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var topBarHeightConstraint: NSLayoutConstraint!
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -17,6 +19,14 @@ class OrganizationChoiceViewController: BaseViewController  {
     
     tableView.tableFooterView = UIView(frame: CGRect.zero)
         
+  }
+  
+  override func viewDidLayoutSubviews() {
+    
+    adjustScrollView(
+      width: view.bounds.width,
+      height: view.bounds.height - topBarHeightConstraint.constant)
+    
   }
   
 }

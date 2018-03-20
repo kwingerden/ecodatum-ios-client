@@ -18,55 +18,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRU-qz-KQE" customClass="FormSheetCancelButton" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                <rect key="frame" x="728" y="28" width="32" height="32"/>
-                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="CrossGlyph">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtJ-Sj-Zqt">
-                                <rect key="frame" x="304" y="269" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="o0Y-uX-X8m"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSA-IX-L0d">
-                                <rect key="frame" x="304" y="401" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="GjN-XH-BOJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys1-CS-fPy">
-                                <rect key="frame" x="304" y="337" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="lLX-4Y-xNj"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAJ-GE-QEf">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-ho-d0d">
+                                        <rect key="frame" x="264" y="421" width="240" height="182"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enI-Sq-gtH">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="32"/>
+                                                <subviews>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRU-qz-KQE" customClass="FormSheetCancelButton" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                        <rect key="frame" x="208" y="0.0" width="32" height="32"/>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" image="CrossGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="IRU-qz-KQE" firstAttribute="top" secondItem="enI-Sq-gtH" secondAttribute="top" id="4Pf-Eu-URV"/>
+                                                    <constraint firstAttribute="height" constant="32" id="6PT-CU-t8X"/>
+                                                    <constraint firstAttribute="trailing" secondItem="IRU-qz-KQE" secondAttribute="trailing" id="dnP-fT-rWj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="IRU-qz-KQE" secondAttribute="bottom" id="s4H-Uj-Lwr"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtJ-Sj-Zqt">
+                                                <rect key="frame" x="0.0" y="52" width="240" height="30"/>
+                                                <state key="normal" title="Start"/>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="o0Y-uX-X8m"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys1-CS-fPy">
+                                                <rect key="frame" x="0.0" y="102" width="240" height="30"/>
+                                                <state key="normal" title="Stop"/>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="lLX-4Y-xNj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSA-IX-L0d">
+                                                <rect key="frame" x="0.0" y="152" width="240" height="30"/>
+                                                <state key="normal" title="Play"/>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="GjN-XH-BOJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="enI-Sq-gtH" secondAttribute="trailing" id="CBF-Bp-1ue"/>
+                                            <constraint firstItem="enI-Sq-gtH" firstAttribute="leading" secondItem="LcH-ho-d0d" secondAttribute="leading" id="fMc-uL-gLI"/>
+                                            <constraint firstItem="enI-Sq-gtH" firstAttribute="top" secondItem="LcH-ho-d0d" secondAttribute="top" id="k2H-eW-vSB"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LcH-ho-d0d" firstAttribute="leading" secondItem="LAJ-GE-QEf" secondAttribute="leading" constant="264" placeholder="YES" id="FjA-jk-dLE"/>
+                                    <constraint firstAttribute="trailing" secondItem="LcH-ho-d0d" secondAttribute="trailing" constant="264" placeholder="YES" id="HbB-Pk-SdL"/>
+                                    <constraint firstItem="LcH-ho-d0d" firstAttribute="top" secondItem="LAJ-GE-QEf" secondAttribute="top" constant="421" placeholder="YES" id="gMC-wl-6Dz"/>
+                                    <constraint firstAttribute="bottom" secondItem="LcH-ho-d0d" secondAttribute="bottom" constant="421" placeholder="YES" id="kEH-0E-34N"/>
+                                    <constraint firstItem="LcH-ho-d0d" firstAttribute="centerY" secondItem="LAJ-GE-QEf" secondAttribute="centerY" id="qMn-Mo-PZB"/>
+                                    <constraint firstItem="LcH-ho-d0d" firstAttribute="centerX" secondItem="LAJ-GE-QEf" secondAttribute="centerX" id="yep-8M-0Hm"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sPb-sn-yqx" firstAttribute="trailing" secondItem="IRU-qz-KQE" secondAttribute="trailing" constant="8" id="3Ad-HP-qqG"/>
-                            <constraint firstItem="IRU-qz-KQE" firstAttribute="top" secondItem="sPb-sn-yqx" secondAttribute="top" constant="8" id="vh8-Qa-AHh"/>
+                            <constraint firstItem="LAJ-GE-QEf" firstAttribute="leading" secondItem="sPb-sn-yqx" secondAttribute="leading" id="A6B-8F-mxy"/>
+                            <constraint firstItem="LAJ-GE-QEf" firstAttribute="top" secondItem="U6l-0Q-esH" secondAttribute="top" id="QRF-CN-upf"/>
+                            <constraint firstItem="LAJ-GE-QEf" firstAttribute="bottom" secondItem="sPb-sn-yqx" secondAttribute="bottom" id="ZVy-Fc-8ws"/>
+                            <constraint firstItem="LAJ-GE-QEf" firstAttribute="trailing" secondItem="sPb-sn-yqx" secondAttribute="trailing" id="zcr-K2-nFs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sPb-sn-yqx"/>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="IRU-qz-KQE" id="43R-cL-9xD"/>
+                        <outlet property="contentView" destination="LcH-ho-d0d" id="a0c-Ou-DsA"/>
                         <outlet property="playRecordingButton" destination="xSA-IX-L0d" id="7qr-tR-MhK"/>
+                        <outlet property="scrollView" destination="LAJ-GE-QEf" id="97Q-ur-nMU"/>
                         <outlet property="startRecordingButton" destination="EtJ-Sj-Zqt" id="lnY-jQ-0kp"/>
                         <outlet property="stopRecordingButton" destination="Ys1-CS-fPy" id="nQE-OZ-KJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tkl-3f-cQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284" y="94"/>
+            <point key="canvasLocation" x="-284.375" y="93.75"/>
         </scene>
     </scenes>
     <resources>

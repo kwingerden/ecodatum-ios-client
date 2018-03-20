@@ -18,196 +18,212 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mlh-Qz-ZtG">
-                                <rect key="frame" x="184" y="291.5" width="400" height="441"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUb-35-7rs">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey Date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8g-20-WJ4">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BCp-o6-nFc">
-                                        <rect key="frame" x="0.0" y="61" width="400" height="60"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mlh-Qz-ZtG">
+                                        <rect key="frame" x="184" y="292" width="400" height="441"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NZs-WS-xyS">
-                                                <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey Date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8g-20-WJ4">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BCp-o6-nFc">
+                                                <rect key="frame" x="0.0" y="61" width="400" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NZs-WS-xyS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="Aza-L2-brm"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Add New Measurement" image="MeasurementGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="vEG-VS-L3x"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="kMo-zf-SAh">
+                                                        <rect key="frame" x="210" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="XFt-Q7-cFP"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="View Existing Measurements" image="MeasurementFolderGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="0hc-jV-YXm"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6mf-NL-tpU">
+                                                <rect key="frame" x="0.0" y="141" width="400" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="f8d-fb-ChN">
+                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="3x2-i6-bFM"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Add New Photo" image="PhotoGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="loh-v7-OJk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="38k-HX-UNa">
+                                                        <rect key="frame" x="210" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="cA3-F8-fen"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="View Existing Photos" image="PhotoFolderGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="Ojm-YI-EV4"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-bT-c1h">
+                                                <rect key="frame" x="0.0" y="221" width="400" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5bl-yq-p5k">
+                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="K0V-9D-6wT"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Add New Audio Clip" image="AudioGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="jtp-5j-59Q"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CGG-4T-t7D">
+                                                        <rect key="frame" x="210" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="8ok-8H-mLy"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="View Existing Audio Clips" image="AudioFolderGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="WOY-aA-G0b"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0L2-Pm-Jku">
+                                                <rect key="frame" x="0.0" y="301" width="400" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7in-gB-Al1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="Jfi-0X-Bdx"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Add New Note" image="NoteGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="LOf-B4-6O9"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="XaN-fD-kAq">
+                                                        <rect key="frame" x="210" y="0.0" width="190" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="ZEI-gY-Twu"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="View Existing Notes" image="NoteFolderGlyph">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="Jnl-fd-16t"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWd-LJ-gx5">
+                                                <rect key="frame" x="0.0" y="381" width="400" height="60"/>
+                                                <subviews>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dhI-ZG-s0K">
+                                                        <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
+                                                        <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="Aza-L2-brm"/>
+                                                    <constraint firstItem="dhI-ZG-s0K" firstAttribute="centerY" secondItem="fWd-LJ-gx5" secondAttribute="centerY" id="5Ur-j8-QT1"/>
+                                                    <constraint firstAttribute="height" constant="60" id="MZF-Hu-IQe"/>
+                                                    <constraint firstItem="dhI-ZG-s0K" firstAttribute="centerX" secondItem="fWd-LJ-gx5" secondAttribute="centerX" id="Rh6-ZS-kpd"/>
                                                 </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Add New Measurement" image="MeasurementGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="vEG-VS-L3x"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="kMo-zf-SAh">
-                                                <rect key="frame" x="210" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="XFt-Q7-cFP"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="View Existing Measurements" image="MeasurementFolderGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="0hc-jV-YXm"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6mf-NL-tpU">
-                                        <rect key="frame" x="0.0" y="141" width="400" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="f8d-fb-ChN">
-                                                <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="3x2-i6-bFM"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Add New Photo" image="PhotoGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="loh-v7-OJk"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="38k-HX-UNa">
-                                                <rect key="frame" x="210" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="cA3-F8-fen"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="View Existing Photos" image="PhotoFolderGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="Ojm-YI-EV4"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-bT-c1h">
-                                        <rect key="frame" x="0.0" y="221" width="400" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5bl-yq-p5k">
-                                                <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="K0V-9D-6wT"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Add New Audio Clip" image="AudioGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="jtp-5j-59Q"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CGG-4T-t7D">
-                                                <rect key="frame" x="210" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="8ok-8H-mLy"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="View Existing Audio Clips" image="AudioFolderGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="WOY-aA-G0b"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0L2-Pm-Jku">
-                                        <rect key="frame" x="0.0" y="301" width="400" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7in-gB-Al1">
-                                                <rect key="frame" x="0.0" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="Jfi-0X-Bdx"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Add New Note" image="NoteGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="LOf-B4-6O9"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="XaN-fD-kAq">
-                                                <rect key="frame" x="210" y="0.0" width="190" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="ZEI-gY-Twu"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="View Existing Notes" image="NoteFolderGlyph">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInsider:" destination="939-01-Vsg" eventType="touchUpInside" id="Jnl-fd-16t"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWd-LJ-gx5">
-                                        <rect key="frame" x="0.0" y="381" width="400" height="60"/>
-                                        <subviews>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dhI-ZG-s0K">
-                                                <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
-                                                <color key="color" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </activityIndicatorView>
+                                            </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="dhI-ZG-s0K" firstAttribute="centerY" secondItem="fWd-LJ-gx5" secondAttribute="centerY" id="5Ur-j8-QT1"/>
-                                            <constraint firstAttribute="height" constant="60" id="MZF-Hu-IQe"/>
-                                            <constraint firstItem="dhI-ZG-s0K" firstAttribute="centerX" secondItem="fWd-LJ-gx5" secondAttribute="centerX" id="Rh6-ZS-kpd"/>
+                                            <constraint firstAttribute="width" constant="400" id="06H-k9-53r"/>
                                         </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="06H-k9-53r"/>
+                                    <constraint firstItem="mlh-Qz-ZtG" firstAttribute="centerY" secondItem="vUb-35-7rs" secondAttribute="centerY" id="8Wx-p0-8TP"/>
+                                    <constraint firstItem="mlh-Qz-ZtG" firstAttribute="leading" secondItem="vUb-35-7rs" secondAttribute="leading" constant="184" placeholder="YES" id="IBC-aL-hLp"/>
+                                    <constraint firstItem="mlh-Qz-ZtG" firstAttribute="top" secondItem="vUb-35-7rs" secondAttribute="top" constant="292" placeholder="YES" id="Scm-sg-VTp"/>
+                                    <constraint firstAttribute="trailing" secondItem="mlh-Qz-ZtG" secondAttribute="trailing" constant="184" placeholder="YES" id="pJi-jG-lUY"/>
+                                    <constraint firstAttribute="bottom" secondItem="mlh-Qz-ZtG" secondAttribute="bottom" constant="291" placeholder="YES" id="vKn-Ue-39A"/>
+                                    <constraint firstItem="mlh-Qz-ZtG" firstAttribute="centerX" secondItem="vUb-35-7rs" secondAttribute="centerX" id="wMz-M2-SKI"/>
                                 </constraints>
-                            </stackView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mlh-Qz-ZtG" firstAttribute="centerX" secondItem="9Aq-Xs-kHT" secondAttribute="centerX" id="8xx-UX-5q6"/>
-                            <constraint firstItem="mlh-Qz-ZtG" firstAttribute="centerY" secondItem="9Aq-Xs-kHT" secondAttribute="centerY" id="H5Y-iP-Cxj"/>
+                            <constraint firstItem="vUb-35-7rs" firstAttribute="leading" secondItem="kTd-X9-xcA" secondAttribute="leading" id="TPt-dz-uVm"/>
+                            <constraint firstItem="vUb-35-7rs" firstAttribute="top" secondItem="9Aq-Xs-kHT" secondAttribute="top" id="Xy4-hW-EeF"/>
+                            <constraint firstItem="vUb-35-7rs" firstAttribute="trailing" secondItem="kTd-X9-xcA" secondAttribute="trailing" id="cYi-cY-JSs"/>
+                            <constraint firstItem="vUb-35-7rs" firstAttribute="bottom" secondItem="kTd-X9-xcA" secondAttribute="bottom" id="xiY-i8-DsK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kTd-X9-xcA"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="dhI-ZG-s0K" id="fTZ-3g-ETI"/>
                         <outlet property="addNewAudioClipButton" destination="5bl-yq-p5k" id="fvx-1G-lZ2"/>
                         <outlet property="addNewMeasurementButton" destination="NZs-WS-xyS" id="5T7-aE-lGh"/>
                         <outlet property="addNewNoteButton" destination="7in-gB-Al1" id="gC5-Jb-nFQ"/>
                         <outlet property="addNewPhotoButton" destination="f8d-fb-ChN" id="kNb-Wp-Apq"/>
+                        <outlet property="contentView" destination="mlh-Qz-ZtG" id="fcZ-xd-jZt"/>
+                        <outlet property="scrollView" destination="vUb-35-7rs" id="Z5z-sg-pd0"/>
                         <outlet property="surveyDateLabel" destination="i8g-20-WJ4" id="hHS-bH-Das"/>
                         <outlet property="viewExistingAudioClipsButton" destination="CGG-4T-t7D" id="TYt-79-Wp9"/>
                         <outlet property="viewExistingMeasurementsButton" destination="kMo-zf-SAh" id="hki-59-z14"/>
@@ -222,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o62-3J-rh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="60"/>
+            <point key="canvasLocation" x="18.75" y="59.765624999999993"/>
         </scene>
         <!--NewOrUpdateAudioClip-->
         <scene sceneID="iuj-zJ-Vcu">
