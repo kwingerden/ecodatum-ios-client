@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class MainViewController: BaseViewController {
+class MainViewController: BaseContentViewScrollable {
   
   override func viewDidAppear(_ animated: Bool) {
     

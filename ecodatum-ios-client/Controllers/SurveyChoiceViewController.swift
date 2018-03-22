@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class SurveyChoiceViewController: BaseViewController {
+class SurveyChoiceViewController: BaseContentViewScrollable {
 
   @IBOutlet weak var tableView: UITableView!
 

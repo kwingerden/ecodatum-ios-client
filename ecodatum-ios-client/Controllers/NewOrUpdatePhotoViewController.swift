@@ -3,10 +3,8 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class NewOrUpdatePhotoViewController:
-BaseViewController,
-FormSheetCancelButtonHolder {
-  
+class NewOrUpdatePhotoViewController: BaseFormSheetDisplayable {
+
   @IBOutlet weak var imageView: UIImageView!
   
   @IBOutlet weak var openCameraButton: UIButton!
@@ -16,9 +14,7 @@ FormSheetCancelButtonHolder {
   @IBOutlet weak var descriptionTextView: UITextView!
   
   @IBOutlet weak var descriptionErrorLabel: UILabel!
-  
-  @IBOutlet weak var cancelButton: FormSheetCancelButton!
-  
+
   @IBOutlet weak var savePhotoButton: UIButton!
 
   private var hasPhotoBeenPicked: Bool = false
@@ -74,8 +70,10 @@ FormSheetCancelButtonHolder {
   
   }
   
-  @IBAction func touchUpInside(_ sender: UIButton) {
-  
+  @IBAction override func touchUpInside(_ sender: UIButton) {
+
+    super.touchUpInside(sender)
+
     switch sender {
       
     case openCameraButton:

@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class SurveyNavigationChoiceViewController: BaseViewController {
+class SurveyNavigationChoiceViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var surveyDateLabel: UILabel!
   

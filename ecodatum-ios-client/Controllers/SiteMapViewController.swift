@@ -2,7 +2,7 @@ import Foundation
 import MapKit
 import UIKit
 
-class SiteMapViewController: BaseViewController {
+class SiteMapViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var mapView: MKMapView!
   

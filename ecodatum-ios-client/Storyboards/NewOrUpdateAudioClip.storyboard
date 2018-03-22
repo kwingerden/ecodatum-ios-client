@@ -27,12 +27,15 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enI-Sq-gtH">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="32"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRU-qz-KQE" customClass="FormSheetCancelButton" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRU-qz-KQE">
                                                         <rect key="frame" x="208" y="0.0" width="32" height="32"/>
                                                         <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" image="CrossGlyph">
                                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="touchUpInside:" destination="R9s-Wv-0Jt" eventType="touchUpInside" id="eSc-az-7cF"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>

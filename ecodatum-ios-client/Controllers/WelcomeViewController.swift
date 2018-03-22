@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class WelcomeViewController: BaseViewController {
+class WelcomeViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var loginButton: UIButton!
   

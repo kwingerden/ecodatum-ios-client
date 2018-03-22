@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class MeasurementViewController: BaseViewController {
+class MeasurementViewController: BaseContentViewScrollable {
   
   override func viewDidLoad() {
     super.viewDidLoad()

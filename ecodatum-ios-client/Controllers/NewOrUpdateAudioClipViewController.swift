@@ -3,12 +3,8 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class NewOrUpdateAudioClipViewController:
-BaseViewController,
-FormSheetCancelButtonHolder {
-  
-  @IBOutlet weak var cancelButton: FormSheetCancelButton!
-  
+class NewOrUpdateAudioClipViewController: BaseFormSheetDisplayable {
+
   @IBOutlet weak var startRecordingButton: UIButton!
   
   @IBOutlet weak var stopRecordingButton: UIButton!
@@ -73,8 +69,10 @@ FormSheetCancelButtonHolder {
     
   }
   
-  @IBAction func touchUpInside(_ sender: UIButton) {
-    
+  @IBAction override func touchUpInside(_ sender: UIButton) {
+
+    super.touchUpInside(sender)
+
     if sender == playRecordingButton {
       
       do {

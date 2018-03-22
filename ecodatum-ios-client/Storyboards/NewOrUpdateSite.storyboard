@@ -25,12 +25,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="tbI-Ix-j5k">
-                                        <rect key="frame" x="184" y="180.5" width="400.5" height="735"/>
+                                        <rect key="frame" x="184" y="180.5" width="400.5" height="682"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRF-Pz-mPa">
                                                 <rect key="frame" x="0.0" y="0.0" width="400.5" height="32"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45o-Bb-sQ4" customClass="FormSheetCancelButton" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45o-Bb-sQ4">
                                                         <rect key="frame" x="368.5" y="0.0" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="YWg-56-Pk7"/>
@@ -40,6 +40,9 @@
                                                         <state key="normal" image="CrossGlyph">
                                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="touchUpInside:" destination="fjq-5o-6oO" eventType="touchUpInside" id="GMM-GU-xQw"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -225,37 +228,50 @@
                                                     <constraint firstItem="sbE-Sh-kSv" firstAttribute="leading" secondItem="nbI-xV-1Ht" secondAttribute="leading" id="ygI-K7-V3h"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNF-Kn-mym">
-                                                <rect key="frame" x="0.0" y="575" width="400.5" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="7np-rv-oBK"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Save">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInside:" destination="fjq-5o-6oO" eventType="touchUpInside" id="a2z-WR-n6Y"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTv-R1-Q5C">
-                                                <rect key="frame" x="0.0" y="675" width="400.5" height="60"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bJu-Pi-DGF">
+                                                <rect key="frame" x="0.0" y="575" width="400.5" height="107"/>
                                                 <subviews>
-                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7fO-12-t0W">
-                                                        <rect key="frame" x="182" y="12" width="37" height="37"/>
-                                                        <color key="color" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </activityIndicatorView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNF-Kn-mym">
+                                                        <rect key="frame" x="0.0" y="0.0" width="400.5" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="7np-rv-oBK"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <state key="normal" title="Save">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInside:" destination="fjq-5o-6oO" eventType="touchUpInside" id="a2z-WR-n6Y"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbz-Zv-rTq">
+                                                        <rect key="frame" x="0.0" y="75" width="400.5" height="32"/>
+                                                        <subviews>
+                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7fO-12-t0W">
+                                                                <rect key="frame" x="184.5" y="0.0" width="32" height="32"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="32" id="2aw-ip-CaE"/>
+                                                                    <constraint firstAttribute="width" constant="32" id="ryb-9O-eZu"/>
+                                                                </constraints>
+                                                                <color key="color" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </activityIndicatorView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="YA2-lF-gsW"/>
+                                                            <constraint firstItem="7fO-12-t0W" firstAttribute="centerY" secondItem="Wbz-Zv-rTq" secondAttribute="centerY" id="e4j-XG-31x"/>
+                                                            <constraint firstItem="7fO-12-t0W" firstAttribute="centerX" secondItem="Wbz-Zv-rTq" secondAttribute="centerX" id="n7a-eq-05o"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="7fO-12-t0W" firstAttribute="centerX" secondItem="fTv-R1-Q5C" secondAttribute="centerX" id="4PB-6o-eZ6"/>
-                                                    <constraint firstAttribute="height" constant="60" id="CTs-tC-MOw"/>
-                                                    <constraint firstItem="7fO-12-t0W" firstAttribute="centerY" secondItem="fTv-R1-Q5C" secondAttribute="centerY" id="Gu6-3N-wdY"/>
+                                                    <constraint firstAttribute="height" constant="107" id="OyX-RD-wPT"/>
                                                 </constraints>
-                                            </view>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="7FH-1M-vTV"/>
+                                            <constraint firstAttribute="height" constant="682" id="GH8-4G-VIE"/>
                                             <constraint firstAttribute="trailing" secondItem="VRF-Pz-mPa" secondAttribute="trailing" id="VU5-ty-Pwi"/>
                                             <constraint firstItem="VRF-Pz-mPa" firstAttribute="leading" secondItem="tbI-Ix-j5k" secondAttribute="leading" id="YRW-OV-SOf"/>
                                             <constraint firstItem="VRF-Pz-mPa" firstAttribute="top" secondItem="tbI-Ix-j5k" secondAttribute="top" id="yJ2-I9-rS6"/>
@@ -290,6 +306,8 @@
                         <outlet property="activityIndicator" destination="7fO-12-t0W" id="jsr-6u-QcH"/>
                         <outlet property="cancelButton" destination="45o-Bb-sQ4" id="wxK-6g-JC8"/>
                         <outlet property="contentView" destination="tbI-Ix-j5k" id="nmt-tx-zRe"/>
+                        <outlet property="contentViewHeightConstraint" destination="GH8-4G-VIE" id="u9P-qm-a1B"/>
+                        <outlet property="contentViewWidthConstraint" destination="7FH-1M-vTV" id="qvc-Wi-RoE"/>
                         <outlet property="descriptionErrorLabel" destination="zNP-zG-TKb" id="ghT-rX-vMB"/>
                         <outlet property="descriptionTextView" destination="jot-ed-yey" id="lbZ-aU-0V2"/>
                         <outlet property="latitudeErrorLabel" destination="VBf-Ie-Bfg" id="dYp-GQ-fjM"/>
@@ -298,6 +316,7 @@
                         <outlet property="longitudeTextField" destination="t8D-2u-HSf" id="rcM-m8-5H4"/>
                         <outlet property="nameErrorLabel" destination="EPj-CI-jRr" id="uEt-r8-lK5"/>
                         <outlet property="nameTextField" destination="F0l-2D-crC" id="RhB-hl-qKB"/>
+                        <outlet property="saveActivityHeightConstraint" destination="OyX-RD-wPT" id="me2-O1-Jex"/>
                         <outlet property="saveSiteButton" destination="yNF-Kn-mym" id="1TX-JH-bG3"/>
                         <outlet property="scrollView" destination="vSz-ul-Ybn" id="wvo-nR-igO"/>
                         <segue destination="nvd-RQ-fYO" kind="show" identifier="siteNavigationChoice" id="hea-Rx-LUk"/>

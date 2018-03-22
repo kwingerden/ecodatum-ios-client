@@ -2,12 +2,8 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class NewOrUpdateSurveyViewController:
-BaseViewController,
-FormSheetCancelButtonHolder {
-  
-  @IBOutlet weak var cancelButton: FormSheetCancelButton!
-  
+class NewOrUpdateSurveyViewController: BaseFormSheetDisplayable {
+
   @IBOutlet weak var dateLabel: UILabel!
   
   @IBOutlet weak var datePicker: UIDatePicker!
@@ -71,19 +67,25 @@ FormSheetCancelButtonHolder {
     dateLabel.text = "Date: \(dateFormatter.string(from: datePicker.date))"
   }
   
-  @IBAction func touchUpInside(_ sender: UIButton) {
+  @IBAction override func touchUpInside(_ sender: UIButton) {
 
-    let date = datePicker.date
-    let description = descriptionTextView.text!
+    super.touchUpInside(sender)
 
-    viewControllerManager.newOrUpdateSurvey(
-      date: date,
-      description: description,
-      preAsyncBlock: preAsyncUIOperation,
-      postAsyncBlock: postAsyncUIOperation) {
+    if sender == saveButton {
+
+      let date = datePicker.date
+      let description = descriptionTextView.text!
+
+      viewControllerManager.newOrUpdateSurvey(
+        date: date,
+        description: description,
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation) {
         if self.viewControllerManager.isFormSheetSegue {
           self.dismiss(animated: true, completion: nil)
         }
+      }
+
     }
     
   }

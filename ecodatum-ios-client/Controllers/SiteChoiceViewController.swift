@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class SiteChoiceViewController: BaseViewController {
+class SiteChoiceViewController: BaseContentViewScrollable {
 
   @IBOutlet weak var tableView: UITableView!
 
@@ -28,6 +28,35 @@ class SiteChoiceViewController: BaseViewController {
 
   }
 
+  override func prepare(for segue: UIStoryboardSegue,
+                        sender: Any?) {
+   
+    super.prepare(for: segue, sender: sender)
+
+    if let formSheetSegue = segue as? FormSheetSegue,
+      let identifier = formSheetSegue.identifier,
+      let viewControllerSegue = ViewControllerSegue(rawValue: identifier) {
+
+      switch viewControllerSegue {
+
+      case .newSite:
+        formSheetSegue.segueType = .new
+
+      case .updateSite:
+        formSheetSegue.segueType = .edit
+
+      case .viewSite:
+        formSheetSegue.segueType = .view
+
+      default:
+        LOG.error("Unexpected segue type: \(identifier)")
+
+      }
+
+    }
+    
+  }
+  
   @IBAction func buttonItemPress(_ sender: UIBarButtonItem) {
 
     switch sender {

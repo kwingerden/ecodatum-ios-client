@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class SiteNavigationChoiceViewController: BaseViewController {
+class SiteNavigationChoiceViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var siteNameLabel: UILabel!
   

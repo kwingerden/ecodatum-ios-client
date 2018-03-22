@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class OrganizationChoiceViewController: BaseViewController  {
+class OrganizationChoiceViewController: BaseContentViewScrollable  {
   
   @IBOutlet weak var tableView: UITableView!
   

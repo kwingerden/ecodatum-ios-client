@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class TopNavigationChoiceViewController: BaseViewController {
+class TopNavigationChoiceViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var organizationNameLabel: UILabel!
   

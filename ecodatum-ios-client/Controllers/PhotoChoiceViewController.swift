@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class PhotoChoiceViewController: BaseViewController {
+class PhotoChoiceViewController: BaseContentViewScrollable {
 
   @IBOutlet weak var tableView: UITableView!
 

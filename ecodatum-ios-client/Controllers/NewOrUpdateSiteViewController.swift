@@ -2,12 +2,8 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class NewOrUpdateSiteViewController:
-BaseViewController,
-FormSheetCancelButtonHolder {
-  
-  @IBOutlet weak var cancelButton: FormSheetCancelButton!
-  
+class NewOrUpdateSiteViewController: BaseFormSheetDisplayable {
+
   @IBOutlet weak var nameTextField: UITextField!
   
   @IBOutlet weak var nameErrorLabel: UILabel!
@@ -70,8 +66,13 @@ FormSheetCancelButtonHolder {
     navigationController?.navigationBar.isHidden = false
   }
   
-  @IBAction func touchUpInside(_ sender: UIButton) {
-    validator.defaultValidate(validationSuccessful)
+  @IBAction override func touchUpInside(_ sender: UIButton) {
+
+    super.touchUpInside(sender)
+    if sender == saveSiteButton {
+      validator.defaultValidate(validationSuccessful)
+    }
+
   }
   
   private func registerFieldValidation() {

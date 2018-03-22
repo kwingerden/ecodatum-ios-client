@@ -90,8 +90,6 @@
 		0197EA412037F1C900E0D04A /* MeasurementUnitChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0197EA402037F1C900E0D04A /* MeasurementUnitChoice.storyboard */; };
 		0197EA432037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA422037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift */; };
 		0197EA47203909BC00E0D04A /* FormSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA46203909BC00E0D04A /* FormSheetSegue.swift */; };
-		0197EA4B2039164000E0D04A /* FormSheetCancelButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */; };
-		0197EA4D20391D6F00E0D04A /* FormSheetCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */; };
 		0197EA4F203A865E00E0D04A /* ViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197EA4E203A865E00E0D04A /* ViewControllerHandler.swift */; };
 		01986002201700E2005067F8 /* DatabaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01986001201700E2005067F8 /* DatabaseRecord.swift */; };
 		0198600420171CAB005067F8 /* ViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198600320171CAB005067F8 /* ViewControllerError.swift */; };
@@ -125,7 +123,9 @@
 		01FA40652022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */; };
 		01FA40672022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */; };
 		AF33D05C04729B7F2D130591 /* PhotoChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */; };
+		AF33D1812DE5BB78D43524E1 /* BaseContentViewScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */; };
 		AF33D6B4B10C2EF8BA5A49FA /* UIImage+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */; };
+		AF33DD77907C3117DC9FF395 /* BaseFormSheetDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33DC0228110028B336B6BD /* BaseFormSheetDisplayable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,8 +219,6 @@
 		0197EA402037F1C900E0D04A /* MeasurementUnitChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeasurementUnitChoice.storyboard; sourceTree = "<group>"; };
 		0197EA422037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementUnitChoiceViewController.swift; sourceTree = "<group>"; };
 		0197EA46203909BC00E0D04A /* FormSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetSegue.swift; sourceTree = "<group>"; };
-		0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetCancelButtonHolder.swift; sourceTree = "<group>"; };
-		0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetCancelButton.swift; sourceTree = "<group>"; };
 		0197EA4E203A865E00E0D04A /* ViewControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerHandler.swift; sourceTree = "<group>"; };
 		01986001201700E2005067F8 /* DatabaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRecord.swift; sourceTree = "<group>"; };
 		0198600320171CAB005067F8 /* ViewControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerError.swift; sourceTree = "<group>"; };
@@ -257,7 +255,9 @@
 		01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
 		01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrimaryAbioticFactorChoice.storyboard; sourceTree = "<group>"; };
 		01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryAbioticFactorChoiceViewController.swift; sourceTree = "<group>"; };
+		AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentViewScrollable.swift; sourceTree = "<group>"; };
 		AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoChoiceViewController.swift; sourceTree = "<group>"; };
+		AF33DC0228110028B336B6BD /* BaseFormSheetDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormSheetDisplayable.swift; sourceTree = "<group>"; };
 		AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -482,8 +482,6 @@
 				0197EA3E2037EDF400E0D04A /* MeasurementViewController.swift */,
 				0197EA422037F21E00E0D04A /* MeasurementUnitChoiceViewController.swift */,
 				0197EA46203909BC00E0D04A /* FormSheetSegue.swift */,
-				0197EA4A2039164000E0D04A /* FormSheetCancelButtonHolder.swift */,
-				0197EA4C20391D6F00E0D04A /* FormSheetCancelButton.swift */,
 				0197EA4E203A865E00E0D04A /* ViewControllerHandler.swift */,
 				01865CF3203B946400A90657 /* NewOrUpdateSurveyViewController.swift */,
 				01CCC52D2042705000936835 /* OrganizationMemberRole.swift */,
@@ -492,6 +490,8 @@
 				0139801D204E41DC00D85848 /* NewOrUpdateAudioClipViewController.swift */,
 				AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */,
 				0143D3B4205F177100BF8013 /* NewOrUpdateNoteViewController.swift */,
+				AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */,
+				AF33DC0228110028B336B6BD /* BaseFormSheetDisplayable.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -715,7 +715,6 @@
 				01024E5F200A92C00030859B /* CreateNewAccountViewController.swift in Sources */,
 				01563DDF200D8E43009A478A /* NetworkRequest+Response.swift in Sources */,
 				01AD11681FF4B5DB000DCE81 /* MainViewController.swift in Sources */,
-				0197EA4D20391D6F00E0D04A /* FormSheetCancelButton.swift in Sources */,
 				013F67562009B1A1001B8586 /* BaseViewController.swift in Sources */,
 				01D2BD7D201194F600260F18 /* AccountViewController.swift in Sources */,
 				0197EA47203909BC00E0D04A /* FormSheetSegue.swift in Sources */,
@@ -732,7 +731,6 @@
 				01AD11661FF4B5DB000DCE81 /* AppDelegate.swift in Sources */,
 				01C945C32023AEC800F73CA5 /* NewOrUpdateMeasurementViewController.swift in Sources */,
 				013F67522009AF56001B8586 /* ViewControllerSegue.swift in Sources */,
-				0197EA4B2039164000E0D04A /* FormSheetCancelButtonHolder.swift in Sources */,
 				01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */,
 				014B316320145CF300B81D2C /* SiteMapViewController.swift in Sources */,
 				01865CF4203B946400A90657 /* NewOrUpdateSurveyViewController.swift in Sources */,
@@ -762,6 +760,8 @@
 				0197EA3F2037EDF400E0D04A /* MeasurementViewController.swift in Sources */,
 				AF33D6B4B10C2EF8BA5A49FA /* UIImage+Utilities.swift in Sources */,
 				AF33D05C04729B7F2D130591 /* PhotoChoiceViewController.swift in Sources */,
+				AF33D1812DE5BB78D43524E1 /* BaseContentViewScrollable.swift in Sources */,
+				AF33DD77907C3117DC9FF395 /* BaseFormSheetDisplayable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

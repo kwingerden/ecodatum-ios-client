@@ -30,7 +30,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgA-o9-qGN">
                                                 <rect key="frame" x="0.0" y="0.0" width="400" height="32"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhE-H5-uxs" customClass="FormSheetCancelButton" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhE-H5-uxs">
                                                         <rect key="frame" x="368" y="0.0" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="1be-uv-aMz"/>
@@ -40,6 +40,9 @@
                                                         <state key="normal" image="CrossGlyph">
                                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="touchUpInside:" destination="npB-FO-hjT" eventType="touchUpInside" id="2l6-xf-P0X"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -158,6 +161,7 @@
                                             <constraint firstItem="DgA-o9-qGN" firstAttribute="leading" secondItem="6Hr-T5-rbV" secondAttribute="leading" id="X7G-UX-VTg"/>
                                             <constraint firstAttribute="width" constant="400" id="ims-lk-Kwu"/>
                                             <constraint firstAttribute="trailing" secondItem="DgA-o9-qGN" secondAttribute="trailing" id="mZs-9K-bwc"/>
+                                            <constraint firstAttribute="height" constant="706" id="vVf-Dz-MBe"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -189,6 +193,8 @@
                         <outlet property="activityIndicator" destination="j8Y-TK-KJs" id="Md8-vL-BB1"/>
                         <outlet property="cancelButton" destination="GhE-H5-uxs" id="rtW-Tc-Gwm"/>
                         <outlet property="contentView" destination="6Hr-T5-rbV" id="DLe-kp-Mqn"/>
+                        <outlet property="contentViewHeightConstraint" destination="vVf-Dz-MBe" id="cf9-dr-irR"/>
+                        <outlet property="contentViewWidthConstraint" destination="ims-lk-Kwu" id="WGZ-4Y-HhY"/>
                         <outlet property="dateLabel" destination="wST-w4-iEy" id="knL-B1-SQE"/>
                         <outlet property="datePicker" destination="sTf-9L-gRl" id="kGa-tF-4Rv"/>
                         <outlet property="descriptionTextView" destination="XhL-8a-8MW" id="j1k-Mj-nbq"/>

@@ -3,8 +3,8 @@ import SwiftValidator
 import UIKit
 import WebKit
 
-class NewOrUpdateNoteViewController: BaseViewController {
-  
+class NewOrUpdateNoteViewController: BaseFormSheetDisplayable {
+
   private var webView: WKWebView!
   
   override func viewDidLoad() {

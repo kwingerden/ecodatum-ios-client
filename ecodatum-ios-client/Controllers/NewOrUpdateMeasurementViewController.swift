@@ -2,12 +2,8 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class NewOrUpdateMeasurementViewController:
-BaseViewController,
-FormSheetCancelButtonHolder {
-  
-  @IBOutlet weak var cancelButton: FormSheetCancelButton!
-  
+class NewOrUpdateMeasurementViewController: BaseFormSheetDisplayable {
+
   @IBOutlet weak var valueLabel: UILabel!
   
   @IBOutlet weak var clearButton: UIButton!
@@ -77,7 +73,9 @@ FormSheetCancelButtonHolder {
     
   }
   
-  @IBAction func touchUpInside(_ sender: UIButton) {
+  @IBAction override func touchUpInside(_ sender: UIButton) {
+
+    super.touchUpInside(sender)
     
     switch sender {
       

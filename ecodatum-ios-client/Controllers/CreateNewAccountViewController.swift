@@ -2,7 +2,7 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class CreateNewAccountViewController: BaseViewController {
+class CreateNewAccountViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var organizationCodeTextField: UITextField!
   

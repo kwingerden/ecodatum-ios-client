@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class SecondaryAbioticFactorChoiceViewController: BaseViewController {
+class SecondaryAbioticFactorChoiceViewController: BaseContentViewScrollable {
 
   @IBOutlet weak var tableView: UITableView!
   

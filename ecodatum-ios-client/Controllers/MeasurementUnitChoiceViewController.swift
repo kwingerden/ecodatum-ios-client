@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class MeasurementUnitChoiceViewController: BaseViewController {
+class MeasurementUnitChoiceViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var tableView: UITableView!
 

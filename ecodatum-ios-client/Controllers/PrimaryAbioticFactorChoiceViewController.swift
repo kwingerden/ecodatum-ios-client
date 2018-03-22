@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class PrimaryAbioticFactorChoiceViewController: BaseViewController {
+class PrimaryAbioticFactorChoiceViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var airButton: UIButton!
   

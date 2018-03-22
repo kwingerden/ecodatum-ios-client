@@ -2,7 +2,7 @@ import Foundation
 import SwiftValidator
 import UIKit
 
-class LoginToAccountViewController: BaseViewController {
+class LoginToAccountViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var emailAddressTextField: UITextField!
   
