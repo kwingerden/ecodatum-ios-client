@@ -11,23 +11,4 @@ class FormSheetSegue: UIStoryboardSegue {
 
   var segueType: SegueType!
 
-  override func perform() {
-
-    super.perform()
-
-    if let formSheet = destination as? BaseFormSheetDisplayable {
-      formSheet.isDisplayedAsFormSheet = true
-      formSheet.formSheetSegueType = segueType
-    }
-
-  }
-  
-}
-
-extension UIStoryboardSegue {
-  
-  var isFormSheetSegue: Bool {
-    return self is FormSheetSegue
-  }
-  
 }

@@ -21,14 +21,6 @@ class OrganizationChoiceViewController: BaseContentViewScrollable  {
         
   }
   
-  override func viewDidLayoutSubviews() {
-    
-    adjustScrollView(
-      width: view.bounds.width,
-      height: view.bounds.height - topBarHeightConstraint.constant)
-    
-  }
-  
 }
 
 extension OrganizationChoiceViewController: UITableViewDelegate {

@@ -56,15 +56,21 @@ class CreateNewAccountViewController: BaseContentViewScrollable {
   @IBAction func createNewAccountButtonTouchUpInside() {
     validator.defaultValidate(validationSuccessful)
   }
-  
+
+  /*
   override func viewDidLayoutSubviews() {
-    
-    adjustScrollView(
-      width: view.bounds.width,
-      height: view.bounds.height - topBarHeightConstraint.constant)
-    
+
+    scrollView.isScrollEnabled =
+      contentView.frame.width >= UIScreen.main.bounds.width ||
+        contentView.frame.height >= UIScreen.main.bounds.height -
+          topBarHeightConstraint.constant - 20
+    scrollView.contentSize = CGSize(
+      width: contentView.frame.width,
+      height: contentView.frame.height)
+
   }
-  
+  */
+
   private func validationSuccessful() {
     
     let organizationCode = organizationCodeTextField.text!

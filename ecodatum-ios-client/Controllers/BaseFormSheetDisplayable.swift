@@ -3,64 +3,96 @@ import UIKit
 
 class BaseFormSheetDisplayable: BaseContentViewScrollable {
 
-  var isDisplayedAsFormSheet: Bool = false
-
-  var formSheetSegueType: FormSheetSegue.SegueType!
-
   @IBOutlet weak var cancelButton: UIButton!
 
+  @IBOutlet weak var headerView: UIView!
+
+  @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+
+  @IBOutlet weak var bodyView: UIView!
+
+  @IBOutlet weak var bodyViewHeightConstraint: NSLayoutConstraint!
+
+  @IBOutlet weak var footerView: UIView!
+
+  @IBOutlet weak var footerViewHeightConstraint: NSLayoutConstraint!
+
   @IBOutlet weak var contentViewWidthConstraint: NSLayoutConstraint!
-
-  @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
-
-  @IBOutlet weak var saveActivityHeightConstraint: NSLayoutConstraint!
-
-  private static let topInset = UIEdgeInsets(
-    top: 20,
-    left: 0,
-    bottom: 0,
-    right: 0)
 
   override func viewWillAppear(_ animated: Bool) {
 
     super.viewWillAppear(animated)
 
-    if isDisplayedAsFormSheet {
+    var preferredHeight: CGFloat = 0
+    if viewControllerManager.isFormSheetSegue {
 
-      cancelButton.isHidden = false
+      if viewControllerManager.formSheetSegue?.segueType == .view {
 
-      let width = contentViewWidthConstraint.constant + 20
-      var height = contentViewHeightConstraint.constant
-      if formSheetSegueType == .view {
-        height = height - saveActivityHeightConstraint.constant
+        footerView.removeFromSuperview()
+        preferredHeight = headerViewHeightConstraint.constant +
+          bodyViewHeightConstraint.constant
+
+      } else {
+
+        preferredHeight = headerViewHeightConstraint.constant +
+          bodyViewHeightConstraint.constant +
+          footerViewHeightConstraint.constant
+
       }
-      preferredContentSize = CGSize(
-        width: width,
-        height: height)
 
     } else {
 
-      cancelButton.isHidden = true
+      headerView.removeFromSuperview()
+      preferredHeight = bodyViewHeightConstraint.constant +
+        footerViewHeightConstraint.constant
 
     }
+
+    preferredContentSize.width = min(
+      contentViewWidthConstraint.constant + 20,
+      scrollView.bounds.width)
+    preferredContentSize.height = min(
+      preferredHeight + 100,
+      scrollView.bounds.height)
 
   }
 
   override func viewDidLayoutSubviews() {
 
-    adjustScrollView(
-      width: view.bounds.width,
-      height: view.bounds.height,
-      contentInset: BaseFormSheetDisplayable.topInset)
+    if viewControllerManager.isFormSheetSegue {
+
+      scrollView.isScrollEnabled =
+        contentView.frame.width + 20 >= scrollView.bounds.width ||
+          contentView.frame.height + 20 >= scrollView.bounds.height
+
+      if scrollView.isScrollEnabled {
+
+        scrollView.contentSize = CGSize(
+          width: contentView.frame.width,
+          height: contentView.frame.height)
+        scrollView.contentOffset = CGPoint(
+          x: 0,
+          y: -10)
+        scrollView.contentInset = UIEdgeInsets(
+          top: 10,
+          left: 0,
+          bottom: 10,
+          right: 0)
+
+      }
+
+    } else {
+
+      super.viewDidLayoutSubviews()
+
+    }
 
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
-  
     if sender == cancelButton {
       dismiss(animated: true, completion: nil)
     }
-  
   }
   
 }

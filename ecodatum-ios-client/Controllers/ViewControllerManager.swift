@@ -403,12 +403,13 @@ class ViewControllerManager:
       return nil
     }
   }
-  
+
+  var formSheetSegue: FormSheetSegue? {
+    return storyboardSegue as? FormSheetSegue
+  }
+
   var isFormSheetSegue: Bool {
-    guard let isFormSheetSegue = storyboardSegue?.isFormSheetSegue else {
-      return false
-    }
-    return isFormSheetSegue
+    return formSheetSegue != nil
   }
   
   init(viewController: UIViewController,

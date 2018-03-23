@@ -84,7 +84,6 @@
                                             <constraint firstAttribute="trailing" secondItem="tL2-l2-siI" secondAttribute="trailing" id="2jX-zS-Td7"/>
                                             <constraint firstAttribute="width" constant="400" id="Cip-B1-BfG"/>
                                             <constraint firstItem="tL2-l2-siI" firstAttribute="leading" secondItem="GU6-AJ-NbN" secondAttribute="leading" id="OB8-qm-6CF"/>
-                                            <constraint firstAttribute="height" constant="320" id="Xdg-F5-WZm"/>
                                             <constraint firstItem="WKr-Xx-4qV" firstAttribute="leading" secondItem="GU6-AJ-NbN" secondAttribute="leading" id="pFN-sg-5x1"/>
                                         </constraints>
                                     </stackView>

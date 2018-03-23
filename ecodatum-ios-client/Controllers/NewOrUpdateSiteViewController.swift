@@ -50,8 +50,7 @@ class NewOrUpdateSiteViewController: BaseFormSheetDisplayable {
       
       updateFieldValues()
       enableFields(false)
-      saveSiteButton.isHidden = true
-      
+
     default:
       
       let viewControllerSegue = viewControllerManager.viewControllerSegue?.rawValue ?? "Unknown"
@@ -74,7 +73,7 @@ class NewOrUpdateSiteViewController: BaseFormSheetDisplayable {
     }
 
   }
-  
+
   private func registerFieldValidation() {
     
     validator.registerField(

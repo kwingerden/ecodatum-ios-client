@@ -21,7 +21,7 @@
                             <imageView userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgrounImage" translatesAutoresizingMaskIntoConstraints="NO" id="FUf-YX-DrV">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSz-ul-Ybn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="vSz-ul-Ybn">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="tbI-Ix-j5k">
@@ -30,7 +30,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRF-Pz-mPa">
                                                 <rect key="frame" x="0.0" y="0.0" width="400.5" height="32"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45o-Bb-sQ4">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45o-Bb-sQ4">
                                                         <rect key="frame" x="368.5" y="0.0" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="YWg-56-Pk7"/>
@@ -220,6 +220,7 @@
                                                 <constraints>
                                                     <constraint firstItem="vkt-EH-x4g" firstAttribute="leading" secondItem="nbI-xV-1Ht" secondAttribute="leading" id="Eya-D3-VFM"/>
                                                     <constraint firstAttribute="trailing" secondItem="v1o-z6-971" secondAttribute="trailing" id="MeF-st-Ar3"/>
+                                                    <constraint firstAttribute="height" constant="463" id="bsT-Ff-Ei8"/>
                                                     <constraint firstAttribute="trailing" secondItem="vkt-EH-x4g" secondAttribute="trailing" id="cZG-1f-XaK"/>
                                                     <constraint firstItem="v1o-z6-971" firstAttribute="leading" secondItem="nbI-xV-1Ht" secondAttribute="leading" id="nWk-dE-8Kd"/>
                                                     <constraint firstItem="57q-1S-S3T" firstAttribute="leading" secondItem="nbI-xV-1Ht" secondAttribute="leading" id="nny-aE-5uL"/>
@@ -265,13 +266,12 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="107" id="OyX-RD-wPT"/>
+                                                    <constraint firstAttribute="height" constant="107" id="EpL-Ha-xtF"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="7FH-1M-vTV"/>
-                                            <constraint firstAttribute="height" constant="682" id="GH8-4G-VIE"/>
                                             <constraint firstAttribute="trailing" secondItem="VRF-Pz-mPa" secondAttribute="trailing" id="VU5-ty-Pwi"/>
                                             <constraint firstItem="VRF-Pz-mPa" firstAttribute="leading" secondItem="tbI-Ix-j5k" secondAttribute="leading" id="YRW-OV-SOf"/>
                                             <constraint firstItem="VRF-Pz-mPa" firstAttribute="top" secondItem="tbI-Ix-j5k" secondAttribute="top" id="yJ2-I9-rS6"/>
@@ -304,19 +304,23 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="7fO-12-t0W" id="jsr-6u-QcH"/>
-                        <outlet property="cancelButton" destination="45o-Bb-sQ4" id="wxK-6g-JC8"/>
+                        <outlet property="bodyView" destination="nbI-xV-1Ht" id="eMF-0t-sLp"/>
+                        <outlet property="bodyViewHeightConstraint" destination="bsT-Ff-Ei8" id="HyX-tP-Ne4"/>
+                        <outlet property="cancelButton" destination="45o-Bb-sQ4" id="DT0-42-Vy3"/>
                         <outlet property="contentView" destination="tbI-Ix-j5k" id="nmt-tx-zRe"/>
-                        <outlet property="contentViewHeightConstraint" destination="GH8-4G-VIE" id="u9P-qm-a1B"/>
-                        <outlet property="contentViewWidthConstraint" destination="7FH-1M-vTV" id="qvc-Wi-RoE"/>
+                        <outlet property="contentViewWidthConstraint" destination="7FH-1M-vTV" id="7PL-Iz-Z1p"/>
                         <outlet property="descriptionErrorLabel" destination="zNP-zG-TKb" id="ghT-rX-vMB"/>
                         <outlet property="descriptionTextView" destination="jot-ed-yey" id="lbZ-aU-0V2"/>
+                        <outlet property="footerView" destination="bJu-Pi-DGF" id="0rw-cr-KgW"/>
+                        <outlet property="footerViewHeightConstraint" destination="EpL-Ha-xtF" id="KBv-ih-3He"/>
+                        <outlet property="headerView" destination="VRF-Pz-mPa" id="rP2-Un-ieI"/>
+                        <outlet property="headerViewHeightConstraint" destination="jmJ-tq-J2c" id="VBg-RA-ruH"/>
                         <outlet property="latitudeErrorLabel" destination="VBf-Ie-Bfg" id="dYp-GQ-fjM"/>
                         <outlet property="latitudeTextField" destination="Vbi-f0-9H5" id="CBd-Eo-XW7"/>
                         <outlet property="longitudeErrorLabel" destination="mso-IL-71E" id="FKs-xY-zNm"/>
                         <outlet property="longitudeTextField" destination="t8D-2u-HSf" id="rcM-m8-5H4"/>
                         <outlet property="nameErrorLabel" destination="EPj-CI-jRr" id="uEt-r8-lK5"/>
                         <outlet property="nameTextField" destination="F0l-2D-crC" id="RhB-hl-qKB"/>
-                        <outlet property="saveActivityHeightConstraint" destination="OyX-RD-wPT" id="me2-O1-Jex"/>
                         <outlet property="saveSiteButton" destination="yNF-Kn-mym" id="1TX-JH-bG3"/>
                         <outlet property="scrollView" destination="vSz-ul-Ybn" id="wvo-nR-igO"/>
                         <segue destination="nvd-RQ-fYO" kind="show" identifier="siteNavigationChoice" id="hea-Rx-LUk"/>
