@@ -52,8 +52,7 @@ class NewOrUpdatePhotoViewController: BaseFormSheetDisplayable {
       
       updateFieldValues()
       enableFields(false)
-      savePhotoButton.isHidden = true
-      
+
     default:
       
       let viewControllerSegue = viewControllerManager.viewControllerSegue?.rawValue ?? "Unknown"
@@ -133,7 +132,7 @@ class NewOrUpdatePhotoViewController: BaseFormSheetDisplayable {
   private func updateFieldValues() {
     
     if let photo = viewControllerManager.photo {
-      imageView.image = UIImage.base64Decode(photo.base64Encoded)
+      //imageView.image = UIImage.base64Decode(photo.base64Encoded)
       descriptionTextView.text = photo.description
     }
     

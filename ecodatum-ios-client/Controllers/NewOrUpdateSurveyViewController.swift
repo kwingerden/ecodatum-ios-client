@@ -45,7 +45,6 @@ class NewOrUpdateSurveyViewController: BaseFormSheetDisplayable {
 
       updateFieldValues()
       enableFields(false)
-      saveButton.isHidden = true
 
     default:
 

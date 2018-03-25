@@ -306,14 +306,16 @@ struct NewOrUpdatePhotoRequest: ProtectedNetworkRequest {
   let base64Encoded: Base64Encoded
   let description: String
   let surveyId: Identifier
+  // Always set to JPEG. Hard-coded for now.
+  let photoType: String = "JPEG"
   
 }
 
 struct PhotoResponse: NetworkResponse {
   
   let id: Identifier // photo id
+  let code: String
   let surveyId: Identifier
-  let base64Encoded: Base64Encoded
   let description: String
   let userId: Identifier
   let createdAt: Date

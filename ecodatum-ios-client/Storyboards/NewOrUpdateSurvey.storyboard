@@ -25,12 +25,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="6Hr-T5-rbV">
-                                        <rect key="frame" x="184" y="159" width="400" height="706"/>
+                                        <rect key="frame" x="184" y="159" width="400" height="666"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgA-o9-qGN">
                                                 <rect key="frame" x="0.0" y="0.0" width="400" height="32"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhE-H5-uxs">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhE-H5-uxs">
                                                         <rect key="frame" x="368" y="0.0" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="1be-uv-aMz"/>
@@ -123,45 +123,53 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="ffT-dI-B25" firstAttribute="leading" secondItem="rlV-2S-GTK" secondAttribute="leading" id="5ym-qe-VRA"/>
+                                                    <constraint firstAttribute="height" constant="434" id="Qbt-Zv-VQi"/>
                                                     <constraint firstAttribute="trailing" secondItem="jXg-wg-t65" secondAttribute="trailing" id="RMR-D0-7pv"/>
                                                     <constraint firstAttribute="trailing" secondItem="ffT-dI-B25" secondAttribute="trailing" id="bLg-Zx-OEa"/>
                                                     <constraint firstItem="jXg-wg-t65" firstAttribute="leading" secondItem="rlV-2S-GTK" secondAttribute="leading" id="tfS-9K-ROa"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkz-KJ-5he">
-                                                <rect key="frame" x="0.0" y="546" width="400" height="60"/>
-                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="Pkh-Si-8Us"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Save">
-                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="touchUpInside:" destination="npB-FO-hjT" eventType="touchUpInside" id="jsb-8Z-zsX"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYE-6Q-OQD">
-                                                <rect key="frame" x="0.0" y="646" width="400" height="60"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="l9j-jM-jd8">
+                                                <rect key="frame" x="0.0" y="546" width="400" height="120"/>
                                                 <subviews>
-                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-TK-KJs">
-                                                        <rect key="frame" x="182" y="11.5" width="37" height="37"/>
-                                                        <color key="color" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </activityIndicatorView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkz-KJ-5he">
+                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="60"/>
+                                                        <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="Pkh-Si-8Us"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <state key="normal" title="Save">
+                                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpInside:" destination="npB-FO-hjT" eventType="touchUpInside" id="jsb-8Z-zsX"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYE-6Q-OQD">
+                                                        <rect key="frame" x="0.0" y="60" width="400" height="60"/>
+                                                        <subviews>
+                                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-TK-KJs">
+                                                                <rect key="frame" x="182" y="11.5" width="37" height="37"/>
+                                                                <color key="color" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </activityIndicatorView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="j8Y-TK-KJs" firstAttribute="centerY" secondItem="tYE-6Q-OQD" secondAttribute="centerY" id="KfE-MP-vUG"/>
+                                                            <constraint firstAttribute="height" constant="60" id="a2m-xK-BfZ"/>
+                                                            <constraint firstItem="j8Y-TK-KJs" firstAttribute="centerX" secondItem="tYE-6Q-OQD" secondAttribute="centerX" id="kMX-pC-wjL"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="j8Y-TK-KJs" firstAttribute="centerY" secondItem="tYE-6Q-OQD" secondAttribute="centerY" id="KfE-MP-vUG"/>
-                                                    <constraint firstAttribute="height" constant="60" id="a2m-xK-BfZ"/>
-                                                    <constraint firstItem="j8Y-TK-KJs" firstAttribute="centerX" secondItem="tYE-6Q-OQD" secondAttribute="centerX" id="kMX-pC-wjL"/>
+                                                    <constraint firstAttribute="height" constant="120" id="hn6-OZ-wVB"/>
                                                 </constraints>
-                                            </view>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="DgA-o9-qGN" firstAttribute="leading" secondItem="6Hr-T5-rbV" secondAttribute="leading" id="X7G-UX-VTg"/>
                                             <constraint firstAttribute="width" constant="400" id="ims-lk-Kwu"/>
                                             <constraint firstAttribute="trailing" secondItem="DgA-o9-qGN" secondAttribute="trailing" id="mZs-9K-bwc"/>
-                                            <constraint firstAttribute="height" constant="706" id="vVf-Dz-MBe"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -191,13 +199,18 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="j8Y-TK-KJs" id="Md8-vL-BB1"/>
+                        <outlet property="bodyView" destination="rlV-2S-GTK" id="Zho-FJ-azv"/>
+                        <outlet property="bodyViewHeightConstraint" destination="Qbt-Zv-VQi" id="Ovg-9S-MSP"/>
                         <outlet property="cancelButton" destination="GhE-H5-uxs" id="rtW-Tc-Gwm"/>
                         <outlet property="contentView" destination="6Hr-T5-rbV" id="DLe-kp-Mqn"/>
-                        <outlet property="contentViewHeightConstraint" destination="vVf-Dz-MBe" id="cf9-dr-irR"/>
                         <outlet property="contentViewWidthConstraint" destination="ims-lk-Kwu" id="WGZ-4Y-HhY"/>
                         <outlet property="dateLabel" destination="wST-w4-iEy" id="knL-B1-SQE"/>
                         <outlet property="datePicker" destination="sTf-9L-gRl" id="kGa-tF-4Rv"/>
                         <outlet property="descriptionTextView" destination="XhL-8a-8MW" id="j1k-Mj-nbq"/>
+                        <outlet property="footerView" destination="l9j-jM-jd8" id="SfQ-pA-16A"/>
+                        <outlet property="footerViewHeightConstraint" destination="hn6-OZ-wVB" id="KuL-Yc-RmC"/>
+                        <outlet property="headerView" destination="DgA-o9-qGN" id="fIM-Q7-1d7"/>
+                        <outlet property="headerViewHeightConstraint" destination="xyv-5f-uSa" id="yCz-vY-DEB"/>
                         <outlet property="saveButton" destination="Hkz-KJ-5he" id="liJ-xb-Nfv"/>
                         <outlet property="scrollView" destination="gKT-wY-3yi" id="6YV-F0-zRu"/>
                         <segue destination="geR-xZ-M0O" kind="show" identifier="surveyNavigationChoice" id="oqt-9u-rzU"/>

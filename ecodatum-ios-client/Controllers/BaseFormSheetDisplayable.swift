@@ -19,6 +19,10 @@ class BaseFormSheetDisplayable: BaseContentViewScrollable {
 
   @IBOutlet weak var contentViewWidthConstraint: NSLayoutConstraint!
 
+  private var isHeaderViewRemoved: Bool = false
+  
+  private var isFooterViewRemoved: Bool = false
+  
   override func viewWillAppear(_ animated: Bool) {
 
     super.viewWillAppear(animated)
@@ -28,7 +32,10 @@ class BaseFormSheetDisplayable: BaseContentViewScrollable {
 
       if viewControllerManager.formSheetSegue?.segueType == .view {
 
-        footerView.removeFromSuperview()
+        if !isFooterViewRemoved {
+          isFooterViewRemoved = true
+          footerView.removeFromSuperview()
+        }
         preferredHeight = headerViewHeightConstraint.constant +
           bodyViewHeightConstraint.constant
 
@@ -42,7 +49,10 @@ class BaseFormSheetDisplayable: BaseContentViewScrollable {
 
     } else {
 
-      headerView.removeFromSuperview()
+      if !isHeaderViewRemoved {
+        isHeaderViewRemoved = true
+        headerView.removeFromSuperview()
+      }
       preferredHeight = bodyViewHeightConstraint.constant +
         footerViewHeightConstraint.constant
 
@@ -92,6 +102,12 @@ class BaseFormSheetDisplayable: BaseContentViewScrollable {
   @IBAction func touchUpInside(_ sender: UIButton) {
     if sender == cancelButton {
       dismiss(animated: true, completion: nil)
+    }
+  }
+
+  private func removeView(_ view: UIView) {
+    if view.isDescendant(of: self.view) {
+      view.removeFromSuperview()
     }
   }
   

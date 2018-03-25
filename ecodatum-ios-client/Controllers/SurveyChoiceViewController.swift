@@ -42,6 +42,36 @@ class SurveyChoiceViewController: BaseContentViewScrollable {
 
   }
 
+  override func prepare(for segue: UIStoryboardSegue,
+                        sender: Any?) {
+
+    super.prepare(for: segue, sender: sender)
+
+    if let formSheetSegue = segue as? FormSheetSegue,
+       let identifier = formSheetSegue.identifier,
+       let viewControllerSegue = ViewControllerSegue(rawValue: identifier) {
+
+      switch viewControllerSegue {
+
+      case .newSurvey:
+        formSheetSegue.segueType = .new
+
+      case .updateSurvey:
+        formSheetSegue.segueType = .edit
+
+      case .viewSurvey:
+        formSheetSegue.segueType = .view
+
+      default:
+        LOG.error("Unexpected segue type: \(identifier)")
+
+      }
+
+    }
+
+  }
+
+
 }
 
 extension SurveyChoiceViewController: SurveyHandler {
