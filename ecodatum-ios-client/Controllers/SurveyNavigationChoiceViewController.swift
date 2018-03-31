@@ -1,7 +1,7 @@
 import SwiftValidator
 import UIKit
 
-class SurveyNavigationChoiceViewController: BaseContentViewScrollable {
+class SurveyNavigationChoiceViewController: BaseNavigationChoice {
   
   @IBOutlet weak var surveyDateLabel: UILabel!
   
@@ -39,14 +39,6 @@ class SurveyNavigationChoiceViewController: BaseContentViewScrollable {
     
     addNewNoteButton.rounded()
     viewExistingNotesButton.rounded()
-    
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    
-    super.viewWillAppear(animated)
-    
-    navigationController?.navigationBar.isHidden = false
     
   }
   

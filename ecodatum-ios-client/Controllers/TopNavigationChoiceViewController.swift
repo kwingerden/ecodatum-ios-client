@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class TopNavigationChoiceViewController: BaseContentViewScrollable {
+class TopNavigationChoiceViewController: BaseNavigationChoice {
   
   @IBOutlet weak var organizationNameLabel: UILabel!
   
@@ -23,8 +23,10 @@ class TopNavigationChoiceViewController: BaseContentViewScrollable {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = true
+    
   }
   
   @IBAction func touchUpInsider(_ sender: UIButton) {

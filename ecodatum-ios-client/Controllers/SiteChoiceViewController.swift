@@ -33,9 +33,13 @@ class SiteChoiceViewController: BaseContentViewScrollable {
    
     super.prepare(for: segue, sender: sender)
 
-    if let formSheetSegue = segue as? FormSheetSegue,
-      let identifier = formSheetSegue.identifier,
-      let viewControllerSegue = ViewControllerSegue(rawValue: identifier) {
+    guard let identifier = segue.identifier,
+      let viewControllerSegue = ViewControllerSegue(rawValue: identifier) else {
+        LOG.error("Failed to determine view controller segue")
+        return
+    }
+    
+    if let formSheetSegue = segue as? FormSheetSegue {
 
       switch viewControllerSegue {
 
@@ -53,6 +57,12 @@ class SiteChoiceViewController: BaseContentViewScrollable {
 
       }
 
+    } else if viewControllerSegue == .siteNavigationChoice {
+      
+      if let viewController = segue.destination as? BaseNavigationChoice {
+        viewController.isNavigationBarHidden = false
+      }
+      
     }
     
   }

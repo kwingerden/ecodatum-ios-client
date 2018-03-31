@@ -314,10 +314,10 @@ struct NewOrUpdatePhotoRequest: ProtectedNetworkRequest {
 struct PhotoResponse: NetworkResponse {
   
   let id: Identifier // photo id
-  let code: String
-  let surveyId: Identifier
-  let description: String
   let userId: Identifier
+  let description: String
+  let imageTypeId: Identifier
+  let surveyId: Identifier
   let createdAt: Date
   let updatedAt: Date
   

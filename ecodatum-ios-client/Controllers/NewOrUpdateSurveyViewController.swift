@@ -62,6 +62,27 @@ class NewOrUpdateSurveyViewController: BaseFormSheetDisplayable {
     navigationController?.navigationBar.isHidden = false
   }
   
+  override func prepare(for segue: UIStoryboardSegue,
+                        sender: Any?) {
+    
+    super.prepare(for: segue, sender: sender)
+    
+    guard let identifier = segue.identifier,
+      let viewControllerSegue = ViewControllerSegue(rawValue: identifier) else {
+        LOG.error("Failed to determine view controller segue")
+        return
+    }
+    
+    if viewControllerSegue == .surveyNavigationChoice {
+      
+      if let viewController = segue.destination as? BaseNavigationChoice {
+        viewController.isNavigationBarHidden = true
+      }
+      
+    }
+    
+  }
+  
   @IBAction func datePickerChange() {
     dateLabel.text = "Date: \(dateFormatter.string(from: datePicker.date))"
   }
