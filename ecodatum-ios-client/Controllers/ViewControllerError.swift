@@ -12,6 +12,7 @@ enum ViewControllerError: Error {
   case noSiteSurveys(name: String)
   case noSurveyIdentifier
   case noSurveyMeasurements(name: String)
+  case noSurveyPhotos(date: Date)
   case noUserOrganizations
   case siteNameConflict(name: String)
   
@@ -52,6 +53,9 @@ extension ViewControllerError: LocalizedError {
 
     case let .noSurveyMeasurements(name):
       return "Survey \"\(name)\" does not have any measurements."
+      
+    case let .noSurveyPhotos(date):
+      return "Survey \"\(Formatter.basic.string(from: date))\" does not have any photos."
 
     case .noUserOrganizations:
       return "User does not belong to any Organizations."

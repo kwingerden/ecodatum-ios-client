@@ -41,6 +41,7 @@
 		0143D3C2205F436700BF8013 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3C1205F436700BF8013 /* katex.min.js */; };
 		0143D3C4205F43A500BF8013 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0143D3C3205F43A500BF8013 /* highlight.min.js */; };
 		0148F7B2206F486500A04AF9 /* BaseNavigationChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148F7B1206F486500A04AF9 /* BaseNavigationChoice.swift */; };
+		0148F7B4207151F200A04AF9 /* PhotoChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0148F7B3207151F200A04AF9 /* PhotoChoice.storyboard */; };
 		014B316120145C8B00B81D2C /* SiteMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014B316020145C8B00B81D2C /* SiteMap.storyboard */; };
 		014B316320145CF300B81D2C /* SiteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B316220145CF300B81D2C /* SiteMapViewController.swift */; };
 		01563DD9200D7D6C009A478A /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01563DD8200D7D6C009A478A /* DatabaseError.swift */; };
@@ -177,6 +178,7 @@
 		0143D3C3205F43A500BF8013 /* highlight.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
 		0143D3C5205F4D7E00BF8013 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
 		0148F7B1206F486500A04AF9 /* BaseNavigationChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationChoice.swift; sourceTree = "<group>"; };
+		0148F7B3207151F200A04AF9 /* PhotoChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoChoice.storyboard; sourceTree = "<group>"; };
 		014B316020145C8B00B81D2C /* SiteMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SiteMap.storyboard; sourceTree = "<group>"; };
 		014B316220145CF300B81D2C /* SiteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteMapViewController.swift; sourceTree = "<group>"; };
 		01563DD8200D7D6C009A478A /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				01677116204CF30000A04E32 /* NewOrUpdatePhoto.storyboard */,
 				0139801B204E41B300D85848 /* NewOrUpdateAudioClip.storyboard */,
 				0143D3B2205F16E500BF8013 /* NewOrUpdateNote.storyboard */,
+				0148F7B3207151F200A04AF9 /* PhotoChoice.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				013F674E2009AC95001B8586 /* Main.storyboard in Resources */,
 				0143D3B8205F1FD100BF8013 /* quill.html in Resources */,
 				0185F721201EB3DA00B176C6 /* SiteNavigationChoice.storyboard in Resources */,
+				0148F7B4207151F200A04AF9 /* PhotoChoice.storyboard in Resources */,
 				0143D3C4205F43A500BF8013 /* highlight.min.js in Resources */,
 				0185F71D201E8DEE00B176C6 /* SiteChoice.storyboard in Resources */,
 				0143D3BC205F280F00BF8013 /* quill.min.js in Resources */,

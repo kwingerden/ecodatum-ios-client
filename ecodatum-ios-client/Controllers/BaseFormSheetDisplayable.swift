@@ -104,11 +104,5 @@ class BaseFormSheetDisplayable: BaseContentViewScrollable {
       dismiss(animated: true, completion: nil)
     }
   }
-
-  private func removeView(_ view: UIView) {
-    if view.isDescendant(of: self.view) {
-      view.removeFromSuperview()
-    }
-  }
   
 }

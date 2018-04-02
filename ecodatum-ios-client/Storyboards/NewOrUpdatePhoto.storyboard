@@ -45,10 +45,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="bq4-nb-eP0" secondAttribute="trailing" id="soi-Ri-Blv"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dNf-Ig-8Hc">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dNf-Ig-8Hc">
                                                 <rect key="frame" x="0.0" y="72" width="400.5" height="633"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="enu-a7-4dI">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="enu-a7-4dI">
                                                         <rect key="frame" x="0.0" y="0.0" width="400.5" height="465"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRW-KT-OXA">
@@ -91,6 +91,9 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="8CA-wn-BIa"/>
+                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
@@ -215,6 +218,8 @@
                         <outlet property="activityIndicator" destination="ygR-v2-0Pg" id="aVM-sO-QSW"/>
                         <outlet property="bodyView" destination="dNf-Ig-8Hc" id="a3e-wp-M4e"/>
                         <outlet property="bodyViewHeightConstraint" destination="QH9-p4-qE5" id="SPl-gc-yhV"/>
+                        <outlet property="cameraButtonsView" destination="2bS-co-HQN" id="S8h-mv-9ZQ"/>
+                        <outlet property="cameraButtonsViewHeightConstraint" destination="8CA-wn-BIa" id="BYx-na-dBo"/>
                         <outlet property="cancelButton" destination="bq4-nb-eP0" id="8uj-Vt-0F7"/>
                         <outlet property="contentView" destination="1yb-0O-pNT" id="K7m-Ut-SI3"/>
                         <outlet property="contentViewWidthConstraint" destination="rgj-MT-46d" id="xLz-5o-jU6"/>

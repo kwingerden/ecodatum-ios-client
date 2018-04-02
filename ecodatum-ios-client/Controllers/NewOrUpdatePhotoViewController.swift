@@ -17,6 +17,12 @@ class NewOrUpdatePhotoViewController: BaseFormSheetDisplayable {
 
   @IBOutlet weak var savePhotoButton: UIButton!
 
+  @IBOutlet weak var cameraButtonsView: UIView!
+  
+  @IBOutlet weak var cameraButtonsViewHeightConstraint: NSLayoutConstraint!
+  
+  private var isCameraButtonsViewRemoved: Bool = false
+  
   private var hasPhotoBeenPicked: Bool = false
 
   override func viewDidLoad() {
@@ -65,8 +71,21 @@ class NewOrUpdatePhotoViewController: BaseFormSheetDisplayable {
   override func viewWillAppear(_ animated: Bool) {
     
     super.viewWillAppear(animated)
+    
     navigationController?.navigationBar.isHidden = false
-  
+    
+    if viewControllerManager.isFormSheetSegue {
+      if viewControllerManager.formSheetSegue?.segueType == .view {
+        if !isCameraButtonsViewRemoved {
+          isCameraButtonsViewRemoved = true
+          cameraButtonsView.removeFromSuperview()
+          cameraButtonsViewHeightConstraint.constant = 0
+        }
+        preferredContentSize.height = preferredContentSize.height -
+          cameraButtonsViewHeightConstraint.constant
+      }
+    }
+    
   }
   
   override func prepare(for segue: UIStoryboardSegue,
@@ -153,7 +172,9 @@ class NewOrUpdatePhotoViewController: BaseFormSheetDisplayable {
   private func updateFieldValues() {
     
     if let photo = viewControllerManager.photo {
-      //imageView.image = UIImage.base64Decode(photo.base64Encoded)
+      viewControllerManager.setImage(
+        imageView,
+        imageId: photo.id)
       descriptionTextView.text = photo.description
     }
     
@@ -185,6 +206,16 @@ class NewOrUpdatePhotoViewController: BaseFormSheetDisplayable {
       description: description,
       preAsyncBlock: preAsyncUIOperation,
       postAsyncBlock: postAsyncUIOperation)
+    
+  }
+  
+  override func postAsyncUIOperation() {
+    
+    super.postAsyncUIOperation()
+    
+    if viewControllerManager.isFormSheetSegue {
+      dismiss(animated: true, completion: nil)
+    }
     
   }
   

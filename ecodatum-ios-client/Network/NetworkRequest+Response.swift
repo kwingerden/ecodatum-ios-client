@@ -323,3 +323,10 @@ struct PhotoResponse: NetworkResponse {
   
 }
 
+struct DeletePhotoByIdRequest: ProtectedNetworkRequest {
+  
+  let token: AuthenticationToken
+  let photoId: Identifier
+  
+}
+

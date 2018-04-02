@@ -24,6 +24,13 @@ class NetworkManager {
     self.baseURL = baseURL
   }
   
+  func makeImageURL(_ imageId: Identifier) -> URL {
+    return baseURL
+      .appendingPathComponent("public")
+      .appendingPathComponent("images")
+      .appendingPathComponent(imageId)
+  }
+  
   func call(_ request: BasicAuthUserRequest) throws -> Promise<BasicAuthUserResponse> {
     return try executeDataRequest(
       makeDataRequest(
@@ -212,13 +219,25 @@ class NetworkManager {
         headers: Request.bearerTokenAuthHeaders(request.token),
         request: request))
   }
+  
+  func call(_ request: GetPhotosBySurveyRequest) throws -> Promise<[PhotoResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("surveys")
+          .appendingPathComponent("\(request.surveyId)")
+          .appendingPathComponent("images"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
 
   func call(_ request: NewOrUpdatePhotoRequest) throws -> Promise<PhotoResponse> {
 
     let method: HTTPMethod = request.id == nil ? .post : .put
     var url = baseURL
       .appendingPathComponent("protected")
-      .appendingPathComponent("photos")
+      .appendingPathComponent("images")
     if method == .put,
        let id = request.id {
       url = url.appendingPathComponent("\(id)")
@@ -234,6 +253,18 @@ class NetworkManager {
 
   }
 
+  func call(_ request: DeletePhotoByIdRequest) throws -> Promise<HttpOKResponse> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("images")
+          .appendingPathComponent("\(request.photoId)"),
+        method: .delete,
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
+  
   private func makeDataRequest(
     _ url: URL,
     method: HTTPMethod = .get,

@@ -61,7 +61,10 @@ class SurveyNavigationChoiceViewController: BaseNavigationChoice {
       viewControllerManager.performSegue(to: .newPhoto)
       
     case viewExistingPhotosButton:
-      break
+      
+      viewControllerManager.chooseExistingPhoto(
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation)
       
     case addNewAudioClipButton:
 

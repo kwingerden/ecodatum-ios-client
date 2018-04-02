@@ -1,3 +1,5 @@
+import Alamofire
+import AlamofireImage
 import SwiftValidator
 import UIKit
 
@@ -28,6 +30,39 @@ class PhotoChoiceViewController: BaseContentViewScrollable {
 
   }
 
+  override func prepare(for segue: UIStoryboardSegue,
+                        sender: Any?) {
+    
+    super.prepare(for: segue, sender: sender)
+    
+    guard let identifier = segue.identifier,
+      let viewControllerSegue = ViewControllerSegue(rawValue: identifier) else {
+        LOG.error("Failed to determine view controller segue")
+        return
+    }
+    
+    if let formSheetSegue = segue as? FormSheetSegue {
+      
+      switch viewControllerSegue {
+        
+      case .newPhoto:
+        formSheetSegue.segueType = .new
+        
+      case .updatePhoto:
+        formSheetSegue.segueType = .edit
+        
+      case .viewPhoto:
+        formSheetSegue.segueType = .view
+        
+      default:
+        LOG.error("Unexpected segue type: \(identifier)")
+        
+      }
+      
+    }
+    
+  }
+  
   @IBAction func buttonItemPress(_ sender: UIBarButtonItem) {
 
     switch sender {
@@ -77,15 +112,6 @@ extension PhotoChoiceViewController: UITableViewDelegate {
     return 100
   }
 
-  func tableView(_ tableView: UITableView,
-                 didSelectRowAt indexPath: IndexPath) {
-    DispatchQueue.main.async {
-      self.viewControllerManager.showSurvey(
-        self.viewControllerManager.surveys[indexPath.row],
-        segue: .surveyNavigationChoice)
-    }
-  }
-
 }
 
 extension PhotoChoiceViewController: UITableViewDataSource {
@@ -93,38 +119,35 @@ extension PhotoChoiceViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    let survey = self.viewControllerManager.surveys[indexPath.row]
-
-    cell.textLabel?.text = Formatter.basic.string(for: survey.date)
-    cell.detailTextLabel?.text = survey.description
-
-    let nextIndicator = UIImageView(image: #imageLiteral(resourceName:"NextGlyph"))
-    nextIndicator.tintColor = UIColor.black
-    cell.accessoryView = nextIndicator
-
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PhotoChoiceTableViewCell
+    let photo = viewControllerManager.photos[indexPath.row]
+    viewControllerManager.setImage(
+      cell._imageView,
+      imageId: photo.id)
+    cell.descriptionView?.text = photo.description
+    
     return cell
 
   }
 
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    return self.viewControllerManager.surveys.count
+    return viewControllerManager.photos.count
   }
 
   func tableView(_ tableView: UITableView,
                  editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
-    let survey = self.viewControllerManager.surveys[indexPath.row]
+    let photo = viewControllerManager.photos[indexPath.row]
 
     let view = UITableViewRowAction(
       style: .normal,
       title: "View") {
 
       (_, _) in
-      self.viewControllerManager.showSurvey(
-        survey,
-        segue: .viewSurvey)
+      self.viewControllerManager.showPhoto(
+        photo,
+        segue: .viewPhoto)
 
     }
 
@@ -133,10 +156,9 @@ extension PhotoChoiceViewController: UITableViewDataSource {
       title: "Edit") {
 
       (_, _) in
-      let survey = self.viewControllerManager.surveys[indexPath.row]
-      self.viewControllerManager.showSurvey(
-        survey,
-        segue: .updateSurvey)
+      self.viewControllerManager.showPhoto(
+        photo,
+        segue: .updatePhoto)
 
     }
     edit.backgroundColor = DARK_GREEN
@@ -146,7 +168,7 @@ extension PhotoChoiceViewController: UITableViewDataSource {
       title: "Delete") {
 
       (_, _) in
-      self.startDeleteSurvey(survey)
+      self.startDeletePhoto(photo)
 
     }
 
@@ -168,7 +190,7 @@ extension PhotoChoiceViewController: UITableViewDataSource {
     }
 
     if organizationMemberRole == .ADMINISTRATOR ||
-         survey.userId == user.userId {
+         photo.userId == user.userId {
 
       return [delete, edit, view]
 
@@ -180,30 +202,30 @@ extension PhotoChoiceViewController: UITableViewDataSource {
 
   }
 
-  private func reloadSurveys(_ deletedSurvey: Survey) {
+  private func reloadPhotos(_ deletedPhoto: Photo) {
 
     postAsyncUIOperation()
     self.tableView.reloadData()
 
   }
 
-  private func okToDeleteSurvey(_ survey: Survey) {
+  private func okToDeletePhoto(_ photo: Photo) {
 
-    viewControllerManager.deleteSurvey(
-      survey: survey,
+    viewControllerManager.deletePhoto(
+      photo: photo,
       preAsyncBlock: preAsyncUIOperation) {
-      self.reloadSurveys(survey)
+      self.reloadPhotos(photo)
     }
 
   }
 
-  private func startDeleteSurvey(_ survey: Survey) {
+  private func startDeletePhoto(_ photo: Photo) {
 
     let okAction = UIAlertAction(
       title: "Ok",
       style: UIAlertActionStyle.destructive) {
       _ in
-      self.okToDeleteSurvey(survey)
+      self.okToDeletePhoto(photo)
     }
 
     let cancelAction = UIAlertAction(
@@ -213,14 +235,9 @@ extension PhotoChoiceViewController: UITableViewDataSource {
       // do nothing
     }
 
-    guard let dateString = Formatter.basic.string(for: survey.date) else {
-      LOG.error("Failed to parse survey date: \(survey.date)")
-      return
-    }
-
     let alertController = UIAlertController(
-      title: "Delete Survey?",
-      message: "Are you sure you want to delete survey taken at \(dateString)?",
+      title: "Delete Photo?",
+      message: "Are you sure you want to delete this photo?",
       preferredStyle: .alert)
 
     alertController.addAction(okAction)
@@ -235,6 +252,19 @@ extension PhotoChoiceViewController: UITableViewDataSource {
 
 }
 
+class PhotoChoiceTableViewCell: UITableViewCell {
+  
+  @IBOutlet weak var _imageView: UIImageView!
+  
+  @IBOutlet weak var descriptionView: UITextView!
+  
+  override func layoutSubviews() {
+    _imageView.darkBordered()
+    descriptionView.rounded()
+    descriptionView.lightBordered()
+  }
+  
+}
 
 
 

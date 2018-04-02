@@ -11,14 +11,7 @@ class NewOrUpdateSurveyViewController: BaseFormSheetDisplayable {
   @IBOutlet weak var descriptionTextView: UITextView!
   
   @IBOutlet weak var saveButton: UIButton!
-  
-  private var dateFormatter: DateFormatter {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = DateFormatter.Style.medium
-    dateFormatter.timeStyle = DateFormatter.Style.medium
-    return dateFormatter
-  }
-  
+    
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -84,7 +77,7 @@ class NewOrUpdateSurveyViewController: BaseFormSheetDisplayable {
   }
   
   @IBAction func datePickerChange() {
-    dateLabel.text = "Date: \(dateFormatter.string(from: datePicker.date))"
+    dateLabel.text = "Date: \(Formatter.basic.string(from: datePicker.date))"
   }
   
   @IBAction override func touchUpInside(_ sender: UIButton) {

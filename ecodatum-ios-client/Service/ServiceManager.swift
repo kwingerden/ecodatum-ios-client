@@ -1,5 +1,8 @@
+import Alamofire
+import AlamofireImage
 import Foundation
 import Hydra
+import UIKit
 
 class ServiceManager {
   
@@ -11,6 +14,10 @@ class ServiceManager {
        networkManager: NetworkManager) {
     self.databaseManager = databaseManager
     self.networkManager = networkManager
+  }
+  
+  func setImage(_ imageView: UIImageView, imageId: Identifier) {
+    imageView.af_setImage(withURL: networkManager.makeImageURL(imageId))
   }
   
   func setAuthenticatedUser(_ user: AuthenticatedUserRecord) throws {
@@ -106,8 +113,16 @@ class ServiceManager {
   func call(_ request: GetMeasurementsBySurveyRequest) throws -> Promise<[MeasurementResponse]> {
     return try networkManager.call(request)
   }
+  
+  func call(_ request: GetPhotosBySurveyRequest) throws -> Promise<[PhotoResponse]> {
+    return try networkManager.call(request)
+  }
 
   func call(_ request: NewOrUpdatePhotoRequest) throws -> Promise<PhotoResponse> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: DeletePhotoByIdRequest) throws -> Promise<HttpOKResponse> {
     return try networkManager.call(request)
   }
   

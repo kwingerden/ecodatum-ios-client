@@ -459,6 +459,10 @@ class ViewControllerManager:
     
   }
   
+  func setImage(_ imageView: UIImageView, imageId: Identifier) {
+    serviceManager.setImage(imageView, imageId: imageId)
+  }
+  
   func login(email: String,
              password: String,
              preAsyncBlock: PreAsyncBlock? = nil,
@@ -1097,6 +1101,91 @@ class ViewControllerManager:
 
   }
 
+  func showPhoto(_ photo: Photo, segue: ViewControllerSegue) {
+    
+    self.photo = photo
+    performSegue(to: segue)
+    
+  }
+  
+  func chooseExistingPhoto(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    guard let surveyId = survey?.id else {
+      handleError(ViewControllerError.noSurveyIdentifier)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetPhotosBySurveyRequest(
+          token: token,
+          surveyId: surveyId))
+        .then(in: .main, handlePhotos)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func deletePhoto(
+    photo: Photo,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+    
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        DeletePhotoByIdRequest(
+          token: token,
+          photoId: photo.id))
+        .then(in: .main) {
+          _ in
+          self.photoHandler.handleDeletedPhoto(photo: photo)
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
   func handleNewSite(site: Site) {
 
     self.site = site
@@ -1236,6 +1325,25 @@ class ViewControllerManager:
 
   }
   
+  func handlePhotos(_ photos: [Photo]) {
+    
+    self.photos = photos
+    
+    if photos.isEmpty {
+ 
+      showErrorMessage(
+        "No Existing Photos",
+        ViewControllerError.noSurveyPhotos(
+          date: survey!.date).localizedDescription)
+      
+    } else {
+      
+      performSegue(to: .photoChoice)
+      
+    }
+    
+  }
+
   private func isResponseStatus(_ error: Error, status: Int) -> Bool {
     if let afError = error as? AFError,
       afError.responseCode == status {
