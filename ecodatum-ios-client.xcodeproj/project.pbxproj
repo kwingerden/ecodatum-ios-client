@@ -122,6 +122,8 @@
 		01EBEA4E1FFB4E25008E4E41 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */; };
 		01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */; };
 		01EBEA531FFB56A2008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */; };
+		01EC839720733BB700693C51 /* NewOrUpdateData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EC839620733BB700693C51 /* NewOrUpdateData.storyboard */; };
+		01EC839920733BDD00693C51 /* NewOrUpdateDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */; };
 		01FA40652022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */; };
 		01FA40672022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */; };
 		AF33D05C04729B7F2D130591 /* PhotoChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */; };
@@ -257,6 +259,8 @@
 		01EBEA4B1FFB4E24008E4E41 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		01EBEA4C1FFB4E24008E4E41 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework; sourceTree = "<group>"; };
 		01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
+		01EC839620733BB700693C51 /* NewOrUpdateData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewOrUpdateData.storyboard; sourceTree = "<group>"; };
+		01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdateDataViewController.swift; sourceTree = "<group>"; };
 		01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrimaryAbioticFactorChoice.storyboard; sourceTree = "<group>"; };
 		01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryAbioticFactorChoiceViewController.swift; sourceTree = "<group>"; };
 		AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentViewScrollable.swift; sourceTree = "<group>"; };
@@ -497,6 +501,7 @@
 				AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */,
 				AF33DC0228110028B336B6BD /* BaseFormSheetDisplayable.swift */,
 				0148F7B1206F486500A04AF9 /* BaseNavigationChoice.swift */,
+				01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				0139801B204E41B300D85848 /* NewOrUpdateAudioClip.storyboard */,
 				0143D3B2205F16E500BF8013 /* NewOrUpdateNote.storyboard */,
 				0148F7B3207151F200A04AF9 /* PhotoChoice.storyboard */,
+				01EC839620733BB700693C51 /* NewOrUpdateData.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				01677117204CF30000A04E32 /* NewOrUpdatePhoto.storyboard in Resources */,
 				0197EA392037DB9D00E0D04A /* SurveyNavigationChoice.storyboard in Resources */,
 				0167710F204B4AF900A04E32 /* SecondaryAbioticFactorChoice.storyboard in Resources */,
+				01EC839720733BB700693C51 /* NewOrUpdateData.storyboard in Resources */,
 				0197EA412037F1C900E0D04A /* MeasurementUnitChoice.storyboard in Resources */,
 				0197EA332037D33A00E0D04A /* SurveyChoice.storyboard in Resources */,
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
@@ -750,6 +757,7 @@
 				01986002201700E2005067F8 /* DatabaseRecord.swift in Sources */,
 				01CCEC8C2015498700D64CE8 /* Validator+Transformer.swift in Sources */,
 				015E34A92006CFD7006A74C7 /* NetworkHelper.swift in Sources */,
+				01EC839920733BDD00693C51 /* NewOrUpdateDataViewController.swift in Sources */,
 				01D8B2FC1FFC849F00450470 /* DatabaseManager.swift in Sources */,
 				0185F71B201E82B100B176C6 /* ViewControllerHolder.swift in Sources */,
 				0197EA4F203A865E00E0D04A /* ViewControllerHandler.swift in Sources */,

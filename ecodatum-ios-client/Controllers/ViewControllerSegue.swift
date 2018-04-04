@@ -37,6 +37,11 @@ enum ViewControllerSegue: String {
   case surveyChoice
   case surveyNavigationChoice
   
+  case newData
+  case updateData
+  case viewData
+  case dataChoice
+  
   case loginToAccount
   
   case main

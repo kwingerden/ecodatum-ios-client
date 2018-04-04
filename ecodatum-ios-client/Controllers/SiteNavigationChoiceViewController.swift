@@ -5,9 +5,9 @@ class SiteNavigationChoiceViewController: BaseNavigationChoice {
   
   @IBOutlet weak var siteNameLabel: UILabel!
   
-  @IBOutlet weak var startNewSurveyButton: UIButton!
+  @IBOutlet weak var collectNewDataButton: UIButton!
   
-  @IBOutlet weak var viewExistingSurveysButton: UIButton!
+  @IBOutlet weak var viewExistingDataButton: UIButton!
   
   override func viewDidLoad() {
   
@@ -15,8 +15,8 @@ class SiteNavigationChoiceViewController: BaseNavigationChoice {
   
     title = viewControllerManager.site!.name
     siteNameLabel.text = viewControllerManager.site!.name
-    startNewSurveyButton.rounded()
-    viewExistingSurveysButton.rounded()
+    collectNewDataButton.rounded()
+    viewExistingDataButton.rounded()
     
   }
   
@@ -24,17 +24,17 @@ class SiteNavigationChoiceViewController: BaseNavigationChoice {
    
     switch sender {
       
-    case startNewSurveyButton:
+    case collectNewDataButton:
       
       viewControllerManager.performSegue(
         from: self,
-        to: .newSurvey)
+        to: .newData)
       
-    case viewExistingSurveysButton:
+    case viewExistingDataButton:
       
-      viewControllerManager.chooseExistingSurvey(
-        preAsyncBlock: preAsyncUIOperation,
-        postAsyncBlock: postAsyncUIOperation)
+      viewControllerManager.performSegue(
+        from: self,
+        to: .dataChoice)
       
     default:
       LOG.error("Unrecognized button: \(sender)")

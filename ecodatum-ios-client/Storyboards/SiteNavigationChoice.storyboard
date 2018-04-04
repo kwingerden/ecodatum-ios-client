@@ -36,11 +36,11 @@
                                                     <constraint firstAttribute="height" constant="60" id="6oZ-bv-Qge"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Start New Survey">
+                                                <state key="normal" title="Collect New Data">
                                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsider:" destination="j9v-Zd-bTK" eventType="touchUpInside" id="FPO-Cw-taL"/>
+                                                    <action selector="touchUpInsider:" destination="j9v-Zd-bTK" eventType="touchUpInside" id="gQw-Vz-EUe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2C8-qL-Y6g">
@@ -50,11 +50,11 @@
                                                     <constraint firstAttribute="height" constant="60" id="n5B-ZX-Igl"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="View Existing Surveys">
+                                                <state key="normal" title="View Existing Data">
                                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsider:" destination="j9v-Zd-bTK" eventType="touchUpInside" id="tDr-cf-mus"/>
+                                                    <action selector="touchUpInsider:" destination="j9v-Zd-bTK" eventType="touchUpInside" id="ZAx-5b-e6P"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVK-qq-ahk">
@@ -100,34 +100,25 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="7Hf-YA-xuA" id="QRI-JM-VhD"/>
+                        <outlet property="collectNewDataButton" destination="Oqq-ZJ-Wri" id="QDA-KE-bEq"/>
                         <outlet property="contentView" destination="cMX-pe-KuS" id="Cfv-Dx-uHP"/>
                         <outlet property="scrollView" destination="36o-8k-kM1" id="40N-OG-h5k"/>
                         <outlet property="siteNameLabel" destination="Ojd-QQ-psf" id="LUo-yN-9sZ"/>
-                        <outlet property="startNewSurveyButton" destination="Oqq-ZJ-Wri" id="8Qw-KT-6Gm"/>
-                        <outlet property="viewExistingSurveysButton" destination="2C8-qL-Y6g" id="7Sg-s4-4hj"/>
-                        <segue destination="nSe-Br-syk" kind="show" identifier="newSurvey" id="nth-us-gyd"/>
-                        <segue destination="Ubq-GD-0rb" kind="show" identifier="surveyChoice" id="f8L-Nn-QpJ"/>
+                        <outlet property="viewExistingDataButton" destination="2C8-qL-Y6g" id="LUt-1V-06U"/>
+                        <segue destination="GCI-V7-ewq" kind="show" identifier="newData" id="L6q-bv-G4A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czA-CW-qwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.75" y="59.765624999999993"/>
         </scene>
-        <!--NewOrUpdateSurvey-->
-        <scene sceneID="bCs-3g-y7E">
+        <!--NewOrUpdateData-->
+        <scene sceneID="fRj-K6-dMF">
             <objects>
-                <viewControllerPlaceholder storyboardName="NewOrUpdateSurvey" id="nSe-Br-syk" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PW7-mi-mva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="NewOrUpdateData" id="GCI-V7-ewq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Plh-Kr-5S0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="582" y="-52"/>
-        </scene>
-        <!--SurveyChoice-->
-        <scene sceneID="4HC-st-VJW">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SurveyChoice" id="Ubq-GD-0rb" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lQQ-Uy-F5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="566" y="115"/>
+            <point key="canvasLocation" x="502" y="-62"/>
         </scene>
     </scenes>
 </document>
