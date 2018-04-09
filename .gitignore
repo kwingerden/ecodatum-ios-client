@@ -6,6 +6,9 @@
 .env
 ecodatum-ios-client/Configuration.swift
 
+## Mac OS
+.DS_Store
+
 ## Build generated
 build/
 DerivedData/
