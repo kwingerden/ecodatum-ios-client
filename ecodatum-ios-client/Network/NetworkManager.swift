@@ -265,6 +265,42 @@ class NetworkManager {
         request: request))
   }
   
+  func call(_ request: GetEcosystemFactorsRequest) throws -> Promise<[EcosystemFactorResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("public")
+          .appendingPathComponent("ecosystemFactors"),
+        request: request))
+  }
+  
+  func call(_ request: GetMediaTypesRequest) throws -> Promise<[MediaTypeResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("public")
+          .appendingPathComponent("mediaTypes"),
+        request: request))
+  }
+  
+  func call(_ request: GetQualitativeObservationTypesRequest) throws -> Promise<[QualitativeObservationTypeResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("public")
+          .appendingPathComponent("qualitativeObservationTypes"),
+        request: request))
+  }
+  
+  func call(_ request: GetQuantitativeObservationTypesRequest) throws -> Promise<[QuantitativeObservationTypeResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("public")
+          .appendingPathComponent("quantitativeObservationTypes"),
+        request: request))
+  }
+  
   private func makeDataRequest(
     _ url: URL,
     method: HTTPMethod = .get,

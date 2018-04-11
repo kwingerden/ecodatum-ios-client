@@ -7,6 +7,8 @@ class ViewContext {
     case abioticFactor
     case abioticFactors
     
+    case ecosystemFactors
+    
     case organization
     case organizations
     case organizationMembers
@@ -17,8 +19,13 @@ class ViewContext {
     case measurementUnit
     case measurementUnits
 
+    case mediaTypes
+    
     case photo
     case photos
+
+    case qualitativeObservationTypes
+    case quantitativeObservationTypes
     
     case primaryAbioticFactor
     case secondaryAbioticFactor
@@ -32,7 +39,9 @@ class ViewContext {
   }
 
   enum Value {
-        
+    
+    case ecosystemFactors([EcosystemFactor])
+    
     case organization(Organization)
     case organizations([Organization])
     case organizationMembers([OrganizationMember])
@@ -40,6 +49,8 @@ class ViewContext {
     case measurement(Measurement)
     case measurements([Measurement])
 
+    case mediaTypes([MediaType])
+    
     case site(Site)
     case sites([Site])
     
@@ -51,6 +62,9 @@ class ViewContext {
 
     case photo(Photo)
     case photos([Photo])
+    
+    case qualitativeObservationTypes([QualitativeObservationType])
+    case quantitativeObservationTypes([QuantitativeObservationType])
     
     case survey(Survey)
     case surveys([Survey])

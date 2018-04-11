@@ -126,4 +126,20 @@ class ServiceManager {
     return try networkManager.call(request)
   }
   
+  func call(_ request: GetEcosystemFactorsRequest) throws -> Promise<[EcosystemFactorResponse]> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: GetMediaTypesRequest) throws -> Promise<[MediaTypeResponse]> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: GetQualitativeObservationTypesRequest) throws -> Promise<[QualitativeObservationTypeResponse]> {
+    return try networkManager.call(request)
+  }
+  
+  func call(_ request: GetQuantitativeObservationTypesRequest) throws -> Promise<[QuantitativeObservationTypeResponse]> {
+    return try networkManager.call(request)
+  }
+  
 }

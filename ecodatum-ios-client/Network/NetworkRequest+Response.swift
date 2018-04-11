@@ -330,3 +330,47 @@ struct DeletePhotoByIdRequest: ProtectedNetworkRequest {
   
 }
 
+struct GetEcosystemFactorsRequest: NetworkRequest {
+  
+}
+
+struct EcosystemFactorResponse: NetworkResponse {
+  
+  let id: Identifier
+  let name: String
+  
+}
+
+struct GetMediaTypesRequest: NetworkRequest {
+  
+}
+
+struct MediaTypeResponse: NetworkResponse {
+  
+  let id: Identifier
+  let name: String
+  
+}
+
+struct GetQualitativeObservationTypesRequest: NetworkRequest {
+  
+}
+
+struct QualitativeObservationTypeResponse: NetworkResponse {
+  
+  let id: Identifier
+  let name: String
+  
+}
+
+struct GetQuantitativeObservationTypesRequest: NetworkRequest {
+  
+}
+
+struct QuantitativeObservationTypeResponse: NetworkResponse {
+  
+  let id: Identifier
+  let name: String
+  
+}
+

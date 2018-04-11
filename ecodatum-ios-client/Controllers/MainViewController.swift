@@ -11,8 +11,14 @@ class MainViewController: BaseContentViewScrollable {
         
       try initialize()
 
-      viewControllerManager.getMeasurementUnits {
-        self.viewControllerManager.main()
+      viewControllerManager.getEcoDatumFactors {
+        self.viewControllerManager.getMediaTypes {
+          self.viewControllerManager.getQualitativeObservationTypes() {
+            self.viewControllerManager.getQuantitativeObservationTypes() {
+              self.viewControllerManager.main()
+            }
+          }
+        }
       }
 
     } catch let error {

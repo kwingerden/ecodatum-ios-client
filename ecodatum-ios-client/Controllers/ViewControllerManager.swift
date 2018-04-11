@@ -5,11 +5,15 @@ import SwiftValidator
 import UIKit
 
 typealias AuthenticatedUser = AuthenticatedUserRecord
+typealias EcosystemFactor = EcosystemFactorResponse
 typealias Measurement = MeasurementResponse
 typealias MeasurementUnit = MeasurementUnitResponse
+typealias MediaType = MediaTypeResponse
 typealias Organization = OrganizationResponse
 typealias OrganizationMember = OrganizationMemberResponse
 typealias Photo = PhotoResponse
+typealias QualitativeObservationType = QualitativeObservationTypeResponse
+typealias QuantitativeObservationType = QuantitativeObservationTypeResponse
 typealias Site = SiteResponse
 typealias Survey = SurveyResponse
 
@@ -191,6 +195,70 @@ class ViewControllerManager:
     }
   }
 
+  var ecosystemFactors: [EcosystemFactor] {
+    get {
+      guard let value = viewContext.state[.ecosystemFactors] else {
+        return []
+      }
+      if case let ViewContext.Value.ecosystemFactors(ecosystemFactors) = value {
+        return ecosystemFactors
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.ecosystemFactors] = ViewContext.Value.ecosystemFactors(newValue)
+    }
+  }
+  
+  var mediaTypes: [MediaType] {
+    get {
+      guard let value = viewContext.state[.mediaTypes] else {
+        return []
+      }
+      if case let ViewContext.Value.mediaTypes(mediaTypes) = value {
+        return mediaTypes
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.mediaTypes] = ViewContext.Value.mediaTypes(newValue)
+    }
+  }
+  
+  var qualitativeObservationTypes: [QualitativeObservationType] {
+    get {
+      guard let value = viewContext.state[.qualitativeObservationTypes] else {
+        return []
+      }
+      if case let ViewContext.Value.qualitativeObservationTypes(qualitativeObservationTypes) = value {
+        return qualitativeObservationTypes
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.qualitativeObservationTypes] = ViewContext.Value.qualitativeObservationTypes(newValue)
+    }
+  }
+  
+  var quantitativeObservationTypes: [QuantitativeObservationType] {
+    get {
+      guard let value = viewContext.state[.quantitativeObservationTypes] else {
+        return []
+      }
+      if case let ViewContext.Value.quantitativeObservationTypes(quantitativeObservationTypes) = value {
+        return quantitativeObservationTypes
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.quantitativeObservationTypes] = ViewContext.Value.quantitativeObservationTypes(newValue)
+    }
+  }
+  
   var organizations: [Organization] {
     get {
       guard let value = viewContext.state[.organizations] else {
@@ -921,6 +989,142 @@ class ViewControllerManager:
 
   }
 
+  func getEcoDatumFactors(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completionBlock: CompletionBlock? = nil ) {
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetEcosystemFactorsRequest())
+        .then(in: .main) {
+          ecosystemFactors in
+          self.ecosystemFactors = ecosystemFactors
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func getMediaTypes(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completionBlock: CompletionBlock? = nil ) {
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetMediaTypesRequest())
+        .then(in: .main) {
+          mediaTypes in
+          self.mediaTypes = mediaTypes
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func getQualitativeObservationTypes(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completionBlock: CompletionBlock? = nil ) {
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetQualitativeObservationTypesRequest())
+        .then(in: .main) {
+          qualitativeObservationTypes in
+          self.qualitativeObservationTypes = qualitativeObservationTypes
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
+  func getQuantitativeObservationTypes(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completionBlock: CompletionBlock? = nil ) {
+    
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+    
+    do {
+      
+      try serviceManager.call(
+        GetQuantitativeObservationTypesRequest())
+        .then(in: .main) {
+          quantitativeObservationTypes in
+          self.quantitativeObservationTypes = quantitativeObservationTypes
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+      }
+      
+    } catch let error {
+      
+      handleError(error)
+      
+    }
+    
+  }
+  
   func showPrimaryAbioticFactors() {
 
     performSegue(to: .primaryAbioticFactorChoice)
