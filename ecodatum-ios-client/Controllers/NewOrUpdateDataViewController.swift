@@ -1,60 +1,26 @@
-import AVFoundation
 import Foundation
 import SwiftValidator
 import UIKit
 
 class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   
-  @IBOutlet weak var airButton: UIButton!
-  
-  @IBOutlet weak var airLabel: UILabel!
-  
-  @IBOutlet weak var soilButton: UIButton!
-  
-  @IBOutlet weak var soilLabel: UILabel!
-  
-  @IBOutlet weak var waterButton: UIButton!
-  
-  @IBOutlet weak var waterLabel: UILabel!
-  
-  @IBOutlet weak var bioticButton: UIButton!
-  
-  @IBOutlet weak var bioticLabel: UILabel!
+  @IBOutlet weak var tableView: UITableView!
   
   @IBOutlet weak var saveButton: UIButton!
+  
+  private var factorChoice: String? = nil
   
   override func viewDidLoad() {
     
     super.viewDidLoad()
     
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.tableFooterView = UIView(frame: .zero)
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 120
+    
     saveButton.rounded()
-    
-    switch viewControllerManager.viewControllerSegue {
-      
-    case .newPhoto?:
-      
-      registerFieldValidation()
-      enableFields()
-      
-    case .updatePhoto?:
-      
-      registerFieldValidation()
-      updateFieldValues()
-      enableFields()
-      
-    case .viewPhoto?:
-      
-      updateFieldValues()
-      enableFields(false)
-      
-    default:
-      
-      let viewControllerSegue = viewControllerManager.viewControllerSegue?.rawValue ?? "Unknown"
-      LOG.error("Unexpected view controller segue \(viewControllerSegue)")
-      
-    }
-    
-    updateDataButtons(airButton)
     
   }
   
@@ -67,85 +33,6 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   
   @IBAction override func touchUpInside(_ sender: UIButton) {
     
-    super.touchUpInside(sender)
-    
-    switch sender {
-      
-    case airButton, soilButton, waterButton, bioticButton:
-      updateDataButtons(sender)
-      
-    case saveButton:
-      validateInput()
-      
-    default:
-      LOG.error("Unrecognized button: \(sender)")
-      
-    }
-    
-  }
-  
-  private func validateInput() {
-    validator.defaultValidate(validationSuccessful)
-  }
-  
-  private func registerFieldValidation() {
-    
-  }
-  
-  private func updateFieldValues() {
-    
-  }
-  
-  private func enableFields(_ isEnabled: Bool = true) {
-    
-  }
-  
-  private func validationSuccessful() {
-    
-  }
-  
-  private func updateDataButtons(_ selectedButton: UIButton) {
-   
-    let allViews: [UIView] = [
-      airButton,
-      airLabel,
-      
-      soilButton,
-      soilLabel,
-      
-      waterButton,
-      waterLabel,
-      
-      bioticButton,
-      bioticLabel
-      ]
-    allViews.forEach {
-      $0.alpha = 0.2
-    }
-    
-    switch selectedButton {
-      
-    case airButton:
-      airButton.alpha = 1
-      airLabel.alpha = 1
-      
-    case soilButton:
-      soilButton.alpha = 1
-      soilLabel.alpha = 1
-      
-    case waterButton:
-      waterButton.alpha = 1
-      waterLabel.alpha = 1
-      
-    case bioticButton:
-      bioticButton.alpha = 1
-      bioticLabel.alpha = 1
-      
-    default:
-      LOG.error("Unexpected button \(String(describing: selectedButton.titleLabel?.text))")
-      
-    }
-    
   }
   
   override func postAsyncUIOperation() {
@@ -156,6 +43,145 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
       dismiss(animated: true, completion: nil)
     }
     
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    if let identifier = segue.identifier {
+    
+      switch identifier {
+        
+      case "factorChoice":
+        if let destination = segue.destination as? FactorChoicePopoverViewController {
+          destination.handleFactorChoice = handleFactorChoice
+        }
+        
+      default:
+        break
+        
+      }
+      
+    }
+    
+  }
+  
+  func presentFactorChoice() {
+    performSegue(withIdentifier: "factorChoice", sender: nil)
+  }
+  
+  func handleFactorChoice(_ factorChoice: String) {
+    self.factorChoice = factorChoice
+    tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+  }
+  
+}
+
+extension NewOrUpdateDataViewController: UITableViewDelegate {
+
+}
+
+extension NewOrUpdateDataViewController: UITableViewDataSource {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    if indexPath.row == 0 {
+      
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: "factorChoice",
+        for: indexPath) as! FactorChoiceTableViewCell
+      
+      var image = UIImage(named: "HelpGlyph")
+      if let factorChoice = factorChoice {
+  
+        switch factorChoice {
+          
+        case "Air":
+          image = UIImage(named: "AirLogo")
+        case "Soil":
+          image = UIImage(named: "SoilLogo")
+        case "Water":
+          image = UIImage(named: "WaterLogo")
+        case "Biotic":
+          image = UIImage(named: "BioticLogo")
+        default:
+          break
+          
+        }
+        
+        cell.chooseFactorLabel.text = factorChoice
+        
+      }
+  
+      cell.chooseFactorButton.setImage(image, for: .normal)
+      cell.presentFactorChoice = presentFactorChoice
+      
+      return cell
+    
+    } else {
+      
+      return UITableViewCell()
+    
+    }
+    
+  }
+  
+}
+
+class FactorChoiceTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var chooseFactorLabel: UILabel!
+  
+  @IBOutlet weak var chooseFactorButton: UIButton!
+
+  var presentFactorChoice: (() -> Void)!
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    presentFactorChoice()
+  }
+  
+}
+
+class FactorChoicePopoverViewController: UIViewController {
+  
+  @IBOutlet weak var airButton: UIButton!
+  
+  @IBOutlet weak var soilButton: UIButton!
+  
+  @IBOutlet weak var waterButton: UIButton!
+  
+  @IBOutlet weak var bioticButton: UIButton!
+  
+  var handleFactorChoice: ((String) -> Void)!
+  
+  override func viewDidLoad() {
+    
+    super.viewDidLoad()
+    
+  }
+  
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    
+    switch sender {
+      
+    case airButton:
+      handleFactorChoice("Air")
+    case soilButton:
+      handleFactorChoice("Soil")
+    case waterButton:
+      handleFactorChoice("Water")
+    case bioticButton:
+      handleFactorChoice("Biotic")
+    default:
+      break
+      
+    }
+    
+    dismiss(animated: true, completion: nil)
+  
   }
   
 }
