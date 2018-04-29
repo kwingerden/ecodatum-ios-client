@@ -48,51 +48,125 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-mm-XFw">
                                                 <rect key="frame" x="0.0" y="72" width="400.5" height="633"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-eH-uJL">
+                                                    <tableView clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-eH-uJL">
                                                         <rect key="frame" x="0.0" y="0.0" width="400.5" height="633"/>
-                                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="factorChoice" rowHeight="118" id="j3a-w9-zLf" customClass="FactorChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="400.5" height="118"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateChoice" rowHeight="60" id="ugl-aJ-EmD" customClass="DateChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="55.5" width="400.5" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
-                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j3a-w9-zLf" id="LkP-Re-LbP">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="117.5"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ugl-aJ-EmD" id="HgG-3Y-JlI">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="60"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9d4-IB-2ib">
-                                                                            <rect key="frame" x="58" y="10" width="284.5" height="96"/>
-                                                                            <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Factor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxi-Ud-TmS">
-                                                                                    <rect key="frame" x="0.0" y="33" width="168.5" height="30"/>
-                                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                                                                    <nil key="textColor"/>
-                                                                                    <nil key="highlightedColor"/>
-                                                                                </label>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19s-6q-gRY">
-                                                                                    <rect key="frame" x="188.5" y="0.0" width="96" height="96"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="height" constant="96" id="2Z7-tY-oXK"/>
-                                                                                        <constraint firstAttribute="width" constant="96" id="oPm-4Z-pqT"/>
-                                                                                    </constraints>
-                                                                                    <state key="normal" title="Choose Factor" image="AirLogo"/>
-                                                                                    <connections>
-                                                                                        <action selector="touchUpInside:" destination="j3a-w9-zLf" eventType="touchUpInside" id="Pdp-M2-IR4"/>
-                                                                                    </connections>
-                                                                                </button>
-                                                                            </subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:31:14 pm PDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICM-BR-Hes">
+                                                                            <rect key="frame" x="8" y="-0.5" width="344.5" height="60.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlG-eE-dHH">
+                                                                            <rect key="frame" x="360.5" y="14" width="32" height="32"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="96" id="Cpr-Z7-8gR"/>
+                                                                                <constraint firstAttribute="height" constant="32" id="Rov-CA-Ofk"/>
+                                                                                <constraint firstAttribute="width" constant="32" id="lf4-YW-ZSB"/>
                                                                             </constraints>
-                                                                        </stackView>
+                                                                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <state key="normal" image="NewGlyph"/>
+                                                                            <connections>
+                                                                                <action selector="touchUpInside" destination="ugl-aJ-EmD" eventType="touchUpInside" id="fLk-CG-cqd"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="9d4-IB-2ib" firstAttribute="centerX" secondItem="LkP-Re-LbP" secondAttribute="centerX" id="Ctk-zh-otk"/>
-                                                                        <constraint firstItem="9d4-IB-2ib" firstAttribute="centerY" secondItem="LkP-Re-LbP" secondAttribute="centerY" id="aWc-PJ-fzt"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="ICM-BR-Hes" secondAttribute="bottom" id="6n8-u0-ARQ"/>
+                                                                        <constraint firstItem="ICM-BR-Hes" firstAttribute="leading" secondItem="HgG-3Y-JlI" secondAttribute="leading" constant="8" id="LM4-jr-9ZE"/>
+                                                                        <constraint firstItem="ICM-BR-Hes" firstAttribute="top" secondItem="HgG-3Y-JlI" secondAttribute="top" id="VXt-Em-0Uy"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="PlG-eE-dHH" secondAttribute="trailing" constant="8" id="Zht-el-Wob"/>
+                                                                        <constraint firstItem="PlG-eE-dHH" firstAttribute="leading" secondItem="ICM-BR-Hes" secondAttribute="trailing" constant="8" id="aAQ-sN-cRb"/>
+                                                                        <constraint firstItem="PlG-eE-dHH" firstAttribute="centerY" secondItem="HgG-3Y-JlI" secondAttribute="centerY" id="llD-ae-PFa"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
-                                                                    <outlet property="chooseFactorButton" destination="19s-6q-gRY" id="ja3-zd-qSi"/>
-                                                                    <outlet property="chooseFactorLabel" destination="uxi-Ud-TmS" id="XfS-IB-AlH"/>
+                                                                    <outlet property="dateLabel" destination="ICM-BR-Hes" id="eSp-OC-xmb"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeChoice" rowHeight="60" id="oMN-Ff-Lid" userLabel="timeChoice" customClass="TimeChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="115.5" width="400.5" height="60"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oMN-Ff-Lid" id="suT-zS-6NW">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="60"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:31:14 pm PDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVI-GI-hIb">
+                                                                            <rect key="frame" x="8" y="-0.5" width="344.5" height="60.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpI-ku-gSm">
+                                                                            <rect key="frame" x="360.5" y="14" width="32" height="32"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="32" id="Pu1-X4-iRx"/>
+                                                                                <constraint firstAttribute="height" constant="32" id="WpM-Ev-Da7"/>
+                                                                            </constraints>
+                                                                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <state key="normal" image="NewGlyph"/>
+                                                                            <connections>
+                                                                                <action selector="touchUpInside" destination="oMN-Ff-Lid" eventType="touchUpInside" id="8p4-je-N5d"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="bVI-GI-hIb" firstAttribute="top" secondItem="suT-zS-6NW" secondAttribute="top" id="3pE-5d-9Te"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="mpI-ku-gSm" secondAttribute="trailing" constant="8" id="XYI-Nb-nJS"/>
+                                                                        <constraint firstItem="mpI-ku-gSm" firstAttribute="centerY" secondItem="suT-zS-6NW" secondAttribute="centerY" id="Y3S-yO-dbQ"/>
+                                                                        <constraint firstItem="bVI-GI-hIb" firstAttribute="leading" secondItem="suT-zS-6NW" secondAttribute="leading" constant="8" id="Y63-Nf-5Fh"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="bVI-GI-hIb" secondAttribute="bottom" id="fAN-De-ABT"/>
+                                                                        <constraint firstItem="mpI-ku-gSm" firstAttribute="leading" secondItem="bVI-GI-hIb" secondAttribute="trailing" constant="8" id="had-b4-69q"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="timeLabel" destination="bVI-GI-hIb" id="2AT-UP-lpA"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ecoFactorChoice" rowHeight="60" id="j3a-w9-zLf" customClass="EcoFactorChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="175.5" width="400.5" height="60"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j3a-w9-zLf" id="LkP-Re-LbP">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="60"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Ecosystem Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxi-Ud-TmS">
+                                                                            <rect key="frame" x="8" y="0.0" width="344.5" height="60"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-Zb-54I">
+                                                                            <rect key="frame" x="360.5" y="13.5" width="32" height="32"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="32" id="Tpa-FH-Gcx"/>
+                                                                                <constraint firstAttribute="width" constant="32" id="fYR-in-aft"/>
+                                                                            </constraints>
+                                                                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <state key="normal" image="NewGlyph"/>
+                                                                            <connections>
+                                                                                <action selector="touchUpInside" destination="j3a-w9-zLf" eventType="touchUpInside" id="nFz-CJ-rMd"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="rOJ-Zb-54I" firstAttribute="centerY" secondItem="LkP-Re-LbP" secondAttribute="centerY" id="0Sf-qu-aG2"/>
+                                                                        <constraint firstItem="uxi-Ud-TmS" firstAttribute="leading" secondItem="LkP-Re-LbP" secondAttribute="leading" constant="8" id="4MZ-US-vVt"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="rOJ-Zb-54I" secondAttribute="trailing" constant="8" id="dnb-r9-Ptp"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="uxi-Ud-TmS" secondAttribute="bottom" id="hrS-4d-CjF"/>
+                                                                        <constraint firstItem="uxi-Ud-TmS" firstAttribute="top" secondItem="LkP-Re-LbP" secondAttribute="top" id="jcu-ty-kut"/>
+                                                                        <constraint firstItem="rOJ-Zb-54I" firstAttribute="leading" secondItem="uxi-Ud-TmS" secondAttribute="trailing" constant="8" id="lEs-l3-kBr"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="ecoFactorLabel" destination="uxi-Ud-TmS" id="uw2-z3-Fpn"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
@@ -184,143 +258,168 @@
                         <outlet property="saveButton" destination="9g9-SJ-SWk" id="lDS-bb-Saa"/>
                         <outlet property="scrollView" destination="HfW-9r-Bk6" id="QL9-CY-KOR"/>
                         <outlet property="tableView" destination="a0L-eH-uJL" id="8Ys-nm-Z4S"/>
-                        <segue destination="dYu-ao-Jum" kind="presentation" identifier="factorChoice" modalPresentationStyle="formSheet" id="0GS-Ho-RUW"/>
+                        <segue destination="b7s-eX-RYk" kind="presentation" identifier="dateChoice" modalPresentationStyle="formSheet" id="7dS-Z8-MrD"/>
+                        <segue destination="YBE-5P-g7B" kind="presentation" identifier="timeChoice" modalPresentationStyle="formSheet" id="6mT-Iu-p4b"/>
+                        <segue destination="fjo-bd-egF" kind="presentation" identifier="ecoFactorChoice" modalPresentationStyle="formSheet" id="9kb-1f-q7w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kz-eQ-1a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="13.28125" y="-169.3359375"/>
         </scene>
-        <!--Factor Choice Popover View Controller-->
-        <scene sceneID="ojF-66-eol">
+        <!--Eco Factor Choice View Controller-->
+        <scene sceneID="F6a-Mm-dNS">
             <objects>
-                <viewController id="dYu-ao-Jum" customClass="FactorChoicePopoverViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ajo-zI-DYw">
-                        <rect key="frame" x="0.0" y="0.0" width="221" height="484"/>
+                <viewController id="fjo-bd-egF" customClass="EcoFactorChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pHG-wC-EvT">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GP8-Ar-5Ji">
-                                <rect key="frame" x="16" y="20" width="189" height="444"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OKE-8G-8Ik">
+                                <rect key="frame" x="110.5" y="152" width="320" height="316"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JH9-4s-7Pt">
-                                        <rect key="frame" x="0.0" y="0.0" width="189" height="96"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Air:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="La9-N8-z7Z">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="96"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6B-AZ-K53">
-                                                <rect key="frame" x="93" y="0.0" width="96" height="96"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="96" id="2ZQ-1l-EUc"/>
-                                                    <constraint firstAttribute="height" constant="96" id="404-vh-0AL"/>
-                                                </constraints>
-                                                <state key="normal" image="AirLogo"/>
-                                                <connections>
-                                                    <action selector="touchUpInside:" destination="dYu-ao-Jum" eventType="touchUpInside" id="IRq-N1-AXV"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dr9-nK-SEG">
-                                        <rect key="frame" x="0.0" y="116" width="189" height="96"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soil:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCe-Lp-Gee">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="96"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYn-Sm-9nP">
-                                                <rect key="frame" x="93" y="0.0" width="96" height="96"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="96" id="LmC-9Y-RB4"/>
-                                                    <constraint firstAttribute="width" constant="96" id="e9m-4A-49P"/>
-                                                </constraints>
-                                                <state key="normal" image="SoilLogo"/>
-                                                <connections>
-                                                    <action selector="touchUpInside:" destination="dYu-ao-Jum" eventType="touchUpInside" id="2Rk-ih-XZ3"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="M2w-9F-Nwc">
-                                        <rect key="frame" x="0.0" y="232" width="189" height="96"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u08-LZ-SFe">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="96"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljM-Ra-gXK">
-                                                <rect key="frame" x="93" y="0.0" width="96" height="96"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="96" id="IPM-TX-vKY"/>
-                                                    <constraint firstAttribute="width" constant="96" id="OrM-hP-acG"/>
-                                                </constraints>
-                                                <state key="normal" image="WaterLogo"/>
-                                                <connections>
-                                                    <action selector="touchUpInside:" destination="dYu-ao-Jum" eventType="touchUpInside" id="5zw-Af-FiA"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cRZ-i0-bvd">
-                                        <rect key="frame" x="0.0" y="348" width="189" height="96"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biotic:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5W-hD-Yuu">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="96"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jP9-zb-ULf">
-                                                <rect key="frame" x="93" y="0.0" width="96" height="96"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="96" id="4eG-jP-tT8"/>
-                                                    <constraint firstAttribute="height" constant="96" id="PDU-Wq-VFo"/>
-                                                </constraints>
-                                                <state key="normal" image="BioticLogo"/>
-                                                <connections>
-                                                    <action selector="touchUpInside:" destination="dYu-ao-Jum" eventType="touchUpInside" id="kro-18-kzf"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ecosystem Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTj-NS-UGh">
+                                        <rect key="frame" x="61" y="0.0" width="198" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Vt0-xW-JWa">
+                                        <rect key="frame" x="0.0" y="50" width="320" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XG-CF-Zjg">
+                                        <rect key="frame" x="145" y="286" width="30" height="30"/>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="touchUpInside" destination="fjo-bd-egF" eventType="touchUpInside" id="iN2-tZ-D4V"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="1XG-CF-Zjg" firstAttribute="centerX" secondItem="OKE-8G-8Ik" secondAttribute="centerX" id="3ar-dO-1qq"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tad-RW-9h8" firstAttribute="trailing" secondItem="GP8-Ar-5Ji" secondAttribute="trailing" constant="16" id="BXe-Cw-IpT"/>
-                            <constraint firstItem="tad-RW-9h8" firstAttribute="bottom" secondItem="GP8-Ar-5Ji" secondAttribute="bottom" constant="20" id="QnU-Tl-fNr"/>
-                            <constraint firstItem="GP8-Ar-5Ji" firstAttribute="top" secondItem="tad-RW-9h8" secondAttribute="top" id="hOI-Ur-LcU"/>
-                            <constraint firstItem="GP8-Ar-5Ji" firstAttribute="leading" secondItem="tad-RW-9h8" secondAttribute="leading" constant="16" id="sz5-Wk-KBc"/>
+                            <constraint firstItem="OKE-8G-8Ik" firstAttribute="centerY" secondItem="pHG-wC-EvT" secondAttribute="centerY" id="NqC-b6-YpB"/>
+                            <constraint firstItem="OKE-8G-8Ik" firstAttribute="centerX" secondItem="pHG-wC-EvT" secondAttribute="centerX" id="Vbd-Si-zaM"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tad-RW-9h8"/>
+                        <viewLayoutGuide key="safeArea" id="O7L-wd-p3o"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="221" height="484"/>
-                    <size key="freeformSize" width="221" height="484"/>
                     <connections>
-                        <outlet property="airButton" destination="w6B-AZ-K53" id="r4h-Cp-42k"/>
-                        <outlet property="bioticButton" destination="jP9-zb-ULf" id="Yyv-zX-u1i"/>
-                        <outlet property="soilButton" destination="gYn-Sm-9nP" id="FLw-F3-Vdf"/>
-                        <outlet property="waterButton" destination="ljM-Ra-gXK" id="bHg-jB-R71"/>
+                        <outlet property="ecoFactorPicker" destination="Vt0-xW-JWa" id="sCg-gC-EVz"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fBB-7j-C9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tt-4N-eAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="-313"/>
+            <point key="canvasLocation" x="849" y="-180"/>
+        </scene>
+        <!--Date Choice View Controller-->
+        <scene sceneID="VVj-Jn-oTP">
+            <objects>
+                <viewController id="b7s-eX-RYk" customClass="DateChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dqT-Tp-OQ8">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6F2-cC-0BV">
+                                <rect key="frame" x="110" y="152.5" width="320" height="316"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLj-Fi-JcE">
+                                        <rect key="frame" x="134" y="0.0" width="52.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8Af-oJ-lUq">
+                                        <rect key="frame" x="0.0" y="50" width="320" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="546637970.80507398">
+                                            <!--2018-04-28 19:52:50 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8v-0U-vX3">
+                                        <rect key="frame" x="145" y="286" width="30" height="30"/>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="touchUpInside" destination="b7s-eX-RYk" eventType="touchUpInside" id="KWn-Wt-6eO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="K8v-0U-vX3" firstAttribute="centerX" secondItem="6F2-cC-0BV" secondAttribute="centerX" id="gbe-d2-vVF"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6F2-cC-0BV" firstAttribute="centerY" secondItem="dqT-Tp-OQ8" secondAttribute="centerY" id="V9h-OU-j0a"/>
+                            <constraint firstItem="6F2-cC-0BV" firstAttribute="centerX" secondItem="dqT-Tp-OQ8" secondAttribute="centerX" id="Z8z-Mv-3IB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zh8-vj-K6Y"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="8Af-oJ-lUq" id="C8O-qO-Ktf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9n1-sn-IFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="865" y="-1006"/>
+        </scene>
+        <!--Time Choice View Controller-->
+        <scene sceneID="qAY-gA-8zt">
+            <objects>
+                <viewController id="YBE-5P-g7B" customClass="TimeChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O4B-vh-zxU">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TCM-R7-k4e">
+                                <rect key="frame" x="110" y="152" width="320" height="316"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-4j-rNa">
+                                        <rect key="frame" x="132.5" y="0.0" width="55" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KQa-g9-dOP">
+                                        <rect key="frame" x="0.0" y="50" width="320" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="546637970.80507398">
+                                            <!--2018-04-28 19:52:50 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3EG-Fg-Lv5">
+                                        <rect key="frame" x="145" y="286" width="30" height="30"/>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="touchUpInside" destination="YBE-5P-g7B" eventType="touchUpInside" id="9EZ-CP-nNT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3EG-Fg-Lv5" firstAttribute="centerX" secondItem="TCM-R7-k4e" secondAttribute="centerX" id="3sV-f0-gfp"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TCM-R7-k4e" firstAttribute="centerX" secondItem="O4B-vh-zxU" secondAttribute="centerX" id="FN5-Qr-MK7"/>
+                            <constraint firstItem="TCM-R7-k4e" firstAttribute="centerY" secondItem="O4B-vh-zxU" secondAttribute="centerY" id="XlR-7j-9mf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sJ1-Pl-9tR"/>
+                    </view>
+                    <connections>
+                        <outlet property="timePicker" destination="KQa-g9-dOP" id="AQW-Bh-oUN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDI-9d-dcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1594" y="-1006"/>
         </scene>
     </scenes>
     <resources>
-        <image name="AirLogo" width="576" height="573"/>
-        <image name="BioticLogo" width="576" height="573"/>
         <image name="CrossGlyph" width="32" height="32"/>
-        <image name="SoilLogo" width="576" height="573"/>
-        <image name="WaterLogo" width="576" height="573"/>
+        <image name="NewGlyph" width="32" height="32"/>
     </resources>
 </document>
