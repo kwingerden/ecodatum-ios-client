@@ -145,32 +145,160 @@ fileprivate enum DataTypeChoice {
 
 fileprivate enum DataUnitChoice: String {
 
-  case ppm
+  case PartsPerMillion = "ppm (Parts Per Million)"
   case Lux
-  case PPFD
-  case MMMS = "µmol m^-2 s^-1"
+  case PhotosyntheticPhotonFluxDensity = "PPFD (Photosynthetic Photon Flux Density)"
+  case MicromolesPerMetersSquaredAndSeconds = "µmol m^-2 s^-1"
   case Percent = "%"
   case DegreesCelsius = "°C"
   case DegreesFahrenheit = "°F"
-  case MWM = "mW/m^2"
-  case MPS = "m/s"
-  case mph
-  case LBA = "lb/a"
-  case MSCM = "µS/cm"
-  case FPS = "ft/s"
-  case MPL = "mg/L"
-  case NTU
-  case JTU
-  case Scale
+  case MegawattsPerMeterSquared = "mW/m^2"
+  case MetersPerSecond = "m/s"
+  case MilesPerHour = "mph"
+  case PoundsPerAcre = "lb/a"
+  case MicrosiemensPerCentimeter = "µS/cm"
+  case FeetPerSecond = "ft/s"
+  case MilligramsPerLiter = "mg/L"
+  case NephelometricTurbidityUnits = "NTU (Nephelometric Turbidity Units)"
+  case JacksonTurbidityUnits = "JTU (Jackson Turbidity Units)"
+  case _Scale_
 
   static func units(_ dataType: DataTypeChoice) -> [DataUnitChoice] {
 
     switch dataType {
 
-      case .Air(let airDataType) where airDataType == .Velocity:
-        return [.MPS, .mph]
+      // ** AIR
 
-      default: return []
+    case .Air(let airDataType) where airDataType == .CarbonDioxide:
+      return [
+        .PartsPerMillion
+      ]
+
+    case .Air(let airDataType) where airDataType == .Light:
+      return [
+        .Lux
+      ]
+
+    case .Air(let airDataType) where airDataType == .PAR:
+      return [
+        .PhotosyntheticPhotonFluxDensity,
+        .MicromolesPerMetersSquaredAndSeconds
+      ]
+
+    case .Air(let airDataType) where airDataType == .RelativeHumidity:
+      return [
+        .Percent
+      ]
+
+    case .Air(let airDataType) where airDataType == .Temperature:
+      return [
+        .DegreesCelsius,
+        .DegreesFahrenheit
+      ]
+
+    case .Air(let airDataType) where airDataType == .UVB:
+      return [
+        .MegawattsPerMeterSquared,
+        .Percent
+      ]
+
+    case .Air(let airDataType) where airDataType == .Velocity:
+      return [
+        .MetersPerSecond,
+        .MilesPerHour
+      ]
+
+      // ** SOIL
+
+    case .Soil(let soilDataType)
+         where soilDataType == .Nitrogen || soilDataType == .Phosphorus:
+      return [
+        .PoundsPerAcre
+      ]
+
+    case .Soil(let soilDataType) where soilDataType == .Potassium:
+      return [
+        ._Scale_
+      ]
+
+    case .Soil(let soilDataType) where soilDataType == .Moisture:
+      return [
+        .Percent
+      ]
+
+    case .Soil(let soilDataType) where soilDataType == .Texture:
+      return [
+        ._Scale_
+      ]
+
+    case .Soil(let soilDataType) where soilDataType == .Temperature:
+      return [
+        .DegreesCelsius,
+        .DegreesFahrenheit
+      ]
+
+      // ** WATER
+
+    case .Water(let waterDataType) where waterDataType == .Conductivity:
+      return [
+        .MicrosiemensPerCentimeter
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .DissolvedOxygen:
+      return [
+        .PartsPerMillion,
+        .MilligramsPerLiter,
+        .Percent
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .FlowRate:
+      return [
+        .MetersPerSecond,
+        .FeetPerSecond
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .Nitrate:
+      return [
+        .PartsPerMillion,
+        .MilligramsPerLiter
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .Odor:
+      return [
+        ._Scale_
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .PAR:
+      return [
+        .PhotosyntheticPhotonFluxDensity,
+        .MicromolesPerMetersSquaredAndSeconds
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .pH:
+      return [
+        ._Scale_
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .Phosphate:
+      return [
+        .PartsPerMillion,
+        .MilligramsPerLiter
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .Temperature:
+      return [
+        .DegreesCelsius,
+        .DegreesFahrenheit
+      ]
+
+    case .Water(let waterDataType) where waterDataType == .Turbidity:
+      return [
+        .NephelometricTurbidityUnits,
+        .JacksonTurbidityUnits,
+        ._Scale_
+      ]
+
+    default: return []
 
     }
 
@@ -211,8 +339,6 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   @IBOutlet weak var tableView: UITableView!
 
-  @IBOutlet weak var saveButton: UIButton!
-
   private var dateChoice: Date = Date()
 
   private var timeChoice: Date = Date()
@@ -246,8 +372,6 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     tableView.tableFooterView = UIView(frame: .zero)
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
-
-    saveButton.rounded()
 
   }
 
@@ -493,18 +617,23 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         dataType: abioticFactorChoices.dataType,
         dataValue: dataValueChoice)
     }
-    tableView.reloadSections([5], with: .automatic)
+    tableView.reloadSections([6], with: .automatic)
 
-    if numberOfSections > 6 {
-      for sectionIndex in (7...numberOfSections).reversed() {
+    if numberOfSections > 7 {
+      for sectionIndex in (8...numberOfSections).reversed() {
         numberOfSections = sectionIndex - 1
         tableView.deleteSections([numberOfSections], with: .automatic)
       }
     }
 
-    numberOfSections = 7
-    tableView.insertSections([6], with: .automatic)
+    numberOfSections = 8
+    tableView.insertSections([7], with: .automatic)
 
+  }
+
+
+  fileprivate func handleSaveData() {
+    print("Save Data")
   }
 
 }
@@ -524,8 +653,11 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     switch section {
 
     case 0: return "Date"
+
     case 1: return "Time"
+
     case 2: return "Ecosystem Factor"
+
     case 3:
       if abioticFactorChoices != nil {
         return "Abiotic Factor"
@@ -534,6 +666,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         return "Biotic Factor"
       }
       return nil
+
     case 4:
       if let abioticFactorChoices = abioticFactorChoices,
          let abioticFactor = abioticFactorChoices.abioticFactor {
@@ -544,6 +677,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         }
       }
       return nil
+
     case 5:
       if let abioticFactorChoices = abioticFactorChoices,
          let abioticFactor = abioticFactorChoices.abioticFactor {
@@ -554,6 +688,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         }
       }
       return nil
+
     case 6:
       if let abioticFactorChoices = abioticFactorChoices,
          let abioticFactor = abioticFactorChoices.abioticFactor {
@@ -564,6 +699,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         }
       }
       return nil
+
     default: return nil
 
     }
@@ -585,6 +721,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     case 4: return makeDataTypeChoiceCell(tableView, indexPath)
     case 5: return makeDataUnitChoiceCell(tableView, indexPath)
     case 6: return makeDataValueChoiceCell(tableView, indexPath)
+    case 7: return makeSaveDataCell(tableView, indexPath)
     default: return UITableViewCell()
 
     }
@@ -785,6 +922,21 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     }
 
     cell.presentDataValueChoice = presentDataValueChoice
+
+    return cell
+
+  }
+
+  private func makeSaveDataCell(
+    _ tableView: UITableView,
+    _ indexPath: IndexPath) -> UITableViewCell {
+
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "saveData",
+      for: indexPath) as! SaveDataTableViewCell
+
+    cell.saveDataButton.rounded()
+    cell.handleSaveData = handleSaveData
 
     return cell
 
@@ -1162,39 +1314,39 @@ class DataValueChoiceTableViewCell: UITableViewCell {
 class DataValueChoiceViewController: UIViewController {
 
   @IBOutlet weak var valueLabel: UILabel!
-  
+
   @IBOutlet weak var clearButton: UIButton!
-  
+
   @IBOutlet weak var signButton: UIButton!
-  
+
   @IBOutlet weak var deleteButton: UIButton!
-  
+
   @IBOutlet weak var zeroButton: UIButton!
-  
+
   @IBOutlet weak var oneButton: UIButton!
-  
+
   @IBOutlet weak var twoButton: UIButton!
-  
+
   @IBOutlet weak var threeButton: UIButton!
-  
+
   @IBOutlet weak var fourButton: UIButton!
-  
+
   @IBOutlet weak var fiveButton: UIButton!
-  
+
   @IBOutlet weak var sixButton: UIButton!
-  
+
   @IBOutlet weak var sevenButton: UIButton!
-  
+
   @IBOutlet weak var eightButton: UIButton!
-  
+
   @IBOutlet weak var nineButton: UIButton!
-  
+
   @IBOutlet weak var decimalButton: UIButton!
-  
+
   @IBOutlet weak var okButton: UIButton!
-  
+
   private var value: String = "0"
-  
+
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
   fileprivate var handleDataValueChoice: ((Double) -> Void)!
@@ -1203,13 +1355,13 @@ class DataValueChoiceViewController: UIViewController {
     super.viewDidLoad()
 
     valueLabel.roundedAndDarkBordered()
-    
+
     clearButton.roundedAndDarkBordered()
     signButton.roundedAndDarkBordered()
     deleteButton.roundedAndDarkBordered()
     decimalButton.roundedAndDarkBordered()
     okButton.roundedAndDarkBordered()
-    
+
     zeroButton.roundedAndDarkBordered()
     oneButton.roundedAndDarkBordered()
     twoButton.roundedAndDarkBordered()
@@ -1238,16 +1390,16 @@ class DataValueChoiceViewController: UIViewController {
     var newValue = value
 
     switch sender {
-      
+
     case clearButton:
       newValue = "0"
-      
+
     case signButton:
       let doubleValue = Double(newValue)!
       if doubleValue != 0.0 {
         newValue = "\(-Double(newValue)!)"
       }
-      
+
     case deleteButton:
       if newValue.count > 0 {
         let beforeEndIndex = newValue.index(before: newValue.endIndex)
@@ -1256,97 +1408,111 @@ class DataValueChoiceViewController: UIViewController {
           newValue = "0"
         }
       }
-      
+
     case decimalButton:
       if !newValue.contains(".") {
         newValue = newValue + "."
       }
-      
+
     case zeroButton:
       if newValue == "0" {
         return
       } else {
         newValue = newValue + "0"
       }
-      
+
     case oneButton:
       if newValue == "0" {
         newValue = "1"
       } else {
         newValue = newValue + "1"
       }
-      
+
     case twoButton:
       if newValue == "0" {
         newValue = "2"
       } else {
         newValue = newValue + "2"
       }
-      
+
     case threeButton:
       if newValue == "0" {
         newValue = "3"
       } else {
         newValue = newValue + "3"
       }
-      
+
     case fourButton:
       if newValue == "0" {
         newValue = "4"
       } else {
         newValue = newValue + "4"
       }
-      
+
     case fiveButton:
       if newValue == "0" {
         newValue = "5"
       } else {
         newValue = newValue + "5"
       }
-      
+
     case sixButton:
       if newValue == "0" {
         newValue = "6"
       } else {
         newValue = newValue + "6"
       }
-      
+
     case sevenButton:
       if newValue == "0" {
         newValue = "7"
       } else {
         newValue = newValue + "7"
       }
-      
+
     case eightButton:
       if newValue == "0" {
         newValue = "8"
       } else {
         newValue = newValue + "8"
       }
-      
+
     case nineButton:
       if newValue == "0" {
         newValue = "9"
       } else {
         newValue = newValue + "9"
       }
-      
+
     case okButton:
       handleDataValueChoice(Double(value)!)
       dismiss(animated: true, completion: nil)
-      
+
     default:
       LOG.error("Unexpected button \(sender)")
-      
+
     }
 
     if newValue.count <= 10 {
       value = newValue
       valueLabel.text = "\(value)"
     }
-    
+
   }
 
 }
 
+class SaveDataTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var saveDataButton: UIButton!
+
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  
+  var handleSaveData: (() -> Void)!
+
+  @IBAction func touchUpInside() {
+    activityIndicator.startAnimating()
+    handleSaveData()
+  }
+
+}
