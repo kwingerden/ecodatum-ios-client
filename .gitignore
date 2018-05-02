@@ -2,6 +2,9 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+## 3rdparty
+3rdparty/
+
 ## Secrets
 .env
 ecodatum-ios-client/Configuration.swift
