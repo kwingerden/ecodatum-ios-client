@@ -126,6 +126,8 @@
 		01EC839920733BDD00693C51 /* NewOrUpdateDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */; };
 		01FA40652022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */; };
 		01FA40672022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */; };
+		938974F27F9D03EE72D55A1B /* Pods_ecodatum_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50215E02B2D723CAFF7681B /* Pods_ecodatum_ios_client.framework */; };
+		954CD3A5ED15813611DDE894 /* Pods_ecodatum_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D5E01305DD66966B61B091 /* Pods_ecodatum_ios_clientTests.framework */; };
 		AF33D05C04729B7F2D130591 /* PhotoChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */; };
 		AF33D1812DE5BB78D43524E1 /* BaseContentViewScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */; };
 		AF33D6B4B10C2EF8BA5A49FA /* UIImage+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */; };
@@ -263,10 +265,17 @@
 		01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdateDataViewController.swift; sourceTree = "<group>"; };
 		01FA40642022BC96004C9A24 /* PrimaryAbioticFactorChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrimaryAbioticFactorChoice.storyboard; sourceTree = "<group>"; };
 		01FA40662022BD24004C9A24 /* PrimaryAbioticFactorChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryAbioticFactorChoiceViewController.swift; sourceTree = "<group>"; };
+		04D5E01305DD66966B61B091 /* Pods_ecodatum_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecodatum_ios_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71430C6F704B7BEE7080E149 /* Pods-ecodatum-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-clientTests/Pods-ecodatum-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F09197E238ED7C762570F21 /* Pods-ecodatum-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-clientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-clientTests/Pods-ecodatum-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
 		AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentViewScrollable.swift; sourceTree = "<group>"; };
 		AF33D400EE51E75C7FA77438 /* PhotoChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoChoiceViewController.swift; sourceTree = "<group>"; };
 		AF33DC0228110028B336B6BD /* BaseFormSheetDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormSheetDisplayable.swift; sourceTree = "<group>"; };
 		AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utilities.swift"; sourceTree = "<group>"; };
+		BE0B81415B77FC5765501129 /* Pods-ecodatum-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		BEF892DC209BCCDE00F81D65 /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
+		D50215E02B2D723CAFF7681B /* Pods_ecodatum_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecodatum_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D796B96DA0D6F3DAB391F79A /* Pods-ecodatum-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-client.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +289,7 @@
 				019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */,
 				010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */,
 				010AB1911FF77F3800EFF0D5 /* SwiftyBeaver.framework in Frameworks */,
+				938974F27F9D03EE72D55A1B /* Pods_ecodatum_ios_client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +311,7 @@
 				018F77701FFB126F004421F0 /* SwiftValidator.framework in Frameworks */,
 				018F77711FFB126F004421F0 /* SwiftyBeaver.framework in Frameworks */,
 				018F77721FFB126F004421F0 /* SwiftyJSON.framework in Frameworks */,
+				954CD3A5ED15813611DDE894 /* Pods_ecodatum_ios_clientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +346,8 @@
 				010AB18C1FF77F3800EFF0D5 /* SVProgressHUD.framework */,
 				010AB18E1FF77F3800EFF0D5 /* SwiftyBeaver.framework */,
 				010AB1831FF71A8300EFF0D5 /* SwiftValidator.framework */,
+				D50215E02B2D723CAFF7681B /* Pods_ecodatum_ios_client.framework */,
+				04D5E01305DD66966B61B091 /* Pods_ecodatum_ios_clientTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -413,10 +426,12 @@
 		01AD11591FF4B5DB000DCE81 = {
 			isa = PBXGroup;
 			children = (
+				BEF892DC209BCCDE00F81D65 /* bridging-header.h */,
 				01AD11641FF4B5DB000DCE81 /* ecodatum-ios-client */,
 				01AD11791FF4B5DC000DCE81 /* ecodatum-ios-clientTests */,
 				01AD11631FF4B5DB000DCE81 /* Products */,
 				010AB1821FF71A8300EFF0D5 /* Frameworks */,
+				171C1B1A0F1662461C6C3CF3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -549,6 +564,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		171C1B1A0F1662461C6C3CF3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE0B81415B77FC5765501129 /* Pods-ecodatum-ios-client.debug.xcconfig */,
+				D796B96DA0D6F3DAB391F79A /* Pods-ecodatum-ios-client.release.xcconfig */,
+				71430C6F704B7BEE7080E149 /* Pods-ecodatum-ios-clientTests.debug.xcconfig */,
+				8F09197E238ED7C762570F21 /* Pods-ecodatum-ios-clientTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -556,10 +582,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01AD117F1FF4B5DC000DCE81 /* Build configuration list for PBXNativeTarget "ecodatum-ios-client" */;
 			buildPhases = (
+				D7BFCC2584037EB9DEF04BDF /* [CP] Check Pods Manifest.lock */,
 				01AD115E1FF4B5DB000DCE81 /* Sources */,
 				01AD115F1FF4B5DB000DCE81 /* Frameworks */,
 				01AD11601FF4B5DB000DCE81 /* Resources */,
 				010AB1851FF71AAD00EFF0D5 /* Carthage Copy Frameworks */,
+				CE40F8753F53C5F2A28E5913 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -574,6 +602,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01AD11821FF4B5DC000DCE81 /* Build configuration list for PBXNativeTarget "ecodatum-ios-clientTests" */;
 			buildPhases = (
+				670D216B994E0DBA6D5DE62D /* [CP] Check Pods Manifest.lock */,
 				01AD11721FF4B5DC000DCE81 /* Sources */,
 				01AD11731FF4B5DC000DCE81 /* Frameworks */,
 				01AD11741FF4B5DC000DCE81 /* Resources */,
@@ -705,6 +734,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		670D216B994E0DBA6D5DE62D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ecodatum-ios-clientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE40F8753F53C5F2A28E5913 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/iosMath/iosMath.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iosMath.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7BFCC2584037EB9DEF04BDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ecodatum-ios-client-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -935,6 +1018,7 @@
 		};
 		01AD11801FF4B5DC000DCE81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE0B81415B77FC5765501129 /* Pods-ecodatum-ios-client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -948,6 +1032,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ecodatum.EcoDatum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bridging-header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -955,6 +1040,7 @@
 		};
 		01AD11811FF4B5DC000DCE81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D796B96DA0D6F3DAB391F79A /* Pods-ecodatum-ios-client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -968,6 +1054,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ecodatum.EcoDatum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bridging-header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -975,6 +1062,7 @@
 		};
 		01AD11831FF4B5DC000DCE81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71430C6F704B7BEE7080E149 /* Pods-ecodatum-ios-clientTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -996,6 +1084,7 @@
 		};
 		01AD11841FF4B5DC000DCE81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F09197E238ED7C762570F21 /* Pods-ecodatum-ios-clientTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
