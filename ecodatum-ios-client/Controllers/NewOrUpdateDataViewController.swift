@@ -145,22 +145,22 @@ fileprivate enum DataTypeChoice {
 
 fileprivate enum DataUnitChoice: String {
 
-  case PartsPerMillion = "ppm (Parts Per Million)"
-  case Lux
-  case PhotosyntheticPhotonFluxDensity = "PPFD (Photosynthetic Photon Flux Density)"
-  case MicromolesPerMetersSquaredAndSeconds = "µmol m^-2 s^-1"
-  case Percent = "%"
-  case DegreesCelsius = "°C"
-  case DegreesFahrenheit = "°F"
-  case MegawattsPerMeterSquared = "mW/m^2"
-  case MetersPerSecond = "m/s"
+  case PartsPerMillion = "ppm \\ (Parts \\ Per \\ Million)"
+  case Lux = "Lux"
+  case PhotosyntheticPhotonFluxDensity = "PPFD \\ (Photosynthetic \\ Photon \\ Flux \\ Density)"
+  case MicromolesPerMetersSquaredAndSeconds = "\\mu mol \\ m^{-2}s^{-1}"
+  case Percent = "\\%"
+  case DegreesCelsius = "^{\\circ}C"
+  case DegreesFahrenheit = "^{\\circ}F"
+  case MegawattsPerMeterSquared = "\\frac{mW}{m^{2}}"
+  case MetersPerSecond = "\\frac{m}{s}"
   case MilesPerHour = "mph"
-  case PoundsPerAcre = "lb/a"
-  case MicrosiemensPerCentimeter = "µS/cm"
-  case FeetPerSecond = "ft/s"
-  case MilligramsPerLiter = "mg/L"
-  case NephelometricTurbidityUnits = "NTU (Nephelometric Turbidity Units)"
-  case JacksonTurbidityUnits = "JTU (Jackson Turbidity Units)"
+  case PoundsPerAcre = "\\frac{lb}{a}"
+  case MicrosiemensPerCentimeter = "\\frac{\\mu S}{cm}"
+  case FeetPerSecond = "\\frac{ft}{s}"
+  case MilligramsPerLiter = "\\frac{mg}{L}"
+  case NephelometricTurbidityUnits = "NTU \\ (Nephelometric \\ Turbidity \\ Units)"
+  case JacksonTurbidityUnits = "JTU \\ (Jackson \\ Turbidity \\ Units)"
   case _Scale_
 
   static func units(_ dataType: DataTypeChoice) -> [DataUnitChoice] {
@@ -359,7 +359,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   private let TIME_FORMATTER: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateFormat = "h:mm a"
+    formatter.dateFormat = "h:mm a zzz"
     return formatter
   }()
 
@@ -372,6 +372,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     tableView.tableFooterView = UIView(frame: .zero)
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
+//    tableView.register(
+//      DataUITableViewHeaderFooterView.self,
+//      forHeaderFooterViewReuseIdentifier: DataUITableViewHeaderFooterView.reuseIdentifier)
 
   }
 
@@ -648,62 +651,87 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     return 1
   }
 
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+    return nil
+    /*
+    guard let header = tableView.dequeueReusableHeaderFooterView(
+      withIdentifier: DataUITableViewHeaderFooterView.reuseIdentifier) as? DataUITableViewHeaderFooterView else {
+      return nil
+    }
+
+    var text: String? = nil
 
     switch section {
 
-    case 0: return "Date"
+    case 0: text = "Date"
 
-    case 1: return "Time"
+    case 1: text = "Time"
 
-    case 2: return "Ecosystem Factor"
+    case 2: text = "Ecosystem Factor"
 
     case 3:
       if abioticFactorChoices != nil {
-        return "Abiotic Factor"
+        text = "Abiotic Factor"
+      } else if bioticFactorChoices != nil {
+        text = "Biotic Factor"
       }
-      if bioticFactorChoices != nil {
-        return "Biotic Factor"
-      }
-      return nil
 
     case 4:
       if let abioticFactorChoices = abioticFactorChoices,
          let abioticFactor = abioticFactorChoices.abioticFactor {
         switch abioticFactor {
-        case .Air: return "Air Data Type"
-        case .Soil: return "Soil Data Type"
-        case .Water: return "Water Data Type"
+        case .Air: text = "Air Data Type"
+        case .Soil: text = "Soil Data Type"
+        case .Water: text = "Water Data Type"
         }
       }
-      return nil
 
     case 5:
       if let abioticFactorChoices = abioticFactorChoices,
          let abioticFactor = abioticFactorChoices.abioticFactor {
         switch abioticFactor {
-        case .Air: return "Air Data Unit"
-        case .Soil: return "Soil Data Unit"
-        case .Water: return "Water Data Unit"
+        case .Air: text = "Air Data Unit"
+        case .Soil: text = "Soil Data Unit"
+        case .Water: text = "Water Data Unit"
         }
       }
-      return nil
 
     case 6:
       if let abioticFactorChoices = abioticFactorChoices,
          let abioticFactor = abioticFactorChoices.abioticFactor {
         switch abioticFactor {
-        case .Air: return "Air Data Value"
-        case .Soil: return "Soil Data Value"
-        case .Water: return "Water Data Value"
+        case .Air: text = "Air Data Value"
+        case .Soil: text = "Soil Data Value"
+        case .Water: text = "Water Data Value"
         }
       }
-      return nil
 
-    default: return nil
+    default: break
 
     }
 
+    header.label.text = text
+
+    return header
+    */
+
+  }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return nil
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 75
+  }
+
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 0
+  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0
   }
 
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -868,8 +896,12 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     if let abioticFactorChoices = abioticFactorChoices,
        let dataUnit = abioticFactorChoices.dataUnit {
 
-      cell.dataUnitLabel.text = dataUnit.rawValue
-      cell.dataUnitLabel.textColor = .black
+      let label = MTMathUILabel()
+      label.latex = dataUnit.rawValue
+      label.textAlignment = .center
+      label.fontSize = 25
+      label.textColor = .black
+      cell.dataUnitLabel.insertSubview(label, at: 0)
 
     } else {
 
@@ -940,6 +972,28 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
     return cell
 
+  }
+
+}
+
+class DataUITableViewHeaderFooterView: UITableViewHeaderFooterView {
+
+  static let reuseIdentifier = "tableHeader"
+
+  let label = UILabel()
+
+  override public init(reuseIdentifier: String?) {
+
+    super.init(reuseIdentifier: reuseIdentifier)
+    label.font = UIFont.preferredFont(forTextStyle: .caption1)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    contentView.addSubview(label)
+    contentView.backgroundColor = DARK_GREEN
+
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
 }
@@ -1295,6 +1349,23 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     return dataUnits[row].rawValue
+  }
+
+  func pickerView(_ pickerView: UIPickerView,
+                  viewForRow row: Int,
+                  forComponent component: Int,
+                  reusing view: UIView?) -> UIView {
+
+    let label = MTMathUILabel()
+    label.latex = dataUnits[row].rawValue
+    label.textAlignment = .center
+    label.fontSize = 25
+    return label
+
+  }
+
+  func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    return 75
   }
 
 }
