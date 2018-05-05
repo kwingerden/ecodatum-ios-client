@@ -48,30 +48,30 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5o-mm-XFw">
                                                 <rect key="frame" x="0.0" y="72" width="400.5" height="633"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-eH-uJL">
+                                                    <tableView clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-eH-uJL">
                                                         <rect key="frame" x="0.0" y="0.0" width="400.5" height="633"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="sectionIndexColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <color key="sectionIndexBackgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateChoice" rowHeight="75" id="ugl-aJ-EmD" customClass="DateChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="55.5" width="400.5" height="75"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateChoice" rowHeight="64" id="ugl-aJ-EmD" customClass="DateChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="28" width="400.5" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ugl-aJ-EmD" id="HgG-3Y-JlI">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 4 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICM-BR-Hes">
-                                                                            <rect key="frame" x="8" y="-0.5" width="344.5" height="75.5"/>
+                                                                            <rect key="frame" x="8" y="-0.5" width="312.5" height="64.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlG-eE-dHH">
-                                                                            <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlG-eE-dHH">
+                                                                            <rect key="frame" x="328.5" y="0.0" width="64" height="64"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="32" id="Rov-CA-Ofk"/>
-                                                                                <constraint firstAttribute="width" constant="32" id="lf4-YW-ZSB"/>
+                                                                                <constraint firstAttribute="height" constant="64" id="Rov-CA-Ofk"/>
+                                                                                <constraint firstAttribute="width" constant="64" id="lf4-YW-ZSB"/>
                                                                             </constraints>
                                                                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <state key="normal" image="NewGlyph"/>
@@ -93,24 +93,24 @@
                                                                     <outlet property="dateLabel" destination="ICM-BR-Hes" id="eSp-OC-xmb"/>
                                                                 </connections>
                                                             </tableViewCell>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeChoice" rowHeight="75" id="oMN-Ff-Lid" userLabel="timeChoice" customClass="TimeChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="130.5" width="400.5" height="75"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeChoice" rowHeight="64" id="oMN-Ff-Lid" userLabel="timeChoice" customClass="TimeChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="92" width="400.5" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oMN-Ff-Lid" id="suT-zS-6NW">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:31:14 pm PDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVI-GI-hIb">
-                                                                            <rect key="frame" x="8" y="-0.5" width="344.5" height="75.5"/>
+                                                                            <rect key="frame" x="8" y="-0.5" width="312.5" height="64.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpI-ku-gSm">
-                                                                            <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpI-ku-gSm">
+                                                                            <rect key="frame" x="328.5" y="0.0" width="64" height="64"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="32" id="Pu1-X4-iRx"/>
-                                                                                <constraint firstAttribute="height" constant="32" id="WpM-Ev-Da7"/>
+                                                                                <constraint firstAttribute="width" constant="64" id="Pu1-X4-iRx"/>
+                                                                                <constraint firstAttribute="height" constant="64" id="WpM-Ev-Da7"/>
                                                                             </constraints>
                                                                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <state key="normal" image="NewGlyph"/>
@@ -132,24 +132,24 @@
                                                                     <outlet property="timeLabel" destination="bVI-GI-hIb" id="2AT-UP-lpA"/>
                                                                 </connections>
                                                             </tableViewCell>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ecoFactorChoice" rowHeight="75" id="j3a-w9-zLf" customClass="EcoFactorChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="205.5" width="400.5" height="75"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ecoFactorChoice" rowHeight="64" id="j3a-w9-zLf" customClass="EcoFactorChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="156" width="400.5" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j3a-w9-zLf" id="LkP-Re-LbP">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Ecosystem Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxi-Ud-TmS">
-                                                                            <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="312.5" height="64"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-Zb-54I">
-                                                                            <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-Zb-54I">
+                                                                            <rect key="frame" x="328.5" y="0.0" width="64" height="64"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="32" id="Tpa-FH-Gcx"/>
-                                                                                <constraint firstAttribute="width" constant="32" id="fYR-in-aft"/>
+                                                                                <constraint firstAttribute="height" constant="64" id="Tpa-FH-Gcx"/>
+                                                                                <constraint firstAttribute="width" constant="64" id="fYR-in-aft"/>
                                                                             </constraints>
                                                                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <state key="normal" image="NewGlyph"/>
@@ -171,24 +171,24 @@
                                                                     <outlet property="ecoFactorLabel" destination="uxi-Ud-TmS" id="uw2-z3-Fpn"/>
                                                                 </connections>
                                                             </tableViewCell>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="abioticFactorChoice" rowHeight="75" id="qd2-57-HW2" userLabel="abioticFactorChoice" customClass="AbioticFactorChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="280.5" width="400.5" height="75"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="abioticFactorChoice" rowHeight="64" id="qd2-57-HW2" userLabel="abioticFactorChoice" customClass="AbioticFactorChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="220" width="400.5" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qd2-57-HW2" id="YDU-Z2-u6m">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Abiotic Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jL-TI-uf1">
-                                                                            <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="312.5" height="64"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="999-0F-TVr">
-                                                                            <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="999-0F-TVr">
+                                                                            <rect key="frame" x="328.5" y="0.0" width="64" height="64"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="32" id="Bc5-1T-APz"/>
-                                                                                <constraint firstAttribute="width" constant="32" id="jli-r5-eds"/>
+                                                                                <constraint firstAttribute="height" constant="64" id="Bc5-1T-APz"/>
+                                                                                <constraint firstAttribute="width" constant="64" id="jli-r5-eds"/>
                                                                             </constraints>
                                                                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <state key="normal" image="NewGlyph"/>
@@ -210,24 +210,24 @@
                                                                     <outlet property="abioticFactorLabel" destination="7jL-TI-uf1" id="Cau-Qr-tMr"/>
                                                                 </connections>
                                                             </tableViewCell>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataTypeChoice" rowHeight="75" id="CN0-Ga-iqX" customClass="DataTypeChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="355.5" width="400.5" height="75"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataTypeChoice" rowHeight="64" id="CN0-Ga-iqX" customClass="DataTypeChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="284" width="400.5" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CN0-Ga-iqX" id="JFH-lM-ALt">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Data Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVU-f5-x1D">
-                                                                            <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="312.5" height="64"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD8-Ha-mGD">
-                                                                            <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD8-Ha-mGD">
+                                                                            <rect key="frame" x="328.5" y="0.0" width="64" height="64"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="32" id="L9U-7S-tHw"/>
-                                                                                <constraint firstAttribute="height" constant="32" id="xPQ-Kx-cgo"/>
+                                                                                <constraint firstAttribute="width" constant="64" id="L9U-7S-tHw"/>
+                                                                                <constraint firstAttribute="height" constant="64" id="xPQ-Kx-cgo"/>
                                                                             </constraints>
                                                                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <state key="normal" image="NewGlyph"/>
@@ -249,18 +249,18 @@
                                                                     <outlet property="dataTypeLabel" destination="ZVU-f5-x1D" id="Fni-BJ-7si"/>
                                                                 </connections>
                                                             </tableViewCell>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataUnitChoice" rowHeight="75" id="YaI-KV-kwl" customClass="DataUnitChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="430.5" width="400.5" height="75"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataUnitChoice" rowHeight="64" id="YaI-KV-kwl" customClass="DataUnitChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="348" width="400.5" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YaI-KV-kwl" id="iCW-DG-V7C">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnx-ag-9O1">
-                                                                            <rect key="frame" x="8" y="0.0" width="345" height="75"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="313" height="64"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Data Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpK-ez-c0F">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="344.5" height="75"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="312.5" height="64"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
@@ -274,11 +274,11 @@
                                                                                 <constraint firstItem="JpK-ez-c0F" firstAttribute="top" secondItem="Vnx-ag-9O1" secondAttribute="top" id="nFq-Gh-0GO"/>
                                                                             </constraints>
                                                                         </view>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs9-Qp-PBF">
-                                                                            <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs9-Qp-PBF">
+                                                                            <rect key="frame" x="328.5" y="0.0" width="64" height="64"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="32" id="TcV-oe-F1C"/>
-                                                                                <constraint firstAttribute="width" constant="32" id="bzd-Hi-q7F"/>
+                                                                                <constraint firstAttribute="height" constant="64" id="TcV-oe-F1C"/>
+                                                                                <constraint firstAttribute="width" constant="64" id="bzd-Hi-q7F"/>
                                                                             </constraints>
                                                                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <state key="normal" image="NewGlyph"/>
@@ -301,24 +301,24 @@
                                                                     <outlet property="dataUnitView" destination="Vnx-ag-9O1" id="Kxg-iz-TJS"/>
                                                                 </connections>
                                                             </tableViewCell>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataValueChoice" rowHeight="75" id="cmS-Yc-G5y" customClass="DataValueChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="505.5" width="400.5" height="75"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataValueChoice" rowHeight="64" id="cmS-Yc-G5y" customClass="DataValueChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="412" width="400.5" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cmS-Yc-G5y" id="FfI-ZK-fn2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Data Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFh-gf-BWw">
-                                                                            <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="312.5" height="64"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo8-Eo-Jko">
-                                                                            <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo8-Eo-Jko">
+                                                                            <rect key="frame" x="328.5" y="0.0" width="64" height="64"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="32" id="L4q-G9-Kho"/>
-                                                                                <constraint firstAttribute="height" constant="32" id="itD-UT-Lvm"/>
+                                                                                <constraint firstAttribute="width" constant="64" id="L4q-G9-Kho"/>
+                                                                                <constraint firstAttribute="height" constant="64" id="itD-UT-Lvm"/>
                                                                             </constraints>
                                                                             <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <state key="normal" image="NewGlyph"/>
@@ -341,7 +341,7 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="saveData" rowHeight="107" id="fz5-Ko-rQD" userLabel="saveData" customClass="SaveDataTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="580.5" width="400.5" height="107"/>
+                                                                <rect key="frame" x="0.0" y="476" width="400.5" height="107"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fz5-Ko-rQD" id="hNU-WM-Q8E">
                                                                     <rect key="frame" x="0.0" y="0.0" width="400.5" height="107"/>
@@ -475,7 +475,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OKE-8G-8Ik">
-                                <rect key="frame" x="8" y="162" width="524" height="296"/>
+                                <rect key="frame" x="8" y="156" width="524" height="308"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ecosystem Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTj-NS-UGh">
                                         <rect key="frame" x="163" y="0.0" width="198" height="30"/>
@@ -487,7 +487,11 @@
                                         <rect key="frame" x="0.0" y="40" width="524" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XG-CF-Zjg">
-                                        <rect key="frame" x="247" y="266" width="30" height="30"/>
+                                        <rect key="frame" x="212" y="266" width="100" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="FmI-bb-NA7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
                                         <connections>
                                             <action selector="touchUpInside" destination="fjo-bd-egF" eventType="touchUpInside" id="iN2-tZ-D4V"/>
@@ -527,7 +531,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d44-QN-a6W">
-                                <rect key="frame" x="8" y="162" width="524" height="296"/>
+                                <rect key="frame" x="8" y="156" width="524" height="308"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thu-kd-u8Q">
                                         <rect key="frame" x="210" y="0.0" width="104" height="30"/>
@@ -539,7 +543,11 @@
                                         <rect key="frame" x="0.0" y="40" width="524" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n48-i9-f5O">
-                                        <rect key="frame" x="247" y="266" width="30" height="30"/>
+                                        <rect key="frame" x="212" y="266" width="100" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Rjw-hU-p2l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
                                         <connections>
                                             <action selector="touchUpInside" destination="WKp-Sb-ZDO" eventType="touchUpInside" id="G7k-Lf-d1f"/>
@@ -579,7 +587,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OgQ-Cn-vdT">
-                                <rect key="frame" x="8" y="162" width="524" height="296"/>
+                                <rect key="frame" x="8" y="156" width="524" height="308"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYy-bI-cfN">
                                         <rect key="frame" x="206.5" y="0.0" width="111.5" height="30"/>
@@ -591,7 +599,11 @@
                                         <rect key="frame" x="0.0" y="40" width="524" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pa0-Af-XHJ">
-                                        <rect key="frame" x="247" y="266" width="30" height="30"/>
+                                        <rect key="frame" x="212" y="266" width="100" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Gro-Oc-Da3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
                                         <connections>
                                             <action selector="touchUpInside" destination="9Am-7U-FpX" eventType="touchUpInside" id="go4-aQ-aQL"/>
@@ -640,7 +652,7 @@
                                             <constraint firstAttribute="height" constant="80" id="tTg-qy-6oD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="48"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="topInset">
@@ -669,7 +681,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="C">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="5Qe-dr-67u"/>
@@ -684,7 +696,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="+/-">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="XEM-ie-gcC"/>
@@ -699,7 +711,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="&lt;Del">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="KO3-hU-YK5"/>
@@ -720,7 +732,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="7">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="mDy-bY-ewC"/>
@@ -735,7 +747,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="8">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="pNU-W2-IR7"/>
@@ -750,13 +762,14 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="9">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="9AV-3l-ZBv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9cx-Cj-8fa">
                                         <rect key="frame" x="0.0" y="270" width="320" height="80"/>
@@ -770,7 +783,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="4">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="aJe-eS-iet"/>
@@ -785,7 +798,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="5">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="n6E-LT-bQc"/>
@@ -800,13 +813,14 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="6">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="7Mc-E5-u7E"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iik-rp-Es9">
                                         <rect key="frame" x="0.0" y="360" width="320" height="80"/>
@@ -820,7 +834,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="1">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="t8H-Na-tbp"/>
@@ -835,7 +849,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="2">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="37n-dM-8IQ"/>
@@ -850,13 +864,14 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="3">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="87T-cj-G8V"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-zr-4xz">
                                         <rect key="frame" x="0.0" y="450" width="320" height="80"/>
@@ -870,7 +885,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="0">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="QJy-hD-D5L"/>
@@ -885,7 +900,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title=".">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="liR-Da-lKD"/>
@@ -900,23 +915,24 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="OK">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="touchUpInside:" destination="nqE-l4-05c" eventType="touchUpInside" id="Npw-Xn-6SE"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YDH-0R-ell" secondAttribute="trailing" id="OXS-qu-lG9"/>
                                     <constraint firstItem="YDH-0R-ell" firstAttribute="leading" secondItem="amM-PR-3SX" secondAttribute="leading" id="ePp-Vm-hbR"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="amM-PR-3SX" firstAttribute="centerX" secondItem="sIf-cK-ukn" secondAttribute="centerX" id="Xjl-LL-Wjn"/>
                             <constraint firstItem="amM-PR-3SX" firstAttribute="centerY" secondItem="sIf-cK-ukn" secondAttribute="centerY" id="pOS-QU-veO"/>
@@ -955,7 +971,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GWm-pY-4q2">
-                                <rect key="frame" x="8" y="162" width="524" height="296"/>
+                                <rect key="frame" x="8" y="156" width="524" height="308"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abiotic Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRI-6M-oR7">
                                         <rect key="frame" x="185" y="0.0" width="154.5" height="30"/>
@@ -967,7 +983,11 @@
                                         <rect key="frame" x="0.0" y="40" width="524" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFZ-hR-WGz">
-                                        <rect key="frame" x="247" y="266" width="30" height="30"/>
+                                        <rect key="frame" x="212" y="266" width="100" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="AAb-mV-nrp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="OK"/>
                                         <connections>
                                             <action selector="touchUpInside" destination="KEw-rO-56T" eventType="touchUpInside" id="2AS-nz-4nJ"/>
@@ -1022,7 +1042,10 @@
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8v-0U-vX3">
-                                        <rect key="frame" x="247" y="266" width="30" height="30"/>
+                                        <rect key="frame" x="212" y="266" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="J1t-gh-11v"/>
+                                        </constraints>
                                         <state key="normal" title="OK"/>
                                         <connections>
                                             <action selector="touchUpInside" destination="b7s-eX-RYk" eventType="touchUpInside" id="KWn-Wt-6eO"/>
@@ -1077,7 +1100,10 @@
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3EG-Fg-Lv5">
-                                        <rect key="frame" x="247" y="266" width="30" height="30"/>
+                                        <rect key="frame" x="212" y="266" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Plb-l2-nxy"/>
+                                        </constraints>
                                         <state key="normal" title="OK"/>
                                         <connections>
                                             <action selector="touchUpInside" destination="YBE-5P-g7B" eventType="touchUpInside" id="9EZ-CP-nNT"/>

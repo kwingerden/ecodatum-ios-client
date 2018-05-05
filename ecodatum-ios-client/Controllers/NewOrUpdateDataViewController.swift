@@ -372,9 +372,6 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     tableView.tableFooterView = UIView(frame: .zero)
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
-//    tableView.register(
-//      DataUITableViewHeaderFooterView.self,
-//      forHeaderFooterViewReuseIdentifier: DataUITableViewHeaderFooterView.reuseIdentifier)
 
   }
 
@@ -654,68 +651,6 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
     return nil
-    /*
-    guard let header = tableView.dequeueReusableHeaderFooterView(
-      withIdentifier: DataUITableViewHeaderFooterView.reuseIdentifier) as? DataUITableViewHeaderFooterView else {
-      return nil
-    }
-
-    var text: String? = nil
-
-    switch section {
-
-    case 0: text = "Date"
-
-    case 1: text = "Time"
-
-    case 2: text = "Ecosystem Factor"
-
-    case 3:
-      if abioticFactorChoices != nil {
-        text = "Abiotic Factor"
-      } else if bioticFactorChoices != nil {
-        text = "Biotic Factor"
-      }
-
-    case 4:
-      if let abioticFactorChoices = abioticFactorChoices,
-         let abioticFactor = abioticFactorChoices.abioticFactor {
-        switch abioticFactor {
-        case .Air: text = "Air Data Type"
-        case .Soil: text = "Soil Data Type"
-        case .Water: text = "Water Data Type"
-        }
-      }
-
-    case 5:
-      if let abioticFactorChoices = abioticFactorChoices,
-         let abioticFactor = abioticFactorChoices.abioticFactor {
-        switch abioticFactor {
-        case .Air: text = "Air Data Unit"
-        case .Soil: text = "Soil Data Unit"
-        case .Water: text = "Water Data Unit"
-        }
-      }
-
-    case 6:
-      if let abioticFactorChoices = abioticFactorChoices,
-         let abioticFactor = abioticFactorChoices.abioticFactor {
-        switch abioticFactor {
-        case .Air: text = "Air Data Value"
-        case .Soil: text = "Soil Data Value"
-        case .Water: text = "Water Data Value"
-        }
-      }
-
-    default: break
-
-    }
-
-    header.label.text = text
-
-    return header
-    */
-
   }
 
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -723,7 +658,10 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 75
+    if ecoFactorChoice == .Abiotic && indexPath.section == 7 {
+      return 107
+    }
+    return 64
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -1287,7 +1225,7 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 class DataUnitChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var dataUnitView: UIView!
-  
+
   @IBOutlet weak var chooseDataUnitLabel: UILabel!
 
   var dataUnitLabel: MTMathUILabel = MTMathUILabel()
@@ -1298,10 +1236,11 @@ class DataUnitChoiceTableViewCell: UITableViewCell {
 
     if dataUnitView.subviews.index(of: dataUnitLabel) == nil {
       addSubview(dataUnitLabel)
-      dataUnitLabel.textAlignment = .center
+      dataUnitLabel.textAlignment = .left
       dataUnitLabel.fontSize = 25
       dataUnitLabel.textColor = .black
-      dataUnitLabel.sizeToFit()
+      dataUnitLabel.frame.size = dataUnitView.frame.size
+      dataUnitLabel.contentInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
     }
 
     super.layoutSubviews()
@@ -1594,7 +1533,7 @@ class SaveDataTableViewCell: UITableViewCell {
   @IBOutlet weak var saveDataButton: UIButton!
 
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  
+
   var handleSaveData: (() -> Void)!
 
   @IBAction func touchUpInside() {
