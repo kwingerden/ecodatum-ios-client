@@ -658,10 +658,23 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if ecoFactorChoice == .Abiotic && indexPath.section == 7 {
-      return 107
+
+    switch ecoFactorChoice {
+
+    case .Abiotic? where indexPath.section == 5: // Abiotic -> Data Unit
+      return 82
+
+    case .Abiotic? where indexPath.section == 7: // Abiotic -> Save Button
+      return 115
+
+    case .Biotic?:
+      return 0
+
+    default:
+      return 60
+
     }
-    return 64
+
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -1235,12 +1248,12 @@ class DataUnitChoiceTableViewCell: UITableViewCell {
   override func layoutSubviews() {
 
     if dataUnitView.subviews.index(of: dataUnitLabel) == nil {
-      addSubview(dataUnitLabel)
+      dataUnitView.addSubview(dataUnitLabel)
       dataUnitLabel.textAlignment = .left
       dataUnitLabel.fontSize = 25
       dataUnitLabel.textColor = .black
       dataUnitLabel.frame.size = dataUnitView.frame.size
-      dataUnitLabel.contentInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+      //dataUnitLabel.contentInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
     }
 
     super.layoutSubviews()
