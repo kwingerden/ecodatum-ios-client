@@ -896,25 +896,23 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     if let abioticFactorChoices = abioticFactorChoices,
        let dataUnit = abioticFactorChoices.dataUnit {
 
-      let label = MTMathUILabel()
-      label.latex = dataUnit.rawValue
-      label.textAlignment = .center
-      label.fontSize = 25
-      label.textColor = .black
-      cell.dataUnitLabel.insertSubview(label, at: 0)
+      cell.dataUnitLabel.latex = dataUnit.rawValue
+      cell.dataUnitLabel.isHidden = false
+      cell.chooseDataUnitLabel.isHidden = true
 
     } else {
 
       if let abioticFactorChoices = abioticFactorChoices,
          let abioticFactor = abioticFactorChoices.abioticFactor {
         switch abioticFactor {
-        case .Air: cell.dataUnitLabel.text = "Choose Air Data Unit"
-        case .Soil: cell.dataUnitLabel.text = "Choose Soil Data Unit"
-        case .Water: cell.dataUnitLabel.text = "Choose Water Data Unit"
+        case .Air: cell.chooseDataUnitLabel.text = "Choose Air Data Unit"
+        case .Soil: cell.chooseDataUnitLabel.text = "Choose Soil Data Unit"
+        case .Water: cell.chooseDataUnitLabel.text = "Choose Water Data Unit"
         }
       }
 
-      cell.dataUnitLabel.textColor = .lightGray
+      cell.dataUnitLabel.isHidden = true
+      cell.chooseDataUnitLabel.isHidden = false
 
     }
 
@@ -1288,9 +1286,27 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
 class DataUnitChoiceTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var dataUnitLabel: UILabel!
+  @IBOutlet weak var dataUnitView: UIView!
+  
+  @IBOutlet weak var chooseDataUnitLabel: UILabel!
+
+  var dataUnitLabel: MTMathUILabel = MTMathUILabel()
 
   var presentDataUnitChoice: (() -> Void)!
+
+  override func layoutSubviews() {
+
+    if dataUnitView.subviews.index(of: dataUnitLabel) == nil {
+      addSubview(dataUnitLabel)
+      dataUnitLabel.textAlignment = .center
+      dataUnitLabel.fontSize = 25
+      dataUnitLabel.textColor = .black
+      dataUnitLabel.sizeToFit()
+    }
+
+    super.layoutSubviews()
+
+  }
 
   @IBAction func touchUpInside() {
     presentDataUnitChoice()

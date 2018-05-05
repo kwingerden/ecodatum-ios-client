@@ -63,7 +63,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 4 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICM-BR-Hes">
                                                                             <rect key="frame" x="8" y="-0.5" width="344.5" height="75.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -102,7 +102,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:31:14 pm PDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVI-GI-hIb">
                                                                             <rect key="frame" x="8" y="-0.5" width="344.5" height="75.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -141,7 +141,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Ecosystem Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxi-Ud-TmS">
                                                                             <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -180,7 +180,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Abiotic Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jL-TI-uf1">
                                                                             <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -219,7 +219,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Data Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVU-f5-x1D">
                                                                             <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -256,12 +256,24 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="400.5" height="75"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Data Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpK-ez-c0F">
-                                                                            <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnx-ag-9O1">
+                                                                            <rect key="frame" x="8" y="0.0" width="345" height="75"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Data Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpK-ez-c0F">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="344.5" height="75"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="trailing" secondItem="JpK-ez-c0F" secondAttribute="trailing" id="FiY-gp-SYl"/>
+                                                                                <constraint firstItem="JpK-ez-c0F" firstAttribute="leading" secondItem="Vnx-ag-9O1" secondAttribute="leading" id="VQ4-JA-493"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="JpK-ez-c0F" secondAttribute="bottom" id="f30-VI-Wr5"/>
+                                                                                <constraint firstItem="JpK-ez-c0F" firstAttribute="top" secondItem="Vnx-ag-9O1" secondAttribute="top" id="nFq-Gh-0GO"/>
+                                                                            </constraints>
+                                                                        </view>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs9-Qp-PBF">
                                                                             <rect key="frame" x="360.5" y="21.5" width="32" height="32"/>
                                                                             <constraints>
@@ -276,16 +288,17 @@
                                                                         </button>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="bottom" secondItem="JpK-ez-c0F" secondAttribute="bottom" id="8XR-Wj-aAK"/>
-                                                                        <constraint firstItem="JpK-ez-c0F" firstAttribute="leading" secondItem="iCW-DG-V7C" secondAttribute="leading" constant="8" id="DJb-Wf-kHa"/>
-                                                                        <constraint firstItem="cs9-Qp-PBF" firstAttribute="leading" secondItem="JpK-ez-c0F" secondAttribute="trailing" constant="8" id="HHt-7S-flz"/>
+                                                                        <constraint firstItem="Vnx-ag-9O1" firstAttribute="leading" secondItem="iCW-DG-V7C" secondAttribute="leading" constant="8" id="QZJ-b6-bFG"/>
                                                                         <constraint firstAttribute="trailing" secondItem="cs9-Qp-PBF" secondAttribute="trailing" constant="8" id="S07-6n-D3o"/>
+                                                                        <constraint firstItem="cs9-Qp-PBF" firstAttribute="leading" secondItem="Vnx-ag-9O1" secondAttribute="trailing" constant="8" id="Sr3-MT-euH"/>
+                                                                        <constraint firstItem="Vnx-ag-9O1" firstAttribute="top" secondItem="iCW-DG-V7C" secondAttribute="top" id="lu3-GM-h5Q"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Vnx-ag-9O1" secondAttribute="bottom" id="rYR-bM-nnV"/>
                                                                         <constraint firstItem="cs9-Qp-PBF" firstAttribute="centerY" secondItem="iCW-DG-V7C" secondAttribute="centerY" id="vaN-vv-nce"/>
-                                                                        <constraint firstItem="JpK-ez-c0F" firstAttribute="top" secondItem="iCW-DG-V7C" secondAttribute="top" id="wG3-uX-VNM"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
-                                                                    <outlet property="dataUnitLabel" destination="JpK-ez-c0F" id="Pxg-Fd-oC4"/>
+                                                                    <outlet property="chooseDataUnitLabel" destination="JpK-ez-c0F" id="H1C-Ca-ehg"/>
+                                                                    <outlet property="dataUnitView" destination="Vnx-ag-9O1" id="Kxg-iz-TJS"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataValueChoice" rowHeight="75" id="cmS-Yc-G5y" customClass="DataValueChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -297,7 +310,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Data Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFh-gf-BWw">
                                                                             <rect key="frame" x="8" y="0.0" width="344.5" height="75"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
