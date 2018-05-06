@@ -345,23 +345,87 @@ fileprivate enum SoilPotassiumScale {
 
 }
 
-fileprivate enum WaterOdorScale: String {
+fileprivate enum WaterOdorScale {
 
-  case NoOdor = "No Odor"
-  case SlightOdor = "Slight Odor"
-  case Smelly = "Smelly"
-  case VerySmelly = "Very Smelly"
-  case Devastating = "Devastating"
+  case NoOdor(index: Int, label: String)
+  case SlightOdor(index: Int, label: String)
+  case Smelly(index: Int, label: String)
+  case VerySmelly(index: Int, label: String)
+  case Devastating(index: Int, label: String)
+
+  static func ==(_ lhs: WaterOdorScale, _ rhs: WaterOdorScale) -> Bool {
+
+    var lhsIndex = 0
+    switch lhs {
+    case .NoOdor(let index, _): lhsIndex = index
+    case .SlightOdor(let index, _): lhsIndex = index
+    case .Smelly(let index, _): lhsIndex = index
+    case .VerySmelly(let index, _): lhsIndex = index
+    case .Devastating(let index, _): lhsIndex = index
+    }
+
+    var rhsIndex = 0
+    switch rhs {
+    case .NoOdor(let index, _): rhsIndex = index
+    case .SlightOdor(let index, _): rhsIndex = index
+    case .Smelly(let index, _): rhsIndex = index
+    case .VerySmelly(let index, _): rhsIndex = index
+    case .Devastating(let index, _): rhsIndex = index
+    }
+
+    return lhsIndex == rhsIndex
+
+  }
+
+  static let all: [WaterOdorScale] = [
+    .NoOdor(index: 0, label: "No Odor"),
+    .SlightOdor(index: 1, label: "Slight Odor"),
+    .Smelly(index: 2, label: "Smelly"),
+    .VerySmelly(index: 3, label: "Very Smelly"),
+    .Devastating(index: 4, label: "Devastating")
+  ]
 
 }
 
-fileprivate enum WaterTurbidityScale: String {
+fileprivate enum WaterTurbidityScale {
 
-  case CrystalClear = "CrystalClear"
-  case SlightlyCloudy = "Slightly Cloudy"
-  case ModeratelyCloudy = "Moderately Cloudy"
-  case VeryCloudy = "Very Cloudy"
-  case BlackishOrBrowning = "Blackish or Browning"
+  case CrystalClear(index: Int, label: String)
+  case SlightlyCloudy(index: Int, label: String)
+  case ModeratelyCloudy(index: Int, label: String)
+  case VeryCloudy(index: Int, label: String)
+  case BlackishOrBrownish(index: Int, label: String)
+
+  static func ==(_ lhs: WaterTurbidityScale, _ rhs: WaterTurbidityScale) -> Bool {
+
+    var lhsIndex = 0
+    switch lhs {
+    case .CrystalClear(let index, _): lhsIndex = index
+    case .SlightlyCloudy(let index, _): lhsIndex = index
+    case .ModeratelyCloudy(let index, _): lhsIndex = index
+    case .VeryCloudy(let index, _): lhsIndex = index
+    case .BlackishOrBrownish(let index, _): lhsIndex = index
+    }
+
+    var rhsIndex = 0
+    switch rhs {
+    case .CrystalClear(let index, _): rhsIndex = index
+    case .SlightlyCloudy(let index, _): rhsIndex = index
+    case .ModeratelyCloudy(let index, _): rhsIndex = index
+    case .VeryCloudy(let index, _): rhsIndex = index
+    case .BlackishOrBrownish(let index, _): rhsIndex = index
+    }
+
+    return lhsIndex == rhsIndex
+
+  }
+
+  static let all: [WaterTurbidityScale] = [
+    .CrystalClear(index: 0, label: "Crystal Clear"),
+    .SlightlyCloudy(index: 1, label: "Slightly Cloudy"),
+    .ModeratelyCloudy(index: 2, label: "Moderately Cloudy"),
+    .VeryCloudy(index: 3, label: "Very Cloudy"),
+    .BlackishOrBrownish(index: 4, label: "Blackish or Brownish")
+  ]
 
 }
 
@@ -695,6 +759,20 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
           destination.handleSoilPotassiumChoice = handleSoilPotassiumChoice
         }
 
+      case "waterOdorChoice":
+        if let destination = segue.destination as? WaterOdorChoiceViewController,
+           let abioticFactorChoices = abioticFactorChoices {
+          destination.abioticFactorChoices = abioticFactorChoices
+          destination.handleWaterOdorChoice = handleWaterOdorChoice
+        }
+
+      case "waterTurbidityChoice":
+        if let destination = segue.destination as? WaterTurbidityChoiceViewController,
+           let abioticFactorChoices = abioticFactorChoices {
+          destination.abioticFactorChoices = abioticFactorChoices
+          destination.handleWaterTurbidityChoice = handleWaterTurbidityChoice
+        }
+
       default:
         break
 
@@ -862,6 +940,12 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     case ._Soil_Potassium_Scale_:
       performSegue(withIdentifier: "soilPotassiumChoice", sender: nil)
 
+    case ._Water_Odor_Scale_:
+      performSegue(withIdentifier: "waterOdorChoice", sender: nil)
+
+    case ._Water_Turbidity_Scale_:
+      performSegue(withIdentifier: "waterTurbidityChoice", sender: nil)
+
     default:
       performSegue(withIdentifier: "dataValueChoice", sender: nil)
 
@@ -912,6 +996,44 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         dataType: abioticFactorChoices.dataType,
         dataUnit: abioticFactorChoices.dataUnit,
         dataValue: soilPotassiumChoice)
+    }
+
+    updateAbioticDataValueRow(tableView)
+
+  }
+
+  fileprivate func handleWaterOdorChoice(_ waterOdorChoice: WaterOdorScale) {
+
+    if let dataValue = abioticFactorChoices?.dataValue as? WaterOdorScale,
+       waterOdorChoice == dataValue {
+      return
+    }
+
+    if let abioticFactorChoices = abioticFactorChoices {
+      self.abioticFactorChoices = AbioticFactorChoices(
+        abioticFactor: abioticFactorChoices.abioticFactor,
+        dataType: abioticFactorChoices.dataType,
+        dataUnit: abioticFactorChoices.dataUnit,
+        dataValue: waterOdorChoice)
+    }
+
+    updateAbioticDataValueRow(tableView)
+
+  }
+
+  fileprivate func handleWaterTurbidityChoice(_ waterTurbidityChoice: WaterTurbidityScale) {
+
+    if let dataValue = abioticFactorChoices?.dataValue as? WaterTurbidityScale,
+       waterTurbidityChoice == dataValue {
+      return
+    }
+
+    if let abioticFactorChoices = abioticFactorChoices {
+      self.abioticFactorChoices = AbioticFactorChoices(
+        abioticFactor: abioticFactorChoices.abioticFactor,
+        dataType: abioticFactorChoices.dataType,
+        dataUnit: abioticFactorChoices.dataUnit,
+        dataValue: waterTurbidityChoice)
     }
 
     updateAbioticDataValueRow(tableView)
@@ -1201,6 +1323,30 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         case .Low(_, let label): text = label
         case .Medium(_, let label): text = label
         case .High(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
+
+      case is WaterOdorScale:
+        let value = dataValue as! WaterOdorScale
+        var text = ""
+        switch value {
+        case .NoOdor(_, let label): text = label
+        case .SlightOdor(_, let label): text = label
+        case .Smelly(_, let label): text = label
+        case .VerySmelly(_, let label): text = label
+        case .Devastating(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
+
+      case is WaterTurbidityScale:
+        let value = dataValue as! WaterTurbidityScale
+        var text = ""
+        switch value {
+        case .CrystalClear(_, let label): text = label
+        case .SlightlyCloudy(_, let label): text = label
+        case .ModeratelyCloudy(_, let label): text = label
+        case .VeryCloudy(_, let label): text = label
+        case .BlackishOrBrownish(_, let label): text = label
         }
         cell.dataValueLabel.text = text
 
@@ -2032,6 +2178,142 @@ class SoilPotassiumChoiceViewController: UIViewController, UIPickerViewDataSourc
     case let .Low(_, label): return label
     case let .Medium(_, label): return label
     case let .High(_, label): return label
+    }
+
+  }
+
+}
+
+class WaterOdorChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  @IBOutlet weak var picker: UIPickerView!
+
+  @IBOutlet weak var cancelButton: UIButton!
+
+  @IBOutlet weak var okButton: UIButton!
+
+  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+
+  fileprivate var handleWaterOdorChoice: ((WaterOdorScale) -> Void)!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    picker.dataSource = self
+    picker.delegate = self
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    var selectedRow: Int = 0
+    if let waterOdorScale = abioticFactorChoices.dataValue as? WaterOdorScale {
+      switch waterOdorScale {
+      case let .NoOdor(index, _): selectedRow = index
+      case let .SlightOdor(index, _): selectedRow = index
+      case let .Smelly(index, _): selectedRow = index
+      case let .VerySmelly(index, _): selectedRow = index
+      case let .Devastating(index, _): selectedRow = index
+      }
+    }
+
+    picker.selectRow(selectedRow, inComponent: 0, animated: false)
+
+  }
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+
+    if sender == okButton {
+      let selectedRow = picker.selectedRow(inComponent: 0)
+      handleWaterOdorChoice(WaterOdorScale.all[selectedRow])
+    }
+    dismiss(animated: true, completion: nil)
+
+  }
+
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return WaterOdorScale.all.count
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+    switch WaterOdorScale.all[row] {
+    case let .NoOdor(_, label): return label
+    case let .SlightOdor(_, label): return label
+    case let .Smelly(_, label): return label
+    case let .VerySmelly(_, label): return label
+    case let .Devastating(_, label): return label
+    }
+
+  }
+
+}
+
+class WaterTurbidityChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  @IBOutlet weak var picker: UIPickerView!
+
+  @IBOutlet weak var cancelButton: UIButton!
+
+  @IBOutlet weak var okButton: UIButton!
+
+  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+
+  fileprivate var handleWaterTurbidityChoice: ((WaterTurbidityScale) -> Void)!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    picker.dataSource = self
+    picker.delegate = self
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    var selectedRow: Int = 0
+    if let waterTurbidityScale = abioticFactorChoices.dataValue as? WaterTurbidityScale {
+      switch waterTurbidityScale {
+      case let .CrystalClear(index, _): selectedRow = index
+      case let .SlightlyCloudy(index, _): selectedRow = index
+      case let .ModeratelyCloudy(index, _): selectedRow = index
+      case let .VeryCloudy(index, _): selectedRow = index
+      case let .BlackishOrBrownish(index, _): selectedRow = index
+      }
+    }
+
+    picker.selectRow(selectedRow, inComponent: 0, animated: false)
+
+  }
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+
+    if sender == okButton {
+      let selectedRow = picker.selectedRow(inComponent: 0)
+      handleWaterTurbidityChoice(WaterTurbidityScale.all[selectedRow])
+    }
+    dismiss(animated: true, completion: nil)
+
+  }
+
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return WaterTurbidityScale.all.count
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+    switch WaterTurbidityScale.all[row] {
+    case let .CrystalClear(_, label): return label
+    case let .SlightlyCloudy(_, label): return label
+    case let .ModeratelyCloudy(_, label): return label
+    case let .VeryCloudy(_, label): return label
+    case let .BlackishOrBrownish(_, label): return label
     }
 
   }
