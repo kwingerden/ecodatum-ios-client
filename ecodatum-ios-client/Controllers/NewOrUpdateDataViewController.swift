@@ -311,6 +311,60 @@ fileprivate enum DataUnitChoice: String {
 
 }
 
+fileprivate enum SoilPotassiumScale {
+
+  case Low(index: Int, label: String)
+  case Medium(index: Int, label: String)
+  case High(index: Int, label: String)
+
+  static func ==(_ lhs: SoilPotassiumScale, _ rhs: SoilPotassiumScale) -> Bool {
+
+    var lhsIndex = 0
+    switch lhs {
+    case .Low(let index, _): lhsIndex = index
+    case .Medium(let index, _): lhsIndex = index
+    case .High(let index, _): lhsIndex = index
+    }
+
+    var rhsIndex = 0
+    switch rhs {
+    case .Low(let index, _): rhsIndex = index
+    case .Medium(let index, _): rhsIndex = index
+    case .High(let index, _): rhsIndex = index
+    }
+
+    return lhsIndex == rhsIndex
+
+  }
+
+  static let all: [SoilPotassiumScale] = [
+    .Low(index: 0, label: "Low"),
+    .Medium(index: 1, label: "Medium"),
+    .High(index: 2, label: "High")
+  ]
+
+}
+
+fileprivate enum WaterOdorScale: String {
+
+  case NoOdor = "No Odor"
+  case SlightOdor = "Slight Odor"
+  case Smelly = "Smelly"
+  case VerySmelly = "Very Smelly"
+  case Devastating = "Devastating"
+
+}
+
+fileprivate enum WaterTurbidityScale: String {
+
+  case CrystalClear = "CrystalClear"
+  case SlightlyCloudy = "Slightly Cloudy"
+  case ModeratelyCloudy = "Moderately Cloudy"
+  case VeryCloudy = "Very Cloudy"
+  case BlackishOrBrowning = "Blackish or Browning"
+
+}
+
 fileprivate struct DataValue {
 
   enum Sign {
@@ -448,7 +502,7 @@ fileprivate struct DataValue {
       if newNumber.count == 0 {
         newSign = .positive
       } else if let intNumber = Int(newNumber),
-         intNumber == 0 {
+                intNumber == 0 {
         newSign = .positive
       }
 
@@ -491,12 +545,12 @@ fileprivate struct AbioticFactorChoices {
   let abioticFactor: AbioticFactor?
   let dataType: DataTypeChoice?
   let dataUnit: DataUnitChoice?
-  let dataValue: DataValue?
+  let dataValue: Any?
 
   init(abioticFactor: AbioticFactor? = nil,
        dataType: DataTypeChoice? = nil,
        dataUnit: DataUnitChoice? = nil,
-       dataValue: DataValue? = nil) {
+       dataValue: Any? = nil) {
     self.abioticFactor = abioticFactor
     self.dataType = dataType
     self.dataUnit = dataUnit
@@ -632,6 +686,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
            let abioticFactorChoices = abioticFactorChoices {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleDataValueChoice = handleDataValueChoice
+        }
+
+      case "soilPotassiumChoice":
+        if let destination = segue.destination as? SoilPotassiumChoiceViewController,
+           let abioticFactorChoices = abioticFactorChoices {
+          destination.abioticFactorChoices = abioticFactorChoices
+          destination.handleSoilPotassiumChoice = handleSoilPotassiumChoice
         }
 
       default:
@@ -798,6 +859,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     case ._Water_pH_Scale_:
       performSegue(withIdentifier: "pHValueChoice", sender: nil)
 
+    case ._Soil_Potassium_Scale_:
+      performSegue(withIdentifier: "soilPotassiumChoice", sender: nil)
+
     default:
       performSegue(withIdentifier: "dataValueChoice", sender: nil)
 
@@ -807,7 +871,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   fileprivate func handleDataValueChoice(_ dataValueChoice: DataValue) {
 
-    if let dataValue = abioticFactorChoices?.dataValue,
+    if let dataValue = abioticFactorChoices?.dataValue as? DataValue,
        dataValueChoice == dataValue {
       return
     }
@@ -830,6 +894,31 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         dataValue: newDataValueChoice)
 
     }
+
+    updateAbioticDataValueRow(tableView)
+
+  }
+
+  fileprivate func handleSoilPotassiumChoice(_ soilPotassiumChoice: SoilPotassiumScale) {
+
+    if let dataValue = abioticFactorChoices?.dataValue as? SoilPotassiumScale,
+       soilPotassiumChoice == dataValue {
+      return
+    }
+
+    if let abioticFactorChoices = abioticFactorChoices {
+      self.abioticFactorChoices = AbioticFactorChoices(
+        abioticFactor: abioticFactorChoices.abioticFactor,
+        dataType: abioticFactorChoices.dataType,
+        dataUnit: abioticFactorChoices.dataUnit,
+        dataValue: soilPotassiumChoice)
+    }
+
+    updateAbioticDataValueRow(tableView)
+
+  }
+
+  private func updateAbioticDataValueRow(_ tableView: UITableView) {
     tableView.reloadSections([6], with: .automatic)
 
     if numberOfSections > 7 {
@@ -841,9 +930,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
     numberOfSections = 8
     tableView.insertSections([7], with: .automatic)
-
   }
-
 
   fileprivate func handleSaveData() {
     print("Save Data")
@@ -1101,7 +1188,25 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     if let abioticFactorChoices = abioticFactorChoices,
        let dataValue = abioticFactorChoices.dataValue {
 
-      cell.dataValueLabel.text = dataValue.stringValue
+      switch dataValue {
+
+      case is DataValue:
+        let value = dataValue as! DataValue
+        cell.dataValueLabel.text = value.stringValue
+
+      case is SoilPotassiumScale:
+        let value = dataValue as! SoilPotassiumScale
+        var text = ""
+        switch value {
+        case .Low(_, let label): text = label
+        case .Medium(_, let label): text = label
+        case .High(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
+
+      default: fatalError()
+      }
+
       cell.dataValueLabel.textColor = .black
 
     } else {
@@ -1181,9 +1286,9 @@ class DateChoiceViewController: UIViewController {
   @IBOutlet weak var datePicker: UIDatePicker!
 
   @IBOutlet weak var cancelButton: UIButton!
-  
+
   @IBOutlet weak var okButton: UIButton!
-  
+
   var dateChoice: Date!
 
   var handleDateChoice: ((Date) -> Void)!
@@ -1194,12 +1299,12 @@ class DateChoiceViewController: UIViewController {
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
-  
+
     if sender == okButton {
       handleDateChoice(datePicker.date)
     }
     dismiss(animated: true, completion: nil)
-    
+
   }
 
 }
@@ -1221,9 +1326,9 @@ class TimeChoiceViewController: UIViewController {
   @IBOutlet weak var timePicker: UIDatePicker!
 
   @IBOutlet weak var cancelButton: UIButton!
-  
+
   @IBOutlet weak var okButton: UIButton!
-  
+
   var timeChoice: Date!
 
   var handleTimeChoice: ((Date) -> Void)!
@@ -1234,12 +1339,12 @@ class TimeChoiceViewController: UIViewController {
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
-    
+
     if sender == okButton {
       handleTimeChoice(timePicker.date)
     }
     dismiss(animated: true, completion: nil)
-    
+
   }
 
 }
@@ -1261,9 +1366,9 @@ class EcoFactorChoiceViewController: UIViewController, UIPickerViewDataSource, U
   @IBOutlet weak var ecoFactorPicker: UIPickerView!
 
   @IBOutlet weak var okButton: UIButton!
-  
+
   @IBOutlet weak var cancelButton: UIButton!
-  
+
   fileprivate var ecoFactorChoice: EcoFactor? = nil
 
   fileprivate var handleEcoFactorChoice: ((EcoFactor) -> Void)!
@@ -1285,14 +1390,14 @@ class EcoFactorChoiceViewController: UIViewController, UIPickerViewDataSource, U
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
-    
+
     if sender == okButton {
       let selectedRow = ecoFactorPicker.selectedRow(inComponent: 0)
       handleEcoFactorChoice(EcoFactor.all[selectedRow])
     }
-    
+
     dismiss(animated: true, completion: nil)
-    
+
   }
 
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -1326,9 +1431,9 @@ class AbioticFactorChoiceViewController: UIViewController, UIPickerViewDataSourc
   @IBOutlet weak var abioticFactorPicker: UIPickerView!
 
   @IBOutlet weak var cancelButton: UIButton!
-  
+
   @IBOutlet weak var okButton: UIButton!
-  
+
   fileprivate var abioticFactorChoice: AbioticFactor? = nil
 
   fileprivate var handleAbioticFactorChoice: ((AbioticFactor) -> Void)!
@@ -1350,15 +1455,15 @@ class AbioticFactorChoiceViewController: UIViewController, UIPickerViewDataSourc
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
-    
+
     if sender == okButton {
       let selectedRow = abioticFactorPicker.selectedRow(inComponent: 0)
       handleAbioticFactorChoice(AbioticFactor.all[selectedRow])
     }
     dismiss(animated: true, completion: nil)
-    
+
   }
-  
+
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
@@ -1390,9 +1495,9 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
   @IBOutlet weak var dataTypePicker: UIPickerView!
 
   @IBOutlet weak var cancelButton: UIButton!
-  
+
   @IBOutlet weak var okButton: UIButton!
-  
+
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
   fileprivate var handleDataTypeChoice: ((DataTypeChoice) -> Void)!
@@ -1436,25 +1541,25 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
-    
+
     if sender == okButton {
       let selectedRow = dataTypePicker.selectedRow(inComponent: 0)
       switch abioticFactorChoices.abioticFactor {
-        
+
       case .Air?: handleDataTypeChoice(.Air(AirDataType.all[selectedRow]))
-        
+
       case .Soil?: handleDataTypeChoice(.Soil(SoilDataType.all[selectedRow]))
-        
+
       case .Water?: handleDataTypeChoice(.Water(WaterDataType.all[selectedRow]))
-        
+
       default: break
-        
+
       }
     }
     dismiss(animated: true, completion: nil)
-    
+
   }
-  
+
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
@@ -1528,9 +1633,9 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
   @IBOutlet weak var dataUnitPicker: UIPickerView!
 
   @IBOutlet weak var cancelButton: UIButton!
-  
+
   @IBOutlet weak var okButton: UIButton!
-  
+
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
   fileprivate var handleDataUnitChoice: ((DataUnitChoice) -> Void)!
@@ -1561,15 +1666,15 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     dataUnitPicker.selectRow(selectedRow, inComponent: 0, animated: false)
 
   }
-  
+
   @IBAction func touchUpInside(_ sender: UIButton) {
-   
+
     if sender == okButton {
       let selectedRow = dataUnitPicker.selectedRow(inComponent: 0)
       handleDataUnitChoice(dataUnits[selectedRow])
     }
     dismiss(animated: true, completion: nil)
- 
+
   }
 
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -1648,7 +1753,7 @@ class DataValueChoiceViewController: UIViewController {
   @IBOutlet weak var decimalButton: UIButton!
 
   @IBOutlet weak var okButton: UIButton!
-  
+
   @IBOutlet weak var cancelButton: UIButton!
 
   private var dataValue: DataValue = DataValue()
@@ -1684,7 +1789,7 @@ class DataValueChoiceViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    if let dataValue = abioticFactorChoices.dataValue {
+    if let dataValue = abioticFactorChoices.dataValue as? DataValue {
       self.dataValue = dataValue
       valueLabel.text = dataValue.stringValue
     }
@@ -1745,7 +1850,7 @@ class DataValueChoiceViewController: UIViewController {
 
     case cancelButton:
       dismiss(animated: true, completion: nil)
-      
+
     default:
       LOG.error("Unexpected button \(sender)")
 
@@ -1768,9 +1873,9 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
   @IBOutlet weak var pHValuePicker: UIPickerView!
 
   @IBOutlet weak var okButton: UIButton!
-  
+
   @IBOutlet weak var cancelButton: UIButton!
-  
+
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
   fileprivate var handleDataValueChoice: ((DataValue) -> Void)!
@@ -1790,9 +1895,9 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
     var numberRow: Int = 0
     var fractionRow: Int = 0
-    if let dataValueChoice = abioticFactorChoices.dataValue {
-      numberRow = numberRange.index(of: Int(dataValueChoice.number)!)!
-      if let fraction = dataValueChoice.fraction {
+    if let dataValue = abioticFactorChoices.dataValue as? DataValue {
+      numberRow = numberRange.index(of: Int(dataValue.number)!)!
+      if let fraction = dataValue.fraction {
         fractionRow = fractionRange.index(of: Int(fraction)!)!
       }
     }
@@ -1803,9 +1908,9 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
-  
+
     if sender == okButton {
-    
+
       let number = Int(pHValuePicker.selectedRow(inComponent: 0) + 1)
       let fraction = Int(pHValuePicker.selectedRow(inComponent: 2))
       if number == 14 {
@@ -1813,9 +1918,9 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
       } else {
         handleDataValueChoice(DataValue(number: String(number), fraction: String(fraction)))
       }
-    
+
     }
-    
+
     dismiss(animated: true, completion: nil)
 
   }
@@ -1837,15 +1942,15 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
   }
 
   func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-    
+
     if component == 1 {
       return 20
     } else {
-      return 100 
+      return 100
     }
-    
+
   }
-  
+
   func pickerView(_ pickerView: UIPickerView,
                   viewForRow row: Int,
                   forComponent component: Int,
@@ -1864,6 +1969,70 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
     }
 
     return label
+
+  }
+
+}
+
+class SoilPotassiumChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  @IBOutlet weak var picker: UIPickerView!
+
+  @IBOutlet weak var cancelButton: UIButton!
+
+  @IBOutlet weak var okButton: UIButton!
+
+  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+
+  fileprivate var handleSoilPotassiumChoice: ((SoilPotassiumScale) -> Void)!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    picker.dataSource = self
+    picker.delegate = self
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    var selectedRow: Int = 0
+    if let soilPotassiumScale = abioticFactorChoices.dataValue as? SoilPotassiumScale {
+      switch soilPotassiumScale {
+      case let .Low(index, _): selectedRow = index
+      case let .Medium(index, _): selectedRow = index
+      case let .High(index, _): selectedRow = index
+      }
+    }
+
+    picker.selectRow(selectedRow, inComponent: 0, animated: false)
+
+  }
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+
+    if sender == okButton {
+      let selectedRow = picker.selectedRow(inComponent: 0)
+      handleSoilPotassiumChoice(SoilPotassiumScale.all[selectedRow])
+    }
+    dismiss(animated: true, completion: nil)
+
+  }
+
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return SoilPotassiumScale.all.count
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+    switch SoilPotassiumScale.all[row] {
+    case let .Low(_, label): return label
+    case let .Medium(_, label): return label
+    case let .High(_, label): return label
+    }
 
   }
 

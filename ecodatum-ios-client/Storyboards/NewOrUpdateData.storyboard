@@ -646,6 +646,7 @@
                         <segue destination="nqE-l4-05c" kind="presentation" identifier="dataValueChoice" modalPresentationStyle="formSheet" id="qqC-3V-3WE"/>
                         <segue destination="WKp-Sb-ZDO" kind="presentation" identifier="dataUnitChoice" modalPresentationStyle="formSheet" id="I4n-Xt-vCX"/>
                         <segue destination="33m-Dg-u8d" kind="presentation" identifier="pHValueChoice" modalPresentationStyle="formSheet" id="K9n-hV-fRd"/>
+                        <segue destination="KWi-WU-fc8" kind="presentation" identifier="soilPotassiumChoice" modalPresentationStyle="formSheet" id="NCZ-gt-9Z8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kz-eQ-1a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -729,6 +730,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tt-4N-eAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="849" y="-180"/>
+        </scene>
+        <!--Soil Potassium Choice View Controller-->
+        <scene sceneID="jsB-5n-F2C">
+            <objects>
+                <viewController id="KWi-WU-fc8" customClass="SoilPotassiumChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yWX-lx-qDQ">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DlB-32-tDU">
+                                <rect key="frame" x="110" y="155" width="320" height="311"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postassium Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXr-mB-BWL">
+                                        <rect key="frame" x="43.5" y="0.0" width="233.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="LGx-Pj-a5t">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="216"/>
+                                    </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqS-Be-n2y">
+                                        <rect key="frame" x="60" y="272" width="200" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvW-7i-C3w">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="NC0-1g-Y42"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="KWi-WU-fc8" eventType="touchUpInside" id="GZu-GN-XWv"/>
+                                                    <action selector="touchUpInside:" destination="WKp-Sb-ZDO" eventType="touchUpInside" id="Rg6-Qm-2BD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzW-Oq-OJe">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="MJA-EO-2ra"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="WKp-Sb-ZDO" eventType="touchUpInside" id="Qac-tD-3rm"/>
+                                                    <action selector="touchUpInside:" destination="KWi-WU-fc8" eventType="touchUpInside" id="XCP-TI-ZjF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LGx-Pj-a5t" firstAttribute="leading" secondItem="DlB-32-tDU" secondAttribute="leading" id="dU5-PL-lSP"/>
+                                    <constraint firstAttribute="trailing" secondItem="LGx-Pj-a5t" secondAttribute="trailing" id="ppq-ce-kbX"/>
+                                    <constraint firstItem="iqS-Be-n2y" firstAttribute="centerX" secondItem="DlB-32-tDU" secondAttribute="centerX" id="q5O-f6-VH9"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DlB-32-tDU" firstAttribute="centerY" secondItem="yWX-lx-qDQ" secondAttribute="centerY" id="KrZ-LI-yk5"/>
+                            <constraint firstItem="DlB-32-tDU" firstAttribute="centerX" secondItem="yWX-lx-qDQ" secondAttribute="centerX" id="kCY-qz-ay7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RzC-ce-crV"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="lvW-7i-C3w" id="Lfl-ee-kjB"/>
+                        <outlet property="okButton" destination="HzW-Oq-OJe" id="eie-w2-Fvc"/>
+                        <outlet property="picker" destination="LGx-Pj-a5t" id="anN-cf-QCV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9S-TL-sRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-684" y="527"/>
         </scene>
         <!--Data Unit Choice View Controller-->
         <scene sceneID="fOW-lL-bJS">
