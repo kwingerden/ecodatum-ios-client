@@ -162,11 +162,11 @@ fileprivate enum DataUnitChoice: String {
   case NephelometricTurbidityUnits = "NTU \\ (Nephelometric \\ Turbidity \\ Units)"
   case JacksonTurbidityUnits = "JTU \\ (Jackson \\ Turbidity \\ Units)"
 
-  case _Soil_Potassium_Scale_ = "Potassium \\ Scale"
-  case _Soil_Texture_Scale_ = "Texture \\ Scale"
-  case _Water_Odor_Scale_ = "Odor \\ Scale"
-  case _Water_pH_Scale_ = "pH \\ Scale"
-  case _Water_Turbidity_Scale_ = "Turbidity \\ Scale"
+  case _Soil_Potassium_Scale_ = "Soil \\ Potassium \\ Scale"
+  case _Soil_Texture_Scale_ = "Soil \\ Texture \\ Scale"
+  case _Water_Odor_Scale_ = "Water \\ Odor \\ Scale"
+  case _Water_pH_Scale_ = "Water \\ pH \\ Scale"
+  case _Water_Turbidity_Scale_ = "Water \\ Turbidity \\ Scale"
 
   static func units(_ dataType: DataTypeChoice) -> [DataUnitChoice] {
 
@@ -429,7 +429,21 @@ fileprivate enum WaterTurbidityScale {
 
 }
 
-fileprivate struct DataValue {
+fileprivate struct SoilTextureScale {
+
+  let percentSand: Int
+  let percentSilt: Int
+  let percentClay: Int
+
+  static func ==(_ lhs: SoilTextureScale, _ rhs: SoilTextureScale) -> Bool {
+    return lhs.percentSand == rhs.percentSand &&
+      lhs.percentSilt == rhs.percentSilt &&
+      lhs.percentClay == rhs.percentClay
+  }
+
+}
+
+fileprivate struct DecimalDataValue {
 
   enum Sign {
     case positive
@@ -459,11 +473,11 @@ fileprivate struct DataValue {
     self.fraction = fraction
   }
 
-  func toggleSign() -> DataValue {
+  func toggleSign() -> DecimalDataValue {
 
     if doubleValue == 0 {
 
-      return DataValue(
+      return DecimalDataValue(
         sign: .positive,
         number: number,
         decimalPoint: decimalPoint,
@@ -471,7 +485,7 @@ fileprivate struct DataValue {
 
     } else {
 
-      return DataValue(
+      return DecimalDataValue(
         sign: sign == .positive ? .negative : .positive,
         number: number,
         decimalPoint: decimalPoint,
@@ -481,7 +495,7 @@ fileprivate struct DataValue {
 
   }
 
-  func addDecimalPoint() -> DataValue {
+  func addDecimalPoint() -> DecimalDataValue {
 
     if decimalPoint {
 
@@ -489,7 +503,7 @@ fileprivate struct DataValue {
 
     } else {
 
-      return DataValue(
+      return DecimalDataValue(
         sign: sign,
         number: number,
         decimalPoint: true,
@@ -499,11 +513,11 @@ fileprivate struct DataValue {
 
   }
 
-  func addDigit(_ digit: Int) -> DataValue {
+  func addDigit(_ digit: Int) -> DecimalDataValue {
 
     if let fraction = fraction {
 
-      return DataValue(
+      return DecimalDataValue(
         sign: sign,
         number: number,
         decimalPoint: decimalPoint,
@@ -511,7 +525,7 @@ fileprivate struct DataValue {
 
     } else if decimalPoint {
 
-      return DataValue(
+      return DecimalDataValue(
         sign: sign,
         number: number,
         decimalPoint: decimalPoint,
@@ -523,7 +537,7 @@ fileprivate struct DataValue {
       if doubleValue == 0 {
         newNumber = "\(digit)"
       }
-      return DataValue(
+      return DecimalDataValue(
         sign: sign,
         number: newNumber,
         decimalPoint: false,
@@ -533,7 +547,7 @@ fileprivate struct DataValue {
 
   }
 
-  func deleteDigit() -> DataValue {
+  func deleteDigit() -> DecimalDataValue {
 
     var newSign = sign
     if doubleValue == 0 {
@@ -544,7 +558,7 @@ fileprivate struct DataValue {
 
       var newFraction = fraction
       newFraction.removeLast()
-      return DataValue(
+      return DecimalDataValue(
         sign: newSign,
         number: number,
         decimalPoint: decimalPoint,
@@ -552,7 +566,7 @@ fileprivate struct DataValue {
 
     } else if decimalPoint {
 
-      return DataValue(
+      return DecimalDataValue(
         sign: newSign,
         number: number,
         decimalPoint: false,
@@ -570,7 +584,7 @@ fileprivate struct DataValue {
         newSign = .positive
       }
 
-      return DataValue(
+      return DecimalDataValue(
         sign: newSign,
         number: newNumber.count == 0 ? "0" : newNumber,
         decimalPoint: false,
@@ -580,7 +594,7 @@ fileprivate struct DataValue {
 
   }
 
-  static func ==(_ lhs: DataValue, _ rhs: DataValue) -> Bool {
+  static func ==(_ lhs: DecimalDataValue, _ rhs: DecimalDataValue) -> Bool {
     return lhs.sign == rhs.sign &&
       lhs.number == rhs.number &&
       lhs.decimalPoint == rhs.decimalPoint &&
@@ -773,6 +787,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
           destination.handleWaterTurbidityChoice = handleWaterTurbidityChoice
         }
 
+      case "soilTextureChoice":
+        if let destination = segue.destination as? SoilTextureChoiceViewController,
+           let abioticFactorChoices = abioticFactorChoices {
+          destination.abioticFactorChoices = abioticFactorChoices
+          destination.handleSoilTextureChoice = handleSoilTextureChoice
+        }
+
       default:
         break
 
@@ -946,6 +967,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     case ._Water_Turbidity_Scale_:
       performSegue(withIdentifier: "waterTurbidityChoice", sender: nil)
 
+    case ._Soil_Texture_Scale_:
+      performSegue(withIdentifier: "soilTextureChoice", sender: nil)
+
     default:
       performSegue(withIdentifier: "dataValueChoice", sender: nil)
 
@@ -953,9 +977,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  fileprivate func handleDataValueChoice(_ dataValueChoice: DataValue) {
+  fileprivate func handleDataValueChoice(_ dataValueChoice: DecimalDataValue) {
 
-    if let dataValue = abioticFactorChoices?.dataValue as? DataValue,
+    if let dataValue = abioticFactorChoices?.dataValue as? DecimalDataValue,
        dataValueChoice == dataValue {
       return
     }
@@ -964,7 +988,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
       var newDataValueChoice = dataValueChoice
       if newDataValueChoice.fraction == nil && newDataValueChoice.decimalPoint {
-        newDataValueChoice = DataValue(
+        newDataValueChoice = DecimalDataValue(
           sign: newDataValueChoice.sign,
           number: newDataValueChoice.number,
           decimalPoint: false,
@@ -1034,6 +1058,25 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         dataType: abioticFactorChoices.dataType,
         dataUnit: abioticFactorChoices.dataUnit,
         dataValue: waterTurbidityChoice)
+    }
+
+    updateAbioticDataValueRow(tableView)
+
+  }
+
+  fileprivate func handleSoilTextureChoice(_ soilTextureChoice: SoilTextureScale) {
+
+    if let dataValue = abioticFactorChoices?.dataValue as? SoilTextureScale,
+       soilTextureChoice == dataValue {
+      return
+    }
+
+    if let abioticFactorChoices = abioticFactorChoices {
+      self.abioticFactorChoices = AbioticFactorChoices(
+        abioticFactor: abioticFactorChoices.abioticFactor,
+        dataType: abioticFactorChoices.dataType,
+        dataUnit: abioticFactorChoices.dataUnit,
+        dataValue: soilTextureChoice)
     }
 
     updateAbioticDataValueRow(tableView)
@@ -1312,8 +1355,8 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
       switch dataValue {
 
-      case is DataValue:
-        let value = dataValue as! DataValue
+      case is DecimalDataValue:
+        let value = dataValue as! DecimalDataValue
         cell.dataValueLabel.text = value.stringValue
 
       case is SoilPotassiumScale:
@@ -1349,6 +1392,10 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         case .BlackishOrBrownish(_, let label): text = label
         }
         cell.dataValueLabel.text = text
+
+      case is SoilTextureScale:
+        let value = dataValue as! SoilTextureScale
+        cell.dataValueLabel.text = "\(value.percentSand)% Sand, \(value.percentSilt)% Silt, \(value.percentClay)% Clay"
 
       default: fatalError()
       }
@@ -1902,11 +1949,11 @@ class DataValueChoiceViewController: UIViewController {
 
   @IBOutlet weak var cancelButton: UIButton!
 
-  private var dataValue: DataValue = DataValue()
+  private var dataValue: DecimalDataValue = DecimalDataValue()
 
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataValueChoice: ((DataValue) -> Void)!
+  fileprivate var handleDataValueChoice: ((DecimalDataValue) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1935,7 +1982,7 @@ class DataValueChoiceViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    if let dataValue = abioticFactorChoices.dataValue as? DataValue {
+    if let dataValue = abioticFactorChoices.dataValue as? DecimalDataValue {
       self.dataValue = dataValue
       valueLabel.text = dataValue.stringValue
     }
@@ -1944,12 +1991,12 @@ class DataValueChoiceViewController: UIViewController {
 
   @IBAction func touchUpInside(_ sender: UIButton) {
 
-    var newDataValue: DataValue? = nil
+    var newDataValue: DecimalDataValue? = nil
 
     switch sender {
 
     case clearButton:
-      newDataValue = DataValue()
+      newDataValue = DecimalDataValue()
 
     case signButton:
       newDataValue = dataValue.toggleSign()
@@ -2024,7 +2071,7 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataValueChoice: ((DataValue) -> Void)!
+  fileprivate var handleDataValueChoice: ((DecimalDataValue) -> Void)!
 
   private let numberRange = Array(1...14)
 
@@ -2041,7 +2088,7 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
     var numberRow: Int = 0
     var fractionRow: Int = 0
-    if let dataValue = abioticFactorChoices.dataValue as? DataValue {
+    if let dataValue = abioticFactorChoices.dataValue as? DecimalDataValue {
       numberRow = numberRange.index(of: Int(dataValue.number)!)!
       if let fraction = dataValue.fraction {
         fractionRow = fractionRange.index(of: Int(fraction)!)!
@@ -2060,9 +2107,9 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
       let number = Int(pHValuePicker.selectedRow(inComponent: 0) + 1)
       let fraction = Int(pHValuePicker.selectedRow(inComponent: 2))
       if number == 14 {
-        handleDataValueChoice(DataValue(number: String(number), fraction: "0"))
+        handleDataValueChoice(DecimalDataValue(number: String(number), fraction: "0"))
       } else {
-        handleDataValueChoice(DataValue(number: String(number), fraction: String(fraction)))
+        handleDataValueChoice(DecimalDataValue(number: String(number), fraction: String(fraction)))
       }
 
     }
@@ -2314,6 +2361,214 @@ class WaterTurbidityChoiceViewController: UIViewController, UIPickerViewDataSour
     case let .ModeratelyCloudy(_, label): return label
     case let .VeryCloudy(_, label): return label
     case let .BlackishOrBrownish(_, label): return label
+    }
+
+  }
+
+}
+
+class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  @IBOutlet weak var sandPercentPicker: UIPickerView!
+
+  @IBOutlet weak var siltPercentPicker: UIPickerView!
+
+  @IBOutlet weak var clayPercentPicker: UIPickerView!
+
+  @IBOutlet weak var segmentedControl: UISegmentedControl!
+
+  @IBOutlet weak var cancelButton: UIButton!
+
+  @IBOutlet weak var okButton: UIButton!
+
+  private var currentPicker: UIPickerView {
+    if !sandPercentPicker.isHidden {
+      return sandPercentPicker
+    } else if !siltPercentPicker.isHidden {
+      return siltPercentPicker
+    } else if !clayPercentPicker.isHidden {
+      return siltPercentPicker
+    } else {
+      return sandPercentPicker
+    }
+  }
+
+  private enum Percentage: Int {
+
+    case Zero = 0
+    case Ten = 10
+    case Twenty = 20
+    case Thirty = 30
+    case Forty = 40
+    case Fifty = 50
+    case Sixty = 60
+    case Seventy = 70
+    case Eighty = 80
+    case Ninety = 90
+    case OneHundred = 100
+
+    static let all: [Percentage] = [
+      .Zero,
+      .Ten,
+      .Twenty,
+      .Thirty,
+      .Forty,
+      .Fifty,
+      .Sixty,
+      .Seventy,
+      .Eighty,
+      .Ninety,
+      .OneHundred
+    ]
+
+  }
+
+  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+
+  fileprivate var handleSoilTextureChoice: ((SoilTextureScale) -> Void)!
+
+  override func viewDidLoad() {
+
+    super.viewDidLoad()
+
+    let font: [AnyHashable: Any] = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22)]
+    segmentedControl.setTitleTextAttributes(font, for: .normal)
+
+    sandPercentPicker.dataSource = self
+    siltPercentPicker.dataSource = self
+    clayPercentPicker.dataSource = self
+
+    sandPercentPicker.delegate = self
+    siltPercentPicker.delegate = self
+    clayPercentPicker.delegate = self
+
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+
+    super.viewWillAppear(animated)
+
+    var sandSelectedRow: Int = 0
+    var siltSelectedRow: Int = 0
+    var claySelectedRow: Int = 0
+    if let soilTexture = abioticFactorChoices.dataValue as? SoilTextureScale {
+
+      sandSelectedRow = Percentage.all.index {
+        return soilTexture.percentSand == $0.rawValue
+      } ?? 0
+      siltSelectedRow = Percentage.all.index {
+        return soilTexture.percentSilt == $0.rawValue
+      } ?? 0
+      claySelectedRow = Percentage.all.index {
+        return soilTexture.percentClay == $0.rawValue
+      } ?? 0
+
+    }
+
+    segmentedControl.setTitle(
+      "\(Percentage.all[sandSelectedRow].rawValue)% Sand",
+      forSegmentAt: 0)
+    segmentedControl.setTitle(
+      "\(Percentage.all[siltSelectedRow].rawValue)% Silt",
+      forSegmentAt: 1)
+    segmentedControl.setTitle(
+      "\(Percentage.all[claySelectedRow].rawValue)% Clay",
+      forSegmentAt: 2)
+
+    sandPercentPicker.selectRow(sandSelectedRow, inComponent: 0, animated: false)
+    siltPercentPicker.selectRow(siltSelectedRow, inComponent: 0, animated: false)
+    clayPercentPicker.selectRow(claySelectedRow, inComponent: 0, animated: false)
+
+    showPercentPicker(sandPercentPicker)
+
+  }
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+
+    if sender == okButton {
+
+      let percentSand = Percentage.all[sandPercentPicker.selectedRow(inComponent: 0)].rawValue
+      let percentSilt = Percentage.all[siltPercentPicker.selectedRow(inComponent: 0)].rawValue
+      let percentClay = Percentage.all[clayPercentPicker.selectedRow(inComponent: 0)].rawValue
+      let soilTexture = SoilTextureScale(
+        percentSand: percentSand,
+        percentSilt: percentSilt,
+        percentClay: percentClay)
+      handleSoilTextureChoice(soilTexture)
+
+    }
+
+    dismiss(animated: true, completion: nil)
+
+  }
+
+  @IBAction func valueChanged(_ sender: UISegmentedControl) {
+
+    switch segmentedControl.selectedSegmentIndex {
+
+    case 0: showPercentPicker(sandPercentPicker)
+    case 1: showPercentPicker(siltPercentPicker)
+    case 2: showPercentPicker(clayPercentPicker)
+
+    default: fatalError()
+
+    }
+
+  }
+
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return Percentage.all.count
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return String(Percentage.all[row].rawValue)
+  }
+
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+    let percentage = Percentage.all[row]
+    switch pickerView {
+
+    case sandPercentPicker:
+      segmentedControl.setTitle("\(percentage.rawValue)% Sand", forSegmentAt: 0)
+
+    case siltPercentPicker:
+      segmentedControl.setTitle("\(percentage.rawValue)% Silt", forSegmentAt: 1)
+
+    case clayPercentPicker:
+      segmentedControl.setTitle("\(percentage.rawValue)% Clay", forSegmentAt: 2)
+
+    default: fatalError()
+
+    }
+
+  }
+
+  private func showPercentPicker(_ pickerView: UIPickerView) {
+
+    switch pickerView {
+
+    case sandPercentPicker:
+      sandPercentPicker.isHidden = false
+      siltPercentPicker.isHidden = true
+      clayPercentPicker.isHidden = true
+
+    case siltPercentPicker:
+      sandPercentPicker.isHidden = true
+      siltPercentPicker.isHidden = false
+      clayPercentPicker.isHidden = true
+
+    case clayPercentPicker:
+      sandPercentPicker.isHidden = true
+      siltPercentPicker.isHidden = true
+      clayPercentPicker.isHidden = false
+
+    default: fatalError()
+
     }
 
   }

@@ -649,6 +649,7 @@
                         <segue destination="KWi-WU-fc8" kind="presentation" identifier="soilPotassiumChoice" modalPresentationStyle="formSheet" id="NCZ-gt-9Z8"/>
                         <segue destination="XJK-WP-1uN" kind="presentation" identifier="waterOdorChoice" modalPresentationStyle="formSheet" id="Znm-zE-bJh"/>
                         <segue destination="kb9-SJ-4Cp" kind="presentation" identifier="waterTurbidityChoice" modalPresentationStyle="formSheet" id="vKu-xg-3NR"/>
+                        <segue destination="jbY-rI-AdI" kind="presentation" identifier="soilTextureChoice" modalPresentationStyle="formSheet" id="d7d-qE-O10"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kz-eQ-1a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,7 +788,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="61k-DY-qyi" secondAttribute="trailing" id="1Dn-47-j85"/>
-                                    <constraint firstItem="p22-3J-2YM" firstAttribute="centerX" secondItem="HMr-AS-J9K" secondAttribute="centerX" id="Gyd-u8-pf1"/>
                                     <constraint firstItem="61k-DY-qyi" firstAttribute="leading" secondItem="HMr-AS-J9K" secondAttribute="leading" id="cKz-xr-v3u"/>
                                 </constraints>
                             </stackView>
@@ -808,6 +808,153 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfM-3L-vPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2044" y="530"/>
+        </scene>
+        <!--Soil Texture Choice View Controller-->
+        <scene sceneID="dVm-ww-BE7">
+            <objects>
+                <viewController id="jbY-rI-AdI" customClass="SoilTextureChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PvH-gp-dhf">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fK3-24-MEH">
+                                <rect key="frame" x="8" y="92.5" width="524" height="435"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soil Texture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbf-4B-1aD">
+                                        <rect key="frame" x="185.5" y="0.0" width="153.5" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="KUb-IY-snj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Naf-lY-gbn">
+                                        <rect key="frame" x="0.0" y="85" width="524" height="301"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0q-1c-ffA">
+                                                <rect key="frame" x="0.0" y="0.0" width="524" height="40"/>
+                                                <subviews>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VBd-ee-fBc">
+                                                        <rect key="frame" x="0.0" y="6" width="524" height="29"/>
+                                                        <segments>
+                                                            <segment title="34% Sand"/>
+                                                            <segment title="23% Silt"/>
+                                                            <segment title="57% Clay"/>
+                                                        </segments>
+                                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="valueChanged:" destination="jbY-rI-AdI" eventType="valueChanged" id="Cs4-u8-PQu"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="VBd-ee-fBc" firstAttribute="centerX" secondItem="y0q-1c-ffA" secondAttribute="centerX" id="86z-R0-NGH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="VBd-ee-fBc" secondAttribute="trailing" id="954-fs-osR"/>
+                                                    <constraint firstAttribute="height" constant="40" id="DBp-9d-ii6"/>
+                                                    <constraint firstItem="VBd-ee-fBc" firstAttribute="leading" secondItem="y0q-1c-ffA" secondAttribute="leading" id="oF9-mJ-CgI"/>
+                                                    <constraint firstItem="VBd-ee-fBc" firstAttribute="centerY" secondItem="y0q-1c-ffA" secondAttribute="centerY" id="thj-IY-09b"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-3t-dO9">
+                                                <rect key="frame" x="0.0" y="45" width="524" height="256"/>
+                                                <subviews>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuE-IF-PML">
+                                                        <rect key="frame" x="0.0" y="0.0" width="524" height="256"/>
+                                                    </pickerView>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86b-mH-NtA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="524" height="256"/>
+                                                    </pickerView>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRZ-FF-OVI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="524" height="256"/>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="jRZ-FF-OVI" firstAttribute="top" secondItem="i2Z-3t-dO9" secondAttribute="top" id="EWn-x8-gnx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jRZ-FF-OVI" secondAttribute="bottom" id="EgM-To-aza"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TuE-IF-PML" secondAttribute="trailing" id="FFj-yV-F4a"/>
+                                                    <constraint firstAttribute="trailing" secondItem="86b-mH-NtA" secondAttribute="trailing" id="LID-B2-Tfm"/>
+                                                    <constraint firstItem="86b-mH-NtA" firstAttribute="leading" secondItem="i2Z-3t-dO9" secondAttribute="leading" id="N5Z-43-PKa"/>
+                                                    <constraint firstItem="TuE-IF-PML" firstAttribute="top" secondItem="i2Z-3t-dO9" secondAttribute="top" id="OKR-cj-xiT"/>
+                                                    <constraint firstItem="TuE-IF-PML" firstAttribute="leading" secondItem="i2Z-3t-dO9" secondAttribute="leading" id="ONc-Q4-1hK"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TuE-IF-PML" secondAttribute="bottom" id="RT1-3t-7zd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="86b-mH-NtA" secondAttribute="bottom" id="ig6-hW-Rv3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jRZ-FF-OVI" secondAttribute="trailing" id="n1r-Gu-vo7"/>
+                                                    <constraint firstItem="jRZ-FF-OVI" firstAttribute="leading" secondItem="i2Z-3t-dO9" secondAttribute="leading" id="w3w-TD-uEf"/>
+                                                    <constraint firstItem="86b-mH-NtA" firstAttribute="top" secondItem="i2Z-3t-dO9" secondAttribute="top" id="wYx-e1-bSX"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="i2Z-3t-dO9" secondAttribute="bottom" id="2jc-Eh-6xl"/>
+                                            <constraint firstItem="y0q-1c-ffA" firstAttribute="leading" secondItem="Naf-lY-gbn" secondAttribute="leading" id="2z5-sw-9ad"/>
+                                            <constraint firstAttribute="trailing" secondItem="y0q-1c-ffA" secondAttribute="trailing" id="Aj3-Sg-CeA"/>
+                                            <constraint firstAttribute="trailing" secondItem="i2Z-3t-dO9" secondAttribute="trailing" id="XHh-Z3-BOa"/>
+                                            <constraint firstItem="i2Z-3t-dO9" firstAttribute="leading" secondItem="Naf-lY-gbn" secondAttribute="leading" id="pFF-bt-piP"/>
+                                            <constraint firstItem="y0q-1c-ffA" firstAttribute="top" secondItem="Naf-lY-gbn" secondAttribute="top" id="v3z-1e-LaK"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYC-4o-HoA">
+                                        <rect key="frame" x="162" y="396" width="200.5" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvH-FJ-fuH">
+                                                <rect key="frame" x="0.0" y="0.0" width="100.5" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="QIK-mV-39h"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="jbY-rI-AdI" eventType="touchUpInside" id="xYp-yG-CkB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRJ-eg-sYc">
+                                                <rect key="frame" x="100.5" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="wZX-CQ-nuv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="jbY-rI-AdI" eventType="touchUpInside" id="fSZ-5M-OY8"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Naf-lY-gbn" firstAttribute="leading" secondItem="fK3-24-MEH" secondAttribute="leading" id="Vg7-eb-jon"/>
+                                    <constraint firstAttribute="trailing" secondItem="Naf-lY-gbn" secondAttribute="trailing" id="aYO-zT-ne0"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fK3-24-MEH" firstAttribute="leading" secondItem="Ykc-pp-eP2" secondAttribute="leading" constant="8" id="6Ie-we-VLG"/>
+                            <constraint firstItem="fK3-24-MEH" firstAttribute="centerY" secondItem="PvH-gp-dhf" secondAttribute="centerY" id="BYO-cc-7Qz"/>
+                            <constraint firstItem="Ykc-pp-eP2" firstAttribute="trailing" secondItem="fK3-24-MEH" secondAttribute="trailing" constant="8" id="W2x-v9-DS1"/>
+                            <constraint firstItem="fK3-24-MEH" firstAttribute="centerX" secondItem="PvH-gp-dhf" secondAttribute="centerX" id="hSg-CO-FOw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ykc-pp-eP2"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="KvH-FJ-fuH" id="2Nk-Jn-I5F"/>
+                        <outlet property="clayPercentPicker" destination="jRZ-FF-OVI" id="r4h-Os-s9B"/>
+                        <outlet property="okButton" destination="NRJ-eg-sYc" id="rQe-ow-GRl"/>
+                        <outlet property="sandPercentPicker" destination="TuE-IF-PML" id="5ql-ih-wNT"/>
+                        <outlet property="segmentedControl" destination="VBd-ee-fBc" id="L5O-zs-pEr"/>
+                        <outlet property="siltPercentPicker" destination="86b-mH-NtA" id="Fns-SO-rWk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdO-cl-6mn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-798.4375" y="-180.46875"/>
         </scene>
         <!--Water Odor Choice View Controller-->
         <scene sceneID="f6N-eS-t5f">
