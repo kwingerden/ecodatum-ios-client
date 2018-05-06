@@ -161,7 +161,12 @@ fileprivate enum DataUnitChoice: String {
   case MilligramsPerLiter = "\\frac{mg}{L}"
   case NephelometricTurbidityUnits = "NTU \\ (Nephelometric \\ Turbidity \\ Units)"
   case JacksonTurbidityUnits = "JTU \\ (Jackson \\ Turbidity \\ Units)"
-  case _Scale_
+
+  case _Soil_Potassium_Scale_ = "Potassium \\ Scale"
+  case _Soil_Texture_Scale_ = "Texture \\ Scale"
+  case _Water_Odor_Scale_ = "Odor \\ Scale"
+  case _Water_pH_Scale_ = "pH \\ Scale"
+  case _Water_Turbidity_Scale_ = "Turbidity \\ Scale"
 
   static func units(_ dataType: DataTypeChoice) -> [DataUnitChoice] {
 
@@ -218,7 +223,7 @@ fileprivate enum DataUnitChoice: String {
 
     case .Soil(let soilDataType) where soilDataType == .Potassium:
       return [
-        ._Scale_
+        ._Soil_Potassium_Scale_
       ]
 
     case .Soil(let soilDataType) where soilDataType == .Moisture:
@@ -228,7 +233,7 @@ fileprivate enum DataUnitChoice: String {
 
     case .Soil(let soilDataType) where soilDataType == .Texture:
       return [
-        ._Scale_
+        ._Soil_Texture_Scale_
       ]
 
     case .Soil(let soilDataType) where soilDataType == .Temperature:
@@ -265,7 +270,7 @@ fileprivate enum DataUnitChoice: String {
 
     case .Water(let waterDataType) where waterDataType == .Odor:
       return [
-        ._Scale_
+        ._Water_Odor_Scale_
       ]
 
     case .Water(let waterDataType) where waterDataType == .PAR:
@@ -276,7 +281,7 @@ fileprivate enum DataUnitChoice: String {
 
     case .Water(let waterDataType) where waterDataType == .pH:
       return [
-        ._Scale_
+        ._Water_pH_Scale_
       ]
 
     case .Water(let waterDataType) where waterDataType == .Phosphate:
@@ -295,11 +300,186 @@ fileprivate enum DataUnitChoice: String {
       return [
         .NephelometricTurbidityUnits,
         .JacksonTurbidityUnits,
-        ._Scale_
+        ._Water_Turbidity_Scale_
       ]
 
     default: return []
 
+    }
+
+  }
+
+}
+
+fileprivate struct DataValue {
+
+  enum Sign {
+    case positive
+    case negative
+  }
+
+  let sign: Sign
+  let number: String
+  let decimalPoint: Bool
+  let fraction: String?
+
+  var stringValue: String {
+    return toString()
+  }
+
+  var doubleValue: Double {
+    return Double(toString())!
+  }
+
+  init(sign: Sign = .positive,
+       number: String = "0",
+       decimalPoint: Bool = false,
+       fraction: String? = nil) {
+    self.sign = sign
+    self.number = number
+    self.decimalPoint = decimalPoint
+    self.fraction = fraction
+  }
+
+  func toggleSign() -> DataValue {
+
+    if doubleValue == 0 {
+
+      return DataValue(
+        sign: .positive,
+        number: number,
+        decimalPoint: decimalPoint,
+        fraction: fraction)
+
+    } else {
+
+      return DataValue(
+        sign: sign == .positive ? .negative : .positive,
+        number: number,
+        decimalPoint: decimalPoint,
+        fraction: fraction)
+
+    }
+
+  }
+
+  func addDecimalPoint() -> DataValue {
+
+    if decimalPoint {
+
+      return self
+
+    } else {
+
+      return DataValue(
+        sign: sign,
+        number: number,
+        decimalPoint: true,
+        fraction: nil)
+
+    }
+
+  }
+
+  func addDigit(_ digit: Int) -> DataValue {
+
+    if let fraction = fraction {
+
+      return DataValue(
+        sign: sign,
+        number: number,
+        decimalPoint: decimalPoint,
+        fraction: "\(fraction)\(digit)")
+
+    } else if decimalPoint {
+
+      return DataValue(
+        sign: sign,
+        number: number,
+        decimalPoint: decimalPoint,
+        fraction: "\(digit)")
+
+    } else {
+
+      var newNumber = "\(number)\(digit)"
+      if doubleValue == 0 {
+        newNumber = "\(digit)"
+      }
+      return DataValue(
+        sign: sign,
+        number: newNumber,
+        decimalPoint: false,
+        fraction: nil)
+
+    }
+
+  }
+
+  func deleteDigit() -> DataValue {
+
+    var newSign = sign
+    if doubleValue == 0 {
+      newSign = .positive
+    }
+
+    if let fraction = fraction {
+
+      var newFraction = fraction
+      newFraction.removeLast()
+      return DataValue(
+        sign: newSign,
+        number: number,
+        decimalPoint: decimalPoint,
+        fraction: newFraction.count == 0 ? nil : newFraction)
+
+    } else if decimalPoint {
+
+      return DataValue(
+        sign: newSign,
+        number: number,
+        decimalPoint: false,
+        fraction: nil)
+
+    } else {
+
+      var newNumber = number
+      newNumber.removeLast()
+
+      if newNumber.count == 0 {
+        newSign = .positive
+      } else if let intNumber = Int(newNumber),
+         intNumber == 0 {
+        newSign = .positive
+      }
+
+      return DataValue(
+        sign: newSign,
+        number: newNumber.count == 0 ? "0" : newNumber,
+        decimalPoint: false,
+        fraction: nil)
+
+    }
+
+  }
+
+  static func ==(_ lhs: DataValue, _ rhs: DataValue) -> Bool {
+    return lhs.sign == rhs.sign &&
+      lhs.number == rhs.number &&
+      lhs.decimalPoint == rhs.decimalPoint &&
+      lhs.fraction == rhs.fraction
+  }
+
+  private func toString() -> String {
+
+    let sign = self.sign == .positive ? "" : "-"
+    let decimalPoint = self.decimalPoint ? "." : ""
+
+    if let fraction = fraction {
+      return "\(sign)\(number).\(fraction)"
+    } else if Int(number) == 0 {
+      return "0\(decimalPoint)"
+    } else {
+      return "\(sign)\(number)\(decimalPoint)"
     }
 
   }
@@ -311,12 +491,12 @@ fileprivate struct AbioticFactorChoices {
   let abioticFactor: AbioticFactor?
   let dataType: DataTypeChoice?
   let dataUnit: DataUnitChoice?
-  let dataValue: Double?
+  let dataValue: DataValue?
 
   init(abioticFactor: AbioticFactor? = nil,
        dataType: DataTypeChoice? = nil,
        dataUnit: DataUnitChoice? = nil,
-       dataValue: Double? = nil) {
+       dataValue: DataValue? = nil) {
     self.abioticFactor = abioticFactor
     self.dataType = dataType
     self.dataUnit = dataUnit
@@ -442,6 +622,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
       case "dataValueChoice":
         if let destination = segue.destination as? DataValueChoiceViewController,
+           let abioticFactorChoices = abioticFactorChoices {
+          destination.abioticFactorChoices = abioticFactorChoices
+          destination.handleDataValueChoice = handleDataValueChoice
+        }
+
+      case "pHValueChoice":
+        if let destination = segue.destination as? PhValueChoiceViewController,
            let abioticFactorChoices = abioticFactorChoices {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleDataValueChoice = handleDataValueChoice
@@ -601,21 +788,47 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   }
 
   func presentDataValueChoice() {
-    performSegue(withIdentifier: "dataValueChoice", sender: nil)
+
+    guard let dataUnit = abioticFactorChoices?.dataUnit else {
+      fatalError()
+    }
+
+    switch dataUnit {
+
+    case ._Water_pH_Scale_:
+      performSegue(withIdentifier: "pHValueChoice", sender: nil)
+
+    default:
+      performSegue(withIdentifier: "dataValueChoice", sender: nil)
+
+    }
+
   }
 
-  fileprivate func handleDataValueChoice(_ dataValueChoice: Double) {
+  fileprivate func handleDataValueChoice(_ dataValueChoice: DataValue) {
 
-    if let abioticFactorChoices = abioticFactorChoices,
-       dataValueChoice == abioticFactorChoices.dataValue {
+    if let dataValue = abioticFactorChoices?.dataValue,
+       dataValueChoice == dataValue {
       return
     }
 
     if let abioticFactorChoices = abioticFactorChoices {
+
+      var newDataValueChoice = dataValueChoice
+      if newDataValueChoice.fraction == nil && newDataValueChoice.decimalPoint {
+        newDataValueChoice = DataValue(
+          sign: newDataValueChoice.sign,
+          number: newDataValueChoice.number,
+          decimalPoint: false,
+          fraction: nil)
+      }
+
       self.abioticFactorChoices = AbioticFactorChoices(
         abioticFactor: abioticFactorChoices.abioticFactor,
         dataType: abioticFactorChoices.dataType,
-        dataValue: dataValueChoice)
+        dataUnit: abioticFactorChoices.dataUnit,
+        dataValue: newDataValueChoice)
+
     }
     tableView.reloadSections([6], with: .automatic)
 
@@ -840,12 +1053,15 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     _ tableView: UITableView,
     _ indexPath: IndexPath) -> UITableViewCell {
 
+    guard let abioticFactorChoices = abioticFactorChoices else {
+      fatalError()
+    }
+
     let cell = tableView.dequeueReusableCell(
       withIdentifier: "dataUnitChoice",
       for: indexPath) as! DataUnitChoiceTableViewCell
 
-    if let abioticFactorChoices = abioticFactorChoices,
-       let dataUnit = abioticFactorChoices.dataUnit {
+    if let dataUnit = abioticFactorChoices.dataUnit {
 
       cell.dataUnitLabel.latex = dataUnit.rawValue
       cell.dataUnitLabel.isHidden = false
@@ -853,13 +1069,14 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
     } else {
 
-      if let abioticFactorChoices = abioticFactorChoices,
-         let abioticFactor = abioticFactorChoices.abioticFactor {
+      if let abioticFactor = abioticFactorChoices.abioticFactor {
+
         switch abioticFactor {
         case .Air: cell.chooseDataUnitLabel.text = "Choose Air Data Unit"
         case .Soil: cell.chooseDataUnitLabel.text = "Choose Soil Data Unit"
         case .Water: cell.chooseDataUnitLabel.text = "Choose Water Data Unit"
         }
+
       }
 
       cell.dataUnitLabel.isHidden = true
@@ -884,7 +1101,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     if let abioticFactorChoices = abioticFactorChoices,
        let dataValue = abioticFactorChoices.dataValue {
 
-      cell.dataValueLabel.text = String(dataValue)
+      cell.dataValueLabel.text = dataValue.stringValue
       cell.dataValueLabel.textColor = .black
 
     } else {
@@ -1027,6 +1244,10 @@ class EcoFactorChoiceViewController: UIViewController, UIPickerViewDataSource, U
 
   @IBOutlet weak var ecoFactorPicker: UIPickerView!
 
+  @IBOutlet weak var okButton: UIButton!
+  
+  @IBOutlet weak var cancelButton: UIButton!
+  
   fileprivate var ecoFactorChoice: EcoFactor? = nil
 
   fileprivate var handleEcoFactorChoice: ((EcoFactor) -> Void)!
@@ -1047,10 +1268,15 @@ class EcoFactorChoiceViewController: UIViewController, UIPickerViewDataSource, U
     }
   }
 
-  @IBAction func touchUpInside() {
-    let selectedRow = ecoFactorPicker.selectedRow(inComponent: 0)
-    handleEcoFactorChoice(EcoFactor.all[selectedRow])
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    
+    if sender == okButton {
+      let selectedRow = ecoFactorPicker.selectedRow(inComponent: 0)
+      handleEcoFactorChoice(EcoFactor.all[selectedRow])
+    }
+    
     dismiss(animated: true, completion: nil)
+    
   }
 
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -1253,7 +1479,6 @@ class DataUnitChoiceTableViewCell: UITableViewCell {
       dataUnitLabel.fontSize = 25
       dataUnitLabel.textColor = .black
       dataUnitLabel.frame.size = dataUnitView.frame.size
-      //dataUnitLabel.contentInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
     }
 
     super.layoutSubviews()
@@ -1384,11 +1609,11 @@ class DataValueChoiceViewController: UIViewController {
 
   @IBOutlet weak var okButton: UIButton!
 
-  private var value: String = "0"
+  private var dataValue: DataValue = DataValue()
 
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataValueChoice: ((Double) -> Void)!
+  fileprivate var handleDataValueChoice: ((DataValue) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1418,113 +1643,62 @@ class DataValueChoiceViewController: UIViewController {
     super.viewWillAppear(animated)
 
     if let dataValue = abioticFactorChoices.dataValue {
-      value = String(dataValue)
-      valueLabel.text = "\(value)"
+      self.dataValue = dataValue
+      valueLabel.text = dataValue.stringValue
     }
 
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
 
-    var newValue = value
+    var newDataValue: DataValue? = nil
 
     switch sender {
 
     case clearButton:
-      newValue = "0"
+      newDataValue = DataValue()
 
     case signButton:
-      let doubleValue = Double(newValue)!
-      if doubleValue != 0.0 {
-        newValue = "\(-Double(newValue)!)"
-      }
+      newDataValue = dataValue.toggleSign()
 
     case deleteButton:
-      if newValue.count > 0 {
-        let beforeEndIndex = newValue.index(before: newValue.endIndex)
-        newValue = String(value[..<beforeEndIndex])
-        if newValue.isEmpty {
-          newValue = "0"
-        }
-      }
+      newDataValue = dataValue.deleteDigit()
 
     case decimalButton:
-      if !newValue.contains(".") {
-        newValue = newValue + "."
-      }
+      newDataValue = dataValue.addDecimalPoint()
 
     case zeroButton:
-      if newValue == "0" {
-        return
-      } else {
-        newValue = newValue + "0"
-      }
+      newDataValue = dataValue.addDigit(0)
 
     case oneButton:
-      if newValue == "0" {
-        newValue = "1"
-      } else {
-        newValue = newValue + "1"
-      }
+      newDataValue = dataValue.addDigit(1)
 
     case twoButton:
-      if newValue == "0" {
-        newValue = "2"
-      } else {
-        newValue = newValue + "2"
-      }
+      newDataValue = dataValue.addDigit(2)
 
     case threeButton:
-      if newValue == "0" {
-        newValue = "3"
-      } else {
-        newValue = newValue + "3"
-      }
+      newDataValue = dataValue.addDigit(3)
 
     case fourButton:
-      if newValue == "0" {
-        newValue = "4"
-      } else {
-        newValue = newValue + "4"
-      }
+      newDataValue = dataValue.addDigit(4)
 
     case fiveButton:
-      if newValue == "0" {
-        newValue = "5"
-      } else {
-        newValue = newValue + "5"
-      }
+      newDataValue = dataValue.addDigit(5)
 
     case sixButton:
-      if newValue == "0" {
-        newValue = "6"
-      } else {
-        newValue = newValue + "6"
-      }
+      newDataValue = dataValue.addDigit(6)
 
     case sevenButton:
-      if newValue == "0" {
-        newValue = "7"
-      } else {
-        newValue = newValue + "7"
-      }
+      newDataValue = dataValue.addDigit(7)
 
     case eightButton:
-      if newValue == "0" {
-        newValue = "8"
-      } else {
-        newValue = newValue + "8"
-      }
+      newDataValue = dataValue.addDigit(8)
 
     case nineButton:
-      if newValue == "0" {
-        newValue = "9"
-      } else {
-        newValue = newValue + "9"
-      }
+      newDataValue = dataValue.addDigit(9)
 
     case okButton:
-      handleDataValueChoice(Double(value)!)
+      handleDataValueChoice(dataValue)
       dismiss(animated: true, completion: nil)
 
     default:
@@ -1532,10 +1706,109 @@ class DataValueChoiceViewController: UIViewController {
 
     }
 
-    if newValue.count <= 10 {
-      value = newValue
-      valueLabel.text = "\(value)"
+    if let newDataValue = newDataValue,
+       newDataValue.stringValue.count <= 10 {
+
+      dataValue = newDataValue
+      valueLabel.text = dataValue.stringValue
+
     }
+
+  }
+
+}
+
+class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  @IBOutlet weak var pHValuePicker: UIPickerView!
+
+  @IBOutlet weak var okButton: UIButton!
+  
+  @IBOutlet weak var cancelButton: UIButton!
+  
+  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+
+  fileprivate var handleDataValueChoice: ((DataValue) -> Void)!
+
+  private let numberRange = Array(1...14)
+
+  private let fractionRange = Array(0...9)
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    pHValuePicker.dataSource = self
+    pHValuePicker.delegate = self
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    var numberRow: Int = 0
+    var fractionRow: Int = 0
+    if let dataValueChoice = abioticFactorChoices.dataValue {
+      numberRow = numberRange.index(of: Int(dataValueChoice.number)!)!
+      if let fraction = dataValueChoice.fraction {
+        fractionRow = fractionRange.index(of: Int(fraction)!)!
+      }
+    }
+
+    pHValuePicker.selectRow(numberRow, inComponent: 0, animated: false)
+    pHValuePicker.selectRow(fractionRow, inComponent: 2, animated: false)
+
+  }
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+  
+    if sender == okButton {
+    
+      let number = Int(pHValuePicker.selectedRow(inComponent: 0) + 1)
+      let fraction = Int(pHValuePicker.selectedRow(inComponent: 2))
+      if number == 14 {
+        handleDataValueChoice(DataValue(number: String(number), fraction: "0"))
+      } else {
+        handleDataValueChoice(DataValue(number: String(number), fraction: String(fraction)))
+      }
+    
+    }
+    
+    dismiss(animated: true, completion: nil)
+
+  }
+
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 3
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+    if component == 0 {
+      return 14
+    } else if component == 1 {
+      return 1
+    } else {
+      return 10
+    }
+
+  }
+
+  func pickerView(_ pickerView: UIPickerView,
+                  viewForRow row: Int,
+                  forComponent component: Int,
+                  reusing view: UIView?) -> UIView {
+
+    let label = UILabel()
+    if component == 0 {
+      label.text = String(row + 1)
+      label.textAlignment = .right
+    } else if component == 1 {
+      label.text = "."
+      label.textAlignment = .center
+    } else {
+      label.text = String(row)
+      label.textAlignment = .left
+    }
+
+    return label
 
   }
 
@@ -1555,3 +1828,4 @@ class SaveDataTableViewCell: UITableViewCell {
   }
 
 }
+

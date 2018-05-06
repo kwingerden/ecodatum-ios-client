@@ -645,6 +645,7 @@
                         <segue destination="9Am-7U-FpX" kind="presentation" identifier="dataTypeChoice" modalPresentationStyle="formSheet" id="mTR-1H-PPV"/>
                         <segue destination="nqE-l4-05c" kind="presentation" identifier="dataValueChoice" modalPresentationStyle="formSheet" id="qqC-3V-3WE"/>
                         <segue destination="WKp-Sb-ZDO" kind="presentation" identifier="dataUnitChoice" modalPresentationStyle="formSheet" id="I4n-Xt-vCX"/>
+                        <segue destination="33m-Dg-u8d" kind="presentation" identifier="pHValueChoice" modalPresentationStyle="formSheet" id="K9n-hV-fRd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kz-eQ-1a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -660,7 +661,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OKE-8G-8Ik">
-                                <rect key="frame" x="8" y="156" width="524" height="308"/>
+                                <rect key="frame" x="8" y="157.5" width="524" height="305"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ecosystem Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTj-NS-UGh">
                                         <rect key="frame" x="163" y="0.0" width="198" height="30"/>
@@ -671,20 +672,40 @@
                                     <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Vt0-xW-JWa">
                                         <rect key="frame" x="0.0" y="40" width="524" height="216"/>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XG-CF-Zjg">
-                                        <rect key="frame" x="212" y="266" width="100" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="FmI-bb-NA7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="OK"/>
-                                        <connections>
-                                            <action selector="touchUpInside" destination="fjo-bd-egF" eventType="touchUpInside" id="iN2-tZ-D4V"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2o-qb-thJ">
+                                        <rect key="frame" x="162" y="266" width="200" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjS-X4-TcE">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="g5g-h8-stM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="fjo-bd-egF" eventType="touchUpInside" id="7b3-7P-TEp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XG-CF-Zjg">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="FmI-bb-NA7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="fjo-bd-egF" eventType="touchUpInside" id="WBo-Ia-FYj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="1XG-CF-Zjg" firstAttribute="centerX" secondItem="OKE-8G-8Ik" secondAttribute="centerX" id="3ar-dO-1qq"/>
+                                    <constraint firstItem="e2o-qb-thJ" firstAttribute="centerX" secondItem="OKE-8G-8Ik" secondAttribute="centerX" id="FDZ-g3-gZf"/>
                                     <constraint firstAttribute="trailing" secondItem="Vt0-xW-JWa" secondAttribute="trailing" id="lYU-Sw-7O0"/>
                                     <constraint firstItem="Vt0-xW-JWa" firstAttribute="leading" secondItem="OKE-8G-8Ik" secondAttribute="leading" id="rUI-Tm-GNY"/>
                                 </constraints>
@@ -700,7 +721,9 @@
                         <viewLayoutGuide key="safeArea" id="O7L-wd-p3o"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="JjS-X4-TcE" id="Qhy-cv-GbE"/>
                         <outlet property="ecoFactorPicker" destination="Vt0-xW-JWa" id="sCg-gC-EVz"/>
+                        <outlet property="okButton" destination="1XG-CF-Zjg" id="sde-8c-w6R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tt-4N-eAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -740,7 +763,6 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="n48-i9-f5O" firstAttribute="centerX" secondItem="d44-QN-a6W" secondAttribute="centerX" id="83c-C8-THG"/>
                                     <constraint firstItem="XrO-ll-dQt" firstAttribute="leading" secondItem="d44-QN-a6W" secondAttribute="leading" id="Gjq-qD-UH5"/>
                                     <constraint firstAttribute="trailing" secondItem="XrO-ll-dQt" secondAttribute="trailing" id="n0S-hB-DmU"/>
                                 </constraints>
@@ -1146,6 +1168,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrc-aP-CpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1631" y="497"/>
+        </scene>
+        <!--Ph Value Choice View Controller-->
+        <scene sceneID="wHS-KT-2YJ">
+            <objects>
+                <viewController id="33m-Dg-u8d" customClass="PhValueChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bxb-J1-B8J">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GBn-9k-6Zi">
+                                <rect key="frame" x="8" y="157.5" width="524" height="305"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pH Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeH-FT-LX4">
+                                        <rect key="frame" x="212.5" y="0.0" width="99.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="bWR-Ed-dcI">
+                                        <rect key="frame" x="0.0" y="40" width="524" height="216"/>
+                                    </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjQ-Lf-tgu">
+                                        <rect key="frame" x="162" y="266" width="200" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Con-c2-PGV">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="EfK-Lg-kBF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="33m-Dg-u8d" eventType="touchUpInside" id="wWu-Zd-qiS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faq-3t-hTu">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="h8M-xU-QhP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="OK"/>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="33m-Dg-u8d" eventType="touchUpInside" id="DSJ-OH-AkW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bWR-Ed-dcI" secondAttribute="trailing" id="HXF-ZF-be7"/>
+                                    <constraint firstItem="bWR-Ed-dcI" firstAttribute="leading" secondItem="GBn-9k-6Zi" secondAttribute="leading" id="qSh-db-7PI"/>
+                                    <constraint firstItem="yjQ-Lf-tgu" firstAttribute="centerX" secondItem="GBn-9k-6Zi" secondAttribute="centerX" id="zKF-IO-79b"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RVc-RJ-czm" firstAttribute="trailing" secondItem="GBn-9k-6Zi" secondAttribute="trailing" constant="8" id="6Fv-iw-JVy"/>
+                            <constraint firstItem="GBn-9k-6Zi" firstAttribute="centerY" secondItem="bxb-J1-B8J" secondAttribute="centerY" id="Js2-y5-btf"/>
+                            <constraint firstItem="GBn-9k-6Zi" firstAttribute="leading" secondItem="RVc-RJ-czm" secondAttribute="leading" constant="8" id="Kna-X8-Ibw"/>
+                            <constraint firstItem="GBn-9k-6Zi" firstAttribute="centerX" secondItem="bxb-J1-B8J" secondAttribute="centerX" id="yzx-Zs-6jG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RVc-RJ-czm"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Con-c2-PGV" id="y7w-DW-BTu"/>
+                        <outlet property="okButton" destination="faq-3t-hTu" id="6A5-Mv-cGp"/>
+                        <outlet property="pHValuePicker" destination="bWR-Ed-dcI" id="f70-wL-W0A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLm-F6-onh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2291" y="501"/>
         </scene>
         <!--Abiotic Factor Choice View Controller-->
         <scene sceneID="3N1-lE-M4N">
