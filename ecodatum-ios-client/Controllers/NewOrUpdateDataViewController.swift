@@ -1180,6 +1180,10 @@ class DateChoiceViewController: UIViewController {
 
   @IBOutlet weak var datePicker: UIDatePicker!
 
+  @IBOutlet weak var cancelButton: UIButton!
+  
+  @IBOutlet weak var okButton: UIButton!
+  
   var dateChoice: Date!
 
   var handleDateChoice: ((Date) -> Void)!
@@ -1189,9 +1193,13 @@ class DateChoiceViewController: UIViewController {
     datePicker.date = dateChoice
   }
 
-  @IBAction func touchUpInside() {
-    handleDateChoice(datePicker.date)
+  @IBAction func touchUpInside(_ sender: UIButton) {
+  
+    if sender == okButton {
+      handleDateChoice(datePicker.date)
+    }
     dismiss(animated: true, completion: nil)
+    
   }
 
 }
@@ -1212,6 +1220,10 @@ class TimeChoiceViewController: UIViewController {
 
   @IBOutlet weak var timePicker: UIDatePicker!
 
+  @IBOutlet weak var cancelButton: UIButton!
+  
+  @IBOutlet weak var okButton: UIButton!
+  
   var timeChoice: Date!
 
   var handleTimeChoice: ((Date) -> Void)!
@@ -1221,9 +1233,13 @@ class TimeChoiceViewController: UIViewController {
     timePicker.date = timeChoice
   }
 
-  @IBAction func touchUpInside() {
-    handleTimeChoice(timePicker.date)
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    
+    if sender == okButton {
+      handleTimeChoice(timePicker.date)
+    }
     dismiss(animated: true, completion: nil)
+    
   }
 
 }
@@ -1309,6 +1325,10 @@ class AbioticFactorChoiceViewController: UIViewController, UIPickerViewDataSourc
 
   @IBOutlet weak var abioticFactorPicker: UIPickerView!
 
+  @IBOutlet weak var cancelButton: UIButton!
+  
+  @IBOutlet weak var okButton: UIButton!
+  
   fileprivate var abioticFactorChoice: AbioticFactor? = nil
 
   fileprivate var handleAbioticFactorChoice: ((AbioticFactor) -> Void)!
@@ -1329,12 +1349,16 @@ class AbioticFactorChoiceViewController: UIViewController, UIPickerViewDataSourc
     }
   }
 
-  @IBAction func touchUpInside() {
-    let selectedRow = abioticFactorPicker.selectedRow(inComponent: 0)
-    handleAbioticFactorChoice(AbioticFactor.all[selectedRow])
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    
+    if sender == okButton {
+      let selectedRow = abioticFactorPicker.selectedRow(inComponent: 0)
+      handleAbioticFactorChoice(AbioticFactor.all[selectedRow])
+    }
     dismiss(animated: true, completion: nil)
+    
   }
-
+  
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
@@ -1365,6 +1389,10 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   @IBOutlet weak var dataTypePicker: UIPickerView!
 
+  @IBOutlet weak var cancelButton: UIButton!
+  
+  @IBOutlet weak var okButton: UIButton!
+  
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
   fileprivate var handleDataTypeChoice: ((DataTypeChoice) -> Void)!
@@ -1407,22 +1435,26 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   }
 
-  @IBAction func touchUpInside() {
-    let selectedRow = dataTypePicker.selectedRow(inComponent: 0)
-    switch abioticFactorChoices.abioticFactor {
-
-    case .Air?: handleDataTypeChoice(.Air(AirDataType.all[selectedRow]))
-
-    case .Soil?: handleDataTypeChoice(.Soil(SoilDataType.all[selectedRow]))
-
-    case .Water?: handleDataTypeChoice(.Water(WaterDataType.all[selectedRow]))
-
-    default: break
-
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    
+    if sender == okButton {
+      let selectedRow = dataTypePicker.selectedRow(inComponent: 0)
+      switch abioticFactorChoices.abioticFactor {
+        
+      case .Air?: handleDataTypeChoice(.Air(AirDataType.all[selectedRow]))
+        
+      case .Soil?: handleDataTypeChoice(.Soil(SoilDataType.all[selectedRow]))
+        
+      case .Water?: handleDataTypeChoice(.Water(WaterDataType.all[selectedRow]))
+        
+      default: break
+        
+      }
     }
     dismiss(animated: true, completion: nil)
+    
   }
-
+  
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
@@ -1495,6 +1527,10 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   @IBOutlet weak var dataUnitPicker: UIPickerView!
 
+  @IBOutlet weak var cancelButton: UIButton!
+  
+  @IBOutlet weak var okButton: UIButton!
+  
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
   fileprivate var handleDataUnitChoice: ((DataUnitChoice) -> Void)!
@@ -1525,11 +1561,15 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     dataUnitPicker.selectRow(selectedRow, inComponent: 0, animated: false)
 
   }
-
-  @IBAction func touchUpInside() {
-    let selectedRow = dataUnitPicker.selectedRow(inComponent: 0)
-    handleDataUnitChoice(dataUnits[selectedRow])
+  
+  @IBAction func touchUpInside(_ sender: UIButton) {
+   
+    if sender == okButton {
+      let selectedRow = dataUnitPicker.selectedRow(inComponent: 0)
+      handleDataUnitChoice(dataUnits[selectedRow])
+    }
     dismiss(animated: true, completion: nil)
+ 
   }
 
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -1608,6 +1648,8 @@ class DataValueChoiceViewController: UIViewController {
   @IBOutlet weak var decimalButton: UIButton!
 
   @IBOutlet weak var okButton: UIButton!
+  
+  @IBOutlet weak var cancelButton: UIButton!
 
   private var dataValue: DataValue = DataValue()
 
@@ -1701,6 +1743,9 @@ class DataValueChoiceViewController: UIViewController {
       handleDataValueChoice(dataValue)
       dismiss(animated: true, completion: nil)
 
+    case cancelButton:
+      dismiss(animated: true, completion: nil)
+      
     default:
       LOG.error("Unexpected button \(sender)")
 
@@ -1791,6 +1836,16 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
   }
 
+  func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    
+    if component == 1 {
+      return 20
+    } else {
+      return 100 
+    }
+    
+  }
+  
   func pickerView(_ pickerView: UIPickerView,
                   viewForRow row: Int,
                   forComponent component: Int,
