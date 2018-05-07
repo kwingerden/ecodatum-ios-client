@@ -93,6 +93,7 @@
 		01EBEA531FFB56A2008E4E41 /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EBEA511FFB5698008E4E41 /* AlamofireSwiftyJSON.framework */; };
 		01EC839720733BB700693C51 /* NewOrUpdateData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EC839620733BB700693C51 /* NewOrUpdateData.storyboard */; };
 		01EC839920733BDD00693C51 /* NewOrUpdateDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */; };
+		19E541297A7C76AEB9380DE8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E5446D2E61FFBE40221F49 /* Models.swift */; };
 		938974F27F9D03EE72D55A1B /* Pods_ecodatum_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50215E02B2D723CAFF7681B /* Pods_ecodatum_ios_client.framework */; };
 		954CD3A5ED15813611DDE894 /* Pods_ecodatum_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D5E01305DD66966B61B091 /* Pods_ecodatum_ios_clientTests.framework */; };
 		AF33D1812DE5BB78D43524E1 /* BaseContentViewScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */; };
@@ -199,6 +200,7 @@
 		01EC839620733BB700693C51 /* NewOrUpdateData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewOrUpdateData.storyboard; sourceTree = "<group>"; };
 		01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdateDataViewController.swift; sourceTree = "<group>"; };
 		04D5E01305DD66966B61B091 /* Pods_ecodatum_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecodatum_ios_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19E5446D2E61FFBE40221F49 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		71430C6F704B7BEE7080E149 /* Pods-ecodatum-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-clientTests/Pods-ecodatum-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F09197E238ED7C762570F21 /* Pods-ecodatum-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-clientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-clientTests/Pods-ecodatum-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
 		AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentViewScrollable.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				01AD116C1FF4B5DB000DCE81 /* Assets.xcassets */,
 				01AD11711FF4B5DB000DCE81 /* Info.plist */,
 				018F77631FFB0EAC004421F0 /* Globals.swift */,
+				19E54F1B2C7A3FA7662D2462 /* Models */,
 			);
 			path = "ecodatum-ios-client";
 			sourceTree = "<group>";
@@ -463,6 +466,14 @@
 				8F09197E238ED7C762570F21 /* Pods-ecodatum-ios-clientTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		19E54F1B2C7A3FA7662D2462 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19E5446D2E61FFBE40221F49 /* Models.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -719,6 +730,7 @@
 				AF33D6B4B10C2EF8BA5A49FA /* UIImage+Utilities.swift in Sources */,
 				AF33D1812DE5BB78D43524E1 /* BaseContentViewScrollable.swift in Sources */,
 				AF33DD77907C3117DC9FF395 /* BaseFormSheetDisplayable.swift in Sources */,
+				19E541297A7C76AEB9380DE8 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

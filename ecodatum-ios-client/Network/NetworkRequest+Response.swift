@@ -1,10 +1,6 @@
 import Alamofire
 import Foundation
 
-typealias Identifier = String
-typealias AuthenticationToken = String
-typealias Base64Encoded = String
-
 protocol NetworkRequest: Encodable {
   
 }

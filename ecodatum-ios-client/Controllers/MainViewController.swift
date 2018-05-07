@@ -9,7 +9,7 @@ class MainViewController: BaseContentViewScrollable {
     
     do {
       try initialize()
-      viewControllerManager.main()
+      try viewControllerManager.main()
     } catch let error {
       LOG.error(error.localizedDescription)
     }

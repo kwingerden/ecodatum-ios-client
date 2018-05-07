@@ -4,11 +4,6 @@ import Hydra
 import SwiftValidator
 import UIKit
 
-typealias AuthenticatedUser = AuthenticatedUserRecord
-typealias Organization = OrganizationResponse
-typealias OrganizationMember = OrganizationMemberResponse
-typealias Site = SiteResponse
-
 typealias CompletionBlock = () -> Void
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
@@ -23,14 +18,7 @@ class ViewControllerManager: SiteHandler {
   
   let serviceManager: ServiceManager
   
-  lazy var authenticatedUser: AuthenticatedUser? = {
-    do {
-      return try serviceManager.getAuthenticatedUser()
-    } catch let error {
-      LOG.error(error.localizedDescription)
-      return nil
-    }
-  }()
+  var authenticatedUser: AuthenticatedUser?
   
   var organization: Organization? {
     get {
@@ -156,20 +144,23 @@ class ViewControllerManager: SiteHandler {
   init(viewController: UIViewController,
        storyboardSegue: UIStoryboardSegue? = nil,
        viewContext: ViewContext,
-       serviceManager: ServiceManager) {
+       serviceManager: ServiceManager,
+       authenticatedUser: AuthenticatedUser? = nil) {
     self.viewController = viewController
     self.storyboardSegue = storyboardSegue
     self.viewContext = viewContext
     self.serviceManager = serviceManager
+    self.authenticatedUser = authenticatedUser
   }
-  
+
   convenience init(newViewController: UIViewController,
                    storyboardSegue: UIStoryboardSegue? = nil,
                    viewControllerManager: ViewControllerManager) {
     self.init(viewController: newViewController,
               storyboardSegue: storyboardSegue,
               viewContext: viewControllerManager.viewContext,
-              serviceManager: viewControllerManager.serviceManager)
+              serviceManager: viewControllerManager.serviceManager,
+              authenticatedUser: viewControllerManager.authenticatedUser)
   }
   
   func performSegue(from: UIViewController? = nil,
@@ -184,11 +175,13 @@ class ViewControllerManager: SiteHandler {
     
   }
   
-  func main() {
+  func main() throws {
     
     if let authenticatedUser = authenticatedUser {
       
-      getUserOrganizations(authenticatedUser)
+      try serviceManager.call(
+        GetOrganizationsByUserRequest(
+          token: authenticatedUser.token))
         .then(in: .main, handleOrganizations)
         .catch(in: .main, handleError)
       
@@ -198,10 +191,6 @@ class ViewControllerManager: SiteHandler {
       
     }
     
-  }
-  
-  func setImage(_ imageView: UIImageView, imageId: Identifier) {
-    serviceManager.setImage(imageView, imageId: imageId)
   }
   
   func login(email: String,
@@ -220,7 +209,12 @@ class ViewControllerManager: SiteHandler {
           email: email,
           password: password))
         .then(in: .userInitiated, handleBasicAuthUser)
-        .then(in: .userInteractive, getUserOrganizations)
+        .then(in: .userInteractive) {
+          authenticatedUser in
+          return try self.serviceManager.call(
+            GetOrganizationsByUserRequest(
+              token: authenticatedUser.token))
+        }
         .then(in: .main, handleOrganizations)
         .catch(in: .main) {
           error in
@@ -293,7 +287,12 @@ class ViewControllerManager: SiteHandler {
             email: email,
             password: password)
         }.then(in: .userInitiated, handleBasicAuthUser)
-        .then(in: .userInitiated, getUserOrganizations)
+        .then(in: .userInitiated) {
+          authenticatedUser in
+          return try self.serviceManager.call(
+            GetOrganizationsByUserRequest(
+              token: authenticatedUser.token))
+        }
         .then(in: .main, handleOrganizations)
         .catch(in: .main, handleError)
         .always(in: .main) {
@@ -476,6 +475,73 @@ class ViewControllerManager: SiteHandler {
     
   }
 
+  func showErrorMessage(_ title: String,
+                        _ message: String,
+                        handler: ((UIAlertAction) -> Void)? = nil) {
+
+    let alertController = UIAlertController(
+      title: title,
+      message: message,
+      preferredStyle: .alert)
+    alertController.addAction(
+      UIAlertAction(
+        title: "OK",
+        style: UIAlertActionStyle.default,
+        handler: handler))
+
+    viewController.present(
+      alertController,
+      animated: true,
+      completion: nil)
+
+  }
+
+  func getOrganizationMembers(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completionBlock: CompletionBlock? = nil) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    guard let organizationId = organization?.id else {
+      handleError(ViewControllerError.noOrganizationIdentifier)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          GetMembersByOrganizationAndUserRequest(
+            token: token,
+            organizationId: organizationId))
+        .then(in: .main) {
+          organizationMembers in
+          self.organizationMembers = organizationMembers
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
+  }
+
   func handleNewSite(site: Site) {
 
     self.site = site
@@ -582,113 +648,28 @@ class ViewControllerManager: SiteHandler {
     }
     
   }
-  
-  func showErrorMessage(_ title: String,
-                        _ message: String,
-                        handler: ((UIAlertAction) -> Void)? = nil) {
-    
-    let alertController = UIAlertController(
-      title: title,
-      message: message,
-      preferredStyle: .alert)
-    alertController.addAction(
-      UIAlertAction(
-        title: "OK",
-        style: UIAlertActionStyle.default,
-        handler: handler))
-    
-    viewController.present(
-      alertController,
-      animated: true,
-      completion: nil)
-    
-  }
-  
-  private func getUserOrganizations(
-    _ authenticatedUser: AuthenticatedUser)
-    -> Promise<[Organization]> {
-      
-      return async(in: .userInitiated) {
-        
-        status in
-        
-        return try await(
-          self.serviceManager.call(
-            GetOrganizationsByUserRequest(
-              token: authenticatedUser.token)))
-        
-      }
-      
-  }
-  
+
   private func handleOrganizations(
     _ organizations: [Organization]) throws {
-    
+
     if organizations.count == 1 {
 
       self.organization = organizations[0]
       self.organizations = organizations
       performSegue(to: .topNavigation)
-      
+
     } else if organizations.count > 1 {
 
       self.organizations = organizations
       performSegue(to: .organizationChoice)
-      
+
     } else {
-      
+
       throw ViewControllerError.noUserOrganizations
-      
-    }
-    
-  }
-
-  func getOrganizationMembers(
-    preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil,
-    completionBlock: CompletionBlock? = nil) {
-
-    guard let token = authenticatedUser?.token else {
-      handleError(ViewControllerError.noAuthenticationToken)
-      return
-    }
-
-    guard let organizationId = organization?.id else {
-      handleError(ViewControllerError.noOrganizationIdentifier)
-      return
-    }
-
-    if let preAsyncBlock = preAsyncBlock {
-      preAsyncBlock()
-    }
-
-    do {
-
-      try serviceManager.call(
-          GetMembersByOrganizationAndUserRequest(
-            token: token,
-            organizationId: organizationId))
-        .then(in: .main) {
-          organizationMembers in
-          self.organizationMembers = organizationMembers
-          if let completionBlock = completionBlock {
-            completionBlock()
-          }
-        }.catch(in: .main, handleError)
-        .always(in: .main) {
-          if let postAsyncBlock = postAsyncBlock {
-            postAsyncBlock()
-          }
-        }
-
-    } catch let error {
-
-      handleError(error)
 
     }
 
   }
-
 
   private func handleBasicAuthUser(
     _ basicAuthUserResponse: BasicAuthUserResponse)
@@ -698,21 +679,20 @@ class ViewControllerManager: SiteHandler {
         
         status in
         
-        let userResponse = try await(
+        let user = try await(
           try self.serviceManager.call(
             GetUserRequest(
               userId: basicAuthUserResponse.userId,
               token: basicAuthUserResponse.token)))
         
-        let authenticatedUser = AuthenticatedUserRecord(
-          userId: userResponse.id,
+        self.authenticatedUser = AuthenticatedUser(
+          userId: user.id,
           token: basicAuthUserResponse.token,
-          fullName: userResponse.fullName,
-          email: userResponse.email,
+          fullName: user.fullName,
+          email: user.email,
           isRootUser: basicAuthUserResponse.isRootUser)
-        try self.serviceManager.setAuthenticatedUser(authenticatedUser)
-        
-        return authenticatedUser
+
+        return self.authenticatedUser!
         
       }
       
@@ -754,15 +734,7 @@ class ViewControllerManager: SiteHandler {
   }
   
   private func doLogout(_ segueSourceViewController: UIViewController? = nil) {
-    
-    do {
-      try serviceManager.deleteAuthenticatedUser()
-    } catch let error {
-      LOG.error(error)
-    }
-    
     segueToMainViewController(segueSourceViewController)
-    
   }
   
   

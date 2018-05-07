@@ -41,20 +41,6 @@ class LoginToAccountViewController: BaseContentViewScrollable {
     validator.defaultValidate(validationSuccessful)
   }
 
-  /*
-  override func viewDidLayoutSubviews() {
-
-    scrollView.isScrollEnabled =
-      contentView.frame.width >= UIScreen.main.bounds.width ||
-        contentView.frame.height >= UIScreen.main.bounds.height -
-          topBarHeightConstraint.constant
-    scrollView.contentSize = CGSize(
-      width: contentView.frame.width,
-      height: contentView.frame.height)
-
-  }
-  */
-
   private func validationSuccessful() {
     
     let email = emailAddressTextField.text!
