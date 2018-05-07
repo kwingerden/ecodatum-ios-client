@@ -66,9 +66,6 @@ class ViewContext {
     case qualitativeObservationTypes([QualitativeObservationType])
     case quantitativeObservationTypes([QuantitativeObservationType])
     
-    case survey(Survey)
-    case surveys([Survey])
-    
   }
   
   var state: [Key: Value] = [:]

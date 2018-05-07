@@ -11,15 +11,6 @@ protocol SiteHandler {
   
 }
 
-protocol SurveyHandler {
-
-  func handleNewSurvey(survey: Survey)
-
-  func handleUpdatedSurvey(survey: Survey)
-
-  func handleDeletedSurvey(survey: Survey)
-
-}
 
 protocol PhotoHandler {
 

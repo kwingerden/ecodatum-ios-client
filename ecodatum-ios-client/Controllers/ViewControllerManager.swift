@@ -15,7 +15,6 @@ typealias Photo = PhotoResponse
 typealias QualitativeObservationType = QualitativeObservationTypeResponse
 typealias QuantitativeObservationType = QuantitativeObservationTypeResponse
 typealias Site = SiteResponse
-typealias Survey = SurveyResponse
 
 typealias CompletionBlock = () -> Void
 typealias PreAsyncBlock = () -> Void
@@ -23,8 +22,7 @@ typealias PostAsyncBlock = () -> Void
 
 class ViewControllerManager:
   PhotoHandler,
-  SiteHandler,
-  SurveyHandler {
+  SiteHandler {
   
   let viewController: UIViewController
   
@@ -325,56 +323,6 @@ class ViewControllerManager:
 
   var siteId: Identifier? {
     return ViewControllerSegue.newSite == viewControllerSegue ? nil : site?.id
-  }
-  
-  var survey: Survey? {
-    get {
-      guard let value = viewContext.state[.survey] else {
-        return nil
-      }
-      if case let ViewContext.Value.survey(survey) = value {
-        return survey
-      } else {
-        return nil
-      }
-    }
-    set {
-      if let newValue = newValue {
-        viewContext.state[.survey] = ViewContext.Value.survey(newValue)
-      } else {
-        viewContext.state[.survey] = nil
-      }
-    }
-  }
-  
-  var surveys: [Survey] {
-    get {
-      guard let value = viewContext.state[.surveys] else {
-        return []
-      }
-      if case let ViewContext.Value.surveys(surveys) = value {
-        return surveys.sorted {
-          $0.date > $1.date
-        }
-      } else {
-        return []
-      }
-    }
-    set {
-      viewContext.state[.surveys] = ViewContext.Value.surveys(newValue)
-    }
-  }
-
-  var surveyHandler: SurveyHandler {
-    var newSurveyHandler: SurveyHandler = self
-    if let surveyHandler = storyboardSegue?.source as? SurveyHandler {
-      newSurveyHandler = surveyHandler
-    }
-    return newSurveyHandler
-  }
-
-  var surveyId: Identifier? {
-    return ViewControllerSegue.newSurvey == viewControllerSegue ? nil : survey?.id
   }
 
   var measurement: Measurement? {
@@ -803,144 +751,6 @@ class ViewControllerManager:
     
   }
 
-  func newOrUpdateSurvey(
-    date: Date,
-    description: String? = nil,
-    preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil,
-    completion: @escaping (() -> Void) = {}) {
-
-    guard let token = authenticatedUser?.token else {
-      handleError(ViewControllerError.noAuthenticationToken)
-      return
-    }
-
-    guard let siteId = site?.id else {
-      handleError(ViewControllerError.noSiteIdentifier)
-      return
-    }
-
-    if let preAsyncBlock = preAsyncBlock {
-      preAsyncBlock()
-    }
-
-    do {
-
-      try serviceManager.call(
-          NewOrUpdateSurveyRequest(
-            token: token,
-            id: surveyId,
-            date: date,
-            description: description,
-            siteId: siteId))
-        .then(in: .main) {
-          survey in
-          if self.surveyId == nil {
-            self.surveyHandler.handleNewSurvey(survey: survey)
-          } else {
-            self.surveyHandler.handleUpdatedSurvey(survey: survey)
-          }
-          completion()
-        }.catch(in: .main, handleError)
-        .always(in: .main) {
-          if let postAsyncBlock = postAsyncBlock {
-            postAsyncBlock()
-          }
-        }
-
-    } catch let error {
-
-      handleError(error)
-
-    }
-
-  }
-  
-  func chooseExistingSurvey(
-    preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil) {
-    
-    guard let token = authenticatedUser?.token else {
-      handleError(ViewControllerError.noAuthenticationToken)
-      return
-    }
-    
-    guard let siteId = site?.id else {
-      handleError(ViewControllerError.noSiteIdentifier)
-      return
-    }
-    
-    if let preAsyncBlock = preAsyncBlock {
-      preAsyncBlock()
-    }
-    
-    do {
-      
-      try serviceManager.call(
-        GetSurveysBySiteAndUserRequest(
-          token: token,
-          siteId: siteId))
-        .then(in: .main, handleSurveys)
-        .catch(in: .main, handleError)
-        .always(in: .main) {
-          if let postAsyncBlock = postAsyncBlock {
-            postAsyncBlock()
-          }
-      }
-      
-    } catch let error {
-      
-      handleError(error)
-      
-    }
-    
-  }
-  
-  func showSurvey(_ survey: Survey, segue: ViewControllerSegue) {
-    
-    self.survey = survey
-    performSegue(to: segue)
-    
-  }
-
-  func deleteSurvey(
-    survey: Survey,
-    preAsyncBlock: PreAsyncBlock? = nil,
-    postAsyncBlock: PostAsyncBlock? = nil) {
-
-    guard let token = authenticatedUser?.token else {
-      handleError(ViewControllerError.noAuthenticationToken)
-      return
-    }
-
-    if let preAsyncBlock = preAsyncBlock {
-      preAsyncBlock()
-    }
-
-    do {
-
-      try serviceManager.call(
-          DeleteSurveyByIdRequest(
-            token: token,
-            surveyId: survey.id))
-        .then(in: .main) {
-          _ in
-          self.surveyHandler.handleDeletedSurvey(survey: survey)
-        }.catch(in: .main, handleError)
-        .always(in: .main) {
-          if let postAsyncBlock = postAsyncBlock {
-            postAsyncBlock()
-          }
-        }
-
-    } catch let error {
-
-      handleError(error)
-
-    }
-
-  }
-
   func getMeasurementUnits(
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil,
@@ -1169,12 +979,13 @@ class ViewControllerManager:
       handleError(ViewControllerError.noAuthenticationToken)
       return
     }
-    
+
+    /*
     guard let surveyId = survey?.id else {
       handleError(ViewControllerError.noSurveyIdentifier)
       return
     }
-    /*
+
     guard let abioticFactorId = abioticFactor?.id else {
       handleError(ViewControllerError.noAbioticFactorIdentifier)
       return
@@ -1222,7 +1033,8 @@ class ViewControllerManager:
       handleError(ViewControllerError.noAuthenticationToken)
       return
     }
-    
+
+    /*
     guard let surveyId = survey?.id else {
       handleError(ViewControllerError.noSurveyIdentifier)
       return
@@ -1251,6 +1063,7 @@ class ViewControllerManager:
       handleError(error)
       
     }
+    */
     
   }
 
@@ -1265,6 +1078,7 @@ class ViewControllerManager:
       return
     }
 
+    /*
     guard let surveyId = survey?.id else {
       handleError(ViewControllerError.noSurveyIdentifier)
       return
@@ -1302,6 +1116,7 @@ class ViewControllerManager:
       handleError(error)
 
     }
+    */
 
   }
 
@@ -1320,7 +1135,8 @@ class ViewControllerManager:
       handleError(ViewControllerError.noAuthenticationToken)
       return
     }
-    
+
+    /*
     guard let surveyId = survey?.id else {
       handleError(ViewControllerError.noSurveyIdentifier)
       return
@@ -1349,6 +1165,7 @@ class ViewControllerManager:
       handleError(error)
       
     }
+    */
     
   }
   
@@ -1433,51 +1250,7 @@ class ViewControllerManager:
     }
     
   }
-  
-  func handleSurveys(_ surveys: [Survey]) {
 
-    self.surveys = surveys
-
-    if surveys.isEmpty {
-      
-      showErrorMessage(
-        "No Existing Surveys",
-        ViewControllerError.noSiteSurveys(
-          name: site!.name).localizedDescription)
-      
-    } else {
-      
-      performSegue(to: .surveyChoice)
-      
-    }
-    
-  }
-
-  func handleNewSurvey(survey: Survey) {
-
-    self.survey = survey
-    surveys.append(survey)
-    performSegue(to: .surveyNavigationChoice)
-
-  }
-
-  func handleUpdatedSurvey(survey: Survey) {
-
-    self.survey = survey
-    if let index = surveys.index(where: { $0.id == survey.id }) {
-      surveys.replaceSubrange(index...index, with: [survey])
-    }
-
-  }
-
-  func handleDeletedSurvey(survey: Survey) {
-
-    if let index = surveys.index(where: { $0.id == survey.id }) {
-      surveys.remove(at: index)
-    }
-
-  }
-  
   func handleNewMeasurement(_ measurement: Measurement) {
     
     performSegue(to: .surveyNavigationChoice)
@@ -1488,6 +1261,7 @@ class ViewControllerManager:
 
     self.measurements = measurements
 
+    /*
     if measurements.isEmpty {
       
       let name = Formatter.basic.string(from: survey!.date)
@@ -1501,6 +1275,7 @@ class ViewControllerManager:
       performSegue(to: .measurementChoice)
       
     }
+    */
     
   }
 
@@ -1532,7 +1307,8 @@ class ViewControllerManager:
   func handlePhotos(_ photos: [Photo]) {
     
     self.photos = photos
-    
+
+    /*
     if photos.isEmpty {
  
       showErrorMessage(
@@ -1545,6 +1321,7 @@ class ViewControllerManager:
       performSegue(to: .photoChoice)
       
     }
+    */
     
   }
 
