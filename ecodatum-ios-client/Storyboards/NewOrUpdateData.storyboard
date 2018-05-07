@@ -525,8 +525,80 @@
                                                                     <outlet property="dataValueLabel" destination="bFh-gf-BWw" id="fRM-hH-Cpq"/>
                                                                 </connections>
                                                             </tableViewCell>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="organismChoice" rowHeight="60" id="SUg-fx-nor" userLabel="organismChoice" customClass="OrganismChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="470" width="400.5" height="60"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SUg-fx-nor" id="YIA-Hr-mUE">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="60"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PV9-PH-r4d">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="401" height="21"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ORGANISM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tG-tP-LRF">
+                                                                                    <rect key="frame" x="8" y="0.0" width="393" height="21"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="height" constant="21" id="YrZ-OQ-j4C"/>
+                                                                                    </constraints>
+                                                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="trailing" secondItem="7tG-tP-LRF" secondAttribute="trailing" id="5c7-bN-ekE"/>
+                                                                                <constraint firstAttribute="height" constant="21" id="EDd-5Y-tVk"/>
+                                                                                <constraint firstItem="7tG-tP-LRF" firstAttribute="leading" secondItem="PV9-PH-r4d" secondAttribute="leading" constant="8" id="Lo6-Yq-q5o"/>
+                                                                                <constraint firstItem="7tG-tP-LRF" firstAttribute="top" secondItem="PV9-PH-r4d" secondAttribute="top" id="pAh-PE-xIV"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="7tG-tP-LRF" secondAttribute="bottom" id="shm-VY-YLC"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orC-Yh-NQQ">
+                                                                            <rect key="frame" x="8" y="21" width="384.5" height="39"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLt-aF-Fps">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="352.5" height="39"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHf-vA-TOo">
+                                                                                    <rect key="frame" x="352.5" y="0.0" width="32" height="39"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="32" id="1RK-Ht-hM6"/>
+                                                                                    </constraints>
+                                                                                    <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <state key="normal" image="NewGlyph"/>
+                                                                                    <connections>
+                                                                                        <action selector="touchUpInside" destination="SUg-fx-nor" eventType="touchUpInside" id="UP6-z9-O0H"/>
+                                                                                    </connections>
+                                                                                </button>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="qHf-vA-TOo" firstAttribute="leading" secondItem="oLt-aF-Fps" secondAttribute="trailing" id="Pmj-4d-zGb"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="oLt-aF-Fps" secondAttribute="bottom" id="eal-6Q-HhO"/>
+                                                                                <constraint firstItem="oLt-aF-Fps" firstAttribute="leading" secondItem="orC-Yh-NQQ" secondAttribute="leading" id="uwV-U8-XQW"/>
+                                                                                <constraint firstItem="oLt-aF-Fps" firstAttribute="top" secondItem="orC-Yh-NQQ" secondAttribute="top" id="yIq-rX-qAZ"/>
+                                                                            </constraints>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="PV9-PH-r4d" firstAttribute="leading" secondItem="YIA-Hr-mUE" secondAttribute="leading" id="02U-im-sSF"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="orC-Yh-NQQ" secondAttribute="bottom" id="Art-0a-Dex"/>
+                                                                        <constraint firstItem="orC-Yh-NQQ" firstAttribute="top" secondItem="PV9-PH-r4d" secondAttribute="bottom" id="HmS-pi-dpW"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="orC-Yh-NQQ" secondAttribute="trailing" constant="8" id="Rqa-69-Efk"/>
+                                                                        <constraint firstItem="orC-Yh-NQQ" firstAttribute="leading" secondItem="YIA-Hr-mUE" secondAttribute="leading" constant="8" id="fBP-dy-Mus"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="PV9-PH-r4d" secondAttribute="trailing" id="hl8-61-Mrx"/>
+                                                                        <constraint firstItem="PV9-PH-r4d" firstAttribute="top" secondItem="YIA-Hr-mUE" secondAttribute="top" id="lb7-ey-GCK"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="label" destination="oLt-aF-Fps" id="lwK-5f-lDl"/>
+                                                                </connections>
+                                                            </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="saveData" rowHeight="115" id="fz5-Ko-rQD" userLabel="saveData" customClass="SaveDataTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="470" width="400.5" height="115"/>
+                                                                <rect key="frame" x="0.0" y="530" width="400.5" height="115"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fz5-Ko-rQD" id="hNU-WM-Q8E">
                                                                     <rect key="frame" x="0.0" y="0.0" width="400.5" height="115"/>
@@ -650,6 +722,7 @@
                         <segue destination="XJK-WP-1uN" kind="presentation" identifier="waterOdorChoice" modalPresentationStyle="formSheet" id="Znm-zE-bJh"/>
                         <segue destination="kb9-SJ-4Cp" kind="presentation" identifier="waterTurbidityChoice" modalPresentationStyle="formSheet" id="vKu-xg-3NR"/>
                         <segue destination="jbY-rI-AdI" kind="presentation" identifier="soilTextureChoice" modalPresentationStyle="formSheet" id="d7d-qE-O10"/>
+                        <segue destination="P7y-2P-w76" kind="presentation" identifier="organismChoice" modalPresentationStyle="formSheet" id="yM4-Ax-gio"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kz-eQ-1a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -808,6 +881,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfM-3L-vPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2044" y="530"/>
+        </scene>
+        <!--Organism Choice View Controller-->
+        <scene sceneID="wVc-Dx-zkc">
+            <objects>
+                <viewController id="P7y-2P-w76" customClass="OrganismChoiceViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LuA-j3-VvR">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lPo-0D-62I">
+                                <rect key="frame" x="110" y="154.5" width="320" height="311"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organism" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-Ef-BcL">
+                                        <rect key="frame" x="95.5" y="0.0" width="129" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="aO9-rg-Mbm">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="216"/>
+                                    </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-v8-fGR">
+                                        <rect key="frame" x="60" y="272" width="200" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYf-bd-qOq">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="4WM-sE-eHV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="P7y-2P-w76" eventType="touchUpInside" id="BGI-lS-mLB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KM8-pD-aZ1">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="8oj-I6-iK3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInside:" destination="P7y-2P-w76" eventType="touchUpInside" id="Hkv-d5-VHx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aO9-rg-Mbm" secondAttribute="trailing" id="GSO-oZ-oMe"/>
+                                    <constraint firstItem="aO9-rg-Mbm" firstAttribute="leading" secondItem="lPo-0D-62I" secondAttribute="leading" id="Osl-81-rU3"/>
+                                    <constraint firstItem="6k7-v8-fGR" firstAttribute="centerX" secondItem="lPo-0D-62I" secondAttribute="centerX" id="azl-Lj-9he"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lPo-0D-62I" firstAttribute="centerX" secondItem="LuA-j3-VvR" secondAttribute="centerX" id="0dD-Uw-oq0"/>
+                            <constraint firstItem="lPo-0D-62I" firstAttribute="centerY" secondItem="LuA-j3-VvR" secondAttribute="centerY" id="9tz-J3-9cK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GwL-ec-XdO"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="gYf-bd-qOq" id="aXq-bD-nQY"/>
+                        <outlet property="okButton" destination="KM8-pD-aZ1" id="qBN-d3-N3d"/>
+                        <outlet property="picker" destination="aO9-rg-Mbm" id="VNx-O1-MxY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QAv-yD-0rU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1448" y="-180"/>
         </scene>
         <!--Soil Texture Choice View Controller-->
         <scene sceneID="dVm-ww-BE7">

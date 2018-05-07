@@ -28,16 +28,20 @@ fileprivate enum AbioticFactor: String {
 
 }
 
-fileprivate enum BioticFactor: String {
+fileprivate enum Organism: String {
 
-  case Coliform
-  case Photo
-  case TreesAndCarbon = "Trees and Carbon"
+//  case Animal
+  case Bacteria
+  case Plant
+//  case Protozoa
+//  case Fungi
 
-  static let all: [BioticFactor] = [
-    .Coliform,
-    .Photo,
-    .TreesAndCarbon
+  static let all: [Organism] = [
+//    .Animal,
+    .Bacteria,
+    .Plant,
+//    .Protozoa,
+//    .Fungi
   ]
 
 }
@@ -112,13 +116,13 @@ fileprivate enum WaterDataType: String {
 
 }
 
-fileprivate enum DataType {
+fileprivate enum AbioticDataType {
 
   case Air([AirDataType])
   case Soil([SoilDataType])
   case Water([WaterDataType])
 
-  static let all: [DataType] = [
+  static let all: [AbioticDataType] = [
     .Air(AirDataType.all),
     .Soil(SoilDataType.all),
     .Water(WaterDataType.all)
@@ -126,13 +130,13 @@ fileprivate enum DataType {
 
 }
 
-fileprivate enum DataTypeChoice {
+fileprivate enum AbioticDataTypeChoice {
 
   case Air(AirDataType)
   case Soil(SoilDataType)
   case Water(WaterDataType)
 
-  static func ==(lhs: DataTypeChoice, rhs: DataTypeChoice) -> Bool {
+  static func ==(lhs: AbioticDataTypeChoice, rhs: AbioticDataTypeChoice) -> Bool {
     switch (lhs, rhs) {
     case let (.Air(v1), .Air(v2)) where v1 == v2: return true
     case let (.Soil(v1), .Soil(v2)) where v1 == v2: return true
@@ -143,7 +147,7 @@ fileprivate enum DataTypeChoice {
 
 }
 
-fileprivate enum DataUnitChoice: String {
+fileprivate enum AbioticDataUnitChoice: String {
 
   case PartsPerMillion = "ppm \\ (Parts \\ Per \\ Million)"
   case Lux = "Lux"
@@ -168,7 +172,7 @@ fileprivate enum DataUnitChoice: String {
   case _Water_pH_Scale_ = "Water \\ pH \\ Scale"
   case _Water_Turbidity_Scale_ = "Water \\ Turbidity \\ Scale"
 
-  static func units(_ dataType: DataTypeChoice) -> [DataUnitChoice] {
+  static func units(_ dataType: AbioticDataTypeChoice) -> [AbioticDataUnitChoice] {
 
     switch dataType {
 
@@ -621,13 +625,13 @@ fileprivate struct DecimalDataValue {
 fileprivate struct AbioticFactorChoices {
 
   let abioticFactor: AbioticFactor?
-  let dataType: DataTypeChoice?
-  let dataUnit: DataUnitChoice?
+  let dataType: AbioticDataTypeChoice?
+  let dataUnit: AbioticDataUnitChoice?
   let dataValue: Any?
 
   init(abioticFactor: AbioticFactor? = nil,
-       dataType: DataTypeChoice? = nil,
-       dataUnit: DataUnitChoice? = nil,
+       dataType: AbioticDataTypeChoice? = nil,
+       dataUnit: AbioticDataUnitChoice? = nil,
        dataValue: Any? = nil) {
     self.abioticFactor = abioticFactor
     self.dataType = dataType
@@ -639,10 +643,10 @@ fileprivate struct AbioticFactorChoices {
 
 fileprivate struct BioticFactorChoices {
 
-  let bioticFactor: BioticFactor?
+  let organism: Organism?
 
-  init(bioticFactor: BioticFactor? = nil) {
-    self.bioticFactor = bioticFactor
+  init(organism: Organism? = nil) {
+    self.organism = organism
   }
 
 }
@@ -794,6 +798,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
           destination.handleSoilTextureChoice = handleSoilTextureChoice
         }
 
+      case "organismChoice":
+        if let destination = segue.destination as? OrganismChoiceViewController,
+           let bioticFactorChoices = bioticFactorChoices {
+          destination.bioticFactorChoices = bioticFactorChoices
+          destination.handleOrganismChoice = handleOrganismChoice
+        }
+
       default:
         break
 
@@ -840,7 +851,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
     if ecoFactorChoice == .Abiotic {
       abioticFactorChoices = AbioticFactorChoices()
+      bioticFactorChoices = nil
     } else {
+      abioticFactorChoices = nil
       bioticFactorChoices = BioticFactorChoices()
     }
 
@@ -888,7 +901,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "dataTypeChoice", sender: nil)
   }
 
-  fileprivate func handleDataTypeChoice(_ dataTypeChoice: DataTypeChoice) {
+  fileprivate func handleDataTypeChoice(_ dataTypeChoice: AbioticDataTypeChoice) {
 
     if let abioticFactorChoices = abioticFactorChoices,
        let dataType = abioticFactorChoices.dataType,
@@ -919,7 +932,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "dataUnitChoice", sender: nil)
   }
 
-  fileprivate func handleDataUnitChoice(_ dataUnitChoice: DataUnitChoice) {
+  fileprivate func handleDataUnitChoice(_ dataUnitChoice: AbioticDataUnitChoice) {
 
     if let abioticFactorChoices = abioticFactorChoices,
        let dataUnit = abioticFactorChoices.dataUnit,
@@ -1097,6 +1110,32 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     tableView.insertSections([7], with: .automatic)
   }
 
+  func presentOrganismChoice() {
+    performSegue(withIdentifier: "organismChoice", sender: nil)
+  }
+
+  fileprivate func handleOrganismChoice(_ organism: Organism) {
+
+    if let bioticFactorChoices = bioticFactorChoices,
+       organism == bioticFactorChoices.organism {
+      return
+    }
+
+    bioticFactorChoices = BioticFactorChoices(organism: organism)
+    tableView.reloadSections([3], with: .automatic)
+
+    if numberOfSections > 4 {
+      for sectionIndex in (5...numberOfSections).reversed() {
+        numberOfSections = sectionIndex - 1
+        tableView.deleteSections([numberOfSections], with: .automatic)
+      }
+    }
+
+    numberOfSections = 5
+    tableView.insertSections([4], with: .automatic)
+
+  }
+
   fileprivate func handleSaveData() {
     print("Save Data")
   }
@@ -1132,9 +1171,6 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     case .Abiotic? where indexPath.section == 7: // Abiotic -> Save Button
       return 115
 
-    case .Biotic?:
-      return 0
-
     default:
       return 60
 
@@ -1161,7 +1197,12 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     case 0: return makeDateChoiceCell(tableView, indexPath)
     case 1: return makeTimeChoiceCell(tableView, indexPath)
     case 2: return makeEcoFactorChoiceCell(tableView, indexPath)
-    case 3: return makeAbioticFactorChoiceCell(tableView, indexPath)
+    case 3:
+      switch ecoFactorChoice {
+      case .Abiotic?: return makeAbioticFactorChoiceCell(tableView, indexPath)
+      case .Biotic?: return makeBioticFactorChoiceCell(tableView, indexPath)
+      default: fatalError()
+      }
     case 4: return makeDataTypeChoiceCell(tableView, indexPath)
     case 5: return makeDataUnitChoiceCell(tableView, indexPath)
     case 6: return makeDataValueChoiceCell(tableView, indexPath)
@@ -1418,6 +1459,32 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     }
 
     cell.presentDataValueChoice = presentDataValueChoice
+
+    return cell
+
+  }
+
+  private func makeBioticFactorChoiceCell(
+    _ tableView: UITableView,
+    _ indexPath: IndexPath) -> UITableViewCell {
+
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "organismChoice",
+      for: indexPath) as! OrganismChoiceTableViewCell
+
+    if let organism = bioticFactorChoices?.organism {
+
+      cell.label.text = organism.rawValue
+      cell.label.textColor = .black
+
+    } else {
+
+      cell.label.text = "Choose Organism"
+      cell.label.textColor = .lightGray
+
+    }
+
+    cell.presentOrganismChoice = presentOrganismChoice
 
     return cell
 
@@ -1693,7 +1760,7 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataTypeChoice: ((DataTypeChoice) -> Void)!
+  fileprivate var handleDataTypeChoice: ((AbioticDataTypeChoice) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1831,9 +1898,9 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   fileprivate var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataUnitChoice: ((DataUnitChoice) -> Void)!
+  fileprivate var handleDataUnitChoice: ((AbioticDataUnitChoice) -> Void)!
 
-  private var dataUnits: [DataUnitChoice] = []
+  private var dataUnits: [AbioticDataUnitChoice] = []
 
   override func viewDidLoad() {
 
@@ -1843,7 +1910,7 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     dataUnitPicker.delegate = self
 
     if let dataType = abioticFactorChoices.dataType {
-      dataUnits = DataUnitChoice.units(dataType)
+      dataUnits = AbioticDataUnitChoice.units(dataType)
     }
 
   }
@@ -2571,6 +2638,70 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
 
     }
 
+  }
+
+}
+
+class OrganismChoiceTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var label: UILabel!
+
+  var presentOrganismChoice: (() -> Void)!
+
+  @IBAction func touchUpInside() {
+    presentOrganismChoice()
+  }
+
+}
+
+class OrganismChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  @IBOutlet weak var picker: UIPickerView!
+
+  @IBOutlet weak var cancelButton: UIButton!
+
+  @IBOutlet weak var okButton: UIButton!
+
+  fileprivate var bioticFactorChoices: BioticFactorChoices? = nil
+
+  fileprivate var handleOrganismChoice: ((Organism) -> Void)!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    picker.dataSource = self
+    picker.delegate = self
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    if let organismChoice = bioticFactorChoices?.organism {
+      let selectedRow = Organism.all.index(of: organismChoice)!
+      picker.selectRow(selectedRow, inComponent: 0, animated: false)
+    } else {
+      picker.selectRow(0, inComponent: 0, animated: false)
+    }
+  }
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+
+    if sender == okButton {
+      let selectedRow = picker.selectedRow(inComponent: 0)
+      handleOrganismChoice(Organism.all[selectedRow])
+    }
+    dismiss(animated: true, completion: nil)
+
+  }
+
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return Organism.all.count
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return Organism.all[row].rawValue
   }
 
 }
