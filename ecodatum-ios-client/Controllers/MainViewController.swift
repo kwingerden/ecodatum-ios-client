@@ -8,23 +8,10 @@ class MainViewController: BaseContentViewScrollable {
     super.viewDidAppear(animated)
     
     do {
-        
       try initialize()
-
-      viewControllerManager.getEcoDatumFactors {
-        self.viewControllerManager.getMediaTypes {
-          self.viewControllerManager.getQualitativeObservationTypes() {
-            self.viewControllerManager.getQuantitativeObservationTypes() {
-              self.viewControllerManager.main()
-            }
-          }
-        }
-      }
-
+      viewControllerManager.main()
     } catch let error {
-    
       LOG.error(error.localizedDescription)
-    
     }
     
   }

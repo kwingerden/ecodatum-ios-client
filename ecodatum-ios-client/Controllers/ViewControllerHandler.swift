@@ -12,15 +12,3 @@ protocol SiteHandler {
 }
 
 
-protocol PhotoHandler {
-
-  func handleNewPhoto(photo: Photo)
-
-  func handleUpdatedPhoto(photo: Photo)
-
-  func handleDeletedPhoto(photo: Photo)
-
-}
-
-
-

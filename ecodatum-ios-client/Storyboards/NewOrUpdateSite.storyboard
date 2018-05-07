@@ -123,7 +123,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="128" id="2Af-ab-U8a"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                         </subviews>
