@@ -1,6 +1,7 @@
 import Foundation
 import SwiftValidator
 import UIKit
+import WebKit
 
 fileprivate enum EcoFactor: String {
 
@@ -24,24 +25,6 @@ fileprivate enum AbioticFactor: String {
     .Air,
     .Soil,
     .Water
-  ]
-
-}
-
-fileprivate enum Organism: String {
-
-//  case Animal
-  case Bacteria
-  case Plant
-//  case Protozoa
-//  case Fungi
-
-  static let all: [Organism] = [
-//    .Animal,
-    .Bacteria,
-    .Plant,
-//    .Protozoa,
-//    .Fungi
   ]
 
 }
@@ -643,10 +626,13 @@ fileprivate struct AbioticFactorChoices {
 
 fileprivate struct BioticFactorChoices {
 
-  let organism: Organism?
+  let image: UIImage?
+  let notes: NSAttributedString?
 
-  init(organism: Organism? = nil) {
-    self.organism = organism
+  init(image: UIImage? = nil,
+       notes: NSAttributedString? = nil) {
+    self.image = image
+    self.notes = notes
   }
 
 }
@@ -798,11 +784,18 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
           destination.handleSoilTextureChoice = handleSoilTextureChoice
         }
 
-      case "organismChoice":
-        if let destination = segue.destination as? OrganismChoiceViewController,
+      case "imageChoice":
+        if let destination = segue.destination as? ImageChoiceViewController,
            let bioticFactorChoices = bioticFactorChoices {
           destination.bioticFactorChoices = bioticFactorChoices
-          destination.handleOrganismChoice = handleOrganismChoice
+          destination.handleImageChoice = handleImageChoice
+        }
+
+      case "notesChoice":
+        if let destination = segue.destination as? NotesChoiceViewController,
+           let bioticFactorChoices = bioticFactorChoices {
+          destination.bioticFactorChoices = bioticFactorChoices
+          destination.handleNotesChoice = handleNotesChoice
         }
 
       default:
@@ -1110,18 +1103,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     tableView.insertSections([7], with: .automatic)
   }
 
-  func presentOrganismChoice() {
-    performSegue(withIdentifier: "organismChoice", sender: nil)
+  func presentImageChoice() {
+    performSegue(withIdentifier: "imageChoice", sender: nil)
   }
 
-  fileprivate func handleOrganismChoice(_ organism: Organism) {
+  fileprivate func handleImageChoice(_ image: UIImage) {
 
-    if let bioticFactorChoices = bioticFactorChoices,
-       organism == bioticFactorChoices.organism {
-      return
-    }
-
-    bioticFactorChoices = BioticFactorChoices(organism: organism)
+    bioticFactorChoices = BioticFactorChoices(image: image)
     tableView.reloadSections([3], with: .automatic)
 
     if numberOfSections > 4 {
@@ -1133,6 +1121,37 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
     numberOfSections = 5
     tableView.insertSections([4], with: .automatic)
+
+  }
+
+  func presentNotesChoice() {
+    performSegue(withIdentifier: "notesChoice", sender: nil)
+  }
+
+  fileprivate func handleNotesChoice(_ notes: NSAttributedString) {
+
+    if let bioticFactorChoices = bioticFactorChoices,
+       let notes = bioticFactorChoices.notes,
+       notes == notes {
+      return
+    }
+
+    if let bioticFactorChoices = bioticFactorChoices {
+      self.bioticFactorChoices = BioticFactorChoices(
+        image: bioticFactorChoices.image,
+        notes: notes)
+    }
+    tableView.reloadSections([4], with: .automatic)
+
+    if numberOfSections > 5 {
+      for sectionIndex in (6...numberOfSections).reversed() {
+        numberOfSections = sectionIndex - 1
+        tableView.deleteSections([numberOfSections], with: .automatic)
+      }
+    }
+
+    numberOfSections = 6
+    tableView.insertSections([5], with: .automatic)
 
   }
 
@@ -1171,6 +1190,9 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     case .Abiotic? where indexPath.section == 7: // Abiotic -> Save Button
       return 115
 
+    case .Biotic? where indexPath.section == 3: // Biotic -> Photo
+      return 250
+
     default:
       return 60
 
@@ -1195,18 +1217,36 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     switch indexPath.section {
 
     case 0: return makeDateChoiceCell(tableView, indexPath)
+
     case 1: return makeTimeChoiceCell(tableView, indexPath)
+
     case 2: return makeEcoFactorChoiceCell(tableView, indexPath)
+
     case 3:
       switch ecoFactorChoice {
       case .Abiotic?: return makeAbioticFactorChoiceCell(tableView, indexPath)
-      case .Biotic?: return makeBioticFactorChoiceCell(tableView, indexPath)
+      case .Biotic?: return makeImageChoiceCell(tableView, indexPath)
       default: fatalError()
       }
-    case 4: return makeDataTypeChoiceCell(tableView, indexPath)
-    case 5: return makeDataUnitChoiceCell(tableView, indexPath)
+
+    case 4:
+      switch ecoFactorChoice {
+      case .Abiotic?: return makeDataTypeChoiceCell(tableView, indexPath)
+      case .Biotic?: return makeNotesChoiceCell(tableView, indexPath)
+      default: fatalError()
+      }
+
+    case 5:
+      switch ecoFactorChoice {
+      case .Abiotic?: return makeDataUnitChoiceCell(tableView, indexPath)
+      case .Biotic?: return makeSaveDataCell(tableView, indexPath)
+      default: fatalError()
+      }
+
     case 6: return makeDataValueChoiceCell(tableView, indexPath)
+
     case 7: return makeSaveDataCell(tableView, indexPath)
+
     default: return UITableViewCell()
 
     }
@@ -1464,27 +1504,43 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
   }
 
-  private func makeBioticFactorChoiceCell(
+  private func makeImageChoiceCell(
     _ tableView: UITableView,
     _ indexPath: IndexPath) -> UITableViewCell {
 
     let cell = tableView.dequeueReusableCell(
-      withIdentifier: "organismChoice",
-      for: indexPath) as! OrganismChoiceTableViewCell
+      withIdentifier: "imageChoice",
+      for: indexPath) as! ImageChoiceTableViewCell
 
-    if let organism = bioticFactorChoices?.organism {
-
-      cell.label.text = organism.rawValue
-      cell.label.textColor = .black
-
+    if let image = bioticFactorChoices?.image {
+      cell.imageView?.image = image
     } else {
-
-      cell.label.text = "Choose Organism"
-      cell.label.textColor = .lightGray
-
+      cell.imageView?.image = UIImage(named: "PlaceholderImage")
     }
 
-    cell.presentOrganismChoice = presentOrganismChoice
+    cell.presentImageChoice = presentImageChoice
+
+    return cell
+
+  }
+
+  private func makeNotesChoiceCell(
+    _ tableView: UITableView,
+    _ indexPath: IndexPath) -> UITableViewCell {
+
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "notesChoice",
+      for: indexPath) as! NotesChoiceTableViewCell
+
+    if let notes = bioticFactorChoices?.notes {
+      cell.label.attributedText = notes
+      cell.label.textColor = .black
+    } else {
+      cell.label.text = "Add Notes"
+      cell.label.textColor = .lightGray
+    }
+
+    cell.presentNotesChoice = presentNotesChoice
 
     return cell
 
@@ -2642,69 +2698,164 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
 
 }
 
-class OrganismChoiceTableViewCell: UITableViewCell {
+class ImageChoiceTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var label: UILabel!
+  @IBOutlet weak var _imageView: UIImageView!
 
-  var presentOrganismChoice: (() -> Void)!
+  var presentImageChoice: (() -> Void)!
 
   @IBAction func touchUpInside() {
-    presentOrganismChoice()
+    presentImageChoice()
   }
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    _imageView.darkBordered()
+  }
+  
 }
 
-class OrganismChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ImageChoiceViewController: UIViewController,
+  UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-  @IBOutlet weak var picker: UIPickerView!
-
+  @IBOutlet weak var imageView: UIImageView!
+  
+  @IBOutlet weak var openCameraButton: UIButton!
+  
+  @IBOutlet weak var openPhotoLibraryButton: UIButton!
+  
   @IBOutlet weak var cancelButton: UIButton!
 
   @IBOutlet weak var okButton: UIButton!
 
   fileprivate var bioticFactorChoices: BioticFactorChoices? = nil
 
-  fileprivate var handleOrganismChoice: ((Organism) -> Void)!
+  fileprivate var handleImageChoice: ((UIImage) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    picker.dataSource = self
-    picker.delegate = self
+    imageView.darkBordered()
+    openCameraButton.rounded()
+    openPhotoLibraryButton.rounded()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    if let organismChoice = bioticFactorChoices?.organism {
-      let selectedRow = Organism.all.index(of: organismChoice)!
-      picker.selectRow(selectedRow, inComponent: 0, animated: false)
-    } else {
-      picker.selectRow(0, inComponent: 0, animated: false)
+    if let image = bioticFactorChoices?.image {
+      imageView.image = image
     }
   }
 
   @IBAction func touchUpInside(_ sender: UIButton) {
 
-    if sender == okButton {
-      let selectedRow = picker.selectedRow(inComponent: 0)
-      handleOrganismChoice(Organism.all[selectedRow])
+    switch sender {
+
+    case openCameraButton:
+      showImagePickerController(.camera)
+
+    case openPhotoLibraryButton:
+      showImagePickerController(.photoLibrary)
+
+    case okButton:
+      if let image = imageView.image {
+        handleImageChoice(image)
+      }
+      dismiss(animated: true, completion: nil)
+
+    case cancelButton:
+      dismiss(animated: true, completion: nil)
+
+    default: fatalError()
+
     }
-    dismiss(animated: true, completion: nil)
+
 
   }
 
-  func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info: [String : Any]){
+
+    var image: UIImage = imageView.image!
+    if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+      image = editedImage
+    } else if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+      image = pickedImage
+    }
+    imageView.image = image.crop(to: image.centeredSquareRect)
+    picker.dismiss(animated: true, completion: nil)
+
   }
 
-  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return Organism.all.count
+
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
   }
 
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return Organism.all[row].rawValue
+  private func showImagePickerController(_ sourceType: UIImagePickerControllerSourceType) {
+
+    if UIImagePickerController.isCameraDeviceAvailable(.rear) {
+
+      let imagePicker = UIImagePickerController()
+      imagePicker.delegate = self
+      imagePicker.sourceType = sourceType
+      imagePicker.allowsEditing = true
+      present(imagePicker, animated: true, completion: nil)
+
+    }
+
   }
 
 }
+
+class NotesChoiceTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var label: UILabel!
+
+  var presentNotesChoice: (() -> Void)!
+
+  @IBAction func touchUpInside() {
+    presentNotesChoice()
+  }
+
+}
+
+class NotesChoiceViewController: UIViewController, WKNavigationDelegate {
+
+  @IBOutlet weak var textView: UITextView!
+  
+  @IBOutlet weak var okButton: UIButton!
+  
+  @IBOutlet weak var cancelButton: UIButton!
+  
+  fileprivate var bioticFactorChoices: BioticFactorChoices? = nil
+
+  fileprivate var handleNotesChoice: ((NSAttributedString) -> Void)!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    textView.roundedAndDarkBordered()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    if let notes = bioticFactorChoices?.notes {
+      textView.attributedText = notes
+    } else {
+      textView.attributedText = nil
+    }
+  }
+  
+  @IBAction func touchUpInside(_ sender: UIButton) {
+    
+    if sender == okButton {
+      handleNotesChoice(textView.attributedText)
+    }
+    dismiss(animated: true, completion: nil)
+    
+  }
+  
+}
+
 
 class SaveDataTableViewCell: UITableViewCell {
 
