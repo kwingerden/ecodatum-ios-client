@@ -141,6 +141,27 @@ class NetworkManager {
         request: request))
   }
 
+  func call(_ request: NewOrUpdateDataRequest) throws -> Promise<DataResponse> {
+
+    let method: HTTPMethod = request.id == nil ? .post : .put
+    var url = baseURL
+      .appendingPathComponent("protected")
+      .appendingPathComponent("sites")
+    if method == .put,
+       let id = request.id {
+      url = url.appendingPathComponent("\(id)")
+    }
+
+    return try executeDataRequest(
+      makeDataRequest(
+        url,
+        method: method,
+        parameters: request.toParameters(jsonEncoder),
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+
+  }
+
   private func makeDataRequest(
     _ url: URL,
     method: HTTPMethod = .get,

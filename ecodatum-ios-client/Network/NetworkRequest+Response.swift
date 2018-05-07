@@ -183,3 +183,35 @@ struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
   
 }
 
+struct NewOrUpdateDataRequest: ProtectedNetworkRequest {
+
+  let token: AuthenticationToken
+  let id: String? // site id
+  let name: String
+  let description: String?
+  let latitude: Double
+  let longitude: Double
+  let altitude: Double?
+  let horizontalAccuracy: Double?
+  let verticalAccuracy: Double?
+  let organizationId: String
+
+}
+
+struct DataResponse: NetworkResponse {
+
+  let id: Identifier // site id
+  let name: String
+  let description: String?
+  let latitude: Double
+  let longitude: Double
+  let altitude: Double?
+  let horizontalAccuracy: Double?
+  let verticalAccuracy: Double?
+  let organizationId: String
+  let userId: Identifier
+  let createdAt: Date
+  let updatedAt: Date
+
+}
+

@@ -3,649 +3,11 @@ import SwiftValidator
 import UIKit
 import WebKit
 
-fileprivate enum EcoFactor: String {
-
-  case Abiotic
-  case Biotic
-
-  static let all: [EcoFactor] = [
-    .Abiotic,
-    .Biotic
-  ]
-
-}
-
-fileprivate enum AbioticFactor: String {
-
-  case Air
-  case Soil
-  case Water
-
-  static let all: [AbioticFactor] = [
-    .Air,
-    .Soil,
-    .Water
-  ]
-
-}
-
-fileprivate enum AirDataType: String {
-
-  case Velocity
-  case CarbonDioxide = "Carbon Dioxide"
-  case Light
-  case PAR
-  case RelativeHumidity = "Relative Humidity"
-  case Temperature
-  case UVB
-
-  static let all: [AirDataType] = [
-    .Velocity,
-    .CarbonDioxide,
-    .Light,
-    .PAR,
-    .RelativeHumidity,
-    .Temperature,
-    .UVB,
-  ]
-
-}
-
-fileprivate enum SoilDataType: String {
-
-  case Nitrogen
-  case Phosphorus
-  case Potassium
-  case Moisture
-  case Texture
-  case Temperature
-
-  static let all: [SoilDataType] = [
-    .Nitrogen,
-    .Phosphorus,
-    .Potassium,
-    .Moisture,
-    .Texture,
-    .Temperature
-  ]
-
-}
-
-fileprivate enum WaterDataType: String {
-
-  case Conductivity
-  case DissolvedOxygen = "Dissolved Oxygen"
-  case FlowRate = "Flow Rate"
-  case Nitrate
-  case Odor
-  case PAR
-  case pH
-  case Phosphate
-  case Temperature
-  case Turbidity
-
-  static let all: [WaterDataType] = [
-    .Conductivity,
-    .DissolvedOxygen,
-    .FlowRate,
-    .Nitrate,
-    .Odor,
-    .PAR,
-    .pH,
-    .Phosphate,
-    .Temperature,
-    .Turbidity
-  ]
-
-}
-
-fileprivate enum AbioticDataType {
-
-  case Air([AirDataType])
-  case Soil([SoilDataType])
-  case Water([WaterDataType])
-
-  static let all: [AbioticDataType] = [
-    .Air(AirDataType.all),
-    .Soil(SoilDataType.all),
-    .Water(WaterDataType.all)
-  ]
-
-}
-
-fileprivate enum AbioticDataTypeChoice {
-
-  case Air(AirDataType)
-  case Soil(SoilDataType)
-  case Water(WaterDataType)
-
-  static func ==(lhs: AbioticDataTypeChoice, rhs: AbioticDataTypeChoice) -> Bool {
-    switch (lhs, rhs) {
-    case let (.Air(v1), .Air(v2)) where v1 == v2: return true
-    case let (.Soil(v1), .Soil(v2)) where v1 == v2: return true
-    case let (.Water(v1), .Water(v2)) where v1 == v2: return true
-    default: return false
-    }
-  }
-
-}
-
-fileprivate enum AbioticDataUnitChoice: String {
-
-  case PartsPerMillion = "ppm \\ (Parts \\ Per \\ Million)"
-  case Lux = "Lux"
-  case PhotosyntheticPhotonFluxDensity = "PPFD \\ (Photosynthetic \\ Photon \\ Flux \\ Density)"
-  case MicromolesPerMetersSquaredAndSeconds = "\\mu mol \\ m^{-2}s^{-1}"
-  case Percent = "\\%"
-  case DegreesCelsius = "^{\\circ}C"
-  case DegreesFahrenheit = "^{\\circ}F"
-  case MegawattsPerMeterSquared = "\\frac{mW}{m^{2}}"
-  case MetersPerSecond = "\\frac{m}{s}"
-  case MilesPerHour = "mph"
-  case PoundsPerAcre = "\\frac{lb}{a}"
-  case MicrosiemensPerCentimeter = "\\frac{\\mu S}{cm}"
-  case FeetPerSecond = "\\frac{ft}{s}"
-  case MilligramsPerLiter = "\\frac{mg}{L}"
-  case NephelometricTurbidityUnits = "NTU \\ (Nephelometric \\ Turbidity \\ Units)"
-  case JacksonTurbidityUnits = "JTU \\ (Jackson \\ Turbidity \\ Units)"
-
-  case _Soil_Potassium_Scale_ = "Soil \\ Potassium \\ Scale"
-  case _Soil_Texture_Scale_ = "Soil \\ Texture \\ Scale"
-  case _Water_Odor_Scale_ = "Water \\ Odor \\ Scale"
-  case _Water_pH_Scale_ = "Water \\ pH \\ Scale"
-  case _Water_Turbidity_Scale_ = "Water \\ Turbidity \\ Scale"
-
-  static func units(_ dataType: AbioticDataTypeChoice) -> [AbioticDataUnitChoice] {
-
-    switch dataType {
-
-      // ** AIR
-
-    case .Air(let airDataType) where airDataType == .CarbonDioxide:
-      return [
-        .PartsPerMillion
-      ]
-
-    case .Air(let airDataType) where airDataType == .Light:
-      return [
-        .Lux
-      ]
-
-    case .Air(let airDataType) where airDataType == .PAR:
-      return [
-        .PhotosyntheticPhotonFluxDensity,
-        .MicromolesPerMetersSquaredAndSeconds
-      ]
-
-    case .Air(let airDataType) where airDataType == .RelativeHumidity:
-      return [
-        .Percent
-      ]
-
-    case .Air(let airDataType) where airDataType == .Temperature:
-      return [
-        .DegreesCelsius,
-        .DegreesFahrenheit
-      ]
-
-    case .Air(let airDataType) where airDataType == .UVB:
-      return [
-        .MegawattsPerMeterSquared,
-        .Percent
-      ]
-
-    case .Air(let airDataType) where airDataType == .Velocity:
-      return [
-        .MetersPerSecond,
-        .MilesPerHour
-      ]
-
-      // ** SOIL
-
-    case .Soil(let soilDataType)
-         where soilDataType == .Nitrogen || soilDataType == .Phosphorus:
-      return [
-        .PoundsPerAcre
-      ]
-
-    case .Soil(let soilDataType) where soilDataType == .Potassium:
-      return [
-        ._Soil_Potassium_Scale_
-      ]
-
-    case .Soil(let soilDataType) where soilDataType == .Moisture:
-      return [
-        .Percent
-      ]
-
-    case .Soil(let soilDataType) where soilDataType == .Texture:
-      return [
-        ._Soil_Texture_Scale_
-      ]
-
-    case .Soil(let soilDataType) where soilDataType == .Temperature:
-      return [
-        .DegreesCelsius,
-        .DegreesFahrenheit
-      ]
-
-      // ** WATER
-
-    case .Water(let waterDataType) where waterDataType == .Conductivity:
-      return [
-        .MicrosiemensPerCentimeter
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .DissolvedOxygen:
-      return [
-        .PartsPerMillion,
-        .MilligramsPerLiter,
-        .Percent
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .FlowRate:
-      return [
-        .MetersPerSecond,
-        .FeetPerSecond
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .Nitrate:
-      return [
-        .PartsPerMillion,
-        .MilligramsPerLiter
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .Odor:
-      return [
-        ._Water_Odor_Scale_
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .PAR:
-      return [
-        .PhotosyntheticPhotonFluxDensity,
-        .MicromolesPerMetersSquaredAndSeconds
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .pH:
-      return [
-        ._Water_pH_Scale_
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .Phosphate:
-      return [
-        .PartsPerMillion,
-        .MilligramsPerLiter
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .Temperature:
-      return [
-        .DegreesCelsius,
-        .DegreesFahrenheit
-      ]
-
-    case .Water(let waterDataType) where waterDataType == .Turbidity:
-      return [
-        .NephelometricTurbidityUnits,
-        .JacksonTurbidityUnits,
-        ._Water_Turbidity_Scale_
-      ]
-
-    default: return []
-
-    }
-
-  }
-
-}
-
-fileprivate enum SoilPotassiumScale {
-
-  case Low(index: Int, label: String)
-  case Medium(index: Int, label: String)
-  case High(index: Int, label: String)
-
-  static func ==(_ lhs: SoilPotassiumScale, _ rhs: SoilPotassiumScale) -> Bool {
-
-    var lhsIndex = 0
-    switch lhs {
-    case .Low(let index, _): lhsIndex = index
-    case .Medium(let index, _): lhsIndex = index
-    case .High(let index, _): lhsIndex = index
-    }
-
-    var rhsIndex = 0
-    switch rhs {
-    case .Low(let index, _): rhsIndex = index
-    case .Medium(let index, _): rhsIndex = index
-    case .High(let index, _): rhsIndex = index
-    }
-
-    return lhsIndex == rhsIndex
-
-  }
-
-  static let all: [SoilPotassiumScale] = [
-    .Low(index: 0, label: "Low"),
-    .Medium(index: 1, label: "Medium"),
-    .High(index: 2, label: "High")
-  ]
-
-}
-
-fileprivate enum WaterOdorScale {
-
-  case NoOdor(index: Int, label: String)
-  case SlightOdor(index: Int, label: String)
-  case Smelly(index: Int, label: String)
-  case VerySmelly(index: Int, label: String)
-  case Devastating(index: Int, label: String)
-
-  static func ==(_ lhs: WaterOdorScale, _ rhs: WaterOdorScale) -> Bool {
-
-    var lhsIndex = 0
-    switch lhs {
-    case .NoOdor(let index, _): lhsIndex = index
-    case .SlightOdor(let index, _): lhsIndex = index
-    case .Smelly(let index, _): lhsIndex = index
-    case .VerySmelly(let index, _): lhsIndex = index
-    case .Devastating(let index, _): lhsIndex = index
-    }
-
-    var rhsIndex = 0
-    switch rhs {
-    case .NoOdor(let index, _): rhsIndex = index
-    case .SlightOdor(let index, _): rhsIndex = index
-    case .Smelly(let index, _): rhsIndex = index
-    case .VerySmelly(let index, _): rhsIndex = index
-    case .Devastating(let index, _): rhsIndex = index
-    }
-
-    return lhsIndex == rhsIndex
-
-  }
-
-  static let all: [WaterOdorScale] = [
-    .NoOdor(index: 0, label: "No Odor"),
-    .SlightOdor(index: 1, label: "Slight Odor"),
-    .Smelly(index: 2, label: "Smelly"),
-    .VerySmelly(index: 3, label: "Very Smelly"),
-    .Devastating(index: 4, label: "Devastating")
-  ]
-
-}
-
-fileprivate enum WaterTurbidityScale {
-
-  case CrystalClear(index: Int, label: String)
-  case SlightlyCloudy(index: Int, label: String)
-  case ModeratelyCloudy(index: Int, label: String)
-  case VeryCloudy(index: Int, label: String)
-  case BlackishOrBrownish(index: Int, label: String)
-
-  static func ==(_ lhs: WaterTurbidityScale, _ rhs: WaterTurbidityScale) -> Bool {
-
-    var lhsIndex = 0
-    switch lhs {
-    case .CrystalClear(let index, _): lhsIndex = index
-    case .SlightlyCloudy(let index, _): lhsIndex = index
-    case .ModeratelyCloudy(let index, _): lhsIndex = index
-    case .VeryCloudy(let index, _): lhsIndex = index
-    case .BlackishOrBrownish(let index, _): lhsIndex = index
-    }
-
-    var rhsIndex = 0
-    switch rhs {
-    case .CrystalClear(let index, _): rhsIndex = index
-    case .SlightlyCloudy(let index, _): rhsIndex = index
-    case .ModeratelyCloudy(let index, _): rhsIndex = index
-    case .VeryCloudy(let index, _): rhsIndex = index
-    case .BlackishOrBrownish(let index, _): rhsIndex = index
-    }
-
-    return lhsIndex == rhsIndex
-
-  }
-
-  static let all: [WaterTurbidityScale] = [
-    .CrystalClear(index: 0, label: "Crystal Clear"),
-    .SlightlyCloudy(index: 1, label: "Slightly Cloudy"),
-    .ModeratelyCloudy(index: 2, label: "Moderately Cloudy"),
-    .VeryCloudy(index: 3, label: "Very Cloudy"),
-    .BlackishOrBrownish(index: 4, label: "Blackish or Brownish")
-  ]
-
-}
-
-fileprivate struct SoilTextureScale {
-
-  let percentSand: Int
-  let percentSilt: Int
-  let percentClay: Int
-
-  static func ==(_ lhs: SoilTextureScale, _ rhs: SoilTextureScale) -> Bool {
-    return lhs.percentSand == rhs.percentSand &&
-      lhs.percentSilt == rhs.percentSilt &&
-      lhs.percentClay == rhs.percentClay
-  }
-
-}
-
-fileprivate struct DecimalDataValue {
-
-  enum Sign {
-    case positive
-    case negative
-  }
-
-  let sign: Sign
-  let number: String
-  let decimalPoint: Bool
-  let fraction: String?
-
-  var stringValue: String {
-    return toString()
-  }
-
-  var doubleValue: Double {
-    return Double(toString())!
-  }
-
-  init(sign: Sign = .positive,
-       number: String = "0",
-       decimalPoint: Bool = false,
-       fraction: String? = nil) {
-    self.sign = sign
-    self.number = number
-    self.decimalPoint = decimalPoint
-    self.fraction = fraction
-  }
-
-  func toggleSign() -> DecimalDataValue {
-
-    if doubleValue == 0 {
-
-      return DecimalDataValue(
-        sign: .positive,
-        number: number,
-        decimalPoint: decimalPoint,
-        fraction: fraction)
-
-    } else {
-
-      return DecimalDataValue(
-        sign: sign == .positive ? .negative : .positive,
-        number: number,
-        decimalPoint: decimalPoint,
-        fraction: fraction)
-
-    }
-
-  }
-
-  func addDecimalPoint() -> DecimalDataValue {
-
-    if decimalPoint {
-
-      return self
-
-    } else {
-
-      return DecimalDataValue(
-        sign: sign,
-        number: number,
-        decimalPoint: true,
-        fraction: nil)
-
-    }
-
-  }
-
-  func addDigit(_ digit: Int) -> DecimalDataValue {
-
-    if let fraction = fraction {
-
-      return DecimalDataValue(
-        sign: sign,
-        number: number,
-        decimalPoint: decimalPoint,
-        fraction: "\(fraction)\(digit)")
-
-    } else if decimalPoint {
-
-      return DecimalDataValue(
-        sign: sign,
-        number: number,
-        decimalPoint: decimalPoint,
-        fraction: "\(digit)")
-
-    } else {
-
-      var newNumber = "\(number)\(digit)"
-      if doubleValue == 0 {
-        newNumber = "\(digit)"
-      }
-      return DecimalDataValue(
-        sign: sign,
-        number: newNumber,
-        decimalPoint: false,
-        fraction: nil)
-
-    }
-
-  }
-
-  func deleteDigit() -> DecimalDataValue {
-
-    var newSign = sign
-    if doubleValue == 0 {
-      newSign = .positive
-    }
-
-    if let fraction = fraction {
-
-      var newFraction = fraction
-      newFraction.removeLast()
-      return DecimalDataValue(
-        sign: newSign,
-        number: number,
-        decimalPoint: decimalPoint,
-        fraction: newFraction.count == 0 ? nil : newFraction)
-
-    } else if decimalPoint {
-
-      return DecimalDataValue(
-        sign: newSign,
-        number: number,
-        decimalPoint: false,
-        fraction: nil)
-
-    } else {
-
-      var newNumber = number
-      newNumber.removeLast()
-
-      if newNumber.count == 0 {
-        newSign = .positive
-      } else if let intNumber = Int(newNumber),
-                intNumber == 0 {
-        newSign = .positive
-      }
-
-      return DecimalDataValue(
-        sign: newSign,
-        number: newNumber.count == 0 ? "0" : newNumber,
-        decimalPoint: false,
-        fraction: nil)
-
-    }
-
-  }
-
-  static func ==(_ lhs: DecimalDataValue, _ rhs: DecimalDataValue) -> Bool {
-    return lhs.sign == rhs.sign &&
-      lhs.number == rhs.number &&
-      lhs.decimalPoint == rhs.decimalPoint &&
-      lhs.fraction == rhs.fraction
-  }
-
-  private func toString() -> String {
-
-    let sign = self.sign == .positive ? "" : "-"
-    let decimalPoint = self.decimalPoint ? "." : ""
-
-    if let fraction = fraction {
-      return "\(sign)\(number).\(fraction)"
-    } else if Int(number) == 0 {
-      return "0\(decimalPoint)"
-    } else {
-      return "\(sign)\(number)\(decimalPoint)"
-    }
-
-  }
-
-}
-
-fileprivate struct AbioticFactorChoices {
-
-  let abioticFactor: AbioticFactor?
-  let dataType: AbioticDataTypeChoice?
-  let dataUnit: AbioticDataUnitChoice?
-  let dataValue: Any?
-
-  init(abioticFactor: AbioticFactor? = nil,
-       dataType: AbioticDataTypeChoice? = nil,
-       dataUnit: AbioticDataUnitChoice? = nil,
-       dataValue: Any? = nil) {
-    self.abioticFactor = abioticFactor
-    self.dataType = dataType
-    self.dataUnit = dataUnit
-    self.dataValue = dataValue
-  }
-
-}
-
-fileprivate struct BioticFactorChoices {
-
-  let image: UIImage?
-  let notes: NSAttributedString?
-
-  init(image: UIImage? = nil,
-       notes: NSAttributedString? = nil) {
-    self.image = image
-    self.notes = notes
-  }
-
-}
-
 class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   @IBOutlet weak var tableView: UITableView!
 
-  private var dateChoice: Date = Date()
-
-  private var timeChoice: Date = Date()
-
-  private var ecoFactorChoice: EcoFactor? = nil
+  private var ecoFactorChoices: EcoFactorChoices = EcoFactorChoices()
 
   private var abioticFactorChoices: AbioticFactorChoices? = nil
 
@@ -706,19 +68,19 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
       case "dateChoice":
         if let destination = segue.destination as? DateChoiceViewController {
-          destination.dateChoice = dateChoice
+          destination.dateChoice = ecoFactorChoices.dateChoice
           destination.handleDateChoice = handleDateChoice
         }
 
       case "timeChoice":
         if let destination = segue.destination as? TimeChoiceViewController {
-          destination.timeChoice = timeChoice
+          destination.timeChoice = ecoFactorChoices.timeChoice
           destination.handleTimeChoice = handleTimeChoice
         }
 
       case "ecoFactorChoice":
         if let destination = segue.destination as? EcoFactorChoiceViewController {
-          destination.ecoFactorChoice = ecoFactorChoice
+          destination.ecoFactorChoice = ecoFactorChoices.ecoFactorChoice
           destination.handleEcoFactorChoice = handleEcoFactorChoice
         }
 
@@ -813,7 +175,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleDateChoice(_ date: Date) {
 
-    self.dateChoice = date
+    ecoFactorChoices = ecoFactorChoices.new(dateChoice: date)
     tableView.reloadSections([0], with: .automatic)
 
   }
@@ -824,7 +186,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleTimeChoice(_ date: Date) {
 
-    self.timeChoice = date
+    ecoFactorChoices = ecoFactorChoices.new(timeChoice: date)
     tableView.reloadSections([1], with: .automatic)
 
   }
@@ -833,16 +195,16 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "ecoFactorChoice", sender: nil)
   }
 
-  fileprivate func handleEcoFactorChoice(_ ecoFactor: EcoFactor) {
+  func handleEcoFactorChoice(_ ecoFactor: EcoFactor) {
 
-    if self.ecoFactorChoice == ecoFactor {
+    if ecoFactorChoices.ecoFactorChoice == ecoFactor {
       return
     }
 
-    self.ecoFactorChoice = ecoFactor
+    ecoFactorChoices = ecoFactorChoices.new(ecoFactorChoice: ecoFactor)
     tableView.reloadSections([2], with: .automatic)
 
-    if ecoFactorChoice == .Abiotic {
+    if ecoFactor == .Abiotic {
       abioticFactorChoices = AbioticFactorChoices()
       bioticFactorChoices = nil
     } else {
@@ -866,7 +228,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "abioticFactorChoice", sender: nil)
   }
 
-  fileprivate func handleAbioticFactorChoice(_ abioticFactor: AbioticFactor) {
+  func handleAbioticFactorChoice(_ abioticFactor: AbioticFactor) {
 
     if let abioticFactorChoices = abioticFactorChoices,
        abioticFactor == abioticFactorChoices.abioticFactor {
@@ -894,7 +256,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "dataTypeChoice", sender: nil)
   }
 
-  fileprivate func handleDataTypeChoice(_ dataTypeChoice: AbioticDataTypeChoice) {
+  func handleDataTypeChoice(_ dataTypeChoice: AbioticDataTypeChoice) {
 
     if let abioticFactorChoices = abioticFactorChoices,
        let dataType = abioticFactorChoices.dataType,
@@ -925,7 +287,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "dataUnitChoice", sender: nil)
   }
 
-  fileprivate func handleDataUnitChoice(_ dataUnitChoice: AbioticDataUnitChoice) {
+  func handleDataUnitChoice(_ dataUnitChoice: AbioticDataUnitChoice) {
 
     if let abioticFactorChoices = abioticFactorChoices,
        let dataUnit = abioticFactorChoices.dataUnit,
@@ -983,7 +345,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  fileprivate func handleDataValueChoice(_ dataValueChoice: DecimalDataValue) {
+  func handleDataValueChoice(_ dataValueChoice: DecimalDataValue) {
 
     if let dataValue = abioticFactorChoices?.dataValue as? DecimalDataValue,
        dataValueChoice == dataValue {
@@ -1013,7 +375,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  fileprivate func handleSoilPotassiumChoice(_ soilPotassiumChoice: SoilPotassiumScale) {
+  func handleSoilPotassiumChoice(_ soilPotassiumChoice: SoilPotassiumScale) {
 
     if let dataValue = abioticFactorChoices?.dataValue as? SoilPotassiumScale,
        soilPotassiumChoice == dataValue {
@@ -1032,7 +394,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  fileprivate func handleWaterOdorChoice(_ waterOdorChoice: WaterOdorScale) {
+  func handleWaterOdorChoice(_ waterOdorChoice: WaterOdorScale) {
 
     if let dataValue = abioticFactorChoices?.dataValue as? WaterOdorScale,
        waterOdorChoice == dataValue {
@@ -1051,7 +413,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  fileprivate func handleWaterTurbidityChoice(_ waterTurbidityChoice: WaterTurbidityScale) {
+  func handleWaterTurbidityChoice(_ waterTurbidityChoice: WaterTurbidityScale) {
 
     if let dataValue = abioticFactorChoices?.dataValue as? WaterTurbidityScale,
        waterTurbidityChoice == dataValue {
@@ -1070,7 +432,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  fileprivate func handleSoilTextureChoice(_ soilTextureChoice: SoilTextureScale) {
+  func handleSoilTextureChoice(_ soilTextureChoice: SoilTextureScale) {
 
     if let dataValue = abioticFactorChoices?.dataValue as? SoilTextureScale,
        soilTextureChoice == dataValue {
@@ -1107,7 +469,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "imageChoice", sender: nil)
   }
 
-  fileprivate func handleImageChoice(_ image: UIImage) {
+  func handleImageChoice(_ image: UIImage) {
 
     bioticFactorChoices = BioticFactorChoices(image: image)
     tableView.reloadSections([3], with: .automatic)
@@ -1128,7 +490,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "notesChoice", sender: nil)
   }
 
-  fileprivate func handleNotesChoice(_ notes: NSAttributedString) {
+  func handleNotesChoice(_ notes: NSAttributedString) {
 
     if let bioticFactorChoices = bioticFactorChoices {
       self.bioticFactorChoices = BioticFactorChoices(
@@ -1149,7 +511,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  fileprivate func handleSaveData() {
+  func handleSaveData() {
     print("Save Data")
   }
 
@@ -1176,7 +538,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-    switch ecoFactorChoice {
+    switch ecoFactorChoices.ecoFactorChoice {
 
     case .Abiotic? where indexPath.section == 5: // Abiotic -> Data Unit
       return 82
@@ -1217,21 +579,21 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     case 2: return makeEcoFactorChoiceCell(tableView, indexPath)
 
     case 3:
-      switch ecoFactorChoice {
+      switch ecoFactorChoices.ecoFactorChoice {
       case .Abiotic?: return makeAbioticFactorChoiceCell(tableView, indexPath)
       case .Biotic?: return makeImageChoiceCell(tableView, indexPath)
       default: fatalError()
       }
 
     case 4:
-      switch ecoFactorChoice {
+      switch ecoFactorChoices.ecoFactorChoice {
       case .Abiotic?: return makeDataTypeChoiceCell(tableView, indexPath)
       case .Biotic?: return makeNotesChoiceCell(tableView, indexPath)
       default: fatalError()
       }
 
     case 5:
-      switch ecoFactorChoice {
+      switch ecoFactorChoices.ecoFactorChoice {
       case .Abiotic?: return makeDataUnitChoiceCell(tableView, indexPath)
       case .Biotic?: return makeSaveDataCell(tableView, indexPath)
       default: fatalError()
@@ -1255,7 +617,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "dateChoice",
       for: indexPath) as! DateChoiceTableViewCell
 
-    cell.dateLabel.text = DATE_FORMATTER.string(from: dateChoice)
+    cell.dateLabel.text = DATE_FORMATTER.string(from: ecoFactorChoices.dateChoice)
     cell.presentDateChoice = presentDateChoice
 
     return cell
@@ -1270,7 +632,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "timeChoice",
       for: indexPath) as! TimeChoiceTableViewCell
 
-    cell.timeLabel.text = TIME_FORMATTER.string(from: timeChoice)
+    cell.timeLabel.text = TIME_FORMATTER.string(from: ecoFactorChoices.timeChoice)
     cell.presentTimeChoice = presentTimeChoice
 
     return cell
@@ -1285,7 +647,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "ecoFactorChoice",
       for: indexPath) as! EcoFactorChoiceTableViewCell
 
-    if let ecoFactorChoice = ecoFactorChoice {
+    if let ecoFactorChoice = ecoFactorChoices.ecoFactorChoice {
 
       cell.ecoFactorLabel.text = ecoFactorChoice.rawValue
       cell.ecoFactorLabel.textColor = .black
@@ -1679,9 +1041,9 @@ class EcoFactorChoiceViewController: UIViewController, UIPickerViewDataSource, U
 
   @IBOutlet weak var cancelButton: UIButton!
 
-  fileprivate var ecoFactorChoice: EcoFactor? = nil
+  var ecoFactorChoice: EcoFactor? = nil
 
-  fileprivate var handleEcoFactorChoice: ((EcoFactor) -> Void)!
+  var handleEcoFactorChoice: ((EcoFactor) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1744,9 +1106,9 @@ class AbioticFactorChoiceViewController: UIViewController, UIPickerViewDataSourc
 
   @IBOutlet weak var okButton: UIButton!
 
-  fileprivate var abioticFactorChoice: AbioticFactor? = nil
+  var abioticFactorChoice: AbioticFactor? = nil
 
-  fileprivate var handleAbioticFactorChoice: ((AbioticFactor) -> Void)!
+  var handleAbioticFactorChoice: ((AbioticFactor) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1808,9 +1170,9 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   @IBOutlet weak var okButton: UIButton!
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataTypeChoice: ((AbioticDataTypeChoice) -> Void)!
+  var handleDataTypeChoice: ((AbioticDataTypeChoice) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1946,9 +1308,9 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
   @IBOutlet weak var okButton: UIButton!
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataUnitChoice: ((AbioticDataUnitChoice) -> Void)!
+  var handleDataUnitChoice: ((AbioticDataUnitChoice) -> Void)!
 
   private var dataUnits: [AbioticDataUnitChoice] = []
 
@@ -2068,9 +1430,9 @@ class DataValueChoiceViewController: UIViewController {
 
   private var dataValue: DecimalDataValue = DecimalDataValue()
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataValueChoice: ((DecimalDataValue) -> Void)!
+  var handleDataValueChoice: ((DecimalDataValue) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -2186,9 +1548,9 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
   @IBOutlet weak var cancelButton: UIButton!
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleDataValueChoice: ((DecimalDataValue) -> Void)!
+  var handleDataValueChoice: ((DecimalDataValue) -> Void)!
 
   private let numberRange = Array(1...14)
 
@@ -2292,9 +1654,9 @@ class SoilPotassiumChoiceViewController: UIViewController, UIPickerViewDataSourc
 
   @IBOutlet weak var okButton: UIButton!
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleSoilPotassiumChoice: ((SoilPotassiumScale) -> Void)!
+  var handleSoilPotassiumChoice: ((SoilPotassiumScale) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -2356,9 +1718,9 @@ class WaterOdorChoiceViewController: UIViewController, UIPickerViewDataSource, U
 
   @IBOutlet weak var okButton: UIButton!
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleWaterOdorChoice: ((WaterOdorScale) -> Void)!
+  var handleWaterOdorChoice: ((WaterOdorScale) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -2424,9 +1786,9 @@ class WaterTurbidityChoiceViewController: UIViewController, UIPickerViewDataSour
 
   @IBOutlet weak var okButton: UIButton!
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleWaterTurbidityChoice: ((WaterTurbidityScale) -> Void)!
+  var handleWaterTurbidityChoice: ((WaterTurbidityScale) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -2540,9 +1902,9 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
 
   }
 
-  fileprivate var abioticFactorChoices: AbioticFactorChoices!
+  var abioticFactorChoices: AbioticFactorChoices!
 
-  fileprivate var handleSoilTextureChoice: ((SoilTextureScale) -> Void)!
+  var handleSoilTextureChoice: ((SoilTextureScale) -> Void)!
 
   override func viewDidLoad() {
 
@@ -2706,25 +2068,25 @@ class ImageChoiceTableViewCell: UITableViewCell {
     super.layoutSubviews()
     _imageView.darkBordered()
   }
-  
+
 }
 
 class ImageChoiceViewController: UIViewController,
   UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
   @IBOutlet weak var imageView: UIImageView!
-  
+
   @IBOutlet weak var openCameraButton: UIButton!
-  
+
   @IBOutlet weak var openPhotoLibraryButton: UIButton!
-  
+
   @IBOutlet weak var cancelButton: UIButton!
 
   @IBOutlet weak var okButton: UIButton!
 
-  fileprivate var bioticFactorChoices: BioticFactorChoices? = nil
+  var bioticFactorChoices: BioticFactorChoices? = nil
 
-  fileprivate var handleImageChoice: ((UIImage) -> Void)!
+  var handleImageChoice: ((UIImage) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -2767,7 +2129,7 @@ class ImageChoiceViewController: UIViewController,
   }
 
   func imagePickerController(_ picker: UIImagePickerController,
-                             didFinishPickingMediaWithInfo info: [String : Any]){
+                             didFinishPickingMediaWithInfo info: [String: Any]) {
 
     var image: UIImage = imageView.image!
     if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -2816,23 +2178,23 @@ class NotesChoiceTableViewCell: UITableViewCell {
 class NotesChoiceViewController: UIViewController, WKNavigationDelegate {
 
   @IBOutlet weak var textView: UITextView!
-  
-  @IBOutlet weak var okButton: UIButton!
-  
-  @IBOutlet weak var cancelButton: UIButton!
-  
-  fileprivate var bioticFactorChoices: BioticFactorChoices? = nil
 
-  fileprivate var handleNotesChoice: ((NSAttributedString) -> Void)!
+  @IBOutlet weak var okButton: UIButton!
+
+  @IBOutlet weak var cancelButton: UIButton!
+
+  var bioticFactorChoices: BioticFactorChoices? = nil
+
+  var handleNotesChoice: ((NSAttributedString) -> Void)!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     textView.lightBordered()
     textView.allowsEditingTextAttributes = true
-    
+
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     if let notes = bioticFactorChoices?.notes {
@@ -2841,16 +2203,16 @@ class NotesChoiceViewController: UIViewController, WKNavigationDelegate {
       textView.attributedText = nil
     }
   }
-  
+
   @IBAction func touchUpInside(_ sender: UIButton) {
-    
+
     if sender == okButton {
       handleNotesChoice(textView.attributedText)
     }
     dismiss(animated: true, completion: nil)
-    
+
   }
-  
+
 }
 
 
