@@ -1,16 +1,20 @@
 PODS:
   - iosMath (0.9.4)
+  - IQKeyboardManagerSwift (6.0.2)
 
 DEPENDENCIES:
   - iosMath (= 0.9.4)
+  - IQKeyboardManagerSwift (= 6.0.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - iosMath
+    - IQKeyboardManagerSwift
 
 SPEC CHECKSUMS:
   iosMath: f7a6cbadf9d836d2149c2a84c435b1effc244cba
+  IQKeyboardManagerSwift: 59d4b0e140bc546c3c76ae5bb35b3dafd10b8172
 
-PODFILE CHECKSUM: 789c13341eb4e6183512b36c72356323b4a8ad99
+PODFILE CHECKSUM: 46e5704625bab8871ed33aab69a89f723d364027
 
 COCOAPODS: 1.5.0

@@ -7,73 +7,103 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0569129A73F4CCBFAC5EACCF2ACD9378 /* MTMathListDisplayInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 60C2E84FF6D0D8DC3E0A29346CFD68C1 /* MTMathListDisplayInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		05D6959AC245B1E3A5939E789E8B3A1B /* Pods-ecodatum-ios-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B92A2868A5D39690C304B49E53F86 /* Pods-ecodatum-ios-client-dummy.m */; };
-		0A2C8E9B279C99DF721711DEFEFE7C7F /* MTUnicode.h in Headers */ = {isa = PBXBuildFile; fileRef = 37836B403584AA63E73822910E556DE1 /* MTUnicode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1228AD9F0B154CCB78AD3799321ABA38 /* MTMathListDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = 71C3EC81C8C1A926C9AD0678A5ACEC33 /* MTMathListDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		12B64D1492C171CCD24BF8F3192936EC /* MTLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2971E81F2DEA82F81157060E01EA5DAF /* MTLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		13D9CA9195B99258A31998AC19E00F0D /* NSBezierPath+addLineToPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 804B17ED518DD18876F6F1A6F6DB5F51 /* NSBezierPath+addLineToPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15422D71098AD0862AE4119D739C075E /* MTMathAtomFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A5907CECB3DEB8745719656EAA6370 /* MTMathAtomFactory.m */; };
-		1E58057D86D62940950F189FA7FC5A96 /* MTMathListIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = AC6DA6A592DDDF15255C08563179D8AC /* MTMathListIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03B4931BEB591683010DA08932CEDDF3 /* Pods-ecodatum-ios-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B92A2868A5D39690C304B49E53F86 /* Pods-ecodatum-ios-client-dummy.m */; };
+		0569129A73F4CCBFAC5EACCF2ACD9378 /* MTMathListDisplayInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 255E892BA52F037CF6E873F001D178E0 /* MTMathListDisplayInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0A2C8E9B279C99DF721711DEFEFE7C7F /* MTUnicode.h in Headers */ = {isa = PBXBuildFile; fileRef = 88D12A935B37493BC7DB7EDF2BA47EFC /* MTUnicode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1228AD9F0B154CCB78AD3799321ABA38 /* MTMathListDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = 196D7FD6CB489141F3D56F5982D0E6D6 /* MTMathListDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		12B64D1492C171CCD24BF8F3192936EC /* MTLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A740DCCC72D74B0C6C3B1CD3834782F /* MTLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13D9CA9195B99258A31998AC19E00F0D /* NSBezierPath+addLineToPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = C09BF6D6A958D5AFF2A1EDE46FD58F60 /* NSBezierPath+addLineToPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15422D71098AD0862AE4119D739C075E /* MTMathAtomFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C961FF1CFF86E3302D3189C706D4352 /* MTMathAtomFactory.m */; };
+		1DF0DEB77D26401892D4E76463DD3949 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC3479E24D37BA3040D4EF61D66CF5 /* IQPreviousNextView.swift */; };
+		1E58057D86D62940950F189FA7FC5A96 /* MTMathListIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = 003BC66EFD7A6192670EF284E54D30D4 /* MTMathListIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E66A4899FC855FC61F13721CF63EB35 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94640864E3C49D9686056CE9CA0631A /* IQKeyboardReturnKeyHandler.swift */; };
 		2270E26CA635D8A7510A363D21A95B32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E2B04BC1935A86EB34129AA71C7D83 /* UIKit.framework */; };
-		23B3BF994E3D6D80EB8F3445347A41D4 /* iosMath-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F00956A9F347C195D752B1DE5414 /* iosMath-dummy.m */; };
-		28ED3A0B865E123C4771247A91948365 /* texgyretermes-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFFC6A39CA7864E84699E7C3D925EBCC /* texgyretermes-math.plist */; };
-		291DAF3612ECDA472EDFE4AE52B35D01 /* NSColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D031BA9BF8BDF5EEAF80CEE09D177B5 /* NSColor+HexString.m */; };
-		2B0FFB0293BB37BFB9D5980BB2E4EFAD /* iosMath-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DE59DD471FFE3DE6915BB599EB0B8C6 /* iosMath-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E82EC8E7E191BB01B06896A5878EAEE /* MTUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F41A7376ED9DBDE9751E686253D732 /* MTUnicode.m */; };
-		345ED928F89929FF0C0BDE7F03E28C73 /* MTFontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F75FE559A8F315471E00FFD510A6CBF /* MTFontManager.m */; };
-		360DF25B3613FC65E4AE08EBDD701A78 /* NSView+backgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8585C5F4856232E2E3E4AF82E18DAB /* NSView+backgroundColor.m */; };
-		40004858D2D5D91753A668F7807EDA0E /* UIColor+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A32FFB53B409A227F5A8B09AE896B72 /* UIColor+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23B3BF994E3D6D80EB8F3445347A41D4 /* iosMath-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8FB4CCC59F80015AC9D859E675447 /* iosMath-dummy.m */; };
+		28ED3A0B865E123C4771247A91948365 /* texgyretermes-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93B365F12B514FD01995AC504AE70A62 /* texgyretermes-math.plist */; };
+		291DAF3612ECDA472EDFE4AE52B35D01 /* NSColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 593742958B37AD482A04D67435A548CA /* NSColor+HexString.m */; };
+		2A2FE216328BFC23AF9D30EAEFAA2303 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F173F4E77AF7F9DC182110B5DE33A243 /* IQKeyboardManager.bundle */; };
+		2B0FFB0293BB37BFB9D5980BB2E4EFAD /* iosMath-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E95AAA13BF8CB307C92423F1BC18E0F /* iosMath-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E82EC8E7E191BB01B06896A5878EAEE /* MTUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3755F52173F5522DD43C5837EE1C11C1 /* MTUnicode.m */; };
+		3285188513F859E100A7BBE29B36599D /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3947FCB402F7A742D2284D1B2F7A74 /* IQUIView+IQKeyboardToolbar.swift */; };
+		345ED928F89929FF0C0BDE7F03E28C73 /* MTFontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4F1315F15048AAD638C61E625CADA /* MTFontManager.m */; };
+		360DF25B3613FC65E4AE08EBDD701A78 /* NSView+backgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EE1DC24F94DFC28BFBD6595D0B147 /* NSView+backgroundColor.m */; };
+		3D77B7DC6449E6CC41C0FF73714B6BE9 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFEC8BDBA6556D436C7EB6C65F6F64 /* IQNSArray+Sort.swift */; };
+		3EDA7575644614ACD562D23759D18DE8 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06D397929DA5918C31433178593A67 /* IQUIView+Hierarchy.swift */; };
+		40004858D2D5D91753A668F7807EDA0E /* UIColor+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EC893B7104264EE48E6C7F07AB79BC /* UIColor+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40169149B911B525B822C2FE406B584D /* Pods-ecodatum-ios-clientTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0CF48B8964BF79671E22E0A36F6C8B /* Pods-ecodatum-ios-clientTests-dummy.m */; };
-		4A1F92D0762FD1421494AD4495B56D02 /* mathFonts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA46F321C243B42DB017A4B8F18AFC /* mathFonts.bundle */; };
-		4FED369F179E9D7F1148277C3E19327D /* MTFontManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 006AA4189B48F7556367BF3434DB108A /* MTFontManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A1F92D0762FD1421494AD4495B56D02 /* mathFonts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3CC84D660E78A8930576B21EFB108D6A /* mathFonts.bundle */; };
+		4B0F9347718263C67557054C2E15DE61 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3F0FFBAFACE09EAEA7BCD25BAAAF63 /* IQTextView.swift */; };
+		4FED369F179E9D7F1148277C3E19327D /* MTFontManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E313784D030711A651CC7B4B4ED844F /* MTFontManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5939499A16FC0C349C94A634D25C4EE7 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F67B6811A0C420BD988DB52E896D03 /* IQUIScrollView+Additions.swift */; };
+		598527A1D24BD6C0C9F741E8F84DFE17 /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB3CBFCDA9F4AF9CC90643305691D41 /* IQKeyboardManagerConstants.swift */; };
 		5CCEFF8002AA2BC6644F85341EE0691D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59D694A9020F0959A3D1601E40BACC9 /* CoreText.framework */; };
-		5D74114FF0995C785F41BC997970809B /* NSView+backgroundColor.h in Headers */ = {isa = PBXBuildFile; fileRef = C41CA90F32773FFEB76A7EE31B85D139 /* NSView+backgroundColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C8A47148EBD541AC12C11E60C51EF12 /* texgyretermes-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99602F84205D94A5510DAD2618D5FD0 /* texgyretermes-math.otf */; };
-		74468A8A7574EB4560D9DBFEEA180717 /* Pods-ecodatum-ios-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE023455E1E1C098B45BD3321FD72349 /* Pods-ecodatum-ios-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7712EC2BCCF93BDC4DA2A6E1F69ECECE /* MTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D5F4F75905778168F7F8B3FF09C214D2 /* MTConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D74114FF0995C785F41BC997970809B /* NSView+backgroundColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 582090498CAB43CB0639423515316D74 /* NSView+backgroundColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64F354609DA76AD80DD40850DB763562 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB3C9EECCE753BB8A569F74A8AFB4 /* IQKeyboardManagerSwift-dummy.m */; };
+		6C8A47148EBD541AC12C11E60C51EF12 /* texgyretermes-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3E35E354F659DC56EEDC887E754062F7 /* texgyretermes-math.otf */; };
+		7712EC2BCCF93BDC4DA2A6E1F69ECECE /* MTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B0315321FBA21C2D8812A310BE4A58 /* MTConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		789251F7B66163B7DB027671B6BB5222 /* Pods-ecodatum-ios-clientTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D8D3E09465B6BEEA845317A8E6A6F0 /* Pods-ecodatum-ios-clientTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C4732379298E1D5EB259E97B75A55B4 /* MTMathListDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA313DA426E6E4BA7F53F2BD4E2217 /* MTMathListDisplay.m */; };
-		8237D2C7CA0BAA6702DFEFC18156C6FE /* MTMathListIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E682FF06D4A710D4090D9426052A8EC /* MTMathListIndex.m */; };
-		8674D9088695EE429B4B9DF48161F50F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
-		8A59895B998232336892E32BD096DC78 /* MTMathListBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 25A0CB1A25FF374EE6A8E29E3F30B569 /* MTMathListBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B3D8E565618EEE0C9D89D01647A48F3 /* MTMathUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E6A9ECAC9FB373744BDE1C3ADC8526C5 /* MTMathUILabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		91BB115206E501BF66351EE8C1130509 /* MTFont+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 566EBF5421D338B0294CD7DBCC956B27 /* MTFont+Internal.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		9832BE8BC2653B41124DC5360482D1E9 /* MTMathListBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 755549068AC82E532FF64B676A358129 /* MTMathListBuilder.m */; };
-		9B4C90885CF053F41318A1670C86CD6F /* MTMathUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C00A3BE28BF09626B3CC8C27FD634B53 /* MTMathUILabel.m */; };
-		9D4F71C5ED696ECF7EE08CC4FC7E320F /* MTTypesetter.m in Sources */ = {isa = PBXBuildFile; fileRef = F28EC1222F0A7C1E8F6B470441CAB6DB /* MTTypesetter.m */; };
-		9FEBBD97E5221D1FFD9F76EF8DA0B20D /* MTFontMathTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DD637947A66BC392587A8F25C5366 /* MTFontMathTable.m */; };
+		7C4732379298E1D5EB259E97B75A55B4 /* MTMathListDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 81775819D17311BF6013DC644AA45139 /* MTMathListDisplay.m */; };
+		7FBAC58013BD381C200DF8B5959F6A54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
+		7FE321828ECA1D78CCF8A2892A30438B /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A9E69AF81BE30EC683F04DD02CBEC /* IQUIViewController+Additions.swift */; };
+		81A2F975614A9B94F265CD3BA816B0A4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75724AFC8DB229902C200CFD229B7576 /* QuartzCore.framework */; };
+		8237D2C7CA0BAA6702DFEFC18156C6FE /* MTMathListIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 880876DDF7D08B929F1ED84F7CFA1019 /* MTMathListIndex.m */; };
+		83B0E4A33786C45550CBAA86DD9E400B /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E3FE98B7AB3F9827F3B03914FA180B /* IQToolbar.swift */; };
+		87AD9D97F0F94C85720FC018235CD8A9 /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8A037F3CA1AE25595CDC206F7633BBB /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A59895B998232336892E32BD096DC78 /* MTMathListBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CF524E1C588906A17A64EF0A34DE0A /* MTMathListBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B3D8E565618EEE0C9D89D01647A48F3 /* MTMathUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EB365AF98F17DDDC4FA271EB0C509CC2 /* MTMathUILabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91BB115206E501BF66351EE8C1130509 /* MTFont+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E58CCFF23D68A914F76A1EA4EFD4A66 /* MTFont+Internal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9832BE8BC2653B41124DC5360482D1E9 /* MTMathListBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6E5C7390DBBB2E16EA67E58891C0C5 /* MTMathListBuilder.m */; };
+		9B4C90885CF053F41318A1670C86CD6F /* MTMathUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5988050F722536DD5FF3E46DDB6822 /* MTMathUILabel.m */; };
+		9D4F71C5ED696ECF7EE08CC4FC7E320F /* MTTypesetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FD53022496AB7BEAE185C224F468E7 /* MTTypesetter.m */; };
+		9FEBBD97E5221D1FFD9F76EF8DA0B20D /* MTFontMathTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B8735001C3F610D6F7CC3C610416C70F /* MTFontMathTable.m */; };
 		A17DB192512310C876133C1F2D607A6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
-		A962531423E2DDB49B6C6F9EC8FB0B23 /* MTMathAtomFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C2DD1CC1BEC006C3CC72D41A2C4B070 /* MTMathAtomFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3C2AC70552A3CC2025F634FA68166F3 /* MTMathList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C91879E3F29B0A68E38EB10E50A9A3E /* MTMathList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B84181E34A1DE69138863445C3487A7E /* latinmodern-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0F85ABB5FC8E5C025806B46C439FC0E /* latinmodern-math.plist */; };
+		A25F717B5E0C4E6A6DE933B0BF0F6417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
+		A962531423E2DDB49B6C6F9EC8FB0B23 /* MTMathAtomFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB09A612CAFD96307D767B9C5320EA5 /* MTMathAtomFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3C2AC70552A3CC2025F634FA68166F3 /* MTMathList.h in Headers */ = {isa = PBXBuildFile; fileRef = D299ABC1E0C05C9D5222F3D042045A3D /* MTMathList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B84181E34A1DE69138863445C3487A7E /* latinmodern-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6ABE398283B21368076D1F55575530FF /* latinmodern-math.plist */; };
 		B85ADAA137335CEDDA3C7C074E69A14A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
-		BF9AA245DD1FDF5F7403B063BA73F6DE /* MTFontMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79C73AF30D60E2D2B9474C5F20398F77 /* MTFontMathTable.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		C0A3B092E1F2A5BBE005A99C8E2D34F8 /* xits-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28A227ECCEDA6F4773C7A1E1D59D31E7 /* xits-math.otf */; };
+		BB04209DDB72CD325AE09D2EC3EBC380 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4EE262349108144307D042F49DE193 /* CoreGraphics.framework */; };
+		BB4FCDEB31262E21F9021F22B2A73FAC /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6FFE2F118095D7B9622A4F22890EFF /* IQTitleBarButtonItem.swift */; };
+		BBC33C0DD113CA0DC9A4CED8841A2820 /* Pods-ecodatum-ios-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE023455E1E1C098B45BD3321FD72349 /* Pods-ecodatum-ios-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF9AA245DD1FDF5F7403B063BA73F6DE /* MTFontMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = ED7897C87CFF53723C572525EB88F50C /* MTFontMathTable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C0A3B092E1F2A5BBE005A99C8E2D34F8 /* xits-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0A6C99190E1A51E2741FBE06EB8A8D5 /* xits-math.otf */; };
 		CAD3FE38E609A6D7D15D1A4E45FE1E23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75724AFC8DB229902C200CFD229B7576 /* QuartzCore.framework */; };
+		CE6BAE070E573E1FABA820360F22737B /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D4CABE2276F32F7DD50CA289EC8AF /* IQBarButtonItem.swift */; };
 		CE90381180386B8A7B6E1FFBFD983653 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4EE262349108144307D042F49DE193 /* CoreGraphics.framework */; };
-		D638FDBD8E1B42730BF21A96957E6333 /* MTFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BFE10A7959FFBB8BA79D95B188BF88E /* MTFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7BD219908E82FB0172EC968207DA53F /* MTTypesetter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEDCFEA7C484A7EBE6A865738933C945 /* MTTypesetter.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D7D27E45B3C991BF009F9DA45040E32D /* NSColor+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = A950384C9C4F9891EE00AAEA608D7D0E /* NSColor+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDF7FE8E1BD267A3C40BCF279E383676 /* NSBezierPath+addLineToPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D02C5016BCD4DC84EE01D1B9CF10B42B /* NSBezierPath+addLineToPoint.m */; };
-		DF8328E83B499955E1E720CF5CABD073 /* IosMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C1DF891F6B1D6FE1A149E4BC59FADAAE /* IosMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E03E6526671FBEC932CDB823CF120C05 /* latinmodern-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = 36B8783390C946CBA568A504967BD9F8 /* latinmodern-math.otf */; };
-		EF134C47FA11A70DB831CEF726F99C6B /* MTMathList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C085EEA0AF8EAABF271778FD51736FE /* MTMathList.m */; };
-		F3C49220F0A9F340CF968F2383991F88 /* MTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48928AB846605439A73B252EFA0450 /* MTLabel.m */; };
-		F3E07CDB17F36B181258FEB75A790849 /* xits-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74FBFE8A9C7F23D83F5DC8A701967C85 /* xits-math.plist */; };
-		F66294E94F125ADE253B7D65C67D0754 /* MTFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C81BC8AD278F40152C6B9A72287F763 /* MTFont.m */; };
-		FEE2C6E9682BFC48EF9F3DC176F4A29D /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = DE53BD7C967D552B241746F9AE176F32 /* UIColor+HexString.m */; };
+		D638FDBD8E1B42730BF21A96957E6333 /* MTFont.h in Headers */ = {isa = PBXBuildFile; fileRef = D23AD6B89FE355A8EBEB0FF8FC979A8C /* MTFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7BD219908E82FB0172EC968207DA53F /* MTTypesetter.h in Headers */ = {isa = PBXBuildFile; fileRef = F79106A1DC08B7F85FBD6A46A2EFFF74 /* MTTypesetter.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D7D27E45B3C991BF009F9DA45040E32D /* NSColor+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D0EA62DEE4992E39B30EA756F578A1 /* NSColor+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDF7FE8E1BD267A3C40BCF279E383676 /* NSBezierPath+addLineToPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2A879DCE2F7A710D9FBD91E0F2A359 /* NSBezierPath+addLineToPoint.m */; };
+		DF8328E83B499955E1E720CF5CABD073 /* IosMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 246126739AD2AAAB78A45BBABCC12EAC /* IosMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E03E6526671FBEC932CDB823CF120C05 /* latinmodern-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE6779A64E7440097BF4BD97EE494D /* latinmodern-math.otf */; };
+		E1892F605D93810A9FBE0902043EB8AF /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802337FEC6D266C8A6EA9D9F1CC6C9A8 /* IQKeyboardManager.swift */; };
+		E1E729DD19EDA12DF13E1A4CF6D748C8 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E9A1280920851D595ADA87F0AD199 /* IQKeyboardManagerConstantsInternal.swift */; };
+		E8F5CC4714C4AB1D6FE8FC85651DF3A3 /* IQInvocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6FCE7E5031E56A8CB4E45D3F11AC23 /* IQInvocation.swift */; };
+		EE20C85515D53DE61D8435080677F58E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E2B04BC1935A86EB34129AA71C7D83 /* UIKit.framework */; };
+		EEC5EE727FA2DF9D913B4E2A48B57DAD /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E623B23DB2B1E4ED3A69E7C78F3E437C /* IQUITextFieldView+Additions.swift */; };
+		EF134C47FA11A70DB831CEF726F99C6B /* MTMathList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3459F5E246F59BCAC7448371B346EE65 /* MTMathList.m */; };
+		F3C49220F0A9F340CF968F2383991F88 /* MTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5EE6E37B3A0658BFCD1FF1CBAABD0F2 /* MTLabel.m */; };
+		F3E07CDB17F36B181258FEB75A790849 /* xits-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BD2149B350EE6BBF71E367FEB39980F /* xits-math.plist */; };
+		F66294E94F125ADE253B7D65C67D0754 /* MTFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 2926060C01EE8BD46FD65183C31C88CC /* MTFont.m */; };
+		FEE2C6E9682BFC48EF9F3DC176F4A29D /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 77888315FB1C474EB1D67424DC539293 /* UIColor+HexString.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		56C5E041541C576A6ECC7D9B056C0236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C235F77E101E742652CCF98FFDFA5182;
+			remoteInfo = IQKeyboardManagerSwift;
+		};
 		A7434E2BADB06F6D8E65B7BDB5889A11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9BFD2F7108BCE53E666FE9AB315691A2;
+			remoteGlobalIDString = F975E752C7AB42F51DE1DF8EEF35402B;
 			remoteInfo = "Pods-ecodatum-ios-client";
 		};
-		D073B351BC722F337FA930AE2A303323 /* PBXContainerItemProxy */ = {
+		B235DA87E096B5D8D2644F94939E0AD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -90,85 +120,109 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		006AA4189B48F7556367BF3434DB108A /* MTFontManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFontManager.h; path = iosMath/render/MTFontManager.h; sourceTree = "<group>"; };
-		0A32FFB53B409A227F5A8B09AE896B72 /* UIColor+HexString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexString.h"; path = "iosMath/render/UIColor+HexString.h"; sourceTree = "<group>"; };
+		003BC66EFD7A6192670EF284E54D30D4 /* MTMathListIndex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListIndex.h; path = iosMath/lib/MTMathListIndex.h; sourceTree = "<group>"; };
+		07F67B6811A0C420BD988DB52E896D03 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
+		0823545067D833FC7BD5D2D9A62A12F0 /* Pods_ecodatum_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ecodatum_ios_clientTests.framework; path = "Pods-ecodatum-ios-clientTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BECBCC1BE75A667F55ABE59179167BD /* Pods-ecodatum-ios-client-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ecodatum-ios-client-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0C4EC187D97A7AAF1299651F51B4BAD6 /* Pods-ecodatum-ios-client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ecodatum-ios-client.modulemap"; sourceTree = "<group>"; };
+		0C961FF1CFF86E3302D3189C706D4352 /* MTMathAtomFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathAtomFactory.m; path = iosMath/lib/MTMathAtomFactory.m; sourceTree = "<group>"; };
 		0CFB61F405A2500AB17A76E4BD9A42DC /* Pods-ecodatum-ios-client-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ecodatum-ios-client-resources.sh"; sourceTree = "<group>"; };
-		0D48928AB846605439A73B252EFA0450 /* MTLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLabel.m; path = iosMath/render/MTLabel.m; sourceTree = "<group>"; };
-		0F75FE559A8F315471E00FFD510A6CBF /* MTFontManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFontManager.m; path = iosMath/render/MTFontManager.m; sourceTree = "<group>"; };
+		0F5988050F722536DD5FF3E46DDB6822 /* MTMathUILabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathUILabel.m; path = iosMath/render/MTMathUILabel.m; sourceTree = "<group>"; };
+		196D7FD6CB489141F3D56F5982D0E6D6 /* MTMathListDisplay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListDisplay.h; path = iosMath/render/MTMathListDisplay.h; sourceTree = "<group>"; };
+		1A740DCCC72D74B0C6C3B1CD3834782F /* MTLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLabel.h; path = iosMath/render/MTLabel.h; sourceTree = "<group>"; };
 		1B174150BF014AC7D37BE8F0A909BFF4 /* Pods-ecodatum-ios-clientTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ecodatum-ios-clientTests-resources.sh"; sourceTree = "<group>"; };
-		1DE59DD471FFE3DE6915BB599EB0B8C6 /* iosMath-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iosMath-umbrella.h"; sourceTree = "<group>"; };
-		25A0CB1A25FF374EE6A8E29E3F30B569 /* MTMathListBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListBuilder.h; path = iosMath/lib/MTMathListBuilder.h; sourceTree = "<group>"; };
-		28A227ECCEDA6F4773C7A1E1D59D31E7 /* xits-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "xits-math.otf"; path = "fonts/xits-math.otf"; sourceTree = "<group>"; };
-		2971E81F2DEA82F81157060E01EA5DAF /* MTLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLabel.h; path = iosMath/render/MTLabel.h; sourceTree = "<group>"; };
+		240A9E69AF81BE30EC683F04DD02CBEC /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
+		246126739AD2AAAB78A45BBABCC12EAC /* IosMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IosMath.h; path = iosMath/IosMath.h; sourceTree = "<group>"; };
+		255E892BA52F037CF6E873F001D178E0 /* MTMathListDisplayInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListDisplayInternal.h; path = iosMath/render/internal/MTMathListDisplayInternal.h; sourceTree = "<group>"; };
+		25CF524E1C588906A17A64EF0A34DE0A /* MTMathListBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListBuilder.h; path = iosMath/lib/MTMathListBuilder.h; sourceTree = "<group>"; };
+		2926060C01EE8BD46FD65183C31C88CC /* MTFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFont.m; path = iosMath/render/MTFont.m; sourceTree = "<group>"; };
+		2AEE6779A64E7440097BF4BD97EE494D /* latinmodern-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "latinmodern-math.otf"; path = "fonts/latinmodern-math.otf"; sourceTree = "<group>"; };
 		2BB08658505D61161B6D7D94A0C3D120 /* Pods-ecodatum-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ecodatum-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
-		2C81BC8AD278F40152C6B9A72287F763 /* MTFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFont.m; path = iosMath/render/MTFont.m; sourceTree = "<group>"; };
-		2D403AEDD16604729761AD456C8B5E25 /* iosMath.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iosMath.xcconfig; sourceTree = "<group>"; };
-		306A2111C443CB78C97D8C5E1D26B2A0 /* ResourceBundle-mathFonts-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-mathFonts-Info.plist"; sourceTree = "<group>"; };
+		2BF243B3675945E44E5D6D7ADD92E409 /* IQKeyboardManagerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManagerSwift.xcconfig; sourceTree = "<group>"; };
+		2CB3CBFCDA9F4AF9CC90643305691D41 /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
 		32E2B04BC1935A86EB34129AA71C7D83 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		3431D58AC262671BDE5AE74190B5FCBC /* iosMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iosMath.framework; path = iosMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3459F5E246F59BCAC7448371B346EE65 /* MTMathList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathList.m; path = iosMath/lib/MTMathList.m; sourceTree = "<group>"; };
 		361A8B77363393CAC634CA5648BA512C /* Pods-ecodatum-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ecodatum-ios-client.release.xcconfig"; sourceTree = "<group>"; };
-		36B8783390C946CBA568A504967BD9F8 /* latinmodern-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "latinmodern-math.otf"; path = "fonts/latinmodern-math.otf"; sourceTree = "<group>"; };
-		37836B403584AA63E73822910E556DE1 /* MTUnicode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTUnicode.h; path = iosMath/lib/MTUnicode.h; sourceTree = "<group>"; };
-		39F41A7376ED9DBDE9751E686253D732 /* MTUnicode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTUnicode.m; path = iosMath/lib/MTUnicode.m; sourceTree = "<group>"; };
-		3BFE10A7959FFBB8BA79D95B188BF88E /* MTFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFont.h; path = iosMath/render/MTFont.h; sourceTree = "<group>"; };
+		3755F52173F5522DD43C5837EE1C11C1 /* MTUnicode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTUnicode.m; path = iosMath/lib/MTUnicode.m; sourceTree = "<group>"; };
+		3BD2149B350EE6BBF71E367FEB39980F /* xits-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "xits-math.plist"; path = "fonts/xits-math.plist"; sourceTree = "<group>"; };
+		3CC84D660E78A8930576B21EFB108D6A /* mathFonts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mathFonts.bundle; path = "iosMath-mathFonts.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CD2D3E4D5A6395387524290D786645D /* Pods-ecodatum-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ecodatum-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3D031BA9BF8BDF5EEAF80CEE09D177B5 /* NSColor+HexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSColor+HexString.m"; path = "iosMath/render/NSColor+HexString.m"; sourceTree = "<group>"; };
+		3E313784D030711A651CC7B4B4ED844F /* MTFontManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFontManager.h; path = iosMath/render/MTFontManager.h; sourceTree = "<group>"; };
+		3E35E354F659DC56EEDC887E754062F7 /* texgyretermes-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "texgyretermes-math.otf"; path = "fonts/texgyretermes-math.otf"; sourceTree = "<group>"; };
+		43F2EE45ACFD19081657AE96B8E6BE8D /* iosMath-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iosMath-prefix.pch"; sourceTree = "<group>"; };
+		44EC893B7104264EE48E6C7F07AB79BC /* UIColor+HexString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexString.h"; path = "iosMath/render/UIColor+HexString.h"; sourceTree = "<group>"; };
+		49DFB3C9EECCE753BB8A569F74A8AFB4 /* IQKeyboardManagerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManagerSwift-dummy.m"; sourceTree = "<group>"; };
 		4A1C5CC84F2B2336CC58AD10729EDDD4 /* Pods-ecodatum-ios-clientTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ecodatum-ios-clientTests-frameworks.sh"; sourceTree = "<group>"; };
+		4DB09A612CAFD96307D767B9C5320EA5 /* MTMathAtomFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathAtomFactory.h; path = iosMath/lib/MTMathAtomFactory.h; sourceTree = "<group>"; };
 		52D8D3E09465B6BEEA845317A8E6A6F0 /* Pods-ecodatum-ios-clientTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ecodatum-ios-clientTests-umbrella.h"; sourceTree = "<group>"; };
-		566EBF5421D338B0294CD7DBCC956B27 /* MTFont+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MTFont+Internal.h"; path = "iosMath/render/internal/MTFont+Internal.h"; sourceTree = "<group>"; };
-		5BF8F00956A9F347C195D752B1DE5414 /* iosMath-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iosMath-dummy.m"; sourceTree = "<group>"; };
-		5C91879E3F29B0A68E38EB10E50A9A3E /* MTMathList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathList.h; path = iosMath/lib/MTMathList.h; sourceTree = "<group>"; };
-		5E8754EB02578DEF9F656590E87F1523 /* Pods_ecodatum_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ecodatum_ios_client.framework; path = "Pods-ecodatum-ios-client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60C2E84FF6D0D8DC3E0A29346CFD68C1 /* MTMathListDisplayInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListDisplayInternal.h; path = iosMath/render/internal/MTMathListDisplayInternal.h; sourceTree = "<group>"; };
-		6AAA313DA426E6E4BA7F53F2BD4E2217 /* MTMathListDisplay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListDisplay.m; path = iosMath/render/MTMathListDisplay.m; sourceTree = "<group>"; };
-		6BEA46F321C243B42DB017A4B8F18AFC /* mathFonts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mathFonts.bundle; path = "iosMath-mathFonts.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E682FF06D4A710D4090D9426052A8EC /* MTMathListIndex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListIndex.m; path = iosMath/lib/MTMathListIndex.m; sourceTree = "<group>"; };
-		71C3EC81C8C1A926C9AD0678A5ACEC33 /* MTMathListDisplay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListDisplay.h; path = iosMath/render/MTMathListDisplay.h; sourceTree = "<group>"; };
-		74FBFE8A9C7F23D83F5DC8A701967C85 /* xits-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "xits-math.plist"; path = "fonts/xits-math.plist"; sourceTree = "<group>"; };
-		755549068AC82E532FF64B676A358129 /* MTMathListBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListBuilder.m; path = iosMath/lib/MTMathListBuilder.m; sourceTree = "<group>"; };
+		564AC1CD4DEE33FF865508D52C31A965 /* Pods_ecodatum_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ecodatum_ios_client.framework; path = "Pods-ecodatum-ios-client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		582090498CAB43CB0639423515316D74 /* NSView+backgroundColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSView+backgroundColor.h"; path = "iosMath/render/NSView+backgroundColor.h"; sourceTree = "<group>"; };
+		593742958B37AD482A04D67435A548CA /* NSColor+HexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSColor+HexString.m"; path = "iosMath/render/NSColor+HexString.m"; sourceTree = "<group>"; };
+		5BA250E9B2A08C5B2E642CFB38964412 /* iosMath.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iosMath.modulemap; sourceTree = "<group>"; };
+		5BA8FB4CCC59F80015AC9D859E675447 /* iosMath-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iosMath-dummy.m"; sourceTree = "<group>"; };
+		5D3D4CABE2276F32F7DD50CA289EC8AF /* IQBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift; sourceTree = "<group>"; };
+		5E3947FCB402F7A742D2284D1B2F7A74 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+IQKeyboardToolbar.swift"; path = "IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
+		5E58CCFF23D68A914F76A1EA4EFD4A66 /* MTFont+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MTFont+Internal.h"; path = "iosMath/render/internal/MTFont+Internal.h"; sourceTree = "<group>"; };
+		67E3FE98B7AB3F9827F3B03914FA180B /* IQToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
+		6ABE398283B21368076D1F55575530FF /* latinmodern-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "latinmodern-math.plist"; path = "fonts/latinmodern-math.plist"; sourceTree = "<group>"; };
+		74FD53022496AB7BEAE185C224F468E7 /* MTTypesetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTTypesetter.m; path = iosMath/render/internal/MTTypesetter.m; sourceTree = "<group>"; };
 		75724AFC8DB229902C200CFD229B7576 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		79C73AF30D60E2D2B9474C5F20398F77 /* MTFontMathTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFontMathTable.h; path = iosMath/render/internal/MTFontMathTable.h; sourceTree = "<group>"; };
-		7C085EEA0AF8EAABF271778FD51736FE /* MTMathList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathList.m; path = iosMath/lib/MTMathList.m; sourceTree = "<group>"; };
-		7C2DD1CC1BEC006C3CC72D41A2C4B070 /* MTMathAtomFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathAtomFactory.h; path = iosMath/lib/MTMathAtomFactory.h; sourceTree = "<group>"; };
+		77888315FB1C474EB1D67424DC539293 /* UIColor+HexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexString.m"; path = "iosMath/render/UIColor+HexString.m"; sourceTree = "<group>"; };
+		7CA4F1315F15048AAD638C61E625CADA /* MTFontManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFontManager.m; path = iosMath/render/MTFontManager.m; sourceTree = "<group>"; };
 		7CE2985E9227F0C4C25E0E114574F551 /* Pods-ecodatum-ios-client-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ecodatum-ios-client-frameworks.sh"; sourceTree = "<group>"; };
 		7E4EE262349108144307D042F49DE193 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		804B17ED518DD18876F6F1A6F6DB5F51 /* NSBezierPath+addLineToPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+addLineToPoint.h"; path = "iosMath/render/NSBezierPath+addLineToPoint.h"; sourceTree = "<group>"; };
+		7E95AAA13BF8CB307C92423F1BC18E0F /* iosMath-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iosMath-umbrella.h"; sourceTree = "<group>"; };
+		802337FEC6D266C8A6EA9D9F1CC6C9A8 /* IQKeyboardManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManager.swift; path = IQKeyboardManagerSwift/IQKeyboardManager.swift; sourceTree = "<group>"; };
+		81775819D17311BF6013DC644AA45139 /* MTMathListDisplay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListDisplay.m; path = iosMath/render/MTMathListDisplay.m; sourceTree = "<group>"; };
+		835E096A55E2EC27CC20820A988DF4C2 /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
 		86E7AE8475870EFCC46EDCDFEABDDC85 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		880876DDF7D08B929F1ED84F7CFA1019 /* MTMathListIndex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListIndex.m; path = iosMath/lib/MTMathListIndex.m; sourceTree = "<group>"; };
+		88D12A935B37493BC7DB7EDF2BA47EFC /* MTUnicode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTUnicode.h; path = iosMath/lib/MTUnicode.h; sourceTree = "<group>"; };
 		8CB0D80CBEAD77EEB4B0DCB61C74ECED /* Pods-ecodatum-ios-clientTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ecodatum-ios-clientTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		90D85346E2B3279D5EA235D30AC2C554 /* iosMath-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iosMath-prefix.pch"; sourceTree = "<group>"; };
+		8D6FFE2F118095D7B9622A4F22890EFF /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
+		8F0EE1DC24F94DFC28BFBD6595D0B147 /* NSView+backgroundColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSView+backgroundColor.m"; path = "iosMath/render/NSView+backgroundColor.m"; sourceTree = "<group>"; };
+		8F142EC0DB1BD77481C44954449D0309 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91FFEC8BDBA6556D436C7EB6C65F6F64 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQNSArray+Sort.swift"; path = "IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift"; sourceTree = "<group>"; };
+		9390A7D4CD31EB1029B2C54D4A401514 /* IQKeyboardManagerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-prefix.pch"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93B365F12B514FD01995AC504AE70A62 /* texgyretermes-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "texgyretermes-math.plist"; path = "fonts/texgyretermes-math.plist"; sourceTree = "<group>"; };
+		99938E88BA133F306A8BBFD2B6C91590 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3D47428C662B6569AE62B31877BF2F /* Pods-ecodatum-ios-clientTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ecodatum-ios-clientTests.modulemap"; sourceTree = "<group>"; };
 		9A9B92A2868A5D39690C304B49E53F86 /* Pods-ecodatum-ios-client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ecodatum-ios-client-dummy.m"; sourceTree = "<group>"; };
-		A03E2CDDB0BF90A0E8003E0669EE59CA /* iosMath.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iosMath.modulemap; sourceTree = "<group>"; };
+		9BB352691577317E7005B5E36A4CFF9D /* iosMath.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iosMath.xcconfig; sourceTree = "<group>"; };
+		9C6E5C7390DBBB2E16EA67E58891C0C5 /* MTMathListBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListBuilder.m; path = iosMath/lib/MTMathListBuilder.m; sourceTree = "<group>"; };
+		9E6FCE7E5031E56A8CB4E45D3F11AC23 /* IQInvocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQInvocation.swift; path = IQKeyboardManagerSwift/IQToolbar/IQInvocation.swift; sourceTree = "<group>"; };
+		9F06D397929DA5918C31433178593A67 /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		A0695906C077D97FE179373C9D9B0E3F /* Pods-ecodatum-ios-clientTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ecodatum-ios-clientTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A0C3D20B6E40CA74FC597789AEF6F758 /* ResourceBundle-mathFonts-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-mathFonts-Info.plist"; sourceTree = "<group>"; };
 		A3F0F1788577E1FC2C7A4E26F3F9B7EA /* Pods-ecodatum-ios-client-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ecodatum-ios-client-acknowledgements.plist"; sourceTree = "<group>"; };
-		A950384C9C4F9891EE00AAEA608D7D0E /* NSColor+HexString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSColor+HexString.h"; path = "iosMath/render/NSColor+HexString.h"; sourceTree = "<group>"; };
+		A8B9E79F3062EF05FC3DA807F5D51697 /* iosMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iosMath.framework; path = iosMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0CF48B8964BF79671E22E0A36F6C8B /* Pods-ecodatum-ios-clientTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ecodatum-ios-clientTests-dummy.m"; sourceTree = "<group>"; };
-		AC6DA6A592DDDF15255C08563179D8AC /* MTMathListIndex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListIndex.h; path = iosMath/lib/MTMathListIndex.h; sourceTree = "<group>"; };
-		AFFC6A39CA7864E84699E7C3D925EBCC /* texgyretermes-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "texgyretermes-math.plist"; path = "fonts/texgyretermes-math.plist"; sourceTree = "<group>"; };
+		AE3F0FFBAFACE09EAEA7BCD25BAAAF63 /* IQTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTextView.swift; path = IQKeyboardManagerSwift/IQTextView/IQTextView.swift; sourceTree = "<group>"; };
 		B1F8DAB66D12A6E4158FCE71200B35CD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8735001C3F610D6F7CC3C610416C70F /* MTFontMathTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFontMathTable.m; path = iosMath/render/internal/MTFontMathTable.m; sourceTree = "<group>"; };
 		BEA62FC7DD8722EAC6A6552CE3A8F72C /* Pods-ecodatum-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ecodatum-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
-		C00A3BE28BF09626B3CC8C27FD634B53 /* MTMathUILabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathUILabel.m; path = iosMath/render/MTMathUILabel.m; sourceTree = "<group>"; };
-		C1DF891F6B1D6FE1A149E4BC59FADAAE /* IosMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IosMath.h; path = iosMath/IosMath.h; sourceTree = "<group>"; };
-		C378B1CAED12727814368BF8A669FF52 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C41CA90F32773FFEB76A7EE31B85D139 /* NSView+backgroundColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSView+backgroundColor.h"; path = "iosMath/render/NSView+backgroundColor.h"; sourceTree = "<group>"; };
-		C479C096F6003812DC82FAB29DCD17B1 /* Pods_ecodatum_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ecodatum_ios_clientTests.framework; path = "Pods-ecodatum-ios-clientTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C99602F84205D94A5510DAD2618D5FD0 /* texgyretermes-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "texgyretermes-math.otf"; path = "fonts/texgyretermes-math.otf"; sourceTree = "<group>"; };
-		D02C5016BCD4DC84EE01D1B9CF10B42B /* NSBezierPath+addLineToPoint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+addLineToPoint.m"; path = "iosMath/render/NSBezierPath+addLineToPoint.m"; sourceTree = "<group>"; };
-		D5F4F75905778168F7F8B3FF09C214D2 /* MTConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTConfig.h; path = iosMath/render/MTConfig.h; sourceTree = "<group>"; };
-		DD3DD637947A66BC392587A8F25C5366 /* MTFontMathTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFontMathTable.m; path = iosMath/render/internal/MTFontMathTable.m; sourceTree = "<group>"; };
-		DE53BD7C967D552B241746F9AE176F32 /* UIColor+HexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexString.m"; path = "iosMath/render/UIColor+HexString.m"; sourceTree = "<group>"; };
-		E6A9ECAC9FB373744BDE1C3ADC8526C5 /* MTMathUILabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathUILabel.h; path = iosMath/render/MTMathUILabel.h; sourceTree = "<group>"; };
-		EEDCFEA7C484A7EBE6A865738933C945 /* MTTypesetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTTypesetter.h; path = iosMath/render/internal/MTTypesetter.h; sourceTree = "<group>"; };
-		F0F85ABB5FC8E5C025806B46C439FC0E /* latinmodern-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "latinmodern-math.plist"; path = "fonts/latinmodern-math.plist"; sourceTree = "<group>"; };
-		F28EC1222F0A7C1E8F6B470441CAB6DB /* MTTypesetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTTypesetter.m; path = iosMath/render/internal/MTTypesetter.m; sourceTree = "<group>"; };
+		C09BF6D6A958D5AFF2A1EDE46FD58F60 /* NSBezierPath+addLineToPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+addLineToPoint.h"; path = "iosMath/render/NSBezierPath+addLineToPoint.h"; sourceTree = "<group>"; };
+		CA043D71D954ECB6CA2DE64C3D681B41 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDCC3479E24D37BA3040D4EF61D66CF5 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQPreviousNextView.swift; path = IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift; sourceTree = "<group>"; };
+		D23AD6B89FE355A8EBEB0FF8FC979A8C /* MTFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFont.h; path = iosMath/render/MTFont.h; sourceTree = "<group>"; };
+		D299ABC1E0C05C9D5222F3D042045A3D /* MTMathList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathList.h; path = iosMath/lib/MTMathList.h; sourceTree = "<group>"; };
+		D5EE6E37B3A0658BFCD1FF1CBAABD0F2 /* MTLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLabel.m; path = iosMath/render/MTLabel.m; sourceTree = "<group>"; };
+		D94640864E3C49D9686056CE9CA0631A /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
+		E623B23DB2B1E4ED3A69E7C78F3E437C /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
+		E69E9A1280920851D595ADA87F0AD199 /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
+		EB365AF98F17DDDC4FA271EB0C509CC2 /* MTMathUILabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathUILabel.h; path = iosMath/render/MTMathUILabel.h; sourceTree = "<group>"; };
+		ED7897C87CFF53723C572525EB88F50C /* MTFontMathTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFontMathTable.h; path = iosMath/render/internal/MTFontMathTable.h; sourceTree = "<group>"; };
+		F0A6C99190E1A51E2741FBE06EB8A8D5 /* xits-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "xits-math.otf"; path = "fonts/xits-math.otf"; sourceTree = "<group>"; };
+		F173F4E77AF7F9DC182110B5DE33A243 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = IQKeyboardManager.bundle; path = IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		F59D694A9020F0959A3D1601E40BACC9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
-		F8A5907CECB3DEB8745719656EAA6370 /* MTMathAtomFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathAtomFactory.m; path = iosMath/lib/MTMathAtomFactory.m; sourceTree = "<group>"; };
+		F5D0EA62DEE4992E39B30EA756F578A1 /* NSColor+HexString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSColor+HexString.h"; path = "iosMath/render/NSColor+HexString.h"; sourceTree = "<group>"; };
+		F79106A1DC08B7F85FBD6A46A2EFFF74 /* MTTypesetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTTypesetter.h; path = iosMath/render/internal/MTTypesetter.h; sourceTree = "<group>"; };
+		F8A037F3CA1AE25595CDC206F7633BBB /* IQKeyboardManagerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-umbrella.h"; sourceTree = "<group>"; };
+		F8B0315321FBA21C2D8812A310BE4A58 /* MTConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTConfig.h; path = iosMath/render/MTConfig.h; sourceTree = "<group>"; };
+		FB2A879DCE2F7A710D9FBD91E0F2A359 /* NSBezierPath+addLineToPoint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+addLineToPoint.m"; path = "iosMath/render/NSBezierPath+addLineToPoint.m"; sourceTree = "<group>"; };
 		FE023455E1E1C098B45BD3321FD72349 /* Pods-ecodatum-ios-client-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ecodatum-ios-client-umbrella.h"; sourceTree = "<group>"; };
 		FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		FF8585C5F4856232E2E3E4AF82E18DAB /* NSView+backgroundColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSView+backgroundColor.m"; path = "iosMath/render/NSView+backgroundColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,11 +238,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58A37E28F74B7BFD51F8C559BA3C0199 /* Frameworks */ = {
+		47D5840EB4A61D5ED386564AD3D97B68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8674D9088695EE429B4B9DF48161F50F /* Foundation.framework in Frameworks */,
+				7FBAC58013BD381C200DF8B5959F6A54 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81A5C814ACEB86CB06CD6C51383982FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB04209DDB72CD325AE09D2EC3EBC380 /* CoreGraphics.framework in Frameworks */,
+				A25F717B5E0C4E6A6DE933B0BF0F6417 /* Foundation.framework in Frameworks */,
+				81A2F975614A9B94F265CD3BA816B0A4 /* QuartzCore.framework in Frameworks */,
+				EE20C85515D53DE61D8435080677F58E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,82 +275,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08FD93EE2A1265A99E084E55996C63D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F173F4E77AF7F9DC182110B5DE33A243 /* IQKeyboardManager.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0D7ECB081E1BD0792566B74A01D4345D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F142EC0DB1BD77481C44954449D0309 /* Info.plist */,
+				5BA250E9B2A08C5B2E642CFB38964412 /* iosMath.modulemap */,
+				9BB352691577317E7005B5E36A4CFF9D /* iosMath.xcconfig */,
+				5BA8FB4CCC59F80015AC9D859E675447 /* iosMath-dummy.m */,
+				43F2EE45ACFD19081657AE96B8E6BE8D /* iosMath-prefix.pch */,
+				7E95AAA13BF8CB307C92423F1BC18E0F /* iosMath-umbrella.h */,
+				A0C3D20B6E40CA74FC597789AEF6F758 /* ResourceBundle-mathFonts-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/iosMath";
+			sourceTree = "<group>";
+		};
+		16E18D5A6184F9B59516C5FB8D9313E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2AEE6779A64E7440097BF4BD97EE494D /* latinmodern-math.otf */,
+				6ABE398283B21368076D1F55575530FF /* latinmodern-math.plist */,
+				3E35E354F659DC56EEDC887E754062F7 /* texgyretermes-math.otf */,
+				93B365F12B514FD01995AC504AE70A62 /* texgyretermes-math.plist */,
+				F0A6C99190E1A51E2741FBE06EB8A8D5 /* xits-math.otf */,
+				3BD2149B350EE6BBF71E367FEB39980F /* xits-math.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				FD3B6667F06509663DDD01426DEE151E /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		43F49EF23ECC883329AAF6B55CD9FD1C /* iosMath */ = {
-			isa = PBXGroup;
-			children = (
-				C1DF891F6B1D6FE1A149E4BC59FADAAE /* IosMath.h */,
-				D5F4F75905778168F7F8B3FF09C214D2 /* MTConfig.h */,
-				3BFE10A7959FFBB8BA79D95B188BF88E /* MTFont.h */,
-				2C81BC8AD278F40152C6B9A72287F763 /* MTFont.m */,
-				566EBF5421D338B0294CD7DBCC956B27 /* MTFont+Internal.h */,
-				006AA4189B48F7556367BF3434DB108A /* MTFontManager.h */,
-				0F75FE559A8F315471E00FFD510A6CBF /* MTFontManager.m */,
-				79C73AF30D60E2D2B9474C5F20398F77 /* MTFontMathTable.h */,
-				DD3DD637947A66BC392587A8F25C5366 /* MTFontMathTable.m */,
-				2971E81F2DEA82F81157060E01EA5DAF /* MTLabel.h */,
-				0D48928AB846605439A73B252EFA0450 /* MTLabel.m */,
-				7C2DD1CC1BEC006C3CC72D41A2C4B070 /* MTMathAtomFactory.h */,
-				F8A5907CECB3DEB8745719656EAA6370 /* MTMathAtomFactory.m */,
-				5C91879E3F29B0A68E38EB10E50A9A3E /* MTMathList.h */,
-				7C085EEA0AF8EAABF271778FD51736FE /* MTMathList.m */,
-				25A0CB1A25FF374EE6A8E29E3F30B569 /* MTMathListBuilder.h */,
-				755549068AC82E532FF64B676A358129 /* MTMathListBuilder.m */,
-				71C3EC81C8C1A926C9AD0678A5ACEC33 /* MTMathListDisplay.h */,
-				6AAA313DA426E6E4BA7F53F2BD4E2217 /* MTMathListDisplay.m */,
-				60C2E84FF6D0D8DC3E0A29346CFD68C1 /* MTMathListDisplayInternal.h */,
-				AC6DA6A592DDDF15255C08563179D8AC /* MTMathListIndex.h */,
-				6E682FF06D4A710D4090D9426052A8EC /* MTMathListIndex.m */,
-				E6A9ECAC9FB373744BDE1C3ADC8526C5 /* MTMathUILabel.h */,
-				C00A3BE28BF09626B3CC8C27FD634B53 /* MTMathUILabel.m */,
-				EEDCFEA7C484A7EBE6A865738933C945 /* MTTypesetter.h */,
-				F28EC1222F0A7C1E8F6B470441CAB6DB /* MTTypesetter.m */,
-				37836B403584AA63E73822910E556DE1 /* MTUnicode.h */,
-				39F41A7376ED9DBDE9751E686253D732 /* MTUnicode.m */,
-				804B17ED518DD18876F6F1A6F6DB5F51 /* NSBezierPath+addLineToPoint.h */,
-				D02C5016BCD4DC84EE01D1B9CF10B42B /* NSBezierPath+addLineToPoint.m */,
-				A950384C9C4F9891EE00AAEA608D7D0E /* NSColor+HexString.h */,
-				3D031BA9BF8BDF5EEAF80CEE09D177B5 /* NSColor+HexString.m */,
-				C41CA90F32773FFEB76A7EE31B85D139 /* NSView+backgroundColor.h */,
-				FF8585C5F4856232E2E3E4AF82E18DAB /* NSView+backgroundColor.m */,
-				0A32FFB53B409A227F5A8B09AE896B72 /* UIColor+HexString.h */,
-				DE53BD7C967D552B241746F9AE176F32 /* UIColor+HexString.m */,
-				4853FF47476CDB4C700DAB8624504ED9 /* Resources */,
-				57E2601DD7E8533759D46BF76D078081 /* Support Files */,
-			);
-			name = iosMath;
-			path = iosMath;
-			sourceTree = "<group>";
-		};
-		4853FF47476CDB4C700DAB8624504ED9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				36B8783390C946CBA568A504967BD9F8 /* latinmodern-math.otf */,
-				F0F85ABB5FC8E5C025806B46C439FC0E /* latinmodern-math.plist */,
-				C99602F84205D94A5510DAD2618D5FD0 /* texgyretermes-math.otf */,
-				AFFC6A39CA7864E84699E7C3D925EBCC /* texgyretermes-math.plist */,
-				28A227ECCEDA6F4773C7A1E1D59D31E7 /* xits-math.otf */,
-				74FBFE8A9C7F23D83F5DC8A701967C85 /* xits-math.plist */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		4963559036B2C055326C72186B50785D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3431D58AC262671BDE5AE74190B5FCBC /* iosMath.framework */,
-				6BEA46F321C243B42DB017A4B8F18AFC /* mathFonts.bundle */,
-				5E8754EB02578DEF9F656590E87F1523 /* Pods_ecodatum_ios_client.framework */,
-				C479C096F6003812DC82FAB29DCD17B1 /* Pods_ecodatum_ios_clientTests.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		54733219D68DA27EC4C4FFD5C9ADF3BE /* Pods-ecodatum-ios-clientTests */ = {
@@ -306,19 +337,16 @@
 			path = "Target Support Files/Pods-ecodatum-ios-clientTests";
 			sourceTree = "<group>";
 		};
-		57E2601DD7E8533759D46BF76D078081 /* Support Files */ = {
+		7154DB024D27B1FFF33C7C0EDF8FA6FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C378B1CAED12727814368BF8A669FF52 /* Info.plist */,
-				A03E2CDDB0BF90A0E8003E0669EE59CA /* iosMath.modulemap */,
-				2D403AEDD16604729761AD456C8B5E25 /* iosMath.xcconfig */,
-				5BF8F00956A9F347C195D752B1DE5414 /* iosMath-dummy.m */,
-				90D85346E2B3279D5EA235D30AC2C554 /* iosMath-prefix.pch */,
-				1DE59DD471FFE3DE6915BB599EB0B8C6 /* iosMath-umbrella.h */,
-				306A2111C443CB78C97D8C5E1D26B2A0 /* ResourceBundle-mathFonts-Info.plist */,
+				A8B9E79F3062EF05FC3DA807F5D51697 /* iosMath.framework */,
+				99938E88BA133F306A8BBFD2B6C91590 /* IQKeyboardManagerSwift.framework */,
+				3CC84D660E78A8930576B21EFB108D6A /* mathFonts.bundle */,
+				564AC1CD4DEE33FF865508D52C31A965 /* Pods_ecodatum_ios_client.framework */,
+				0823545067D833FC7BD5D2D9A62A12F0 /* Pods_ecodatum_ios_clientTests.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/iosMath";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		771E3939CA8A3A6CD24436A8522B5448 /* Pods-ecodatum-ios-client */ = {
@@ -344,8 +372,8 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
-				BD8939ADB469941D328BDF396BE11D11 /* Pods */,
-				4963559036B2C055326C72186B50785D /* Products */,
+				EA56AA6292789F5D95C61BCE2E20B144 /* Pods */,
+				7154DB024D27B1FFF33C7C0EDF8FA6FE /* Products */,
 				8E0F848068A07477494CA9BE6EAE9C8E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -359,12 +387,99 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BD8939ADB469941D328BDF396BE11D11 /* Pods */ = {
+		E6AB0DF29721D45A12FFD4B167F6F6CE /* iosMath */ = {
 			isa = PBXGroup;
 			children = (
-				43F49EF23ECC883329AAF6B55CD9FD1C /* iosMath */,
+				246126739AD2AAAB78A45BBABCC12EAC /* IosMath.h */,
+				F8B0315321FBA21C2D8812A310BE4A58 /* MTConfig.h */,
+				D23AD6B89FE355A8EBEB0FF8FC979A8C /* MTFont.h */,
+				2926060C01EE8BD46FD65183C31C88CC /* MTFont.m */,
+				5E58CCFF23D68A914F76A1EA4EFD4A66 /* MTFont+Internal.h */,
+				3E313784D030711A651CC7B4B4ED844F /* MTFontManager.h */,
+				7CA4F1315F15048AAD638C61E625CADA /* MTFontManager.m */,
+				ED7897C87CFF53723C572525EB88F50C /* MTFontMathTable.h */,
+				B8735001C3F610D6F7CC3C610416C70F /* MTFontMathTable.m */,
+				1A740DCCC72D74B0C6C3B1CD3834782F /* MTLabel.h */,
+				D5EE6E37B3A0658BFCD1FF1CBAABD0F2 /* MTLabel.m */,
+				4DB09A612CAFD96307D767B9C5320EA5 /* MTMathAtomFactory.h */,
+				0C961FF1CFF86E3302D3189C706D4352 /* MTMathAtomFactory.m */,
+				D299ABC1E0C05C9D5222F3D042045A3D /* MTMathList.h */,
+				3459F5E246F59BCAC7448371B346EE65 /* MTMathList.m */,
+				25CF524E1C588906A17A64EF0A34DE0A /* MTMathListBuilder.h */,
+				9C6E5C7390DBBB2E16EA67E58891C0C5 /* MTMathListBuilder.m */,
+				196D7FD6CB489141F3D56F5982D0E6D6 /* MTMathListDisplay.h */,
+				81775819D17311BF6013DC644AA45139 /* MTMathListDisplay.m */,
+				255E892BA52F037CF6E873F001D178E0 /* MTMathListDisplayInternal.h */,
+				003BC66EFD7A6192670EF284E54D30D4 /* MTMathListIndex.h */,
+				880876DDF7D08B929F1ED84F7CFA1019 /* MTMathListIndex.m */,
+				EB365AF98F17DDDC4FA271EB0C509CC2 /* MTMathUILabel.h */,
+				0F5988050F722536DD5FF3E46DDB6822 /* MTMathUILabel.m */,
+				F79106A1DC08B7F85FBD6A46A2EFFF74 /* MTTypesetter.h */,
+				74FD53022496AB7BEAE185C224F468E7 /* MTTypesetter.m */,
+				88D12A935B37493BC7DB7EDF2BA47EFC /* MTUnicode.h */,
+				3755F52173F5522DD43C5837EE1C11C1 /* MTUnicode.m */,
+				C09BF6D6A958D5AFF2A1EDE46FD58F60 /* NSBezierPath+addLineToPoint.h */,
+				FB2A879DCE2F7A710D9FBD91E0F2A359 /* NSBezierPath+addLineToPoint.m */,
+				F5D0EA62DEE4992E39B30EA756F578A1 /* NSColor+HexString.h */,
+				593742958B37AD482A04D67435A548CA /* NSColor+HexString.m */,
+				582090498CAB43CB0639423515316D74 /* NSView+backgroundColor.h */,
+				8F0EE1DC24F94DFC28BFBD6595D0B147 /* NSView+backgroundColor.m */,
+				44EC893B7104264EE48E6C7F07AB79BC /* UIColor+HexString.h */,
+				77888315FB1C474EB1D67424DC539293 /* UIColor+HexString.m */,
+				16E18D5A6184F9B59516C5FB8D9313E5 /* Resources */,
+				0D7ECB081E1BD0792566B74A01D4345D /* Support Files */,
+			);
+			name = iosMath;
+			path = iosMath;
+			sourceTree = "<group>";
+		};
+		EA56AA6292789F5D95C61BCE2E20B144 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E6AB0DF29721D45A12FFD4B167F6F6CE /* iosMath */,
+				F49826F925F556F6BAD4CF1A8BCCAF07 /* IQKeyboardManagerSwift */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EAD19B5FA45CBEC67DF6EE942CA14EBC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CA043D71D954ECB6CA2DE64C3D681B41 /* Info.plist */,
+				835E096A55E2EC27CC20820A988DF4C2 /* IQKeyboardManagerSwift.modulemap */,
+				2BF243B3675945E44E5D6D7ADD92E409 /* IQKeyboardManagerSwift.xcconfig */,
+				49DFB3C9EECCE753BB8A569F74A8AFB4 /* IQKeyboardManagerSwift-dummy.m */,
+				9390A7D4CD31EB1029B2C54D4A401514 /* IQKeyboardManagerSwift-prefix.pch */,
+				F8A037F3CA1AE25595CDC206F7633BBB /* IQKeyboardManagerSwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IQKeyboardManagerSwift";
+			sourceTree = "<group>";
+		};
+		F49826F925F556F6BAD4CF1A8BCCAF07 /* IQKeyboardManagerSwift */ = {
+			isa = PBXGroup;
+			children = (
+				5D3D4CABE2276F32F7DD50CA289EC8AF /* IQBarButtonItem.swift */,
+				9E6FCE7E5031E56A8CB4E45D3F11AC23 /* IQInvocation.swift */,
+				802337FEC6D266C8A6EA9D9F1CC6C9A8 /* IQKeyboardManager.swift */,
+				2CB3CBFCDA9F4AF9CC90643305691D41 /* IQKeyboardManagerConstants.swift */,
+				E69E9A1280920851D595ADA87F0AD199 /* IQKeyboardManagerConstantsInternal.swift */,
+				D94640864E3C49D9686056CE9CA0631A /* IQKeyboardReturnKeyHandler.swift */,
+				91FFEC8BDBA6556D436C7EB6C65F6F64 /* IQNSArray+Sort.swift */,
+				CDCC3479E24D37BA3040D4EF61D66CF5 /* IQPreviousNextView.swift */,
+				AE3F0FFBAFACE09EAEA7BCD25BAAAF63 /* IQTextView.swift */,
+				8D6FFE2F118095D7B9622A4F22890EFF /* IQTitleBarButtonItem.swift */,
+				67E3FE98B7AB3F9827F3B03914FA180B /* IQToolbar.swift */,
+				07F67B6811A0C420BD988DB52E896D03 /* IQUIScrollView+Additions.swift */,
+				E623B23DB2B1E4ED3A69E7C78F3E437C /* IQUITextFieldView+Additions.swift */,
+				9F06D397929DA5918C31433178593A67 /* IQUIView+Hierarchy.swift */,
+				5E3947FCB402F7A742D2284D1B2F7A74 /* IQUIView+IQKeyboardToolbar.swift */,
+				240A9E69AF81BE30EC683F04DD02CBEC /* IQUIViewController+Additions.swift */,
+				08FD93EE2A1265A99E084E55996C63D5 /* Resources */,
+				EAD19B5FA45CBEC67DF6EE942CA14EBC /* Support Files */,
+			);
+			name = IQKeyboardManagerSwift;
+			path = IQKeyboardManagerSwift;
 			sourceTree = "<group>";
 		};
 		FD3B6667F06509663DDD01426DEE151E /* iOS */ = {
@@ -410,6 +525,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5D25C05C04B30BF56FCE6C21CF2E3629 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC33C0DD113CA0DC9A4CED8841A2820 /* Pods-ecodatum-ios-client-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81CC7EF75DD5798480F027EAC730E1D5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,11 +541,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95CB1ADC76371FDF08D7723DDB528AFA /* Headers */ = {
+		C82B5F04767CB991E84734A54D0ABA5B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74468A8A7574EB4560D9DBFEEA180717 /* Pods-ecodatum-ios-client-umbrella.h in Headers */,
+				87AD9D97F0F94C85720FC018235CD8A9 /* IQKeyboardManagerSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,25 +566,25 @@
 			);
 			name = "iosMath-mathFonts";
 			productName = "iosMath-mathFonts";
-			productReference = 6BEA46F321C243B42DB017A4B8F18AFC /* mathFonts.bundle */;
+			productReference = 3CC84D660E78A8930576B21EFB108D6A /* mathFonts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		9BFD2F7108BCE53E666FE9AB315691A2 /* Pods-ecodatum-ios-client */ = {
+		C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 36E6034C109B7F5B3C49059320913637 /* Build configuration list for PBXNativeTarget "Pods-ecodatum-ios-client" */;
+			buildConfigurationList = E8C5CE05A712EF50BB123A41D8EFC0CB /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */;
 			buildPhases = (
-				552BC29B0C127B35EFB0228393B269EC /* Sources */,
-				58A37E28F74B7BFD51F8C559BA3C0199 /* Frameworks */,
-				95CB1ADC76371FDF08D7723DDB528AFA /* Headers */,
+				6AE8A1A8C31E2BAC9BF0840594A72CEB /* Sources */,
+				81A5C814ACEB86CB06CD6C51383982FE /* Frameworks */,
+				918D58E08AC7FD6CC66B75FF048005F7 /* Resources */,
+				C82B5F04767CB991E84734A54D0ABA5B /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2208D96C968733953F77D79E94C9AD10 /* PBXTargetDependency */,
 			);
-			name = "Pods-ecodatum-ios-client";
-			productName = "Pods-ecodatum-ios-client";
-			productReference = 5E8754EB02578DEF9F656590E87F1523 /* Pods_ecodatum_ios_client.framework */;
+			name = IQKeyboardManagerSwift;
+			productName = IQKeyboardManagerSwift;
+			productReference = 99938E88BA133F306A8BBFD2B6C91590 /* IQKeyboardManagerSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */ = {
@@ -480,7 +603,7 @@
 			);
 			name = iosMath;
 			productName = iosMath;
-			productReference = 3431D58AC262671BDE5AE74190B5FCBC /* iosMath.framework */;
+			productReference = A8B9E79F3062EF05FC3DA807F5D51697 /* iosMath.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EF457AB6EF7954985BB98FA546CABE80 /* Pods-ecodatum-ios-clientTests */ = {
@@ -498,7 +621,26 @@
 			);
 			name = "Pods-ecodatum-ios-clientTests";
 			productName = "Pods-ecodatum-ios-clientTests";
-			productReference = C479C096F6003812DC82FAB29DCD17B1 /* Pods_ecodatum_ios_clientTests.framework */;
+			productReference = 0823545067D833FC7BD5D2D9A62A12F0 /* Pods_ecodatum_ios_clientTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F975E752C7AB42F51DE1DF8EEF35402B /* Pods-ecodatum-ios-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12B9902705C2E8757D1E9899C39A530E /* Build configuration list for PBXNativeTarget "Pods-ecodatum-ios-client" */;
+			buildPhases = (
+				18A6243B8E217F5AEFA6CA8EC8054952 /* Sources */,
+				47D5840EB4A61D5ED386564AD3D97B68 /* Frameworks */,
+				5D25C05C04B30BF56FCE6C21CF2E3629 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD5FA648104420ACCB4F360A146938F7 /* PBXTargetDependency */,
+				4CF22595B5DAC17161390C4F811EA4BB /* PBXTargetDependency */,
+			);
+			name = "Pods-ecodatum-ios-client";
+			productName = "Pods-ecodatum-ios-client";
+			productReference = 564AC1CD4DEE33FF865508D52C31A965 /* Pods_ecodatum_ios_client.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -518,19 +660,28 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 4963559036B2C055326C72186B50785D /* Products */;
+			productRefGroup = 7154DB024D27B1FFF33C7C0EDF8FA6FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */,
 				9B9836C06662F6AF26CF13501848D275 /* iosMath-mathFonts */,
-				9BFD2F7108BCE53E666FE9AB315691A2 /* Pods-ecodatum-ios-client */,
+				C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */,
+				F975E752C7AB42F51DE1DF8EEF35402B /* Pods-ecodatum-ios-client */,
 				EF457AB6EF7954985BB98FA546CABE80 /* Pods-ecodatum-ios-clientTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		918D58E08AC7FD6CC66B75FF048005F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A2FE216328BFC23AF9D30EAEFAA2303 /* IQKeyboardManager.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5F580BB02C8A0B2F75B2567C5BFCAB0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -555,6 +706,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		18A6243B8E217F5AEFA6CA8EC8054952 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B4931BEB591683010DA08932CEDDF3 /* Pods-ecodatum-ios-client-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D76559F2C773EA0A1F07D58D7AC9B26 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -594,34 +753,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		552BC29B0C127B35EFB0228393B269EC /* Sources */ = {
+		6AE8A1A8C31E2BAC9BF0840594A72CEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05D6959AC245B1E3A5939E789E8B3A1B /* Pods-ecodatum-ios-client-dummy.m in Sources */,
+				CE6BAE070E573E1FABA820360F22737B /* IQBarButtonItem.swift in Sources */,
+				E8F5CC4714C4AB1D6FE8FC85651DF3A3 /* IQInvocation.swift in Sources */,
+				E1892F605D93810A9FBE0902043EB8AF /* IQKeyboardManager.swift in Sources */,
+				598527A1D24BD6C0C9F741E8F84DFE17 /* IQKeyboardManagerConstants.swift in Sources */,
+				E1E729DD19EDA12DF13E1A4CF6D748C8 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				64F354609DA76AD80DD40850DB763562 /* IQKeyboardManagerSwift-dummy.m in Sources */,
+				1E66A4899FC855FC61F13721CF63EB35 /* IQKeyboardReturnKeyHandler.swift in Sources */,
+				3D77B7DC6449E6CC41C0FF73714B6BE9 /* IQNSArray+Sort.swift in Sources */,
+				1DF0DEB77D26401892D4E76463DD3949 /* IQPreviousNextView.swift in Sources */,
+				4B0F9347718263C67557054C2E15DE61 /* IQTextView.swift in Sources */,
+				BB4FCDEB31262E21F9021F22B2A73FAC /* IQTitleBarButtonItem.swift in Sources */,
+				83B0E4A33786C45550CBAA86DD9E400B /* IQToolbar.swift in Sources */,
+				5939499A16FC0C349C94A634D25C4EE7 /* IQUIScrollView+Additions.swift in Sources */,
+				EEC5EE727FA2DF9D913B4E2A48B57DAD /* IQUITextFieldView+Additions.swift in Sources */,
+				3EDA7575644614ACD562D23759D18DE8 /* IQUIView+Hierarchy.swift in Sources */,
+				3285188513F859E100A7BBE29B36599D /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				7FE321828ECA1D78CCF8A2892A30438B /* IQUIViewController+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2208D96C968733953F77D79E94C9AD10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = iosMath;
-			target = E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */;
-			targetProxy = D073B351BC722F337FA930AE2A303323 /* PBXContainerItemProxy */;
-		};
 		24C1EDAFEC84D6491EDA0F47B572CF1E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "iosMath-mathFonts";
 			target = 9B9836C06662F6AF26CF13501848D275 /* iosMath-mathFonts */;
 			targetProxy = DDF7C1A1C905720CE4A49027041AB104 /* PBXContainerItemProxy */;
 		};
+		4CF22595B5DAC17161390C4F811EA4BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iosMath;
+			target = E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */;
+			targetProxy = B235DA87E096B5D8D2644F94939E0AD4 /* PBXContainerItemProxy */;
+		};
 		712E36C939434BC05301D93312FF4515 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ecodatum-ios-client";
-			target = 9BFD2F7108BCE53E666FE9AB315691A2 /* Pods-ecodatum-ios-client */;
+			target = F975E752C7AB42F51DE1DF8EEF35402B /* Pods-ecodatum-ios-client */;
 			targetProxy = A7434E2BADB06F6D8E65B7BDB5889A11 /* PBXContainerItemProxy */;
+		};
+		DD5FA648104420ACCB4F360A146938F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IQKeyboardManagerSwift;
+			target = C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */;
+			targetProxy = 56C5E041541C576A6ECC7D9B056C0236 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -684,6 +865,42 @@
 			};
 			name = Release;
 		};
+		0E59F163958CAB7E3EE28A3FB1412CFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEA62FC7DD8722EAC6A6552CE3A8F72C /* Pods-ecodatum-ios-client.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ecodatum-ios-client/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		30016CE7EEF892B8E1544E4FE98BF544 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CD2D3E4D5A6395387524290D786645D /* Pods-ecodatum-ios-clientTests.debug.xcconfig */;
@@ -720,7 +937,7 @@
 		};
 		32CD0694205093AF354F3DA3F0A18C4B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D403AEDD16604729761AD456C8B5E25 /* iosMath.xcconfig */;
+			baseConfigurationReference = 9BB352691577317E7005B5E36A4CFF9D /* iosMath.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -749,9 +966,9 @@
 			};
 			name = Debug;
 		};
-		70D617CC4CEDBA83F4F3574EE566D4C2 /* Release */ = {
+		4E70BD20B9491C5F2A03217D984F3B82 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D403AEDD16604729761AD456C8B5E25 /* iosMath.xcconfig */;
+			baseConfigurationReference = 2BF243B3675945E44E5D6D7ADD92E409 /* IQKeyboardManagerSwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -762,26 +979,26 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/iosMath/iosMath-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/iosMath/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/iosMath/iosMath.modulemap";
-				PRODUCT_MODULE_NAME = iosMath;
-				PRODUCT_NAME = iosMath;
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
+				PRODUCT_NAME = IQKeyboardManagerSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		7A0BEBD46E8DA5162186E8C7F8C2AF59 /* Release */ = {
+		6C66892B309CD04EBC9D3D7CACE76817 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 361A8B77363393CAC634CA5648BA512C /* Pods-ecodatum-ios-client.release.xcconfig */;
 			buildSettings = {
@@ -809,6 +1026,39 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		70D617CC4CEDBA83F4F3574EE566D4C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BB352691577317E7005B5E36A4CFF9D /* iosMath.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/iosMath/iosMath-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iosMath/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/iosMath/iosMath.modulemap";
+				PRODUCT_MODULE_NAME = iosMath;
+				PRODUCT_NAME = iosMath;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -916,7 +1166,7 @@
 		};
 		ACBA17EE8AFFEDA3B0BDEBA140C9A853 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D403AEDD16604729761AD456C8B5E25 /* iosMath.xcconfig */;
+			baseConfigurationReference = 9BB352691577317E7005B5E36A4CFF9D /* iosMath.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/iosMath";
@@ -930,9 +1180,42 @@
 			};
 			name = Release;
 		};
+		B3F365A79A75991CBCBCF49F488646E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BF243B3675945E44E5D6D7ADD92E409 /* IQKeyboardManagerSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
+				PRODUCT_NAME = IQKeyboardManagerSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B6E16E37D1A34E2E4A83705233D2E439 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D403AEDD16604729761AD456C8B5E25 /* iosMath.xcconfig */;
+			baseConfigurationReference = 9BB352691577317E7005B5E36A4CFF9D /* iosMath.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/iosMath";
@@ -946,57 +1229,23 @@
 			};
 			name = Debug;
 		};
-		BB34C052498FD75026C664319F1F05E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEA62FC7DD8722EAC6A6552CE3A8F72C /* Pods-ecodatum-ios-client.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ecodatum-ios-client/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		12B9902705C2E8757D1E9899C39A530E /* Build configuration list for PBXNativeTarget "Pods-ecodatum-ios-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E59F163958CAB7E3EE28A3FB1412CFF /* Debug */,
+				6C66892B309CD04EBC9D3D7CACE76817 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DAE5233986C01ADB6E67169C53A3FD2 /* Debug */,
 				08638A96A528B1EC32DE62F8A728389D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		36E6034C109B7F5B3C49059320913637 /* Build configuration list for PBXNativeTarget "Pods-ecodatum-ios-client" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BB34C052498FD75026C664319F1F05E8 /* Debug */,
-				7A0BEBD46E8DA5162186E8C7F8C2AF59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1024,6 +1273,15 @@
 			buildConfigurations = (
 				B6E16E37D1A34E2E4A83705233D2E439 /* Debug */,
 				ACBA17EE8AFFEDA3B0BDEBA140C9A853 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8C5CE05A712EF50BB123A41D8EFC0CB /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E70BD20B9491C5F2A03217D984F3B82 /* Debug */,
+				B3F365A79A75991CBCBCF49F488646E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

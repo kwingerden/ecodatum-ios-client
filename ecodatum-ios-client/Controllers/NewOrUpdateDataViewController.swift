@@ -1130,12 +1130,6 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   fileprivate func handleNotesChoice(_ notes: NSAttributedString) {
 
-    if let bioticFactorChoices = bioticFactorChoices,
-       let notes = bioticFactorChoices.notes,
-       notes == notes {
-      return
-    }
-
     if let bioticFactorChoices = bioticFactorChoices {
       self.bioticFactorChoices = BioticFactorChoices(
         image: bioticFactorChoices.image,
@@ -2833,7 +2827,10 @@ class NotesChoiceViewController: UIViewController, WKNavigationDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    textView.roundedAndDarkBordered()
+    
+    textView.lightBordered()
+    textView.allowsEditingTextAttributes = true
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {

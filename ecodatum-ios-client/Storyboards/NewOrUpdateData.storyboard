@@ -613,7 +613,7 @@
                                                                 <rect key="frame" x="0.0" y="720" width="400.5" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6TH-wL-o0m" id="1hP-uv-6BS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="60"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="59.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfd-CG-svS">
@@ -633,10 +633,10 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvA-fB-qUb">
-                                                                            <rect key="frame" x="8" y="21" width="384.5" height="38.5"/>
+                                                                            <rect key="frame" x="8" y="21" width="384.5" height="38"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agU-Tn-ePn">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="352.5" height="38.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="352.5" height="38"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="Add Notes">
                                                                                             <attributes>
@@ -648,7 +648,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1n-YK-5Th">
-                                                                                    <rect key="frame" x="352.5" y="0.0" width="32" height="38.5"/>
+                                                                                    <rect key="frame" x="352.5" y="0.0" width="32" height="38"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="32" id="abX-eP-xjh"/>
                                                                                     </constraints>
@@ -679,7 +679,7 @@
                                                                 <rect key="frame" x="0.0" y="780" width="400.5" height="115"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fz5-Ko-rQD" id="hNU-WM-Q8E">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="115"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400.5" height="114.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NOQ-0l-PZo">
