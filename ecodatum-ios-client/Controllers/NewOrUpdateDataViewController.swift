@@ -401,7 +401,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   }
 
   func handleSaveData() {
-    print("Save Data")
+    viewControllerManager.newOrUpdateEcoData(ecoData: ecoData)
   }
 
 }

@@ -8,7 +8,7 @@ typealias CompletionBlock = () -> Void
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
 
-class ViewControllerManager: SiteHandler {
+class ViewControllerManager: EcoDataHandler, SiteHandler {
   
   let viewController: UIViewController
   
@@ -122,6 +122,56 @@ class ViewControllerManager: SiteHandler {
 
   var siteId: Identifier? {
     return ViewControllerSegue.newSite == viewControllerSegue ? nil : site?.id
+  }
+
+  var ecoData: EcoData? {
+    get {
+      guard let value = viewContext.state[.ecoData] else {
+        return nil
+      }
+      if case let ViewContext.Value.ecoData(ecoData) = value {
+        return ecoData
+      } else {
+        return nil
+      }
+    }
+    set {
+      if let newValue = newValue {
+        viewContext.state[.ecoData] = ViewContext.Value.ecoData(newValue)
+      } else {
+        viewContext.state[.ecoData] = nil
+      }
+    }
+  }
+
+  var ecoDatas: [EcoData] {
+    get {
+      guard let value = viewContext.state[.ecoDatas] else {
+        return []
+      }
+      if case let ViewContext.Value.ecoDatas(ecoDatas) = value {
+        return ecoDatas.sorted {
+          $0.date < $1.date
+        }
+      } else {
+        return []
+      }
+    }
+    set {
+      viewContext.state[.ecoDatas] = ViewContext.Value.ecoDatas(newValue)
+    }
+  }
+
+  var ecoDataHandler: EcoDataHandler {
+    var newEcoDataHandler: EcoDataHandler = self
+    if let ecoDataHandler = storyboardSegue?.source as? EcoDataHandler {
+      newEcoDataHandler = ecoDataHandler
+    }
+    return newEcoDataHandler
+  }
+
+  var ecoDataId: Identifier? {
+    return ViewControllerSegue.newEcoData == viewControllerSegue ? nil : ecoData?.id
   }
   
   var viewControllerSegue: ViewControllerSegue? {
@@ -473,6 +523,58 @@ class ViewControllerManager: SiteHandler {
       
     }
     
+  }
+
+  func newOrUpdateEcoData(
+    ecoData: EcoData,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil,
+    completionBlock: CompletionBlock? = nil) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    guard let siteId = site?.id else {
+      handleError(ViewControllerError.noSiteIdentifier)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          NewOrUpdateEcoDataRequest(
+            token: token,
+            id: ecoDataId,
+            ecoData: ecoData))
+        .then(in: .main) {
+          ecoData in
+          if self.ecoDataId == nil {
+            self.ecoDataHandler.handleNewEcoData(ecoData: ecoData)
+          } else {
+            self.ecoDataHandler.handleUpdatedEcoData(ecoData: ecoData)
+          }
+          if let completionBlock = completionBlock {
+            completionBlock()
+          }
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
   }
 
   func showErrorMessage(_ title: String,

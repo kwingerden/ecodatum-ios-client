@@ -11,4 +11,14 @@ protocol SiteHandler {
   
 }
 
+protocol EcoDataHandler {
+
+  func handleNewEcoData(ecoData: EcoData)
+
+  func handleUpdatedEcoData(ecoData: EcoData)
+
+  func handleDeletedEcoData(ecoData: EcoData)
+
+}
+
 

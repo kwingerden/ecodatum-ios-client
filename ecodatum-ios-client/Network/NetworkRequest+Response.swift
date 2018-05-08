@@ -140,7 +140,7 @@ struct OrganizationMemberResponse: NetworkResponse {
 struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
   
   let token: AuthenticationToken
-  let id: String? // site id
+  let id: Identifier? // site id
   let name: String
   let description: String?
   let latitude: Double
@@ -155,7 +155,7 @@ struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
 struct GetSitesByOrganizationAndUserRequest: ProtectedNetworkRequest {
   
   let token: AuthenticationToken
-  let organizationId: String
+  let organizationId: Identifier
   
 }
 
@@ -179,39 +179,22 @@ struct SiteResponse: NetworkResponse {
 struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
   
   let token: AuthenticationToken
-  let siteId: String
+  let siteId: Identifier
   
 }
 
 struct NewOrUpdateEcoDataRequest: ProtectedNetworkRequest {
 
   let token: AuthenticationToken
-  let id: String? // site id
-  let name: String
-  let description: String?
-  let latitude: Double
-  let longitude: Double
-  let altitude: Double?
-  let horizontalAccuracy: Double?
-  let verticalAccuracy: Double?
-  let organizationId: String
+  let id: Identifier?
+  let ecoData: EcoData
 
 }
 
 struct EcoDataResponse: NetworkResponse {
 
-  let id: Identifier // site id
-  let name: String
-  let description: String?
-  let latitude: Double
-  let longitude: Double
-  let altitude: Double?
-  let horizontalAccuracy: Double?
-  let verticalAccuracy: Double?
-  let organizationId: String
-  let userId: Identifier
-  let createdAt: Date
-  let updatedAt: Date
+  let id: Identifier
+  let ecoData: EcoData
 
 }
 

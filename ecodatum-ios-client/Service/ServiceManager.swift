@@ -30,47 +30,35 @@ class ServiceManager {
   
   func call(_ request: GetOrganizationsByUserRequest) throws -> Promise<[Organization]> {
     return async(in: .userInitiated) {
-
       status in
-
-      let organizationResponses = try await(try self.networkManager.call(request))
-      return organizationResponses.map {
-
-        organizationResponse in
-
+      let response = try await(try self.networkManager.call(request))
+      return response.map {
+        response in
         return Organization(
-          id: organizationResponse.id,
-          code: organizationResponse.code,
-          name: organizationResponse.name,
-          description: organizationResponse.description,
-          createdAt: organizationResponse.createdAt,
-          updatedAt: organizationResponse.updatedAt)
-
+          id: response.id,
+          code: response.code,
+          name: response.name,
+          description: response.description,
+          createdAt: response.createdAt,
+          updatedAt: response.updatedAt)
       }
     }
   }
 
   func call(_ request: GetMembersByOrganizationAndUserRequest) throws -> Promise<[OrganizationMember]> {
     return async(in: .userInitiated) {
-
       status in
-
-      let organizationMemberResponses = try await(try self.networkManager.call(request))
-
-      return organizationMemberResponses.map {
-
-        organizationMemberResponse in
-
+      let responses = try await(try self.networkManager.call(request))
+      return responses.map {
+        response in
         let user = User(
-          id: organizationMemberResponse.user.id,
-          fullName: organizationMemberResponse.user.fullName,
-          email: organizationMemberResponse.user.email)
+          id: response.user.id,
+          fullName: response.user.fullName,
+          email: response.user.email)
         let role = Role(
-          id: organizationMemberResponse.role.id,
-          name: organizationMemberResponse.role.name)
-
+          id: response.role.id,
+          name: response.role.name)
         return OrganizationMember(user: user, role: role)
-
       }
     }
   }
@@ -78,56 +66,53 @@ class ServiceManager {
   func call(_ request: GetUserRequest) throws -> Promise<User> {
     return async(in: .userInitiated) {
       status in
-      let userResponse = try await(try self.networkManager.call(request))
+      let response = try await(try self.networkManager.call(request))
       return User(
-        id: userResponse.id,
-        fullName: userResponse.fullName,
-        email: userResponse.email)
+        id: response.id,
+        fullName: response.fullName,
+        email: response.email)
     }
   }
   
   func call(_ request: NewOrUpdateSiteRequest) throws -> Promise<Site> {
     return async(in: .userInitiated) {
       status in
-      let siteResponse = try await(try self.networkManager.call(request))
+      let response = try await(try self.networkManager.call(request))
       return Site(
-        id: siteResponse.id,
-        name: siteResponse.name,
-        description: siteResponse.description,
-        latitude: siteResponse.latitude,
-        longitude: siteResponse.longitude,
-        altitude: siteResponse.altitude,
-        horizontalAccuracy: siteResponse.horizontalAccuracy,
-        verticalAccuracy: siteResponse.verticalAccuracy,
-        organizationId: siteResponse.organizationId,
-        userId: siteResponse.userId,
-        createdAt: siteResponse.createdAt,
-        updatedAt: siteResponse.updatedAt)
+        id: response.id,
+        name: response.name,
+        description: response.description,
+        latitude: response.latitude,
+        longitude: response.longitude,
+        altitude: response.altitude,
+        horizontalAccuracy: response.horizontalAccuracy,
+        verticalAccuracy: response.verticalAccuracy,
+        organizationId: response.organizationId,
+        userId: response.userId,
+        createdAt: response.createdAt,
+        updatedAt: response.updatedAt)
     }
   }
   
   func call(_ request: GetSitesByOrganizationAndUserRequest) throws -> Promise<[Site]> {
     return async(in: .userInitiated) {
-
       status in
-
-      let siteResponses = try await(try self.networkManager.call(request))
-      return siteResponses.map {
-        siteResponse in
+      let responses = try await(try self.networkManager.call(request))
+      return responses.map {
+        response in
         return Site(
-          id: siteResponse.id,
-          name: siteResponse.name,
-          description: siteResponse.description,
-          latitude: siteResponse.latitude,
-          longitude: siteResponse.longitude,
-          altitude: siteResponse.altitude,
-          horizontalAccuracy: siteResponse.horizontalAccuracy,
-          verticalAccuracy: siteResponse.verticalAccuracy,
-          organizationId: siteResponse.organizationId,
-          userId: siteResponse.userId,
-          createdAt: siteResponse.createdAt,
-          updatedAt: siteResponse.updatedAt)
-
+          id: response.id,
+          name: response.name,
+          description: response.description,
+          latitude: response.latitude,
+          longitude: response.longitude,
+          altitude: response.altitude,
+          horizontalAccuracy: response.horizontalAccuracy,
+          verticalAccuracy: response.verticalAccuracy,
+          organizationId: response.organizationId,
+          userId: response.userId,
+          createdAt: response.createdAt,
+          updatedAt: response.updatedAt)
       }
     }
   }
@@ -136,26 +121,12 @@ class ServiceManager {
     return try networkManager.call(request)
   }
 
-  /*
   func call(_ request: NewOrUpdateEcoDataRequest) throws -> Promise<EcoData> {
     return async(in: .userInitiated) {
       status in
-      let siteResponse = try await(try self.networkManager.call(request))
-      return Site(
-        id: siteResponse.id,
-        name: siteResponse.name,
-        description: siteResponse.description,
-        latitude: siteResponse.latitude,
-        longitude: siteResponse.longitude,
-        altitude: siteResponse.altitude,
-        horizontalAccuracy: siteResponse.horizontalAccuracy,
-        verticalAccuracy: siteResponse.verticalAccuracy,
-        organizationId: siteResponse.organizationId,
-        userId: siteResponse.userId,
-        createdAt: siteResponse.createdAt,
-        updatedAt: siteResponse.updatedAt)
+      let response = try await(try self.networkManager.call(request))
+      return response.ecoData
     }
   }
-  */
 
 }

@@ -28,13 +28,13 @@ class SiteNavigationChoiceViewController: BaseNavigationChoice {
       
       viewControllerManager.performSegue(
         from: self,
-        to: .newData)
+        to: .newEcoData)
       
     case viewExistingDataButton:
       
       viewControllerManager.performSegue(
         from: self,
-        to: .dataChoice)
+        to: .ecoDataChoice)
       
     default:
       LOG.error("Unrecognized button: \(sender)")

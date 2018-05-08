@@ -4,7 +4,7 @@ typealias Identifier = String
 typealias AuthenticationToken = String
 typealias Base64Encoded = String
 
-struct User {
+struct User: Codable {
 
   let id: Identifier
   let fullName: String
@@ -12,14 +12,14 @@ struct User {
 
 }
 
-struct Role {
+struct Role: Codable {
 
   let id: Identifier
   let name: String
 
 }
 
-struct AuthenticatedUser {
+struct AuthenticatedUser: Codable {
 
   let userId: Identifier
   let token: AuthenticationToken
@@ -29,7 +29,7 @@ struct AuthenticatedUser {
 
 }
 
-struct Organization {
+struct Organization: Codable {
 
   let id: Identifier
   let code: String
@@ -40,14 +40,14 @@ struct Organization {
 
 }
 
-struct OrganizationMember {
+struct OrganizationMember: Codable {
 
   let user: User
   let role: Role
 
 }
 
-struct Site {
+struct Site: Codable {
 
   let id: Identifier
   let name: String
@@ -477,7 +477,7 @@ enum WaterTurbidityScale {
 
 }
 
-struct SoilTextureScale {
+struct SoilTextureScale: Codable {
 
   let percentSand: Int
   let percentSilt: Int
@@ -491,7 +491,7 @@ struct SoilTextureScale {
 
 }
 
-struct DecimalDataValue {
+struct DecimalDataValue: Codable {
 
   enum Sign {
     case positive
@@ -666,7 +666,7 @@ struct DecimalDataValue {
 
 }
 
-struct EcoData {
+struct EcoData: Codable {
 
   enum AbioticOrBioticData {
     case Abiotic(AbioticEcoData)
@@ -740,7 +740,7 @@ struct EcoData {
 
 }
 
-struct AbioticEcoData {
+struct AbioticEcoData: Codable {
 
   let abioticFactor: AbioticFactor?
   let dataType: AbioticDataTypeChoice?
@@ -791,7 +791,7 @@ struct AbioticEcoData {
 
 }
 
-struct BioticEcoData {
+struct BioticEcoData: Codable {
 
   let image: UIImage?
   let notes: NSAttributedString?

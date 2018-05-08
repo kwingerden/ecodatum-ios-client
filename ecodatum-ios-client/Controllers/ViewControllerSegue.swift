@@ -12,10 +12,10 @@ enum ViewControllerSegue: String {
   case siteChoice
   case siteNavigationChoice
 
-  case newData
-  case updateData
-  case viewData
-  case dataChoice
+  case newEcoData
+  case updateEcoData
+  case viewEcoData
+  case ecoDataChoice
   
   case loginToAccount
   
