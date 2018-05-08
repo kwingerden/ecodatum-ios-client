@@ -666,44 +666,81 @@ struct DecimalDataValue {
 
 }
 
-struct EcoFactorChoices {
+struct EcoData {
 
-  let dateChoice: Date
-  let timeChoice: Date
-  let ecoFactorChoice: EcoFactor?
-
-  init(dateChoice: Date = Date(),
-       timeChoice: Date = Date(),
-       ecoFactorChoice: EcoFactor? = nil) {
-    self.dateChoice = dateChoice
-    self.timeChoice = timeChoice
-    self.ecoFactorChoice = ecoFactorChoice
+  enum AbioticOrBioticData {
+    case Abiotic(AbioticEcoData)
+    case Biotic(BioticEcoData)
   }
 
-  func new(dateChoice: Date) -> EcoFactorChoices {
-    return EcoFactorChoices(
-      dateChoice: dateChoice,
-      timeChoice: timeChoice,
-      ecoFactorChoice: ecoFactorChoice)
+  let date: Date
+  let time: Date
+  let ecoFactor: EcoFactor?
+  let data: AbioticOrBioticData?
+
+  var abioticEcoData: AbioticEcoData? {
+    switch data {
+    case .Abiotic(let abioticEcoData)?: return abioticEcoData
+    default: return nil
+    }
   }
 
-  func new(timeChoice: Date) -> EcoFactorChoices {
-    return EcoFactorChoices(
-      dateChoice: dateChoice,
-      timeChoice: timeChoice,
-      ecoFactorChoice: ecoFactorChoice)
+  var bioticEcoData: BioticEcoData? {
+    switch data {
+    case .Biotic(let bioticEcoData)?: return bioticEcoData
+    default: return nil
+    }
   }
 
-  func new(ecoFactorChoice: EcoFactor) -> EcoFactorChoices {
-    return EcoFactorChoices(
-      dateChoice: dateChoice,
-      timeChoice: timeChoice,
-      ecoFactorChoice: ecoFactorChoice)
+  var abioticFactor: AbioticFactor? {
+    return abioticEcoData?.abioticFactor
+  }
+
+  init(date: Date = Date(),
+       time: Date = Date(),
+       ecoFactor: EcoFactor? = nil,
+       data: AbioticOrBioticData? = nil) {
+    self.date = date
+    self.time = time
+    self.ecoFactor = ecoFactor
+    self.data = data
+  }
+
+  func new(date: Date) -> EcoData {
+    return EcoData(
+      date: date,
+      time: time,
+      ecoFactor: ecoFactor,
+      data: data)
+  }
+
+  func new(time: Date) -> EcoData {
+    return EcoData(
+      date: date,
+      time: time,
+      ecoFactor: ecoFactor,
+      data: data)
+  }
+
+  func new(ecoFactor: EcoFactor) -> EcoData {
+    return EcoData(
+      date: date,
+      time: time,
+      ecoFactor: ecoFactor,
+      data: data)
+  }
+
+  func new(data: AbioticOrBioticData) -> EcoData {
+    return EcoData(
+      date: date,
+      time: time,
+      ecoFactor: ecoFactor,
+      data: data)
   }
 
 }
 
-struct AbioticFactorChoices {
+struct AbioticEcoData {
 
   let abioticFactor: AbioticFactor?
   let dataType: AbioticDataTypeChoice?
@@ -720,9 +757,41 @@ struct AbioticFactorChoices {
     self.dataValue = dataValue
   }
 
+  func new(abioticFactor: AbioticFactor) -> AbioticEcoData {
+    return AbioticEcoData(
+      abioticFactor: abioticFactor,
+      dataType: dataType,
+      dataUnit: dataUnit,
+      dataValue: dataValue)
+  }
+
+  func new(dataType: AbioticDataTypeChoice) -> AbioticEcoData {
+    return AbioticEcoData(
+      abioticFactor: abioticFactor,
+      dataType: dataType,
+      dataUnit: dataUnit,
+      dataValue: dataValue)
+  }
+
+  func new(dataUnit: AbioticDataUnitChoice) -> AbioticEcoData {
+    return AbioticEcoData(
+      abioticFactor: abioticFactor,
+      dataType: dataType,
+      dataUnit: dataUnit,
+      dataValue: dataValue)
+  }
+
+  func new(dataValue: Any?) -> AbioticEcoData {
+    return AbioticEcoData(
+      abioticFactor: abioticFactor,
+      dataType: dataType,
+      dataUnit: dataUnit,
+      dataValue: dataValue)
+  }
+
 }
 
-struct BioticFactorChoices {
+struct BioticEcoData {
 
   let image: UIImage?
   let notes: NSAttributedString?
@@ -731,6 +800,18 @@ struct BioticFactorChoices {
        notes: NSAttributedString? = nil) {
     self.image = image
     self.notes = notes
+  }
+
+  func new(image: UIImage?) -> BioticEcoData {
+    return BioticEcoData(
+      image: image,
+      notes: notes)
+  }
+
+  func new(notes: NSAttributedString) -> BioticEcoData {
+    return BioticEcoData(
+      image: image,
+      notes: notes)
   }
 
 }

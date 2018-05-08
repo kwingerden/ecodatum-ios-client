@@ -183,7 +183,7 @@ struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
   
 }
 
-struct NewOrUpdateDataRequest: ProtectedNetworkRequest {
+struct NewOrUpdateEcoDataRequest: ProtectedNetworkRequest {
 
   let token: AuthenticationToken
   let id: String? // site id
@@ -198,7 +198,7 @@ struct NewOrUpdateDataRequest: ProtectedNetworkRequest {
 
 }
 
-struct DataResponse: NetworkResponse {
+struct EcoDataResponse: NetworkResponse {
 
   let id: Identifier // site id
   let name: String

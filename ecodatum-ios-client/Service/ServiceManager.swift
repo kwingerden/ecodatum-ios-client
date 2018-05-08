@@ -135,5 +135,27 @@ class ServiceManager {
   func call(_ request: DeleteSiteByIdRequest) throws -> Promise<HttpOKResponse> {
     return try networkManager.call(request)
   }
-  
+
+  /*
+  func call(_ request: NewOrUpdateEcoDataRequest) throws -> Promise<EcoData> {
+    return async(in: .userInitiated) {
+      status in
+      let siteResponse = try await(try self.networkManager.call(request))
+      return Site(
+        id: siteResponse.id,
+        name: siteResponse.name,
+        description: siteResponse.description,
+        latitude: siteResponse.latitude,
+        longitude: siteResponse.longitude,
+        altitude: siteResponse.altitude,
+        horizontalAccuracy: siteResponse.horizontalAccuracy,
+        verticalAccuracy: siteResponse.verticalAccuracy,
+        organizationId: siteResponse.organizationId,
+        userId: siteResponse.userId,
+        createdAt: siteResponse.createdAt,
+        updatedAt: siteResponse.updatedAt)
+    }
+  }
+  */
+
 }

@@ -141,12 +141,12 @@ class NetworkManager {
         request: request))
   }
 
-  func call(_ request: NewOrUpdateDataRequest) throws -> Promise<DataResponse> {
+  func call(_ request: NewOrUpdateEcoDataRequest) throws -> Promise<EcoDataResponse> {
 
     let method: HTTPMethod = request.id == nil ? .post : .put
     var url = baseURL
       .appendingPathComponent("protected")
-      .appendingPathComponent("sites")
+      .appendingPathComponent("data")
     if method == .put,
        let id = request.id {
       url = url.appendingPathComponent("\(id)")
