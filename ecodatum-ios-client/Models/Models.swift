@@ -2,9 +2,12 @@ import Foundation
 
 typealias Identifier = String
 typealias AuthenticationToken = String
-typealias Base64Encoded = String
 
-struct User: Codable {
+protocol DataValue: LosslessStringConvertible {
+
+}
+
+struct User {
 
   let id: Identifier
   let fullName: String
@@ -12,14 +15,14 @@ struct User: Codable {
 
 }
 
-struct Role: Codable {
+struct Role {
 
   let id: Identifier
   let name: String
 
 }
 
-struct AuthenticatedUser: Codable {
+struct AuthenticatedUser {
 
   let userId: Identifier
   let token: AuthenticationToken
@@ -29,7 +32,7 @@ struct AuthenticatedUser: Codable {
 
 }
 
-struct Organization: Codable {
+struct Organization {
 
   let id: Identifier
   let code: String
@@ -40,14 +43,14 @@ struct Organization: Codable {
 
 }
 
-struct OrganizationMember: Codable {
+struct OrganizationMember {
 
   let user: User
   let role: Role
 
 }
 
-struct Site: Codable {
+struct Site {
 
   let id: Identifier
   let name: String
@@ -359,11 +362,19 @@ enum AbioticDataUnitChoice: String {
 
 }
 
-enum SoilPotassiumScale {
+enum SoilPotassiumScale: DataValue {
 
   case Low(index: Int, label: String)
   case Medium(index: Int, label: String)
   case High(index: Int, label: String)
+
+  var description: String {
+    return ""
+  }
+
+  init?(_ description: String) {
+    return nil
+  }
 
   static func ==(_ lhs: SoilPotassiumScale, _ rhs: SoilPotassiumScale) -> Bool {
 
@@ -393,13 +404,21 @@ enum SoilPotassiumScale {
 
 }
 
-enum WaterOdorScale {
+enum WaterOdorScale: DataValue {
 
   case NoOdor(index: Int, label: String)
   case SlightOdor(index: Int, label: String)
   case Smelly(index: Int, label: String)
   case VerySmelly(index: Int, label: String)
   case Devastating(index: Int, label: String)
+
+  var description: String {
+    return ""
+  }
+
+  init?(_ description: String) {
+    return nil
+  }
 
   static func ==(_ lhs: WaterOdorScale, _ rhs: WaterOdorScale) -> Bool {
 
@@ -435,13 +454,21 @@ enum WaterOdorScale {
 
 }
 
-enum WaterTurbidityScale {
+enum WaterTurbidityScale: DataValue {
 
   case CrystalClear(index: Int, label: String)
   case SlightlyCloudy(index: Int, label: String)
   case ModeratelyCloudy(index: Int, label: String)
   case VeryCloudy(index: Int, label: String)
   case BlackishOrBrownish(index: Int, label: String)
+
+  var description: String {
+    return ""
+  }
+
+  init?(_ description: String) {
+    return nil
+  }
 
   static func ==(_ lhs: WaterTurbidityScale, _ rhs: WaterTurbidityScale) -> Bool {
 
@@ -477,11 +504,27 @@ enum WaterTurbidityScale {
 
 }
 
-struct SoilTextureScale: Codable {
+struct SoilTextureScale: DataValue {
+
+  var description: String {
+    return "\(percentSand),\(percentSilt),\(percentClay)"
+  }
 
   let percentSand: Int
   let percentSilt: Int
   let percentClay: Int
+
+  init(percentSand: Int,
+       percentSilt: Int,
+       percentClay: Int) {
+    self.percentSand = percentSand
+    self.percentSilt = percentSilt
+    self.percentClay = percentClay
+  }
+
+  init?(_ description: String) {
+    return nil
+  }
 
   static func ==(_ lhs: SoilTextureScale, _ rhs: SoilTextureScale) -> Bool {
     return lhs.percentSand == rhs.percentSand &&
@@ -491,7 +534,7 @@ struct SoilTextureScale: Codable {
 
 }
 
-struct DecimalDataValue: Codable {
+struct DecimalDataValue: DataValue {
 
   enum Sign {
     case positive
@@ -502,6 +545,10 @@ struct DecimalDataValue: Codable {
   let number: String
   let decimalPoint: Bool
   let fraction: String?
+
+  var description: String {
+    return toString()
+  }
 
   var stringValue: String {
     return toString()
@@ -519,6 +566,10 @@ struct DecimalDataValue: Codable {
     self.number = number
     self.decimalPoint = decimalPoint
     self.fraction = fraction
+  }
+
+  init?(_ description: String) {
+    return nil
   }
 
   func toggleSign() -> DecimalDataValue {
@@ -666,13 +717,14 @@ struct DecimalDataValue: Codable {
 
 }
 
-struct EcoData: Codable {
+struct EcoDatum {
 
   enum AbioticOrBioticData {
     case Abiotic(AbioticEcoData)
     case Biotic(BioticEcoData)
   }
 
+  let id: Identifier?
   let date: Date
   let time: Date
   let ecoFactor: EcoFactor?
@@ -696,42 +748,44 @@ struct EcoData: Codable {
     return abioticEcoData?.abioticFactor
   }
 
-  init(date: Date = Date(),
+  init(id: Identifier? = nil,
+       date: Date = Date(),
        time: Date = Date(),
        ecoFactor: EcoFactor? = nil,
        data: AbioticOrBioticData? = nil) {
+    self.id = id
     self.date = date
     self.time = time
     self.ecoFactor = ecoFactor
     self.data = data
   }
 
-  func new(date: Date) -> EcoData {
-    return EcoData(
+  func new(date: Date) -> EcoDatum {
+    return EcoDatum(
       date: date,
       time: time,
       ecoFactor: ecoFactor,
       data: data)
   }
 
-  func new(time: Date) -> EcoData {
-    return EcoData(
+  func new(time: Date) -> EcoDatum {
+    return EcoDatum(
       date: date,
       time: time,
       ecoFactor: ecoFactor,
       data: data)
   }
 
-  func new(ecoFactor: EcoFactor) -> EcoData {
-    return EcoData(
+  func new(ecoFactor: EcoFactor) -> EcoDatum {
+    return EcoDatum(
       date: date,
       time: time,
       ecoFactor: ecoFactor,
       data: data)
   }
 
-  func new(data: AbioticOrBioticData) -> EcoData {
-    return EcoData(
+  func new(data: AbioticOrBioticData) -> EcoDatum {
+    return EcoDatum(
       date: date,
       time: time,
       ecoFactor: ecoFactor,
@@ -740,17 +794,17 @@ struct EcoData: Codable {
 
 }
 
-struct AbioticEcoData: Codable {
+struct AbioticEcoData {
 
   let abioticFactor: AbioticFactor?
   let dataType: AbioticDataTypeChoice?
   let dataUnit: AbioticDataUnitChoice?
-  let dataValue: Any?
+  let dataValue: DataValue?
 
   init(abioticFactor: AbioticFactor? = nil,
        dataType: AbioticDataTypeChoice? = nil,
        dataUnit: AbioticDataUnitChoice? = nil,
-       dataValue: Any? = nil) {
+       dataValue: DataValue? = nil) {
     self.abioticFactor = abioticFactor
     self.dataType = dataType
     self.dataUnit = dataUnit
@@ -781,7 +835,7 @@ struct AbioticEcoData: Codable {
       dataValue: dataValue)
   }
 
-  func new(dataValue: Any?) -> AbioticEcoData {
+  func new(dataValue: DataValue?) -> AbioticEcoData {
     return AbioticEcoData(
       abioticFactor: abioticFactor,
       dataType: dataType,
@@ -791,7 +845,7 @@ struct AbioticEcoData: Codable {
 
 }
 
-struct BioticEcoData: Codable {
+struct BioticEcoData {
 
   let image: UIImage?
   let notes: NSAttributedString?

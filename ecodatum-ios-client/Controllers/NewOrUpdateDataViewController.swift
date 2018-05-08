@@ -3,11 +3,13 @@ import SwiftValidator
 import UIKit
 import WebKit
 
+typealias DataValueHandler = (DataValue) -> Void
+
 class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   @IBOutlet weak var tableView: UITableView!
 
-  private var ecoData: EcoData = EcoData()
+  private var ecoData: EcoDatum = EcoDatum()
 
   private var numberOfSections: Int = 3
 
@@ -322,7 +324,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   }
 
-  func handleDataValueChoice(_ dataValue: Any) {
+  func handleDataValueChoice(_ dataValue: DataValue) {
     
     switch ecoData.data {
     case .Abiotic(let abioticEcoData)?:
@@ -401,7 +403,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   }
 
   func handleSaveData() {
-    viewControllerManager.newOrUpdateEcoData(ecoData: ecoData)
+    viewControllerManager.newOrUpdateEcoDatum(ecoDatum: ecoData)
   }
 
 }
@@ -1308,7 +1310,7 @@ class DataValueChoiceViewController: UIViewController {
 
   var abioticFactorChoices: AbioticEcoData!
 
-  var handleDataValueChoice: ((DecimalDataValue) -> Void)!
+  var handleDataValueChoice: DataValueHandler!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1426,7 +1428,7 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
   var abioticFactorChoices: AbioticEcoData!
 
-  var handleDataValueChoice: ((DecimalDataValue) -> Void)!
+  var handleDataValueChoice: DataValueHandler!
 
   private let numberRange = Array(1...14)
 
@@ -1532,7 +1534,7 @@ class SoilPotassiumChoiceViewController: UIViewController, UIPickerViewDataSourc
 
   var abioticFactorChoices: AbioticEcoData!
 
-  var handleSoilPotassiumChoice: ((SoilPotassiumScale) -> Void)!
+  var handleSoilPotassiumChoice: DataValueHandler!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1596,7 +1598,7 @@ class WaterOdorChoiceViewController: UIViewController, UIPickerViewDataSource, U
 
   var abioticFactorChoices: AbioticEcoData!
 
-  var handleWaterOdorChoice: ((WaterOdorScale) -> Void)!
+  var handleWaterOdorChoice: DataValueHandler!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1664,7 +1666,7 @@ class WaterTurbidityChoiceViewController: UIViewController, UIPickerViewDataSour
 
   var abioticFactorChoices: AbioticEcoData!
 
-  var handleWaterTurbidityChoice: ((WaterTurbidityScale) -> Void)!
+  var handleWaterTurbidityChoice: DataValueHandler!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -1780,7 +1782,7 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
 
   var abioticFactorChoices: AbioticEcoData!
 
-  var handleSoilTextureChoice: ((SoilTextureScale) -> Void)!
+  var handleSoilTextureChoice: DataValueHandler!
 
   override func viewDidLoad() {
 

@@ -141,7 +141,7 @@ class NetworkManager {
         request: request))
   }
 
-  func call(_ request: NewOrUpdateEcoDataRequest) throws -> Promise<EcoDataResponse> {
+  func call(_ request: NewOrUpdateEcoDatumRequest) throws -> Promise<EcoDatumResponse> {
 
     let method: HTTPMethod = request.id == nil ? .post : .put
     var url = baseURL

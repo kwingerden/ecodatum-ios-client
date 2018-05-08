@@ -8,7 +8,7 @@ typealias CompletionBlock = () -> Void
 typealias PreAsyncBlock = () -> Void
 typealias PostAsyncBlock = () -> Void
 
-class ViewControllerManager: EcoDataHandler, SiteHandler {
+class ViewControllerManager: EcoDatumHandler, SiteHandler {
   
   let viewController: UIViewController
   
@@ -124,33 +124,33 @@ class ViewControllerManager: EcoDataHandler, SiteHandler {
     return ViewControllerSegue.newSite == viewControllerSegue ? nil : site?.id
   }
 
-  var ecoData: EcoData? {
+  var ecoDatum: EcoDatum? {
     get {
-      guard let value = viewContext.state[.ecoData] else {
+      guard let value = viewContext.state[.ecoDatum] else {
         return nil
       }
-      if case let ViewContext.Value.ecoData(ecoData) = value {
-        return ecoData
+      if case let ViewContext.Value.ecoDatum(ecoDatum) = value {
+        return ecoDatum
       } else {
         return nil
       }
     }
     set {
       if let newValue = newValue {
-        viewContext.state[.ecoData] = ViewContext.Value.ecoData(newValue)
+        viewContext.state[.ecoDatum] = ViewContext.Value.ecoDatum(newValue)
       } else {
-        viewContext.state[.ecoData] = nil
+        viewContext.state[.ecoDatum] = nil
       }
     }
   }
 
-  var ecoDatas: [EcoData] {
+  var ecoData: [EcoDatum] {
     get {
-      guard let value = viewContext.state[.ecoDatas] else {
+      guard let value = viewContext.state[.ecoData] else {
         return []
       }
-      if case let ViewContext.Value.ecoDatas(ecoDatas) = value {
-        return ecoDatas.sorted {
+      if case let ViewContext.Value.ecoData(ecoData) = value {
+        return ecoData.sorted {
           $0.date < $1.date
         }
       } else {
@@ -158,20 +158,20 @@ class ViewControllerManager: EcoDataHandler, SiteHandler {
       }
     }
     set {
-      viewContext.state[.ecoDatas] = ViewContext.Value.ecoDatas(newValue)
+      viewContext.state[.ecoData] = ViewContext.Value.ecoData(newValue)
     }
   }
 
-  var ecoDataHandler: EcoDataHandler {
-    var newEcoDataHandler: EcoDataHandler = self
-    if let ecoDataHandler = storyboardSegue?.source as? EcoDataHandler {
+  var ecoDatumHandler: EcoDatumHandler {
+    var newEcoDataHandler: EcoDatumHandler = self
+    if let ecoDataHandler = storyboardSegue?.source as? EcoDatumHandler {
       newEcoDataHandler = ecoDataHandler
     }
     return newEcoDataHandler
   }
 
-  var ecoDataId: Identifier? {
-    return ViewControllerSegue.newEcoData == viewControllerSegue ? nil : ecoData?.id
+  var ecoDatumId: Identifier? {
+    return ViewControllerSegue.newEcoDatum == viewControllerSegue ? nil : ecoDatum?.id
   }
   
   var viewControllerSegue: ViewControllerSegue? {
@@ -400,14 +400,14 @@ class ViewControllerManager: EcoDataHandler, SiteHandler {
         NewOrUpdateSiteRequest(
           token: token,
           id: siteId,
+          organizationId: organizationId,
           name: name,
           description: description,
           latitude: latitude,
           longitude: longitude,
           altitude: altitude,
           horizontalAccuracy: horizontalAccuracy,
-          verticalAccuracy: verticalAccuracy,
-          organizationId: organizationId))
+          verticalAccuracy: verticalAccuracy))
         .then(in: .main) {
           site in
           if self.siteId == nil {
@@ -525,8 +525,8 @@ class ViewControllerManager: EcoDataHandler, SiteHandler {
     
   }
 
-  func newOrUpdateEcoData(
-    ecoData: EcoData,
+  func newOrUpdateEcoDatum(
+    ecoDatum: EcoDatum,
     preAsyncBlock: PreAsyncBlock? = nil,
     postAsyncBlock: PostAsyncBlock? = nil,
     completionBlock: CompletionBlock? = nil) {
@@ -547,17 +547,18 @@ class ViewControllerManager: EcoDataHandler, SiteHandler {
 
     do {
 
-      try serviceManager.call(
-          NewOrUpdateEcoDataRequest(
-            token: token,
-            id: ecoDataId,
-            ecoData: ecoData))
+      let request = ServiceManager.toRequest(
+        token: token,
+        ecoDatumId: ecoDatumId,
+        siteId: siteId,
+        ecoDatum: ecoDatum)
+      try serviceManager.call(request)
         .then(in: .main) {
           ecoData in
-          if self.ecoDataId == nil {
-            self.ecoDataHandler.handleNewEcoData(ecoData: ecoData)
+          if self.ecoDatumId == nil {
+            self.ecoDatumHandler.handleNewEcoDatum(ecoDatum: ecoData)
           } else {
-            self.ecoDataHandler.handleUpdatedEcoData(ecoData: ecoData)
+            self.ecoDatumHandler.handleUpdatedEcoDatum(ecoDatum: ecoData)
           }
           if let completionBlock = completionBlock {
             completionBlock()
@@ -686,6 +687,18 @@ class ViewControllerManager: EcoDataHandler, SiteHandler {
       
     }
     
+  }
+
+  func handleNewEcoDatum(ecoDatum: EcoDatum) {
+
+  }
+
+  func handleUpdatedEcoDatum(ecoDatum: EcoDatum) {
+
+  }
+
+  func handleDeletedEcoDatum(ecoDatum: EcoDatum) {
+
   }
 
   private func isResponseStatus(_ error: Error, status: Int) -> Bool {

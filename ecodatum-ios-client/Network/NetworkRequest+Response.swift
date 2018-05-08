@@ -1,6 +1,8 @@
 import Alamofire
 import Foundation
 
+typealias Base64Encoded = String
+
 protocol NetworkRequest: Encodable {
   
 }
@@ -141,6 +143,7 @@ struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
   
   let token: AuthenticationToken
   let id: Identifier? // site id
+  let organizationId: Identifier
   let name: String
   let description: String?
   let latitude: Double
@@ -148,7 +151,6 @@ struct NewOrUpdateSiteRequest: ProtectedNetworkRequest {
   let altitude: Double?
   let horizontalAccuracy: Double?
   let verticalAccuracy: Double?
-  let organizationId: String
   
 }
 
@@ -183,18 +185,43 @@ struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
   
 }
 
-struct NewOrUpdateEcoDataRequest: ProtectedNetworkRequest {
+struct AbioticData: Codable {
 
-  let token: AuthenticationToken
-  let id: Identifier?
-  let ecoData: EcoData
+  let abioticFactor: String
+  let dataType: String
+  let dataUnit: String
+  let dataValue: String
 
 }
 
-struct EcoDataResponse: NetworkResponse {
+struct BioticData: Codable {
+
+  let image: Base64Encoded
+  let notes: Base64Encoded
+
+}
+
+struct NewOrUpdateEcoDatumRequest: ProtectedNetworkRequest {
+
+  let token: AuthenticationToken
+  let id: Identifier?
+  let siteId: Identifier
+  let date: Date
+  let time: Date
+  let ecoFactor: String
+  let abioticData: AbioticData?
+  let bioticData: BioticData?
+
+}
+
+struct EcoDatumResponse: NetworkResponse {
 
   let id: Identifier
-  let ecoData: EcoData
+  let date: Date
+  let time: Date
+  let ecoFactor: String
+  let abioticData: AbioticData?
+  let bioticData: BioticData?
 
 }
 

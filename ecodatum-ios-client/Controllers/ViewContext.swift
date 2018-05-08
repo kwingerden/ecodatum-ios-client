@@ -11,8 +11,8 @@ class ViewContext {
     case site
     case sites
 
+    case ecoDatum
     case ecoData
-    case ecoDatas
     
   }
 
@@ -25,8 +25,8 @@ class ViewContext {
     case site(Site)
     case sites([Site])
 
-    case ecoData(EcoData)
-    case ecoDatas([EcoData])
+    case ecoDatum(EcoDatum)
+    case ecoData([EcoDatum])
         
   }
   

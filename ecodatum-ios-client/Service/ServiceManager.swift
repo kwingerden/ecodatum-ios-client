@@ -5,29 +5,29 @@ import Hydra
 import UIKit
 
 class ServiceManager {
-  
+
   let databaseManager: DatabaseManager
-  
+
   let networkManager: NetworkManager
-  
+
   init(databaseManager: DatabaseManager,
        networkManager: NetworkManager) {
     self.databaseManager = databaseManager
     self.networkManager = networkManager
   }
-  
+
   func call(_ request: BasicAuthUserRequest) throws -> Promise<BasicAuthUserResponse> {
     return try networkManager.call(request)
   }
-  
+
   func call(_ request: LogoutRequest) throws -> Promise<LogoutResponse> {
     return try networkManager.call(request)
   }
-  
+
   func call(_ request: CreateNewOrganizationUserRequest) throws -> Promise<UserResponse> {
     return try networkManager.call(request)
   }
-  
+
   func call(_ request: GetOrganizationsByUserRequest) throws -> Promise<[Organization]> {
     return async(in: .userInitiated) {
       status in
@@ -62,7 +62,7 @@ class ServiceManager {
       }
     }
   }
-  
+
   func call(_ request: GetUserRequest) throws -> Promise<User> {
     return async(in: .userInitiated) {
       status in
@@ -73,7 +73,7 @@ class ServiceManager {
         email: response.email)
     }
   }
-  
+
   func call(_ request: NewOrUpdateSiteRequest) throws -> Promise<Site> {
     return async(in: .userInitiated) {
       status in
@@ -93,7 +93,7 @@ class ServiceManager {
         updatedAt: response.updatedAt)
     }
   }
-  
+
   func call(_ request: GetSitesByOrganizationAndUserRequest) throws -> Promise<[Site]> {
     return async(in: .userInitiated) {
       status in
@@ -116,17 +116,143 @@ class ServiceManager {
       }
     }
   }
-  
+
   func call(_ request: DeleteSiteByIdRequest) throws -> Promise<HttpOKResponse> {
     return try networkManager.call(request)
   }
 
-  func call(_ request: NewOrUpdateEcoDataRequest) throws -> Promise<EcoData> {
+  func call(_ request: NewOrUpdateEcoDatumRequest) throws -> Promise<EcoDatum> {
     return async(in: .userInitiated) {
       status in
       let response = try await(try self.networkManager.call(request))
-      return response.ecoData
+      return ServiceManager.fromResponse(response)
     }
+  }
+
+  static func toRequest(
+    token: AuthenticationToken,
+    ecoDatumId: Identifier?,
+    siteId: Identifier,
+    ecoDatum: EcoDatum) -> NewOrUpdateEcoDatumRequest {
+
+    guard let ecoFactor = ecoDatum.ecoFactor else {
+      fatalError()
+    }
+
+    var abioticData: AbioticData?
+    var bioticData: BioticData?
+
+    switch ecoDatum.ecoFactor {
+
+    case .Abiotic?:
+
+      guard let abioticFactor = ecoDatum.abioticFactor?.rawValue,
+            let abioticEcoData = ecoDatum.abioticEcoData,
+            let dataUnit = abioticEcoData.dataUnit,
+            let dataValue = abioticEcoData.dataValue else {
+        fatalError()
+      }
+
+      var dataType: String = ""
+      switch abioticEcoData.dataType {
+      case .Air(let airDataType)?: dataType = airDataType.rawValue
+      case .Soil(let soilDataType)?: dataType = soilDataType.rawValue
+      case .Water(let waterDataType)?: dataType = waterDataType.rawValue
+      default: fatalError()
+      }
+
+      abioticData = AbioticData(
+        abioticFactor: abioticFactor,
+        dataType: dataType,
+        dataUnit: dataUnit.rawValue,
+        dataValue: dataValue.description)
+
+    case .Biotic?: break
+      /*
+      bioticData = BioticData(
+        image: <#T##Base64Encoded##ecodatum_ios_client.Base64Encoded#>,
+        notes: <#T##Base64Encoded##ecodatum_ios_client.Base64Encoded#>)
+        */
+
+    default: fatalError()
+
+    }
+
+    return NewOrUpdateEcoDatumRequest(
+      token: token,
+      id: ecoDatumId,
+      siteId: siteId,
+      date: ecoDatum.date,
+      time: ecoDatum.time,
+      ecoFactor: ecoFactor.rawValue,
+      abioticData: abioticData,
+      bioticData: bioticData)
+
+  }
+
+  static func fromResponse(_ response: EcoDatumResponse) -> EcoDatum {
+
+    var ecoFactor: EcoFactor?
+    var data: EcoDatum.AbioticOrBioticData?
+
+    switch EcoFactor(rawValue: response.ecoFactor) {
+
+    case .Abiotic?:
+      ecoFactor = .Abiotic
+
+      guard let abioticData = response.abioticData,
+            let abioticFactor = AbioticFactor(rawValue: abioticData.abioticFactor),
+            let dataUnit = AbioticDataUnitChoice(rawValue: abioticData.dataUnit) else {
+        fatalError()
+      }
+
+      var dataType: AbioticDataTypeChoice?
+      switch abioticFactor {
+
+      case .Air:
+        guard let airDataType = AirDataType(rawValue: abioticData.dataValue) else {
+          fatalError()
+        }
+        dataType = AbioticDataTypeChoice.Air(airDataType)
+
+      case .Soil:
+        guard let soilDataType = SoilDataType(rawValue: abioticData.dataValue) else {
+          fatalError()
+        }
+        dataType = AbioticDataTypeChoice.Soil(soilDataType)
+
+      case .Water:
+        guard let waterDataType = WaterDataType(rawValue: abioticData.dataValue) else {
+          fatalError()
+        }
+        dataType = AbioticDataTypeChoice.Water(waterDataType)
+
+      }
+
+      let abioticEcoData = AbioticEcoData(
+        abioticFactor: abioticFactor,
+        dataType: dataType,
+        dataUnit: dataUnit,
+        dataValue: nil)
+
+      data = EcoDatum.AbioticOrBioticData.Abiotic(abioticEcoData)
+
+    case .Biotic?:
+      ecoFactor = .Biotic
+      let bioticEcoData = BioticEcoData()
+      data = EcoDatum.AbioticOrBioticData.Biotic(bioticEcoData)
+
+    default: fatalError()
+
+    }
+
+    return EcoDatum(
+      id: response.id,
+      date: response.date,
+      time: response.time,
+      ecoFactor: ecoFactor,
+      data: data)
+
   }
 
 }

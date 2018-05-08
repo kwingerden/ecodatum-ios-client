@@ -105,7 +105,7 @@
                         <outlet property="scrollView" destination="36o-8k-kM1" id="40N-OG-h5k"/>
                         <outlet property="siteNameLabel" destination="Ojd-QQ-psf" id="LUo-yN-9sZ"/>
                         <outlet property="viewExistingDataButton" destination="2C8-qL-Y6g" id="LUt-1V-06U"/>
-                        <segue destination="GCI-V7-ewq" kind="show" identifier="newData" id="L6q-bv-G4A"/>
+                        <segue destination="GCI-V7-ewq" kind="show" identifier="newEcoDatum" id="L6q-bv-G4A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czA-CW-qwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
