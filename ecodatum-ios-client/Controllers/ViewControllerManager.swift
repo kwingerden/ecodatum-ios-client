@@ -547,9 +547,8 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
 
     do {
 
-      let request = ServiceManager.toRequest(
+      let request = NewOrUpdateEcoDatumRequest(
         token: token,
-        ecoDatumId: ecoDatumId,
         siteId: siteId,
         ecoDatum: ecoDatum)
       try serviceManager.call(request)

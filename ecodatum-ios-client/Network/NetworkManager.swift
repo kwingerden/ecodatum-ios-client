@@ -141,14 +141,14 @@ class NetworkManager {
         request: request))
   }
 
-  func call(_ request: NewOrUpdateEcoDatumRequest) throws -> Promise<EcoDatumResponse> {
+  func call(_ request: NewOrUpdateEcoDatumRequest) throws -> Promise<EcoDatum> {
 
-    let method: HTTPMethod = request.id == nil ? .post : .put
+    let method: HTTPMethod = request.ecoDatum.id == nil ? .post : .put
     var url = baseURL
       .appendingPathComponent("protected")
       .appendingPathComponent("data")
     if method == .put,
-       let id = request.id {
+       let id = request.ecoDatum.id {
       url = url.appendingPathComponent("\(id)")
     }
 

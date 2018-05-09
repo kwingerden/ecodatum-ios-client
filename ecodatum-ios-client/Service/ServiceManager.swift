@@ -122,137 +122,34 @@ class ServiceManager {
   }
 
   func call(_ request: NewOrUpdateEcoDatumRequest) throws -> Promise<EcoDatum> {
-    return async(in: .userInitiated) {
-      status in
-      let response = try await(try self.networkManager.call(request))
-      return ServiceManager.fromResponse(response)
-    }
-  }
 
-  static func toRequest(
-    token: AuthenticationToken,
-    ecoDatumId: Identifier?,
-    siteId: Identifier,
-    ecoDatum: EcoDatum) -> NewOrUpdateEcoDatumRequest {
+    // TODO TEST
 
-    guard let ecoFactor = ecoDatum.ecoFactor else {
-      fatalError()
-    }
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
+    encoder.dateEncodingStrategy = .customISO8601
 
-    var abioticData: AbioticData?
-    var bioticData: BioticData?
+    let fullEncodedData = try encoder.encode(request)
+    let fullEncodedString = String(data: fullEncodedData, encoding: .utf8)!
+    print(fullEncodedString)
 
-    switch ecoDatum.ecoFactor {
+    let ecoDatum1 = EcoDatum(
+      id: "1234",
+      date: request.ecoDatum.date,
+      time: request.ecoDatum.time,
+      ecoFactor: request.ecoDatum.ecoFactor,
+      data: request.ecoDatum.data)
+    let encodedData = try encoder.encode(ecoDatum1)
+    let encodedString = String(data: encodedData, encoding: .utf8)!
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .customISO8601
+    let ecoDatum2 = try decoder.decode(EcoDatum.self, from: encodedString.data(using: .utf8)!)
 
-    case .Abiotic?:
+    assert(ecoDatum1.time == ecoDatum2.time)
 
-      guard let abioticFactor = ecoDatum.abioticFactor?.rawValue,
-            let abioticEcoData = ecoDatum.abioticEcoData,
-            let dataUnit = abioticEcoData.dataUnit,
-            let dataValue = abioticEcoData.dataValue else {
-        fatalError()
-      }
+    // end TEST
 
-      var dataType: String = ""
-      switch abioticEcoData.dataType {
-      case .Air(let airDataType)?: dataType = airDataType.rawValue
-      case .Soil(let soilDataType)?: dataType = soilDataType.rawValue
-      case .Water(let waterDataType)?: dataType = waterDataType.rawValue
-      default: fatalError()
-      }
-
-      abioticData = AbioticData(
-        abioticFactor: abioticFactor,
-        dataType: dataType,
-        dataUnit: dataUnit.rawValue,
-        dataValue: dataValue.description)
-
-    case .Biotic?: break
-      /*
-      bioticData = BioticData(
-        image: <#T##Base64Encoded##ecodatum_ios_client.Base64Encoded#>,
-        notes: <#T##Base64Encoded##ecodatum_ios_client.Base64Encoded#>)
-        */
-
-    default: fatalError()
-
-    }
-
-    return NewOrUpdateEcoDatumRequest(
-      token: token,
-      id: ecoDatumId,
-      siteId: siteId,
-      date: ecoDatum.date,
-      time: ecoDatum.time,
-      ecoFactor: ecoFactor.rawValue,
-      abioticData: abioticData,
-      bioticData: bioticData)
-
-  }
-
-  static func fromResponse(_ response: EcoDatumResponse) -> EcoDatum {
-
-    var ecoFactor: EcoFactor?
-    var data: EcoDatum.AbioticOrBioticData?
-
-    switch EcoFactor(rawValue: response.ecoFactor) {
-
-    case .Abiotic?:
-      ecoFactor = .Abiotic
-
-      guard let abioticData = response.abioticData,
-            let abioticFactor = AbioticFactor(rawValue: abioticData.abioticFactor),
-            let dataUnit = AbioticDataUnitChoice(rawValue: abioticData.dataUnit) else {
-        fatalError()
-      }
-
-      var dataType: AbioticDataTypeChoice?
-      switch abioticFactor {
-
-      case .Air:
-        guard let airDataType = AirDataType(rawValue: abioticData.dataValue) else {
-          fatalError()
-        }
-        dataType = AbioticDataTypeChoice.Air(airDataType)
-
-      case .Soil:
-        guard let soilDataType = SoilDataType(rawValue: abioticData.dataValue) else {
-          fatalError()
-        }
-        dataType = AbioticDataTypeChoice.Soil(soilDataType)
-
-      case .Water:
-        guard let waterDataType = WaterDataType(rawValue: abioticData.dataValue) else {
-          fatalError()
-        }
-        dataType = AbioticDataTypeChoice.Water(waterDataType)
-
-      }
-
-      let abioticEcoData = AbioticEcoData(
-        abioticFactor: abioticFactor,
-        dataType: dataType,
-        dataUnit: dataUnit,
-        dataValue: nil)
-
-      data = EcoDatum.AbioticOrBioticData.Abiotic(abioticEcoData)
-
-    case .Biotic?:
-      ecoFactor = .Biotic
-      let bioticEcoData = BioticEcoData()
-      data = EcoDatum.AbioticOrBioticData.Biotic(bioticEcoData)
-
-    default: fatalError()
-
-    }
-
-    return EcoDatum(
-      id: response.id,
-      date: response.date,
-      time: response.time,
-      ecoFactor: ecoFactor,
-      data: data)
-
+    return try self.networkManager.call(request)
   }
 
 }

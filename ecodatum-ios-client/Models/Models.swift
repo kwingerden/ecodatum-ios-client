@@ -3,11 +3,7 @@ import Foundation
 typealias Identifier = String
 typealias AuthenticationToken = String
 
-protocol DataValue: LosslessStringConvertible {
-
-}
-
-struct User {
+struct User: Codable {
 
   let id: Identifier
   let fullName: String
@@ -15,14 +11,14 @@ struct User {
 
 }
 
-struct Role {
+struct Role: Codable {
 
   let id: Identifier
   let name: String
 
 }
 
-struct AuthenticatedUser {
+struct AuthenticatedUser: Codable {
 
   let userId: Identifier
   let token: AuthenticationToken
@@ -32,7 +28,7 @@ struct AuthenticatedUser {
 
 }
 
-struct Organization {
+struct Organization: Codable {
 
   let id: Identifier
   let code: String
@@ -43,14 +39,14 @@ struct Organization {
 
 }
 
-struct OrganizationMember {
+struct OrganizationMember: Codable {
 
   let user: User
   let role: Role
 
 }
 
-struct Site {
+struct Site: Codable {
 
   let id: Identifier
   let name: String
@@ -67,7 +63,7 @@ struct Site {
 
 }
 
-enum EcoFactor: String {
+enum EcoFactor: String, Codable {
 
   case Abiotic
   case Biotic
@@ -79,7 +75,7 @@ enum EcoFactor: String {
 
 }
 
-enum AbioticFactor: String {
+enum AbioticFactor: String, Codable {
 
   case Air
   case Soil
@@ -93,7 +89,7 @@ enum AbioticFactor: String {
 
 }
 
-enum AirDataType: String {
+enum AirDataType: String, Codable {
 
   case Velocity
   case CarbonDioxide = "Carbon Dioxide"
@@ -115,7 +111,7 @@ enum AirDataType: String {
 
 }
 
-enum SoilDataType: String {
+enum SoilDataType: String, Codable {
 
   case Nitrogen
   case Phosphorus
@@ -135,7 +131,7 @@ enum SoilDataType: String {
 
 }
 
-enum WaterDataType: String {
+enum WaterDataType: String, Codable {
 
   case Conductivity
   case DissolvedOxygen = "Dissolved Oxygen"
@@ -177,11 +173,33 @@ enum AbioticDataType {
 
 }
 
-enum AbioticDataTypeChoice {
+enum AbioticDataTypeChoice: Codable {
 
   case Air(AirDataType)
   case Soil(SoilDataType)
   case Water(WaterDataType)
+
+  init(from decoder: Decoder) throws {
+    self = .Air(AirDataType.all[0])
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case air
+    case soil
+    case water
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .Air(let airDataType):
+      try container.encode(airDataType, forKey: .air)
+    case .Soil(let soilDataType):
+      try container.encode(soilDataType, forKey: .soil)
+    case .Water(let waterDataType):
+      try container.encode(waterDataType, forKey: .water)
+    }
+  }
 
   static func ==(lhs: AbioticDataTypeChoice, rhs: AbioticDataTypeChoice) -> Bool {
     switch (lhs, rhs) {
@@ -194,7 +212,7 @@ enum AbioticDataTypeChoice {
 
 }
 
-enum AbioticDataUnitChoice: String {
+enum AbioticDataUnitChoice: String, Codable {
 
   case PartsPerMillion = "ppm \\ (Parts \\ Per \\ Million)"
   case Lux = "Lux"
@@ -362,18 +380,30 @@ enum AbioticDataUnitChoice: String {
 
 }
 
-enum SoilPotassiumScale: DataValue {
+enum SoilPotassiumScale: Codable {
 
   case Low(index: Int, label: String)
   case Medium(index: Int, label: String)
   case High(index: Int, label: String)
 
-  var description: String {
-    return ""
+  init(from decoder: Decoder) throws {
+    self = SoilPotassiumScale.all[0]
   }
 
-  init?(_ description: String) {
-    return nil
+  enum CodingKeys: String, CodingKey {
+    case scale
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .Low(let low):
+      try container.encode(low.label, forKey: .scale)
+    case .Medium(let medium):
+      try container.encode(medium.label, forKey: .scale)
+    case .High(let high):
+      try container.encode(high.label, forKey: .scale)
+    }
   }
 
   static func ==(_ lhs: SoilPotassiumScale, _ rhs: SoilPotassiumScale) -> Bool {
@@ -404,7 +434,7 @@ enum SoilPotassiumScale: DataValue {
 
 }
 
-enum WaterOdorScale: DataValue {
+enum WaterOdorScale: Codable {
 
   case NoOdor(index: Int, label: String)
   case SlightOdor(index: Int, label: String)
@@ -412,12 +442,28 @@ enum WaterOdorScale: DataValue {
   case VerySmelly(index: Int, label: String)
   case Devastating(index: Int, label: String)
 
-  var description: String {
-    return ""
+  init(from decoder: Decoder) throws {
+    self = WaterOdorScale.all[0]
   }
 
-  init?(_ description: String) {
-    return nil
+  enum CodingKeys: String, CodingKey {
+    case scale
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .NoOdor(let noOdor):
+      try container.encode(noOdor.label, forKey: .scale)
+    case .SlightOdor(let slightOdor):
+      try container.encode(slightOdor.label, forKey: .scale)
+    case .Smelly(let smelly):
+      try container.encode(smelly.label, forKey: .scale)
+    case .VerySmelly(let verySmelly):
+      try container.encode(verySmelly.label, forKey: .scale)
+    case .Devastating(let devastating):
+      try container.encode(devastating.label, forKey: .scale)
+    }
   }
 
   static func ==(_ lhs: WaterOdorScale, _ rhs: WaterOdorScale) -> Bool {
@@ -454,7 +500,7 @@ enum WaterOdorScale: DataValue {
 
 }
 
-enum WaterTurbidityScale: DataValue {
+enum WaterTurbidityScale: Codable {
 
   case CrystalClear(index: Int, label: String)
   case SlightlyCloudy(index: Int, label: String)
@@ -462,12 +508,28 @@ enum WaterTurbidityScale: DataValue {
   case VeryCloudy(index: Int, label: String)
   case BlackishOrBrownish(index: Int, label: String)
 
-  var description: String {
-    return ""
+  init(from decoder: Decoder) throws {
+    self = WaterTurbidityScale.all[0]
   }
 
-  init?(_ description: String) {
-    return nil
+  enum CodingKeys: String, CodingKey {
+    case scale
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .CrystalClear(let crystalClear):
+      try container.encode(crystalClear.label, forKey: .scale)
+    case .SlightlyCloudy(let slightlyCloudy):
+      try container.encode(slightlyCloudy.label, forKey: .scale)
+    case .ModeratelyCloudy(let moderatelyCloudy):
+      try container.encode(moderatelyCloudy.label, forKey: .scale)
+    case .VeryCloudy(let veryCloudy):
+      try container.encode(veryCloudy.label, forKey: .scale)
+    case .BlackishOrBrownish(let blackishOrBrownish):
+      try container.encode(blackishOrBrownish.label, forKey: .scale)
+    }
   }
 
   static func ==(_ lhs: WaterTurbidityScale, _ rhs: WaterTurbidityScale) -> Bool {
@@ -504,11 +566,7 @@ enum WaterTurbidityScale: DataValue {
 
 }
 
-struct SoilTextureScale: DataValue {
-
-  var description: String {
-    return "\(percentSand),\(percentSilt),\(percentClay)"
-  }
+struct SoilTextureScale: Codable {
 
   let percentSand: Int
   let percentSilt: Int
@@ -522,10 +580,6 @@ struct SoilTextureScale: DataValue {
     self.percentClay = percentClay
   }
 
-  init?(_ description: String) {
-    return nil
-  }
-
   static func ==(_ lhs: SoilTextureScale, _ rhs: SoilTextureScale) -> Bool {
     return lhs.percentSand == rhs.percentSand &&
       lhs.percentSilt == rhs.percentSilt &&
@@ -534,14 +588,14 @@ struct SoilTextureScale: DataValue {
 
 }
 
-struct DecimalDataValue: DataValue {
+enum NumberSign: String, Codable {
+  case positive = "+"
+  case negative = "-"
+}
 
-  enum Sign {
-    case positive
-    case negative
-  }
+struct DecimalDataValue: Codable, CustomStringConvertible {
 
-  let sign: Sign
+  let sign: NumberSign
   let number: String
   let decimalPoint: Bool
   let fraction: String?
@@ -550,15 +604,11 @@ struct DecimalDataValue: DataValue {
     return toString()
   }
 
-  var stringValue: String {
-    return toString()
-  }
-
   var doubleValue: Double {
     return Double(toString())!
   }
 
-  init(sign: Sign = .positive,
+  init(sign: NumberSign = .positive,
        number: String = "0",
        decimalPoint: Bool = false,
        fraction: String? = nil) {
@@ -568,8 +618,26 @@ struct DecimalDataValue: DataValue {
     self.fraction = fraction
   }
 
-  init?(_ description: String) {
-    return nil
+  init(from decoder: Decoder) throws {
+    self.sign = .positive
+    self.number = ""
+    self.decimalPoint = true
+    self.fraction = nil
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case sign
+    case number
+    case decimalPoint
+    case fraction
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(sign, forKey: .sign)
+    try container.encode(number, forKey: .number)
+    try container.encode(decimalPoint, forKey: .decimalPoint)
+    try container.encode(fraction, forKey: .fraction)
   }
 
   func toggleSign() -> DecimalDataValue {
@@ -717,18 +785,90 @@ struct DecimalDataValue: DataValue {
 
 }
 
-struct EcoDatum {
+enum AbioticOrBioticData: Codable {
 
-  enum AbioticOrBioticData {
-    case Abiotic(AbioticEcoData)
-    case Biotic(BioticEcoData)
+  case Abiotic(AbioticEcoData)
+  case Biotic(BioticEcoData)
+
+  enum CodingKeys: String, CodingKey {
+    case abiotic
+    case biotic
   }
+
+  init(from decoder: Decoder) throws {
+    self = .Abiotic(AbioticEcoData())
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .Abiotic(let abioticEcoData):
+      try container.encode(abioticEcoData, forKey: .abiotic)
+    case .Biotic(let bioticEcoData):
+      try container.encode(bioticEcoData, forKey: .biotic)
+    }
+  }
+
+}
+
+enum DataValue: Codable {
+
+  case DecimalDataValue(DecimalDataValue)
+  case SoilPotassiumScale(SoilPotassiumScale)
+  case SoilTextureScale(SoilTextureScale)
+  case WaterOdorScale(WaterOdorScale)
+  case WaterTurbidityScale(WaterTurbidityScale)
+
+  enum CodingKeys: String, CodingKey {
+    case dataValue
+  }
+
+  init(from decoder: Decoder) throws {
+    self = .WaterOdorScale(.Devastating(index: 0, label: ""))
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .DecimalDataValue(let decimalDataValue):
+      try container.encode(decimalDataValue, forKey: .dataValue)
+    case .SoilPotassiumScale(let soilPotassiumScale):
+      try container.encode(soilPotassiumScale, forKey: .dataValue)
+    case .SoilTextureScale(let soilTextureScale):
+      try container.encode(soilTextureScale, forKey: .dataValue)
+    case .WaterOdorScale(let waterOdorScale):
+      try container.encode(waterOdorScale, forKey: .dataValue)
+    case .WaterTurbidityScale(let waterTurbidityScale):
+      try container.encode(waterTurbidityScale, forKey: .dataValue)
+    }
+  }
+
+}
+
+struct EcoDatum: Codable {
 
   let id: Identifier?
   let date: Date
   let time: Date
   let ecoFactor: EcoFactor?
   let data: AbioticOrBioticData?
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case date
+    case time
+    case ecoFactor
+    case data
+  }
+
+  init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    id = try container.decodeIfPresent(Identifier.self, forKey: .id)
+    date = try container.decode(Date.self, forKey: .date)
+    time = try container.decode(Date.self, forKey: .time)
+    ecoFactor = nil
+    data = nil
+  }
 
   var abioticEcoData: AbioticEcoData? {
     switch data {
@@ -794,7 +934,7 @@ struct EcoDatum {
 
 }
 
-struct AbioticEcoData {
+struct AbioticEcoData: Codable {
 
   let abioticFactor: AbioticFactor?
   let dataType: AbioticDataTypeChoice?
@@ -809,6 +949,89 @@ struct AbioticEcoData {
     self.dataType = dataType
     self.dataUnit = dataUnit
     self.dataValue = dataValue
+  }
+
+  init(from decoder: Decoder) throws {
+    self.abioticFactor = nil
+    self.dataType = nil
+    self.dataUnit = nil
+    self.dataValue = nil
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case abioticFactor
+    case dataType
+    case dataUnit
+    case dataValue
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+
+    try container.encode(abioticFactor, forKey: .abioticFactor)
+
+    switch dataType {
+    case .Air(let airDataType)?:
+      try container.encode(airDataType, forKey: .dataType)
+    case .Soil(let soilDataType)?:
+      try container.encode(soilDataType, forKey: .dataType)
+    case .Water(let waterDataType)?:
+      try container.encode(waterDataType, forKey: .dataType)
+    default: fatalError()
+    }
+
+    try container.encode(dataUnit, forKey: .dataUnit)
+
+    switch dataValue {
+
+    case .DecimalDataValue(let decimalDataValue)?:
+      try container.encode(decimalDataValue, forKey: .dataValue)
+
+    case .SoilPotassiumScale(let soilPotassiumScale)?:
+      switch soilPotassiumScale {
+      case .Low(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .Medium(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .High(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      }
+
+    case .SoilTextureScale(let soilTextureScale)?:
+      try container.encode(soilTextureScale, forKey: .dataValue)
+
+    case .WaterOdorScale(let waterOdorScale)?:
+      switch waterOdorScale {
+      case .NoOdor(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .SlightOdor(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .Smelly(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .VerySmelly(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .Devastating(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      }
+
+    case .WaterTurbidityScale(let waterTurbidityScale)?:
+      switch waterTurbidityScale {
+      case .CrystalClear(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .SlightlyCloudy(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .ModeratelyCloudy(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .VeryCloudy(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .BlackishOrBrownish(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      }
+
+    default: fatalError()
+
+    }
+
   }
 
   func new(abioticFactor: AbioticFactor) -> AbioticEcoData {
@@ -845,7 +1068,7 @@ struct AbioticEcoData {
 
 }
 
-struct BioticEcoData {
+struct BioticEcoData: Codable {
 
   let image: UIImage?
   let notes: NSAttributedString?
@@ -854,6 +1077,15 @@ struct BioticEcoData {
        notes: NSAttributedString? = nil) {
     self.image = image
     self.notes = notes
+  }
+
+  init(from decoder: Decoder) throws {
+    self.image = nil
+    self.notes = nil
+  }
+
+  func encode(to encoder: Encoder) throws {
+
   }
 
   func new(image: UIImage?) -> BioticEcoData {

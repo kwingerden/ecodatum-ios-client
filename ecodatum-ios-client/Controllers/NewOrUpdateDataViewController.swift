@@ -283,7 +283,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
       ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataUnit: dataUnitChoice)))
     default: fatalError()
     }
-    
+
     tableView.reloadSections([5], with: .automatic)
 
     if numberOfSections > 6 {
@@ -325,17 +325,17 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   }
 
   func handleDataValueChoice(_ dataValue: DataValue) {
-    
+
     switch ecoData.data {
     case .Abiotic(let abioticEcoData)?:
       ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataValue: dataValue)))
     default: fatalError()
     }
-    
+
     updateAbioticDataValueRow(tableView)
-    
+
   }
-  
+
   private func updateAbioticDataValueRow(_ tableView: UITableView) {
     tableView.reloadSections([6], with: .automatic)
 
@@ -361,7 +361,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
       ecoData = ecoData.new(data: .Biotic(bioticEcoData.new(image: image)))
     default: fatalError()
     }
-    
+
     tableView.reloadSections([3], with: .automatic)
 
     if numberOfSections > 4 {
@@ -387,7 +387,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
       ecoData = ecoData.new(data: .Biotic(bioticEcoData.new(notes: notes)))
     default: fatalError()
     }
-    
+
     tableView.reloadSections([4], with: .automatic)
 
     if numberOfSections > 5 {
@@ -608,7 +608,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       cell.dataTypeLabel.textColor = .black
 
     } else {
-      
+
       switch ecoData.abioticFactor {
       case .Air?: cell.dataTypeLabel.text = "Choose Air Data Type"
       case .Soil?: cell.dataTypeLabel.text = "Choose Soil Data Type"
@@ -669,27 +669,24 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       for: indexPath) as! DataValueChoiceTableViewCell
 
     if let dataValue = ecoData.abioticEcoData?.dataValue {
-      
+
       switch dataValue {
 
-      case is DecimalDataValue:
-        let value = dataValue as! DecimalDataValue
-        cell.dataValueLabel.text = value.stringValue
+      case .DecimalDataValue(let decimalDataValue):
+        cell.dataValueLabel.text = decimalDataValue.description
 
-      case is SoilPotassiumScale:
-        let value = dataValue as! SoilPotassiumScale
+      case .SoilPotassiumScale(let soilPotassiumScale):
         var text = ""
-        switch value {
+        switch soilPotassiumScale {
         case .Low(_, let label): text = label
         case .Medium(_, let label): text = label
         case .High(_, let label): text = label
         }
         cell.dataValueLabel.text = text
 
-      case is WaterOdorScale:
-        let value = dataValue as! WaterOdorScale
+      case .WaterOdorScale(let waterOdorScale):
         var text = ""
-        switch value {
+        switch waterOdorScale {
         case .NoOdor(_, let label): text = label
         case .SlightOdor(_, let label): text = label
         case .Smelly(_, let label): text = label
@@ -698,10 +695,9 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         }
         cell.dataValueLabel.text = text
 
-      case is WaterTurbidityScale:
-        let value = dataValue as! WaterTurbidityScale
+      case .WaterTurbidityScale(let waterTurbidityScale):
         var text = ""
-        switch value {
+        switch waterTurbidityScale {
         case .CrystalClear(_, let label): text = label
         case .SlightlyCloudy(_, let label): text = label
         case .ModeratelyCloudy(_, let label): text = label
@@ -710,11 +706,12 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
         }
         cell.dataValueLabel.text = text
 
-      case is SoilTextureScale:
-        let value = dataValue as! SoilTextureScale
-        cell.dataValueLabel.text = "\(value.percentSand)% Sand, \(value.percentSilt)% Silt, \(value.percentClay)% Clay"
+      case .SoilTextureScale(let soilTextureScale):
+        cell.dataValueLabel.text =
+          "\(soilTextureScale.percentSand)% Sand, " +
+            "\(soilTextureScale.percentSilt)% Silt, " +
+            "\(soilTextureScale.percentClay)% Clay"
 
-      default: fatalError()
       }
 
       cell.dataValueLabel.textColor = .black
@@ -1339,9 +1336,13 @@ class DataValueChoiceViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    if let dataValue = abioticFactorChoices.dataValue as? DecimalDataValue {
-      self.dataValue = dataValue
-      valueLabel.text = dataValue.stringValue
+    if let dataValue = abioticFactorChoices.dataValue {
+      switch dataValue {
+      case .DecimalDataValue(let decimalDataValue):
+        self.dataValue = decimalDataValue
+        valueLabel.text = decimalDataValue.description
+      default: fatalError()
+      }
     }
 
   }
@@ -1395,7 +1396,7 @@ class DataValueChoiceViewController: UIViewController {
       newDataValue = dataValue.addDigit(9)
 
     case okButton:
-      handleDataValueChoice(dataValue)
+      handleDataValueChoice(DataValue.DecimalDataValue(dataValue))
       dismiss(animated: true, completion: nil)
 
     case cancelButton:
@@ -1407,10 +1408,10 @@ class DataValueChoiceViewController: UIViewController {
     }
 
     if let newDataValue = newDataValue,
-       newDataValue.stringValue.count <= 10 {
+       newDataValue.description.count <= 10 {
 
       dataValue = newDataValue
-      valueLabel.text = dataValue.stringValue
+      valueLabel.text = dataValue.description
 
     }
 
@@ -1445,11 +1446,17 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
     var numberRow: Int = 0
     var fractionRow: Int = 0
-    if let dataValue = abioticFactorChoices.dataValue as? DecimalDataValue {
-      numberRow = numberRange.index(of: Int(dataValue.number)!)!
-      if let fraction = dataValue.fraction {
-        fractionRow = fractionRange.index(of: Int(fraction)!)!
+    if let dataValue = abioticFactorChoices.dataValue {
+
+      switch dataValue {
+      case .DecimalDataValue(let decimalDataValue):
+        numberRow = numberRange.index(of: Int(decimalDataValue.number)!)!
+        if let fraction = decimalDataValue.fraction {
+          fractionRow = fractionRange.index(of: Int(fraction)!)!
+        }
+      default: fatalError()
       }
+
     }
 
     pHValuePicker.selectRow(numberRow, inComponent: 0, animated: false)
@@ -1464,9 +1471,11 @@ class PhValueChoiceViewController: UIViewController, UIPickerViewDataSource, UIP
       let number = Int(pHValuePicker.selectedRow(inComponent: 0) + 1)
       let fraction = Int(pHValuePicker.selectedRow(inComponent: 2))
       if number == 14 {
-        handleDataValueChoice(DecimalDataValue(number: String(number), fraction: "0"))
+        let dataValue = DataValue.DecimalDataValue(DecimalDataValue(number: String(number), fraction: "0"))
+        handleDataValueChoice(dataValue)
       } else {
-        handleDataValueChoice(DecimalDataValue(number: String(number), fraction: String(fraction)))
+        let dataValue = DataValue.DecimalDataValue(DecimalDataValue(number: String(number), fraction: String(fraction)))
+        handleDataValueChoice(dataValue)
       }
 
     }
@@ -1546,12 +1555,18 @@ class SoilPotassiumChoiceViewController: UIViewController, UIPickerViewDataSourc
     super.viewWillAppear(animated)
 
     var selectedRow: Int = 0
-    if let soilPotassiumScale = abioticFactorChoices.dataValue as? SoilPotassiumScale {
-      switch soilPotassiumScale {
-      case let .Low(index, _): selectedRow = index
-      case let .Medium(index, _): selectedRow = index
-      case let .High(index, _): selectedRow = index
+    if let dataValue = abioticFactorChoices.dataValue {
+
+      switch dataValue {
+      case .SoilPotassiumScale(let soilPotassiumScale):
+        switch soilPotassiumScale {
+        case let .Low(index, _): selectedRow = index
+        case let .Medium(index, _): selectedRow = index
+        case let .High(index, _): selectedRow = index
+        }
+      default: fatalError()
       }
+
     }
 
     picker.selectRow(selectedRow, inComponent: 0, animated: false)
@@ -1562,7 +1577,9 @@ class SoilPotassiumChoiceViewController: UIViewController, UIPickerViewDataSourc
 
     if sender == okButton {
       let selectedRow = picker.selectedRow(inComponent: 0)
-      handleSoilPotassiumChoice(SoilPotassiumScale.all[selectedRow])
+      handleSoilPotassiumChoice(
+        DataValue.SoilPotassiumScale(
+          SoilPotassiumScale.all[selectedRow]))
     }
     dismiss(animated: true, completion: nil)
 
@@ -1610,14 +1627,20 @@ class WaterOdorChoiceViewController: UIViewController, UIPickerViewDataSource, U
     super.viewWillAppear(animated)
 
     var selectedRow: Int = 0
-    if let waterOdorScale = abioticFactorChoices.dataValue as? WaterOdorScale {
-      switch waterOdorScale {
-      case let .NoOdor(index, _): selectedRow = index
-      case let .SlightOdor(index, _): selectedRow = index
-      case let .Smelly(index, _): selectedRow = index
-      case let .VerySmelly(index, _): selectedRow = index
-      case let .Devastating(index, _): selectedRow = index
+    if let dataValue = abioticFactorChoices.dataValue {
+
+      switch dataValue {
+      case .WaterOdorScale(let waterOdorScale):
+        switch waterOdorScale {
+        case let .NoOdor(index, _): selectedRow = index
+        case let .SlightOdor(index, _): selectedRow = index
+        case let .Smelly(index, _): selectedRow = index
+        case let .VerySmelly(index, _): selectedRow = index
+        case let .Devastating(index, _): selectedRow = index
+        }
+      default: fatalError()
       }
+
     }
 
     picker.selectRow(selectedRow, inComponent: 0, animated: false)
@@ -1628,7 +1651,7 @@ class WaterOdorChoiceViewController: UIViewController, UIPickerViewDataSource, U
 
     if sender == okButton {
       let selectedRow = picker.selectedRow(inComponent: 0)
-      handleWaterOdorChoice(WaterOdorScale.all[selectedRow])
+      handleWaterOdorChoice(DataValue.WaterOdorScale(WaterOdorScale.all[selectedRow]))
     }
     dismiss(animated: true, completion: nil)
 
@@ -1678,14 +1701,20 @@ class WaterTurbidityChoiceViewController: UIViewController, UIPickerViewDataSour
     super.viewWillAppear(animated)
 
     var selectedRow: Int = 0
-    if let waterTurbidityScale = abioticFactorChoices.dataValue as? WaterTurbidityScale {
-      switch waterTurbidityScale {
-      case let .CrystalClear(index, _): selectedRow = index
-      case let .SlightlyCloudy(index, _): selectedRow = index
-      case let .ModeratelyCloudy(index, _): selectedRow = index
-      case let .VeryCloudy(index, _): selectedRow = index
-      case let .BlackishOrBrownish(index, _): selectedRow = index
+    if let dataValue = abioticFactorChoices.dataValue {
+
+      switch dataValue {
+      case .WaterTurbidityScale(let waterTurbidityScale):
+        switch waterTurbidityScale {
+        case let .CrystalClear(index, _): selectedRow = index
+        case let .SlightlyCloudy(index, _): selectedRow = index
+        case let .ModeratelyCloudy(index, _): selectedRow = index
+        case let .VeryCloudy(index, _): selectedRow = index
+        case let .BlackishOrBrownish(index, _): selectedRow = index
+        }
+      default: fatalError()
       }
+
     }
 
     picker.selectRow(selectedRow, inComponent: 0, animated: false)
@@ -1696,7 +1725,7 @@ class WaterTurbidityChoiceViewController: UIViewController, UIPickerViewDataSour
 
     if sender == okButton {
       let selectedRow = picker.selectedRow(inComponent: 0)
-      handleWaterTurbidityChoice(WaterTurbidityScale.all[selectedRow])
+      handleWaterTurbidityChoice(DataValue.WaterTurbidityScale(WaterTurbidityScale.all[selectedRow]))
     }
     dismiss(animated: true, completion: nil)
 
@@ -1808,17 +1837,21 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
     var sandSelectedRow: Int = 0
     var siltSelectedRow: Int = 0
     var claySelectedRow: Int = 0
-    if let soilTexture = abioticFactorChoices.dataValue as? SoilTextureScale {
+    if let dataValue = abioticFactorChoices.dataValue {
 
-      sandSelectedRow = Percentage.all.index {
-        return soilTexture.percentSand == $0.rawValue
-      } ?? 0
-      siltSelectedRow = Percentage.all.index {
-        return soilTexture.percentSilt == $0.rawValue
-      } ?? 0
-      claySelectedRow = Percentage.all.index {
-        return soilTexture.percentClay == $0.rawValue
-      } ?? 0
+      switch dataValue {
+      case .SoilTextureScale(let soilTextureScale):
+        sandSelectedRow = Percentage.all.index {
+          return soilTextureScale.percentSand == $0.rawValue
+        } ?? 0
+        siltSelectedRow = Percentage.all.index {
+          return soilTextureScale.percentSilt == $0.rawValue
+        } ?? 0
+        claySelectedRow = Percentage.all.index {
+          return soilTextureScale.percentClay == $0.rawValue
+        } ?? 0
+      default: fatalError()
+      }
 
     }
 
@@ -1851,7 +1884,7 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
         percentSand: percentSand,
         percentSilt: percentSilt,
         percentClay: percentClay)
-      handleSoilTextureChoice(soilTexture)
+      handleSoilTextureChoice(DataValue.SoilTextureScale(soilTexture))
 
     }
 

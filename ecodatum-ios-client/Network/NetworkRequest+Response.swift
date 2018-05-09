@@ -185,43 +185,12 @@ struct DeleteSiteByIdRequest: ProtectedNetworkRequest {
   
 }
 
-struct AbioticData: Codable {
-
-  let abioticFactor: String
-  let dataType: String
-  let dataUnit: String
-  let dataValue: String
-
-}
-
-struct BioticData: Codable {
-
-  let image: Base64Encoded
-  let notes: Base64Encoded
-
-}
-
 struct NewOrUpdateEcoDatumRequest: ProtectedNetworkRequest {
 
   let token: AuthenticationToken
-  let id: Identifier?
   let siteId: Identifier
-  let date: Date
-  let time: Date
-  let ecoFactor: String
-  let abioticData: AbioticData?
-  let bioticData: BioticData?
+  let ecoDatum: EcoDatum
 
 }
 
-struct EcoDatumResponse: NetworkResponse {
-
-  let id: Identifier
-  let date: Date
-  let time: Date
-  let ecoFactor: String
-  let abioticData: AbioticData?
-  let bioticData: BioticData?
-
-}
 
