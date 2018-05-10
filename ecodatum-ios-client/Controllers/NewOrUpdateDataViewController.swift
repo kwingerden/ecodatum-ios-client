@@ -228,6 +228,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
     switch ecoData.data {
     case .Abiotic(let abioticEcoData)?:
+      if abioticEcoData.abioticFactor == abioticFactor {
+        return
+      }
       ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(abioticFactor: abioticFactor)))
     default: fatalError()
     }
@@ -254,6 +257,10 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
     switch ecoData.data {
     case .Abiotic(let abioticEcoData)?:
+      if let currentDataType = abioticEcoData.dataType,
+         currentDataType == abioticDataType {
+        return
+      }
       ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataType: abioticDataType)))
     default: fatalError()
     }
@@ -276,11 +283,14 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     performSegue(withIdentifier: "dataUnitChoice", sender: nil)
   }
 
-  func handleDataUnitChoice(_ dataUnitChoice: AbioticDataUnitChoice) {
+  func handleDataUnitChoice(_ dataUnit: AbioticDataUnitChoice) {
 
     switch ecoData.data {
     case .Abiotic(let abioticEcoData)?:
-      ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataUnit: dataUnitChoice)))
+      if abioticEcoData.dataUnit == dataUnit {
+        return
+      }
+      ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataUnit: dataUnit)))
     default: fatalError()
     }
 
@@ -328,6 +338,10 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
     switch ecoData.data {
     case .Abiotic(let abioticEcoData)?:
+      if let currentDataValue = abioticEcoData.dataValue,
+         currentDataValue == dataValue {
+        return
+      }
       ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataValue: dataValue)))
     default: fatalError()
     }

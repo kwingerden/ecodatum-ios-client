@@ -129,23 +129,22 @@ class ServiceManager {
     encoder.outputFormatting = .prettyPrinted
     encoder.dateEncodingStrategy = .customISO8601
 
-    let fullEncodedData = try encoder.encode(request)
-    let fullEncodedString = String(data: fullEncodedData, encoding: .utf8)!
-    print(fullEncodedString)
-
-    let ecoDatum1 = EcoDatum(
-      id: "1234",
-      date: request.ecoDatum.date,
-      time: request.ecoDatum.time,
-      ecoFactor: request.ecoDatum.ecoFactor,
-      data: request.ecoDatum.data)
-    let encodedData = try encoder.encode(ecoDatum1)
-    let encodedString = String(data: encodedData, encoding: .utf8)!
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .customISO8601
-    let ecoDatum2 = try decoder.decode(EcoDatum.self, from: encodedString.data(using: .utf8)!)
 
-    assert(ecoDatum1.time == ecoDatum2.time)
+    let encodedData1 = try encoder.encode(request.ecoDatum)
+    let encodedString1 = String(data: encodedData1, encoding: .utf8)!
+
+    let decodedEcoDatum = try decoder.decode(EcoDatum.self, from: encodedString1.data(using: .utf8)!)
+
+    let encodedData2 = try encoder.encode(decodedEcoDatum)
+    let encodedString2 = String(data: encodedData2, encoding: .utf8)!
+
+    if encodedString1 == encodedString2 {
+      print("PASSED!")
+    } else {
+      print("######### FAILED !!!!!!!")
+    }
 
     // end TEST
 

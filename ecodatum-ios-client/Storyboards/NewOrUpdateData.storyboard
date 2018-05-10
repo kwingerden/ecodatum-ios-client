@@ -892,19 +892,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HMr-AS-J9K">
-                                <rect key="frame" x="110.5" y="155" width="320" height="311"/>
+                                <rect key="frame" x="8" y="155" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turbidity Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVR-Bd-D2y">
-                                        <rect key="frame" x="62" y="0.0" width="196.5" height="36"/>
+                                        <rect key="frame" x="164" y="0.0" width="196.5" height="36"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="61k-DY-qyi">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="46" width="524" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p22-3J-2YM">
-                                        <rect key="frame" x="60" y="272" width="200.5" height="39"/>
+                                        <rect key="frame" x="162" y="272" width="200.5" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGs-2y-rQY">
                                                 <rect key="frame" x="0.0" y="0.0" width="100.5" height="39"/>
@@ -936,7 +936,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="61k-DY-qyi" secondAttribute="trailing" id="1Dn-47-j85"/>
+                                    <constraint firstAttribute="trailing" secondItem="61k-DY-qyi" secondAttribute="trailing" id="5PZ-yn-UHY"/>
                                     <constraint firstItem="61k-DY-qyi" firstAttribute="leading" secondItem="HMr-AS-J9K" secondAttribute="leading" id="cKz-xr-v3u"/>
                                 </constraints>
                             </stackView>
@@ -944,6 +944,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HMr-AS-J9K" firstAttribute="centerY" secondItem="JC8-vb-Zbp" secondAttribute="centerY" id="0gt-fh-R2v"/>
+                            <constraint firstItem="kVN-9U-agu" firstAttribute="trailing" secondItem="HMr-AS-J9K" secondAttribute="trailing" constant="8" id="OIH-Nz-wr5"/>
+                            <constraint firstItem="HMr-AS-J9K" firstAttribute="leading" secondItem="kVN-9U-agu" secondAttribute="leading" constant="8" id="mj8-cw-Qs7"/>
                             <constraint firstItem="HMr-AS-J9K" firstAttribute="centerX" secondItem="JC8-vb-Zbp" secondAttribute="centerX" id="mvP-EQ-BM5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kVN-9U-agu"/>
@@ -1347,19 +1349,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AMf-ey-Prj">
-                                <rect key="frame" x="110" y="155" width="320" height="311"/>
+                                <rect key="frame" x="8" y="155" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odor Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0U-6u-mUm">
-                                        <rect key="frame" x="86.5" y="0.0" width="147" height="36"/>
+                                        <rect key="frame" x="188.5" y="0.0" width="147" height="36"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="rVk-xT-7Q9">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="46" width="524" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ga-zj-WkC">
-                                        <rect key="frame" x="60" y="272" width="200" height="39"/>
+                                        <rect key="frame" x="162" y="272" width="200" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmA-Ug-aoK">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
@@ -1401,6 +1403,8 @@
                         <constraints>
                             <constraint firstItem="AMf-ey-Prj" firstAttribute="centerX" secondItem="Ngz-mU-uSz" secondAttribute="centerX" id="C5y-sO-tlr"/>
                             <constraint firstItem="AMf-ey-Prj" firstAttribute="centerY" secondItem="Ngz-mU-uSz" secondAttribute="centerY" id="LjX-sY-a4t"/>
+                            <constraint firstItem="AMf-ey-Prj" firstAttribute="leading" secondItem="12b-Xa-CLM" secondAttribute="leading" constant="8" id="MYY-Yo-z2R"/>
+                            <constraint firstItem="12b-Xa-CLM" firstAttribute="trailing" secondItem="AMf-ey-Prj" secondAttribute="trailing" constant="8" id="dqU-RR-0er"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="12b-Xa-CLM"/>
                     </view>
@@ -1423,19 +1427,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DlB-32-tDU">
-                                <rect key="frame" x="110" y="155" width="320" height="311"/>
+                                <rect key="frame" x="8" y="155" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postassium Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXr-mB-BWL">
-                                        <rect key="frame" x="43.5" y="0.0" width="233.5" height="36"/>
+                                        <rect key="frame" x="145.5" y="0.0" width="233.5" height="36"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="LGx-Pj-a5t">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="46" width="524" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqS-Be-n2y">
-                                        <rect key="frame" x="60" y="272" width="200" height="39"/>
+                                        <rect key="frame" x="162" y="272" width="200" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvW-7i-C3w">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
@@ -1475,8 +1479,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DlB-32-tDU" firstAttribute="leading" secondItem="RzC-ce-crV" secondAttribute="leading" constant="8" id="4pq-MV-M3d"/>
                             <constraint firstItem="DlB-32-tDU" firstAttribute="centerY" secondItem="yWX-lx-qDQ" secondAttribute="centerY" id="KrZ-LI-yk5"/>
                             <constraint firstItem="DlB-32-tDU" firstAttribute="centerX" secondItem="yWX-lx-qDQ" secondAttribute="centerX" id="kCY-qz-ay7"/>
+                            <constraint firstItem="RzC-ce-crV" firstAttribute="trailing" secondItem="DlB-32-tDU" secondAttribute="trailing" constant="8" id="rjg-5S-MRE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RzC-ce-crV"/>
                     </view>
