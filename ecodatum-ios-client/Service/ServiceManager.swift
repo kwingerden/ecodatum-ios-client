@@ -122,33 +122,17 @@ class ServiceManager {
   }
 
   func call(_ request: NewOrUpdateEcoDatumRequest) throws -> Promise<EcoDatum> {
-
-    // TODO TEST
-
-    let encoder = JSONEncoder()
-    encoder.outputFormatting = .prettyPrinted
-    encoder.dateEncodingStrategy = .customISO8601
-
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .customISO8601
-
-    let encodedData1 = try encoder.encode(request.ecoDatum)
-    let encodedString1 = String(data: encodedData1, encoding: .utf8)!
-
-    let decodedEcoDatum = try decoder.decode(EcoDatum.self, from: encodedString1.data(using: .utf8)!)
-
-    let encodedData2 = try encoder.encode(decodedEcoDatum)
-    let encodedString2 = String(data: encodedData2, encoding: .utf8)!
-
-    if encodedString1 == encodedString2 {
-      print("PASSED!")
-    } else {
-      print("######### FAILED !!!!!!!")
+    return async(in: .userInitiated) {
+      status in
+      let response = try await(try self.networkManager.call(request))
+      let decoder = JSONDecoder()
+      decoder.dateDecodingStrategy = .customISO8601
+      let ecoDatum = try decoder.decode(
+        EcoDatum.self,
+        from: response.json.data(using: .utf8)!)
+      return ecoDatum
     }
 
-    // end TEST
-
-    return try self.networkManager.call(request)
   }
 
 }

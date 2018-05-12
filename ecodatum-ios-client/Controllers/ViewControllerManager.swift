@@ -536,11 +536,6 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
       return
     }
 
-    guard let siteId = site?.id else {
-      handleError(ViewControllerError.noSiteIdentifier)
-      return
-    }
-
     if let preAsyncBlock = preAsyncBlock {
       preAsyncBlock()
     }
@@ -549,8 +544,10 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
 
       let request = NewOrUpdateEcoDatumRequest(
         token: token,
-        siteId: siteId,
-        ecoDatum: ecoDatum)
+        id: ecoDatum.id,
+        json: ecoDatum.json,
+        siteId: ecoDatum.siteId,
+        userId: ecoDatum.userId)
       try serviceManager.call(request)
         .then(in: .main) {
           ecoData in
@@ -689,7 +686,8 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
   }
 
   func handleNewEcoDatum(ecoDatum: EcoDatum) {
-
+    self.ecoDatum = ecoDatum
+    performSegue(to: .siteNavigationChoice)
   }
 
   func handleUpdatedEcoDatum(ecoDatum: EcoDatum) {

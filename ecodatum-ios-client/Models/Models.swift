@@ -56,7 +56,7 @@ struct Site: Codable {
   let altitude: Double?
   let horizontalAccuracy: Double?
   let verticalAccuracy: Double?
-  let organizationId: String
+  let organizationId: Identifier
   let userId: Identifier
   let createdAt: Date
   let updatedAt: Date
@@ -846,6 +846,15 @@ struct EcoDatum: Codable {
   let time: Date
   let ecoFactor: EcoFactor?
   let data: AbioticOrBioticData?
+  let siteId: Identifier
+  let userId: Identifier
+
+  var json: String {
+    let jsonEncoder = JSONEncoder()
+    jsonEncoder.dateEncodingStrategy = .customISO8601
+    let data = try! jsonEncoder.encode(self)
+    return String(data: data, encoding: .utf8)!
+  }
 
   enum CodingKeys: String, CodingKey {
     case id
@@ -853,6 +862,8 @@ struct EcoDatum: Codable {
     case time
     case ecoFactor
     case data
+    case siteId
+    case userId
   }
 
   init(from decoder: Decoder) throws {
@@ -871,11 +882,12 @@ struct EcoDatum: Codable {
     default:
       fatalError()
     }
+    siteId = try container.decode(Identifier.self, forKey: .siteId)
+    userId = try container.decode(Identifier.self, forKey: .userId)
   }
 
   func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
-    try container.encodeIfPresent(id, forKey: .id)
     try container.encode(date, forKey: .date)
     try container.encode(time, forKey: .time)
     try container.encode(ecoFactor, forKey: .ecoFactor)
@@ -887,6 +899,8 @@ struct EcoDatum: Codable {
     default:
       fatalError()
     }
+    try container.encode(siteId, forKey: .siteId)
+    try container.encode(userId, forKey: .userId)
   }
 
   var abioticEcoData: AbioticEcoData? {
@@ -911,44 +925,60 @@ struct EcoDatum: Codable {
        date: Date = Date(),
        time: Date = Date(),
        ecoFactor: EcoFactor? = nil,
-       data: AbioticOrBioticData? = nil) {
+       data: AbioticOrBioticData? = nil,
+       userId: Identifier,
+       siteId: Identifier) {
     self.id = id
     self.date = date
     self.time = time
     self.ecoFactor = ecoFactor
     self.data = data
+    self.userId = userId
+    self.siteId = siteId
   }
 
   func new(date: Date) -> EcoDatum {
     return EcoDatum(
+      id: id,
       date: date,
       time: time,
       ecoFactor: ecoFactor,
-      data: data)
+      data: data,
+      userId: userId,
+      siteId: siteId)
   }
 
   func new(time: Date) -> EcoDatum {
     return EcoDatum(
+      id: id,
       date: date,
       time: time,
       ecoFactor: ecoFactor,
-      data: data)
+      data: data,
+      userId: userId,
+      siteId: siteId)
   }
 
   func new(ecoFactor: EcoFactor) -> EcoDatum {
     return EcoDatum(
+      id: id,
       date: date,
       time: time,
       ecoFactor: ecoFactor,
-      data: data)
+      data: data,
+      userId: userId,
+      siteId: siteId)
   }
 
   func new(data: AbioticOrBioticData) -> EcoDatum {
     return EcoDatum(
+      id: id,
       date: date,
       time: time,
       ecoFactor: ecoFactor,
-      data: data)
+      data: data,
+      userId: userId,
+      siteId: siteId)
   }
 
 }
@@ -1203,13 +1233,23 @@ struct BioticEcoData: Codable {
     self.notes = notes
   }
 
+  enum CodingKeys: String, CodingKey {
+    case image
+    case notes
+  }
+
   init(from decoder: Decoder) throws {
-    self.image = nil
-    self.notes = nil
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    image = UIImage.base64Decode(
+      try container.decode(Base64Encoded.self, forKey: .image))
+    notes = try NSAttributedString.base64Decode(
+      try container.decode(Base64Encoded.self, forKey: .notes))
   }
 
   func encode(to encoder: Encoder) throws {
-
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(image!.base64Encode(), forKey: .image)
+    try container.encode(notes!.base64Encode(), forKey: .notes)
   }
 
   func new(image: UIImage?) -> BioticEcoData {

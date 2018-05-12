@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--SiteNavigationChoice-->
+        <scene sceneID="nhG-zc-5Gj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SiteNavigationChoice" id="EMV-Hf-0Ho" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0C-wI-ghB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-33" y="-625"/>
+        </scene>
         <!--New Or Update Data View Controller-->
         <scene sceneID="fuY-t2-zzg">
             <objects>
@@ -799,6 +807,7 @@
                         <segue destination="jbY-rI-AdI" kind="presentation" identifier="soilTextureChoice" modalPresentationStyle="formSheet" id="d7d-qE-O10"/>
                         <segue destination="P7y-2P-w76" kind="presentation" identifier="imageChoice" modalPresentationStyle="formSheet" id="yM4-Ax-gio"/>
                         <segue destination="Wnk-cb-L9r" kind="presentation" identifier="notesChoice" modalPresentationStyle="formSheet" id="onM-aS-DU4"/>
+                        <segue destination="EMV-Hf-0Ho" kind="show" identifier="siteNavigationChoice" id="i4J-le-rZr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kz-eQ-1a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -814,7 +823,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OKE-8G-8Ik">
-                                <rect key="frame" x="8" y="155" width="524" height="311"/>
+                                <rect key="frame" x="8" y="154.5" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ecosystem Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTj-NS-UGh">
                                         <rect key="frame" x="144" y="0.0" width="236.5" height="36"/>
@@ -892,7 +901,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HMr-AS-J9K">
-                                <rect key="frame" x="8" y="155" width="524" height="311"/>
+                                <rect key="frame" x="8" y="154.5" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turbidity Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVR-Bd-D2y">
                                         <rect key="frame" x="164" y="0.0" width="196.5" height="36"/>
@@ -1349,7 +1358,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AMf-ey-Prj">
-                                <rect key="frame" x="8" y="155" width="524" height="311"/>
+                                <rect key="frame" x="8" y="154.5" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odor Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0U-6u-mUm">
                                         <rect key="frame" x="188.5" y="0.0" width="147" height="36"/>
@@ -1427,7 +1436,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DlB-32-tDU">
-                                <rect key="frame" x="8" y="155" width="524" height="311"/>
+                                <rect key="frame" x="8" y="154.5" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postassium Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXr-mB-BWL">
                                         <rect key="frame" x="145.5" y="0.0" width="233.5" height="36"/>
@@ -1583,7 +1592,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OgQ-Cn-vdT">
-                                <rect key="frame" x="8" y="155" width="524" height="311"/>
+                                <rect key="frame" x="8" y="154.5" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYy-bI-cfN">
                                         <rect key="frame" x="195.5" y="0.0" width="133.5" height="36"/>
@@ -2018,7 +2027,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GBn-9k-6Zi">
-                                <rect key="frame" x="8" y="155" width="524" height="311"/>
+                                <rect key="frame" x="8" y="154.5" width="524" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pH Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeH-FT-LX4">
                                         <rect key="frame" x="202.5" y="0.0" width="119" height="36"/>
@@ -2254,7 +2263,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TCM-R7-k4e">
-                                <rect key="frame" x="8" y="153.5" width="524" height="314"/>
+                                <rect key="frame" x="8" y="153" width="524" height="314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-4j-rNa">
                                         <rect key="frame" x="229.5" y="0.0" width="65.5" height="36"/>

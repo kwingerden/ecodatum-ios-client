@@ -9,7 +9,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   @IBOutlet weak var tableView: UITableView!
 
-  private var ecoData: EcoDatum = EcoDatum()
+  private lazy var ecoData: EcoDatum = EcoDatum(
+    userId: viewControllerManager.authenticatedUser!.userId,
+    siteId: viewControllerManager.siteId!)
 
   private var numberOfSections: Int = 3
 
