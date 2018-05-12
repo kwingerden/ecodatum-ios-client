@@ -7,6 +7,18 @@ class EcoDatumChoiceViewController: BaseContentViewScrollable {
 
   @IBOutlet weak var addButtonItem: UIBarButtonItem!
 
+  private let DATE_FORMATTER: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MMMM d yyyy"
+    return formatter
+  }()
+
+  private let TIME_FORMATTER: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "h:mm a zzz"
+    return formatter
+  }()
+
   override func viewDidLoad() {
 
     super.viewDidLoad()
@@ -30,15 +42,15 @@ class EcoDatumChoiceViewController: BaseContentViewScrollable {
 
   override func prepare(for segue: UIStoryboardSegue,
                         sender: Any?) {
-   
+
     super.prepare(for: segue, sender: sender)
 
     guard let identifier = segue.identifier,
-      let viewControllerSegue = ViewControllerSegue(rawValue: identifier) else {
-        LOG.error("Failed to determine view controller segue")
-        return
+          let viewControllerSegue = ViewControllerSegue(rawValue: identifier) else {
+      LOG.error("Failed to determine view controller segue")
+      return
     }
-    
+
     if let formSheetSegue = segue as? FormSheetSegue {
 
       switch viewControllerSegue {
@@ -58,15 +70,15 @@ class EcoDatumChoiceViewController: BaseContentViewScrollable {
       }
 
     } else if viewControllerSegue == .siteNavigationChoice {
-      
+
       if let viewController = segue.destination as? BaseNavigationChoice {
         viewController.isNavigationBarHidden = false
       }
-      
+
     }
-    
+
   }
-  
+
   @IBAction func buttonItemPress(_ sender: UIBarButtonItem) {
 
     switch sender {
@@ -113,18 +125,12 @@ extension EcoDatumChoiceViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100
-  }
-
-  func tableView(_ tableView: UITableView,
-                 didSelectRowAt indexPath: IndexPath) {
-
-    DispatchQueue.main.async {
-      self.viewControllerManager.showEcoDatum(
-        self.viewControllerManager.ecoData[indexPath.row],
-        segue: .siteNavigationChoice)
+    let ecoDatum = viewControllerManager.ecoData[indexPath.row]
+    switch ecoDatum.ecoFactor {
+    case .Abiotic?: return 200
+    case .Biotic?: return 100
+    default: fatalError()
     }
-
   }
 
 }
@@ -134,17 +140,95 @@ extension EcoDatumChoiceViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
     let ecoDatum = viewControllerManager.ecoData[indexPath.row]
+    switch ecoDatum.ecoFactor {
 
-    cell.textLabel?.text = ecoDatum.id!
-    cell.detailTextLabel?.text = ecoDatum.id!
+    case .Abiotic?:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "abioticCell") as! AbioticChoiceTableViewCell
+      cell.dateLabel.text = DATE_FORMATTER.string(from: ecoDatum.date)
+      cell.timeLabel.text = TIME_FORMATTER.string(from: ecoDatum.time)
+      cell.ecoSystemFactorLabel.text = ecoDatum.ecoFactor!.rawValue
+      cell.abioticFactorLabel.text = ecoDatum.abioticEcoData!.abioticFactor!.rawValue
+      switch ecoDatum.abioticEcoData!.dataType! {
 
-    let nextIndicator = UIImageView(image: #imageLiteral(resourceName:"NextGlyph"))
-    nextIndicator.tintColor = UIColor.black
-    cell.accessoryView = nextIndicator
+      case .Air(let airDataType):
+        cell.dataTypeLabel.text = airDataType.rawValue
 
-    return cell
+      case .Soil(let soilDataType):
+        cell.dataTypeLabel.text = soilDataType.rawValue
+
+      case .Water(let waterDataType):
+        cell.dataTypeLabel.text = waterDataType.rawValue
+
+      }
+
+      let dataUnitLabel: MTMathUILabel = MTMathUILabel()
+      cell.dataUnitView.insertSubview(dataUnitLabel, at: 0)
+
+      dataUnitLabel.latex = ecoDatum.abioticEcoData!.dataUnit!.rawValue
+      dataUnitLabel.textAlignment = .left
+      dataUnitLabel.fontSize = 10
+      dataUnitLabel.textColor = .black
+      dataUnitLabel.frame.size = cell.dataUnitView.frame.size
+
+      switch ecoDatum.abioticEcoData!.dataValue! {
+
+      case .DecimalDataValue(let decimalDataValue):
+        cell.dataValueLabel.text = decimalDataValue.description
+
+      case .SoilPotassiumScale(let soilPotassiumScale):
+        var text = ""
+        switch soilPotassiumScale {
+        case .Low(_, let label): text = label
+        case .Medium(_, let label): text = label
+        case .High(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
+
+      case .WaterOdorScale(let waterOdorScale):
+        var text = ""
+        switch waterOdorScale {
+        case .NoOdor(_, let label): text = label
+        case .SlightOdor(_, let label): text = label
+        case .Smelly(_, let label): text = label
+        case .VerySmelly(_, let label): text = label
+        case .Devastating(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
+
+      case .WaterTurbidityScale(let waterTurbidityScale):
+        var text = ""
+        switch waterTurbidityScale {
+        case .CrystalClear(_, let label): text = label
+        case .SlightlyCloudy(_, let label): text = label
+        case .ModeratelyCloudy(_, let label): text = label
+        case .VeryCloudy(_, let label): text = label
+        case .BlackishOrBrownish(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
+
+      case .SoilTextureScale(let soilTextureScale):
+        cell.dataValueLabel.text =
+          "\(soilTextureScale.percentSand)% Sand, " +
+            "\(soilTextureScale.percentSilt)% Silt, " +
+            "\(soilTextureScale.percentClay)% Clay"
+
+      }
+
+      return cell
+
+    case .Biotic?:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "bioticCell") as! BioticChoiceTableViewCell
+      //ecoDatum.date
+      //ecoDatum.time
+      //ecoDatum.ecoFactor
+      //ecoDatum.bioticEcoData.image
+      //ecoDatum.bioticEcoData.notes
+      return cell
+
+    default: fatalError()
+
+    }
 
   }
 
@@ -270,6 +354,22 @@ extension EcoDatumChoiceViewController: UITableViewDataSource {
 
 }
 
+class AbioticChoiceTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var timeLabel: UILabel!
+  @IBOutlet weak var ecoSystemFactorLabel: UILabel!
+  @IBOutlet weak var abioticFactorLabel: UILabel!
+  @IBOutlet weak var dataTypeLabel: UILabel!
+  @IBOutlet weak var dataUnitView: UIView!
+  @IBOutlet weak var dataValueLabel: UILabel!
+  
+}
+
+class BioticChoiceTableViewCell: UITableViewCell {
+
+
+}
 
 
 

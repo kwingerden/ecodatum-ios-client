@@ -130,7 +130,7 @@ class ServiceManager {
       let ecoDatum = try decoder.decode(
         EcoDatum.self,
         from: response.json.data(using: .utf8)!)
-      return ecoDatum
+      return ecoDatum.new(id: response.id)
     }
 
   }

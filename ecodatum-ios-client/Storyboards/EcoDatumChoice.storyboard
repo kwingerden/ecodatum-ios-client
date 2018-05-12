@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,30 +54,256 @@
                                                         </constraints>
                                                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="ksl-dL-bVZ" detailTextLabel="FFb-Qv-NL3" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="RMm-Y8-v5O">
-                                                                <rect key="frame" x="0.0" y="28" width="400" height="100"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="abioticCell" rowHeight="200" id="RMm-Y8-v5O" customClass="AbioticChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="28" width="400" height="200"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RMm-Y8-v5O" id="s3U-zp-AWO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="367" height="99.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400" height="199.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ksl-dL-bVZ">
-                                                                            <rect key="frame" x="15" y="27.5" width="41.5" height="24"/>
-                                                                            <autoresizingMask key="autoresizingMask"/>
-                                                                            <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FFb-Qv-NL3">
-                                                                            <rect key="frame" x="15" y="55" width="33" height="14.5"/>
-                                                                            <autoresizingMask key="autoresizingMask"/>
-                                                                            <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VHj-cO-V5I">
+                                                                            <rect key="frame" x="15" y="11" width="370" height="178"/>
+                                                                            <subviews>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SaX-ah-hKp">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="147.5" height="178"/>
+                                                                                    <subviews>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poW-3h-ryS">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="147.5" height="21"/>
+                                                                                            <attributedString key="attributedText">
+                                                                                                <fragment content="Date">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                                <fragment content=":">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0S-KW-4co">
+                                                                                            <rect key="frame" x="0.0" y="26" width="147.5" height="21.5"/>
+                                                                                            <attributedString key="attributedText">
+                                                                                                <fragment content="Time">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                                <fragment content=":">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyw-Se-Y7q">
+                                                                                            <rect key="frame" x="0.0" y="52.5" width="147.5" height="21"/>
+                                                                                            <attributedString key="attributedText">
+                                                                                                <fragment content="Ecosystem Factor">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                                <fragment content=":">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKN-JS-qV7">
+                                                                                            <rect key="frame" x="0.0" y="78.5" width="147.5" height="21"/>
+                                                                                            <attributedString key="attributedText">
+                                                                                                <fragment content="Abiotic Factor">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                                <fragment content=":">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQc-ff-v4J">
+                                                                                            <rect key="frame" x="0.0" y="104.5" width="147.5" height="21"/>
+                                                                                            <attributedString key="attributedText">
+                                                                                                <fragment content="Data Type">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                                <fragment content=":">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LU5-sO-aqW">
+                                                                                            <rect key="frame" x="0.0" y="130.5" width="147.5" height="21.5"/>
+                                                                                            <attributedString key="attributedText">
+                                                                                                <fragment content="Data Unit">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                                <fragment content=":">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35N-qD-eOv">
+                                                                                            <rect key="frame" x="0.0" y="157" width="147.5" height="21"/>
+                                                                                            <attributedString key="attributedText">
+                                                                                                <fragment content="Data Value">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                                <fragment content=":">
+                                                                                                    <attributes>
+                                                                                                        <font key="NSFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                        <font key="NSOriginalFont" size="17" name=".AppleSystemUIFontEmphasized"/>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                    </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstItem="fyw-Se-Y7q" firstAttribute="leading" secondItem="SaX-ah-hKp" secondAttribute="leading" id="2p7-LM-6Va"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="fyw-Se-Y7q" secondAttribute="trailing" id="7xw-2E-yGI"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="35N-qD-eOv" secondAttribute="trailing" id="9my-Qq-CSA"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="poW-3h-ryS" secondAttribute="trailing" id="Hbs-o5-uJW"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="LU5-sO-aqW" secondAttribute="trailing" id="MeY-L7-GPH"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="MKN-JS-qV7" secondAttribute="trailing" id="PK8-yq-hI6"/>
+                                                                                        <constraint firstItem="MKN-JS-qV7" firstAttribute="leading" secondItem="SaX-ah-hKp" secondAttribute="leading" id="T3R-14-9PI"/>
+                                                                                        <constraint firstItem="QQc-ff-v4J" firstAttribute="leading" secondItem="SaX-ah-hKp" secondAttribute="leading" id="Y4O-TR-Pj4"/>
+                                                                                        <constraint firstItem="poW-3h-ryS" firstAttribute="leading" secondItem="SaX-ah-hKp" secondAttribute="leading" id="Ync-by-Eh5"/>
+                                                                                        <constraint firstItem="n0S-KW-4co" firstAttribute="leading" secondItem="SaX-ah-hKp" secondAttribute="leading" id="d4E-v0-Pgu"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="n0S-KW-4co" secondAttribute="trailing" id="fAr-Ii-rdE"/>
+                                                                                        <constraint firstItem="LU5-sO-aqW" firstAttribute="leading" secondItem="SaX-ah-hKp" secondAttribute="leading" id="kfD-GT-9E2"/>
+                                                                                        <constraint firstItem="35N-qD-eOv" firstAttribute="leading" secondItem="SaX-ah-hKp" secondAttribute="leading" id="oOP-7O-47n"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="QQc-ff-v4J" secondAttribute="trailing" id="xe4-ZG-a6e"/>
+                                                                                    </constraints>
+                                                                                </stackView>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MUW-jI-UcY">
+                                                                                    <rect key="frame" x="157.5" y="0.0" width="212.5" height="178"/>
+                                                                                    <subviews>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FN7-4T-itV">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="212.5" height="21"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjE-2U-VIv">
+                                                                                            <rect key="frame" x="0.0" y="26" width="212.5" height="21.5"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSE-kx-6pv">
+                                                                                            <rect key="frame" x="0.0" y="52.5" width="212.5" height="21"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-iw-gNT">
+                                                                                            <rect key="frame" x="0.0" y="78.5" width="212.5" height="21"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-gg-hrL">
+                                                                                            <rect key="frame" x="0.0" y="104.5" width="212.5" height="21"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfl-J3-zko">
+                                                                                            <rect key="frame" x="0.0" y="130.5" width="212.5" height="21.5"/>
+                                                                                        </view>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-5n-g53">
+                                                                                            <rect key="frame" x="0.0" y="157" width="212.5" height="21"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                    </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstItem="KjE-2U-VIv" firstAttribute="leading" secondItem="MUW-jI-UcY" secondAttribute="leading" id="0c4-Os-Sur"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="Omx-iw-gNT" secondAttribute="trailing" id="BJz-a3-bNI"/>
+                                                                                        <constraint firstItem="Zfb-gg-hrL" firstAttribute="leading" secondItem="MUW-jI-UcY" secondAttribute="leading" id="BzW-6b-oFL"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="KjE-2U-VIv" secondAttribute="trailing" id="JZ1-th-NPz"/>
+                                                                                        <constraint firstItem="FN7-4T-itV" firstAttribute="leading" secondItem="MUW-jI-UcY" secondAttribute="leading" id="LnK-6O-XbD"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="Mvc-5n-g53" secondAttribute="trailing" id="SB9-3g-M7P"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="Zfb-gg-hrL" secondAttribute="trailing" id="dxY-L9-k3W"/>
+                                                                                        <constraint firstItem="Omx-iw-gNT" firstAttribute="leading" secondItem="MUW-jI-UcY" secondAttribute="leading" id="jCD-97-003"/>
+                                                                                        <constraint firstItem="Mvc-5n-g53" firstAttribute="leading" secondItem="MUW-jI-UcY" secondAttribute="leading" id="jqr-3v-GF0"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="BSE-kx-6pv" secondAttribute="trailing" id="mx1-hk-Ekj"/>
+                                                                                        <constraint firstItem="BSE-kx-6pv" firstAttribute="leading" secondItem="MUW-jI-UcY" secondAttribute="leading" id="ufL-Tl-opv"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="FN7-4T-itV" secondAttribute="trailing" id="zHr-GW-oaY"/>
+                                                                                    </constraints>
+                                                                                </stackView>
+                                                                            </subviews>
+                                                                        </stackView>
                                                                     </subviews>
+                                                                    <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailingMargin" secondItem="VHj-cO-V5I" secondAttribute="trailing" id="ERo-g3-Hnq"/>
+                                                                        <constraint firstItem="VHj-cO-V5I" firstAttribute="leading" secondItem="s3U-zp-AWO" secondAttribute="leadingMargin" id="HJ2-yF-bNr"/>
+                                                                        <constraint firstItem="VHj-cO-V5I" firstAttribute="top" secondItem="s3U-zp-AWO" secondAttribute="topMargin" id="Zck-lJ-LPW"/>
+                                                                        <constraint firstAttribute="bottomMargin" secondItem="VHj-cO-V5I" secondAttribute="bottom" id="iF5-Th-6RL"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <outlet property="abioticFactorLabel" destination="Omx-iw-gNT" id="CyV-Ga-6jT"/>
+                                                                    <outlet property="dataTypeLabel" destination="Zfb-gg-hrL" id="AkK-yc-LL4"/>
+                                                                    <outlet property="dataUnitView" destination="cfl-J3-zko" id="qF7-U7-juS"/>
+                                                                    <outlet property="dataValueLabel" destination="Mvc-5n-g53" id="mkU-F3-Q5G"/>
+                                                                    <outlet property="dateLabel" destination="FN7-4T-itV" id="hI0-c2-DEP"/>
+                                                                    <outlet property="ecoSystemFactorLabel" destination="BSE-kx-6pv" id="9CA-cx-JVY"/>
+                                                                    <outlet property="timeLabel" destination="KjE-2U-VIv" id="Gch-eh-QVf"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bioticCell" rowHeight="215" id="xQB-56-0rP" customClass="BioticChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="228" width="400" height="215"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xQB-56-0rP" id="cZT-3f-deB">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="400" height="214.5"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
                                                                     <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </tableViewCellContentView>
                                                                 <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -126,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ao-Mh-33x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-234" y="79"/>
+            <point key="canvasLocation" x="-234.375" y="78.515625"/>
         </scene>
         <!--NewOrUpdateData-->
         <scene sceneID="s59-o7-B1Z">

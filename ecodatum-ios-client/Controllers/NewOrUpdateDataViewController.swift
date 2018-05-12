@@ -9,7 +9,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   @IBOutlet weak var tableView: UITableView!
 
-  private lazy var ecoData: EcoDatum = EcoDatum(
+  private lazy var ecoDatum: EcoDatum = EcoDatum(
     userId: viewControllerManager.authenticatedUser!.userId,
     siteId: viewControllerManager.siteId!)
 
@@ -42,11 +42,11 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     case .newEcoDatum?:
       break
 
-    case .updateSite?:
-      break
+    case .updateEcoDatum?:
+      updateFieldValues()
 
-    case .viewSite?:
-      break
+    case .viewEcoDatum?:
+      updateFieldValues()
 
     default:
 
@@ -61,10 +61,6 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = false
-
-  }
-
-  @IBAction override func touchUpInside(_ sender: UIButton) {
 
   }
 
@@ -88,94 +84,94 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
       case "dateChoice":
         if let destination = segue.destination as? DateChoiceViewController {
-          destination.dateChoice = ecoData.date
+          destination.dateChoice = ecoDatum.date
           destination.handleDateChoice = handleDateChoice
         }
 
       case "timeChoice":
         if let destination = segue.destination as? TimeChoiceViewController {
-          destination.timeChoice = ecoData.time
+          destination.timeChoice = ecoDatum.time
           destination.handleTimeChoice = handleTimeChoice
         }
 
       case "ecoFactorChoice":
         if let destination = segue.destination as? EcoFactorChoiceViewController {
-          destination.ecoFactorChoice = ecoData.ecoFactor
+          destination.ecoFactorChoice = ecoDatum.ecoFactor
           destination.handleEcoFactorChoice = handleEcoFactorChoice
         }
 
       case "abioticFactorChoice":
         if let destination = segue.destination as? AbioticFactorChoiceViewController {
-          destination.abioticFactorChoice = ecoData.abioticFactor
+          destination.abioticFactorChoice = ecoDatum.abioticFactor
           destination.handleAbioticFactorChoice = handleAbioticFactorChoice
         }
 
       case "dataTypeChoice":
         if let destination = segue.destination as? DataTypeChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleDataTypeChoice = handleDataTypeChoice
         }
 
       case "dataUnitChoice":
         if let destination = segue.destination as? DataUnitChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleDataUnitChoice = handleDataUnitChoice
         }
 
       case "dataValueChoice":
         if let destination = segue.destination as? DataValueChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleDataValueChoice = handleDataValueChoice
         }
 
       case "pHValueChoice":
         if let destination = segue.destination as? PhValueChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleDataValueChoice = handleDataValueChoice
         }
 
       case "soilPotassiumChoice":
         if let destination = segue.destination as? SoilPotassiumChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleSoilPotassiumChoice = handleDataValueChoice
         }
 
       case "waterOdorChoice":
         if let destination = segue.destination as? WaterOdorChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleWaterOdorChoice = handleDataValueChoice
         }
 
       case "waterTurbidityChoice":
         if let destination = segue.destination as? WaterTurbidityChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleWaterTurbidityChoice = handleDataValueChoice
         }
 
       case "soilTextureChoice":
         if let destination = segue.destination as? SoilTextureChoiceViewController,
-           let abioticFactorChoices = ecoData.abioticEcoData {
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
           destination.abioticFactorChoices = abioticFactorChoices
           destination.handleSoilTextureChoice = handleDataValueChoice
         }
 
       case "imageChoice":
         if let destination = segue.destination as? ImageChoiceViewController,
-           let bioticFactorChoices = ecoData.bioticEcoData {
+           let bioticFactorChoices = ecoDatum.bioticEcoData {
           destination.bioticFactorChoices = bioticFactorChoices
           destination.handleImageChoice = handleImageChoice
         }
 
       case "notesChoice":
         if let destination = segue.destination as? NotesChoiceViewController,
-           let bioticFactorChoices = ecoData.bioticEcoData {
+           let bioticFactorChoices = ecoDatum.bioticEcoData {
           destination.bioticFactorChoices = bioticFactorChoices
           destination.handleNotesChoice = handleNotesChoice
         }
@@ -207,7 +203,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleDateChoice(_ date: Date) {
 
-    ecoData = ecoData.new(date: date)
+    ecoDatum = ecoDatum.new(date: date)
     tableView.reloadSections([0], with: .automatic)
 
   }
@@ -218,7 +214,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleTimeChoice(_ date: Date) {
 
-    ecoData = ecoData.new(time: date)
+    ecoDatum = ecoDatum.new(time: date)
     tableView.reloadSections([1], with: .automatic)
 
   }
@@ -229,17 +225,17 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleEcoFactorChoice(_ ecoFactor: EcoFactor) {
 
-    if ecoData.ecoFactor == ecoFactor {
+    if ecoDatum.ecoFactor == ecoFactor {
       return
     }
 
-    ecoData = ecoData.new(ecoFactor: ecoFactor)
+    ecoDatum = ecoDatum.new(ecoFactor: ecoFactor)
     tableView.reloadSections([2], with: .automatic)
 
     if ecoFactor == .Abiotic {
-      ecoData = ecoData.new(data: .Abiotic(AbioticEcoData()))
+      ecoDatum = ecoDatum.new(data: .Abiotic(AbioticEcoData()))
     } else {
-      ecoData = ecoData.new(data: .Biotic(BioticEcoData()))
+      ecoDatum = ecoDatum.new(data: .Biotic(BioticEcoData()))
     }
 
     if numberOfSections > 3 {
@@ -260,12 +256,12 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleAbioticFactorChoice(_ abioticFactor: AbioticFactor) {
 
-    switch ecoData.data {
+    switch ecoDatum.data {
     case .Abiotic(let abioticEcoData)?:
       if abioticEcoData.abioticFactor == abioticFactor {
         return
       }
-      ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(abioticFactor: abioticFactor)))
+      ecoDatum = ecoDatum.new(data: .Abiotic(abioticEcoData.new(abioticFactor: abioticFactor)))
     default: fatalError()
     }
 
@@ -289,13 +285,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleDataTypeChoice(_ abioticDataType: AbioticDataTypeChoice) {
 
-    switch ecoData.data {
+    switch ecoDatum.data {
     case .Abiotic(let abioticEcoData)?:
       if let currentDataType = abioticEcoData.dataType,
          currentDataType == abioticDataType {
         return
       }
-      ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataType: abioticDataType)))
+      ecoDatum = ecoDatum.new(data: .Abiotic(abioticEcoData.new(dataType: abioticDataType)))
     default: fatalError()
     }
 
@@ -319,12 +315,12 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleDataUnitChoice(_ dataUnit: AbioticDataUnitChoice) {
 
-    switch ecoData.data {
+    switch ecoDatum.data {
     case .Abiotic(let abioticEcoData)?:
       if abioticEcoData.dataUnit == dataUnit {
         return
       }
-      ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataUnit: dataUnit)))
+      ecoDatum = ecoDatum.new(data: .Abiotic(abioticEcoData.new(dataUnit: dataUnit)))
     default: fatalError()
     }
 
@@ -344,7 +340,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func presentDataValueChoice() {
 
-    switch ecoData.abioticEcoData?.dataUnit {
+    switch ecoDatum.abioticEcoData?.dataUnit {
 
     case ._Water_pH_Scale_?:
       performSegue(withIdentifier: "pHValueChoice", sender: nil)
@@ -370,13 +366,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleDataValueChoice(_ dataValue: DataValue) {
 
-    switch ecoData.data {
+    switch ecoDatum.data {
     case .Abiotic(let abioticEcoData)?:
       if let currentDataValue = abioticEcoData.dataValue,
          currentDataValue == dataValue {
         return
       }
-      ecoData = ecoData.new(data: .Abiotic(abioticEcoData.new(dataValue: dataValue)))
+      ecoDatum = ecoDatum.new(data: .Abiotic(abioticEcoData.new(dataValue: dataValue)))
     default: fatalError()
     }
 
@@ -404,9 +400,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleImageChoice(_ image: UIImage) {
 
-    switch ecoData.data {
+    switch ecoDatum.data {
     case .Biotic(let bioticEcoData)?:
-      ecoData = ecoData.new(data: .Biotic(bioticEcoData.new(image: image)))
+      ecoDatum = ecoDatum.new(data: .Biotic(bioticEcoData.new(image: image)))
     default: fatalError()
     }
 
@@ -430,9 +426,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleNotesChoice(_ notes: NSAttributedString) {
 
-    switch ecoData.data {
+    switch ecoDatum.data {
     case .Biotic(let bioticEcoData)?:
-      ecoData = ecoData.new(data: .Biotic(bioticEcoData.new(notes: notes)))
+      ecoDatum = ecoDatum.new(data: .Biotic(bioticEcoData.new(notes: notes)))
     default: fatalError()
     }
 
@@ -452,12 +448,46 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
 
   func handleSaveData() {
     viewControllerManager.newOrUpdateEcoDatum(
-      ecoDatum: ecoData,
+      ecoDatum: ecoDatum,
       preAsyncBlock: preAsyncUIOperation,
       postAsyncBlock: postAsyncUIOperation) {
       if self.viewControllerManager.isFormSheetSegue {
         self.dismiss(animated: true, completion: nil)
       }
+    }
+  }
+
+  private func updateFieldValues() {
+
+    if let _ecoDatum = viewControllerManager.ecoDatum {
+
+      ecoDatum = _ecoDatum
+      switch ecoDatum.ecoFactor {
+
+      case .Abiotic?:
+        switch viewControllerManager.viewControllerSegue {
+
+        case .updateEcoDatum?:
+          numberOfSections = 7
+
+        case .viewEcoDatum?:
+          numberOfSections = 7
+
+        default:
+          fatalError()
+
+        }
+
+      case .Biotic?:
+        numberOfSections = 5
+
+      default:
+        fatalError()
+
+      }
+
+      tableView.reloadData()
+
     }
   }
 
@@ -484,7 +514,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-    switch ecoData.ecoFactor {
+    switch ecoDatum.ecoFactor {
 
     case .Abiotic? where indexPath.section == 5: // Abiotic -> Data Unit
       return 82
@@ -494,6 +524,9 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
     case .Biotic? where indexPath.section == 3: // Biotic -> Photo
       return 250
+
+    case .Biotic? where indexPath.section == 5: // Biotic -> Save Button
+      return 115
 
     default:
       return 60
@@ -525,21 +558,21 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
     case 2: return makeEcoFactorChoiceCell(tableView, indexPath)
 
     case 3:
-      switch ecoData.ecoFactor {
+      switch ecoDatum.ecoFactor {
       case .Abiotic?: return makeAbioticFactorChoiceCell(tableView, indexPath)
       case .Biotic?: return makeImageChoiceCell(tableView, indexPath)
       default: fatalError()
       }
 
     case 4:
-      switch ecoData.ecoFactor {
+      switch ecoDatum.ecoFactor {
       case .Abiotic?: return makeDataTypeChoiceCell(tableView, indexPath)
       case .Biotic?: return makeNotesChoiceCell(tableView, indexPath)
       default: fatalError()
       }
 
     case 5:
-      switch ecoData.ecoFactor {
+      switch ecoDatum.ecoFactor {
       case .Abiotic?: return makeDataUnitChoiceCell(tableView, indexPath)
       case .Biotic?: return makeSaveDataCell(tableView, indexPath)
       default: fatalError()
@@ -563,7 +596,12 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "dateChoice",
       for: indexPath) as! DateChoiceTableViewCell
 
-    cell.dateLabel.text = DATE_FORMATTER.string(from: ecoData.date)
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+    cell.dateLabel.text = DATE_FORMATTER.string(from: ecoDatum.date)
     cell.presentDateChoice = presentDateChoice
 
     return cell
@@ -578,7 +616,12 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "timeChoice",
       for: indexPath) as! TimeChoiceTableViewCell
 
-    cell.timeLabel.text = TIME_FORMATTER.string(from: ecoData.time)
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+    cell.timeLabel.text = TIME_FORMATTER.string(from: ecoDatum.time)
     cell.presentTimeChoice = presentTimeChoice
 
     return cell
@@ -593,7 +636,13 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "ecoFactorChoice",
       for: indexPath) as! EcoFactorChoiceTableViewCell
 
-    if let ecoFactor = ecoData.ecoFactor {
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+
+    if let ecoFactor = ecoDatum.ecoFactor {
 
       cell.ecoFactorLabel.text = ecoFactor.rawValue
       cell.ecoFactorLabel.textColor = .black
@@ -619,7 +668,13 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "abioticFactorChoice",
       for: indexPath) as! AbioticFactorChoiceTableViewCell
 
-    if let abioticFactor = ecoData.abioticFactor {
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+
+    if let abioticFactor = ecoDatum.abioticFactor {
 
       cell.abioticFactorLabel.text = abioticFactor.rawValue
       cell.abioticFactorLabel.textColor = .black
@@ -645,7 +700,13 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "dataTypeChoice",
       for: indexPath) as! DataTypeChoiceTableViewCell
 
-    if let dataType = ecoData.abioticEcoData?.dataType {
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+
+    if let dataType = ecoDatum.abioticEcoData?.dataType {
 
       switch dataType {
 
@@ -664,7 +725,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
     } else {
 
-      switch ecoData.abioticFactor {
+      switch ecoDatum.abioticFactor {
       case .Air?: cell.dataTypeLabel.text = "Choose Air Data Type"
       case .Soil?: cell.dataTypeLabel.text = "Choose Soil Data Type"
       case .Water?: cell.dataTypeLabel.text = "Choose Water Data Type"
@@ -689,7 +750,13 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "dataUnitChoice",
       for: indexPath) as! DataUnitChoiceTableViewCell
 
-    if let dataUnit = ecoData.abioticEcoData?.dataUnit {
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+
+    if let dataUnit = ecoDatum.abioticEcoData?.dataUnit {
 
       cell.dataUnitLabel.latex = dataUnit.rawValue
       cell.dataUnitLabel.isHidden = false
@@ -697,7 +764,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
     } else {
 
-      switch ecoData.abioticFactor {
+      switch ecoDatum.abioticFactor {
       case .Air?: cell.chooseDataUnitLabel.text = "Choose Air Data Unit"
       case .Soil?: cell.chooseDataUnitLabel.text = "Choose Soil Data Unit"
       case .Water?: cell.chooseDataUnitLabel.text = "Choose Water Data Unit"
@@ -723,7 +790,13 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "dataValueChoice",
       for: indexPath) as! DataValueChoiceTableViewCell
 
-    if let dataValue = ecoData.abioticEcoData?.dataValue {
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+
+    if let dataValue = ecoDatum.abioticEcoData?.dataValue {
 
       switch dataValue {
 
@@ -773,7 +846,7 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
     } else {
 
-      switch ecoData.abioticFactor {
+      switch ecoDatum.abioticFactor {
       case .Air?: cell.dataValueLabel.text = "Set Air Data Value"
       case .Soil?: cell.dataValueLabel.text = "Set Soil Data Value"
       case .Water?: cell.dataValueLabel.text = "Set Water Data Value"
@@ -798,7 +871,13 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "imageChoice",
       for: indexPath) as! ImageChoiceTableViewCell
 
-    if let image = ecoData.bioticEcoData?.image {
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+
+    if let image = ecoDatum.bioticEcoData?.image {
       cell.imageView?.image = image
     } else {
       cell.imageView?.image = UIImage(named: "PlaceholderImage")
@@ -818,7 +897,13 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
       withIdentifier: "notesChoice",
       for: indexPath) as! NotesChoiceTableViewCell
 
-    if let notes = ecoData.bioticEcoData?.notes {
+    if viewControllerManager.viewControllerSegue == .viewEcoDatum {
+      cell.editButton.isHidden = true
+    } else {
+      cell.editButton.isHidden = false
+    }
+
+    if let notes = ecoDatum.bioticEcoData?.notes {
       cell.label.attributedText = notes
       cell.label.textColor = .black
     } else {
@@ -875,6 +960,8 @@ class DateChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var dateLabel: UILabel!
 
+  @IBOutlet weak var editButton: UIButton!
+
   var presentDateChoice: (() -> Void)!
 
   @IBAction func touchUpInside() {
@@ -913,6 +1000,8 @@ class DateChoiceViewController: UIViewController {
 
 class TimeChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var timeLabel: UILabel!
 
   var presentTimeChoice: (() -> Void)!
@@ -953,6 +1042,8 @@ class TimeChoiceViewController: UIViewController {
 
 class EcoFactorChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var ecoFactorLabel: UILabel!
 
   var presentEcoFactorChoice: (() -> Void)!
@@ -1018,6 +1109,8 @@ class EcoFactorChoiceViewController: UIViewController, UIPickerViewDataSource, U
 
 class AbioticFactorChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var abioticFactorLabel: UILabel!
 
   var presentAbioticFactorChoice: (() -> Void)!
@@ -1082,6 +1175,8 @@ class AbioticFactorChoiceViewController: UIViewController, UIPickerViewDataSourc
 
 class DataTypeChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var dataTypeLabel: UILabel!
 
   var presentDataTypeChoice: (() -> Void)!
@@ -1202,6 +1297,8 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
 class DataUnitChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var dataUnitView: UIView!
 
   @IBOutlet weak var chooseDataUnitLabel: UILabel!
@@ -1312,6 +1409,8 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 
 class DataValueChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var dataValueLabel: UILabel!
 
   var presentDataValueChoice: (() -> Void)!
@@ -2022,8 +2121,10 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
 
 class ImageChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var _imageView: UIImageView!
-
+  
   var presentImageChoice: (() -> Void)!
 
   @IBAction func touchUpInside() {
@@ -2131,6 +2232,8 @@ class ImageChoiceViewController: UIViewController,
 
 class NotesChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var editButton: UIButton!
+  
   @IBOutlet weak var label: UILabel!
 
   var presentNotesChoice: (() -> Void)!

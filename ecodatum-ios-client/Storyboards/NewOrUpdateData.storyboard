@@ -42,7 +42,7 @@
                                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="touchUpInside:" destination="KxY-41-qxO" eventType="touchUpInside" id="Kl8-gs-cU5"/>
+                                                            <action selector="touchUpInside:" destination="KxY-41-qxO" eventType="touchUpInside" id="1Aq-Oe-ei4"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -132,6 +132,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="dateLabel" destination="ICM-BR-Hes" id="eSp-OC-xmb"/>
+                                                                    <outlet property="editButton" destination="PlG-eE-dHH" id="Jbm-RH-W9d"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeChoice" rowHeight="60" id="oMN-Ff-Lid" userLabel="timeChoice" customClass="TimeChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -197,6 +198,7 @@
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
+                                                                    <outlet property="editButton" destination="mpI-ku-gSm" id="c58-7P-xDX"/>
                                                                     <outlet property="timeLabel" destination="bVI-GI-hIb" id="2AT-UP-lpA"/>
                                                                 </connections>
                                                             </tableViewCell>
@@ -264,6 +266,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="ecoFactorLabel" destination="uxi-Ud-TmS" id="uw2-z3-Fpn"/>
+                                                                    <outlet property="editButton" destination="rOJ-Zb-54I" id="QSO-z7-lfJ"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="abioticFactorChoice" rowHeight="60" id="qd2-57-HW2" userLabel="abioticFactorChoice" customClass="AbioticFactorChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -330,6 +333,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="abioticFactorLabel" destination="7jL-TI-uf1" id="Cau-Qr-tMr"/>
+                                                                    <outlet property="editButton" destination="999-0F-TVr" id="MZW-DN-gZA"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataTypeChoice" rowHeight="60" id="CN0-Ga-iqX" customClass="DataTypeChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -396,6 +400,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="dataTypeLabel" destination="ZVU-f5-x1D" id="Fni-BJ-7si"/>
+                                                                    <outlet property="editButton" destination="YD8-Ha-mGD" id="IOH-Yo-WFN"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataUnitChoice" rowHeight="82" id="YaI-KV-kwl" customClass="DataUnitChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -471,6 +476,7 @@
                                                                 <connections>
                                                                     <outlet property="chooseDataUnitLabel" destination="JpK-ez-c0F" id="H1C-Ca-ehg"/>
                                                                     <outlet property="dataUnitView" destination="Vnx-ag-9O1" id="Kxg-iz-TJS"/>
+                                                                    <outlet property="editButton" destination="cs9-Qp-PBF" id="DgN-Sw-YIj"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataValueChoice" rowHeight="60" id="cmS-Yc-G5y" customClass="DataValueChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -531,6 +537,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="dataValueLabel" destination="bFh-gf-BWw" id="fRM-hH-Cpq"/>
+                                                                    <outlet property="editButton" destination="Mo8-Eo-Jko" id="nYv-bd-9iI"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageChoice" rowHeight="250" id="SUg-fx-nor" userLabel="imageChoice" customClass="ImageChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -615,6 +622,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="_imageView" destination="u0S-Cb-GVd" id="PEm-Xz-Qjz"/>
+                                                                    <outlet property="editButton" destination="qHf-vA-TOo" id="zbb-i8-1jR"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notesChoice" rowHeight="60" id="6TH-wL-o0m" customClass="NotesChoiceTableViewCell" customModule="ecodatum_ios_client" customModuleProvider="target">
@@ -641,10 +649,10 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvA-fB-qUb">
-                                                                            <rect key="frame" x="8" y="21" width="384.5" height="38"/>
+                                                                            <rect key="frame" x="8" y="21" width="384.5" height="38.5"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agU-Tn-ePn">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="352.5" height="38"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="352.5" height="38.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="Add Notes">
                                                                                             <attributes>
@@ -656,14 +664,14 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1n-YK-5Th">
-                                                                                    <rect key="frame" x="352.5" y="0.0" width="32" height="38"/>
+                                                                                    <rect key="frame" x="352.5" y="0.0" width="32" height="38.5"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="32" id="abX-eP-xjh"/>
                                                                                     </constraints>
                                                                                     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <state key="normal" image="NewGlyph"/>
                                                                                     <connections>
-                                                                                        <action selector="touchUpInside" destination="6TH-wL-o0m" eventType="touchUpInside" id="xjA-5c-ueW"/>
+                                                                                        <action selector="touchUpInside" destination="6TH-wL-o0m" eventType="touchUpInside" id="DbT-GU-FUd"/>
                                                                                     </connections>
                                                                                 </button>
                                                                             </subviews>
@@ -680,6 +688,7 @@
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
+                                                                    <outlet property="editButton" destination="x1n-YK-5Th" id="a5O-Gg-Uid"/>
                                                                     <outlet property="label" destination="agU-Tn-ePn" id="3oJ-yl-bvM"/>
                                                                 </connections>
                                                             </tableViewCell>
@@ -784,7 +793,7 @@
                     <connections>
                         <outlet property="bodyView" destination="h5o-mm-XFw" id="WPJ-NA-4ar"/>
                         <outlet property="bodyViewHeightConstraint" destination="rD1-Ua-5oU" id="e1w-xm-1fF"/>
-                        <outlet property="cancelButton" destination="Hh6-H5-mpE" id="kCQ-Vo-mee"/>
+                        <outlet property="cancelButton" destination="Hh6-H5-mpE" id="Hxt-u3-ZgW"/>
                         <outlet property="contentView" destination="451-uv-Tub" id="7rt-Cd-HN4"/>
                         <outlet property="contentViewWidthConstraint" destination="g4P-og-1uu" id="ZWO-rJ-kmV"/>
                         <outlet property="footerView" destination="MPJ-v7-3Gx" id="RtD-dy-ICD"/>
@@ -812,7 +821,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kz-eQ-1a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.28125" y="-169.3359375"/>
+            <point key="canvasLocation" x="-159" y="-168"/>
         </scene>
         <!--Eco Factor Choice View Controller-->
         <scene sceneID="F6a-Mm-dNS">

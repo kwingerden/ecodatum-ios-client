@@ -770,9 +770,18 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
 
   func handleUpdatedEcoDatum(ecoDatum: EcoDatum) {
 
+    self.ecoDatum = ecoDatum
+    if let index = ecoData.index(where: { $0.id == ecoDatum.id }) {
+      ecoData.replaceSubrange(index...index, with: [ecoDatum])
+    }
+
   }
 
   func handleDeletedEcoDatum(ecoDatum: EcoDatum) {
+
+    if let index = ecoData.index(where: { $0.id == ecoDatum.id }) {
+      ecoData.remove(at: index)
+    }
 
   }
 
