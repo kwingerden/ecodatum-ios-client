@@ -15,6 +15,7 @@ enum ViewControllerError: Error {
   case noSurveyPhotos(date: Date)
   case noUserOrganizations
   case siteNameConflict(name: String)
+  case noSiteData(name: String)
   
 }
 
@@ -62,6 +63,9 @@ extension ViewControllerError: LocalizedError {
       
     case let .siteNameConflict(name):
       return "Site with name \"\(name)\" already exists."
+
+    case let .noSiteData(name):
+      return "Site \"\(name)\" does not have any data. New data needs to be collected."
     
     }
     

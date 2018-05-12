@@ -162,6 +162,30 @@ class NetworkManager {
 
   }
 
+  func call(_ request: GetEcoDataBySiteAndUserRequest) throws -> Promise<[EcoDatumResponse]> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("sites")
+          .appendingPathComponent("\(request.siteId)")
+          .appendingPathComponent("ecodata"),
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
+
+  func call(_ request: DeleteEcoDatumByIdRequest) throws -> Promise<HttpOKResponse> {
+    return try executeDataRequest(
+      makeDataRequest(
+        baseURL
+          .appendingPathComponent("protected")
+          .appendingPathComponent("ecodatum")
+          .appendingPathComponent("\(request.ecoDatumId)"),
+        method: .delete,
+        headers: Request.bearerTokenAuthHeaders(request.token),
+        request: request))
+  }
+
   private func makeDataRequest(
     _ url: URL,
     method: HTTPMethod = .get,

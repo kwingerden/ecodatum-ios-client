@@ -574,6 +574,84 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
 
   }
 
+  func deleteEcoDatum(
+    ecoDatum: EcoDatum,
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          DeleteEcoDatumByIdRequest(
+            token: token,
+            ecoDatumId: ecoDatum.id!))
+        .then(in: .main) {
+          _ in
+          self.ecoDatumHandler.handleDeletedEcoDatum(ecoDatum: ecoDatum)
+        }.catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
+  }
+
+  func chooseExistingEcoDatum(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    guard let siteId = site?.id else {
+      handleError(ViewControllerError.noSiteIdentifier)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          GetEcoDataBySiteAndUserRequest(
+            token: token,
+            siteId: siteId))
+        .then(in: .main, handleEcoData)
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
+  }
+
   func showErrorMessage(_ title: String,
                         _ message: String,
                         handler: ((UIAlertAction) -> Void)? = nil) {
@@ -695,6 +773,32 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
   }
 
   func handleDeletedEcoDatum(ecoDatum: EcoDatum) {
+
+  }
+
+  func handleEcoData(_ ecoData: [EcoDatum]) {
+
+    self.ecoData = ecoData
+
+    if ecoData.isEmpty {
+
+      showErrorMessage(
+        "No Existing Data",
+        ViewControllerError.noSiteData(
+          name: site!.name).localizedDescription)
+
+    } else {
+
+      performSegue(to: .ecoDatumChoice)
+
+    }
+
+  }
+
+  func showEcoDatum(_ ecoDatum: EcoDatum, segue: ViewControllerSegue) {
+
+    self.ecoDatum = ecoDatum
+    performSegue(to: segue)
 
   }
 

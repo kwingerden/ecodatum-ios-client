@@ -106,6 +106,7 @@
                         <outlet property="siteNameLabel" destination="Ojd-QQ-psf" id="LUo-yN-9sZ"/>
                         <outlet property="viewExistingDataButton" destination="2C8-qL-Y6g" id="LUt-1V-06U"/>
                         <segue destination="GCI-V7-ewq" kind="show" identifier="newEcoDatum" id="L6q-bv-G4A"/>
+                        <segue destination="gc1-v9-yd8" kind="show" identifier="ecoDatumChoice" id="Jbj-ks-qJn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czA-CW-qwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,6 +120,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plh-Kr-5S0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="502" y="-62"/>
+        </scene>
+        <!--EcoDatumChoice-->
+        <scene sceneID="ays-sO-iBP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EcoDatumChoice" id="gc1-v9-yd8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HIB-DT-95o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509" y="99"/>
         </scene>
     </scenes>
 </document>

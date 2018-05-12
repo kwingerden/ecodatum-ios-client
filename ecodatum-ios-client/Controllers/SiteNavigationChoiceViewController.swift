@@ -31,10 +31,10 @@ class SiteNavigationChoiceViewController: BaseNavigationChoice {
         to: .newEcoDatum)
       
     case viewExistingDataButton:
-      
-      viewControllerManager.performSegue(
-        from: self,
-        to: .ecoDatumChoice)
+
+      viewControllerManager.chooseExistingEcoDatum(
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation)
       
     default:
       LOG.error("Unrecognized button: \(sender)")

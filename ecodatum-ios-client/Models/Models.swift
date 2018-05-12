@@ -937,6 +937,17 @@ struct EcoDatum: Codable {
     self.siteId = siteId
   }
 
+  func new(id: Identifier) -> EcoDatum {
+    return EcoDatum(
+      id: id,
+      date: date,
+      time: time,
+      ecoFactor: ecoFactor,
+      data: data,
+      userId: userId,
+      siteId: siteId)
+  }
+
   func new(date: Date) -> EcoDatum {
     return EcoDatum(
       id: id,

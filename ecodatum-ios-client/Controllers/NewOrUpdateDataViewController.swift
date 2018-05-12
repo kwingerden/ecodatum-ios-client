@@ -37,6 +37,24 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
 
+    switch viewControllerManager.viewControllerSegue {
+
+    case .newEcoDatum?:
+      break
+
+    case .updateSite?:
+      break
+
+    case .viewSite?:
+      break
+
+    default:
+
+      let viewControllerSegue = viewControllerManager.viewControllerSegue?.rawValue ?? "Unknown"
+      LOG.error("Unexpected view controller segue \(viewControllerSegue)")
+
+    }
+
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +79,8 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    super.prepare(for: segue, sender: sender)
 
     if let identifier = segue.identifier {
 
@@ -161,7 +181,19 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         }
 
       default:
-        break
+        guard let identifier = segue.identifier,
+              let viewControllerSegue = ViewControllerSegue(rawValue: identifier) else {
+          LOG.error("Failed to determine view controller segue")
+          return
+        }
+
+        if viewControllerSegue == .siteNavigationChoice {
+
+          if let viewController = segue.destination as? BaseNavigationChoice {
+            viewController.isNavigationBarHidden = true
+          }
+
+        }
 
       }
 
@@ -419,7 +451,14 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   }
 
   func handleSaveData() {
-    viewControllerManager.newOrUpdateEcoDatum(ecoDatum: ecoData)
+    viewControllerManager.newOrUpdateEcoDatum(
+      ecoDatum: ecoData,
+      preAsyncBlock: preAsyncUIOperation,
+      postAsyncBlock: postAsyncUIOperation) {
+      if self.viewControllerManager.isFormSheetSegue {
+        self.dismiss(animated: true, completion: nil)
+      }
+    }
   }
 
 }

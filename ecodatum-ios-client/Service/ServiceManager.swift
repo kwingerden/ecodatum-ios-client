@@ -135,4 +135,24 @@ class ServiceManager {
 
   }
 
+  func call(_ request: GetEcoDataBySiteAndUserRequest) throws -> Promise<[EcoDatum]> {
+    return async(in: .userInitiated) {
+      status in
+      let responses = try await(try self.networkManager.call(request))
+      let decoder = JSONDecoder()
+      decoder.dateDecodingStrategy = .customISO8601
+      return try responses.map {
+        response in
+        let ecoDatum = try decoder.decode(
+          EcoDatum.self,
+          from: response.json.data(using: .utf8)!)
+        return ecoDatum.new(id: response.id)
+      }
+    }
+  }
+
+  func call(_ request: DeleteEcoDatumByIdRequest) throws -> Promise<HttpOKResponse> {
+    return try networkManager.call(request)
+  }
+
 }

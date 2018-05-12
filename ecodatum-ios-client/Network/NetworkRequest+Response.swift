@@ -206,5 +206,19 @@ struct EcoDatumResponse: NetworkResponse {
 
 }
 
+struct GetEcoDataBySiteAndUserRequest: ProtectedNetworkRequest {
+
+  let token: AuthenticationToken
+  let siteId: Identifier
+
+}
+
+struct DeleteEcoDatumByIdRequest: ProtectedNetworkRequest {
+
+  let token: AuthenticationToken
+  let ecoDatumId: Identifier
+
+}
+
 
 
