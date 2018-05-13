@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnj-gl-u5T">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnj-gl-u5T">
                                 <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                             </mapView>
                         </subviews>
@@ -33,11 +33,20 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Pnj-gl-u5T" id="fxl-rb-NqY"/>
+                        <segue destination="v44-qJ-Ofh" kind="show" identifier="siteNavigationChoice" id="Bjd-C9-bXT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEE-ml-LyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="51" y="221"/>
+        </scene>
+        <!--SiteNavigationChoice-->
+        <scene sceneID="Wih-U3-kIq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SiteNavigationChoice" id="v44-qJ-Ofh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Am-mL-IHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="599" y="233"/>
         </scene>
     </scenes>
 </document>

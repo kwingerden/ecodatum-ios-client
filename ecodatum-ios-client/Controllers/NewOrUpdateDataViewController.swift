@@ -471,7 +471,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
           numberOfSections = 8
 
         case .viewEcoDatum?:
-          numberOfSections = 8
+          numberOfSections = 7
 
         default:
           fatalError()
