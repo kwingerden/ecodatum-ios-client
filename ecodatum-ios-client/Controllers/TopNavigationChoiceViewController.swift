@@ -9,6 +9,8 @@ class TopNavigationChoiceViewController: BaseNavigationChoice {
   
   @IBOutlet weak var chooseExistingSiteButton: UIButton!
   
+  @IBOutlet weak var viewSiteMapButton: UIButton!
+  
   override func viewDidLoad() {
   
     super.viewDidLoad()
@@ -19,6 +21,7 @@ class TopNavigationChoiceViewController: BaseNavigationChoice {
    
     createNewSiteButton.rounded()
     chooseExistingSiteButton.rounded()
+    viewSiteMapButton.rounded()
 
   }
   
@@ -40,6 +43,11 @@ class TopNavigationChoiceViewController: BaseNavigationChoice {
       
     case chooseExistingSiteButton:
       viewControllerManager.chooseExistingSite(
+        preAsyncBlock: preAsyncUIOperation,
+        postAsyncBlock: postAsyncUIOperation)
+      
+    case viewSiteMapButton:
+      viewControllerManager.viewSiteMap(
         preAsyncBlock: preAsyncUIOperation,
         postAsyncBlock: postAsyncUIOperation)
       

@@ -95,12 +95,15 @@
 		01EC839920733BDD00693C51 /* NewOrUpdateDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */; };
 		19E540C6A38397CFD33DAE96 /* EcoDatumChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E54CB08B1D45DE04B74620 /* EcoDatumChoiceViewController.swift */; };
 		19E541297A7C76AEB9380DE8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E5446D2E61FFBE40221F49 /* Models.swift */; };
+		19E54AA8C3898ACD6ABAF8B9 /* SiteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E547C42597D74D2C3946E9 /* SiteMapViewController.swift */; };
 		938974F27F9D03EE72D55A1B /* Pods_ecodatum_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50215E02B2D723CAFF7681B /* Pods_ecodatum_ios_client.framework */; };
 		954CD3A5ED15813611DDE894 /* Pods_ecodatum_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D5E01305DD66966B61B091 /* Pods_ecodatum_ios_clientTests.framework */; };
 		AF33D1812DE5BB78D43524E1 /* BaseContentViewScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33D20CDC9E0B4B312FE132 /* BaseContentViewScrollable.swift */; };
 		AF33D6B4B10C2EF8BA5A49FA /* UIImage+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */; };
 		AF33DD77907C3117DC9FF395 /* BaseFormSheetDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33DC0228110028B336B6BD /* BaseFormSheetDisplayable.swift */; };
 		BE279D9F20A7795600FBA8B4 /* EcoDatumChoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE279D9E20A7795600FBA8B4 /* EcoDatumChoice.storyboard */; };
+		BE279DA120A7F1AB00FBA8B4 /* SiteMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE279DA020A7F1AB00FBA8B4 /* SiteMap.storyboard */; };
+		BE279DA320A7F84E00FBA8B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE279DA220A7F84E00FBA8B4 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +206,7 @@
 		01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdateDataViewController.swift; sourceTree = "<group>"; };
 		04D5E01305DD66966B61B091 /* Pods_ecodatum_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecodatum_ios_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E5446D2E61FFBE40221F49 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		19E547C42597D74D2C3946E9 /* SiteMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteMapViewController.swift; sourceTree = "<group>"; };
 		19E54CB08B1D45DE04B74620 /* EcoDatumChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EcoDatumChoiceViewController.swift; sourceTree = "<group>"; };
 		71430C6F704B7BEE7080E149 /* Pods-ecodatum-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-clientTests/Pods-ecodatum-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F09197E238ED7C762570F21 /* Pods-ecodatum-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-clientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-clientTests/Pods-ecodatum-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 		AF33DE3CEC50C871A9172540 /* UIImage+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utilities.swift"; sourceTree = "<group>"; };
 		BE0B81415B77FC5765501129 /* Pods-ecodatum-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		BE279D9E20A7795600FBA8B4 /* EcoDatumChoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EcoDatumChoice.storyboard; sourceTree = "<group>"; };
+		BE279DA020A7F1AB00FBA8B4 /* SiteMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SiteMap.storyboard; sourceTree = "<group>"; };
+		BE279DA220A7F84E00FBA8B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BEF892DC209BCCDE00F81D65 /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
 		D50215E02B2D723CAFF7681B /* Pods_ecodatum_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecodatum_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D796B96DA0D6F3DAB391F79A /* Pods-ecodatum-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecodatum-ios-client.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecodatum-ios-client/Pods-ecodatum-ios-client.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 			files = (
 				019FA2F31FF9FE5400E38B2C /* Alamofire.framework in Frameworks */,
 				01EBEA4F1FFB4E56008E4E41 /* AlamofireImage.framework in Frameworks */,
+				BE279DA320A7F84E00FBA8B4 /* MapKit.framework in Frameworks */,
 				01D8B2EB1FFC590A00450470 /* GRDB.framework in Frameworks */,
 				019FA2EF1FF9D73F00E38B2C /* Hydra.framework in Frameworks */,
 				010AB1841FF71A8300EFF0D5 /* SwiftValidator.framework in Frameworks */,
@@ -267,6 +274,7 @@
 		010AB1821FF71A8300EFF0D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE279DA220A7F84E00FBA8B4 /* MapKit.framework */,
 				0143D3C5205F4D7E00BF8013 /* IQKeyboardManagerSwift.framework */,
 				0167711A204D069E00A04E32 /* ImagePicker.framework */,
 				01677114204CF0E300A04E32 /* NextLevel.framework */,
@@ -428,6 +436,7 @@
 				0148F7B1206F486500A04AF9 /* BaseNavigationChoice.swift */,
 				01EC839820733BDD00693C51 /* NewOrUpdateDataViewController.swift */,
 				19E54CB08B1D45DE04B74620 /* EcoDatumChoiceViewController.swift */,
+				19E547C42597D74D2C3946E9 /* SiteMapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -449,6 +458,7 @@
 				0185F720201EB3DA00B176C6 /* SiteNavigationChoice.storyboard */,
 				01EC839620733BB700693C51 /* NewOrUpdateData.storyboard */,
 				BE279D9E20A7795600FBA8B4 /* EcoDatumChoice.storyboard */,
+				BE279DA020A7F1AB00FBA8B4 /* SiteMap.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -537,6 +547,11 @@
 					01AD11611FF4B5DB000DCE81 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					01AD11751FF4B5DC000DCE81 = {
 						CreatedOnToolsVersion = 9.2;
@@ -581,6 +596,7 @@
 				01D2BD7B201194E500260F18 /* Account.storyboard in Resources */,
 				017A159020104871008553E2 /* TopNavigation.storyboard in Resources */,
 				011F7D651FF589FC00DCD7CA /* LoginToAccount.storyboard in Resources */,
+				BE279DA120A7F1AB00FBA8B4 /* SiteMap.storyboard in Resources */,
 				01EC839720733BB700693C51 /* NewOrUpdateData.storyboard in Resources */,
 				01AD116D1FF4B5DB000DCE81 /* Assets.xcassets in Resources */,
 				01AD116B1FF4B5DB000DCE81 /* Welcome.storyboard in Resources */,
@@ -739,6 +755,7 @@
 				AF33DD77907C3117DC9FF395 /* BaseFormSheetDisplayable.swift in Sources */,
 				19E541297A7C76AEB9380DE8 /* Models.swift in Sources */,
 				19E540C6A38397CFD33DAE96 /* EcoDatumChoiceViewController.swift in Sources */,
+				19E54AA8C3898ACD6ABAF8B9 /* SiteMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

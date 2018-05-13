@@ -11,6 +11,7 @@ enum ViewControllerSegue: String {
   case viewSite
   case siteChoice
   case siteNavigationChoice
+  case viewSiteMap
 
   case newEcoDatum
   case updateEcoDatum

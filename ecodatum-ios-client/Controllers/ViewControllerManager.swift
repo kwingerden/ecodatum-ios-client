@@ -464,7 +464,10 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
         GetSitesByOrganizationAndUserRequest(
           token: token,
           organizationId: organizationId))
-        .then(in: .main, handleSites)
+        .then(in: .main) {
+          sites in
+          self.handleSites(sites)
+        }
         .catch(in: .main, handleError)
         .always(in: .main) {
           if let postAsyncBlock = postAsyncBlock {
@@ -523,6 +526,49 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
       
     }
     
+  }
+
+  func viewSiteMap(
+    preAsyncBlock: PreAsyncBlock? = nil,
+    postAsyncBlock: PostAsyncBlock? = nil) {
+
+    guard let token = authenticatedUser?.token else {
+      handleError(ViewControllerError.noAuthenticationToken)
+      return
+    }
+
+    guard let organizationId = organization?.id else {
+      handleError(ViewControllerError.noOrganizationIdentifier)
+      return
+    }
+
+    if let preAsyncBlock = preAsyncBlock {
+      preAsyncBlock()
+    }
+
+    do {
+
+      try serviceManager.call(
+          GetSitesByOrganizationAndUserRequest(
+            token: token,
+            organizationId: organizationId))
+        .then(in: .main) {
+          sites in 
+          self.handleSites(sites, .viewSiteMap)
+        }
+        .catch(in: .main, handleError)
+        .always(in: .main) {
+          if let postAsyncBlock = postAsyncBlock {
+            postAsyncBlock()
+          }
+        }
+
+    } catch let error {
+
+      handleError(error)
+
+    }
+
   }
 
   func newOrUpdateEcoDatum(
@@ -744,7 +790,7 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
 
   }
 
-  func handleSites(_ sites: [Site]) {
+  func handleSites(_ sites: [Site], _ segue: ViewControllerSegue = .siteChoice) {
 
     self.sites = sites
 
@@ -757,7 +803,7 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
       
     } else {
 
-      performSegue(to: .siteChoice)
+      performSegue(to: segue)
       
     }
     

@@ -127,8 +127,8 @@ extension EcoDatumChoiceViewController: UITableViewDelegate {
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
     let ecoDatum = viewControllerManager.ecoData[indexPath.row]
     switch ecoDatum.ecoFactor {
-    case .Abiotic?: return 200
-    case .Biotic?: return 100
+    case .Abiotic?: return 228
+    case .Biotic?: return 228
     default: fatalError()
     }
   }
@@ -167,7 +167,7 @@ extension EcoDatumChoiceViewController: UITableViewDataSource {
 
       dataUnitLabel.latex = ecoDatum.abioticEcoData!.dataUnit!.rawValue
       dataUnitLabel.textAlignment = .left
-      dataUnitLabel.fontSize = 10
+      dataUnitLabel.fontSize = 14
       dataUnitLabel.textColor = .black
       dataUnitLabel.frame.size = cell.dataUnitView.frame.size
 
@@ -219,11 +219,15 @@ extension EcoDatumChoiceViewController: UITableViewDataSource {
 
     case .Biotic?:
       let cell = tableView.dequeueReusableCell(withIdentifier: "bioticCell") as! BioticChoiceTableViewCell
-      //ecoDatum.date
-      //ecoDatum.time
-      //ecoDatum.ecoFactor
-      //ecoDatum.bioticEcoData.image
-      //ecoDatum.bioticEcoData.notes
+      cell.dateLabel.text = DATE_FORMATTER.string(from: ecoDatum.date)
+      cell.timeLabel.text = TIME_FORMATTER.string(from: ecoDatum.time)
+      cell.ecoSystemFactorLabel.text = ecoDatum.ecoFactor!.rawValue
+      cell._imageView.image = ecoDatum.bioticEcoData!.image
+      cell.textView.attributedText = ecoDatum.bioticEcoData!.notes
+
+      cell._imageView.darkBordered()
+
+
       return cell
 
     default: fatalError()
@@ -368,6 +372,18 @@ class AbioticChoiceTableViewCell: UITableViewCell {
 
 class BioticChoiceTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var timeLabel: UILabel!
+  @IBOutlet weak var ecoSystemFactorLabel: UILabel!
+  @IBOutlet weak var _imageView: UIImageView!
+  @IBOutlet weak var textView: UITextView!
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    _imageView.darkBordered()
+    textView.lightBordered()
+    textView.allowsEditingTextAttributes = false
+  }
 
 }
 

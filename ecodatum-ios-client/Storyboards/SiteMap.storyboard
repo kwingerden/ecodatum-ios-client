@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6sY-1F-cZ1">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Site Map-->
+        <scene sceneID="fba-HI-x0B">
+            <objects>
+                <viewController title="Site Map" id="6sY-1F-cZ1" customClass="SiteMapViewController" customModule="ecodatum_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jo7-Tr-YTE">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnj-gl-u5T">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Y2b-oB-xZY" firstAttribute="bottom" secondItem="Pnj-gl-u5T" secondAttribute="bottom" id="ShA-NG-eo8"/>
+                            <constraint firstItem="Pnj-gl-u5T" firstAttribute="leading" secondItem="Y2b-oB-xZY" secondAttribute="leading" id="UYO-wQ-GIV"/>
+                            <constraint firstItem="Y2b-oB-xZY" firstAttribute="trailing" secondItem="Pnj-gl-u5T" secondAttribute="trailing" id="ZJq-Kb-4rR"/>
+                            <constraint firstItem="Pnj-gl-u5T" firstAttribute="top" secondItem="Y2b-oB-xZY" secondAttribute="top" id="xRO-yX-siz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y2b-oB-xZY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Pnj-gl-u5T" id="fxl-rb-NqY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rEE-ml-LyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="221"/>
+        </scene>
+    </scenes>
+</document>

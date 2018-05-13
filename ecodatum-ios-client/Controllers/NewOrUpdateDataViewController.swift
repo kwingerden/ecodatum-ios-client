@@ -468,10 +468,10 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         switch viewControllerManager.viewControllerSegue {
 
         case .updateEcoDatum?:
-          numberOfSections = 7
+          numberOfSections = 8
 
         case .viewEcoDatum?:
-          numberOfSections = 7
+          numberOfSections = 8
 
         default:
           fatalError()
@@ -479,7 +479,7 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         }
 
       case .Biotic?:
-        numberOfSections = 5
+        numberOfSections = 6
 
       default:
         fatalError()

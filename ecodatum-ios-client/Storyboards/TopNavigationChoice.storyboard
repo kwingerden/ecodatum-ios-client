@@ -25,9 +25,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="ZQa-LH-mcD">
-                                        <rect key="frame" x="184" y="327" width="400" height="371"/>
+                                        <rect key="frame" x="184" y="272" width="400" height="481"/>
                                         <userGuides>
-                                            <userLayoutGuide location="199" affinity="minX"/>
+                                            <userLayoutGuide location="200" affinity="minX"/>
                                         </userGuides>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organization Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAT-Hf-4Uz">
@@ -63,8 +63,22 @@
                                                     <action selector="touchUpInsider:" destination="ytT-Gr-3qz" eventType="touchUpInside" id="9mS-Kt-8gs"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMD-0N-VdG">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nH-EN-e9f">
                                                 <rect key="frame" x="0.0" y="311" width="400" height="60"/>
+                                                <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="6Vb-PO-39O"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="View Site Map">
+                                                    <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsider:" destination="ytT-Gr-3qz" eventType="touchUpInside" id="Vzl-Dv-2uy"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMD-0N-VdG">
+                                                <rect key="frame" x="0.0" y="421" width="400" height="60"/>
                                                 <subviews>
                                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="801-wi-WUH">
                                                         <rect key="frame" x="181.5" y="11.5" width="37" height="37"/>
@@ -84,14 +98,12 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ZQa-LH-mcD" secondAttribute="trailing" constant="184" placeholder="YES" id="7gf-PR-0ex"/>
+                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="leading" secondItem="9Fz-ew-xh9" secondAttribute="leading" constant="184" placeholder="YES" id="6CS-nF-3Je"/>
                                     <constraint firstItem="ZQa-LH-mcD" firstAttribute="centerX" secondItem="9Fz-ew-xh9" secondAttribute="centerX" id="B3G-Ww-XAE"/>
-                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="leading" secondItem="9Fz-ew-xh9" secondAttribute="leading" constant="184" placeholder="YES" id="LHj-rJ-tgI"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZQa-LH-mcD" secondAttribute="bottom" constant="326" placeholder="YES" id="P5J-aG-qYj"/>
-                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="top" secondItem="9Fz-ew-xh9" secondAttribute="top" constant="327" placeholder="YES" id="ZoQ-Gd-38B"/>
-                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="centerX" secondItem="9Fz-ew-xh9" secondAttribute="centerX" id="ddY-NM-GIC"/>
-                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="centerY" secondItem="9Fz-ew-xh9" secondAttribute="centerY" id="eK3-zU-M7W"/>
-                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="centerY" secondItem="9Fz-ew-xh9" secondAttribute="centerY" id="j0J-cY-XOt"/>
+                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="top" secondItem="9Fz-ew-xh9" secondAttribute="top" constant="272" placeholder="YES" id="SW9-7m-P2l"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZQa-LH-mcD" secondAttribute="bottom" constant="271" placeholder="YES" id="WCh-ta-XnG"/>
+                                    <constraint firstItem="ZQa-LH-mcD" firstAttribute="centerY" secondItem="9Fz-ew-xh9" secondAttribute="centerY" id="jds-yA-Pxf"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZQa-LH-mcD" secondAttribute="trailing" constant="184" placeholder="YES" id="odo-fr-XVg"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -117,13 +129,15 @@
                         <outlet property="createNewSiteButton" destination="Ygp-8f-2Cb" id="ccG-gd-WfY"/>
                         <outlet property="organizationNameLabel" destination="kAT-Hf-4Uz" id="gzc-ih-Klj"/>
                         <outlet property="scrollView" destination="9Fz-ew-xh9" id="PDu-lt-qiH"/>
+                        <outlet property="viewSiteMapButton" destination="5nH-EN-e9f" id="eVy-pS-5Im"/>
                         <segue destination="mPp-eP-tTw" kind="show" identifier="newSite" id="MXL-Om-66I"/>
                         <segue destination="5jE-jq-HL1" kind="show" identifier="siteChoice" id="R6r-Cv-vkJ"/>
+                        <segue destination="qim-bu-8mE" kind="show" identifier="viewSiteMap" id="7nj-jd-vu7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9c-S3-Ldf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42.96875" y="90.8203125"/>
+            <point key="canvasLocation" x="120" y="91"/>
         </scene>
         <!--NewOrUpdateSite-->
         <scene sceneID="V8i-LD-x2u">
@@ -131,7 +145,7 @@
                 <viewControllerPlaceholder storyboardName="NewOrUpdateSite" id="mPp-eP-tTw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCg-OA-MuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524.609375" y="-40.4296875"/>
+            <point key="canvasLocation" x="608" y="-18"/>
         </scene>
         <!--SiteChoice-->
         <scene sceneID="L15-VV-8Zm">
@@ -139,7 +153,15 @@
                 <viewControllerPlaceholder storyboardName="SiteChoice" id="5jE-jq-HL1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVF-wC-fZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="174"/>
+            <point key="canvasLocation" x="625" y="165"/>
+        </scene>
+        <!--SiteMap-->
+        <scene sceneID="5XU-oE-MXT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SiteMap" id="qim-bu-8mE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eKl-Xd-xRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="723" y="91"/>
         </scene>
         <!--Top Navigation Choice Navigation Controller-->
         <scene sceneID="C1f-4I-CE3">
