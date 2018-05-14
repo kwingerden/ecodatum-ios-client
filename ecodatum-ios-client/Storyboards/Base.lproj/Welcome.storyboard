@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="GU6-AJ-NbN">
-                                        <rect key="frame" x="217" y="396" width="400" height="320"/>
+                                        <rect key="frame" x="217" y="361" width="400" height="390"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2ii-Cm-nGH">
                                                 <rect key="frame" x="50" y="0.0" width="300" height="100"/>
@@ -78,23 +78,31 @@
                                                     <action selector="touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4VM-hD-r1K"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FT-bQ-DNe">
+                                                <rect key="frame" x="0.0" y="370" width="400" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="WKr-Xx-4qV" secondAttribute="trailing" id="22L-gN-AOp"/>
                                             <constraint firstAttribute="trailing" secondItem="tL2-l2-siI" secondAttribute="trailing" id="2jX-zS-Td7"/>
                                             <constraint firstAttribute="width" constant="400" id="Cip-B1-BfG"/>
                                             <constraint firstItem="tL2-l2-siI" firstAttribute="leading" secondItem="GU6-AJ-NbN" secondAttribute="leading" id="OB8-qm-6CF"/>
+                                            <constraint firstItem="0FT-bQ-DNe" firstAttribute="leading" secondItem="GU6-AJ-NbN" secondAttribute="leading" id="SDi-DE-RbD"/>
+                                            <constraint firstAttribute="trailing" secondItem="0FT-bQ-DNe" secondAttribute="trailing" id="WAW-zN-Tcg"/>
                                             <constraint firstItem="WKr-Xx-4qV" firstAttribute="leading" secondItem="GU6-AJ-NbN" secondAttribute="leading" id="pFN-sg-5x1"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="GU6-AJ-NbN" secondAttribute="trailing" constant="217" placeholder="YES" id="6Vd-Li-L2i"/>
-                                    <constraint firstItem="GU6-AJ-NbN" firstAttribute="top" secondItem="Xbe-nM-Ppt" secondAttribute="top" constant="396" placeholder="YES" id="BaX-pA-Yyh"/>
+                                    <constraint firstItem="GU6-AJ-NbN" firstAttribute="leading" secondItem="Xbe-nM-Ppt" secondAttribute="leading" constant="217" placeholder="YES" id="5Bs-gW-Hif"/>
+                                    <constraint firstItem="GU6-AJ-NbN" firstAttribute="top" secondItem="Xbe-nM-Ppt" secondAttribute="top" constant="361" placeholder="YES" id="8LN-OG-xLd"/>
                                     <constraint firstItem="GU6-AJ-NbN" firstAttribute="centerX" secondItem="Xbe-nM-Ppt" secondAttribute="centerX" id="FUg-d0-Y00"/>
                                     <constraint firstItem="GU6-AJ-NbN" firstAttribute="centerY" secondItem="Xbe-nM-Ppt" secondAttribute="centerY" id="Pa0-CE-9Dv"/>
-                                    <constraint firstItem="GU6-AJ-NbN" firstAttribute="leading" secondItem="Xbe-nM-Ppt" secondAttribute="leading" constant="217" placeholder="YES" id="aLn-hf-CI0"/>
-                                    <constraint firstAttribute="bottom" secondItem="GU6-AJ-NbN" secondAttribute="bottom" constant="396" placeholder="YES" id="zXl-ur-RzV"/>
+                                    <constraint firstAttribute="bottom" secondItem="GU6-AJ-NbN" secondAttribute="bottom" constant="360.5" placeholder="YES" id="apA-jG-bIy"/>
+                                    <constraint firstAttribute="trailing" secondItem="GU6-AJ-NbN" secondAttribute="trailing" constant="217" placeholder="YES" id="tTE-gz-uXj"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -116,6 +124,7 @@
                         <outlet property="loginButton" destination="tL2-l2-siI" id="Qi3-lL-rUG"/>
                         <outlet property="newAccountButton" destination="WKr-Xx-4qV" id="qwK-jX-v7e"/>
                         <outlet property="scrollView" destination="Xbe-nM-Ppt" id="wTx-qI-GMW"/>
+                        <outlet property="versionLabel" destination="0FT-bQ-DNe" id="flR-e5-HPi"/>
                         <segue destination="A6P-6b-JjN" kind="show" identifier="loginToAccount" id="v0m-Yq-f5u"/>
                         <segue destination="Wt2-cs-uL3" kind="show" identifier="createNewAccount" id="TWN-F0-mpG"/>
                     </connections>

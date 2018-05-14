@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="80" width="834" height="1032"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="e0A-jn-kJW">
-                                        <rect key="frame" x="216" y="262" width="400.5" height="508.5"/>
+                                        <rect key="frame" x="217" y="292" width="400.5" height="448"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="M6j-ny-Qme">
                                                 <rect key="frame" x="0.0" y="0.0" width="400.5" height="248"/>
@@ -185,12 +185,6 @@
                                                     <constraint firstItem="obl-yb-7ee" firstAttribute="centerX" secondItem="SlQ-fx-SGM" secondAttribute="centerX" id="tWh-Dk-xUg"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqO-pj-VFi">
-                                                <rect key="frame" x="0.0" y="488" width="400.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="q1w-zp-Nmb"/>
@@ -200,11 +194,11 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="e0A-jn-kJW" firstAttribute="centerY" secondItem="F5e-MV-EoM" secondAttribute="centerY" id="228-iF-h8I"/>
-                                    <constraint firstItem="e0A-jn-kJW" firstAttribute="top" secondItem="F5e-MV-EoM" secondAttribute="top" constant="262" placeholder="YES" id="3JU-Bf-nie"/>
-                                    <constraint firstAttribute="trailing" secondItem="e0A-jn-kJW" secondAttribute="trailing" constant="217.5" placeholder="YES" id="CMM-Xl-lPQ"/>
                                     <constraint firstItem="e0A-jn-kJW" firstAttribute="centerX" secondItem="F5e-MV-EoM" secondAttribute="centerX" id="Iov-MQ-HIy"/>
-                                    <constraint firstItem="e0A-jn-kJW" firstAttribute="leading" secondItem="F5e-MV-EoM" secondAttribute="leading" constant="216" placeholder="YES" id="kWJ-dK-F41"/>
-                                    <constraint firstAttribute="bottom" secondItem="e0A-jn-kJW" secondAttribute="bottom" constant="261.5" placeholder="YES" id="mJX-Eb-kH4"/>
+                                    <constraint firstAttribute="trailing" secondItem="e0A-jn-kJW" secondAttribute="trailing" constant="216.5" placeholder="YES" id="j7v-CI-zt5"/>
+                                    <constraint firstItem="e0A-jn-kJW" firstAttribute="leading" secondItem="F5e-MV-EoM" secondAttribute="leading" constant="217" placeholder="YES" id="ker-EK-4kr"/>
+                                    <constraint firstAttribute="bottom" secondItem="e0A-jn-kJW" secondAttribute="bottom" constant="292" placeholder="YES" id="mq0-ht-cbK"/>
+                                    <constraint firstItem="e0A-jn-kJW" firstAttribute="top" secondItem="F5e-MV-EoM" secondAttribute="top" constant="292" placeholder="YES" id="uYV-Hg-gXM"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -234,7 +228,6 @@
                         <outlet property="passwordTextField" destination="6I2-lj-ZIh" id="2An-zI-MRk"/>
                         <outlet property="scrollView" destination="F5e-MV-EoM" id="9FM-0x-FZp"/>
                         <outlet property="topBarHeightConstraint" destination="Lkn-Tq-6fY" id="Fd1-sH-MDP"/>
-                        <outlet property="versionLabel" destination="hqO-pj-VFi" id="CGv-LK-6u7"/>
                         <segue destination="TbO-n8-nBB" kind="show" identifier="topNavigation" id="FwB-hA-zfk"/>
                         <segue destination="dW4-j9-sLG" kind="show" identifier="organizationChoice" id="Q1h-16-Rwq"/>
                     </connections>

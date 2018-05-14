@@ -7,6 +7,7 @@ class WelcomeViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var newAccountButton: UIButton!
   
+  @IBOutlet weak var versionLabel: UILabel!
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -15,6 +16,8 @@ class WelcomeViewController: BaseContentViewScrollable {
     
     loginButton.rounded()
     newAccountButton.rounded()
+    
+    versionLabel.text = BUILD_VERSION
     
   }
   
