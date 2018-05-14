@@ -33,8 +33,11 @@ extension OrganizationChoiceViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView,
                  didSelectRowAt indexPath: IndexPath) {
     DispatchQueue.main.async {
-      self.viewControllerManager.showOrganization(
-        self.viewControllerManager.organizations[indexPath.row])
+      let organization = self.viewControllerManager.organizations[indexPath.row]
+      self.viewControllerManager.organization = organization
+      self.viewControllerManager.getOrganizationMembers {
+        self.viewControllerManager.showOrganization(organization)
+      }
     }
   }
   

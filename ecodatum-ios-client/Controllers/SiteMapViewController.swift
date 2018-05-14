@@ -46,9 +46,10 @@ class SiteMapViewController: BaseViewController {
     guard let siteButton = sender as? SiteButton else {
       return
     }
-    viewControllerManager.showSite(
-      siteButton.site,
-      segue: .siteNavigationChoice)
+    viewControllerManager.site = siteButton.site
+    viewControllerManager.chooseExistingEcoDatum(
+      preAsyncBlock: preAsyncUIOperation,
+      postAsyncBlock: postAsyncUIOperation)
 
   }
 

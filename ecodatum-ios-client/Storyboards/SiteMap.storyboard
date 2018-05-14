@@ -33,17 +33,17 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Pnj-gl-u5T" id="fxl-rb-NqY"/>
-                        <segue destination="v44-qJ-Ofh" kind="show" identifier="siteNavigationChoice" id="Bjd-C9-bXT"/>
+                        <segue destination="v44-qJ-Ofh" kind="show" identifier="ecoDatumChoice" id="Bjd-C9-bXT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEE-ml-LyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="51" y="221"/>
         </scene>
-        <!--SiteNavigationChoice-->
+        <!--EcoDatumChoice-->
         <scene sceneID="Wih-U3-kIq">
             <objects>
-                <viewControllerPlaceholder storyboardName="SiteNavigationChoice" id="v44-qJ-Ofh" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EcoDatumChoice" id="v44-qJ-Ofh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Am-mL-IHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="599" y="233"/>

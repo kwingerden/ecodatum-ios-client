@@ -927,7 +927,9 @@ class ViewControllerManager: EcoDatumHandler, SiteHandler {
 
       self.organization = organizations[0]
       self.organizations = organizations
-      performSegue(to: .topNavigation)
+      getOrganizationMembers {
+        self.performSegue(to: .topNavigation)
+      }
 
     } else if organizations.count > 1 {
 
