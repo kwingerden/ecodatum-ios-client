@@ -489,7 +489,18 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
         }
 
       case .Biotic?:
-        numberOfSections = 6
+        switch viewControllerManager.viewControllerSegue {
+
+        case .updateEcoDatum?:
+          numberOfSections = 6
+
+        case .viewEcoDatum?:
+          numberOfSections = 5
+
+        default:
+          fatalError()
+
+        }
 
       default:
         fatalError()
@@ -1021,7 +1032,7 @@ class DateChoiceViewController: UIViewController {
 class TimeChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var timeLabel: UILabel!
 
   var presentTimeChoice: (() -> Void)!
@@ -1063,7 +1074,7 @@ class TimeChoiceViewController: UIViewController {
 class EcoFactorChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var ecoFactorLabel: UILabel!
 
   var presentEcoFactorChoice: (() -> Void)!
@@ -1130,7 +1141,7 @@ class EcoFactorChoiceViewController: UIViewController, UIPickerViewDataSource, U
 class AbioticFactorChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var abioticFactorLabel: UILabel!
 
   var presentAbioticFactorChoice: (() -> Void)!
@@ -1196,7 +1207,7 @@ class AbioticFactorChoiceViewController: UIViewController, UIPickerViewDataSourc
 class DataTypeChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var dataTypeLabel: UILabel!
 
   var presentDataTypeChoice: (() -> Void)!
@@ -1318,7 +1329,7 @@ class DataTypeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 class DataUnitChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var dataUnitView: UIView!
 
   @IBOutlet weak var chooseDataUnitLabel: UILabel!
@@ -1430,7 +1441,7 @@ class DataUnitChoiceViewController: UIViewController, UIPickerViewDataSource, UI
 class DataValueChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var dataValueLabel: UILabel!
 
   var presentDataValueChoice: (() -> Void)!
@@ -2215,9 +2226,9 @@ class SoilTextureChoiceViewController: UIViewController, UIPickerViewDataSource,
 class ImageChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var _imageView: UIImageView!
-  
+
   var presentImageChoice: (() -> Void)!
 
   @IBAction func touchUpInside() {
@@ -2326,7 +2337,7 @@ class ImageChoiceViewController: UIViewController,
 class NotesChoiceTableViewCell: UITableViewCell {
 
   @IBOutlet weak var editButton: UIButton!
-  
+
   @IBOutlet weak var label: UILabel!
 
   var presentNotesChoice: (() -> Void)!

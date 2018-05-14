@@ -2,6 +2,8 @@ import Foundation
 import SwiftyBeaver
 import UIKit
 
+let BUILD_VERSION = "EcoDatum Build 1"
+
 // LOG
 
 let LOG: SwiftyBeaver.Type = {

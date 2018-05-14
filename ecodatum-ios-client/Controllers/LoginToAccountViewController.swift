@@ -14,6 +14,8 @@ class LoginToAccountViewController: BaseContentViewScrollable {
   
   @IBOutlet weak var loginButton: UIButton!
   
+  @IBOutlet weak var versionLabel: UILabel!
+  
   @IBOutlet weak var topBarHeightConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
@@ -21,6 +23,8 @@ class LoginToAccountViewController: BaseContentViewScrollable {
     super.viewDidLoad()
     
     loginButton.rounded()
+    
+    versionLabel.text = BUILD_VERSION
     
     validator.registerField(
       emailAddressTextField,
