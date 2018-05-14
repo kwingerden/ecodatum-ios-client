@@ -176,6 +176,16 @@ extension EcoDatumChoiceViewController: UITableViewDataSource {
       case .DecimalDataValue(let decimalDataValue):
         cell.dataValueLabel.text = decimalDataValue.description
 
+      case .AirOzoneScale(let airOzoneScale):
+        var text = ""
+        switch airOzoneScale {
+        case .LessThan90(_, let label): text = label
+        case .Between90And150(_, let label): text = label
+        case .GreaterThan150To210(_, let label): text = label
+        case .GreaterThan210(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
+
       case .SoilPotassiumScale(let soilPotassiumScale):
         var text = ""
         switch soilPotassiumScale {

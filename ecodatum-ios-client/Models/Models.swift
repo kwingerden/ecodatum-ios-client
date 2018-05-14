@@ -98,15 +98,17 @@ enum AirDataType: String, Codable {
   case RelativeHumidity = "Relative Humidity"
   case Temperature
   case UVB
+  case Ozone
 
   static let all: [AirDataType] = [
-    .Velocity,
     .CarbonDioxide,
     .Light,
+    .Ozone,
     .PAR,
     .RelativeHumidity,
     .Temperature,
     .UVB,
+    .Velocity
   ]
 
 }
@@ -192,6 +194,8 @@ enum AbioticDataTypeChoice {
 
 enum AbioticDataUnitChoice: String, Codable {
 
+  // Latex Editor: http://www.hostmath.com
+
   case PartsPerMillion = "ppm \\ (Parts \\ Per \\ Million)"
   case Lux = "Lux"
   case PhotosyntheticPhotonFluxDensity = "PPFD \\ (Photosynthetic \\ Photon \\ Flux \\ Density)"
@@ -209,6 +213,7 @@ enum AbioticDataUnitChoice: String, Codable {
   case NephelometricTurbidityUnits = "NTU \\ (Nephelometric \\ Turbidity \\ Units)"
   case JacksonTurbidityUnits = "JTU \\ (Jackson \\ Turbidity \\ Units)"
 
+  case _Air_Ozone_Scale_ = "Air \\ Ozone \\ Scale \\ (\\frac{\\mu g}{m^{3}O_{3}})"
   case _Soil_Potassium_Scale_ = "Soil \\ Potassium \\ Scale"
   case _Soil_Texture_Scale_ = "Soil \\ Texture \\ Scale"
   case _Water_Odor_Scale_ = "Water \\ Odor \\ Scale"
@@ -258,6 +263,11 @@ enum AbioticDataUnitChoice: String, Codable {
       return [
         .MetersPerSecond,
         .MilesPerHour
+      ]
+
+    case .Air(let airDataType) where airDataType == .Ozone:
+      return [
+        ._Air_Ozone_Scale_
       ]
 
       // ** SOIL
@@ -355,6 +365,66 @@ enum AbioticDataUnitChoice: String, Codable {
     }
 
   }
+
+}
+
+enum AirOzoneScale: Codable {
+
+  case LessThan90(index: Int, label: String)
+  case Between90And150(index: Int, label: String)
+  case GreaterThan150To210(index: Int, label: String)
+  case GreaterThan210(index: Int, label: String)
+
+  init(from decoder: Decoder) throws {
+    self = AirOzoneScale.all[0]
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case scale
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .LessThan90(let lessThan90):
+      try container.encode(lessThan90.label, forKey: .scale)
+    case .Between90And150(let between90And150):
+      try container.encode(between90And150.label, forKey: .scale)
+    case .GreaterThan150To210(let greaterThan150To210):
+      try container.encode(greaterThan150To210.label, forKey: .scale)
+    case .GreaterThan210(let greaterThan210):
+      try container.encode(greaterThan210.label, forKey: .scale)
+    }
+  }
+
+  static func ==(_ lhs: AirOzoneScale, _ rhs: AirOzoneScale) -> Bool {
+
+    var lhsIndex = 0
+    switch lhs {
+    case .LessThan90(let index, _): lhsIndex = index
+    case .Between90And150(let index, _): lhsIndex = index
+    case .GreaterThan150To210(let index, _): lhsIndex = index
+    case .GreaterThan210(let index, _): lhsIndex = index
+    }
+
+    var rhsIndex = 0
+    switch rhs {
+    case .LessThan90(let index, _): rhsIndex = index
+    case .Between90And150(let index, _): rhsIndex = index
+    case .GreaterThan150To210(let index, _): rhsIndex = index
+    case .GreaterThan210(let index, _): rhsIndex = index
+    }
+
+    return lhsIndex == rhsIndex
+
+  }
+
+  static let all: [AirOzoneScale] = [
+    .LessThan90(index: 0, label: "<90"),
+    .Between90And150(index: 1, label: "90-150"),
+    .GreaterThan150To210(index: 2, label: ">150-210"),
+    .GreaterThan210(index: 3, label: ">210")
+  ]
 
 }
 
@@ -793,6 +863,7 @@ enum AbioticOrBioticData: Codable {
 enum DataValue {
 
   case DecimalDataValue(DecimalDataValue)
+  case AirOzoneScale(AirOzoneScale)
   case SoilPotassiumScale(SoilPotassiumScale)
   case SoilTextureScale(SoilTextureScale)
   case WaterOdorScale(WaterOdorScale)
@@ -805,6 +876,12 @@ enum DataValue {
       switch rhs {
       case .DecimalDataValue(let rhsDecimalDataValue):
         return lhsDecimalDataValue == rhsDecimalDataValue
+      default: break
+      }
+    case .AirOzoneScale(let lhsAirOzoneScale):
+      switch rhs {
+      case .AirOzoneScale(let rhsAirOzoneScale):
+        return lhsAirOzoneScale == rhsAirOzoneScale
       default: break
       }
     case .SoilPotassiumScale(let lhsSoilPotassiumScale):
@@ -1033,6 +1110,31 @@ struct AbioticEcoData: Codable {
 
     switch dataUnit {
 
+    case ._Air_Ozone_Scale_?:
+      var tempDataValue: DataValue?
+      let dataValueString = try container.decode(String.self, forKey: .dataValue)
+      AirOzoneScale.all.forEach {
+        switch $0 {
+        case .LessThan90(_, let label):
+          if dataValueString == label {
+            tempDataValue = DataValue.AirOzoneScale($0)
+          }
+        case .Between90And150(_, let label):
+          if dataValueString == label {
+            tempDataValue = DataValue.AirOzoneScale($0)
+          }
+        case .GreaterThan150To210(_, let label):
+          if dataValueString == label {
+            tempDataValue = DataValue.AirOzoneScale($0)
+          }
+        case .GreaterThan210(_, let label):
+          if dataValueString == label {
+            tempDataValue = DataValue.AirOzoneScale($0)
+          }
+        }
+      }
+      dataValue = tempDataValue
+
     case ._Soil_Potassium_Scale_?:
       var tempDataValue: DataValue?
       let dataValueString = try container.decode(String.self, forKey: .dataValue)
@@ -1151,6 +1253,18 @@ struct AbioticEcoData: Codable {
 
     case .DecimalDataValue(let decimalDataValue)?:
       try container.encode(decimalDataValue, forKey: .dataValue)
+
+    case .AirOzoneScale(let airOzoneScale)?:
+      switch airOzoneScale {
+      case .LessThan90(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .Between90And150(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .GreaterThan150To210(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      case .GreaterThan210(_, let label):
+        try container.encode(label, forKey: .dataValue)
+      }
 
     case .SoilPotassiumScale(let soilPotassiumScale)?:
       switch soilPotassiumScale {

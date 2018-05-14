@@ -127,6 +127,13 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
           destination.handleDataValueChoice = handleDataValueChoice
         }
 
+      case "airOzoneChoice":
+        if let destination = segue.destination as? AirOzoneChoiceViewController,
+           let abioticFactorChoices = ecoDatum.abioticEcoData {
+          destination.abioticFactorChoices = abioticFactorChoices
+          destination.handleAirOzoneChoice = handleDataValueChoice
+        }
+
       case "pHValueChoice":
         if let destination = segue.destination as? PhValueChoiceViewController,
            let abioticFactorChoices = ecoDatum.abioticEcoData {
@@ -341,6 +348,9 @@ class NewOrUpdateDataViewController: BaseFormSheetDisplayable {
   func presentDataValueChoice() {
 
     switch ecoDatum.abioticEcoData?.dataUnit {
+
+    case ._Air_Ozone_Scale_?:
+      performSegue(withIdentifier: "airOzoneChoice", sender: nil)
 
     case ._Water_pH_Scale_?:
       performSegue(withIdentifier: "pHValueChoice", sender: nil)
@@ -802,6 +812,16 @@ extension NewOrUpdateDataViewController: UITableViewDataSource {
 
       case .DecimalDataValue(let decimalDataValue):
         cell.dataValueLabel.text = decimalDataValue.description
+
+      case .AirOzoneScale(let airOzoneScale):
+        var text = ""
+        switch airOzoneScale {
+        case .LessThan90(_, let label): text = label
+        case .Between90And150(_, let label): text = label
+        case .GreaterThan150To210(_, let label): text = label
+        case .GreaterThan210(_, let label): text = label
+        }
+        cell.dataValueLabel.text = text
 
       case .SoilPotassiumScale(let soilPotassiumScale):
         var text = ""
@@ -1567,6 +1587,79 @@ class DataValueChoiceViewController: UIViewController {
       dataValue = newDataValue
       valueLabel.text = dataValue.description
 
+    }
+
+  }
+
+}
+
+class AirOzoneChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  @IBOutlet weak var picker: UIPickerView!
+
+  @IBOutlet weak var cancelButton: UIButton!
+
+  @IBOutlet weak var okButton: UIButton!
+
+  var abioticFactorChoices: AbioticEcoData!
+
+  var handleAirOzoneChoice: DataValueHandler!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    picker.dataSource = self
+    picker.delegate = self
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    var selectedRow: Int = 0
+    if let dataValue = abioticFactorChoices.dataValue {
+
+      switch dataValue {
+      case .AirOzoneScale(let airOzoneScale):
+
+        switch airOzoneScale {
+        case let .LessThan90(index, _): selectedRow = index
+        case let .Between90And150(index, _): selectedRow = index
+        case let .GreaterThan150To210(index, _): selectedRow = index
+        case let .GreaterThan210(index, _): selectedRow = index
+        }
+      default: fatalError()
+      }
+
+    }
+
+    picker.selectRow(selectedRow, inComponent: 0, animated: false)
+
+  }
+
+  @IBAction func touchUpInside(_ sender: UIButton) {
+
+    if sender == okButton {
+      let selectedRow = picker.selectedRow(inComponent: 0)
+      handleAirOzoneChoice(DataValue.AirOzoneScale(AirOzoneScale.all[selectedRow]))
+    }
+    dismiss(animated: true, completion: nil)
+
+  }
+
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return AirOzoneScale.all.count
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+    switch AirOzoneScale.all[row] {
+    case let .LessThan90(_, label): return label
+    case let .Between90And150(_, label): return label
+    case let .GreaterThan150To210(_, label): return label
+    case let .GreaterThan210(_, label): return label
     }
 
   }
